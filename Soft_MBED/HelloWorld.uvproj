@@ -408,11 +408,6 @@
               <FilePath>.\Sources\CTelemetres.cpp</FilePath>
             </File>
             <File>
-              <FileName>CAnaconbot.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Sources\CAnaconbot.cpp</FilePath>
-            </File>
-            <File>
               <FileName>CAsservissement.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Sources\CAsservissement.cpp</FilePath>
@@ -443,9 +438,9 @@
               <FilePath>.\Sources\CGlobale_ModeAutonome.cpp</FilePath>
             </File>
             <File>
-              <FileName>CGlobale_ModePiloteAnaconbot.cpp</FileName>
+              <FileName>CGlobale_ModePiloteLaBotBox.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\Sources\CGlobale_ModePiloteAnaconbot.cpp</FilePath>
+              <FilePath>.\Sources\CGlobale_ModePiloteLaBotBox.cpp</FilePath>
             </File>
             <File>
               <FileName>CGlobale_ModePiloteTerminal.cpp</FileName>
@@ -483,9 +478,9 @@
               <FilePath>.\Sources\CTrameEcranTactile.cpp</FilePath>
             </File>
             <File>
-              <FileName>MessagerieAnaconbot.cpp</FileName>
+              <FileName>MessagerieLaBotBox.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\Sources\MessagerieAnaconbot.cpp</FilePath>
+              <FilePath>.\Sources\MessagerieLaBotBox.cpp</FilePath>
             </File>
             <File>
               <FileName>MessagerieEcranTactile.cpp</FileName>
@@ -527,16 +522,21 @@
               <FileType>8</FileType>
               <FilePath>.\Sources\CAsservissementSulfateuse.cpp</FilePath>
             </File>
+            <File>
+              <FileName>CTrameLaBotBox.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Sources\CTrameLaBotBox.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>CLaBotBox.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Sources\CLaBotBox.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>inc</GroupName>
           <Files>
-            <File>
-              <FileName>CAnaconbot.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Includes\CAnaconbot.h</FilePath>
-            </File>
             <File>
               <FileName>CAsservissement.h</FileName>
               <FileType>5</FileType>
@@ -593,11 +593,6 @@
               <FilePath>.\Includes\CTrameEcranTactile.h</FilePath>
             </File>
             <File>
-              <FileName>MessagerieAnaconbot.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Includes\MessagerieAnaconbot.h</FilePath>
-            </File>
-            <File>
               <FileName>MessagerieEcranTactile.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Includes\MessagerieEcranTactile.h</FilePath>
@@ -631,6 +626,21 @@
               <FileName>CAsservissementSulfateuse.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Includes\CAsservissementSulfateuse.h</FilePath>
+            </File>
+            <File>
+              <FileName>MessagerieLaBotBox.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Includes\MessagerieLaBotBox.h</FilePath>
+            </File>
+            <File>
+              <FileName>CTrameLaBotBox.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Includes\CTrameLaBotBox.h</FilePath>
+            </File>
+            <File>
+              <FileName>CLaBotBox.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Includes\CLaBotBox.h</FilePath>
             </File>
           </Files>
         </Group>

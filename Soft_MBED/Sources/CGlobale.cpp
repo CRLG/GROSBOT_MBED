@@ -78,7 +78,7 @@ void CGlobale::Run(void)
 
  switch(ModeFonctionnement) {
   	case MODE_AUTONOME : 			ModeAutonome();			break;
-	case MODE_PILOTE_ANACONBOT : 	ModePiloteAnaconbot();	break;
+	case MODE_PILOTE_LABOTBOX : 	ModePiloteLaBotBox();	break;
 	case MODE_PILOTE_TERMINAL : 	ModePiloteTerminal();	break;
 	default : 						ModeAutonome();			break;
  }

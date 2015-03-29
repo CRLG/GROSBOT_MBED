@@ -47,12 +47,12 @@ void CMoteurs::CommandeVitesse(unsigned char num_mot, float vitesse)
 
   switch(num_mot) {
     case MOTEUR_1 : 
-        /* rien pour le moment : moteur piloté en direct par le MBED -> roue */ 
-        m_cde_mot_1 = vitesse;    
+      CommandeVitesse_1(vitesse);
+      m_cde_mot_1 = vitesse;    
     break;
     case MOTEUR_2 :
-        /* rien pour le moment : moteur piloté en direct par le MBED -> roue */ 
-        m_cde_mot_2 = vitesse;    
+      CommandeVitesse_2(vitesse);
+      m_cde_mot_2 = vitesse;    
     break;
     case MOTEUR_3 : 
         if (m_cde_mot_3 != vitesse) {  // Pas de dialogue si la consigne n'a pas changé
@@ -85,6 +85,59 @@ void CMoteurs::CommandeVitesse(unsigned char num_mot, float vitesse)
     default : /* ne rien faire */ break;
   }
 
+}
+
+//___________________________________________________________________________
+ /*!
+   \brief Applique la puissance au moteur 1
+
+   \param vitesse la vitesse signee en pourcentage [-100%;+100]
+   \return --
+*/
+void CMoteurs::CommandeVitesse_1(float vitesse)
+{
+  if (vitesse > 0) {
+	 _Mot1_Sens1 = 0;
+	 _Mot1_Sens2 = 1;
+	 _Mot1_PWM.write(vitesse/100.0);
+  }
+  else if (vitesse < 0) {  
+	 _Mot1_Sens1 = 1;
+	 _Mot1_Sens2 = 0;
+  	 _Mot1_PWM.write(vitesse/(-100.0));
+ }
+  else { 					// Mise en court circuit du pont en H
+	 _Mot1_Sens1 = 1;
+	 _Mot1_Sens2 = 1;
+	 _Mot1_PWM.write(0.0);
+  }
+}
+
+
+//___________________________________________________________________________
+ /*!
+   \brief Applique la puissance au moteur 2
+
+   \param vitesse la vitesse signee en pourcentage [-100%;+100]
+   \return --
+*/
+void CMoteurs::CommandeVitesse_2(float vitesse)
+{
+  if (vitesse > 0) {
+	 _Mot2_Sens1 = 1;
+	 _Mot2_Sens2 = 0;
+	 _Mot2_PWM.write(vitesse/100.0);
+  }
+  else if (vitesse < 0) {  
+	 _Mot2_Sens1 = 0;
+	 _Mot2_Sens2 = 1;
+  	 _Mot2_PWM.write(vitesse/(-100.0));
+ }
+  else { 					// Mise en court circuit du pont en H
+	 _Mot2_Sens1 = 1;
+	 _Mot2_Sens2 = 1;
+	 _Mot2_PWM.write(0.0);
+  }
 }
 
 //___________________________________________________________________________
