@@ -1,7 +1,7 @@
-/*! \file CAnaconbot.cpp
+/*! \file CLaBotBox.cpp
 	\brief Classe qui contient les méthodes pour le dialogue avec ANACONBOT
 */
-#include "CAnaconbot.h"
+#include "CLaBotBox.h"
 #include "RessourcesHardware.h"
 
 //___________________________________________________________________________
@@ -11,7 +11,7 @@
    \param --
    \return --
 */
-CAnaconbot::CAnaconbot() 
+CLaBotBox::CLaBotBox() 
 {
  
 }
@@ -23,7 +23,7 @@ CAnaconbot::CAnaconbot()
    \param --
    \return --
 */
-CAnaconbot::~CAnaconbot() 
+CLaBotBox::~CLaBotBox() 
 {
 
 }
@@ -49,7 +49,7 @@ CAnaconbot::~CAnaconbot()
    \param trameBrute la trame a envoyer avec ses octets bruts
    \return --
    */
-void CAnaconbot::SerialiseTrame(tStructTrameBrute *trameBrute)
+void CLaBotBox::SerialiseTrame(tStructTrameLaBotBox *trameBrute)
 {
   unsigned char i=0;
   //unsigned char caractere_type_trame;
@@ -77,7 +77,7 @@ void CAnaconbot::SerialiseTrame(tStructTrameBrute *trameBrute)
    \param trameBrute la trame pour laquelle calculer le checksum
    \return 	le checksum sur 8 bits
    */
-unsigned char CAnaconbot::getCheckSumTrame(tStructTrameBrute *trameBrute)
+unsigned char CLaBotBox::getCheckSumTrame(tStructTrameLaBotBox *trameBrute)
 {
  unsigned char checksum = 0;
  unsigned char i=0;
@@ -104,7 +104,7 @@ unsigned char CAnaconbot::getCheckSumTrame(tStructTrameBrute *trameBrute)
    \param newData la donnee nouvellement recue
    \return --
    */
-void CAnaconbot::Reconstitution(unsigned char newData)
+void CLaBotBox::Reconstitution(unsigned char newData)
 {
    //time_t heure;
    //clock_t time;   // clock_t est en fait un unsigned int dans CVI
@@ -276,7 +276,7 @@ void CAnaconbot::Reconstitution(unsigned char newData)
    \param --
    \return --
    */
-void CAnaconbot::Init_Reconstitution(void)
+void CLaBotBox::Init_Reconstitution(void)
 {
   // Initialise les champs de la trame courante
   m_trameCourante.ID = 0xFFF;
@@ -303,7 +303,7 @@ void CAnaconbot::Init_Reconstitution(void)
    \return 	1 si le checksum est OK \n
                 0 sinon
    */
-unsigned char CAnaconbot::isChecksumTrameCouranteOK(unsigned char CS_attendu)
+unsigned char CLaBotBox::isChecksumTrameCouranteOK(unsigned char CS_attendu)
 {
  unsigned char CS_calcule = 0;
  unsigned char i=0;
@@ -330,7 +330,7 @@ unsigned char CAnaconbot::isChecksumTrameCouranteOK(unsigned char CS_attendu)
    \param trameRecue la trame brute recue
    \return --
    */
-void CAnaconbot::DecodeTrame(tStructTrameBrute *trameRecue)
+void CLaBotBox::DecodeTrame(tStructTrameLaBotBox *trameRecue)
 {
 
    // Aiguillage en fonction de l'ID de la trame
@@ -340,14 +340,7 @@ void CAnaconbot::DecodeTrame(tStructTrameBrute *trameRecue)
         m_COMMANDE_VITESSE_MVT.Decode(trameRecue);
       break;
 
-      case ID_ASSERV_DIAG_WR_COMPTEUR_MAX :
-        m_ASSERV_DIAG_WR_COMPTEUR_MAX.Decode(trameRecue);
-      break;
-
-      case ID_ASSERV_DIAG_WR_SEUIL_CONV_ANGLE :
-        m_ASSERV_DIAG_WR_SEUIL_CONV_ANGLE.Decode(trameRecue);
-      break;
-
+/*
       case ID_ASSERV_DIAG_WR_SEUIL_CONV_DIST :
         m_ASSERV_DIAG_WR_SEUIL_CONV_DIST.Decode(trameRecue);
       break;
@@ -375,17 +368,14 @@ void CAnaconbot::DecodeTrame(tStructTrameBrute *trameRecue)
       case ID_ASSERV_DIAG_WR_CDE_MAX :
         m_ASSERV_DIAG_WR_CDE_MAX.Decode(trameRecue);
       break;
+  */
 
-      case ID_ASSERV_DIAG_READ_PARAM_REP :
-        m_ASSERV_DIAG_READ_PARAM_REP.Decode(trameRecue);
+      case ID_ELECTROBOT_CDE_MOTEURS :
+        m_ELECTROBOT_CDE_MOTEURS.Decode(trameRecue);
       break;
 
-      case ID_ASSERV_DIAG_READ_PARAM_REQ :
-        m_ASSERV_DIAG_READ_PARAM_REQ.Decode(trameRecue);
-      break;
-
-      case ID_COMMANDE_SERVOS_MOTEURS :
-        m_COMMANDE_SERVOS_MOTEURS.Decode(trameRecue);
+      case ID_ELECTROBOT_CDE_SERVOS :
+        m_ELECTROBOT_CDE_SERVOS.Decode(trameRecue);
       break;
 
       case ID_COMMANDE_MVT_MANUEL :

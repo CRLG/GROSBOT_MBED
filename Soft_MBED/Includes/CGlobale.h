@@ -7,7 +7,7 @@
 #include "CMatch.h"
 #include "CAsservissement.h"
 #include "CRoues.h"
-#include "CAnaconbot.h"
+#include "CLaBotBox.h"
 #include "CCapteurs.h"
 #include "CEEPROM.h"
 #include "CServoMoteur.h"
@@ -18,7 +18,7 @@
 
 typedef enum {
 	MODE_AUTONOME = 0,
-	MODE_PILOTE_ANACONBOT,
+	MODE_PILOTE_LABOTBOX,
 	MODE_PILOTE_TERMINAL
 }tModeFonctionnement;
 
@@ -53,7 +53,7 @@ public :
 	//! La gestion des roues gauches et droites
 	CRoues m_roues;
  	//! La gestion d'Anaconbot
-	CAnaconbot m_Anaconbot;
+	CLaBotBox m_LaBotBox;
 	//! La gestion des capteurs
 	CCapteurs m_capteurs;
 	//! Le gestionnaire d'EEPROM
@@ -87,7 +87,7 @@ public :
 	//!  Le programme d'IRQ qui gere le timer
 	void IRQ_Tick_ModeAutonome(void);
 	//!  Le programme d'IRQ qui gere le timer
-	void IRQ_Tick_ModePiloteAnaconbot(void);
+	void IRQ_Tick_ModePiloteLaBotBox(void);
 	//!  Le programme d'IRQ qui gere le timer
 	void IRQ_Tick_ModePiloteTerminal(void);
 
@@ -115,20 +115,20 @@ private :
 	//! Sequenceur de taches en mode autonome
 	void SequenceurModeAutonome(void);
 	//! Sequenceur de taches en mode pilote par Anaconbot
-	void SequenceurModePiloteAnaconbot(void);
+	void SequenceurModePiloteLaBotBox(void);
 	//! Sequenceur de taches en mode pilote par teminal RS232
 	void SequenceurModePiloteTerminal(void);
 	
 	
 	
 	//! Gestion du mode piloté via Anaconbot
-	void ModePiloteAnaconbot(void);
+	void ModePiloteLaBotBox(void);
 	//! Reception RS232 en IRQ
-	void ReceiveRS232_ModePiloteAnaconbot(void);
+	void ReceiveRS232_ModePiloteLaBotBox(void);
 	//! Verifie et traite la reception de trames d'Anaconbot
 	void CheckReceptionTrame(void);
-	//! Envoie les trames vers ANACONBOT
-	void SendTramesAnaconbot(void);
+	//! Envoie les trames vers LABOTBOX
+	void SendTramesLaBotBox(void);
 
 	//! Gestion du mode piloté par terminal
 	void ModePiloteTerminal(void);
