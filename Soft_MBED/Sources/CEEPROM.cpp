@@ -15,6 +15,8 @@
 */
 CEEPROM::CEEPROM() 
 {
+ // Commence par lire le fichier d'entrée et affecter les valeurs de certaines données membres des claasses
+ m_configFile.read("/local/eeprom.ini");
 }
 
 //___________________________________________________________________________
@@ -39,13 +41,6 @@ CEEPROM::~CEEPROM()
 */
 void CEEPROM::Read(void)
 {
-	 // Commence par lire le fichier d'entrée et affecter les valeurs de certaines données membres des claasses
-	 if (!m_configFile.read("/local/eeprom.ini"))
-	 {
-	        //_rs232_pc_tx.printf("Failure to read a configuration file.\n");
-			return;
-	 }
-	
 	 // Lit les paramèrtes de l'EEPROM et initialise les valeurs
 	
 	 // valeurs pour le module Globale

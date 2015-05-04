@@ -23,14 +23,6 @@ public :
 	//! Ecrit une donnee de type unsigned short dont le nom (la cle) est passee en parametre
 	bool setValue(char *key, unsigned short val);
 	
-	
-	//! TODO : implémenter les méthodes setValue
-private : 
-	//! Buffer de recuperation d'une valeur 
-    char value[BUFSIZ];
-
-	//! Point d'entree pour la gestion 
-	ConfigFile m_configFile;
 
 	//! Lit une donnée de type flottant dont le nom (la cle) est passee en parametre
 	bool getValue(char *key, float *val);
@@ -42,7 +34,15 @@ private :
 	bool getValue(char *key, int *val);
 	//! Lit une donnée de type string dont le nom (la cle) est passee en parametre
 	bool getValue(char *key, char *val);
+
 	
+	//! TODO : implémenter les méthodes setValue
+private : 
+	//! Buffer de recuperation d'une valeur 
+    char value[BUFSIZ];
+
+	//! Point d'entree pour la gestion 
+	ConfigFile m_configFile;
 };
 
 
