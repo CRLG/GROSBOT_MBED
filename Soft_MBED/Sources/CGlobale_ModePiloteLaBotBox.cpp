@@ -20,7 +20,6 @@ void CGlobale::ModePiloteLaBotBox(void)
    // Initialise une IRQ sur réception RS232 d'LABOTBOX
    _rs232_pc_rx.attach(&Application, &CGlobale::ReceiveRS232_ModePiloteLaBotBox);  	// Callback sur réception d'une donnée sur la RS232
 
-
    periodicTick.attach(&Application, &CGlobale::IRQ_Tick_ModePiloteLaBotBox, (float(PERIODE_TICK)/1000.0));
 
    while(1) {
@@ -75,12 +74,13 @@ void CGlobale::SequenceurModePiloteLaBotBox(void)
   static unsigned int cpt500msec = 0;
   static unsigned int cpt1sec = 0;
 
+
   // ______________________________
   cpt10msec++;
   if (cpt10msec >= TEMPO_10msec) {
   	cpt10msec = 0;
 
- 	m_Servos.GestionTransfert();
+    m_servos_sd20.GestionTransfert();
  }
 
   // ______________________________
@@ -107,7 +107,7 @@ void CGlobale::SequenceurModePiloteLaBotBox(void)
   if (cpt100msec >= TEMPO_100msec) {
   	cpt100msec = 0;
 
-	//_led3 = !_led3;
+	_led3 = !_led3;
   }
 
   // ______________________________
@@ -129,13 +129,11 @@ void CGlobale::SequenceurModePiloteLaBotBox(void)
   if (cpt500msec >= TEMPO_500msec) {
   	cpt500msec = 0;
 	_led1=!_led1;
-
   }
   // ______________________________
   cpt1sec++;
   if (cpt1sec >= TEMPO_1sec) {
   	cpt1sec = 0;
-
   }
 
 }
@@ -150,6 +148,7 @@ void CGlobale::SequenceurModePiloteLaBotBox(void)
 */
 void CGlobale::CheckReceptionTrame(void)
 {
+  char cbuff[32];
   // ___________________________
   if  (m_LaBotBox.m_ELECTROBOT_CDE_MOTEURS.isNewTrame() ) {
     m_moteurs.CommandeVitesse(MOTEUR_1, (signed char)m_LaBotBox.m_ELECTROBOT_CDE_MOTEURS.cde_moteur_1);  // Attention : obligation de mettre le cast explicit en "signed", sinon, la valeur est interprétée non signée
@@ -162,25 +161,114 @@ void CGlobale::CheckReceptionTrame(void)
 
   // ___________________________
   if  (m_LaBotBox.m_ELECTROBOT_CDE_SERVOS.isNewTrame() ) {
-	m_Servos.CommandePositionVitesse(	m_LaBotBox.m_ELECTROBOT_CDE_SERVOS.NumeroServoMoteur1,
+	m_servos_sd20.CommandePositionVitesse(	m_LaBotBox.m_ELECTROBOT_CDE_SERVOS.NumeroServoMoteur1,
 										m_LaBotBox.m_ELECTROBOT_CDE_SERVOS.PositionServoMoteur1,
 										m_LaBotBox.m_ELECTROBOT_CDE_SERVOS.VitesseServoMoteur1
 									);
-	m_Servos.CommandePositionVitesse(	m_LaBotBox.m_ELECTROBOT_CDE_SERVOS.NumeroServoMoteur2,
+	m_servos_sd20.CommandePositionVitesse(	m_LaBotBox.m_ELECTROBOT_CDE_SERVOS.NumeroServoMoteur2,
 										m_LaBotBox.m_ELECTROBOT_CDE_SERVOS.PositionServoMoteur2,
 										m_LaBotBox.m_ELECTROBOT_CDE_SERVOS.VitesseServoMoteur2
 									);
 
    }
 
+  // ___________________________
+  if  (m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.isNewTrame() ) {
+	// sous adressage : le champ commande_ax donne le type d'action à réaliser 
+    switch (m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.commande_ax) {
+        case cSERVO_AX_POSITION :
+            m_servos_ax.setGoal(m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.num_servo_ax, 
+                                m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.valeur_commande_ax); 
+        break;
+        case cSERVO_AX_VITESSE :
+            m_servos_ax.setCRSpeed( m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.num_servo_ax, 
+                                    m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.valeur_commande_ax); 
+        break;
 
+        case cSERVO_AX_CHANGE_ID :
+            m_servos_ax.setID( m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.num_servo_ax, 
+                               m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.valeur_commande_ax); 
+        break;
+
+        case cSERVO_AX_LED_STATE :
+            m_servos_ax.setLedState( m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.num_servo_ax, 
+                                     m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.valeur_commande_ax); 
+        break;
+
+        case cSERVO_AX_BUTEE_MIN :
+            m_servos_ax.setButeeMinPosition( m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.num_servo_ax, 
+                                             m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.valeur_commande_ax); 
+           	sprintf(cbuff, "butee_min_servo_ax_%d", m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.num_servo_ax);  
+            m_eeprom.setValue(cbuff, m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.valeur_commande_ax);
+        break;
+
+        case cSERVO_AX_BUTEE_MAX :
+            m_servos_ax.setButeeMaxPosition( m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.num_servo_ax, 
+                                            m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.valeur_commande_ax); 
+           	sprintf(cbuff, "butee_max_servo_ax_%d", m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.num_servo_ax);  
+            m_eeprom.setValue(cbuff, m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.valeur_commande_ax);
+        break;
+
+        default : 
+        break; //  ne rien faire
+
+    } // switch commande_ax
+   }
+    
+  // ___________________________
+  if  (m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.isNewTrame() ) {
+	// sous adressage : le champ commande_ax donne le type d'action à réaliser 
+    switch (m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_PARAM) {
+        case cASSERV_SEUIL_CONV_DIST :
+        	Application.m_asservissement.seuil_conv_distance=m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE;
+        	m_eeprom.setValue("seuil_conv_distance", m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE);
+        break;
+
+        case cASSERV_SEUIL_CONV_ANGLE :
+        	Application.m_asservissement.seuil_conv_angle=m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE;
+        	m_eeprom.setValue("seuil_conv_angle", m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE);
+        break;
+
+        case cASSERV_DIAG_WR_KI_ANGLE : 
+        	Application.m_asservissement.ki_angle=m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE;
+        	m_eeprom.setValue("ki_angle", m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE);
+        break;
+
+        case cASSERV_DIAG_WR_KP_ANGLE : 
+        	Application.m_asservissement.kp_angle=m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE;
+        	m_eeprom.setValue("kp_angle", m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE);
+        break;
+
+        case cASSERV_DIAG_WR_KI_DISTANCE : 
+        	Application.m_asservissement.ki_distance=m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE;
+        	m_eeprom.setValue("ki_distance", m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE);
+        break;
+
+        case cASSERV_DIAG_WR_KP_DISTANCE : 
+        	Application.m_asservissement.kp_distance=m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE;
+        	m_eeprom.setValue("kp_distance", m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE);
+        break;
+        
+        case cASSERV_DIAG_WR_CDE_MIN : 
+        	Application.m_asservissement.cde_min=m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE;
+        	m_eeprom.setValue("cde_min", m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE);
+        break;
+
+        case cASSERV_DIAG_WR_CDE_MAX : 
+        	Application.m_asservissement.cde_max=m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE;
+        	m_eeprom.setValue("cde_max", m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE);
+        break;
+
+    } // switch 
+  }
+ 
+//
 
   // ___________________________
   if  (m_LaBotBox.m_COMMANDE_MVT_MANUEL.isNewTrame() ) {
 	m_asservissement.CommandeManuelle(	m_LaBotBox.m_COMMANDE_MVT_MANUEL.PuissanceMotG, 
 										m_LaBotBox.m_COMMANDE_MVT_MANUEL.PuissanceMotD
 									 );
-	_led4 = !_led4;
   }
 
   // ___________________________
@@ -212,62 +300,6 @@ void CGlobale::CheckReceptionTrame(void)
 */
 
   }
-
-
-
-/* TODO : remettre dans la messagerie les coef de l'asservissement
-  // ___________________________
-  if  (m_LaBotBox.m_ASSERV_DIAG_WR_KI_DISTANCE.isNewTrame() ) {
-	Application.m_asservissement.ki_distance=m_LaBotBox.m_ASSERV_DIAG_WR_KI_DISTANCE.KI_DISTANCE;
-	m_eeprom.setValue("ki_distance",m_LaBotBox.m_ASSERV_DIAG_WR_KI_DISTANCE.KI_DISTANCE);
-   }
-  // ___________________________
-  if  (m_LaBotBox.m_ASSERV_DIAG_WR_KP_DISTANCE.isNewTrame() ) {
-	Application.m_asservissement.kp_distance=m_LaBotBox.m_ASSERV_DIAG_WR_KP_DISTANCE.KP_DISTANCE;
-	m_eeprom.setValue("kp_distance",m_LaBotBox.m_ASSERV_DIAG_WR_KP_DISTANCE.KP_DISTANCE);
-   }
-  // ___________________________
-  if  (m_LaBotBox.m_ASSERV_DIAG_WR_KI_ANGLE.isNewTrame() ) {
-	Application.m_asservissement.ki_angle=m_LaBotBox.m_ASSERV_DIAG_WR_KI_ANGLE.KI_ANGLE;
-	m_eeprom.setValue("ki_angle",m_LaBotBox.m_ASSERV_DIAG_WR_KI_ANGLE.KI_ANGLE);
-   }
-  // ___________________________
-  if  (m_LaBotBox.m_ASSERV_DIAG_WR_KP_ANGLE.isNewTrame() ) {
-	Application.m_asservissement.kp_angle=m_LaBotBox.m_ASSERV_DIAG_WR_KP_ANGLE.KP_ANGLE;
-	m_eeprom.setValue("kp_angle",m_LaBotBox.m_ASSERV_DIAG_WR_KP_ANGLE.KP_ANGLE);
-   }   
-		
-  // ___________________________
-  if  (m_LaBotBox.m_ASSERV_DIAG_WR_SEUIL_CONV_ANGLE.isNewTrame() ) {
-	Application.m_asservissement.seuil_conv_angle=m_LaBotBox.m_ASSERV_DIAG_WR_SEUIL_CONV_ANGLE.SEUIL_CONV_ANGLE;
-	m_eeprom.setValue("seuil_conv_angle",m_LaBotBox.m_ASSERV_DIAG_WR_SEUIL_CONV_ANGLE.SEUIL_CONV_ANGLE);
-   }
-  // ___________________________
-  if  (m_LaBotBox.m_ASSERV_DIAG_WR_SEUIL_CONV_DIST.isNewTrame() ) {
-	Application.m_asservissement.seuil_conv_distance=m_LaBotBox.m_ASSERV_DIAG_WR_SEUIL_CONV_DIST.SEUIL_CONV_DIST;
-	m_eeprom.setValue("seuil_conv_distance",m_LaBotBox.m_ASSERV_DIAG_WR_SEUIL_CONV_DIST.SEUIL_CONV_DIST);
-   }
-// ___________________________
-  if  (m_LaBotBox.m_ASSERV_DIAG_WR_COMPTEUR_MAX.isNewTrame() ) {
-	Application.m_asservissement.compteur_max=m_LaBotBox.m_ASSERV_DIAG_WR_COMPTEUR_MAX.COMPTEUR_MAX;
-	m_eeprom.setValue("compteur_max",m_LaBotBox.m_ASSERV_DIAG_WR_COMPTEUR_MAX.COMPTEUR_MAX);
-   }
-   
- // ___________________________
-  if  (m_LaBotBox.m_ASSERV_DIAG_WR_CDE_MIN.isNewTrame() ) {
-	Application.m_asservissement.cde_min=m_LaBotBox.m_ASSERV_DIAG_WR_CDE_MIN.CDE_MIN;
-	m_eeprom.setValue("cde_min",m_LaBotBox.m_ASSERV_DIAG_WR_CDE_MIN.CDE_MIN);
-   }
-
-// ___________________________
-  if  (m_LaBotBox.m_ASSERV_DIAG_WR_CDE_MAX.isNewTrame() ) {
-	Application.m_asservissement.cde_max=m_LaBotBox.m_ASSERV_DIAG_WR_CDE_MAX.CDE_MAX;
-	m_eeprom.setValue("cde_max",m_LaBotBox.m_ASSERV_DIAG_WR_CDE_MAX.CDE_MAX);
-   }   
-
-*/
-
-
 }
 
 
@@ -285,9 +317,10 @@ void CGlobale::SendTramesLaBotBox(void)
 {   // _____________________________________________
 	m_LaBotBox.m_ETAT_ASSERVISSEMENT.cde_moteur_G = (int)m_roues.m_cde_roue_G;
 	m_LaBotBox.m_ETAT_ASSERVISSEMENT.cde_moteur_D = (int)m_roues.m_cde_roue_D;
-	m_LaBotBox.m_ETAT_ASSERVISSEMENT.Convergence = m_asservissement.convergence_conf;
+	m_LaBotBox.m_ETAT_ASSERVISSEMENT.Convergence = (m_asservissement.diag_blocage==1)?2:m_asservissement.convergence_conf;
+	m_LaBotBox.m_ETAT_ASSERVISSEMENT.ModeAsservissement = m_asservissement.ModeAsservissement;
 	m_LaBotBox.SerialiseTrame(	m_LaBotBox.m_ETAT_ASSERVISSEMENT.Encode());
-    //_led4 = !_led4;
+
     // _____________________________________________
 	m_LaBotBox.m_POSITION_CODEURS.PosCodeurG = m_roues.getCodeurG();
 	m_LaBotBox.m_POSITION_CODEURS.PosCodeurD = m_roues.getCodeurD();
@@ -343,11 +376,6 @@ void CGlobale::SendTramesLaBotBox(void)
 	m_LaBotBox.m_ELECTROBOT_ETAT_TELEMETRES.Telemetre3 = Application.m_capteurs.m_telemetres.m_distance[2];
 	m_LaBotBox.m_ELECTROBOT_ETAT_TELEMETRES.Telemetre4 = Application.m_capteurs.m_telemetres.m_distance[3];
 	m_LaBotBox.SerialiseTrame(m_LaBotBox.m_ELECTROBOT_ETAT_TELEMETRES.Encode());
-    // _____________________________________________
-    m_LaBotBox.m_POSITION_ABSOLUE_XY_TETA.x_pos = PHYS2BRUTE_x_pos(/*Application.m_asservissement.X_robot*/1234.5678);
-   	m_LaBotBox.m_POSITION_ABSOLUE_XY_TETA.y_pos = PHYS2BRUTE_y_pos(Application.m_asservissement.Y_robot);
-   	m_LaBotBox.m_POSITION_ABSOLUE_XY_TETA.teta_pos = PHYS2BRUTE_teta_pos(Application.m_asservissement.angle_robot);
-	m_LaBotBox.SerialiseTrame(m_LaBotBox.m_POSITION_ABSOLUE_XY_TETA.Encode());
 }
 
 

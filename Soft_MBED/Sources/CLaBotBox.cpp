@@ -340,42 +340,20 @@ void CLaBotBox::DecodeTrame(tStructTrameLaBotBox *trameRecue)
         m_COMMANDE_VITESSE_MVT.Decode(trameRecue);
       break;
 
-/*
-      case ID_ASSERV_DIAG_WR_SEUIL_CONV_DIST :
-        m_ASSERV_DIAG_WR_SEUIL_CONV_DIST.Decode(trameRecue);
-      break;
-
-      case ID_ASSERV_DIAG_WR_KI_ANGLE :
-        m_ASSERV_DIAG_WR_KI_ANGLE.Decode(trameRecue);
-      break;
-
-      case ID_ASSERV_DIAG_WR_KP_ANGLE :
-        m_ASSERV_DIAG_WR_KP_ANGLE.Decode(trameRecue);
-      break;
-
-      case ID_ASSERV_DIAG_WR_KI_DISTANCE :
-        m_ASSERV_DIAG_WR_KI_DISTANCE.Decode(trameRecue);
-      break;
-
-      case ID_ASSERV_DIAG_WR_KP_DISTANCE :
-        m_ASSERV_DIAG_WR_KP_DISTANCE.Decode(trameRecue);
-      break;
-
-      case ID_ASSERV_DIAG_WR_CDE_MIN :
-        m_ASSERV_DIAG_WR_CDE_MIN.Decode(trameRecue);
-      break;
-
-      case ID_ASSERV_DIAG_WR_CDE_MAX :
-        m_ASSERV_DIAG_WR_CDE_MAX.Decode(trameRecue);
-      break;
-  */
-
       case ID_ELECTROBOT_CDE_MOTEURS :
         m_ELECTROBOT_CDE_MOTEURS.Decode(trameRecue);
       break;
 
       case ID_ELECTROBOT_CDE_SERVOS :
         m_ELECTROBOT_CDE_SERVOS.Decode(trameRecue);
+      break;
+
+      case ID_ELECTROBOT_CDE_SERVOS_AX :
+        m_ELECTROBOT_CDE_SERVOS_AX.Decode(trameRecue);
+      break;
+
+      case ID_ASSERV_DIAG_WRITE_PARAM :
+        m_ASSERV_DIAG_WRITE_PARAM.Decode(trameRecue);
       break;
 
       case ID_COMMANDE_MVT_MANUEL :

@@ -1,7 +1,7 @@
 /*! \file RessoucesHardware.cpp
 	\brief Déclare les ressources hardware du MBED utilisées par le reste du logiciel
 */
-#include "mbed.h"
+#include "RessourcesHardware.h"
 
 // __________________________________________________LEDs DU MBED
 // Les LED du MBED
@@ -62,4 +62,8 @@ I2C _i2c(p9, p10); //SDA, SCL pour les servos
 
 // __________________________________________________ FICHIERS SUR MBED
 LocalFileSystem local("local");
+
+// __________________________________________________ RS232 de pilotage des servos AX
+Serial _ax12_serial (p28, p27);
+    
 

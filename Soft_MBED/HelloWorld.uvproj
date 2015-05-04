@@ -463,11 +463,6 @@
               <FilePath>.\Sources\CRoues.cpp</FilePath>
             </File>
             <File>
-              <FileName>CServoMoteur.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Sources\CServoMoteur.cpp</FilePath>
-            </File>
-            <File>
               <FileName>CTrameCAN.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Sources\CTrameCAN.cpp</FilePath>
@@ -532,6 +527,16 @@
               <FileType>8</FileType>
               <FilePath>.\Sources\CLaBotBox.cpp</FilePath>
             </File>
+            <File>
+              <FileName>CServoMoteurSD20.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Sources\CServoMoteurSD20.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>CServoMoteurAX.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Sources\CServoMoteurAX.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -576,11 +581,6 @@
               <FileName>CRoues.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Includes\CRoues.h</FilePath>
-            </File>
-            <File>
-              <FileName>CServoMoteur.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Includes\CServoMoteur.h</FilePath>
             </File>
             <File>
               <FileName>CTrameCAN.h</FileName>
@@ -641,6 +641,16 @@
               <FileName>CLaBotBox.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Includes\CLaBotBox.h</FilePath>
+            </File>
+            <File>
+              <FileName>CServoMoteurSD20.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Includes\CServoMoteurSD20.h</FilePath>
+            </File>
+            <File>
+              <FileName>CServoMoteurAX.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Includes\CServoMoteurAX.h</FilePath>
             </File>
           </Files>
         </Group>

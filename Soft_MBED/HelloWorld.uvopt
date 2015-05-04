@@ -145,6 +145,38 @@
           <Name>-UV0218BNE -O463 -S0 -C0 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO19 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15 -FD10000000 -FC800 -FN1 -FF0LPC_IAP_512 -FS00 -FL080000</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
+      <Breakpoint>
+        <Bp>
+          <Number>0</Number>
+          <Type>0</Type>
+          <LineNumber>275</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>AX12.cpp</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>109</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>AX12.h</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+      </Breakpoint>
       <DebugFlag>
         <trace>0</trace>
         <periodic>0</periodic>
@@ -201,10 +233,10 @@
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>13</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>145</TopLine>
-      <CurrentLine>159</CurrentLine>
+      <TopLine>539</TopLine>
+      <CurrentLine>539</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Sources\CAsservissement.cpp</PathWithFileName>
       <FilenameWithoutPath>CAsservissement.cpp</FilenameWithoutPath>
@@ -245,8 +277,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>70</TopLine>
+      <CurrentLine>70</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Sources\CEEPROM.cpp</PathWithFileName>
       <FilenameWithoutPath>CEEPROM.cpp</FilenameWithoutPath>
@@ -257,10 +289,10 @@
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>12</ColumnNumber>
+      <ColumnNumber>48</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>49</TopLine>
-      <CurrentLine>49</CurrentLine>
+      <TopLine>75</TopLine>
+      <CurrentLine>82</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Sources\CGlobale.cpp</PathWithFileName>
       <FilenameWithoutPath>CGlobale.cpp</FilenameWithoutPath>
@@ -271,10 +303,10 @@
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>57</ColumnNumber>
+      <ColumnNumber>14</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>315</TopLine>
-      <CurrentLine>315</CurrentLine>
+      <TopLine>108</TopLine>
+      <CurrentLine>112</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Sources\CGlobale_ModeAutonome.cpp</PathWithFileName>
       <FilenameWithoutPath>CGlobale_ModeAutonome.cpp</FilenameWithoutPath>
@@ -285,10 +317,10 @@
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>116</ColumnNumber>
+      <ColumnNumber>98</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>311</TopLine>
-      <CurrentLine>347</CurrentLine>
+      <TopLine>200</TopLine>
+      <CurrentLine>200</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Sources\CGlobale_ModePiloteLaBotBox.cpp</PathWithFileName>
       <FilenameWithoutPath>CGlobale_ModePiloteLaBotBox.cpp</FilenameWithoutPath>
@@ -301,8 +333,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>42</TopLine>
+      <CurrentLine>49</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Sources\CGlobale_ModePiloteTerminal.cpp</PathWithFileName>
       <FilenameWithoutPath>CGlobale_ModePiloteTerminal.cpp</FilenameWithoutPath>
@@ -315,8 +347,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>232</TopLine>
+      <CurrentLine>232</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Sources\CMatch.cpp</PathWithFileName>
       <FilenameWithoutPath>CMatch.cpp</FilenameWithoutPath>
@@ -343,7 +375,7 @@
       <Focus>0</Focus>
       <ColumnNumber>14</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>61</TopLine>
+      <TopLine>87</TopLine>
       <CurrentLine>89</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Sources\CRoues.cpp</PathWithFileName>
@@ -360,26 +392,12 @@
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\Sources\CServoMoteur.cpp</PathWithFileName>
-      <FilenameWithoutPath>CServoMoteur.cpp</FilenameWithoutPath>
-    </File>
-    <File>
-      <GroupNumber>1</GroupNumber>
-      <FileNumber>14</FileNumber>
-      <FileType>8</FileType>
-      <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>16</ColumnNumber>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>5</TopLine>
-      <CurrentLine>6</CurrentLine>
-      <bDave2>0</bDave2>
       <PathWithFileName>.\Sources\CTrameCAN.cpp</PathWithFileName>
       <FilenameWithoutPath>CTrameCAN.cpp</FilenameWithoutPath>
     </File>
     <File>
       <GroupNumber>1</GroupNumber>
-      <FileNumber>15</FileNumber>
+      <FileNumber>14</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -393,35 +411,35 @@
     </File>
     <File>
       <GroupNumber>1</GroupNumber>
-      <FileNumber>16</FileNumber>
+      <FileNumber>15</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>15</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>49</TopLine>
-      <CurrentLine>49</CurrentLine>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Sources\MessagerieLaBotBox.cpp</PathWithFileName>
       <FilenameWithoutPath>MessagerieLaBotBox.cpp</FilenameWithoutPath>
     </File>
     <File>
       <GroupNumber>1</GroupNumber>
-      <FileNumber>17</FileNumber>
+      <FileNumber>16</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>39</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>341</TopLine>
-      <CurrentLine>341</CurrentLine>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Sources\MessagerieEcranTactile.cpp</PathWithFileName>
       <FilenameWithoutPath>MessagerieEcranTactile.cpp</FilenameWithoutPath>
     </File>
     <File>
       <GroupNumber>1</GroupNumber>
-      <FileNumber>18</FileNumber>
+      <FileNumber>17</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -435,17 +453,31 @@
     </File>
     <File>
       <GroupNumber>1</GroupNumber>
+      <FileNumber>18</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>6</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>60</TopLine>
+      <CurrentLine>67</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Sources\RessoucesHardware.cpp</PathWithFileName>
+      <FilenameWithoutPath>RessoucesHardware.cpp</FilenameWithoutPath>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
       <FileNumber>19</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>21</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>3</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\Sources\RessoucesHardware.cpp</PathWithFileName>
-      <FilenameWithoutPath>RessoucesHardware.cpp</FilenameWithoutPath>
+      <PathWithFileName>.\Sources\main.cpp</PathWithFileName>
+      <FilenameWithoutPath>main.cpp</FilenameWithoutPath>
     </File>
     <File>
       <GroupNumber>1</GroupNumber>
@@ -458,26 +490,12 @@
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\Sources\main.cpp</PathWithFileName>
-      <FilenameWithoutPath>main.cpp</FilenameWithoutPath>
-    </File>
-    <File>
-      <GroupNumber>1</GroupNumber>
-      <FileNumber>21</FileNumber>
-      <FileType>8</FileType>
-      <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>27</TopLine>
-      <CurrentLine>27</CurrentLine>
-      <bDave2>0</bDave2>
       <PathWithFileName>.\Sources\CMoteurs.cpp</PathWithFileName>
       <FilenameWithoutPath>CMoteurs.cpp</FilenameWithoutPath>
     </File>
     <File>
       <GroupNumber>1</GroupNumber>
-      <FileNumber>22</FileNumber>
+      <FileNumber>21</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -491,7 +509,7 @@
     </File>
     <File>
       <GroupNumber>1</GroupNumber>
-      <FileNumber>23</FileNumber>
+      <FileNumber>22</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -505,7 +523,7 @@
     </File>
     <File>
       <GroupNumber>1</GroupNumber>
-      <FileNumber>24</FileNumber>
+      <FileNumber>23</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -519,7 +537,7 @@
     </File>
     <File>
       <GroupNumber>1</GroupNumber>
-      <FileNumber>25</FileNumber>
+      <FileNumber>24</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -533,17 +551,45 @@
     </File>
     <File>
       <GroupNumber>1</GroupNumber>
-      <FileNumber>26</FileNumber>
+      <FileNumber>25</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>360</TopLine>
-      <CurrentLine>381</CurrentLine>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Sources\CLaBotBox.cpp</PathWithFileName>
       <FilenameWithoutPath>CLaBotBox.cpp</FilenameWithoutPath>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>26</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>46</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>126</TopLine>
+      <CurrentLine>130</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Sources\CServoMoteurSD20.cpp</PathWithFileName>
+      <FilenameWithoutPath>CServoMoteurSD20.cpp</FilenameWithoutPath>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>27</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>0</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>55</TopLine>
+      <CurrentLine>64</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Sources\CServoMoteurAX.cpp</PathWithFileName>
+      <FilenameWithoutPath>CServoMoteurAX.cpp</FilenameWithoutPath>
     </File>
   </Group>
 
@@ -554,7 +600,7 @@
     <cbSel>0</cbSel>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>27</FileNumber>
+      <FileNumber>28</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -568,7 +614,7 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>28</FileNumber>
+      <FileNumber>29</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -582,7 +628,7 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>29</FileNumber>
+      <FileNumber>30</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -596,7 +642,7 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>30</FileNumber>
+      <FileNumber>31</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -610,7 +656,7 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>31</FileNumber>
+      <FileNumber>32</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -624,7 +670,7 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>32</FileNumber>
+      <FileNumber>33</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -638,7 +684,7 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>33</FileNumber>
+      <FileNumber>34</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -652,7 +698,7 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>34</FileNumber>
+      <FileNumber>35</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -666,28 +712,14 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>35</FileNumber>
-      <FileType>5</FileType>
-      <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Includes\CServoMoteur.h</PathWithFileName>
-      <FilenameWithoutPath>CServoMoteur.h</FilenameWithoutPath>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
       <FileNumber>36</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>18</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>10</TopLine>
+      <CurrentLine>12</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Includes\CTrameCAN.h</PathWithFileName>
       <FilenameWithoutPath>CTrameCAN.h</FilenameWithoutPath>
@@ -726,10 +758,10 @@
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>36</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>41</TopLine>
+      <CurrentLine>50</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Includes\RessourcesHardware.h</PathWithFileName>
       <FilenameWithoutPath>RessourcesHardware.h</FilenameWithoutPath>
@@ -768,10 +800,10 @@
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>26</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>29</TopLine>
+      <CurrentLine>29</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Includes\ConfigSpecifiqueCoupe.h</PathWithFileName>
       <FilenameWithoutPath>ConfigSpecifiqueCoupe.h</FilenameWithoutPath>
@@ -810,10 +842,10 @@
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>7</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>389</TopLine>
+      <CurrentLine>391</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Includes\MessagerieLaBotBox.h</PathWithFileName>
       <FilenameWithoutPath>MessagerieLaBotBox.h</FilenameWithoutPath>
@@ -824,10 +856,10 @@
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>20</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>12</TopLine>
+      <CurrentLine>14</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Includes\CTrameLaBotBox.h</PathWithFileName>
       <FilenameWithoutPath>CTrameLaBotBox.h</FilenameWithoutPath>
@@ -838,13 +870,41 @@
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
+      <ColumnNumber>48</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Includes\CLaBotBox.h</PathWithFileName>
+      <FilenameWithoutPath>CLaBotBox.h</FilenameWithoutPath>
+    </File>
+    <File>
+      <GroupNumber>2</GroupNumber>
+      <FileNumber>48</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\Includes\CLaBotBox.h</PathWithFileName>
-      <FilenameWithoutPath>CLaBotBox.h</FilenameWithoutPath>
+      <PathWithFileName>.\Includes\CServoMoteurSD20.h</PathWithFileName>
+      <FilenameWithoutPath>CServoMoteurSD20.h</FilenameWithoutPath>
+    </File>
+    <File>
+      <GroupNumber>2</GroupNumber>
+      <FileNumber>49</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>0</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Includes\CServoMoteurAX.h</PathWithFileName>
+      <FilenameWithoutPath>CServoMoteurAX.h</FilenameWithoutPath>
     </File>
   </Group>
 
@@ -855,7 +915,7 @@
     <cbSel>0</cbSel>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>48</FileNumber>
+      <FileNumber>50</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -869,7 +929,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>49</FileNumber>
+      <FileNumber>51</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -883,7 +943,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>50</FileNumber>
+      <FileNumber>52</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -897,7 +957,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>51</FileNumber>
+      <FileNumber>53</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -916,103 +976,43 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>0</ActiveTab>
+      <ActiveTab>1</ActiveTab>
       <Documents>
         <Doc>
-          <Name>.\Sources\CGlobale_ModePiloteLaBotBox.cpp</Name>
-          <ColumnNumber>116</ColumnNumber>
-          <TopLine>311</TopLine>
-          <CurrentLine>347</CurrentLine>
+          <Name>.\Includes\CServoMoteurAX.h</Name>
+          <ColumnNumber>8</ColumnNumber>
+          <TopLine>76</TopLine>
+          <CurrentLine>76</CurrentLine>
         </Doc>
         <Doc>
-          <Name>.\Sources\CCapteurs.cpp</Name>
-          <ColumnNumber>20</ColumnNumber>
-          <TopLine>70</TopLine>
-          <CurrentLine>70</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\Includes\CLaBotBox.h</Name>
-          <ColumnNumber>48</ColumnNumber>
-          <TopLine>1</TopLine>
-          <CurrentLine>1</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\Sources\MessagerieEcranTactile.cpp</Name>
-          <ColumnNumber>39</ColumnNumber>
-          <TopLine>341</TopLine>
-          <CurrentLine>341</CurrentLine>
+          <Name>.\Sources\CServoMoteurAX.cpp</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>55</TopLine>
+          <CurrentLine>64</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\Sources\CAsservissement.cpp</Name>
-          <ColumnNumber>0</ColumnNumber>
-          <TopLine>145</TopLine>
-          <CurrentLine>159</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\Includes\MessagerieLaBotBox.h</Name>
-          <ColumnNumber>7</ColumnNumber>
-          <TopLine>373</TopLine>
-          <CurrentLine>391</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\Includes\CEcranTactile.h</Name>
-          <ColumnNumber>45</ColumnNumber>
-          <TopLine>100</TopLine>
-          <CurrentLine>100</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\Sources\MessagerieLaBotBox.cpp</Name>
-          <ColumnNumber>15</ColumnNumber>
-          <TopLine>49</TopLine>
-          <CurrentLine>49</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\Sources\CRoues.cpp</Name>
-          <ColumnNumber>14</ColumnNumber>
-          <TopLine>61</TopLine>
-          <CurrentLine>89</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\Sources\CMoteurs.cpp</Name>
-          <ColumnNumber>0</ColumnNumber>
-          <TopLine>27</TopLine>
-          <CurrentLine>27</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\Includes\CTrameLaBotBox.h</Name>
-          <ColumnNumber>20</ColumnNumber>
-          <TopLine>1</TopLine>
-          <CurrentLine>14</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\Sources\CGlobale_ModeAutonome.cpp</Name>
-          <ColumnNumber>57</ColumnNumber>
-          <TopLine>315</TopLine>
-          <CurrentLine>315</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\Sources\CEcranTactile.cpp</Name>
-          <ColumnNumber>14</ColumnNumber>
-          <TopLine>130</TopLine>
-          <CurrentLine>130</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\Includes\CTrameCAN.h</Name>
-          <ColumnNumber>18</ColumnNumber>
-          <TopLine>1</TopLine>
-          <CurrentLine>12</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\Sources\CLaBotBox.cpp</Name>
-          <ColumnNumber>0</ColumnNumber>
-          <TopLine>360</TopLine>
-          <CurrentLine>381</CurrentLine>
+          <ColumnNumber>13</ColumnNumber>
+          <TopLine>539</TopLine>
+          <CurrentLine>539</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\Includes\CAsservissement.h</Name>
-          <ColumnNumber>34</ColumnNumber>
-          <TopLine>115</TopLine>
-          <CurrentLine>123</CurrentLine>
+          <ColumnNumber>22</ColumnNumber>
+          <TopLine>134</TopLine>
+          <CurrentLine>142</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\Sources\CGlobale_ModePiloteLaBotBox.cpp</Name>
+          <ColumnNumber>98</ColumnNumber>
+          <TopLine>200</TopLine>
+          <CurrentLine>200</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\Includes\MessagerieLaBotBox.h</Name>
+          <ColumnNumber>8</ColumnNumber>
+          <TopLine>173</TopLine>
+          <CurrentLine>177</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>

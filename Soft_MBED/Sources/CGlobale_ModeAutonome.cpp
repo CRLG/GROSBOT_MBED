@@ -109,7 +109,7 @@ void CGlobale::SequenceurModeAutonome(void)
   if (cpt10msec >= TEMPO_10msec) {
   	cpt10msec = 0;
 
-	m_Servos.GestionTransfert();
+	m_servos_sd20.GestionTransfert();
 
   }
 
@@ -366,23 +366,23 @@ void CGlobale::CheckReceptionTrameEcran(void)
 		  
         // _________________________________________
 		case CMDE_PILOTAGE_SERVO_NERF :
-            m_Servos.CommandePositionVitesse(SERVO_NERF, m_ecran_tactile.m_ETAT_ECRAN.Valeur*25.5f, 0);
+            m_servos_sd20.CommandePositionVitesse(SERVO_NERF, m_ecran_tactile.m_ETAT_ECRAN.Valeur*25.5f, 0);
 		break;
         // _________________________________________
 		case CMDE_PILOTAGE_SERVO_KMAR :
-            m_Servos.CommandePositionVitesse(SERVO_KMAR, m_ecran_tactile.m_ETAT_ECRAN.Valeur*25.5f, 0);
+            m_servos_sd20.CommandePositionVitesse(SERVO_KMAR, m_ecran_tactile.m_ETAT_ECRAN.Valeur*25.5f, 0);
 		break;
         // _________________________________________
 		case CMDE_PILOTAGE_SERVO_FEU :
-            m_Servos.CommandePositionVitesse(SERVO_RETOURNE_FEU, m_ecran_tactile.m_ETAT_ECRAN.Valeur*25.5f, 0);
+            m_servos_sd20.CommandePositionVitesse(SERVO_RETOURNE_FEU, m_ecran_tactile.m_ETAT_ECRAN.Valeur*25.5f, 0);
 		break;
         // _________________________________________
 		case CMDE_PILOTAGE_SERVO_CROCHET_AR :
-            m_Servos.CommandePositionVitesse(SERVO_CROCHET_AR, m_ecran_tactile.m_ETAT_ECRAN.Valeur*25.5f, 0);
+            m_servos_sd20.CommandePositionVitesse(SERVO_CROCHET_AR, m_ecran_tactile.m_ETAT_ECRAN.Valeur*25.5f, 0);
 		break;
         // _________________________________________
 		case CMDE_PILOTAGE_SERVO_ANCRAGE_FILET :
-            m_Servos.CommandePositionVitesse(SERVO_ANCRAGE_FILET, m_ecran_tactile.m_ETAT_ECRAN.Valeur*25.5f, 0);
+            m_servos_sd20.CommandePositionVitesse(SERVO_ANCRAGE_FILET, m_ecran_tactile.m_ETAT_ECRAN.Valeur*25.5f, 0);
 		break;
 
 		// _______________________

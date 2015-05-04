@@ -89,7 +89,7 @@ void CGlobale::SequenceurModePiloteTerminal(void)
   if (cpt10msec >= TEMPO_10msec) {
   	cpt10msec = 0;
 
- 	m_Servos.GestionTransfert();
+ 	m_servos_sd20.GestionTransfert();
  }
 
   // ______________________________
@@ -225,7 +225,7 @@ void CGlobale::SequenceurModePiloteTerminal(void)
     if (compteur>2) { 
         compteur = 0; 
         toggle = !toggle;
-        //Application.m_Servos.CommandePositionVitesse(13, (toggle&0x1)==0?800:130, 100);
+        //Application.m_servos_sd20.CommandePositionVitesse(13, (toggle&0x1)==0?800:130, 100);
 
         //Application.m_moteurs.CommandeVitesse(MOTEUR_3, (toggle&0x1)==0?-50:50);
         //Application.m_moteurs.CommandeVitesse(MOTEUR_4, (toggle&0x1)==0?50:-50);

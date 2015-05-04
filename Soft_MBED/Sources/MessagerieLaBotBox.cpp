@@ -1,5 +1,5 @@
 // FICHIER GENERE PAR L'OUTIL MESS2C_robot V1.0
-// Date de génération : Fri Mar 13 21:37:29 2015
+// Date de génération : Mon Apr 27 00:28:45 2015
 // PLATEFORME CIBLE : MINIBOT
 /*! \file MessagerieLaBotBox.cpp
 	\brief Fichier qui contient toutes les classes messageries heritees de la classe CTrameCAN
@@ -8,6 +8,42 @@
 #include "mbed.h"
 #include "RessourcesHardware.h"
 #include "MessagerieLaBotBox.h"
+
+
+//___________________________________________________________________________
+ /*!
+   \brief Constructeur
+   \param --
+   \return --
+   */
+CTrameLaBotBox_ELECTROBOT_CDE_SERVOS_AX::CTrameLaBotBox_ELECTROBOT_CDE_SERVOS_AX()
+{
+  m_trame_brute.ID = ID_ELECTROBOT_CDE_SERVOS_AX;
+  m_trame_brute.DLC = DLC_ELECTROBOT_CDE_SERVOS_AX;
+}
+//___________________________________________________________________________
+ /*!
+   \brief Decode les signaux de la trame ELECTROBOT_CDE_SERVOS_AX
+
+		- Renseigne les champs de la structure de donnee de la trame
+   \param bufBrut le buffer des octets de la trames a decoder
+   \return --
+   */
+void CTrameLaBotBox_ELECTROBOT_CDE_SERVOS_AX::Decode(tStructTrameLaBotBox *trameRecue)
+{
+  long lDonnee_temp = 0; // utilisé si besoin pour le décodage des données en flottant
+
+   // Decode les signaux de la trame
+   valeur_commande_ax = ( ( ((unsigned short)(trameRecue->Data[4])) & 0xFF) )  |  ( ( ((unsigned short)(trameRecue->Data[3])) & 0xFF) << 8 );
+
+   commande_ax = ( ( ((unsigned short)(trameRecue->Data[2])) & 0xFF) )  |  ( ( ((unsigned short)(trameRecue->Data[1])) & 0xFF) << 8 );
+
+   num_servo_ax = ( ( ((unsigned char)(trameRecue->Data[0])) & 0xFF) );
+
+
+  m_new_trame = true;
+  m_nombre_recue++;
+}
 
 
 //___________________________________________________________________________
@@ -327,6 +363,40 @@ void CTrameLaBotBox_COMMANDE_MVT_XY_TETA::Decode(tStructTrameLaBotBox *trameRecu
    X_consigne = ( ( ((short)(trameRecue->Data[1])) & 0xFF) )  |  ( ( ((short)(trameRecue->Data[0])) & 0xFF) << 8 );
 
    Type_mouvement = ( ( ((unsigned char)(trameRecue->Data[6])) & 0xFF) );
+
+
+  m_new_trame = true;
+  m_nombre_recue++;
+}
+
+
+//___________________________________________________________________________
+ /*!
+   \brief Constructeur
+   \param --
+   \return --
+   */
+CTrameLaBotBox_ASSERV_DIAG_WRITE_PARAM::CTrameLaBotBox_ASSERV_DIAG_WRITE_PARAM()
+{
+  m_trame_brute.ID = ID_ASSERV_DIAG_WRITE_PARAM;
+  m_trame_brute.DLC = DLC_ASSERV_DIAG_WRITE_PARAM;
+}
+//___________________________________________________________________________
+ /*!
+   \brief Decode les signaux de la trame ASSERV_DIAG_WRITE_PARAM
+
+		- Renseigne les champs de la structure de donnee de la trame
+   \param bufBrut le buffer des octets de la trames a decoder
+   \return --
+   */
+void CTrameLaBotBox_ASSERV_DIAG_WRITE_PARAM::Decode(tStructTrameLaBotBox *trameRecue)
+{
+  long lDonnee_temp = 0; // utilisé si besoin pour le décodage des données en flottant
+
+   // Decode les signaux de la trame
+   ASSERV_DIAG_WRITE_VALUE = ( ( ((short)(trameRecue->Data[3])) & 0xFF) )  |  ( ( ((short)(trameRecue->Data[2])) & 0xFF) << 8 );
+
+   ASSERV_DIAG_WRITE_PARAM = ( ( ((unsigned short)(trameRecue->Data[1])) & 0xFF) )  |  ( ( ((unsigned short)(trameRecue->Data[0])) & 0xFF) << 8 );
 
 
   m_new_trame = true;

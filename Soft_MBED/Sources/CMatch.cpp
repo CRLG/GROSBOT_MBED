@@ -212,27 +212,27 @@ void CMatch::step(void)
 	// ___________________________ 
 	// Commande des servos moteurs
 	if (ModeleRobot_Y.OUT_CmdServoFilet != m_old_cde_servo[SERVO_ANCRAGE_FILET]) {
-        Application.m_Servos.CommandePositionVitesse(SERVO_ANCRAGE_FILET, ModeleRobot_Y.OUT_CmdServoFilet, ModeleRobot_Y.OUT_SpdServoFilet);
+        Application.m_servos_sd20.CommandePositionVitesse(SERVO_ANCRAGE_FILET, ModeleRobot_Y.OUT_CmdServoFilet, ModeleRobot_Y.OUT_SpdServoFilet);
         m_old_cde_servo[SERVO_ANCRAGE_FILET] = ModeleRobot_Y.OUT_CmdServoFilet;
     }
 
 	if (ModeleRobot_Y.OUT_CmdServoCrochet != m_old_cde_servo[SERVO_CROCHET_AR]) {
-        Application.m_Servos.CommandePositionVitesse(SERVO_CROCHET_AR, ModeleRobot_Y.OUT_CmdServoCrochet, ModeleRobot_Y.OUT_SpdServoCrochet);
+        Application.m_servos_sd20.CommandePositionVitesse(SERVO_CROCHET_AR, ModeleRobot_Y.OUT_CmdServoCrochet, ModeleRobot_Y.OUT_SpdServoCrochet);
 	    m_old_cde_servo[SERVO_CROCHET_AR] = ModeleRobot_Y.OUT_CmdServoCrochet;
     }
     
     if (ModeleRobot_Y.OUT_CmdServoFeu != m_old_cde_servo[SERVO_RETOURNE_FEU]) {
-        Application.m_Servos.CommandePositionVitesse(SERVO_RETOURNE_FEU, ModeleRobot_Y.OUT_CmdServoFeu, ModeleRobot_Y.OUT_SpdServoFeu);
+        Application.m_servos_sd20.CommandePositionVitesse(SERVO_RETOURNE_FEU, ModeleRobot_Y.OUT_CmdServoFeu, ModeleRobot_Y.OUT_SpdServoFeu);
         m_old_cde_servo[SERVO_RETOURNE_FEU] = ModeleRobot_Y.OUT_CmdServoFeu;	
     }
     
     if (ModeleRobot_Y.OUT_CmdServoNerf != m_old_cde_servo[SERVO_NERF]) {
-        Application.m_Servos.CommandePositionVitesse(SERVO_NERF, ModeleRobot_Y.OUT_CmdServoNerf, ModeleRobot_Y.OUT_SpdServoNerf);
+        Application.m_servos_sd20.CommandePositionVitesse(SERVO_NERF, ModeleRobot_Y.OUT_CmdServoNerf, ModeleRobot_Y.OUT_SpdServoNerf);
 	    m_old_cde_servo[SERVO_NERF] = ModeleRobot_Y.OUT_CmdServoNerf;    
     }
     
     if (ModeleRobot_Y.OUT_CmdServoKmar != m_old_cde_servo[SERVO_KMAR]) {
-        Application.m_Servos.CommandePositionVitesse(SERVO_KMAR, ModeleRobot_Y.OUT_CmdServoKmar, ModeleRobot_Y.OUT_SpdServoKmar);
+        Application.m_servos_sd20.CommandePositionVitesse(SERVO_KMAR, ModeleRobot_Y.OUT_CmdServoKmar, ModeleRobot_Y.OUT_SpdServoKmar);
 	    m_old_cde_servo[SERVO_KMAR] = ModeleRobot_Y.OUT_CmdServoKmar;
     }
 	

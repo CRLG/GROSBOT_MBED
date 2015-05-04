@@ -1,5 +1,5 @@
 // FICHIER GENERE PAR L'OUTIL MESS2C_robot V1.0
-// Date de génération : Fri Mar 13 21:37:29 2015
+// Date de génération : Mon Apr 27 00:28:45 2015
 // PLATEFORME CIBLE : MINIBOT
 /*************************************************************************************/
 /*! \file MessagerieLaBotBox.h
@@ -21,6 +21,7 @@
 
 
 // Enumérés, defines, ...
+#define ID_ELECTROBOT_CDE_SERVOS_AX 0x52
 #define ID_ELECTROBOT_CDE_MOTEURS 0x50
 #define ID_COMMANDE_MVT_XY 0x102
 #define ID_ASSERV_RESET 0x132
@@ -30,6 +31,7 @@
 #define ID_COMMANDE_REGUL_VITESSE 0x104
 #define ID_COMMANDE_DISTANCE_ANGLE 0x103
 #define ID_COMMANDE_MVT_XY_TETA 0x101
+#define ID_ASSERV_DIAG_WRITE_PARAM 0x131
 #define ID_ELECTROBOT_CDE_SERVOS 0x51
 #define ID_COMMANDE_MVT_MANUEL 0x100
 #define ID_ETAT_PID_ASSERVISSEMENT 0x153
@@ -42,6 +44,7 @@
 #define ID_ELECTROBOT_ETAT_CAPTEURS_2 0x20
 #define ID_ELECTROBOT_ETAT_CAPTEURS_1 0x10
 
+#define DLC_ELECTROBOT_CDE_SERVOS_AX 5
 #define DLC_ELECTROBOT_CDE_MOTEURS 6
 #define DLC_COMMANDE_MVT_XY 5
 #define DLC_ASSERV_RESET 1
@@ -51,6 +54,7 @@
 #define DLC_COMMANDE_REGUL_VITESSE 4
 #define DLC_COMMANDE_DISTANCE_ANGLE 5
 #define DLC_COMMANDE_MVT_XY_TETA 7
+#define DLC_ASSERV_DIAG_WRITE_PARAM 4
 #define DLC_ELECTROBOT_CDE_SERVOS 8
 #define DLC_COMMANDE_MVT_MANUEL 4
 #define DLC_ETAT_PID_ASSERVISSEMENT 8
@@ -63,6 +67,12 @@
 #define DLC_ELECTROBOT_ETAT_CAPTEURS_2 8
 #define DLC_ELECTROBOT_ETAT_CAPTEURS_1 8
 
+#define BRUTE2PHYS_valeur_commande_ax(val) ( ((float)val * (1.000000)) + (0.000000) ) 
+#define PHYS2BRUTE_valeur_commande_ax(val) (unsigned short)( (val - (0.000000)) / (1.000000) ) 
+#define BRUTE2PHYS_commande_ax(val) ( ((float)val * (1.000000)) + (0.000000) ) 
+#define PHYS2BRUTE_commande_ax(val) (unsigned short)( (val - (0.000000)) / (1.000000) ) 
+#define BRUTE2PHYS_num_servo_ax(val) ( ((float)val * (1.000000)) + (0.000000) ) 
+#define PHYS2BRUTE_num_servo_ax(val) (unsigned char)( (val - (0.000000)) / (1.000000) ) 
 #define BRUTE2PHYS_cde_moteur_6(val) ( ((float)val * (1.000000)) + (0.000000) ) 
 #define PHYS2BRUTE_cde_moteur_6(val) (char)( (val - (0.000000)) / (1.000000) ) 
 #define BRUTE2PHYS_cde_moteur_5(val) ( ((float)val * (1.000000)) + (0.000000) ) 
@@ -117,6 +127,10 @@
 #define PHYS2BRUTE_X_consigne(val) (short)( (val - (0.000000)) / (1.000000) ) 
 #define BRUTE2PHYS_Type_mouvement(val) ( ((float)val * (1.000000)) + (0.000000) ) 
 #define PHYS2BRUTE_Type_mouvement(val) (unsigned char)( (val - (0.000000)) / (1.000000) ) 
+#define BRUTE2PHYS_ASSERV_DIAG_WRITE_VALUE(val) ( ((float)val * (1.000000)) + (0.000000) ) 
+#define PHYS2BRUTE_ASSERV_DIAG_WRITE_VALUE(val) (short)( (val - (0.000000)) / (1.000000) ) 
+#define BRUTE2PHYS_ASSERV_DIAG_WRITE_PARAM(val) ( ((float)val * (1.000000)) + (0.000000) ) 
+#define PHYS2BRUTE_ASSERV_DIAG_WRITE_PARAM(val) (unsigned short)( (val - (0.000000)) / (1.000000) ) 
 #define BRUTE2PHYS_PositionServoMoteur2(val) ( ((float)val * (1.000000)) + (0.000000) ) 
 #define PHYS2BRUTE_PositionServoMoteur2(val) (unsigned short)( (val - (0.000000)) / (1.000000) ) 
 #define BRUTE2PHYS_VitesseServoMoteur2(val) ( ((float)val * (1.000000)) + (0.000000) ) 
@@ -241,6 +255,20 @@
 
 // -----------------------------
 //! Classe de base pour les trames CAN
+class CTrameLaBotBox_ELECTROBOT_CDE_SERVOS_AX : public CTrameLaBotBox {
+public :
+	//! Les signaux de la messagerie
+	unsigned short valeur_commande_ax;
+	unsigned short commande_ax;
+	unsigned char num_servo_ax;
+
+	CTrameLaBotBox_ELECTROBOT_CDE_SERVOS_AX();
+	void Decode(tStructTrameLaBotBox* trameRecue);
+};
+
+
+// -----------------------------
+//! Classe de base pour les trames CAN
 class CTrameLaBotBox_ELECTROBOT_CDE_MOTEURS : public CTrameLaBotBox {
 public :
 	//! Les signaux de la messagerie
@@ -361,6 +389,19 @@ public :
 	unsigned char Type_mouvement;
 
 	CTrameLaBotBox_COMMANDE_MVT_XY_TETA();
+	void Decode(tStructTrameLaBotBox* trameRecue);
+};
+
+
+// -----------------------------
+//! Classe de base pour les trames CAN
+class CTrameLaBotBox_ASSERV_DIAG_WRITE_PARAM : public CTrameLaBotBox {
+public :
+	//! Les signaux de la messagerie
+	short ASSERV_DIAG_WRITE_VALUE;
+	unsigned short ASSERV_DIAG_WRITE_PARAM;
+
+	CTrameLaBotBox_ASSERV_DIAG_WRITE_PARAM();
 	void Decode(tStructTrameLaBotBox* trameRecue);
 };
 

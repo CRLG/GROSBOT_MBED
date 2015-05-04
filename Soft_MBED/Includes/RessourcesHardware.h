@@ -6,7 +6,6 @@
 
 #include "mbed.h"
 
-
 extern DigitalOut _led1;
 extern DigitalOut _led2;
 extern DigitalOut _led3;
@@ -48,6 +47,8 @@ extern Serial _rs232_ecran_rx;
 extern Serial _rs232_camera_tx;
 extern Serial _rs232_camera_rx;
 extern I2C _i2c;
+//extern SerialHalfDuplex _ax12_serial;
+extern Serial _ax12_serial;
 extern LocalFileSystem local;
 #endif
 

@@ -10,7 +10,8 @@
 #include "CLaBotBox.h"
 #include "CCapteurs.h"
 #include "CEEPROM.h"
-#include "CServoMoteur.h"
+#include "CServoMoteurSD20.h"
+#include "CServoMoteurAX.h"
 #include "CMoteurs.h"
 #include "CEcranTactile.h"
 #include "CCamera.h"
@@ -68,8 +69,10 @@ public :
 	//! La gestion de la caméra
 	CCamera m_camera;
 
-	//! Gestion des servos moteurs
-	CServoMoteur m_Servos;
+	//! Gestion des servos moteurs controlés par le SD20
+	CServoMoteurSD20 m_servos_sd20;
+	//! Gestion des servos moteurs AX
+	CServoMoteurAX m_servos_ax;
  	//! Gestion des moteurs
 	CMoteurs m_moteurs;
 
