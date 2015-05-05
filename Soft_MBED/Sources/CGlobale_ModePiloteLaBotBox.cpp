@@ -148,7 +148,7 @@ void CGlobale::SequenceurModePiloteLaBotBox(void)
 */
 void CGlobale::CheckReceptionTrame(void)
 {
-  char cbuff[32];
+  char cbuff[64];
   // ___________________________
   if  (m_LaBotBox.m_ELECTROBOT_CDE_MOTEURS.isNewTrame() ) {
     m_moteurs.CommandeVitesse(MOTEUR_1, (signed char)m_LaBotBox.m_ELECTROBOT_CDE_MOTEURS.cde_moteur_1);  // Attention : obligation de mettre le cast explicit en "signed", sinon, la valeur est interprétée non signée
@@ -177,12 +177,12 @@ void CGlobale::CheckReceptionTrame(void)
 	// sous adressage : le champ commande_ax donne le type d'action à réaliser 
     switch (m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.commande_ax) {
         case cSERVO_AX_POSITION :
-            m_servos_ax.setGoal(m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.num_servo_ax, 
-                                m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.valeur_commande_ax); 
+            m_servos_ax.CommandePosition(m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.num_servo_ax, 
+                                        m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.valeur_commande_ax); 
         break;
         case cSERVO_AX_VITESSE :
-            m_servos_ax.setCRSpeed( m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.num_servo_ax, 
-                                    m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.valeur_commande_ax); 
+            m_servos_ax.CommandeVitesse( m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.num_servo_ax, 
+                                         m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.valeur_commande_ax); 
         break;
 
         case cSERVO_AX_CHANGE_ID :
@@ -209,12 +209,52 @@ void CGlobale::CheckReceptionTrame(void)
             m_eeprom.setValue(cbuff, m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.valeur_commande_ax);
         break;
 
+        case cSERVO_AX_POSITION_INIT :
+           	sprintf(cbuff, "position_initiale_servo_ax_%d", m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.num_servo_ax);  
+            m_eeprom.setValue(cbuff, m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_AX.valeur_commande_ax);
+        break;
+
         default : 
         break; //  ne rien faire
 
     } // switch commande_ax
    }
-    
+
+  // ___________________________
+  if  (m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_SD20.isNewTrame() ) {
+     _led2 = !_led2;
+	// sous adressage : le champ commande_sd20 donne le type d'action à réaliser 
+    switch (m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_SD20.commande_sd20) {
+        case cSERVO_SD20_POSITION :
+            m_servos_sd20.CommandePosition( m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_SD20.num_servo_sd20, 
+                                            m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_SD20.valeur_commande_sd20); 
+
+        break;
+
+        case cSERVO_SD20_BUTEE_MIN :
+            m_servos_sd20.setButeeMinPosition(  m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_SD20.num_servo_sd20, 
+                                                m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_SD20.valeur_commande_sd20); 
+           	sprintf(cbuff, "butee_min_servo_sd20_%d", m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_SD20.num_servo_sd20);  
+            m_eeprom.setValue(cbuff, m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_SD20.valeur_commande_sd20);
+        break;
+
+        case cSERVO_SD20_BUTEE_MAX :
+            m_servos_sd20.setButeeMaxPosition(  m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_SD20.num_servo_sd20, 
+                                                m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_SD20.valeur_commande_sd20); 
+           	sprintf(cbuff, "butee_max_servo_sd20_%d", m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_SD20.num_servo_sd20);  
+            m_eeprom.setValue(cbuff, m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_SD20.valeur_commande_sd20);
+        break;
+
+        case cSERVO_SD20_POSITION_INIT :
+           	sprintf(cbuff, "position_initiale_servo_sd20_%d", m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_SD20.num_servo_sd20);  
+            m_eeprom.setValue(cbuff, m_LaBotBox.m_ELECTROBOT_CDE_SERVOS_SD20.valeur_commande_sd20);
+        break;
+
+        default : 
+        break; //  ne rien faire
+
+    } // switch commande_sd20
+   }    
   // ___________________________
   if  (m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.isNewTrame() ) {
 	// sous adressage : le champ commande_ax donne le type d'action à réaliser 

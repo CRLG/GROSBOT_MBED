@@ -352,6 +352,10 @@ void CLaBotBox::DecodeTrame(tStructTrameLaBotBox *trameRecue)
         m_ELECTROBOT_CDE_SERVOS_AX.Decode(trameRecue);
       break;
 
+      case ID_ELECTROBOT_CDE_SERVOS_SD20 :
+        m_ELECTROBOT_CDE_SERVOS_SD20.Decode(trameRecue);
+      break;
+
       case ID_ASSERV_DIAG_WRITE_PARAM :
         m_ASSERV_DIAG_WRITE_PARAM.Decode(trameRecue);
       break;
@@ -367,7 +371,6 @@ void CLaBotBox::DecodeTrame(tStructTrameLaBotBox *trameRecue)
       case ID_COMMANDE_MVT_XY :
         m_COMMANDE_MVT_XY.Decode(trameRecue);
       break;
-
 
       default :  // L'ID de la trame n'est pas connue de la messagerie
          // ne rien faire

@@ -109,6 +109,35 @@ void CServoMoteurAX::CommandePositionVitesse(unsigned char id, unsigned int posi
  setCRSpeed(id, vitesse);
 }
 
+//___________________________________________________________________________
+ /*!
+   \brief Commande d'un servo moteur
+
+   \param numServo le servomoteur a piloter  (1 à 20)
+   \param pos position du servomoteur
+
+   \return --
+*/
+void CServoMoteurAX::CommandePosition(unsigned char id, unsigned int position)
+{
+ setGoal(id, position);
+}
+
+
+//___________________________________________________________________________
+ /*!
+   \brief Commande d'un servo moteur
+
+   \param numServo le servomoteur a piloter  (1 à 20)
+   \param vitesse vitesse a laquelle se deplace le servo
+
+   \return --
+*/
+void CServoMoteurAX::CommandeVitesse(unsigned char id, unsigned int vitesse)
+{
+ setCRSpeed(id, vitesse);
+}
+
 
 
 //___________________________________________________________________________

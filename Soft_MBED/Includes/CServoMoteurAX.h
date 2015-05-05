@@ -49,7 +49,8 @@ public :
     void setButeeMinPosition(unsigned char numServo, unsigned int butee_min);
     void setButeeMaxPosition(unsigned char numServo, unsigned int butee_max);
     void CommandePositionVitesse(unsigned char id, unsigned int position, unsigned int vitesse);
-
+   	void CommandePosition(unsigned char id, unsigned int position);
+	void CommandeVitesse(unsigned char id, unsigned int vitesse);
 
     // API de contrôle des servos
     /** Set the mode of the servo

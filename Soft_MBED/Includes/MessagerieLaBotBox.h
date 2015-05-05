@@ -1,5 +1,5 @@
 // FICHIER GENERE PAR L'OUTIL MESS2C_robot V1.0
-// Date de génération : Mon Apr 27 00:28:45 2015
+// Date de génération : Tue May 05 22:19:15 2015
 // PLATEFORME CIBLE : MINIBOT
 /*************************************************************************************/
 /*! \file MessagerieLaBotBox.h
@@ -21,6 +21,7 @@
 
 
 // Enumérés, defines, ...
+#define ID_ELECTROBOT_CDE_SERVOS_SD20 0x53
 #define ID_ELECTROBOT_CDE_SERVOS_AX 0x52
 #define ID_ELECTROBOT_CDE_MOTEURS 0x50
 #define ID_COMMANDE_MVT_XY 0x102
@@ -44,6 +45,7 @@
 #define ID_ELECTROBOT_ETAT_CAPTEURS_2 0x20
 #define ID_ELECTROBOT_ETAT_CAPTEURS_1 0x10
 
+#define DLC_ELECTROBOT_CDE_SERVOS_SD20 5
 #define DLC_ELECTROBOT_CDE_SERVOS_AX 5
 #define DLC_ELECTROBOT_CDE_MOTEURS 6
 #define DLC_COMMANDE_MVT_XY 5
@@ -67,6 +69,12 @@
 #define DLC_ELECTROBOT_ETAT_CAPTEURS_2 8
 #define DLC_ELECTROBOT_ETAT_CAPTEURS_1 8
 
+#define BRUTE2PHYS_valeur_commande_sd20(val) ( ((float)val * (1.000000)) + (0.000000) ) 
+#define PHYS2BRUTE_valeur_commande_sd20(val) (unsigned short)( (val - (0.000000)) / (1.000000) ) 
+#define BRUTE2PHYS_commande_sd20(val) ( ((float)val * (1.000000)) + (0.000000) ) 
+#define PHYS2BRUTE_commande_sd20(val) (unsigned short)( (val - (0.000000)) / (1.000000) ) 
+#define BRUTE2PHYS_num_servo_sd20(val) ( ((float)val * (1.000000)) + (0.000000) ) 
+#define PHYS2BRUTE_num_servo_sd20(val) (unsigned char)( (val - (0.000000)) / (1.000000) ) 
 #define BRUTE2PHYS_valeur_commande_ax(val) ( ((float)val * (1.000000)) + (0.000000) ) 
 #define PHYS2BRUTE_valeur_commande_ax(val) (unsigned short)( (val - (0.000000)) / (1.000000) ) 
 #define BRUTE2PHYS_commande_ax(val) ( ((float)val * (1.000000)) + (0.000000) ) 
@@ -251,6 +259,21 @@
 #define PHYS2BRUTE_Eana2(val) (unsigned char)( (val - (0.000000)) / (0.100000) ) 
 #define BRUTE2PHYS_Eana1(val) ( ((float)val * (0.100000)) + (0.000000) ) 
 #define PHYS2BRUTE_Eana1(val) (unsigned char)( (val - (0.000000)) / (0.100000) ) 
+
+
+// -----------------------------
+//! Classe de base pour les trames CAN
+class CTrameLaBotBox_ELECTROBOT_CDE_SERVOS_SD20 : public CTrameLaBotBox {
+public :
+	//! Les signaux de la messagerie
+	unsigned short valeur_commande_sd20;
+	unsigned short commande_sd20;
+	unsigned char num_servo_sd20;
+
+	CTrameLaBotBox_ELECTROBOT_CDE_SERVOS_SD20();
+	tStructTrameLaBotBox* Encode(void);
+	void Decode(tStructTrameLaBotBox* trameRecue);
+};
 
 
 // -----------------------------
