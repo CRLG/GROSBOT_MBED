@@ -156,7 +156,7 @@ void CAsservissement::Init(void)
  verouillage_approche = 0;
  compteur_convergence = 0;
  ModeAsservissement = cMODE_MANUEL;
- TETA_consigne;
+ TETA_consigne=0;
  convergence_rapide = 0;
 
  offset_vitesse_avance = 0;				//	[cm/s-2]
@@ -1057,4 +1057,13 @@ void CAsservissement::CommandeMouvementXY_TETA(float x, float y, float teta)
 	TETA_consigne = teta;
 	ModeAsservissement = cMODE_XY_TETA;
 }
+// -----------------------------------------------------------------------------------------------------------------------
+// Fonction qui initialise la position du robot avec des valeurs données
+void CAsservissement::setPosition_XYTeta(float x, float y, float teta)
+{
+  X_robot = x;
+  Y_robot = y;
+  angle_robot = teta;
+  angle_robot_prec=teta;
+}	
 

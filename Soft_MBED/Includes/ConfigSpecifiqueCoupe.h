@@ -12,15 +12,15 @@ typedef enum {
    MOTEUR_ROUE_GAUCHE = MOTEUR_1,
    MOTEUR_ROUE_DROITE,  // MOTEUR_2
    MOTEUR_ASCENSEUR, 	// MOTEUR_3
-   MOTEUR_BARILLET, 	// MOTEUR_4
-   MOTEUR_MOELDAR, 	    // MOTEUR_5
+   MOTEUR_DISTRIBUTEUR, 	// MOTEUR_4
+   MOTEUR_NON_DEFINI, 	    // MOTEUR_5
    MOTEUR_SOUFFLEUR,    // MOTEUR_6
    MOTEUR_ELECTROVANNE  // MOTEUR_7-> Moteur piloté en ON/OFF (sans PWM)
 }eATTRIBUTION_MOTEURS;
 
 // Affectation des codeurs de position
 typedef enum {
-   CODEUR_BARILLET  =   CODEUR_1,
+   CODEUR_NON_DEFINI  =   CODEUR_1,
    CODEUR_ASCENSEUR,    // CODEUR_2
    CODEUR_ROUE_DROITE,  // CODEUR_3
    CODEUR_ROUE_GAUCHE   // CODEUR_4
@@ -29,11 +29,10 @@ typedef enum {
 
 //! cet enumere contient les numeros d'attribution des servos SD20 pour 2014
 typedef enum {
-	SERVO_ANCRAGE_FILET=13,
-	SERVO_CROCHET_AR,
-	SERVO_RETOURNE_FEU,
-	SERVO_NERF,
-	SERVO_KMAR
+	SERVO_CENTREUR_G=14,
+	SERVO_CENTREUR_D,
+	SERVO_PINCE_D,
+	SERVO_PINCE_G
 } eATTRIBUTION_SERVOS_SD20;
 
 //! cet enumere contient les numeros d'attribution des servos AX pour 2014

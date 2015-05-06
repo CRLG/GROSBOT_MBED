@@ -366,23 +366,23 @@ void CGlobale::CheckReceptionTrameEcran(void)
 		  
         // _________________________________________
 		case CMDE_PILOTAGE_SERVO_NERF :
-            m_servos_sd20.CommandePositionVitesse(SERVO_NERF, m_ecran_tactile.m_ETAT_ECRAN.Valeur*25.5f, 0);
+            m_servos_sd20.CommandePositionVitesse(SERVO_PINCE_G, m_ecran_tactile.m_ETAT_ECRAN.Valeur*25.5f, 0);
 		break;
         // _________________________________________
 		case CMDE_PILOTAGE_SERVO_KMAR :
-            m_servos_sd20.CommandePositionVitesse(SERVO_KMAR, m_ecran_tactile.m_ETAT_ECRAN.Valeur*25.5f, 0);
+            m_servos_sd20.CommandePositionVitesse(SERVO_PINCE_D, m_ecran_tactile.m_ETAT_ECRAN.Valeur*25.5f, 0);
 		break;
         // _________________________________________
 		case CMDE_PILOTAGE_SERVO_FEU :
-            m_servos_sd20.CommandePositionVitesse(SERVO_RETOURNE_FEU, m_ecran_tactile.m_ETAT_ECRAN.Valeur*25.5f, 0);
+            m_servos_sd20.CommandePositionVitesse(SERVO_CENTREUR_G, m_ecran_tactile.m_ETAT_ECRAN.Valeur*25.5f, 0);
 		break;
         // _________________________________________
 		case CMDE_PILOTAGE_SERVO_CROCHET_AR :
-            m_servos_sd20.CommandePositionVitesse(SERVO_CROCHET_AR, m_ecran_tactile.m_ETAT_ECRAN.Valeur*25.5f, 0);
+            m_servos_sd20.CommandePositionVitesse(SERVO_CENTREUR_D, m_ecran_tactile.m_ETAT_ECRAN.Valeur*25.5f, 0);
 		break;
         // _________________________________________
 		case CMDE_PILOTAGE_SERVO_ANCRAGE_FILET :
-            m_servos_sd20.CommandePositionVitesse(SERVO_ANCRAGE_FILET, m_ecran_tactile.m_ETAT_ECRAN.Valeur*25.5f, 0);
+            m_servos_sd20.CommandePositionVitesse(SERVO_CENTREUR_D, m_ecran_tactile.m_ETAT_ECRAN.Valeur*25.5f, 0);
 		break;
 
 		// _______________________

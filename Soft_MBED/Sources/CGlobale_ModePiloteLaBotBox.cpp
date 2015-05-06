@@ -153,7 +153,13 @@ void CGlobale::CheckReceptionTrame(void)
   if  (m_LaBotBox.m_ELECTROBOT_CDE_MOTEURS.isNewTrame() ) {
     m_moteurs.CommandeVitesse(MOTEUR_1, (signed char)m_LaBotBox.m_ELECTROBOT_CDE_MOTEURS.cde_moteur_1);  // Attention : obligation de mettre le cast explicit en "signed", sinon, la valeur est interprétée non signée
     m_moteurs.CommandeVitesse(MOTEUR_2, (signed char)m_LaBotBox.m_ELECTROBOT_CDE_MOTEURS.cde_moteur_2);
-    m_moteurs.CommandeVitesse(MOTEUR_3, (signed char)m_LaBotBox.m_ELECTROBOT_CDE_MOTEURS.cde_moteur_3);
+	//ALERTE: strategie codee en dur:
+	//si l'ascenseur atteint son capteur de fin de course et que la consigne est négative
+	//on coupe la commande (valeur écrasée)
+	if ((m_capteurs.m_b_Etor2<=0)&& ((signed char)m_LaBotBox.m_ELECTROBOT_CDE_MOTEURS.cde_moteur_1<0))
+		m_moteurs.CommandeVitesse(MOTEUR_3, 0); //ASCENSEUR
+	else
+    	m_moteurs.CommandeVitesse(MOTEUR_3, (signed char)m_LaBotBox.m_ELECTROBOT_CDE_MOTEURS.cde_moteur_3);
     m_moteurs.CommandeVitesse(MOTEUR_4, (signed char)m_LaBotBox.m_ELECTROBOT_CDE_MOTEURS.cde_moteur_4);
     m_moteurs.CommandeVitesse(MOTEUR_5, (signed char)m_LaBotBox.m_ELECTROBOT_CDE_MOTEURS.cde_moteur_5);
     m_moteurs.CommandeVitesse(MOTEUR_6, (signed char)m_LaBotBox.m_ELECTROBOT_CDE_MOTEURS.cde_moteur_6);

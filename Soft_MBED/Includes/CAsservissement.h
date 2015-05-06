@@ -188,6 +188,7 @@ void CommandeMouvementXY_B(float x, float y);
 void CommandeMouvementXY_TETA(float x, float y, float teta);
 void CommandeVitesseMouvement(float vit_avance, float vit_angle);
 void CalculsMouvementsRobots(void);
+void setPosition_XYTeta(float x, float y, float teta);
 
 
 

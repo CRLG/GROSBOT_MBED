@@ -161,10 +161,10 @@ void CMatch::step(void)
 	}
 	m_DdeMvtXYTeta_old = ModeleRobot_Y.OUT_DdeMvtXYTeta;
 	
-	/*if (ModeleRobot_Y.OUT_DdeRecalagePosition != m_DdeRecalagePosition_old) {
-		Application.m_asservissement.setPosition_XYTeta(ModeleRobot_Y.OUT_ConsigneX, ModeleRobot_Y.OUT_ConsigneY, ModeleRobot_Y.OUT_ConsigneTeta);
+	if (ModeleRobot_Y.OUT_DdeRecalagePosition[0] != m_DdeRecalagePosition_old) {
+		Application.m_asservissement.setPosition_XYTeta(ModeleRobot_Y.OUT_DdeRecalagePosition[1], ModeleRobot_Y.OUT_DdeRecalagePosition[2], ModeleRobot_Y.OUT_DdeRecalagePosition[3]);
 	}
-	m_DdeRecalagePosition_old = ModeleRobot_Y.OUT_DdeRecalagePosition;*/
+	m_DdeRecalagePosition_old = ModeleRobot_Y.OUT_DdeRecalagePosition[0];
 	
 	//RAZ des codeurs
 	if (ModeleRobot_Y.OUT_ResetCodeurAscenseur!=m_ResetCodeurAscenseur_old){
@@ -174,66 +174,51 @@ void CMatch::step(void)
     }
 	m_ResetCodeurAscenseur_old=ModeleRobot_Y.OUT_ResetCodeurAscenseur;
 
-	if (ModeleRobot_Y.OUT_ResetCodeurBarillet!=m_ResetCodeurBarillet_old){
+/*	if (ModeleRobot_Y.OUT_ResetCodeurBarillet!=m_ResetCodeurBarillet_old){
 		if (ModeleRobot_Y.OUT_ResetCodeurBarillet==1) {
         	Application.m_capteurs.RAZ_PositionCodeur(CODEUR_BARILLET,0);
 		}
     }
-	m_ResetCodeurBarillet_old=ModeleRobot_Y.OUT_ResetCodeurBarillet;
+	m_ResetCodeurBarillet_old=ModeleRobot_Y.OUT_ResetCodeurBarillet;   */
 	
 	// ___________________________ 
 	//Consignes actionneurs
     // Les commande d'actionneurs peuvent venir soit du modèle, soit de l'écran tactile
-	if (ModeleRobot_Y.OUT_CmdMoteurAscenseur != m_old_cde_mot[MOTEUR_ASCENSEUR]) { 
-        Application.m_moteurs.CommandeVitesse(MOTEUR_ASCENSEUR, ModeleRobot_Y.OUT_CmdMoteurAscenseur); //ASCENSEUR
-        m_old_cde_mot[MOTEUR_ASCENSEUR] = ModeleRobot_Y.OUT_CmdMoteurAscenseur;
+
+	
+	if (ModeleRobot_Y.OUT_CommandeMoteur[MOTEUR_ASCENSEUR-1] != m_old_cde_mot[MOTEUR_ASCENSEUR]) { 
+        Application.m_moteurs.CommandeVitesse(MOTEUR_ASCENSEUR, ModeleRobot_Y.OUT_CommandeMoteur[MOTEUR_ASCENSEUR-1]); //ASCENSEUR
+        m_old_cde_mot[MOTEUR_ASCENSEUR] = ModeleRobot_Y.OUT_CommandeMoteur[MOTEUR_ASCENSEUR-1];
     }
 
-    if (ModeleRobot_Y.OUT_CmdMoteurBarillet != m_old_cde_mot[MOTEUR_BARILLET]) {
-        Application.m_moteurs.CommandeVitesse(MOTEUR_BARILLET, ModeleRobot_Y.OUT_CmdMoteurBarillet); //BARILLET
-        m_old_cde_mot[MOTEUR_BARILLET] = ModeleRobot_Y.OUT_CmdMoteurBarillet;
-    } 
-
-    if (ModeleRobot_Y.OUT_CmdMoteurMoeldar != m_old_cde_mot[MOTEUR_MOELDAR]) {
-        Application.m_moteurs.CommandeVitesse(MOTEUR_MOELDAR, ModeleRobot_Y.OUT_CmdMoteurMoeldar); //MOELDAR
-        m_old_cde_mot[MOTEUR_MOELDAR] = ModeleRobot_Y.OUT_CmdMoteurMoeldar;
-    }
-
-	if (ModeleRobot_Y.OUT_CmdMoteurSouffleur != m_old_cde_mot[MOTEUR_SOUFFLEUR]) {
-        Application.m_moteurs.CommandeVitesse(MOTEUR_SOUFFLEUR, ModeleRobot_Y.OUT_CmdMoteurSouffleur); //SOUFFLEUR
-	    m_old_cde_mot[MOTEUR_SOUFFLEUR] = ModeleRobot_Y.OUT_CmdMoteurSouffleur;
-    }
-
-	if (ModeleRobot_Y.OUT_OuvertureElectrovanne != m_old_cde_mot[MOTEUR_ELECTROVANNE]) {
-        Application.m_moteurs.CommandeVitesse(MOTEUR_ELECTROVANNE, ModeleRobot_Y.OUT_OuvertureElectrovanne); // ELECTROVANNE
-	    m_old_cde_mot[MOTEUR_ELECTROVANNE] = ModeleRobot_Y.OUT_OuvertureElectrovanne;
-    }    
+	//ALERTE: codé en dur
+	//si l'ascenseur atteint son capteur de fin de course et que la consigne est négative
+	//on coupe la commande (valeur écrasée)
+ 	if ((Application.m_capteurs.m_b_Etor2<=0)&& (ModeleRobot_Y.OUT_CommandeMoteur[MOTEUR_ASCENSEUR-1]<0)){
+		Application.m_moteurs.CommandeVitesse(MOTEUR_ASCENSEUR, 0); //ASCENSEUR
+	}
 
 	// ___________________________ 
 	// Commande des servos moteurs
-	if (ModeleRobot_Y.OUT_CmdServoFilet != m_old_cde_servo[SERVO_ANCRAGE_FILET]) {
-        Application.m_servos_sd20.CommandePositionVitesse(SERVO_ANCRAGE_FILET, ModeleRobot_Y.OUT_CmdServoFilet, ModeleRobot_Y.OUT_SpdServoFilet);
-        m_old_cde_servo[SERVO_ANCRAGE_FILET] = ModeleRobot_Y.OUT_CmdServoFilet;
-    }
+	 
+	if (ModeleRobot_Y.OUT_CommandeServo[SERVO_PINCE_G-1] != m_old_cde_servo[SERVO_PINCE_G]) { 
+        Application.m_servos_sd20.CommandePositionVitesse(SERVO_PINCE_G, ModeleRobot_Y.OUT_CommandeServo[SERVO_PINCE_G-1], ModeleRobot_Y.OUT_SpeedServo[SERVO_PINCE_G-1]);
+        m_old_cde_servo[SERVO_PINCE_G] = ModeleRobot_Y.OUT_CommandeServo[SERVO_PINCE_G-1];
+    } 
+	
+	if (ModeleRobot_Y.OUT_CommandeServo[SERVO_PINCE_D-1] != m_old_cde_servo[SERVO_PINCE_D]) { 
+        Application.m_servos_sd20.CommandePositionVitesse(SERVO_PINCE_D, ModeleRobot_Y.OUT_CommandeServo[SERVO_PINCE_D-1],ModeleRobot_Y.OUT_SpeedServo[SERVO_PINCE_D-1]);
+        m_old_cde_servo[SERVO_PINCE_D] = ModeleRobot_Y.OUT_CommandeServo[SERVO_PINCE_D-1];
+    } 
 
-	if (ModeleRobot_Y.OUT_CmdServoCrochet != m_old_cde_servo[SERVO_CROCHET_AR]) {
-        Application.m_servos_sd20.CommandePositionVitesse(SERVO_CROCHET_AR, ModeleRobot_Y.OUT_CmdServoCrochet, ModeleRobot_Y.OUT_SpdServoCrochet);
-	    m_old_cde_servo[SERVO_CROCHET_AR] = ModeleRobot_Y.OUT_CmdServoCrochet;
-    }
-    
-    if (ModeleRobot_Y.OUT_CmdServoFeu != m_old_cde_servo[SERVO_RETOURNE_FEU]) {
-        Application.m_servos_sd20.CommandePositionVitesse(SERVO_RETOURNE_FEU, ModeleRobot_Y.OUT_CmdServoFeu, ModeleRobot_Y.OUT_SpdServoFeu);
-        m_old_cde_servo[SERVO_RETOURNE_FEU] = ModeleRobot_Y.OUT_CmdServoFeu;	
-    }
-    
-    if (ModeleRobot_Y.OUT_CmdServoNerf != m_old_cde_servo[SERVO_NERF]) {
-        Application.m_servos_sd20.CommandePositionVitesse(SERVO_NERF, ModeleRobot_Y.OUT_CmdServoNerf, ModeleRobot_Y.OUT_SpdServoNerf);
-	    m_old_cde_servo[SERVO_NERF] = ModeleRobot_Y.OUT_CmdServoNerf;    
-    }
-    
-    if (ModeleRobot_Y.OUT_CmdServoKmar != m_old_cde_servo[SERVO_KMAR]) {
-        Application.m_servos_sd20.CommandePositionVitesse(SERVO_KMAR, ModeleRobot_Y.OUT_CmdServoKmar, ModeleRobot_Y.OUT_SpdServoKmar);
-	    m_old_cde_servo[SERVO_KMAR] = ModeleRobot_Y.OUT_CmdServoKmar;
+	if (ModeleRobot_Y.OUT_CommandeServo[SERVO_CENTREUR_G-1] != m_old_cde_servo[SERVO_CENTREUR_G]) { 
+        Application.m_servos_sd20.CommandePositionVitesse(SERVO_CENTREUR_G, ModeleRobot_Y.OUT_CommandeServo[SERVO_CENTREUR_G-1], ModeleRobot_Y.OUT_SpeedServo[SERVO_CENTREUR_G-1]);
+        m_old_cde_servo[SERVO_CENTREUR_G] = ModeleRobot_Y.OUT_CommandeServo[SERVO_CENTREUR_G-1];
+    } 
+	
+	if (ModeleRobot_Y.OUT_CommandeServo[SERVO_CENTREUR_D-1] != m_old_cde_servo[SERVO_CENTREUR_D]) { 
+        Application.m_servos_sd20.CommandePositionVitesse(SERVO_CENTREUR_D, ModeleRobot_Y.OUT_CommandeServo[SERVO_CENTREUR_D-1],ModeleRobot_Y.OUT_SpeedServo[SERVO_CENTREUR_D-1]);
+        m_old_cde_servo[SERVO_CENTREUR_D] = ModeleRobot_Y.OUT_CommandeServo[SERVO_CENTREUR_D-1];
     }
 	
 	//SORTIES de MODELE
