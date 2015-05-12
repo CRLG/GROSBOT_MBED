@@ -201,22 +201,38 @@ void CMatch::step(void)
 	// ___________________________ 
 	// Commande des servos moteurs
 	 
-	if (ModeleRobot_Y.OUT_CommandeServo[SERVO_PINCE_G-1] != m_old_cde_servo[SERVO_PINCE_G]) { 
+	if (ModeleRobot_Y.OUT_CommandeServo[SERVO_PINCE_G-1] != m_old_cde_servo[SERVO_PINCE_G]) {
+		if (ModeleRobot_Y.OUT_RelacheServo[SERVO_PINCE_G-1]==0)
+			Application.m_servos_sd20.setDureeAvantRelache(SERVO_PINCE_G, RELACHE_SERVO_OFF);
+		else
+			Application.m_servos_sd20.setDureeAvantRelache(SERVO_PINCE_G, ModeleRobot_Y.OUT_RelacheServo[SERVO_PINCE_G-1]);
         Application.m_servos_sd20.CommandePositionVitesse(SERVO_PINCE_G, ModeleRobot_Y.OUT_CommandeServo[SERVO_PINCE_G-1], ModeleRobot_Y.OUT_SpeedServo[SERVO_PINCE_G-1]);
         m_old_cde_servo[SERVO_PINCE_G] = ModeleRobot_Y.OUT_CommandeServo[SERVO_PINCE_G-1];
     } 
 	
-	if (ModeleRobot_Y.OUT_CommandeServo[SERVO_PINCE_D-1] != m_old_cde_servo[SERVO_PINCE_D]) { 
+	if (ModeleRobot_Y.OUT_CommandeServo[SERVO_PINCE_D-1] != m_old_cde_servo[SERVO_PINCE_D]) {
+		if (ModeleRobot_Y.OUT_RelacheServo[SERVO_PINCE_D-1]==0)
+			Application.m_servos_sd20.setDureeAvantRelache(SERVO_PINCE_D, RELACHE_SERVO_OFF);
+		else
+			Application.m_servos_sd20.setDureeAvantRelache(SERVO_PINCE_D, ModeleRobot_Y.OUT_RelacheServo[SERVO_PINCE_D-1]); 
         Application.m_servos_sd20.CommandePositionVitesse(SERVO_PINCE_D, ModeleRobot_Y.OUT_CommandeServo[SERVO_PINCE_D-1],ModeleRobot_Y.OUT_SpeedServo[SERVO_PINCE_D-1]);
         m_old_cde_servo[SERVO_PINCE_D] = ModeleRobot_Y.OUT_CommandeServo[SERVO_PINCE_D-1];
     } 
 
-	if (ModeleRobot_Y.OUT_CommandeServo[SERVO_CENTREUR_G-1] != m_old_cde_servo[SERVO_CENTREUR_G]) { 
+	if (ModeleRobot_Y.OUT_CommandeServo[SERVO_CENTREUR_G-1] != m_old_cde_servo[SERVO_CENTREUR_G]) {
+		if (ModeleRobot_Y.OUT_RelacheServo[SERVO_CENTREUR_G-1]==0)
+			Application.m_servos_sd20.setDureeAvantRelache(SERVO_CENTREUR_G, RELACHE_SERVO_OFF);
+		else
+			Application.m_servos_sd20.setDureeAvantRelache(SERVO_CENTREUR_G, ModeleRobot_Y.OUT_RelacheServo[SERVO_CENTREUR_G-1]);
         Application.m_servos_sd20.CommandePositionVitesse(SERVO_CENTREUR_G, ModeleRobot_Y.OUT_CommandeServo[SERVO_CENTREUR_G-1], ModeleRobot_Y.OUT_SpeedServo[SERVO_CENTREUR_G-1]);
         m_old_cde_servo[SERVO_CENTREUR_G] = ModeleRobot_Y.OUT_CommandeServo[SERVO_CENTREUR_G-1];
     } 
 	
-	if (ModeleRobot_Y.OUT_CommandeServo[SERVO_CENTREUR_D-1] != m_old_cde_servo[SERVO_CENTREUR_D]) { 
+	if (ModeleRobot_Y.OUT_CommandeServo[SERVO_CENTREUR_D-1] != m_old_cde_servo[SERVO_CENTREUR_D]) {
+		if (ModeleRobot_Y.OUT_RelacheServo[SERVO_CENTREUR_D-1]==0)
+			Application.m_servos_sd20.setDureeAvantRelache(SERVO_CENTREUR_D, RELACHE_SERVO_OFF);
+		else
+			Application.m_servos_sd20.setDureeAvantRelache(SERVO_CENTREUR_D, ModeleRobot_Y.OUT_RelacheServo[SERVO_CENTREUR_D-1]);
         Application.m_servos_sd20.CommandePositionVitesse(SERVO_CENTREUR_D, ModeleRobot_Y.OUT_CommandeServo[SERVO_CENTREUR_D-1],ModeleRobot_Y.OUT_SpeedServo[SERVO_CENTREUR_D-1]);
         m_old_cde_servo[SERVO_CENTREUR_D] = ModeleRobot_Y.OUT_CommandeServo[SERVO_CENTREUR_D-1];
     }
