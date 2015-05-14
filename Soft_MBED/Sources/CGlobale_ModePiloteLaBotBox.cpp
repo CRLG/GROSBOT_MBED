@@ -263,36 +263,38 @@ void CGlobale::CheckReceptionTrame(void)
    }    
   // ___________________________
   if  (m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.isNewTrame() ) {
+    float fval_coef100 	= (float)m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE / 100.0f;
+    float fval_coef10 	= (float)m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE / 10.0f;
 	// sous adressage : le champ commande_ax donne le type d'action à réaliser 
     switch (m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_PARAM) {
         case cASSERV_SEUIL_CONV_DIST :
-        	Application.m_asservissement.seuil_conv_distance=m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE;
-        	m_eeprom.setValue("seuil_conv_distance", m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE);
+			Application.m_asservissement.seuil_conv_distance=fval_coef100;
+        	m_eeprom.setValue("seuil_conv_distance", fval_coef100);
         break;
 
         case cASSERV_SEUIL_CONV_ANGLE :
-        	Application.m_asservissement.seuil_conv_angle=m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE;
-        	m_eeprom.setValue("seuil_conv_angle", m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE);
+        	Application.m_asservissement.seuil_conv_angle=fval_coef100;
+        	m_eeprom.setValue("seuil_conv_angle", fval_coef100);
         break;
 
         case cASSERV_DIAG_WR_KI_ANGLE : 
-        	Application.m_asservissement.ki_angle=m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE;
-        	m_eeprom.setValue("ki_angle", m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE);
+        	Application.m_asservissement.ki_angle=fval_coef100;
+        	m_eeprom.setValue("ki_angle", fval_coef100);
         break;
 
         case cASSERV_DIAG_WR_KP_ANGLE : 
-        	Application.m_asservissement.kp_angle=m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE;
-        	m_eeprom.setValue("kp_angle", m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE);
+        	Application.m_asservissement.kp_angle=fval_coef100;
+        	m_eeprom.setValue("kp_angle", fval_coef100);
         break;
 
         case cASSERV_DIAG_WR_KI_DISTANCE : 
-        	Application.m_asservissement.ki_distance=m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE;
-        	m_eeprom.setValue("ki_distance", m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE);
+        	Application.m_asservissement.ki_distance=fval_coef100;
+        	m_eeprom.setValue("ki_distance", fval_coef100);
         break;
 
         case cASSERV_DIAG_WR_KP_DISTANCE : 
-        	Application.m_asservissement.kp_distance=m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE;
-        	m_eeprom.setValue("kp_distance", m_LaBotBox.m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE);
+        	Application.m_asservissement.kp_distance=fval_coef100;
+        	m_eeprom.setValue("kp_distance", fval_coef100);
         break;
         
         case cASSERV_DIAG_WR_CDE_MIN : 
