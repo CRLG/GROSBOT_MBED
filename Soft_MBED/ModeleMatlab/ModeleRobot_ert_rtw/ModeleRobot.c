@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model ModeleRobot.
  *
- * Model version                        : 1.1442
+ * Model version                        : 1.1464
  * Real-Time Workshop file version      : 7.4  (R2009b)  29-Jun-2009
- * Real-Time Workshop file generated on : Thu May 14 08:56:38 2015
+ * Real-Time Workshop file generated on : Thu May 14 14:05:32 2015
  * TLC version                          : 7.4 (Jul 14 2009)
- * C/C++ source code generated on       : Thu May 14 08:56:39 2015
+ * C/C++ source code generated on       : Thu May 14 14:05:33 2015
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -34,19 +34,31 @@
 #define ModeleRobot_IN_ACTION_HOMOLO_01 (12)
 #define ModeleRobot_IN_ACTION_HOMOLO_02 (13)
 #define ModeleRobot_IN_ACTION_HOMOLO_03 (14)
-#define ModeleRobot_IN_ACTION_HOMOLO_04 (15)
-#define ModeleRobot_IN_ACTION_HOMOLO_10 (16)
-#define ModeleRobot_IN_ACTION_HOMOLO_11 (17)
-#define ModeleRobot_IN_ACTION_HOMOLO_12 (18)
-#define ModeleRobot_IN_ACTION_HOMOLO_13 (19)
-#define ModeleRobot_IN_ACTION_HOMOLO_14 (20)
-#define ModeleRobot_IN_ACTION_HOMOLO_2 (21)
-#define ModeleRobot_IN_ACTION_HOMOLO_4 (22)
-#define ModeleRobot_IN_ACTION_HOMOLO_5 (23)
-#define ModeleRobot_IN_ACTION_HOMOLO_6 (24)
-#define ModeleRobot_IN_ACTION_HOMOLO_7 (25)
-#define ModeleRobot_IN_ACTION_HOMOLO_8 (26)
-#define ModeleRobot_IN_ACTION_HOMOLO_9 (27)
+#define ModeleRobot_IN_ACTION_HOMOLO_05 (15)
+#define ModeleRobot_IN_ACTION_HOMOLO_06 (16)
+#define ModeleRobot_IN_ACTION_HOMOLO_07 (17)
+#define ModeleRobot_IN_ACTION_HOMOLO_08 (18)
+#define ModeleRobot_IN_ACTION_HOMOLO_10 (19)
+#define ModeleRobot_IN_ACTION_HOMOLO_11 (20)
+#define ModeleRobot_IN_ACTION_HOMOLO_12 (21)
+#define ModeleRobot_IN_ACTION_HOMOLO_13 (22)
+#define ModeleRobot_IN_ACTION_HOMOLO_14 (23)
+#define ModeleRobot_IN_ACTION_HOMOLO_15 (24)
+#define ModeleRobot_IN_ACTION_HOMOLO_16 (25)
+#define ModeleRobot_IN_ACTION_HOMOLO_17 (26)
+#define ModeleRobot_IN_ACTION_HOMOLO_18 (27)
+#define ModeleRobot_IN_ACTION_HOMOLO_19 (28)
+#define ModeleRobot_IN_ACTION_HOMOLO_2 (29)
+#define ModeleRobot_IN_ACTION_HOMOLO_20 (30)
+#define ModeleRobot_IN_ACTION_HOMOLO_21 (31)
+#define ModeleRobot_IN_ACTION_HOMOLO_22 (32)
+#define ModeleRobot_IN_ACTION_HOMOLO_23 (33)
+#define ModeleRobot_IN_ACTION_HOMOLO_4 (34)
+#define ModeleRobot_IN_ACTION_HOMOLO_5 (35)
+#define ModeleRobot_IN_ACTION_HOMOLO_6 (36)
+#define ModeleRobot_IN_ACTION_HOMOLO_7 (37)
+#define ModeleRobot_IN_ACTION_HOMOLO_8 (38)
+#define ModeleRobot_IN_ACTION_HOMOLO_9 (39)
 #define ModeleRobot_IN_ATTENTE_TIRETTE (1)
 #define ModeleRobot_IN_DEMO            (1)
 #define ModeleRobot_IN_DETECT_OBSTACLE (1)
@@ -93,6 +105,11 @@ static void enter_internal_COMPORTEMENT_ROB(void);
 static void ModeleRobot_enter_atomic_DEMO(void);
 static void ModeleRobot_enter_internal_DEMO(void);
 static void Model_enter_internal_STRATEGIE1(void);
+static void ModeleRobot_ACTION_HOMOLO_5(void);
+static void ModeleRobot_ACTION_HOMOLO_6(void);
+static void ModeleRobot_ACTION_HOMOLO_7(void);
+static void ModeleRobot_ACTION_HOMOLO_8(void);
+static void ModeleRobot_ACTION_HOMOLO_9(void);
 static void ModeleRobot_DEMO(void);
 
 /* Function for Stateflow: '<Root>/COMPORTEMENT' */
@@ -111,11 +128,6 @@ static void enter_internal_ACTIONNEURS_REPO(void)
 
   /* Graphical Function 'setPWM': '<S1>:4112' */
   /* Transition: '<S1>:4114' */
-  ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p13 - 1.0)] =
-    0.0;
-
-  /* Graphical Function 'setPWM': '<S1>:4112' */
-  /* Transition: '<S1>:4114' */
   ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p14 - 1.0)] =
     0.0;
 
@@ -129,67 +141,72 @@ static void enter_internal_ACTIONNEURS_REPO(void)
   ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p16 - 1.0)] =
     0.0;
 
+  /* Graphical Function 'setPWM': '<S1>:4112' */
+  /* Transition: '<S1>:4114' */
+  ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p17 - 1.0)] =
+    0.0;
+
   /* meme si la vitesse n'est pas utilise, on l'initialise pour les servos */
   /* Graphical Function 'setServoSpeed': '<S1>:4153' */
   /* Transition: '<S1>:4155' */
-  ModeleRobot_B.SpeedServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)] =
-    ModeleRobot_P.SFunction_p11;
+  ModeleRobot_B.SpeedServo[(int32_T)(ModeleRobot_P.SFunction_p33 - 1.0)] =
+    ModeleRobot_P.SFunction_p12;
 
   /* Graphical Function 'setServoSpeed': '<S1>:4153' */
   /* Transition: '<S1>:4155' */
-  ModeleRobot_B.SpeedServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)] =
-    ModeleRobot_P.SFunction_p11;
+  ModeleRobot_B.SpeedServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
+    ModeleRobot_P.SFunction_p12;
 
   /* Graphical Function 'setServoSpeed': '<S1>:4153' */
   /* Transition: '<S1>:4155' */
-  ModeleRobot_B.SpeedServo[(int32_T)(ModeleRobot_P.SFunction_p21 - 1.0)] =
-    ModeleRobot_P.SFunction_p11;
+  ModeleRobot_B.SpeedServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
+    ModeleRobot_P.SFunction_p12;
 
   /* Graphical Function 'setServoSpeed': '<S1>:4153' */
   /* Transition: '<S1>:4155' */
-  ModeleRobot_B.SpeedServo[(int32_T)(ModeleRobot_P.SFunction_p18 - 1.0)] =
-    ModeleRobot_P.SFunction_p11;
+  ModeleRobot_B.SpeedServo[(int32_T)(ModeleRobot_P.SFunction_p19 - 1.0)] =
+    ModeleRobot_P.SFunction_p12;
 
   /* de meme pour le maintient ou non des servos on initialise */
   /* Graphical Function 'setServoRelache': '<S1>:4198' */
   /* Transition: '<S1>:4200' */
-  ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)] = 0.0;
+  ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p33 - 1.0)] = 0.0;
 
   /* Graphical Function 'setServoRelache': '<S1>:4198' */
   /* Transition: '<S1>:4200' */
-  ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)] = 0.0;
+  ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] = 0.0;
 
   /* Graphical Function 'setServoRelache': '<S1>:4198' */
   /* Transition: '<S1>:4200' */
-  ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p21 - 1.0)] =
+  ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
     1000.0;
 
   /* Graphical Function 'setServoRelache': '<S1>:4198' */
   /* Transition: '<S1>:4200' */
-  ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p18 - 1.0)] =
+  ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p19 - 1.0)] =
     1000.0;
 
   /* on ecarte les pinces pour qu'elles soient bien dans le robot */
   /* Graphical Function 'setServo': '<S1>:4141' */
   /* Transition: '<S1>:4143' */
-  ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)] =
-    ModeleRobot_P.SFunction_p31;
+  ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p33 - 1.0)] =
+    ModeleRobot_P.SFunction_p37;
 
   /* Graphical Function 'setServo': '<S1>:4141' */
   /* Transition: '<S1>:4143' */
-  ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)] =
-    ModeleRobot_P.SFunction_p27;
+  ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
+    ModeleRobot_P.SFunction_p31;
 
   /* l'inverse pour les centreurs */
   /* Graphical Function 'setServo': '<S1>:4141' */
   /* Transition: '<S1>:4143' */
-  ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p21 - 1.0)] =
-    ModeleRobot_P.SFunction_p22;
+  ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
+    ModeleRobot_P.SFunction_p25;
 
   /* Graphical Function 'setServo': '<S1>:4141' */
   /* Transition: '<S1>:4143' */
-  ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p18 - 1.0)] =
-    ModeleRobot_P.SFunction_p19;
+  ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p19 - 1.0)] =
+    ModeleRobot_P.SFunction_p21;
 
   /* on lance le timer pour laisser un petit temps aux actions precedentes */
   ModeleRobot_DWork.TempoInit = 0.0;
@@ -413,7 +430,7 @@ static void ModeleRobot_enter_internal_DEMO(void)
 
     /* Graphical Function 'setPWM': '<S1>:4112' */
     /* Transition: '<S1>:4114' */
-    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p13 - 1.0)] =
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p14 - 1.0)] =
       0.0;
     ModeleRobot_DWork.TempoMot = 0.0;
     break;
@@ -426,13 +443,13 @@ static void ModeleRobot_enter_internal_DEMO(void)
     /* on prend la balle de tennis */
     /* Graphical Function 'setServo': '<S1>:4141' */
     /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)] =
-      ModeleRobot_P.SFunction_p30;
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p33 - 1.0)] =
+      ModeleRobot_P.SFunction_p35;
 
     /* Graphical Function 'setServo': '<S1>:4141' */
     /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)] =
-      ModeleRobot_P.SFunction_p26;
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
+      ModeleRobot_P.SFunction_p29;
 
     /* tempo */
     ModeleRobot_DWork.TempoMot = 0.0;
@@ -446,7 +463,7 @@ static void ModeleRobot_enter_internal_DEMO(void)
     /* on monte l'ascenseur pour etre au dessus d'un spot */
     /* Graphical Function 'setPWM': '<S1>:4112' */
     /* Transition: '<S1>:4114' */
-    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p13 - 1.0)] =
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p14 - 1.0)] =
       60.0;
 
     /* tempo */
@@ -468,25 +485,85 @@ static void ModeleRobot_enter_internal_DEMO(void)
     ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
     ModeleRobot_B.ConsigneX = 38.0;
     ModeleRobot_B.ConsigneY = 0.0;
-    ModeleRobot_B.ConsigneTeta = ModeleRobot_P.SFunction_p17;
+    ModeleRobot_B.ConsigneTeta = ModeleRobot_P.SFunction_p18;
     ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
     break;
 
-   case ModeleRobot_IN_ACTION_HOMOLO_04:
-    /* Entry 'ACTION_HOMOLO_04': '<S1>:4226' */
-    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_04;
-    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_04;
+   case ModeleRobot_IN_ACTION_HOMOLO_05:
+    /* Entry 'ACTION_HOMOLO_05': '<S1>:4239' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_05;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_05;
 
-    /* on prend la balle de tennis */
+    /* on descend l'ascenseur pour emprisonner spot + balle */
+    /* Graphical Function 'setPWM': '<S1>:4112' */
+    /* Transition: '<S1>:4114' */
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p14 - 1.0)] =
+      -60.0;
+
     /* Graphical Function 'setServo': '<S1>:4141' */
     /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)] =
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p33 - 1.0)] =
+      ModeleRobot_P.SFunction_p34;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
+      ModeleRobot_P.SFunction_p28;
+
+    /* tempo */
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_06:
+    /* Entry 'ACTION_HOMOLO_06': '<S1>:4254' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_06;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_06;
+
+    /* on prend le gobelet */
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p33 - 1.0)] =
+      ModeleRobot_P.SFunction_p38;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
+      ModeleRobot_P.SFunction_p32;
+
+    /* tempo */
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_07:
+    /* Entry 'ACTION_HOMOLO_07': '<S1>:4261' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_07;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_07;
+
+    /* on lache le gobelet */
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p33 - 1.0)] =
+      ModeleRobot_P.SFunction_p37;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
       ModeleRobot_P.SFunction_p31;
 
-    /* Graphical Function 'setServo': '<S1>:4141' */
-    /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)] =
-      ModeleRobot_P.SFunction_p27;
+    /* tempo */
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_08:
+    /* Entry 'ACTION_HOMOLO_08': '<S1>:4265' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_08;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_08;
+
+    /* on remonte les pinces */
+    /* Graphical Function 'setPWM': '<S1>:4112' */
+    /* Transition: '<S1>:4114' */
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p14 - 1.0)] =
+      60.0;
 
     /* tempo */
     ModeleRobot_DWork.TempoMot = 0.0;
@@ -532,8 +609,8 @@ static void ModeleRobot_enter_internal_DEMO(void)
 
     /* Graphical Function 'setServo': '<S1>:4141' */
     /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p32 - 1.0)] =
-      ModeleRobot_P.SFunction_p34;
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p39 - 1.0)] =
+      ModeleRobot_P.SFunction_p41;
     break;
 
    case ModeleRobot_IN_ACTION_HOMOLO_13:
@@ -546,7 +623,7 @@ static void ModeleRobot_enter_internal_DEMO(void)
 
     /* Graphical Function 'setPWM': '<S1>:4112' */
     /* Transition: '<S1>:4114' */
-    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p16 - 1.0)] =
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p17 - 1.0)] =
       100.0;
     break;
 
@@ -558,13 +635,102 @@ static void ModeleRobot_enter_internal_DEMO(void)
     /* on arrete de souffler et on rentre les recolteurs */
     /* Graphical Function 'setPWM': '<S1>:4112' */
     /* Transition: '<S1>:4114' */
-    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p16 - 1.0)] =
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p17 - 1.0)] =
       0.0;
 
     /* Graphical Function 'setServo': '<S1>:4141' */
     /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p32 - 1.0)] =
-      ModeleRobot_P.SFunction_p33;
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p39 - 1.0)] =
+      ModeleRobot_P.SFunction_p40;
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_15:
+    /* Entry 'ACTION_HOMOLO_15': '<S1>:4237' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_15;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_15;
+
+    /* on relache la balle */
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p33 - 1.0)] =
+      ModeleRobot_P.SFunction_p36;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
+      ModeleRobot_P.SFunction_p30;
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_16:
+    /* Entry 'ACTION_HOMOLO_16': '<S1>:4243' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_16;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_16;
+
+    /* on relache la balle */
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p33 - 1.0)] =
+      ModeleRobot_P.SFunction_p36;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
+      ModeleRobot_P.SFunction_p30;
+
+    /* Graphical Function 'setPWM': '<S1>:4112' */
+    /* Transition: '<S1>:4114' */
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p14 - 1.0)] =
+      0.0;
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_17:
+    /* Entry 'ACTION_HOMOLO_17': '<S1>:4249' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_17;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_17;
+
+    /* on centre le spot */
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
+      ModeleRobot_P.SFunction_p26;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p19 - 1.0)] =
+      ModeleRobot_P.SFunction_p22;
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_18:
+    /* Entry 'ACTION_HOMOLO_18': '<S1>:4251' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_18;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_18;
+
+    /* on avance vers le gobelet */
+    /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
+    /* Transition: '<S1>:3697' */
+    ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
+    ModeleRobot_B.ConsigneX = 13.0;
+    ModeleRobot_B.ConsigneY = -67.0 * ModeleRobot_DWork.invMouv;
+    ModeleRobot_B.ConsigneTeta = -2.68 * ModeleRobot_DWork.invMouv;
+    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_19:
+    /* Entry 'ACTION_HOMOLO_19': '<S1>:4255' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_19;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_19;
+
+    /* inhibeObstacle=0;
+       on va vers la zone de départ */
+    /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
+    /* Transition: '<S1>:3697' */
+    ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
+    ModeleRobot_B.ConsigneX = 67.0;
+    ModeleRobot_B.ConsigneY = 0.0 * ModeleRobot_DWork.invMouv;
+    ModeleRobot_B.ConsigneTeta = 3.14 * ModeleRobot_DWork.invMouv;
+    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
     break;
 
    case ModeleRobot_IN_ACTION_HOMOLO_2:
@@ -582,17 +748,81 @@ static void ModeleRobot_enter_internal_DEMO(void)
     ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
     break;
 
+   case ModeleRobot_IN_ACTION_HOMOLO_20:
+    /* Entry 'ACTION_HOMOLO_20': '<S1>:4258' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_20;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_20;
+
+    /* on avance pour déposer le gobelet */
+    /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
+    /* Transition: '<S1>:3697' */
+    ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
+    ModeleRobot_B.ConsigneX = 39.0;
+    ModeleRobot_B.ConsigneY = 0.0 * ModeleRobot_DWork.invMouv;
+    ModeleRobot_B.ConsigneTeta = 3.14 * ModeleRobot_DWork.invMouv;
+    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_21:
+    /* Entry 'ACTION_HOMOLO_21': '<S1>:4262' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_21;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_21;
+
+    /* on recule pour déposer le gobelet */
+    ModeleRobot_DWork.inhibeObstacle = 0.0;
+
+    /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
+    /* Transition: '<S1>:3697' */
+    ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
+    ModeleRobot_B.ConsigneX = 67.0;
+    ModeleRobot_B.ConsigneY = 0.0 * ModeleRobot_DWork.invMouv;
+    ModeleRobot_B.ConsigneTeta = 3.14 * ModeleRobot_DWork.invMouv;
+    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_22:
+    /* Entry 'ACTION_HOMOLO_22': '<S1>:4266' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_22;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_22;
+
+    /* on rentre les centreurs */
+    /* Graphical Function 'setPWM': '<S1>:4112' */
+    /* Transition: '<S1>:4114' */
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p14 - 1.0)] =
+      0.0;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p19 - 1.0)] =
+      ModeleRobot_P.SFunction_p21;
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_23:
+    /* Entry 'ACTION_HOMOLO_23': '<S1>:4269' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_23;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_23;
+
+    /* on rentre les centreurs */
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
+      ModeleRobot_P.SFunction_p25;
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
    case ModeleRobot_IN_ACTION_HOMOLO_4:
     /* Entry 'ACTION_HOMOLO_4': '<S1>:4169' */
     ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_4;
     ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_4;
 
+    /* on recule pour laisser les spots */
     /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
     /* Transition: '<S1>:3697' */
     ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
-    ModeleRobot_B.ConsigneX = 38.0;
-    ModeleRobot_B.ConsigneY = 0.0;
-    ModeleRobot_B.ConsigneTeta = 0.0;
+    ModeleRobot_B.ConsigneX = 67.0;
+    ModeleRobot_B.ConsigneY = -45.0 * ModeleRobot_DWork.invMouv;
+    ModeleRobot_B.ConsigneTeta = -0.99 * ModeleRobot_DWork.invMouv;
     ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
     break;
 
@@ -601,12 +831,12 @@ static void ModeleRobot_enter_internal_DEMO(void)
     ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_5;
     ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_5;
 
-    /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
-    /* Transition: '<S1>:3697' */
-    ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
-    ModeleRobot_B.ConsigneX = 2.0;
-    ModeleRobot_B.ConsigneY = 0.0;
-    ModeleRobot_B.ConsigneTeta = 0.0;
+    /* on se tourne vers le gobelet */
+    /* Graphical Function 'Mouvement_Angle': '<S1>:1354' */
+    /* Transition: '<S1>:1356' */
+    ModeleRobot_B.DdeMvtDistanceAngle = ModeleRobot_B.DdeMvtDistanceAngle + 1.0;
+    ModeleRobot_B.ConsigneDistance = 0.0;
+    ModeleRobot_B.ConsigneTeta = -2.68 * ModeleRobot_DWork.invMouv;
     ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
     break;
 
@@ -629,15 +859,25 @@ static void ModeleRobot_enter_internal_DEMO(void)
     /* Entry 'ACTION_HOMOLO_7': '<S1>:4189' */
     ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_7;
     ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_7;
-    ModeleRobot_DWork.inhibeObstacle = 0.0;
 
-    /* on se tourne vers les spots */
+    /* inhibeObstacle=0;
+       on se tourne vers les spots */
     /* Graphical Function 'Mouvement_Angle': '<S1>:1354' */
     /* Transition: '<S1>:1356' */
     ModeleRobot_B.DdeMvtDistanceAngle = ModeleRobot_B.DdeMvtDistanceAngle + 1.0;
     ModeleRobot_B.ConsigneDistance = 0.0;
     ModeleRobot_B.ConsigneTeta = -0.99 * ModeleRobot_DWork.invMouv;
     ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
+      ModeleRobot_P.SFunction_p26;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p19 - 1.0)] =
+      ModeleRobot_P.SFunction_p22;
     break;
 
    case ModeleRobot_IN_ACTION_HOMOLO_8:
@@ -645,17 +885,16 @@ static void ModeleRobot_enter_internal_DEMO(void)
     ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_8;
     ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_8;
 
-    /* on relache la balle
-       TODO: rechercher une position intermédiaire servo pour retenir balle + spot */
+    /* on centre le spot */
     /* Graphical Function 'setServo': '<S1>:4141' */
     /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)] =
-      ModeleRobot_P.SFunction_p29;
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
+      ModeleRobot_P.SFunction_p24;
 
     /* Graphical Function 'setServo': '<S1>:4141' */
     /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)] =
-      ModeleRobot_P.SFunction_p25;
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p19 - 1.0)] =
+      ModeleRobot_P.SFunction_p20;
     ModeleRobot_DWork.TempoMot = 0.0;
     break;
 
@@ -675,46 +914,24 @@ static void ModeleRobot_enter_internal_DEMO(void)
     break;
 
    default:
-    /* Transition: '<S1>:4166' */
-    if (ModeleRobot_P.SFunction_p1 == 1.0) {
-      /* Transition: '<S1>:4227' */
-      /* Entry 'ACTION_HOMOLO_04': '<S1>:4226' */
-      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_04;
-      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_04;
+    /* Transition: '<S1>:4225' */
+    /* Entry 'ACTION_HOMOLO_01': '<S1>:4181' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_01;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_01;
 
-      /* on prend la balle de tennis */
-      /* Graphical Function 'setServo': '<S1>:4141' */
-      /* Transition: '<S1>:4143' */
-      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)] =
-        ModeleRobot_P.SFunction_p31;
+    /* on prend la balle de tennis */
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p33 - 1.0)] =
+      ModeleRobot_P.SFunction_p35;
 
-      /* Graphical Function 'setServo': '<S1>:4141' */
-      /* Transition: '<S1>:4143' */
-      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)] =
-        ModeleRobot_P.SFunction_p27;
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
+      ModeleRobot_P.SFunction_p29;
 
-      /* tempo */
-      ModeleRobot_DWork.TempoMot = 0.0;
-    } else {
-      /* Transition: '<S1>:4225' */
-      /* Entry 'ACTION_HOMOLO_01': '<S1>:4181' */
-      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_01;
-      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_01;
-
-      /* on prend la balle de tennis */
-      /* Graphical Function 'setServo': '<S1>:4141' */
-      /* Transition: '<S1>:4143' */
-      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)] =
-        ModeleRobot_P.SFunction_p30;
-
-      /* Graphical Function 'setServo': '<S1>:4141' */
-      /* Transition: '<S1>:4143' */
-      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)] =
-        ModeleRobot_P.SFunction_p26;
-
-      /* tempo */
-      ModeleRobot_DWork.TempoMot = 0.0;
-    }
+    /* tempo */
+    ModeleRobot_DWork.TempoMot = 0.0;
     break;
   }
 }
@@ -747,7 +964,7 @@ static void Model_enter_internal_STRATEGIE1(void)
       + 1.0;
     ModeleRobot_B.DdeRecalagePosition[1] = 0.0;
     ModeleRobot_B.DdeRecalagePosition[2] = 0.0;
-    ModeleRobot_B.DdeRecalagePosition[3] = ModeleRobot_P.SFunction_p17;
+    ModeleRobot_B.DdeRecalagePosition[3] = ModeleRobot_P.SFunction_p18;
     ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
     break;
 
@@ -771,9 +988,157 @@ static void Model_enter_internal_STRATEGIE1(void)
       + 1.0;
     ModeleRobot_B.DdeRecalagePosition[1] = 0.0;
     ModeleRobot_B.DdeRecalagePosition[2] = 0.0;
-    ModeleRobot_B.DdeRecalagePosition[3] = ModeleRobot_P.SFunction_p17;
+    ModeleRobot_B.DdeRecalagePosition[3] = ModeleRobot_P.SFunction_p18;
     ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
     break;
+  }
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void ModeleRobot_ACTION_HOMOLO_5(void)
+{
+  /* During 'ACTION_HOMOLO_5': '<S1>:4171' */
+  /* Graphical Function 'isFinMouvement': '<S1>:1282' */
+  /* Transition: '<S1>:1285' */
+  ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt +
+    1.0;
+
+  /* Transition: '<S1>:1286' */
+  /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+  if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 / ModeleRobot_P.SFunction_p43)
+       || (ModeleRobot_B.DataTypeConversion != 0.0)) != 0) {
+    /* Transition: '<S1>:4253' */
+    /* Exit 'ACTION_HOMOLO_5': '<S1>:4171' */
+    /* Entry 'ACTION_HOMOLO_18': '<S1>:4251' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_18;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_18;
+
+    /* on avance vers le gobelet */
+    /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
+    /* Transition: '<S1>:3697' */
+    ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
+    ModeleRobot_B.ConsigneX = 13.0;
+    ModeleRobot_B.ConsigneY = -67.0 * ModeleRobot_DWork.invMouv;
+    ModeleRobot_B.ConsigneTeta = -2.68 * ModeleRobot_DWork.invMouv;
+    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+  }
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void ModeleRobot_ACTION_HOMOLO_6(void)
+{
+  /* During 'ACTION_HOMOLO_6': '<S1>:4187' */
+  /* Graphical Function 'isFinMouvement': '<S1>:1282' */
+  /* Transition: '<S1>:1285' */
+  ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt +
+    1.0;
+
+  /* Transition: '<S1>:1286' */
+  /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+  if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 / ModeleRobot_P.SFunction_p43)
+       || (ModeleRobot_B.DataTypeConversion != 0.0)) != 0) {
+    /* Transition: '<S1>:4168' */
+    /* Exit 'ACTION_HOMOLO_6': '<S1>:4187' */
+    /* Entry 'ACTION_HOMOLO_8': '<S1>:4192' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_8;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_8;
+
+    /* on centre le spot */
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
+      ModeleRobot_P.SFunction_p24;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p19 - 1.0)] =
+      ModeleRobot_P.SFunction_p20;
+    ModeleRobot_DWork.TempoMot = 0.0;
+  }
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void ModeleRobot_ACTION_HOMOLO_7(void)
+{
+  /* During 'ACTION_HOMOLO_7': '<S1>:4189' */
+  /* Graphical Function 'isFinMouvement': '<S1>:1282' */
+  /* Transition: '<S1>:1285' */
+  ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt +
+    1.0;
+
+  /* Transition: '<S1>:1286' */
+  /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+  if (((ModeleRobot_DWork.CompteurTimeoutMvt > 2.0 / ModeleRobot_P.SFunction_p43)
+       || (ModeleRobot_B.DataTypeConversion != 0.0)) != 0) {
+    /* Transition: '<S1>:4188' */
+    /* Exit 'ACTION_HOMOLO_7': '<S1>:4189' */
+    /* Entry 'ACTION_HOMOLO_6': '<S1>:4187' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_6;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_6;
+
+    /* on se dirige vers le 1er spot */
+    /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
+    /* Transition: '<S1>:3697' */
+    ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
+    ModeleRobot_B.ConsigneX = 60.0;
+    ModeleRobot_B.ConsigneY = -27.0 * ModeleRobot_DWork.invMouv;
+    ModeleRobot_B.ConsigneTeta = -1.06 * ModeleRobot_DWork.invMouv;
+    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+  }
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void ModeleRobot_ACTION_HOMOLO_8(void)
+{
+  /* During 'ACTION_HOMOLO_8': '<S1>:4192' */
+  if (ModeleRobot_DWork.TempoMot > 1.0 / ModeleRobot_P.SFunction_p43) {
+    /* Transition: '<S1>:4238' */
+    /* Exit 'ACTION_HOMOLO_8': '<S1>:4192' */
+    /* Entry 'ACTION_HOMOLO_17': '<S1>:4249' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_17;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_17;
+
+    /* on centre le spot */
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
+      ModeleRobot_P.SFunction_p26;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p19 - 1.0)] =
+      ModeleRobot_P.SFunction_p22;
+    ModeleRobot_DWork.TempoMot = 0.0;
+  }
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void ModeleRobot_ACTION_HOMOLO_9(void)
+{
+  /* During 'ACTION_HOMOLO_9': '<S1>:4203' */
+  /* Graphical Function 'isFinMouvement': '<S1>:1282' */
+  /* Transition: '<S1>:1285' */
+  ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt +
+    1.0;
+
+  /* Transition: '<S1>:1286' */
+  /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+  if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 / ModeleRobot_P.SFunction_p43)
+       || (ModeleRobot_B.DataTypeConversion != 0.0)) != 0) {
+    /* Transition: '<S1>:4208' */
+    /* Exit 'ACTION_HOMOLO_9': '<S1>:4203' */
+    /* Entry 'ACTION_HOMOLO_11': '<S1>:4207' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_11;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_11;
+
+    /* pas de robot possible dans ce coin, on inhibe la detection d'obstacle */
+    /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
+    /* Transition: '<S1>:3697' */
+    ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
+    ModeleRobot_B.ConsigneX = 36.0;
+    ModeleRobot_B.ConsigneY = 75.0;
+    ModeleRobot_B.ConsigneTeta = -1.57;
+    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
   }
 }
 
@@ -795,7 +1160,7 @@ static void ModeleRobot_DEMO(void)
     /* Transition: '<S1>:1286' */
     /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
     if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          ModeleRobot_P.SFunction_p43) || (ModeleRobot_B.DataTypeConversion !=
           0.0)) != 0) {
       /* Transition: '<S1>:4124' */
       /* Exit 'ACTION_0': '<S1>:4121' */
@@ -826,7 +1191,7 @@ static void ModeleRobot_DEMO(void)
     /* Transition: '<S1>:1286' */
     /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
     if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          ModeleRobot_P.SFunction_p43) || (ModeleRobot_B.DataTypeConversion !=
           0.0)) != 0) {
       /* Transition: '<S1>:4134' */
       /* Exit 'ACTION_10': '<S1>:4131' */
@@ -856,7 +1221,7 @@ static void ModeleRobot_DEMO(void)
     /* Transition: '<S1>:1286' */
     /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
     if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          ModeleRobot_P.SFunction_p43) || (ModeleRobot_B.DataTypeConversion !=
           0.0)) != 0) {
       /* Transition: '<S1>:4136' */
       /* Exit 'ACTION_12': '<S1>:4133' */
@@ -886,7 +1251,7 @@ static void ModeleRobot_DEMO(void)
     /* Transition: '<S1>:1286' */
     /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
     if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          ModeleRobot_P.SFunction_p43) || (ModeleRobot_B.DataTypeConversion !=
           0.0)) != 0) {
       /* Transition: '<S1>:4138' */
       /* Exit 'ACTION_14': '<S1>:4135' */
@@ -916,7 +1281,7 @@ static void ModeleRobot_DEMO(void)
     /* Transition: '<S1>:1286' */
     /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
     if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          ModeleRobot_P.SFunction_p43) || (ModeleRobot_B.DataTypeConversion !=
           0.0)) != 0) {
       /* Transition: '<S1>:4140' */
       /* Exit 'ACTION_16': '<S1>:4137' */
@@ -948,7 +1313,7 @@ static void ModeleRobot_DEMO(void)
     /* Transition: '<S1>:1286' */
     /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
     if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          ModeleRobot_P.SFunction_p43) || (ModeleRobot_B.DataTypeConversion !=
           0.0)) != 0) {
       /* Transition: '<S1>:4126' */
       /* Exit 'ACTION_2': '<S1>:4123' */
@@ -978,7 +1343,7 @@ static void ModeleRobot_DEMO(void)
     /* Transition: '<S1>:1286' */
     /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
     if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          ModeleRobot_P.SFunction_p43) || (ModeleRobot_B.DataTypeConversion !=
           0.0)) != 0) {
       /* Transition: '<S1>:4128' */
       /* Exit 'ACTION_4': '<S1>:4125' */
@@ -1008,7 +1373,7 @@ static void ModeleRobot_DEMO(void)
     /* Transition: '<S1>:1286' */
     /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
     if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          ModeleRobot_P.SFunction_p43) || (ModeleRobot_B.DataTypeConversion !=
           0.0)) != 0) {
       /* Transition: '<S1>:4130' */
       /* Exit 'ACTION_6': '<S1>:4127' */
@@ -1038,7 +1403,7 @@ static void ModeleRobot_DEMO(void)
     /* Transition: '<S1>:1286' */
     /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
     if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          ModeleRobot_P.SFunction_p43) || (ModeleRobot_B.DataTypeConversion !=
           0.0)) != 0) {
       /* Transition: '<S1>:4132' */
       /* Exit 'ACTION_8': '<S1>:4129' */
@@ -1060,7 +1425,7 @@ static void ModeleRobot_DEMO(void)
 
    case ModeleRobot_IN_ACTION_HOMOLO_0:
     /* During 'ACTION_HOMOLO_0': '<S1>:4165' */
-    if (ModeleRobot_DWork.TempoMot > 1.0 / ModeleRobot_P.SFunction_p36) {
+    if (ModeleRobot_DWork.TempoMot > 4.0 / ModeleRobot_P.SFunction_p43) {
       /* Transition: '<S1>:4191' */
       /* Exit 'ACTION_HOMOLO_0': '<S1>:4165' */
       /* Entry 'ACTION_HOMOLO_03': '<S1>:4220' */
@@ -1077,14 +1442,14 @@ static void ModeleRobot_DEMO(void)
       ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
       ModeleRobot_B.ConsigneX = 38.0;
       ModeleRobot_B.ConsigneY = 0.0;
-      ModeleRobot_B.ConsigneTeta = ModeleRobot_P.SFunction_p17;
+      ModeleRobot_B.ConsigneTeta = ModeleRobot_P.SFunction_p18;
       ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
     }
     break;
 
    case ModeleRobot_IN_ACTION_HOMOLO_01:
     /* During 'ACTION_HOMOLO_01': '<S1>:4181' */
-    if (ModeleRobot_DWork.TempoMot > 1.0 / ModeleRobot_P.SFunction_p36) {
+    if (ModeleRobot_DWork.TempoMot > 1.0 / ModeleRobot_P.SFunction_p43) {
       /* Transition: '<S1>:4185' */
       /* Exit 'ACTION_HOMOLO_01': '<S1>:4181' */
       /* Entry 'ACTION_HOMOLO_02': '<S1>:4183' */
@@ -1094,7 +1459,7 @@ static void ModeleRobot_DEMO(void)
       /* on monte l'ascenseur pour etre au dessus d'un spot */
       /* Graphical Function 'setPWM': '<S1>:4112' */
       /* Transition: '<S1>:4114' */
-      ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p13 - 1.0)]
+      ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p14 - 1.0)]
         = 60.0;
 
       /* tempo */
@@ -1104,8 +1469,8 @@ static void ModeleRobot_DEMO(void)
 
    case ModeleRobot_IN_ACTION_HOMOLO_02:
     /* During 'ACTION_HOMOLO_02': '<S1>:4183' */
-    if ((ModeleRobot_U.IN_Ascenseur_pos >= ModeleRobot_P.SFunction_p7) ||
-        (ModeleRobot_DWork.TempoMot > 4.0 / ModeleRobot_P.SFunction_p36)) {
+    if ((ModeleRobot_U.IN_Ascenseur_pos >= ModeleRobot_P.SFunction_p8) ||
+        (ModeleRobot_DWork.TempoMot > 4.0 / ModeleRobot_P.SFunction_p43)) {
       /* Transition: '<S1>:4182' */
       /* Exit 'ACTION_HOMOLO_02': '<S1>:4183' */
       /* Entry 'ACTION_HOMOLO_0': '<S1>:4165' */
@@ -1114,7 +1479,7 @@ static void ModeleRobot_DEMO(void)
 
       /* Graphical Function 'setPWM': '<S1>:4112' */
       /* Transition: '<S1>:4114' */
-      ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p13 - 1.0)]
+      ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p14 - 1.0)]
         = 0.0;
       ModeleRobot_DWork.TempoMot = 0.0;
     }
@@ -1130,16 +1495,16 @@ static void ModeleRobot_DEMO(void)
     /* Transition: '<S1>:1286' */
     /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
     if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 /
-          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          ModeleRobot_P.SFunction_p43) || (ModeleRobot_B.DataTypeConversion !=
           0.0)) != 0) {
       /* Transition: '<S1>:4221' */
       /* Exit 'ACTION_HOMOLO_03': '<S1>:4220' */
       /* Entry 'ACTION_HOMOLO_7': '<S1>:4189' */
       ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_7;
       ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_7;
-      ModeleRobot_DWork.inhibeObstacle = 0.0;
 
-      /* on se tourne vers les spots */
+      /* inhibeObstacle=0;
+         on se tourne vers les spots */
       /* Graphical Function 'Mouvement_Angle': '<S1>:1354' */
       /* Transition: '<S1>:1356' */
       ModeleRobot_B.DdeMvtDistanceAngle = ModeleRobot_B.DdeMvtDistanceAngle +
@@ -1147,10 +1512,112 @@ static void ModeleRobot_DEMO(void)
       ModeleRobot_B.ConsigneDistance = 0.0;
       ModeleRobot_B.ConsigneTeta = -0.99 * ModeleRobot_DWork.invMouv;
       ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+
+      /* Graphical Function 'setServo': '<S1>:4141' */
+      /* Transition: '<S1>:4143' */
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
+        ModeleRobot_P.SFunction_p26;
+
+      /* Graphical Function 'setServo': '<S1>:4141' */
+      /* Transition: '<S1>:4143' */
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p19 - 1.0)] =
+        ModeleRobot_P.SFunction_p22;
     }
     break;
 
-   case ModeleRobot_IN_ACTION_HOMOLO_04:
+   case ModeleRobot_IN_ACTION_HOMOLO_05:
+    /* During 'ACTION_HOMOLO_05': '<S1>:4239' */
+    if ((ModeleRobot_U.IN_Ascenseur_pos <= ModeleRobot_P.SFunction_p9) ||
+        (ModeleRobot_DWork.TempoMot > 4.0 / ModeleRobot_P.SFunction_p43)) {
+      /* Transition: '<S1>:4242' */
+      /* Exit 'ACTION_HOMOLO_05': '<S1>:4239' */
+      /* Entry 'ACTION_HOMOLO_16': '<S1>:4243' */
+      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_16;
+      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_16;
+
+      /* on relache la balle */
+      /* Graphical Function 'setServo': '<S1>:4141' */
+      /* Transition: '<S1>:4143' */
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p33 - 1.0)] =
+        ModeleRobot_P.SFunction_p36;
+
+      /* Graphical Function 'setServo': '<S1>:4141' */
+      /* Transition: '<S1>:4143' */
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
+        ModeleRobot_P.SFunction_p30;
+
+      /* Graphical Function 'setPWM': '<S1>:4112' */
+      /* Transition: '<S1>:4114' */
+      ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p14 - 1.0)]
+        = 0.0;
+    }
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_06:
+    /* During 'ACTION_HOMOLO_06': '<S1>:4254' */
+    if (ModeleRobot_DWork.TempoMot > 1.0 / ModeleRobot_P.SFunction_p43) {
+      /* Transition: '<S1>:4256' */
+      /* Exit 'ACTION_HOMOLO_06': '<S1>:4254' */
+      /* Entry 'ACTION_HOMOLO_19': '<S1>:4255' */
+      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_19;
+      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_19;
+
+      /* inhibeObstacle=0;
+         on va vers la zone de départ */
+      /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
+      /* Transition: '<S1>:3697' */
+      ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
+      ModeleRobot_B.ConsigneX = 67.0;
+      ModeleRobot_B.ConsigneY = 0.0 * ModeleRobot_DWork.invMouv;
+      ModeleRobot_B.ConsigneTeta = 3.14 * ModeleRobot_DWork.invMouv;
+      ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+    }
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_07:
+    /* During 'ACTION_HOMOLO_07': '<S1>:4261' */
+    if (ModeleRobot_DWork.TempoMot > 1.0 / ModeleRobot_P.SFunction_p43) {
+      /* Transition: '<S1>:4264' */
+      /* Exit 'ACTION_HOMOLO_07': '<S1>:4261' */
+      /* Entry 'ACTION_HOMOLO_21': '<S1>:4262' */
+      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_21;
+      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_21;
+
+      /* on recule pour déposer le gobelet */
+      ModeleRobot_DWork.inhibeObstacle = 0.0;
+
+      /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
+      /* Transition: '<S1>:3697' */
+      ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
+      ModeleRobot_B.ConsigneX = 67.0;
+      ModeleRobot_B.ConsigneY = 0.0 * ModeleRobot_DWork.invMouv;
+      ModeleRobot_B.ConsigneTeta = 3.14 * ModeleRobot_DWork.invMouv;
+      ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+    }
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_08:
+    /* During 'ACTION_HOMOLO_08': '<S1>:4265' */
+    if ((ModeleRobot_U.IN_Ascenseur_pos >= ModeleRobot_P.SFunction_p8) ||
+        (ModeleRobot_DWork.TempoMot > 4.0 / ModeleRobot_P.SFunction_p43)) {
+      /* Transition: '<S1>:4267' */
+      /* Exit 'ACTION_HOMOLO_08': '<S1>:4265' */
+      /* Entry 'ACTION_HOMOLO_22': '<S1>:4266' */
+      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_22;
+      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_22;
+
+      /* on rentre les centreurs */
+      /* Graphical Function 'setPWM': '<S1>:4112' */
+      /* Transition: '<S1>:4114' */
+      ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p14 - 1.0)]
+        = 0.0;
+
+      /* Graphical Function 'setServo': '<S1>:4141' */
+      /* Transition: '<S1>:4143' */
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p19 - 1.0)] =
+        ModeleRobot_P.SFunction_p21;
+      ModeleRobot_DWork.TempoMot = 0.0;
+    }
     break;
 
    case ModeleRobot_IN_ACTION_HOMOLO_10:
@@ -1163,7 +1630,7 @@ static void ModeleRobot_DEMO(void)
     /* Transition: '<S1>:1286' */
     /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
     if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          ModeleRobot_P.SFunction_p43) || (ModeleRobot_B.DataTypeConversion !=
           0.0)) != 0) {
       /* Transition: '<S1>:4205' */
       /* Exit 'ACTION_HOMOLO_10': '<S1>:4204' */
@@ -1192,7 +1659,7 @@ static void ModeleRobot_DEMO(void)
     /* Transition: '<S1>:1286' */
     /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
     if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          ModeleRobot_P.SFunction_p43) || (ModeleRobot_B.DataTypeConversion !=
           0.0)) != 0) {
       /* Transition: '<S1>:4211' */
       /* Exit 'ACTION_HOMOLO_11': '<S1>:4207' */
@@ -1205,14 +1672,14 @@ static void ModeleRobot_DEMO(void)
 
       /* Graphical Function 'setServo': '<S1>:4141' */
       /* Transition: '<S1>:4143' */
-      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p32 - 1.0)] =
-        ModeleRobot_P.SFunction_p34;
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p39 - 1.0)] =
+        ModeleRobot_P.SFunction_p41;
     }
     break;
 
    case ModeleRobot_IN_ACTION_HOMOLO_12:
     /* During 'ACTION_HOMOLO_12': '<S1>:4210' */
-    if (ModeleRobot_DWork.TempoMot > 1.0 / ModeleRobot_P.SFunction_p36) {
+    if (ModeleRobot_DWork.TempoMot > 1.0 / ModeleRobot_P.SFunction_p43) {
       /* Transition: '<S1>:4214' */
       /* Exit 'ACTION_HOMOLO_12': '<S1>:4210' */
       /* Entry 'ACTION_HOMOLO_13': '<S1>:4213' */
@@ -1224,14 +1691,14 @@ static void ModeleRobot_DEMO(void)
 
       /* Graphical Function 'setPWM': '<S1>:4112' */
       /* Transition: '<S1>:4114' */
-      ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p16 - 1.0)]
+      ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p17 - 1.0)]
         = 100.0;
     }
     break;
 
    case ModeleRobot_IN_ACTION_HOMOLO_13:
     /* During 'ACTION_HOMOLO_13': '<S1>:4213' */
-    if (ModeleRobot_DWork.TempoMot > 2.0 / ModeleRobot_P.SFunction_p36) {
+    if (ModeleRobot_DWork.TempoMot > 2.0 / ModeleRobot_P.SFunction_p43) {
       /* Transition: '<S1>:4216' */
       /* Exit 'ACTION_HOMOLO_13': '<S1>:4213' */
       /* Entry 'ACTION_HOMOLO_14': '<S1>:4215' */
@@ -1241,180 +1708,54 @@ static void ModeleRobot_DEMO(void)
       /* on arrete de souffler et on rentre les recolteurs */
       /* Graphical Function 'setPWM': '<S1>:4112' */
       /* Transition: '<S1>:4114' */
-      ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p16 - 1.0)]
+      ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p17 - 1.0)]
         = 0.0;
 
       /* Graphical Function 'setServo': '<S1>:4141' */
       /* Transition: '<S1>:4143' */
-      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p32 - 1.0)] =
-        ModeleRobot_P.SFunction_p33;
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p39 - 1.0)] =
+        ModeleRobot_P.SFunction_p40;
     }
     break;
 
    case ModeleRobot_IN_ACTION_HOMOLO_14:
     break;
 
-   case ModeleRobot_IN_ACTION_HOMOLO_2:
-    /* During 'ACTION_HOMOLO_2': '<S1>:4167' */
-    /* Graphical Function 'isFinMouvement': '<S1>:1282' */
-    /* Transition: '<S1>:1285' */
-    ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt
-      + 1.0;
+   case ModeleRobot_IN_ACTION_HOMOLO_15:
+    /* During 'ACTION_HOMOLO_15': '<S1>:4237' */
+    if (ModeleRobot_DWork.TempoMot > 0.3 / ModeleRobot_P.SFunction_p43) {
+      /* Transition: '<S1>:4196' */
+      /* Exit 'ACTION_HOMOLO_15': '<S1>:4237' */
+      /* Entry 'ACTION_HOMOLO_05': '<S1>:4239' */
+      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_05;
+      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_05;
 
-    /* Transition: '<S1>:1286' */
-    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
-    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
-          0.0)) != 0) {
-      /* Transition: '<S1>:4170' */
-      /* Exit 'ACTION_HOMOLO_2': '<S1>:4167' */
-      /* Graphical Function 'setServo': '<S1>:4141' */
-      /* Transition: '<S1>:4143' */
-      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)] =
-        ModeleRobot_P.SFunction_p31;
+      /* on descend l'ascenseur pour emprisonner spot + balle */
+      /* Graphical Function 'setPWM': '<S1>:4112' */
+      /* Transition: '<S1>:4114' */
+      ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p14 - 1.0)]
+        = -60.0;
 
       /* Graphical Function 'setServo': '<S1>:4141' */
       /* Transition: '<S1>:4143' */
-      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)] =
-        ModeleRobot_P.SFunction_p27;
-
-      /* Entry 'ACTION_HOMOLO_4': '<S1>:4169' */
-      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_4;
-      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_4;
-
-      /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
-      /* Transition: '<S1>:3697' */
-      ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
-      ModeleRobot_B.ConsigneX = 38.0;
-      ModeleRobot_B.ConsigneY = 0.0;
-      ModeleRobot_B.ConsigneTeta = 0.0;
-      ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
-    }
-    break;
-
-   case ModeleRobot_IN_ACTION_HOMOLO_4:
-    /* During 'ACTION_HOMOLO_4': '<S1>:4169' */
-    /* Graphical Function 'isFinMouvement': '<S1>:1282' */
-    /* Transition: '<S1>:1285' */
-    ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt
-      + 1.0;
-
-    /* Transition: '<S1>:1286' */
-    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
-    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
-          0.0)) != 0) {
-      /* Transition: '<S1>:4173' */
-      /* Exit 'ACTION_HOMOLO_4': '<S1>:4169' */
-      /* Entry 'ACTION_HOMOLO_5': '<S1>:4171' */
-      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_5;
-      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_5;
-
-      /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
-      /* Transition: '<S1>:3697' */
-      ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
-      ModeleRobot_B.ConsigneX = 2.0;
-      ModeleRobot_B.ConsigneY = 0.0;
-      ModeleRobot_B.ConsigneTeta = 0.0;
-      ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
-    }
-    break;
-
-   case ModeleRobot_IN_ACTION_HOMOLO_5:
-    /* During 'ACTION_HOMOLO_5': '<S1>:4171' */
-    /* Graphical Function 'isFinMouvement': '<S1>:1282' */
-    /* Transition: '<S1>:1285' */
-    ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt
-      + 1.0;
-
-    /* Transition: '<S1>:1286' */
-    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
-    if ((((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-           ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
-           0.0)) != 0) && (ModeleRobot_P.SFunction_p5 == 0)) {
-      /* Transition: '<S1>:4122' */
-      /* Exit 'ACTION_HOMOLO_5': '<S1>:4171' */
-      /* Entry 'ACTION_0': '<S1>:4121' */
-      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_0;
-      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_0;
-
-      /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
-      /* Transition: '<S1>:3697' */
-      ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
-      ModeleRobot_B.ConsigneX = 46.00;
-      ModeleRobot_B.ConsigneY = 0.00;
-      ModeleRobot_B.ConsigneTeta = 0.0000;
-      ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
-    }
-    break;
-
-   case ModeleRobot_IN_ACTION_HOMOLO_6:
-    /* During 'ACTION_HOMOLO_6': '<S1>:4187' */
-    /* Graphical Function 'isFinMouvement': '<S1>:1282' */
-    /* Transition: '<S1>:1285' */
-    ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt
-      + 1.0;
-
-    /* Transition: '<S1>:1286' */
-    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
-    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 /
-          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
-          0.0)) != 0) {
-      /* Transition: '<S1>:4168' */
-      /* Exit 'ACTION_HOMOLO_6': '<S1>:4187' */
-      /* Entry 'ACTION_HOMOLO_8': '<S1>:4192' */
-      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_8;
-      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_8;
-
-      /* on relache la balle
-         TODO: rechercher une position intermédiaire servo pour retenir balle + spot */
-      /* Graphical Function 'setServo': '<S1>:4141' */
-      /* Transition: '<S1>:4143' */
-      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)] =
-        ModeleRobot_P.SFunction_p29;
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p33 - 1.0)] =
+        ModeleRobot_P.SFunction_p34;
 
       /* Graphical Function 'setServo': '<S1>:4141' */
       /* Transition: '<S1>:4143' */
-      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)] =
-        ModeleRobot_P.SFunction_p25;
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
+        ModeleRobot_P.SFunction_p28;
+
+      /* tempo */
       ModeleRobot_DWork.TempoMot = 0.0;
     }
     break;
 
-   case ModeleRobot_IN_ACTION_HOMOLO_7:
-    /* During 'ACTION_HOMOLO_7': '<S1>:4189' */
-    /* Graphical Function 'isFinMouvement': '<S1>:1282' */
-    /* Transition: '<S1>:1285' */
-    ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt
-      + 1.0;
-
-    /* Transition: '<S1>:1286' */
-    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
-    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 2.0 /
-          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
-          0.0)) != 0) {
-      /* Transition: '<S1>:4188' */
-      /* Exit 'ACTION_HOMOLO_7': '<S1>:4189' */
-      /* Entry 'ACTION_HOMOLO_6': '<S1>:4187' */
-      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_6;
-      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_6;
-
-      /* on se dirige vers le 1er spot */
-      /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
-      /* Transition: '<S1>:3697' */
-      ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
-      ModeleRobot_B.ConsigneX = 60.0;
-      ModeleRobot_B.ConsigneY = -27.0 * ModeleRobot_DWork.invMouv;
-      ModeleRobot_B.ConsigneTeta = -1.06 * ModeleRobot_DWork.invMouv;
-      ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
-    }
-    break;
-
-   case ModeleRobot_IN_ACTION_HOMOLO_8:
-    /* During 'ACTION_HOMOLO_8': '<S1>:4192' */
-    if (ModeleRobot_DWork.TempoMot > 2.0 / ModeleRobot_P.SFunction_p36) {
-      /* Transition: '<S1>:4196' */
-      /* Exit 'ACTION_HOMOLO_8': '<S1>:4192' */
+   case ModeleRobot_IN_ACTION_HOMOLO_16:
+    /* During 'ACTION_HOMOLO_16': '<S1>:4243' */
+    if (ModeleRobot_DWork.TempoMot > 0.5 / ModeleRobot_P.SFunction_p43) {
+      /* Transition: '<S1>:4236' */
+      /* Exit 'ACTION_HOMOLO_16': '<S1>:4243' */
       /* Entry 'ACTION_HOMOLO_2': '<S1>:4167' */
       ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_2;
       ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_2;
@@ -1430,8 +1771,31 @@ static void ModeleRobot_DEMO(void)
     }
     break;
 
-   case ModeleRobot_IN_ACTION_HOMOLO_9:
-    /* During 'ACTION_HOMOLO_9': '<S1>:4203' */
+   case ModeleRobot_IN_ACTION_HOMOLO_17:
+    /* During 'ACTION_HOMOLO_17': '<S1>:4249' */
+    if (ModeleRobot_DWork.TempoMot > 1.0 / ModeleRobot_P.SFunction_p43) {
+      /* Transition: '<S1>:4250' */
+      /* Exit 'ACTION_HOMOLO_17': '<S1>:4249' */
+      /* Entry 'ACTION_HOMOLO_15': '<S1>:4237' */
+      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_15;
+      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_15;
+
+      /* on relache la balle */
+      /* Graphical Function 'setServo': '<S1>:4141' */
+      /* Transition: '<S1>:4143' */
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p33 - 1.0)] =
+        ModeleRobot_P.SFunction_p36;
+
+      /* Graphical Function 'setServo': '<S1>:4141' */
+      /* Transition: '<S1>:4143' */
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
+        ModeleRobot_P.SFunction_p30;
+      ModeleRobot_DWork.TempoMot = 0.0;
+    }
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_18:
+    /* During 'ACTION_HOMOLO_18': '<S1>:4251' */
     /* Graphical Function 'isFinMouvement': '<S1>:1282' */
     /* Transition: '<S1>:1285' */
     ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt
@@ -1439,24 +1803,235 @@ static void ModeleRobot_DEMO(void)
 
     /* Transition: '<S1>:1286' */
     /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
-    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 /
+          ModeleRobot_P.SFunction_p43) || (ModeleRobot_B.DataTypeConversion !=
           0.0)) != 0) {
-      /* Transition: '<S1>:4208' */
-      /* Exit 'ACTION_HOMOLO_9': '<S1>:4203' */
-      /* Entry 'ACTION_HOMOLO_11': '<S1>:4207' */
-      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_11;
-      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_11;
+      /* Transition: '<S1>:4252' */
+      /* Exit 'ACTION_HOMOLO_18': '<S1>:4251' */
+      /* Entry 'ACTION_HOMOLO_06': '<S1>:4254' */
+      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_06;
+      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_06;
 
-      /* pas de robot possible dans ce coin, on inhibe la detection d'obstacle */
+      /* on prend le gobelet */
+      /* Graphical Function 'setServo': '<S1>:4141' */
+      /* Transition: '<S1>:4143' */
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p33 - 1.0)] =
+        ModeleRobot_P.SFunction_p38;
+
+      /* Graphical Function 'setServo': '<S1>:4141' */
+      /* Transition: '<S1>:4143' */
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
+        ModeleRobot_P.SFunction_p32;
+
+      /* tempo */
+      ModeleRobot_DWork.TempoMot = 0.0;
+    }
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_19:
+    /* During 'ACTION_HOMOLO_19': '<S1>:4255' */
+    /* Graphical Function 'isFinMouvement': '<S1>:1282' */
+    /* Transition: '<S1>:1285' */
+    ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt
+      + 1.0;
+
+    /* Transition: '<S1>:1286' */
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 /
+          ModeleRobot_P.SFunction_p43) || (ModeleRobot_B.DataTypeConversion !=
+          0.0)) != 0) {
+      /* Transition: '<S1>:4260' */
+      /* Exit 'ACTION_HOMOLO_19': '<S1>:4255' */
+      /* Entry 'ACTION_HOMOLO_20': '<S1>:4258' */
+      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_20;
+      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_20;
+
+      /* on avance pour déposer le gobelet */
       /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
       /* Transition: '<S1>:3697' */
       ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
-      ModeleRobot_B.ConsigneX = 36.0;
-      ModeleRobot_B.ConsigneY = 75.0;
-      ModeleRobot_B.ConsigneTeta = -1.57;
+      ModeleRobot_B.ConsigneX = 39.0;
+      ModeleRobot_B.ConsigneY = 0.0 * ModeleRobot_DWork.invMouv;
+      ModeleRobot_B.ConsigneTeta = 3.14 * ModeleRobot_DWork.invMouv;
       ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
     }
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_2:
+    /* During 'ACTION_HOMOLO_2': '<S1>:4167' */
+    /* Graphical Function 'isFinMouvement': '<S1>:1282' */
+    /* Transition: '<S1>:1285' */
+    ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt
+      + 1.0;
+
+    /* Transition: '<S1>:1286' */
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 /
+          ModeleRobot_P.SFunction_p43) || (ModeleRobot_B.DataTypeConversion !=
+          0.0)) != 0) {
+      /* Transition: '<S1>:4170' */
+      /* Exit 'ACTION_HOMOLO_2': '<S1>:4167' */
+      /* Graphical Function 'setServo': '<S1>:4141' */
+      /* Transition: '<S1>:4143' */
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p33 - 1.0)] =
+        ModeleRobot_P.SFunction_p37;
+
+      /* Graphical Function 'setServo': '<S1>:4141' */
+      /* Transition: '<S1>:4143' */
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
+        ModeleRobot_P.SFunction_p31;
+
+      /* Entry 'ACTION_HOMOLO_4': '<S1>:4169' */
+      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_4;
+      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_4;
+
+      /* on recule pour laisser les spots */
+      /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
+      /* Transition: '<S1>:3697' */
+      ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
+      ModeleRobot_B.ConsigneX = 67.0;
+      ModeleRobot_B.ConsigneY = -45.0 * ModeleRobot_DWork.invMouv;
+      ModeleRobot_B.ConsigneTeta = -0.99 * ModeleRobot_DWork.invMouv;
+      ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+    }
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_20:
+    /* During 'ACTION_HOMOLO_20': '<S1>:4258' */
+    /* Graphical Function 'isFinMouvement': '<S1>:1282' */
+    /* Transition: '<S1>:1285' */
+    ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt
+      + 1.0;
+
+    /* Transition: '<S1>:1286' */
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 /
+          ModeleRobot_P.SFunction_p43) || (ModeleRobot_B.DataTypeConversion !=
+          0.0)) != 0) {
+      /* Transition: '<S1>:4259' */
+      /* Exit 'ACTION_HOMOLO_20': '<S1>:4258' */
+      /* Entry 'ACTION_HOMOLO_07': '<S1>:4261' */
+      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_07;
+      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_07;
+
+      /* on lache le gobelet */
+      /* Graphical Function 'setServo': '<S1>:4141' */
+      /* Transition: '<S1>:4143' */
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p33 - 1.0)] =
+        ModeleRobot_P.SFunction_p37;
+
+      /* Graphical Function 'setServo': '<S1>:4141' */
+      /* Transition: '<S1>:4143' */
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
+        ModeleRobot_P.SFunction_p31;
+
+      /* tempo */
+      ModeleRobot_DWork.TempoMot = 0.0;
+    }
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_21:
+    /* During 'ACTION_HOMOLO_21': '<S1>:4262' */
+    /* Transition: '<S1>:4268' */
+    /* Exit 'ACTION_HOMOLO_21': '<S1>:4262' */
+    /* Entry 'ACTION_HOMOLO_08': '<S1>:4265' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_08;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_08;
+
+    /* on remonte les pinces */
+    /* Graphical Function 'setPWM': '<S1>:4112' */
+    /* Transition: '<S1>:4114' */
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p14 - 1.0)] =
+      60.0;
+
+    /* tempo */
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_22:
+    /* During 'ACTION_HOMOLO_22': '<S1>:4266' */
+    if (ModeleRobot_DWork.TempoMot > 0.5 / ModeleRobot_P.SFunction_p43) {
+      /* Transition: '<S1>:4270' */
+      /* Exit 'ACTION_HOMOLO_22': '<S1>:4266' */
+      /* Entry 'ACTION_HOMOLO_23': '<S1>:4269' */
+      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_23;
+      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_23;
+
+      /* on rentre les centreurs */
+      /* Graphical Function 'setServo': '<S1>:4141' */
+      /* Transition: '<S1>:4143' */
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
+        ModeleRobot_P.SFunction_p25;
+      ModeleRobot_DWork.TempoMot = 0.0;
+    }
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_23:
+    /* During 'ACTION_HOMOLO_23': '<S1>:4269' */
+    if (ModeleRobot_P.SFunction_p6 == 0) {
+      /* Transition: '<S1>:4122' */
+      /* Exit 'ACTION_HOMOLO_23': '<S1>:4269' */
+      /* Entry 'ACTION_0': '<S1>:4121' */
+      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_0;
+      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_0;
+
+      /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
+      /* Transition: '<S1>:3697' */
+      ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
+      ModeleRobot_B.ConsigneX = 46.00;
+      ModeleRobot_B.ConsigneY = 0.00;
+      ModeleRobot_B.ConsigneTeta = 0.0000;
+      ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+    }
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_4:
+    /* During 'ACTION_HOMOLO_4': '<S1>:4169' */
+    /* Graphical Function 'isFinMouvement': '<S1>:1282' */
+    /* Transition: '<S1>:1285' */
+    ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt
+      + 1.0;
+
+    /* Transition: '<S1>:1286' */
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 /
+          ModeleRobot_P.SFunction_p43) || (ModeleRobot_B.DataTypeConversion !=
+          0.0)) != 0) {
+      /* Transition: '<S1>:4173' */
+      /* Exit 'ACTION_HOMOLO_4': '<S1>:4169' */
+      /* Entry 'ACTION_HOMOLO_5': '<S1>:4171' */
+      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_5;
+      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_5;
+
+      /* on se tourne vers le gobelet */
+      /* Graphical Function 'Mouvement_Angle': '<S1>:1354' */
+      /* Transition: '<S1>:1356' */
+      ModeleRobot_B.DdeMvtDistanceAngle = ModeleRobot_B.DdeMvtDistanceAngle +
+        1.0;
+      ModeleRobot_B.ConsigneDistance = 0.0;
+      ModeleRobot_B.ConsigneTeta = -2.68 * ModeleRobot_DWork.invMouv;
+      ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+    }
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_5:
+    ModeleRobot_ACTION_HOMOLO_5();
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_6:
+    ModeleRobot_ACTION_HOMOLO_6();
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_7:
+    ModeleRobot_ACTION_HOMOLO_7();
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_8:
+    ModeleRobot_ACTION_HOMOLO_8();
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_9:
+    ModeleRobot_ACTION_HOMOLO_9();
     break;
 
    default:
@@ -1578,7 +2153,7 @@ void ModeleRobot_COMPORTEMENT(void)
          case Modele_IN_APPRENTISSAGE_KMAR_01:
           /* During 'APPRENTISSAGE_KMAR_01': '<S1>:1010' */
           if ((ModeleRobot_U.IN_FinCourseAscenseur == 1) ||
-              (ModeleRobot_DWork.TempoInit > 5.0 / ModeleRobot_P.SFunction_p36))
+              (ModeleRobot_DWork.TempoInit > 5.0 / ModeleRobot_P.SFunction_p43))
           {
             /* Transition: '<S1>:3688' */
             /* Exit 'APPRENTISSAGE_KMAR_01': '<S1>:1010' */
@@ -1589,7 +2164,7 @@ void ModeleRobot_COMPORTEMENT(void)
             /* on est en butee on arrete immediatement l'ascenseur */
             /* Graphical Function 'setPWM': '<S1>:4112' */
             /* Transition: '<S1>:4114' */
-            ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p13 -
+            ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p14 -
               1.0)] = 0.0;
 
             /* On fait le reset du codeur ascenseur */
@@ -1602,7 +2177,7 @@ void ModeleRobot_COMPORTEMENT(void)
 
          case Modele_IN_APPRENTISSAGE_KMAR_02:
           /* During 'APPRENTISSAGE_KMAR_02': '<S1>:3687' */
-          if (ModeleRobot_DWork.TempoInit > 1.0 / ModeleRobot_P.SFunction_p36) {
+          if (ModeleRobot_DWork.TempoInit > 1.0 / ModeleRobot_P.SFunction_p43) {
             /* Transition: '<S1>:3691' */
             /* Exit 'APPRENTISSAGE_KMAR_02': '<S1>:3687' */
             /* Entry 'APPRENTISSAGE_KMAR_03': '<S1>:3689' */
@@ -1612,7 +2187,7 @@ void ModeleRobot_COMPORTEMENT(void)
             /* on remonte l'ascenseur jusqu'a la position d'un feu en haut de la torche */
             /* Graphical Function 'setPWM': '<S1>:4112' */
             /* Transition: '<S1>:4114' */
-            ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p13 -
+            ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p14 -
               1.0)] = 60.0;
 
             /* On relache le reset du codeur ascenseur */
@@ -1627,8 +2202,8 @@ void ModeleRobot_COMPORTEMENT(void)
 
          case Modele_IN_APPRENTISSAGE_KMAR_03:
           /* During 'APPRENTISSAGE_KMAR_03': '<S1>:3689' */
-          if ((ModeleRobot_U.IN_Ascenseur_pos >= ModeleRobot_P.SFunction_p8) ||
-              (ModeleRobot_DWork.TempoInit > 4.0 / ModeleRobot_P.SFunction_p36))
+          if ((ModeleRobot_U.IN_Ascenseur_pos >= ModeleRobot_P.SFunction_p9) ||
+              (ModeleRobot_DWork.TempoInit > 4.0 / ModeleRobot_P.SFunction_p43))
           {
             /* Transition: '<S1>:3693' */
             /* Exit 'APPRENTISSAGE_KMAR_03': '<S1>:3689' */
@@ -1639,7 +2214,7 @@ void ModeleRobot_COMPORTEMENT(void)
             /* on arrete l'ascenseur */
             /* Graphical Function 'setPWM': '<S1>:4112' */
             /* Transition: '<S1>:4114' */
-            ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p13 -
+            ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p14 -
               1.0)] = 0.0;
           } else {
             ModeleRobot_DWork.TempoInit = ModeleRobot_DWork.TempoInit + 1.0;
@@ -1651,7 +2226,7 @@ void ModeleRobot_COMPORTEMENT(void)
 
          case ModeleRobot_IN_REPOS_SERVOS:
           /* During 'REPOS_SERVOS': '<S1>:1009' */
-          if (ModeleRobot_DWork.TempoInit > 2.0 / ModeleRobot_P.SFunction_p36) {
+          if (ModeleRobot_DWork.TempoInit > 2.0 / ModeleRobot_P.SFunction_p43) {
             /* Transition: '<S1>:1008' */
             /* Exit 'REPOS_SERVOS': '<S1>:1009' */
             /* Entry 'APPRENTISSAGE_KMAR_01': '<S1>:1010' */
@@ -1661,7 +2236,7 @@ void ModeleRobot_COMPORTEMENT(void)
             /* les pinces sont rangees on peut descendre l'ascenseur */
             /* Graphical Function 'setPWM': '<S1>:4112' */
             /* Transition: '<S1>:4114' */
-            ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p13 -
+            ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p14 -
               1.0)] = -60.0;
 
             /* meme si on a un capteur de fin de course, par securite on met une tempo */
@@ -1680,7 +2255,7 @@ void ModeleRobot_COMPORTEMENT(void)
         switch (ModeleRobot_DWork.is_CHOIX_EQUIPE) {
          case ModeleRobot_IN_EQUIPE_1:
           /* During 'EQUIPE_1': '<S1>:1016' */
-          if (ModeleRobot_U.IN_CouleurEquipe == ModeleRobot_P.SFunction_p3) {
+          if (ModeleRobot_U.IN_CouleurEquipe == ModeleRobot_P.SFunction_p4) {
             /* Transition: '<S1>:1013' */
             /* Exit 'EQUIPE_1': '<S1>:1016' */
             /* Entry 'EQUIPE_2': '<S1>:1015' */
@@ -1693,7 +2268,7 @@ void ModeleRobot_COMPORTEMENT(void)
 
          case ModeleRobot_IN_EQUIPE_2:
           /* During 'EQUIPE_2': '<S1>:1015' */
-          if (ModeleRobot_U.IN_CouleurEquipe == ModeleRobot_P.SFunction_p4) {
+          if (ModeleRobot_U.IN_CouleurEquipe == ModeleRobot_P.SFunction_p5) {
             /* Transition: '<S1>:1014' */
             /* Exit 'EQUIPE_2': '<S1>:1015' */
             /* Entry 'EQUIPE_1': '<S1>:1016' */
@@ -1737,7 +2312,7 @@ void ModeleRobot_COMPORTEMENT(void)
          case ModeleRobot_IN_INIT1:
           /* During 'INIT1': '<S1>:3674' */
           if (ModeleRobot_DWork.TempoTestActionneurs > 2.0 /
-              ModeleRobot_P.SFunction_p36) {
+              ModeleRobot_P.SFunction_p43) {
             /* Transition: '<S1>:1418' */
             /* Exit 'INIT1': '<S1>:3674' */
             /* Entry 'TEST_ACT_1': '<S1>:1417' */
@@ -1747,15 +2322,15 @@ void ModeleRobot_COMPORTEMENT(void)
 
             /* Graphical Function 'setServo': '<S1>:4141' */
             /* Transition: '<S1>:4143' */
-            ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 -
-              1.0)] = ModeleRobot_P.SFunction_p30;
+            ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p33 -
+              1.0)] = ModeleRobot_P.SFunction_p35;
           }
           break;
 
          case ModeleRobot_IN_TEST_ACT_1:
           /* During 'TEST_ACT_1': '<S1>:1417' */
           if (ModeleRobot_DWork.TempoTestActionneurs > 2.0 /
-              ModeleRobot_P.SFunction_p36) {
+              ModeleRobot_P.SFunction_p43) {
             /* Transition: '<S1>:1446' */
             /* Exit 'TEST_ACT_1': '<S1>:1417' */
             /* Entry 'TEST_ACT_2': '<S1>:3798' */
@@ -1765,20 +2340,20 @@ void ModeleRobot_COMPORTEMENT(void)
 
             /* Graphical Function 'setServo': '<S1>:4141' */
             /* Transition: '<S1>:4143' */
-            ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 -
-              1.0)] = ModeleRobot_P.SFunction_p31;
+            ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p33 -
+              1.0)] = ModeleRobot_P.SFunction_p37;
 
             /* Graphical Function 'setServo': '<S1>:4141' */
             /* Transition: '<S1>:4143' */
-            ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 -
-              1.0)] = ModeleRobot_P.SFunction_p26;
+            ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 -
+              1.0)] = ModeleRobot_P.SFunction_p29;
           }
           break;
 
          case ModeleRobot_IN_TEST_ACT_2:
           /* During 'TEST_ACT_2': '<S1>:3798' */
           if (ModeleRobot_DWork.TempoTestActionneurs > 2.0 /
-              ModeleRobot_P.SFunction_p36) {
+              ModeleRobot_P.SFunction_p43) {
             /* Transition: '<S1>:3803' */
             /* Exit 'TEST_ACT_2': '<S1>:3798' */
             /* Entry 'TEST_ACT_3': '<S1>:4151' */
@@ -1788,15 +2363,15 @@ void ModeleRobot_COMPORTEMENT(void)
 
             /* Graphical Function 'setServo': '<S1>:4141' */
             /* Transition: '<S1>:4143' */
-            ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 -
-              1.0)] = ModeleRobot_P.SFunction_p27;
+            ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 -
+              1.0)] = ModeleRobot_P.SFunction_p31;
           }
           break;
 
          case ModeleRobot_IN_TEST_ACT_3:
           /* During 'TEST_ACT_3': '<S1>:4151' */
           if (ModeleRobot_DWork.TempoTestActionneurs > 2.0 /
-              ModeleRobot_P.SFunction_p36) {
+              ModeleRobot_P.SFunction_p43) {
             /* Transition: '<S1>:4152' */
             /* Exit 'TEST_ACT_3': '<S1>:4151' */
             /* Entry 'TEST_ACT_FIN': '<S1>:1515' */
@@ -1850,7 +2425,7 @@ void ModeleRobot_COMPORTEMENT(void)
 
        case ModeleRobot_IN_FIN_MATCH_02:
         /* During 'FIN_MATCH_02': '<S1>:1263' */
-        if (ModeleRobot_DWork.TempoImage > 1.0 / ModeleRobot_P.SFunction_p36) {
+        if (ModeleRobot_DWork.TempoImage > 1.0 / ModeleRobot_P.SFunction_p43) {
           /* Transition: '<S1>:3781' */
           /* Exit 'FIN_MATCH_02': '<S1>:1263' */
           /* Entry 'FIN_MATCH_03': '<S1>:3777' */
@@ -1871,7 +2446,7 @@ void ModeleRobot_COMPORTEMENT(void)
 
        case ModeleRobot_IN_FIN_MATCH_03:
         /* During 'FIN_MATCH_03': '<S1>:3777' */
-        if (ModeleRobot_DWork.TempoImage > 1.0 / ModeleRobot_P.SFunction_p36) {
+        if (ModeleRobot_DWork.TempoImage > 1.0 / ModeleRobot_P.SFunction_p43) {
           /* Transition: '<S1>:3782' */
           /* Exit 'FIN_MATCH_03': '<S1>:3777' */
           /* Entry 'FIN_MATCH_04': '<S1>:3778' */
@@ -1892,7 +2467,7 @@ void ModeleRobot_COMPORTEMENT(void)
 
        case ModeleRobot_IN_FIN_MATCH_04:
         /* During 'FIN_MATCH_04': '<S1>:3778' */
-        if (ModeleRobot_DWork.TempoImage > 1.0 / ModeleRobot_P.SFunction_p36) {
+        if (ModeleRobot_DWork.TempoImage > 1.0 / ModeleRobot_P.SFunction_p43) {
           /* Transition: '<S1>:3783' */
           /* Exit 'FIN_MATCH_04': '<S1>:3778' */
           /* Entry 'FIN_MATCH_05': '<S1>:3779' */
@@ -1913,7 +2488,7 @@ void ModeleRobot_COMPORTEMENT(void)
 
        case ModeleRobot_IN_FIN_MATCH_05:
         /* During 'FIN_MATCH_05': '<S1>:3779' */
-        if (ModeleRobot_DWork.TempoImage > 1.0 / ModeleRobot_P.SFunction_p36) {
+        if (ModeleRobot_DWork.TempoImage > 1.0 / ModeleRobot_P.SFunction_p43) {
           /* Transition: '<S1>:3784' */
           /* Exit 'FIN_MATCH_05': '<S1>:3779' */
           /* Entry 'FIN_MATCH_02': '<S1>:1263' */
@@ -1945,13 +2520,13 @@ void ModeleRobot_COMPORTEMENT(void)
 
         /* Graphical Function 'setServo': '<S1>:4141' */
         /* Transition: '<S1>:4143' */
-        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)]
-          = ModeleRobot_P.SFunction_p31;
+        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p33 - 1.0)]
+          = ModeleRobot_P.SFunction_p37;
 
         /* Graphical Function 'setServo': '<S1>:4141' */
         /* Transition: '<S1>:4143' */
-        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)]
-          = ModeleRobot_P.SFunction_p27;
+        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)]
+          = ModeleRobot_P.SFunction_p31;
 
         /* Graphical Function 'CommandeLEDS_RVBO': '<S1>:1339' */
         /* Transition: '<S1>:1341' */
@@ -1965,7 +2540,7 @@ void ModeleRobot_COMPORTEMENT(void)
 
      case ModeleRobot_IN_MATCH:
       /* During 'MATCH': '<S1>:1117' */
-      if ((ModeleRobot_DWork.DureeMatch > 300.0 / ModeleRobot_P.SFunction_p36) ||
+      if ((ModeleRobot_DWork.DureeMatch > 300.0 / ModeleRobot_P.SFunction_p43) ||
           (ModeleRobot_DWork.finHomologation == 1.0)) {
         /* Transition: '<S1>:1266' */
         if (ModeleRobot_DWork.is_STRATEGIE == ModeleRobot_IN_STRATEGIE1) {
@@ -1974,13 +2549,13 @@ void ModeleRobot_COMPORTEMENT(void)
               /* Exit 'ACTION_HOMOLO_2': '<S1>:4167' */
               /* Graphical Function 'setServo': '<S1>:4141' */
               /* Transition: '<S1>:4143' */
-              ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28
-                - 1.0)] = ModeleRobot_P.SFunction_p31;
+              ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p33
+                - 1.0)] = ModeleRobot_P.SFunction_p37;
 
               /* Graphical Function 'setServo': '<S1>:4141' */
               /* Transition: '<S1>:4143' */
-              ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24
-                - 1.0)] = ModeleRobot_P.SFunction_p27;
+              ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27
+                - 1.0)] = ModeleRobot_P.SFunction_p31;
               ModeleRobot_DWork.is_DEMO = (uint8_T)
                 ModeleRobot_IN_NO_ACTIVE_CHILD;
             } else {
@@ -1998,12 +2573,24 @@ void ModeleRobot_COMPORTEMENT(void)
               /* Exit 'ACTION_HOMOLO_01': '<S1>:4181' */
               /* Exit 'ACTION_HOMOLO_02': '<S1>:4183' */
               /* Exit 'ACTION_HOMOLO_03': '<S1>:4220' */
-              /* Exit 'ACTION_HOMOLO_04': '<S1>:4226' */
+              /* Exit 'ACTION_HOMOLO_05': '<S1>:4239' */
+              /* Exit 'ACTION_HOMOLO_06': '<S1>:4254' */
+              /* Exit 'ACTION_HOMOLO_07': '<S1>:4261' */
+              /* Exit 'ACTION_HOMOLO_08': '<S1>:4265' */
               /* Exit 'ACTION_HOMOLO_10': '<S1>:4204' */
               /* Exit 'ACTION_HOMOLO_11': '<S1>:4207' */
               /* Exit 'ACTION_HOMOLO_12': '<S1>:4210' */
               /* Exit 'ACTION_HOMOLO_13': '<S1>:4213' */
               /* Exit 'ACTION_HOMOLO_14': '<S1>:4215' */
+              /* Exit 'ACTION_HOMOLO_15': '<S1>:4237' */
+              /* Exit 'ACTION_HOMOLO_16': '<S1>:4243' */
+              /* Exit 'ACTION_HOMOLO_17': '<S1>:4249' */
+              /* Exit 'ACTION_HOMOLO_18': '<S1>:4251' */
+              /* Exit 'ACTION_HOMOLO_19': '<S1>:4255' */
+              /* Exit 'ACTION_HOMOLO_20': '<S1>:4258' */
+              /* Exit 'ACTION_HOMOLO_21': '<S1>:4262' */
+              /* Exit 'ACTION_HOMOLO_22': '<S1>:4266' */
+              /* Exit 'ACTION_HOMOLO_23': '<S1>:4269' */
               /* Exit 'ACTION_HOMOLO_4': '<S1>:4169' */
               /* Exit 'ACTION_HOMOLO_5': '<S1>:4171' */
               /* Exit 'ACTION_HOMOLO_6': '<S1>:4187' */
@@ -2054,13 +2641,13 @@ void ModeleRobot_COMPORTEMENT(void)
 
         /* Graphical Function 'setServo': '<S1>:4141' */
         /* Transition: '<S1>:4143' */
-        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)]
-          = ModeleRobot_P.SFunction_p31;
+        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p33 - 1.0)]
+          = ModeleRobot_P.SFunction_p37;
 
         /* Graphical Function 'setServo': '<S1>:4141' */
         /* Transition: '<S1>:4143' */
-        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)]
-          = ModeleRobot_P.SFunction_p27;
+        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)]
+          = ModeleRobot_P.SFunction_p31;
 
         /* Graphical Function 'CommandeLEDS_RVBO': '<S1>:1339' */
         /* Transition: '<S1>:1341' */
@@ -2093,7 +2680,7 @@ void ModeleRobot_COMPORTEMENT(void)
              case ModeleRobot_IN_DETECT_OBSTACLE:
               /* During 'DETECT_OBSTACLE': '<S1>:3816' */
               if (ModeleRobot_DWork.local_Tempo > 2.0 /
-                  ModeleRobot_P.SFunction_p36) {
+                  ModeleRobot_P.SFunction_p43) {
                 /* Transition: '<S1>:3818' */
                 /* Exit 'DETECT_OBSTACLE': '<S1>:3816' */
                 /* Entry 'DETECT_OBSTACLE1': '<S1>:3815' */
@@ -2141,14 +2728,14 @@ void ModeleRobot_COMPORTEMENT(void)
                 /* Graphical Function 'setServo': '<S1>:4141' */
                 /* Transition: '<S1>:4143' */
                 ModeleRobot_B.CommandeServo[(int32_T)
-                  (ModeleRobot_P.SFunction_p28 - 1.0)] =
-                  ModeleRobot_P.SFunction_p31;
+                  (ModeleRobot_P.SFunction_p33 - 1.0)] =
+                  ModeleRobot_P.SFunction_p37;
 
                 /* Graphical Function 'setServo': '<S1>:4141' */
                 /* Transition: '<S1>:4143' */
                 ModeleRobot_B.CommandeServo[(int32_T)
-                  (ModeleRobot_P.SFunction_p24 - 1.0)] =
-                  ModeleRobot_P.SFunction_p27;
+                  (ModeleRobot_P.SFunction_p27 - 1.0)] =
+                  ModeleRobot_P.SFunction_p31;
                 ModeleRobot_DWork.is_DEMO = (uint8_T)
                   ModeleRobot_IN_NO_ACTIVE_CHILD;
               } else {
@@ -2166,12 +2753,24 @@ void ModeleRobot_COMPORTEMENT(void)
                 /* Exit 'ACTION_HOMOLO_01': '<S1>:4181' */
                 /* Exit 'ACTION_HOMOLO_02': '<S1>:4183' */
                 /* Exit 'ACTION_HOMOLO_03': '<S1>:4220' */
-                /* Exit 'ACTION_HOMOLO_04': '<S1>:4226' */
+                /* Exit 'ACTION_HOMOLO_05': '<S1>:4239' */
+                /* Exit 'ACTION_HOMOLO_06': '<S1>:4254' */
+                /* Exit 'ACTION_HOMOLO_07': '<S1>:4261' */
+                /* Exit 'ACTION_HOMOLO_08': '<S1>:4265' */
                 /* Exit 'ACTION_HOMOLO_10': '<S1>:4204' */
                 /* Exit 'ACTION_HOMOLO_11': '<S1>:4207' */
                 /* Exit 'ACTION_HOMOLO_12': '<S1>:4210' */
                 /* Exit 'ACTION_HOMOLO_13': '<S1>:4213' */
                 /* Exit 'ACTION_HOMOLO_14': '<S1>:4215' */
+                /* Exit 'ACTION_HOMOLO_15': '<S1>:4237' */
+                /* Exit 'ACTION_HOMOLO_16': '<S1>:4243' */
+                /* Exit 'ACTION_HOMOLO_17': '<S1>:4249' */
+                /* Exit 'ACTION_HOMOLO_18': '<S1>:4251' */
+                /* Exit 'ACTION_HOMOLO_19': '<S1>:4255' */
+                /* Exit 'ACTION_HOMOLO_20': '<S1>:4258' */
+                /* Exit 'ACTION_HOMOLO_21': '<S1>:4262' */
+                /* Exit 'ACTION_HOMOLO_22': '<S1>:4266' */
+                /* Exit 'ACTION_HOMOLO_23': '<S1>:4269' */
                 /* Exit 'ACTION_HOMOLO_4': '<S1>:4169' */
                 /* Exit 'ACTION_HOMOLO_5': '<S1>:4171' */
                 /* Exit 'ACTION_HOMOLO_6': '<S1>:4187' */
@@ -2215,7 +2814,7 @@ void ModeleRobot_COMPORTEMENT(void)
              case ModeleRobot_IN_INIT_STRATEGIE:
               /* During 'INIT_STRATEGIE': '<S1>:1128' */
               if (ModeleRobot_DWork.DureeMatch > 0.5 /
-                  ModeleRobot_P.SFunction_p36) {
+                  ModeleRobot_P.SFunction_p43) {
                 /* Transition: '<S1>:2244' */
                 /* Exit 'INIT_STRATEGIE': '<S1>:1128' */
                 ModeleRobot_DWork.is_STRATEGIE1 = (uint8_T)

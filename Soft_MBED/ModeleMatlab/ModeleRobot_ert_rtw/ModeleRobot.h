@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model ModeleRobot.
  *
- * Model version                        : 1.1442
+ * Model version                        : 1.1464
  * Real-Time Workshop file version      : 7.4  (R2009b)  29-Jun-2009
- * Real-Time Workshop file generated on : Thu May 14 08:56:38 2015
+ * Real-Time Workshop file generated on : Thu May 14 14:05:32 2015
  * TLC version                          : 7.4 (Jul 14 2009)
- * C/C++ source code generated on       : Thu May 14 08:56:39 2015
+ * C/C++ source code generated on       : Thu May 14 14:05:33 2015
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -209,100 +209,121 @@ struct Parameters_ModeleRobot_ {
   real_T SFunction_p1;                 /* Expression: DEBUG_ASCENSEUR
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p2;                 /* Expression: DEBUG_TORCHE
+  real_T SFunction_p2;                 /* Expression: DEBUG_BOUT_STRATEGIE
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p3;                 /* Expression: EQUIPE_JAUNE
+  real_T SFunction_p3;                 /* Expression: DEBUG_TORCHE
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p4;                 /* Expression: EQUIPE_VERTE
+  real_T SFunction_p4;                 /* Expression: EQUIPE_JAUNE
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p6;                 /* Expression: KMAR_POSITION_AU_DESSUS_SPOT_AVEC_SPOT
+  real_T SFunction_p5;                 /* Expression: EQUIPE_VERTE
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p7;                 /* Expression: KMAR_POSITION_AU_DESSUS_SPOT_SANS_SPOT
+  real_T SFunction_p7;                 /* Expression: KMAR_POSITION_AU_DESSUS_SPOT_AVEC_SPOT
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p8;                 /* Expression: KMAR_POSITION_DEPART
+  real_T SFunction_p8;                 /* Expression: KMAR_POSITION_AU_DESSUS_SPOT_SANS_SPOT
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p9;                 /* Expression: KMAR_POSITION_HAUT
+  real_T SFunction_p9;                 /* Expression: KMAR_POSITION_DEPART
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p10;                /* Expression: KMAR_POSITION_SPOT_BAS
+  real_T SFunction_p10;                /* Expression: KMAR_POSITION_HAUT
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p11;                /* Expression: MAX_SPEED_SERVOS
+  real_T SFunction_p11;                /* Expression: KMAR_POSITION_SPOT_BAS
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p13;                /* Expression: MOTEUR_ASCENSEUR
+  real_T SFunction_p12;                /* Expression: MAX_SPEED_SERVOS
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p14;                /* Expression: MOTEUR_DISTRIBUTEUR
+  real_T SFunction_p14;                /* Expression: MOTEUR_ASCENSEUR
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p15;                /* Expression: MOTEUR_NON_DEFINI
+  real_T SFunction_p15;                /* Expression: MOTEUR_DISTRIBUTEUR
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p16;                /* Expression: MOTEUR_SOUFFLEUR
+  real_T SFunction_p16;                /* Expression: MOTEUR_NON_DEFINI
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p17;                /* Expression: PI
+  real_T SFunction_p17;                /* Expression: MOTEUR_SOUFFLEUR
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p18;                /* Expression: SERVO_CENTREUR_D
+  real_T SFunction_p18;                /* Expression: PI
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p19;                /* Expression: SERVO_CENTREUR_D_FERME
+  real_T SFunction_p19;                /* Expression: SERVO_CENTREUR_D
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p20;                /* Expression: SERVO_CENTREUR_D_OUVERT
+  real_T SFunction_p20;                /* Expression: SERVO_CENTREUR_D_CENTRE_SPOT
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p21;                /* Expression: SERVO_CENTREUR_G
+  real_T SFunction_p21;                /* Expression: SERVO_CENTREUR_D_FERME
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p22;                /* Expression: SERVO_CENTREUR_G_FERME
+  real_T SFunction_p22;                /* Expression: SERVO_CENTREUR_D_OUVERT
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p23;                /* Expression: SERVO_CENTREUR_G_OUVERT
+  real_T SFunction_p23;                /* Expression: SERVO_CENTREUR_G
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p24;                /* Expression: SERVO_PINCE_D
+  real_T SFunction_p24;                /* Expression: SERVO_CENTREUR_G_CENTRE_SPOT
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p25;                /* Expression: SERVO_PINCE_D_ENTRE_OUVERT
+  real_T SFunction_p25;                /* Expression: SERVO_CENTREUR_G_FERME
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p26;                /* Expression: SERVO_PINCE_D_FERME
+  real_T SFunction_p26;                /* Expression: SERVO_CENTREUR_G_OUVERT
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p27;                /* Expression: SERVO_PINCE_D_OUVERT
+  real_T SFunction_p27;                /* Expression: SERVO_PINCE_D
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p28;                /* Expression: SERVO_PINCE_G
+  real_T SFunction_p28;                /* Expression: SERVO_PINCE_D_ENTRE_OUVERT
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p29;                /* Expression: SERVO_PINCE_G_ENTRE_OUVERT
+  real_T SFunction_p29;                /* Expression: SERVO_PINCE_D_FERME
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p30;                /* Expression: SERVO_PINCE_G_FERME
+  real_T SFunction_p30;                /* Expression: SERVO_PINCE_D_LACHE_BALLE
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p31;                /* Expression: SERVO_PINCE_G_OUVERT
+  real_T SFunction_p31;                /* Expression: SERVO_PINCE_D_OUVERT
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p32;                /* Expression: SERVO_RECOLTEURS
+  real_T SFunction_p32;                /* Expression: SERVO_PINCE_D_PRISE_GOBELET
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p33;                /* Expression: SERVO_RECOLTEURS_FERME
+  real_T SFunction_p33;                /* Expression: SERVO_PINCE_G
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p34;                /* Expression: SERVO_RECOLTEURS_OUVERT
+  real_T SFunction_p34;                /* Expression: SERVO_PINCE_G_ENTRE_OUVERT
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p36;                /* Expression: Te
+  real_T SFunction_p35;                /* Expression: SERVO_PINCE_G_FERME
+                                        * Referenced by: '<Root>/COMPORTEMENT'
+                                        */
+  real_T SFunction_p36;                /* Expression: SERVO_PINCE_G_LACHE_BALLE
+                                        * Referenced by: '<Root>/COMPORTEMENT'
+                                        */
+  real_T SFunction_p37;                /* Expression: SERVO_PINCE_G_OUVERT
+                                        * Referenced by: '<Root>/COMPORTEMENT'
+                                        */
+  real_T SFunction_p38;                /* Expression: SERVO_PINCE_G_PRISE_GOBELET
+                                        * Referenced by: '<Root>/COMPORTEMENT'
+                                        */
+  real_T SFunction_p39;                /* Expression: SERVO_RECOLTEURS
+                                        * Referenced by: '<Root>/COMPORTEMENT'
+                                        */
+  real_T SFunction_p40;                /* Expression: SERVO_RECOLTEURS_FERME
+                                        * Referenced by: '<Root>/COMPORTEMENT'
+                                        */
+  real_T SFunction_p41;                /* Expression: SERVO_RECOLTEURS_OUVERT
+                                        * Referenced by: '<Root>/COMPORTEMENT'
+                                        */
+  real_T SFunction_p43;                /* Expression: Te
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
   real_T Constant_Value_e;             /* Expression: 0
@@ -311,13 +332,13 @@ struct Parameters_ModeleRobot_ {
   real_T Constant1_Value;              /* Expression: 0
                                         * Referenced by: '<S2>/Constant1'
                                         */
-  int8_T SFunction_p5;                 /* Computed Parameter: SFunction_p5
+  int8_T SFunction_p6;                 /* Computed Parameter: SFunction_p6
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  int8_T SFunction_p12;                /* Computed Parameter: SFunction_p12
+  int8_T SFunction_p13;                /* Computed Parameter: SFunction_p13
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  int8_T SFunction_p35;                /* Computed Parameter: SFunction_p35
+  int8_T SFunction_p42;                /* Computed Parameter: SFunction_p42
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
   uint8_T Switch_Threshold;            /* Computed Parameter: Switch_Threshold

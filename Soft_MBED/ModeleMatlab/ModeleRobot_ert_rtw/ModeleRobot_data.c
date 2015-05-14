@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model ModeleRobot.
  *
- * Model version                        : 1.1442
+ * Model version                        : 1.1464
  * Real-Time Workshop file version      : 7.4  (R2009b)  29-Jun-2009
- * Real-Time Workshop file generated on : Thu May 14 08:56:38 2015
+ * Real-Time Workshop file generated on : Thu May 14 14:05:32 2015
  * TLC version                          : 7.4 (Jul 14 2009)
- * C/C++ source code generated on       : Thu May 14 08:56:39 2015
+ * C/C++ source code generated on       : Thu May 14 14:05:33 2015
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -59,6 +59,9 @@ Parameters_ModeleRobot ModeleRobot_P = {
   0.0,                                 /* Expression: DEBUG_ASCENSEUR
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
+  1.0,                                 /* Expression: DEBUG_BOUT_STRATEGIE
+                                        * Referenced by: '<Root>/COMPORTEMENT'
+                                        */
   0.0,                                 /* Expression: DEBUG_TORCHE
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
@@ -104,6 +107,9 @@ Parameters_ModeleRobot ModeleRobot_P = {
   15.0,                                /* Expression: SERVO_CENTREUR_D
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
+  86.0,                                /* Expression: SERVO_CENTREUR_D_CENTRE_SPOT
+                                        * Referenced by: '<Root>/COMPORTEMENT'
+                                        */
   130.0,                               /* Expression: SERVO_CENTREUR_D_FERME
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
@@ -111,6 +117,9 @@ Parameters_ModeleRobot ModeleRobot_P = {
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
   14.0,                                /* Expression: SERVO_CENTREUR_G
+                                        * Referenced by: '<Root>/COMPORTEMENT'
+                                        */
+  62.0,                                /* Expression: SERVO_CENTREUR_G_CENTRE_SPOT
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
   27.0,                                /* Expression: SERVO_CENTREUR_G_FERME
@@ -122,25 +131,37 @@ Parameters_ModeleRobot ModeleRobot_P = {
   16.0,                                /* Expression: SERVO_PINCE_D
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  81.0,                                /* Expression: SERVO_PINCE_D_ENTRE_OUVERT
+  41.0,                                /* Expression: SERVO_PINCE_D_ENTRE_OUVERT
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
   120.0,                               /* Expression: SERVO_PINCE_D_FERME
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
+  110.0,                               /* Expression: SERVO_PINCE_D_LACHE_BALLE
+                                        * Referenced by: '<Root>/COMPORTEMENT'
+                                        */
   1.0,                                 /* Expression: SERVO_PINCE_D_OUVERT
+                                        * Referenced by: '<Root>/COMPORTEMENT'
+                                        */
+  95.0,                                /* Expression: SERVO_PINCE_D_PRISE_GOBELET
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
   17.0,                                /* Expression: SERVO_PINCE_G
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  161.0,                               /* Expression: SERVO_PINCE_G_ENTRE_OUVERT
+  155.0,                               /* Expression: SERVO_PINCE_G_ENTRE_OUVERT
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
   80.0,                                /* Expression: SERVO_PINCE_G_FERME
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
+  104.0,                               /* Expression: SERVO_PINCE_G_LACHE_BALLE
+                                        * Referenced by: '<Root>/COMPORTEMENT'
+                                        */
   205.0,                               /* Expression: SERVO_PINCE_G_OUVERT
+                                        * Referenced by: '<Root>/COMPORTEMENT'
+                                        */
+  101.0,                               /* Expression: SERVO_PINCE_G_PRISE_GOBELET
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
   19.0,                                /* Expression: SERVO_RECOLTEURS
@@ -161,13 +182,13 @@ Parameters_ModeleRobot ModeleRobot_P = {
   0.0,                                 /* Expression: 0
                                         * Referenced by: '<S2>/Constant1'
                                         */
-  1,                                   /* Computed Parameter: SFunction_p5
+  1,                                   /* Computed Parameter: SFunction_p6
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  1,                                   /* Computed Parameter: SFunction_p12
+  1,                                   /* Computed Parameter: SFunction_p13
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  1,                                   /* Computed Parameter: SFunction_p35
+  1,                                   /* Computed Parameter: SFunction_p42
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
   1U,                                  /* Computed Parameter: Switch_Threshold
