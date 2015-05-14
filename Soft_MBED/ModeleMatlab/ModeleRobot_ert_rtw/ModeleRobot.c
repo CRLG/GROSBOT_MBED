@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model ModeleRobot.
  *
- * Model version                        : 1.1436
+ * Model version                        : 1.1442
  * Real-Time Workshop file version      : 7.4  (R2009b)  29-Jun-2009
- * Real-Time Workshop file generated on : Wed May 13 20:14:58 2015
+ * Real-Time Workshop file generated on : Thu May 14 08:56:38 2015
  * TLC version                          : 7.4 (Jul 14 2009)
- * C/C++ source code generated on       : Wed May 13 20:14:59 2015
+ * C/C++ source code generated on       : Thu May 14 08:56:39 2015
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -34,18 +34,19 @@
 #define ModeleRobot_IN_ACTION_HOMOLO_01 (12)
 #define ModeleRobot_IN_ACTION_HOMOLO_02 (13)
 #define ModeleRobot_IN_ACTION_HOMOLO_03 (14)
-#define ModeleRobot_IN_ACTION_HOMOLO_10 (15)
-#define ModeleRobot_IN_ACTION_HOMOLO_11 (16)
-#define ModeleRobot_IN_ACTION_HOMOLO_12 (17)
-#define ModeleRobot_IN_ACTION_HOMOLO_13 (18)
-#define ModeleRobot_IN_ACTION_HOMOLO_14 (19)
-#define ModeleRobot_IN_ACTION_HOMOLO_2 (20)
-#define ModeleRobot_IN_ACTION_HOMOLO_4 (21)
-#define ModeleRobot_IN_ACTION_HOMOLO_5 (22)
-#define ModeleRobot_IN_ACTION_HOMOLO_6 (23)
-#define ModeleRobot_IN_ACTION_HOMOLO_7 (24)
-#define ModeleRobot_IN_ACTION_HOMOLO_8 (25)
-#define ModeleRobot_IN_ACTION_HOMOLO_9 (26)
+#define ModeleRobot_IN_ACTION_HOMOLO_04 (15)
+#define ModeleRobot_IN_ACTION_HOMOLO_10 (16)
+#define ModeleRobot_IN_ACTION_HOMOLO_11 (17)
+#define ModeleRobot_IN_ACTION_HOMOLO_12 (18)
+#define ModeleRobot_IN_ACTION_HOMOLO_13 (19)
+#define ModeleRobot_IN_ACTION_HOMOLO_14 (20)
+#define ModeleRobot_IN_ACTION_HOMOLO_2 (21)
+#define ModeleRobot_IN_ACTION_HOMOLO_4 (22)
+#define ModeleRobot_IN_ACTION_HOMOLO_5 (23)
+#define ModeleRobot_IN_ACTION_HOMOLO_6 (24)
+#define ModeleRobot_IN_ACTION_HOMOLO_7 (25)
+#define ModeleRobot_IN_ACTION_HOMOLO_8 (26)
+#define ModeleRobot_IN_ACTION_HOMOLO_9 (27)
 #define ModeleRobot_IN_ATTENTE_TIRETTE (1)
 #define ModeleRobot_IN_DEMO            (1)
 #define ModeleRobot_IN_DETECT_OBSTACLE (1)
@@ -92,35 +93,7 @@ static void enter_internal_COMPORTEMENT_ROB(void);
 static void ModeleRobot_enter_atomic_DEMO(void);
 static void ModeleRobot_enter_internal_DEMO(void);
 static void Model_enter_internal_STRATEGIE1(void);
-static real_T ModeleRobot_isFinMouvement(real_T sf_timeout);
 static void ModeleRobot_DEMO(void);
-
-/* Initial conditions for function-call system: '<Root>/COMPORTEMENT' */
-void Mo_isFrontMontantMvtBloque_Init(rtDW_isFrontMontantMvtBloque_Mo *localDW,
-  rtP_isFrontMontantMvtBloque_Mod *localP)
-{
-  /* InitializeConditions for UnitDelay: '<S10>/Delay Input1' */
-  localDW->DelayInput1_DSTATE = localP->DelayInput1_X0;
-}
-
-/* Output and update for function-call system: '<Root>/COMPORTEMENT' */
-void ModeleR_isFrontMontantMvtBloque(real_T rtu_ConvergenceMouvement, boolean_T *
-  rty_out_FrontMvtBloque, rtDW_isFrontMontantMvtBloque_Mo *localDW,
-  rtP_isFrontMontantMvtBloque_Mod *localP)
-{
-  /* Logic: '<S5>/Logical Operator' incorporates:
-   *  Constant: '<S9>/Constant'
-   *  RelationalOperator: '<S10>/FixPt Relational Operator'
-   *  RelationalOperator: '<S9>/Compare'
-   *  UnitDelay: '<S10>/Delay Input1'
-   */
-  (*rty_out_FrontMvtBloque) = (((rtu_ConvergenceMouvement !=
-    localDW->DelayInput1_DSTATE) != 0) && ((rtu_ConvergenceMouvement ==
-    localP->Constant_Value) != 0));
-
-  /* Update for UnitDelay: '<S10>/Delay Input1' */
-  localDW->DelayInput1_DSTATE = rtu_ConvergenceMouvement;
-}
 
 /* Function for Stateflow: '<Root>/COMPORTEMENT' */
 static void enter_internal_ACTIONNEURS_REPO(void)
@@ -138,11 +111,6 @@ static void enter_internal_ACTIONNEURS_REPO(void)
 
   /* Graphical Function 'setPWM': '<S1>:4112' */
   /* Transition: '<S1>:4114' */
-  ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p12 - 1.0)] =
-    0.0;
-
-  /* Graphical Function 'setPWM': '<S1>:4112' */
-  /* Transition: '<S1>:4114' */
   ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p13 - 1.0)] =
     0.0;
 
@@ -156,67 +124,72 @@ static void enter_internal_ACTIONNEURS_REPO(void)
   ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p15 - 1.0)] =
     0.0;
 
+  /* Graphical Function 'setPWM': '<S1>:4112' */
+  /* Transition: '<S1>:4114' */
+  ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p16 - 1.0)] =
+    0.0;
+
   /* meme si la vitesse n'est pas utilise, on l'initialise pour les servos */
   /* Graphical Function 'setServoSpeed': '<S1>:4153' */
   /* Transition: '<S1>:4155' */
-  ModeleRobot_B.SpeedServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
-    ModeleRobot_P.SFunction_p10;
+  ModeleRobot_B.SpeedServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)] =
+    ModeleRobot_P.SFunction_p11;
 
   /* Graphical Function 'setServoSpeed': '<S1>:4153' */
   /* Transition: '<S1>:4155' */
-  ModeleRobot_B.SpeedServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
-    ModeleRobot_P.SFunction_p10;
+  ModeleRobot_B.SpeedServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)] =
+    ModeleRobot_P.SFunction_p11;
 
   /* Graphical Function 'setServoSpeed': '<S1>:4153' */
   /* Transition: '<S1>:4155' */
-  ModeleRobot_B.SpeedServo[(int32_T)(ModeleRobot_P.SFunction_p20 - 1.0)] =
-    ModeleRobot_P.SFunction_p10;
+  ModeleRobot_B.SpeedServo[(int32_T)(ModeleRobot_P.SFunction_p21 - 1.0)] =
+    ModeleRobot_P.SFunction_p11;
 
   /* Graphical Function 'setServoSpeed': '<S1>:4153' */
   /* Transition: '<S1>:4155' */
-  ModeleRobot_B.SpeedServo[(int32_T)(ModeleRobot_P.SFunction_p17 - 1.0)] =
-    ModeleRobot_P.SFunction_p10;
+  ModeleRobot_B.SpeedServo[(int32_T)(ModeleRobot_P.SFunction_p18 - 1.0)] =
+    ModeleRobot_P.SFunction_p11;
 
   /* de meme pour le maintient ou non des servos on initialise */
   /* Graphical Function 'setServoRelache': '<S1>:4198' */
   /* Transition: '<S1>:4200' */
-  ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] = 0.0;
+  ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)] = 0.0;
 
   /* Graphical Function 'setServoRelache': '<S1>:4198' */
   /* Transition: '<S1>:4200' */
-  ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] = 0.0;
+  ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)] = 0.0;
 
   /* Graphical Function 'setServoRelache': '<S1>:4198' */
   /* Transition: '<S1>:4200' */
-  ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p20 - 1.0)] =
+  ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p21 - 1.0)] =
     1000.0;
 
   /* Graphical Function 'setServoRelache': '<S1>:4198' */
   /* Transition: '<S1>:4200' */
-  ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p17 - 1.0)] =
+  ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p18 - 1.0)] =
     1000.0;
 
   /* on ecarte les pinces pour qu'elles soient bien dans le robot */
   /* Graphical Function 'setServo': '<S1>:4141' */
   /* Transition: '<S1>:4143' */
-  ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
-    ModeleRobot_P.SFunction_p30;
+  ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)] =
+    ModeleRobot_P.SFunction_p31;
 
   /* Graphical Function 'setServo': '<S1>:4141' */
   /* Transition: '<S1>:4143' */
-  ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
-    ModeleRobot_P.SFunction_p26;
+  ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)] =
+    ModeleRobot_P.SFunction_p27;
 
   /* l'inverse pour les centreurs */
   /* Graphical Function 'setServo': '<S1>:4141' */
   /* Transition: '<S1>:4143' */
-  ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p20 - 1.0)] =
-    ModeleRobot_P.SFunction_p21;
+  ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p21 - 1.0)] =
+    ModeleRobot_P.SFunction_p22;
 
   /* Graphical Function 'setServo': '<S1>:4141' */
   /* Transition: '<S1>:4143' */
-  ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p17 - 1.0)] =
-    ModeleRobot_P.SFunction_p18;
+  ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p18 - 1.0)] =
+    ModeleRobot_P.SFunction_p19;
 
   /* on lance le timer pour laisser un petit temps aux actions precedentes */
   ModeleRobot_DWork.TempoInit = 0.0;
@@ -440,7 +413,7 @@ static void ModeleRobot_enter_internal_DEMO(void)
 
     /* Graphical Function 'setPWM': '<S1>:4112' */
     /* Transition: '<S1>:4114' */
-    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p12 - 1.0)] =
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p13 - 1.0)] =
       0.0;
     ModeleRobot_DWork.TempoMot = 0.0;
     break;
@@ -453,13 +426,13 @@ static void ModeleRobot_enter_internal_DEMO(void)
     /* on prend la balle de tennis */
     /* Graphical Function 'setServo': '<S1>:4141' */
     /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
-      ModeleRobot_P.SFunction_p29;
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)] =
+      ModeleRobot_P.SFunction_p30;
 
     /* Graphical Function 'setServo': '<S1>:4141' */
     /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
-      ModeleRobot_P.SFunction_p25;
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)] =
+      ModeleRobot_P.SFunction_p26;
 
     /* tempo */
     ModeleRobot_DWork.TempoMot = 0.0;
@@ -473,7 +446,7 @@ static void ModeleRobot_enter_internal_DEMO(void)
     /* on monte l'ascenseur pour etre au dessus d'un spot */
     /* Graphical Function 'setPWM': '<S1>:4112' */
     /* Transition: '<S1>:4114' */
-    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p12 - 1.0)] =
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p13 - 1.0)] =
       60.0;
 
     /* tempo */
@@ -495,8 +468,28 @@ static void ModeleRobot_enter_internal_DEMO(void)
     ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
     ModeleRobot_B.ConsigneX = 38.0;
     ModeleRobot_B.ConsigneY = 0.0;
-    ModeleRobot_B.ConsigneTeta = ModeleRobot_P.SFunction_p16;
+    ModeleRobot_B.ConsigneTeta = ModeleRobot_P.SFunction_p17;
     ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_04:
+    /* Entry 'ACTION_HOMOLO_04': '<S1>:4226' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_04;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_04;
+
+    /* on prend la balle de tennis */
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)] =
+      ModeleRobot_P.SFunction_p31;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)] =
+      ModeleRobot_P.SFunction_p27;
+
+    /* tempo */
+    ModeleRobot_DWork.TempoMot = 0.0;
     break;
 
    case ModeleRobot_IN_ACTION_HOMOLO_10:
@@ -539,8 +532,8 @@ static void ModeleRobot_enter_internal_DEMO(void)
 
     /* Graphical Function 'setServo': '<S1>:4141' */
     /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p31 - 1.0)] =
-      ModeleRobot_P.SFunction_p33;
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p32 - 1.0)] =
+      ModeleRobot_P.SFunction_p34;
     break;
 
    case ModeleRobot_IN_ACTION_HOMOLO_13:
@@ -553,7 +546,7 @@ static void ModeleRobot_enter_internal_DEMO(void)
 
     /* Graphical Function 'setPWM': '<S1>:4112' */
     /* Transition: '<S1>:4114' */
-    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p15 - 1.0)] =
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p16 - 1.0)] =
       100.0;
     break;
 
@@ -565,13 +558,13 @@ static void ModeleRobot_enter_internal_DEMO(void)
     /* on arrete de souffler et on rentre les recolteurs */
     /* Graphical Function 'setPWM': '<S1>:4112' */
     /* Transition: '<S1>:4114' */
-    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p15 - 1.0)] =
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p16 - 1.0)] =
       0.0;
 
     /* Graphical Function 'setServo': '<S1>:4141' */
     /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p31 - 1.0)] =
-      ModeleRobot_P.SFunction_p32;
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p32 - 1.0)] =
+      ModeleRobot_P.SFunction_p33;
     break;
 
    case ModeleRobot_IN_ACTION_HOMOLO_2:
@@ -656,13 +649,13 @@ static void ModeleRobot_enter_internal_DEMO(void)
        TODO: rechercher une position intermédiaire servo pour retenir balle + spot */
     /* Graphical Function 'setServo': '<S1>:4141' */
     /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
-      ModeleRobot_P.SFunction_p28;
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)] =
+      ModeleRobot_P.SFunction_p29;
 
     /* Graphical Function 'setServo': '<S1>:4141' */
     /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
-      ModeleRobot_P.SFunction_p24;
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)] =
+      ModeleRobot_P.SFunction_p25;
     ModeleRobot_DWork.TempoMot = 0.0;
     break;
 
@@ -683,23 +676,45 @@ static void ModeleRobot_enter_internal_DEMO(void)
 
    default:
     /* Transition: '<S1>:4166' */
-    /* Entry 'ACTION_HOMOLO_01': '<S1>:4181' */
-    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_01;
-    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_01;
+    if (ModeleRobot_P.SFunction_p1 == 1.0) {
+      /* Transition: '<S1>:4227' */
+      /* Entry 'ACTION_HOMOLO_04': '<S1>:4226' */
+      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_04;
+      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_04;
 
-    /* on prend la balle de tennis */
-    /* Graphical Function 'setServo': '<S1>:4141' */
-    /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
-      ModeleRobot_P.SFunction_p29;
+      /* on prend la balle de tennis */
+      /* Graphical Function 'setServo': '<S1>:4141' */
+      /* Transition: '<S1>:4143' */
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)] =
+        ModeleRobot_P.SFunction_p31;
 
-    /* Graphical Function 'setServo': '<S1>:4141' */
-    /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
-      ModeleRobot_P.SFunction_p25;
+      /* Graphical Function 'setServo': '<S1>:4141' */
+      /* Transition: '<S1>:4143' */
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)] =
+        ModeleRobot_P.SFunction_p27;
 
-    /* tempo */
-    ModeleRobot_DWork.TempoMot = 0.0;
+      /* tempo */
+      ModeleRobot_DWork.TempoMot = 0.0;
+    } else {
+      /* Transition: '<S1>:4225' */
+      /* Entry 'ACTION_HOMOLO_01': '<S1>:4181' */
+      ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_01;
+      ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_01;
+
+      /* on prend la balle de tennis */
+      /* Graphical Function 'setServo': '<S1>:4141' */
+      /* Transition: '<S1>:4143' */
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)] =
+        ModeleRobot_P.SFunction_p30;
+
+      /* Graphical Function 'setServo': '<S1>:4141' */
+      /* Transition: '<S1>:4143' */
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)] =
+        ModeleRobot_P.SFunction_p26;
+
+      /* tempo */
+      ModeleRobot_DWork.TempoMot = 0.0;
+    }
     break;
   }
 }
@@ -732,7 +747,7 @@ static void Model_enter_internal_STRATEGIE1(void)
       + 1.0;
     ModeleRobot_B.DdeRecalagePosition[1] = 0.0;
     ModeleRobot_B.DdeRecalagePosition[2] = 0.0;
-    ModeleRobot_B.DdeRecalagePosition[3] = ModeleRobot_P.SFunction_p16;
+    ModeleRobot_B.DdeRecalagePosition[3] = ModeleRobot_P.SFunction_p17;
     ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
     break;
 
@@ -756,51 +771,15 @@ static void Model_enter_internal_STRATEGIE1(void)
       + 1.0;
     ModeleRobot_B.DdeRecalagePosition[1] = 0.0;
     ModeleRobot_B.DdeRecalagePosition[2] = 0.0;
-    ModeleRobot_B.DdeRecalagePosition[3] = ModeleRobot_P.SFunction_p16;
+    ModeleRobot_B.DdeRecalagePosition[3] = ModeleRobot_P.SFunction_p17;
     ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
     break;
   }
 }
 
 /* Function for Stateflow: '<Root>/COMPORTEMENT' */
-static real_T ModeleRobot_isFinMouvement(real_T sf_timeout)
-{
-  boolean_T sf_temp;
-
-  /* Graphical Function 'isFinMouvement': '<S1>:1282' */
-  /* Transition: '<S1>:1285' */
-  ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt +
-    1.0;
-
-  /* Transition: '<S1>:1286' */
-  sf_temp = (ModeleRobot_DWork.CompteurTimeoutMvt > sf_timeout);
-  if (!sf_temp) {
-    /* Simulink Function 'isFrontMontantConvergence': '<S1>:1632' */
-    ModeleRobot_B.ConvergenceMouvement = ModeleRobot_U.IN_ConvergenceMvt;
-
-    /* Logic: '<S4>/Logical Operator' incorporates:
-     *  Constant: '<S6>/Constant'
-     *  RelationalOperator: '<S6>/Compare'
-     *  RelationalOperator: '<S7>/FixPt Relational Operator'
-     *  UnitDelay: '<S7>/Delay Input1'
-     */
-    ModeleRobot_B.LogicalOperator_j = (((ModeleRobot_B.ConvergenceMouvement !=
-      ModeleRobot_DWork.DelayInput1_DSTATE) != 0) &&
-      ((ModeleRobot_B.ConvergenceMouvement == ModeleRobot_P.Constant_Value) != 0));
-
-    /* Update for UnitDelay: '<S7>/Delay Input1' */
-    ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_B.ConvergenceMouvement;
-    sf_temp = ModeleRobot_B.LogicalOperator_j;
-  }
-
-  return (real_T)sf_temp;
-}
-
-/* Function for Stateflow: '<Root>/COMPORTEMENT' */
 static void ModeleRobot_DEMO(void)
 {
-  boolean_T sf_temp;
-
   /* During 'DEMO': '<S1>:3463' */
   ModeleRobot_DWork.TempoMot = ModeleRobot_DWork.TempoMot + 1.0;
 
@@ -808,7 +787,16 @@ static void ModeleRobot_DEMO(void)
   switch (ModeleRobot_DWork.is_DEMO) {
    case ModeleRobot_IN_ACTION_0:
     /* During 'ACTION_0': '<S1>:4121' */
-    if (ModeleRobot_isFinMouvement(5.0 / ModeleRobot_P.SFunction_p35) != 0.0) {
+    /* Graphical Function 'isFinMouvement': '<S1>:1282' */
+    /* Transition: '<S1>:1285' */
+    ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt
+      + 1.0;
+
+    /* Transition: '<S1>:1286' */
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
+          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          0.0)) != 0) {
       /* Transition: '<S1>:4124' */
       /* Exit 'ACTION_0': '<S1>:4121' */
       /* Entry 'ACTION_2': '<S1>:4123' */
@@ -836,29 +824,10 @@ static void ModeleRobot_DEMO(void)
       + 1.0;
 
     /* Transition: '<S1>:1286' */
-    sf_temp = (ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-               ModeleRobot_P.SFunction_p35);
-    if (!sf_temp) {
-      /* Simulink Function 'isFrontMontantConvergence': '<S1>:1632' */
-      ModeleRobot_B.ConvergenceMouvement = ModeleRobot_U.IN_ConvergenceMvt;
-
-      /* Logic: '<S4>/Logical Operator' incorporates:
-       *  Constant: '<S6>/Constant'
-       *  RelationalOperator: '<S6>/Compare'
-       *  RelationalOperator: '<S7>/FixPt Relational Operator'
-       *  UnitDelay: '<S7>/Delay Input1'
-       */
-      ModeleRobot_B.LogicalOperator_j = (((ModeleRobot_B.ConvergenceMouvement !=
-        ModeleRobot_DWork.DelayInput1_DSTATE) != 0) &&
-        ((ModeleRobot_B.ConvergenceMouvement == ModeleRobot_P.Constant_Value) !=
-         0));
-
-      /* Update for UnitDelay: '<S7>/Delay Input1' */
-      ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_B.ConvergenceMouvement;
-      sf_temp = ModeleRobot_B.LogicalOperator_j;
-    }
-
-    if (sf_temp != 0) {
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
+          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          0.0)) != 0) {
       /* Transition: '<S1>:4134' */
       /* Exit 'ACTION_10': '<S1>:4131' */
       /* Entry 'ACTION_12': '<S1>:4133' */
@@ -885,29 +854,10 @@ static void ModeleRobot_DEMO(void)
       + 1.0;
 
     /* Transition: '<S1>:1286' */
-    sf_temp = (ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-               ModeleRobot_P.SFunction_p35);
-    if (!sf_temp) {
-      /* Simulink Function 'isFrontMontantConvergence': '<S1>:1632' */
-      ModeleRobot_B.ConvergenceMouvement = ModeleRobot_U.IN_ConvergenceMvt;
-
-      /* Logic: '<S4>/Logical Operator' incorporates:
-       *  Constant: '<S6>/Constant'
-       *  RelationalOperator: '<S6>/Compare'
-       *  RelationalOperator: '<S7>/FixPt Relational Operator'
-       *  UnitDelay: '<S7>/Delay Input1'
-       */
-      ModeleRobot_B.LogicalOperator_j = (((ModeleRobot_B.ConvergenceMouvement !=
-        ModeleRobot_DWork.DelayInput1_DSTATE) != 0) &&
-        ((ModeleRobot_B.ConvergenceMouvement == ModeleRobot_P.Constant_Value) !=
-         0));
-
-      /* Update for UnitDelay: '<S7>/Delay Input1' */
-      ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_B.ConvergenceMouvement;
-      sf_temp = ModeleRobot_B.LogicalOperator_j;
-    }
-
-    if (sf_temp != 0) {
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
+          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          0.0)) != 0) {
       /* Transition: '<S1>:4136' */
       /* Exit 'ACTION_12': '<S1>:4133' */
       /* Entry 'ACTION_14': '<S1>:4135' */
@@ -934,29 +884,10 @@ static void ModeleRobot_DEMO(void)
       + 1.0;
 
     /* Transition: '<S1>:1286' */
-    sf_temp = (ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-               ModeleRobot_P.SFunction_p35);
-    if (!sf_temp) {
-      /* Simulink Function 'isFrontMontantConvergence': '<S1>:1632' */
-      ModeleRobot_B.ConvergenceMouvement = ModeleRobot_U.IN_ConvergenceMvt;
-
-      /* Logic: '<S4>/Logical Operator' incorporates:
-       *  Constant: '<S6>/Constant'
-       *  RelationalOperator: '<S6>/Compare'
-       *  RelationalOperator: '<S7>/FixPt Relational Operator'
-       *  UnitDelay: '<S7>/Delay Input1'
-       */
-      ModeleRobot_B.LogicalOperator_j = (((ModeleRobot_B.ConvergenceMouvement !=
-        ModeleRobot_DWork.DelayInput1_DSTATE) != 0) &&
-        ((ModeleRobot_B.ConvergenceMouvement == ModeleRobot_P.Constant_Value) !=
-         0));
-
-      /* Update for UnitDelay: '<S7>/Delay Input1' */
-      ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_B.ConvergenceMouvement;
-      sf_temp = ModeleRobot_B.LogicalOperator_j;
-    }
-
-    if (sf_temp != 0) {
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
+          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          0.0)) != 0) {
       /* Transition: '<S1>:4138' */
       /* Exit 'ACTION_14': '<S1>:4135' */
       /* Entry 'ACTION_16': '<S1>:4137' */
@@ -983,29 +914,10 @@ static void ModeleRobot_DEMO(void)
       + 1.0;
 
     /* Transition: '<S1>:1286' */
-    sf_temp = (ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-               ModeleRobot_P.SFunction_p35);
-    if (!sf_temp) {
-      /* Simulink Function 'isFrontMontantConvergence': '<S1>:1632' */
-      ModeleRobot_B.ConvergenceMouvement = ModeleRobot_U.IN_ConvergenceMvt;
-
-      /* Logic: '<S4>/Logical Operator' incorporates:
-       *  Constant: '<S6>/Constant'
-       *  RelationalOperator: '<S6>/Compare'
-       *  RelationalOperator: '<S7>/FixPt Relational Operator'
-       *  UnitDelay: '<S7>/Delay Input1'
-       */
-      ModeleRobot_B.LogicalOperator_j = (((ModeleRobot_B.ConvergenceMouvement !=
-        ModeleRobot_DWork.DelayInput1_DSTATE) != 0) &&
-        ((ModeleRobot_B.ConvergenceMouvement == ModeleRobot_P.Constant_Value) !=
-         0));
-
-      /* Update for UnitDelay: '<S7>/Delay Input1' */
-      ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_B.ConvergenceMouvement;
-      sf_temp = ModeleRobot_B.LogicalOperator_j;
-    }
-
-    if (sf_temp != 0) {
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
+          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          0.0)) != 0) {
       /* Transition: '<S1>:4140' */
       /* Exit 'ACTION_16': '<S1>:4137' */
       /* Entry 'ACTION_18': '<S1>:4139' */
@@ -1034,29 +946,10 @@ static void ModeleRobot_DEMO(void)
       + 1.0;
 
     /* Transition: '<S1>:1286' */
-    sf_temp = (ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-               ModeleRobot_P.SFunction_p35);
-    if (!sf_temp) {
-      /* Simulink Function 'isFrontMontantConvergence': '<S1>:1632' */
-      ModeleRobot_B.ConvergenceMouvement = ModeleRobot_U.IN_ConvergenceMvt;
-
-      /* Logic: '<S4>/Logical Operator' incorporates:
-       *  Constant: '<S6>/Constant'
-       *  RelationalOperator: '<S6>/Compare'
-       *  RelationalOperator: '<S7>/FixPt Relational Operator'
-       *  UnitDelay: '<S7>/Delay Input1'
-       */
-      ModeleRobot_B.LogicalOperator_j = (((ModeleRobot_B.ConvergenceMouvement !=
-        ModeleRobot_DWork.DelayInput1_DSTATE) != 0) &&
-        ((ModeleRobot_B.ConvergenceMouvement == ModeleRobot_P.Constant_Value) !=
-         0));
-
-      /* Update for UnitDelay: '<S7>/Delay Input1' */
-      ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_B.ConvergenceMouvement;
-      sf_temp = ModeleRobot_B.LogicalOperator_j;
-    }
-
-    if (sf_temp != 0) {
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
+          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          0.0)) != 0) {
       /* Transition: '<S1>:4126' */
       /* Exit 'ACTION_2': '<S1>:4123' */
       /* Entry 'ACTION_4': '<S1>:4125' */
@@ -1083,29 +976,10 @@ static void ModeleRobot_DEMO(void)
       + 1.0;
 
     /* Transition: '<S1>:1286' */
-    sf_temp = (ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-               ModeleRobot_P.SFunction_p35);
-    if (!sf_temp) {
-      /* Simulink Function 'isFrontMontantConvergence': '<S1>:1632' */
-      ModeleRobot_B.ConvergenceMouvement = ModeleRobot_U.IN_ConvergenceMvt;
-
-      /* Logic: '<S4>/Logical Operator' incorporates:
-       *  Constant: '<S6>/Constant'
-       *  RelationalOperator: '<S6>/Compare'
-       *  RelationalOperator: '<S7>/FixPt Relational Operator'
-       *  UnitDelay: '<S7>/Delay Input1'
-       */
-      ModeleRobot_B.LogicalOperator_j = (((ModeleRobot_B.ConvergenceMouvement !=
-        ModeleRobot_DWork.DelayInput1_DSTATE) != 0) &&
-        ((ModeleRobot_B.ConvergenceMouvement == ModeleRobot_P.Constant_Value) !=
-         0));
-
-      /* Update for UnitDelay: '<S7>/Delay Input1' */
-      ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_B.ConvergenceMouvement;
-      sf_temp = ModeleRobot_B.LogicalOperator_j;
-    }
-
-    if (sf_temp != 0) {
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
+          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          0.0)) != 0) {
       /* Transition: '<S1>:4128' */
       /* Exit 'ACTION_4': '<S1>:4125' */
       /* Entry 'ACTION_6': '<S1>:4127' */
@@ -1132,29 +1006,10 @@ static void ModeleRobot_DEMO(void)
       + 1.0;
 
     /* Transition: '<S1>:1286' */
-    sf_temp = (ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-               ModeleRobot_P.SFunction_p35);
-    if (!sf_temp) {
-      /* Simulink Function 'isFrontMontantConvergence': '<S1>:1632' */
-      ModeleRobot_B.ConvergenceMouvement = ModeleRobot_U.IN_ConvergenceMvt;
-
-      /* Logic: '<S4>/Logical Operator' incorporates:
-       *  Constant: '<S6>/Constant'
-       *  RelationalOperator: '<S6>/Compare'
-       *  RelationalOperator: '<S7>/FixPt Relational Operator'
-       *  UnitDelay: '<S7>/Delay Input1'
-       */
-      ModeleRobot_B.LogicalOperator_j = (((ModeleRobot_B.ConvergenceMouvement !=
-        ModeleRobot_DWork.DelayInput1_DSTATE) != 0) &&
-        ((ModeleRobot_B.ConvergenceMouvement == ModeleRobot_P.Constant_Value) !=
-         0));
-
-      /* Update for UnitDelay: '<S7>/Delay Input1' */
-      ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_B.ConvergenceMouvement;
-      sf_temp = ModeleRobot_B.LogicalOperator_j;
-    }
-
-    if (sf_temp != 0) {
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
+          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          0.0)) != 0) {
       /* Transition: '<S1>:4130' */
       /* Exit 'ACTION_6': '<S1>:4127' */
       /* Entry 'ACTION_8': '<S1>:4129' */
@@ -1181,29 +1036,10 @@ static void ModeleRobot_DEMO(void)
       + 1.0;
 
     /* Transition: '<S1>:1286' */
-    sf_temp = (ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-               ModeleRobot_P.SFunction_p35);
-    if (!sf_temp) {
-      /* Simulink Function 'isFrontMontantConvergence': '<S1>:1632' */
-      ModeleRobot_B.ConvergenceMouvement = ModeleRobot_U.IN_ConvergenceMvt;
-
-      /* Logic: '<S4>/Logical Operator' incorporates:
-       *  Constant: '<S6>/Constant'
-       *  RelationalOperator: '<S6>/Compare'
-       *  RelationalOperator: '<S7>/FixPt Relational Operator'
-       *  UnitDelay: '<S7>/Delay Input1'
-       */
-      ModeleRobot_B.LogicalOperator_j = (((ModeleRobot_B.ConvergenceMouvement !=
-        ModeleRobot_DWork.DelayInput1_DSTATE) != 0) &&
-        ((ModeleRobot_B.ConvergenceMouvement == ModeleRobot_P.Constant_Value) !=
-         0));
-
-      /* Update for UnitDelay: '<S7>/Delay Input1' */
-      ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_B.ConvergenceMouvement;
-      sf_temp = ModeleRobot_B.LogicalOperator_j;
-    }
-
-    if (sf_temp != 0) {
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
+          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          0.0)) != 0) {
       /* Transition: '<S1>:4132' */
       /* Exit 'ACTION_8': '<S1>:4129' */
       /* Entry 'ACTION_10': '<S1>:4131' */
@@ -1224,7 +1060,7 @@ static void ModeleRobot_DEMO(void)
 
    case ModeleRobot_IN_ACTION_HOMOLO_0:
     /* During 'ACTION_HOMOLO_0': '<S1>:4165' */
-    if (ModeleRobot_DWork.TempoMot > 1.0 / ModeleRobot_P.SFunction_p35) {
+    if (ModeleRobot_DWork.TempoMot > 1.0 / ModeleRobot_P.SFunction_p36) {
       /* Transition: '<S1>:4191' */
       /* Exit 'ACTION_HOMOLO_0': '<S1>:4165' */
       /* Entry 'ACTION_HOMOLO_03': '<S1>:4220' */
@@ -1241,14 +1077,14 @@ static void ModeleRobot_DEMO(void)
       ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
       ModeleRobot_B.ConsigneX = 38.0;
       ModeleRobot_B.ConsigneY = 0.0;
-      ModeleRobot_B.ConsigneTeta = ModeleRobot_P.SFunction_p16;
+      ModeleRobot_B.ConsigneTeta = ModeleRobot_P.SFunction_p17;
       ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
     }
     break;
 
    case ModeleRobot_IN_ACTION_HOMOLO_01:
     /* During 'ACTION_HOMOLO_01': '<S1>:4181' */
-    if (ModeleRobot_DWork.TempoMot > 1.0 / ModeleRobot_P.SFunction_p35) {
+    if (ModeleRobot_DWork.TempoMot > 1.0 / ModeleRobot_P.SFunction_p36) {
       /* Transition: '<S1>:4185' */
       /* Exit 'ACTION_HOMOLO_01': '<S1>:4181' */
       /* Entry 'ACTION_HOMOLO_02': '<S1>:4183' */
@@ -1258,7 +1094,7 @@ static void ModeleRobot_DEMO(void)
       /* on monte l'ascenseur pour etre au dessus d'un spot */
       /* Graphical Function 'setPWM': '<S1>:4112' */
       /* Transition: '<S1>:4114' */
-      ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p12 - 1.0)]
+      ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p13 - 1.0)]
         = 60.0;
 
       /* tempo */
@@ -1268,8 +1104,8 @@ static void ModeleRobot_DEMO(void)
 
    case ModeleRobot_IN_ACTION_HOMOLO_02:
     /* During 'ACTION_HOMOLO_02': '<S1>:4183' */
-    if ((ModeleRobot_U.IN_Ascenseur_pos >= ModeleRobot_P.SFunction_p6) ||
-        (ModeleRobot_DWork.TempoMot > 4.0 / ModeleRobot_P.SFunction_p35)) {
+    if ((ModeleRobot_U.IN_Ascenseur_pos >= ModeleRobot_P.SFunction_p7) ||
+        (ModeleRobot_DWork.TempoMot > 4.0 / ModeleRobot_P.SFunction_p36)) {
       /* Transition: '<S1>:4182' */
       /* Exit 'ACTION_HOMOLO_02': '<S1>:4183' */
       /* Entry 'ACTION_HOMOLO_0': '<S1>:4165' */
@@ -1278,7 +1114,7 @@ static void ModeleRobot_DEMO(void)
 
       /* Graphical Function 'setPWM': '<S1>:4112' */
       /* Transition: '<S1>:4114' */
-      ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p12 - 1.0)]
+      ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p13 - 1.0)]
         = 0.0;
       ModeleRobot_DWork.TempoMot = 0.0;
     }
@@ -1292,29 +1128,10 @@ static void ModeleRobot_DEMO(void)
       + 1.0;
 
     /* Transition: '<S1>:1286' */
-    sf_temp = (ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 /
-               ModeleRobot_P.SFunction_p35);
-    if (!sf_temp) {
-      /* Simulink Function 'isFrontMontantConvergence': '<S1>:1632' */
-      ModeleRobot_B.ConvergenceMouvement = ModeleRobot_U.IN_ConvergenceMvt;
-
-      /* Logic: '<S4>/Logical Operator' incorporates:
-       *  Constant: '<S6>/Constant'
-       *  RelationalOperator: '<S6>/Compare'
-       *  RelationalOperator: '<S7>/FixPt Relational Operator'
-       *  UnitDelay: '<S7>/Delay Input1'
-       */
-      ModeleRobot_B.LogicalOperator_j = (((ModeleRobot_B.ConvergenceMouvement !=
-        ModeleRobot_DWork.DelayInput1_DSTATE) != 0) &&
-        ((ModeleRobot_B.ConvergenceMouvement == ModeleRobot_P.Constant_Value) !=
-         0));
-
-      /* Update for UnitDelay: '<S7>/Delay Input1' */
-      ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_B.ConvergenceMouvement;
-      sf_temp = ModeleRobot_B.LogicalOperator_j;
-    }
-
-    if (sf_temp != 0) {
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 /
+          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          0.0)) != 0) {
       /* Transition: '<S1>:4221' */
       /* Exit 'ACTION_HOMOLO_03': '<S1>:4220' */
       /* Entry 'ACTION_HOMOLO_7': '<S1>:4189' */
@@ -1333,6 +1150,9 @@ static void ModeleRobot_DEMO(void)
     }
     break;
 
+   case ModeleRobot_IN_ACTION_HOMOLO_04:
+    break;
+
    case ModeleRobot_IN_ACTION_HOMOLO_10:
     /* During 'ACTION_HOMOLO_10': '<S1>:4204' */
     /* Graphical Function 'isFinMouvement': '<S1>:1282' */
@@ -1341,29 +1161,10 @@ static void ModeleRobot_DEMO(void)
       + 1.0;
 
     /* Transition: '<S1>:1286' */
-    sf_temp = (ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-               ModeleRobot_P.SFunction_p35);
-    if (!sf_temp) {
-      /* Simulink Function 'isFrontMontantConvergence': '<S1>:1632' */
-      ModeleRobot_B.ConvergenceMouvement = ModeleRobot_U.IN_ConvergenceMvt;
-
-      /* Logic: '<S4>/Logical Operator' incorporates:
-       *  Constant: '<S6>/Constant'
-       *  RelationalOperator: '<S6>/Compare'
-       *  RelationalOperator: '<S7>/FixPt Relational Operator'
-       *  UnitDelay: '<S7>/Delay Input1'
-       */
-      ModeleRobot_B.LogicalOperator_j = (((ModeleRobot_B.ConvergenceMouvement !=
-        ModeleRobot_DWork.DelayInput1_DSTATE) != 0) &&
-        ((ModeleRobot_B.ConvergenceMouvement == ModeleRobot_P.Constant_Value) !=
-         0));
-
-      /* Update for UnitDelay: '<S7>/Delay Input1' */
-      ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_B.ConvergenceMouvement;
-      sf_temp = ModeleRobot_B.LogicalOperator_j;
-    }
-
-    if (sf_temp != 0) {
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
+          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          0.0)) != 0) {
       /* Transition: '<S1>:4205' */
       /* Exit 'ACTION_HOMOLO_10': '<S1>:4204' */
       /* Entry 'ACTION_HOMOLO_9': '<S1>:4203' */
@@ -1389,29 +1190,10 @@ static void ModeleRobot_DEMO(void)
       + 1.0;
 
     /* Transition: '<S1>:1286' */
-    sf_temp = (ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-               ModeleRobot_P.SFunction_p35);
-    if (!sf_temp) {
-      /* Simulink Function 'isFrontMontantConvergence': '<S1>:1632' */
-      ModeleRobot_B.ConvergenceMouvement = ModeleRobot_U.IN_ConvergenceMvt;
-
-      /* Logic: '<S4>/Logical Operator' incorporates:
-       *  Constant: '<S6>/Constant'
-       *  RelationalOperator: '<S6>/Compare'
-       *  RelationalOperator: '<S7>/FixPt Relational Operator'
-       *  UnitDelay: '<S7>/Delay Input1'
-       */
-      ModeleRobot_B.LogicalOperator_j = (((ModeleRobot_B.ConvergenceMouvement !=
-        ModeleRobot_DWork.DelayInput1_DSTATE) != 0) &&
-        ((ModeleRobot_B.ConvergenceMouvement == ModeleRobot_P.Constant_Value) !=
-         0));
-
-      /* Update for UnitDelay: '<S7>/Delay Input1' */
-      ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_B.ConvergenceMouvement;
-      sf_temp = ModeleRobot_B.LogicalOperator_j;
-    }
-
-    if (sf_temp != 0) {
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
+          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          0.0)) != 0) {
       /* Transition: '<S1>:4211' */
       /* Exit 'ACTION_HOMOLO_11': '<S1>:4207' */
       /* Entry 'ACTION_HOMOLO_12': '<S1>:4210' */
@@ -1423,14 +1205,14 @@ static void ModeleRobot_DEMO(void)
 
       /* Graphical Function 'setServo': '<S1>:4141' */
       /* Transition: '<S1>:4143' */
-      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p31 - 1.0)] =
-        ModeleRobot_P.SFunction_p33;
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p32 - 1.0)] =
+        ModeleRobot_P.SFunction_p34;
     }
     break;
 
    case ModeleRobot_IN_ACTION_HOMOLO_12:
     /* During 'ACTION_HOMOLO_12': '<S1>:4210' */
-    if (ModeleRobot_DWork.TempoMot > 1.0 / ModeleRobot_P.SFunction_p35) {
+    if (ModeleRobot_DWork.TempoMot > 1.0 / ModeleRobot_P.SFunction_p36) {
       /* Transition: '<S1>:4214' */
       /* Exit 'ACTION_HOMOLO_12': '<S1>:4210' */
       /* Entry 'ACTION_HOMOLO_13': '<S1>:4213' */
@@ -1442,14 +1224,14 @@ static void ModeleRobot_DEMO(void)
 
       /* Graphical Function 'setPWM': '<S1>:4112' */
       /* Transition: '<S1>:4114' */
-      ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p15 - 1.0)]
+      ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p16 - 1.0)]
         = 100.0;
     }
     break;
 
    case ModeleRobot_IN_ACTION_HOMOLO_13:
     /* During 'ACTION_HOMOLO_13': '<S1>:4213' */
-    if (ModeleRobot_DWork.TempoMot > 2.0 / ModeleRobot_P.SFunction_p35) {
+    if (ModeleRobot_DWork.TempoMot > 2.0 / ModeleRobot_P.SFunction_p36) {
       /* Transition: '<S1>:4216' */
       /* Exit 'ACTION_HOMOLO_13': '<S1>:4213' */
       /* Entry 'ACTION_HOMOLO_14': '<S1>:4215' */
@@ -1459,13 +1241,13 @@ static void ModeleRobot_DEMO(void)
       /* on arrete de souffler et on rentre les recolteurs */
       /* Graphical Function 'setPWM': '<S1>:4112' */
       /* Transition: '<S1>:4114' */
-      ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p15 - 1.0)]
+      ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p16 - 1.0)]
         = 0.0;
 
       /* Graphical Function 'setServo': '<S1>:4141' */
       /* Transition: '<S1>:4143' */
-      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p31 - 1.0)] =
-        ModeleRobot_P.SFunction_p32;
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p32 - 1.0)] =
+        ModeleRobot_P.SFunction_p33;
     }
     break;
 
@@ -1480,40 +1262,21 @@ static void ModeleRobot_DEMO(void)
       + 1.0;
 
     /* Transition: '<S1>:1286' */
-    sf_temp = (ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-               ModeleRobot_P.SFunction_p35);
-    if (!sf_temp) {
-      /* Simulink Function 'isFrontMontantConvergence': '<S1>:1632' */
-      ModeleRobot_B.ConvergenceMouvement = ModeleRobot_U.IN_ConvergenceMvt;
-
-      /* Logic: '<S4>/Logical Operator' incorporates:
-       *  Constant: '<S6>/Constant'
-       *  RelationalOperator: '<S6>/Compare'
-       *  RelationalOperator: '<S7>/FixPt Relational Operator'
-       *  UnitDelay: '<S7>/Delay Input1'
-       */
-      ModeleRobot_B.LogicalOperator_j = (((ModeleRobot_B.ConvergenceMouvement !=
-        ModeleRobot_DWork.DelayInput1_DSTATE) != 0) &&
-        ((ModeleRobot_B.ConvergenceMouvement == ModeleRobot_P.Constant_Value) !=
-         0));
-
-      /* Update for UnitDelay: '<S7>/Delay Input1' */
-      ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_B.ConvergenceMouvement;
-      sf_temp = ModeleRobot_B.LogicalOperator_j;
-    }
-
-    if (sf_temp != 0) {
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
+          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          0.0)) != 0) {
       /* Transition: '<S1>:4170' */
       /* Exit 'ACTION_HOMOLO_2': '<S1>:4167' */
       /* Graphical Function 'setServo': '<S1>:4141' */
       /* Transition: '<S1>:4143' */
-      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
-        ModeleRobot_P.SFunction_p30;
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)] =
+        ModeleRobot_P.SFunction_p31;
 
       /* Graphical Function 'setServo': '<S1>:4141' */
       /* Transition: '<S1>:4143' */
-      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
-        ModeleRobot_P.SFunction_p26;
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)] =
+        ModeleRobot_P.SFunction_p27;
 
       /* Entry 'ACTION_HOMOLO_4': '<S1>:4169' */
       ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_4;
@@ -1537,29 +1300,10 @@ static void ModeleRobot_DEMO(void)
       + 1.0;
 
     /* Transition: '<S1>:1286' */
-    sf_temp = (ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-               ModeleRobot_P.SFunction_p35);
-    if (!sf_temp) {
-      /* Simulink Function 'isFrontMontantConvergence': '<S1>:1632' */
-      ModeleRobot_B.ConvergenceMouvement = ModeleRobot_U.IN_ConvergenceMvt;
-
-      /* Logic: '<S4>/Logical Operator' incorporates:
-       *  Constant: '<S6>/Constant'
-       *  RelationalOperator: '<S6>/Compare'
-       *  RelationalOperator: '<S7>/FixPt Relational Operator'
-       *  UnitDelay: '<S7>/Delay Input1'
-       */
-      ModeleRobot_B.LogicalOperator_j = (((ModeleRobot_B.ConvergenceMouvement !=
-        ModeleRobot_DWork.DelayInput1_DSTATE) != 0) &&
-        ((ModeleRobot_B.ConvergenceMouvement == ModeleRobot_P.Constant_Value) !=
-         0));
-
-      /* Update for UnitDelay: '<S7>/Delay Input1' */
-      ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_B.ConvergenceMouvement;
-      sf_temp = ModeleRobot_B.LogicalOperator_j;
-    }
-
-    if (sf_temp != 0) {
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
+          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          0.0)) != 0) {
       /* Transition: '<S1>:4173' */
       /* Exit 'ACTION_HOMOLO_4': '<S1>:4169' */
       /* Entry 'ACTION_HOMOLO_5': '<S1>:4171' */
@@ -1584,29 +1328,10 @@ static void ModeleRobot_DEMO(void)
       + 1.0;
 
     /* Transition: '<S1>:1286' */
-    sf_temp = (ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-               ModeleRobot_P.SFunction_p35);
-    if (!sf_temp) {
-      /* Simulink Function 'isFrontMontantConvergence': '<S1>:1632' */
-      ModeleRobot_B.ConvergenceMouvement = ModeleRobot_U.IN_ConvergenceMvt;
-
-      /* Logic: '<S4>/Logical Operator' incorporates:
-       *  Constant: '<S6>/Constant'
-       *  RelationalOperator: '<S6>/Compare'
-       *  RelationalOperator: '<S7>/FixPt Relational Operator'
-       *  UnitDelay: '<S7>/Delay Input1'
-       */
-      ModeleRobot_B.LogicalOperator_j = (((ModeleRobot_B.ConvergenceMouvement !=
-        ModeleRobot_DWork.DelayInput1_DSTATE) != 0) &&
-        ((ModeleRobot_B.ConvergenceMouvement == ModeleRobot_P.Constant_Value) !=
-         0));
-
-      /* Update for UnitDelay: '<S7>/Delay Input1' */
-      ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_B.ConvergenceMouvement;
-      sf_temp = ModeleRobot_B.LogicalOperator_j;
-    }
-
-    if ((sf_temp != 0) && (ModeleRobot_P.SFunction_p4 == 0)) {
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if ((((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
+           ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+           0.0)) != 0) && (ModeleRobot_P.SFunction_p5 == 0)) {
       /* Transition: '<S1>:4122' */
       /* Exit 'ACTION_HOMOLO_5': '<S1>:4171' */
       /* Entry 'ACTION_0': '<S1>:4121' */
@@ -1631,29 +1356,10 @@ static void ModeleRobot_DEMO(void)
       + 1.0;
 
     /* Transition: '<S1>:1286' */
-    sf_temp = (ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 /
-               ModeleRobot_P.SFunction_p35);
-    if (!sf_temp) {
-      /* Simulink Function 'isFrontMontantConvergence': '<S1>:1632' */
-      ModeleRobot_B.ConvergenceMouvement = ModeleRobot_U.IN_ConvergenceMvt;
-
-      /* Logic: '<S4>/Logical Operator' incorporates:
-       *  Constant: '<S6>/Constant'
-       *  RelationalOperator: '<S6>/Compare'
-       *  RelationalOperator: '<S7>/FixPt Relational Operator'
-       *  UnitDelay: '<S7>/Delay Input1'
-       */
-      ModeleRobot_B.LogicalOperator_j = (((ModeleRobot_B.ConvergenceMouvement !=
-        ModeleRobot_DWork.DelayInput1_DSTATE) != 0) &&
-        ((ModeleRobot_B.ConvergenceMouvement == ModeleRobot_P.Constant_Value) !=
-         0));
-
-      /* Update for UnitDelay: '<S7>/Delay Input1' */
-      ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_B.ConvergenceMouvement;
-      sf_temp = ModeleRobot_B.LogicalOperator_j;
-    }
-
-    if (sf_temp != 0) {
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 /
+          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          0.0)) != 0) {
       /* Transition: '<S1>:4168' */
       /* Exit 'ACTION_HOMOLO_6': '<S1>:4187' */
       /* Entry 'ACTION_HOMOLO_8': '<S1>:4192' */
@@ -1664,13 +1370,13 @@ static void ModeleRobot_DEMO(void)
          TODO: rechercher une position intermédiaire servo pour retenir balle + spot */
       /* Graphical Function 'setServo': '<S1>:4141' */
       /* Transition: '<S1>:4143' */
-      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
-        ModeleRobot_P.SFunction_p28;
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)] =
+        ModeleRobot_P.SFunction_p29;
 
       /* Graphical Function 'setServo': '<S1>:4141' */
       /* Transition: '<S1>:4143' */
-      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
-        ModeleRobot_P.SFunction_p24;
+      ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)] =
+        ModeleRobot_P.SFunction_p25;
       ModeleRobot_DWork.TempoMot = 0.0;
     }
     break;
@@ -1683,29 +1389,10 @@ static void ModeleRobot_DEMO(void)
       + 1.0;
 
     /* Transition: '<S1>:1286' */
-    sf_temp = (ModeleRobot_DWork.CompteurTimeoutMvt > 2.0 /
-               ModeleRobot_P.SFunction_p35);
-    if (!sf_temp) {
-      /* Simulink Function 'isFrontMontantConvergence': '<S1>:1632' */
-      ModeleRobot_B.ConvergenceMouvement = ModeleRobot_U.IN_ConvergenceMvt;
-
-      /* Logic: '<S4>/Logical Operator' incorporates:
-       *  Constant: '<S6>/Constant'
-       *  RelationalOperator: '<S6>/Compare'
-       *  RelationalOperator: '<S7>/FixPt Relational Operator'
-       *  UnitDelay: '<S7>/Delay Input1'
-       */
-      ModeleRobot_B.LogicalOperator_j = (((ModeleRobot_B.ConvergenceMouvement !=
-        ModeleRobot_DWork.DelayInput1_DSTATE) != 0) &&
-        ((ModeleRobot_B.ConvergenceMouvement == ModeleRobot_P.Constant_Value) !=
-         0));
-
-      /* Update for UnitDelay: '<S7>/Delay Input1' */
-      ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_B.ConvergenceMouvement;
-      sf_temp = ModeleRobot_B.LogicalOperator_j;
-    }
-
-    if (sf_temp != 0) {
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 2.0 /
+          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          0.0)) != 0) {
       /* Transition: '<S1>:4188' */
       /* Exit 'ACTION_HOMOLO_7': '<S1>:4189' */
       /* Entry 'ACTION_HOMOLO_6': '<S1>:4187' */
@@ -1725,7 +1412,7 @@ static void ModeleRobot_DEMO(void)
 
    case ModeleRobot_IN_ACTION_HOMOLO_8:
     /* During 'ACTION_HOMOLO_8': '<S1>:4192' */
-    if (ModeleRobot_DWork.TempoMot > 2.0 / ModeleRobot_P.SFunction_p35) {
+    if (ModeleRobot_DWork.TempoMot > 2.0 / ModeleRobot_P.SFunction_p36) {
       /* Transition: '<S1>:4196' */
       /* Exit 'ACTION_HOMOLO_8': '<S1>:4192' */
       /* Entry 'ACTION_HOMOLO_2': '<S1>:4167' */
@@ -1751,29 +1438,10 @@ static void ModeleRobot_DEMO(void)
       + 1.0;
 
     /* Transition: '<S1>:1286' */
-    sf_temp = (ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
-               ModeleRobot_P.SFunction_p35);
-    if (!sf_temp) {
-      /* Simulink Function 'isFrontMontantConvergence': '<S1>:1632' */
-      ModeleRobot_B.ConvergenceMouvement = ModeleRobot_U.IN_ConvergenceMvt;
-
-      /* Logic: '<S4>/Logical Operator' incorporates:
-       *  Constant: '<S6>/Constant'
-       *  RelationalOperator: '<S6>/Compare'
-       *  RelationalOperator: '<S7>/FixPt Relational Operator'
-       *  UnitDelay: '<S7>/Delay Input1'
-       */
-      ModeleRobot_B.LogicalOperator_j = (((ModeleRobot_B.ConvergenceMouvement !=
-        ModeleRobot_DWork.DelayInput1_DSTATE) != 0) &&
-        ((ModeleRobot_B.ConvergenceMouvement == ModeleRobot_P.Constant_Value) !=
-         0));
-
-      /* Update for UnitDelay: '<S7>/Delay Input1' */
-      ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_B.ConvergenceMouvement;
-      sf_temp = ModeleRobot_B.LogicalOperator_j;
-    }
-
-    if (sf_temp != 0) {
+    /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+    if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
+          ModeleRobot_P.SFunction_p36) || (ModeleRobot_B.DataTypeConversion !=
+          0.0)) != 0) {
       /* Transition: '<S1>:4208' */
       /* Exit 'ACTION_HOMOLO_9': '<S1>:4203' */
       /* Entry 'ACTION_HOMOLO_11': '<S1>:4207' */
@@ -1805,10 +1473,11 @@ void ModeleRobot_COMPORTEMENT_Init(void)
    *  InitializeConditions for SubSystem: '<S1>/isFrontMontantMvtBloque'
    */
 
-  /* InitializeConditions for UnitDelay: '<S7>/Delay Input1' */
-  ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_P.DelayInput1_X0;
-  Mo_isFrontMontantMvtBloque_Init(&ModeleRobot_DWork.isFrontMontantMvtBloque,
-    (rtP_isFrontMontantMvtBloque_Mod *) &ModeleRobot_P.isFrontMontantMvtBloque);
+  /* InitializeConditions for UnitDelay: '<S8>/Delay Input1' */
+  ModeleRobot_DWork.DelayInput1_DSTATE_d = ModeleRobot_P.DelayInput1_X0_m;
+
+  /* InitializeConditions for UnitDelay: '<S11>/Delay Input1' */
+  ModeleRobot_DWork.DelayInput1_DSTATE_p = ModeleRobot_P.DelayInput1_X0_o;
 }
 
 /* Output and update for atomic system: '<Root>/COMPORTEMENT' */
@@ -1820,7 +1489,6 @@ void ModeleRobot_COMPORTEMENT(void)
    *  Inport: '<Root>/IN_FinCourseAscenseur'
    *  Inport: '<Root>/IN_Tirette'
    *  Inport: '<Root>/IN_demande_test_actionneurs'
-   *  SubSystem: '<S1>/isFrontMontantConvergence'
    */
   /* Gateway: COMPORTEMENT */
   /* During: COMPORTEMENT */
@@ -1910,7 +1578,7 @@ void ModeleRobot_COMPORTEMENT(void)
          case Modele_IN_APPRENTISSAGE_KMAR_01:
           /* During 'APPRENTISSAGE_KMAR_01': '<S1>:1010' */
           if ((ModeleRobot_U.IN_FinCourseAscenseur == 1) ||
-              (ModeleRobot_DWork.TempoInit > 5.0 / ModeleRobot_P.SFunction_p35))
+              (ModeleRobot_DWork.TempoInit > 5.0 / ModeleRobot_P.SFunction_p36))
           {
             /* Transition: '<S1>:3688' */
             /* Exit 'APPRENTISSAGE_KMAR_01': '<S1>:1010' */
@@ -1921,7 +1589,7 @@ void ModeleRobot_COMPORTEMENT(void)
             /* on est en butee on arrete immediatement l'ascenseur */
             /* Graphical Function 'setPWM': '<S1>:4112' */
             /* Transition: '<S1>:4114' */
-            ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p12 -
+            ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p13 -
               1.0)] = 0.0;
 
             /* On fait le reset du codeur ascenseur */
@@ -1934,7 +1602,7 @@ void ModeleRobot_COMPORTEMENT(void)
 
          case Modele_IN_APPRENTISSAGE_KMAR_02:
           /* During 'APPRENTISSAGE_KMAR_02': '<S1>:3687' */
-          if (ModeleRobot_DWork.TempoInit > 1.0 / ModeleRobot_P.SFunction_p35) {
+          if (ModeleRobot_DWork.TempoInit > 1.0 / ModeleRobot_P.SFunction_p36) {
             /* Transition: '<S1>:3691' */
             /* Exit 'APPRENTISSAGE_KMAR_02': '<S1>:3687' */
             /* Entry 'APPRENTISSAGE_KMAR_03': '<S1>:3689' */
@@ -1944,7 +1612,7 @@ void ModeleRobot_COMPORTEMENT(void)
             /* on remonte l'ascenseur jusqu'a la position d'un feu en haut de la torche */
             /* Graphical Function 'setPWM': '<S1>:4112' */
             /* Transition: '<S1>:4114' */
-            ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p12 -
+            ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p13 -
               1.0)] = 60.0;
 
             /* On relache le reset du codeur ascenseur */
@@ -1959,8 +1627,8 @@ void ModeleRobot_COMPORTEMENT(void)
 
          case Modele_IN_APPRENTISSAGE_KMAR_03:
           /* During 'APPRENTISSAGE_KMAR_03': '<S1>:3689' */
-          if ((ModeleRobot_U.IN_Ascenseur_pos >= ModeleRobot_P.SFunction_p7) ||
-              (ModeleRobot_DWork.TempoInit > 4.0 / ModeleRobot_P.SFunction_p35))
+          if ((ModeleRobot_U.IN_Ascenseur_pos >= ModeleRobot_P.SFunction_p8) ||
+              (ModeleRobot_DWork.TempoInit > 4.0 / ModeleRobot_P.SFunction_p36))
           {
             /* Transition: '<S1>:3693' */
             /* Exit 'APPRENTISSAGE_KMAR_03': '<S1>:3689' */
@@ -1971,7 +1639,7 @@ void ModeleRobot_COMPORTEMENT(void)
             /* on arrete l'ascenseur */
             /* Graphical Function 'setPWM': '<S1>:4112' */
             /* Transition: '<S1>:4114' */
-            ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p12 -
+            ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p13 -
               1.0)] = 0.0;
           } else {
             ModeleRobot_DWork.TempoInit = ModeleRobot_DWork.TempoInit + 1.0;
@@ -1983,7 +1651,7 @@ void ModeleRobot_COMPORTEMENT(void)
 
          case ModeleRobot_IN_REPOS_SERVOS:
           /* During 'REPOS_SERVOS': '<S1>:1009' */
-          if (ModeleRobot_DWork.TempoInit > 2.0 / ModeleRobot_P.SFunction_p35) {
+          if (ModeleRobot_DWork.TempoInit > 2.0 / ModeleRobot_P.SFunction_p36) {
             /* Transition: '<S1>:1008' */
             /* Exit 'REPOS_SERVOS': '<S1>:1009' */
             /* Entry 'APPRENTISSAGE_KMAR_01': '<S1>:1010' */
@@ -1993,7 +1661,7 @@ void ModeleRobot_COMPORTEMENT(void)
             /* les pinces sont rangees on peut descendre l'ascenseur */
             /* Graphical Function 'setPWM': '<S1>:4112' */
             /* Transition: '<S1>:4114' */
-            ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p12 -
+            ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p13 -
               1.0)] = -60.0;
 
             /* meme si on a un capteur de fin de course, par securite on met une tempo */
@@ -2012,7 +1680,7 @@ void ModeleRobot_COMPORTEMENT(void)
         switch (ModeleRobot_DWork.is_CHOIX_EQUIPE) {
          case ModeleRobot_IN_EQUIPE_1:
           /* During 'EQUIPE_1': '<S1>:1016' */
-          if (ModeleRobot_U.IN_CouleurEquipe == ModeleRobot_P.SFunction_p2) {
+          if (ModeleRobot_U.IN_CouleurEquipe == ModeleRobot_P.SFunction_p3) {
             /* Transition: '<S1>:1013' */
             /* Exit 'EQUIPE_1': '<S1>:1016' */
             /* Entry 'EQUIPE_2': '<S1>:1015' */
@@ -2025,7 +1693,7 @@ void ModeleRobot_COMPORTEMENT(void)
 
          case ModeleRobot_IN_EQUIPE_2:
           /* During 'EQUIPE_2': '<S1>:1015' */
-          if (ModeleRobot_U.IN_CouleurEquipe == ModeleRobot_P.SFunction_p3) {
+          if (ModeleRobot_U.IN_CouleurEquipe == ModeleRobot_P.SFunction_p4) {
             /* Transition: '<S1>:1014' */
             /* Exit 'EQUIPE_2': '<S1>:1015' */
             /* Entry 'EQUIPE_1': '<S1>:1016' */
@@ -2069,7 +1737,7 @@ void ModeleRobot_COMPORTEMENT(void)
          case ModeleRobot_IN_INIT1:
           /* During 'INIT1': '<S1>:3674' */
           if (ModeleRobot_DWork.TempoTestActionneurs > 2.0 /
-              ModeleRobot_P.SFunction_p35) {
+              ModeleRobot_P.SFunction_p36) {
             /* Transition: '<S1>:1418' */
             /* Exit 'INIT1': '<S1>:3674' */
             /* Entry 'TEST_ACT_1': '<S1>:1417' */
@@ -2079,15 +1747,15 @@ void ModeleRobot_COMPORTEMENT(void)
 
             /* Graphical Function 'setServo': '<S1>:4141' */
             /* Transition: '<S1>:4143' */
-            ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 -
-              1.0)] = ModeleRobot_P.SFunction_p29;
+            ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 -
+              1.0)] = ModeleRobot_P.SFunction_p30;
           }
           break;
 
          case ModeleRobot_IN_TEST_ACT_1:
           /* During 'TEST_ACT_1': '<S1>:1417' */
           if (ModeleRobot_DWork.TempoTestActionneurs > 2.0 /
-              ModeleRobot_P.SFunction_p35) {
+              ModeleRobot_P.SFunction_p36) {
             /* Transition: '<S1>:1446' */
             /* Exit 'TEST_ACT_1': '<S1>:1417' */
             /* Entry 'TEST_ACT_2': '<S1>:3798' */
@@ -2097,20 +1765,20 @@ void ModeleRobot_COMPORTEMENT(void)
 
             /* Graphical Function 'setServo': '<S1>:4141' */
             /* Transition: '<S1>:4143' */
-            ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 -
-              1.0)] = ModeleRobot_P.SFunction_p30;
+            ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 -
+              1.0)] = ModeleRobot_P.SFunction_p31;
 
             /* Graphical Function 'setServo': '<S1>:4141' */
             /* Transition: '<S1>:4143' */
-            ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 -
-              1.0)] = ModeleRobot_P.SFunction_p25;
+            ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 -
+              1.0)] = ModeleRobot_P.SFunction_p26;
           }
           break;
 
          case ModeleRobot_IN_TEST_ACT_2:
           /* During 'TEST_ACT_2': '<S1>:3798' */
           if (ModeleRobot_DWork.TempoTestActionneurs > 2.0 /
-              ModeleRobot_P.SFunction_p35) {
+              ModeleRobot_P.SFunction_p36) {
             /* Transition: '<S1>:3803' */
             /* Exit 'TEST_ACT_2': '<S1>:3798' */
             /* Entry 'TEST_ACT_3': '<S1>:4151' */
@@ -2120,15 +1788,15 @@ void ModeleRobot_COMPORTEMENT(void)
 
             /* Graphical Function 'setServo': '<S1>:4141' */
             /* Transition: '<S1>:4143' */
-            ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 -
-              1.0)] = ModeleRobot_P.SFunction_p26;
+            ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 -
+              1.0)] = ModeleRobot_P.SFunction_p27;
           }
           break;
 
          case ModeleRobot_IN_TEST_ACT_3:
           /* During 'TEST_ACT_3': '<S1>:4151' */
           if (ModeleRobot_DWork.TempoTestActionneurs > 2.0 /
-              ModeleRobot_P.SFunction_p35) {
+              ModeleRobot_P.SFunction_p36) {
             /* Transition: '<S1>:4152' */
             /* Exit 'TEST_ACT_3': '<S1>:4151' */
             /* Entry 'TEST_ACT_FIN': '<S1>:1515' */
@@ -2182,7 +1850,7 @@ void ModeleRobot_COMPORTEMENT(void)
 
        case ModeleRobot_IN_FIN_MATCH_02:
         /* During 'FIN_MATCH_02': '<S1>:1263' */
-        if (ModeleRobot_DWork.TempoImage > 1.0 / ModeleRobot_P.SFunction_p35) {
+        if (ModeleRobot_DWork.TempoImage > 1.0 / ModeleRobot_P.SFunction_p36) {
           /* Transition: '<S1>:3781' */
           /* Exit 'FIN_MATCH_02': '<S1>:1263' */
           /* Entry 'FIN_MATCH_03': '<S1>:3777' */
@@ -2203,7 +1871,7 @@ void ModeleRobot_COMPORTEMENT(void)
 
        case ModeleRobot_IN_FIN_MATCH_03:
         /* During 'FIN_MATCH_03': '<S1>:3777' */
-        if (ModeleRobot_DWork.TempoImage > 1.0 / ModeleRobot_P.SFunction_p35) {
+        if (ModeleRobot_DWork.TempoImage > 1.0 / ModeleRobot_P.SFunction_p36) {
           /* Transition: '<S1>:3782' */
           /* Exit 'FIN_MATCH_03': '<S1>:3777' */
           /* Entry 'FIN_MATCH_04': '<S1>:3778' */
@@ -2224,7 +1892,7 @@ void ModeleRobot_COMPORTEMENT(void)
 
        case ModeleRobot_IN_FIN_MATCH_04:
         /* During 'FIN_MATCH_04': '<S1>:3778' */
-        if (ModeleRobot_DWork.TempoImage > 1.0 / ModeleRobot_P.SFunction_p35) {
+        if (ModeleRobot_DWork.TempoImage > 1.0 / ModeleRobot_P.SFunction_p36) {
           /* Transition: '<S1>:3783' */
           /* Exit 'FIN_MATCH_04': '<S1>:3778' */
           /* Entry 'FIN_MATCH_05': '<S1>:3779' */
@@ -2245,7 +1913,7 @@ void ModeleRobot_COMPORTEMENT(void)
 
        case ModeleRobot_IN_FIN_MATCH_05:
         /* During 'FIN_MATCH_05': '<S1>:3779' */
-        if (ModeleRobot_DWork.TempoImage > 1.0 / ModeleRobot_P.SFunction_p35) {
+        if (ModeleRobot_DWork.TempoImage > 1.0 / ModeleRobot_P.SFunction_p36) {
           /* Transition: '<S1>:3784' */
           /* Exit 'FIN_MATCH_05': '<S1>:3779' */
           /* Entry 'FIN_MATCH_02': '<S1>:1263' */
@@ -2277,13 +1945,13 @@ void ModeleRobot_COMPORTEMENT(void)
 
         /* Graphical Function 'setServo': '<S1>:4141' */
         /* Transition: '<S1>:4143' */
-        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)]
-          = ModeleRobot_P.SFunction_p30;
+        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)]
+          = ModeleRobot_P.SFunction_p31;
 
         /* Graphical Function 'setServo': '<S1>:4141' */
         /* Transition: '<S1>:4143' */
-        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)]
-          = ModeleRobot_P.SFunction_p26;
+        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)]
+          = ModeleRobot_P.SFunction_p27;
 
         /* Graphical Function 'CommandeLEDS_RVBO': '<S1>:1339' */
         /* Transition: '<S1>:1341' */
@@ -2297,7 +1965,7 @@ void ModeleRobot_COMPORTEMENT(void)
 
      case ModeleRobot_IN_MATCH:
       /* During 'MATCH': '<S1>:1117' */
-      if ((ModeleRobot_DWork.DureeMatch > 300.0 / ModeleRobot_P.SFunction_p35) ||
+      if ((ModeleRobot_DWork.DureeMatch > 300.0 / ModeleRobot_P.SFunction_p36) ||
           (ModeleRobot_DWork.finHomologation == 1.0)) {
         /* Transition: '<S1>:1266' */
         if (ModeleRobot_DWork.is_STRATEGIE == ModeleRobot_IN_STRATEGIE1) {
@@ -2306,13 +1974,13 @@ void ModeleRobot_COMPORTEMENT(void)
               /* Exit 'ACTION_HOMOLO_2': '<S1>:4167' */
               /* Graphical Function 'setServo': '<S1>:4141' */
               /* Transition: '<S1>:4143' */
-              ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27
-                - 1.0)] = ModeleRobot_P.SFunction_p30;
+              ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28
+                - 1.0)] = ModeleRobot_P.SFunction_p31;
 
               /* Graphical Function 'setServo': '<S1>:4141' */
               /* Transition: '<S1>:4143' */
-              ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23
-                - 1.0)] = ModeleRobot_P.SFunction_p26;
+              ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24
+                - 1.0)] = ModeleRobot_P.SFunction_p27;
               ModeleRobot_DWork.is_DEMO = (uint8_T)
                 ModeleRobot_IN_NO_ACTIVE_CHILD;
             } else {
@@ -2330,6 +1998,7 @@ void ModeleRobot_COMPORTEMENT(void)
               /* Exit 'ACTION_HOMOLO_01': '<S1>:4181' */
               /* Exit 'ACTION_HOMOLO_02': '<S1>:4183' */
               /* Exit 'ACTION_HOMOLO_03': '<S1>:4220' */
+              /* Exit 'ACTION_HOMOLO_04': '<S1>:4226' */
               /* Exit 'ACTION_HOMOLO_10': '<S1>:4204' */
               /* Exit 'ACTION_HOMOLO_11': '<S1>:4207' */
               /* Exit 'ACTION_HOMOLO_12': '<S1>:4210' */
@@ -2385,13 +2054,13 @@ void ModeleRobot_COMPORTEMENT(void)
 
         /* Graphical Function 'setServo': '<S1>:4141' */
         /* Transition: '<S1>:4143' */
-        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)]
-          = ModeleRobot_P.SFunction_p30;
+        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p28 - 1.0)]
+          = ModeleRobot_P.SFunction_p31;
 
         /* Graphical Function 'setServo': '<S1>:4141' */
         /* Transition: '<S1>:4143' */
-        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)]
-          = ModeleRobot_P.SFunction_p26;
+        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p24 - 1.0)]
+          = ModeleRobot_P.SFunction_p27;
 
         /* Graphical Function 'CommandeLEDS_RVBO': '<S1>:1339' */
         /* Transition: '<S1>:1341' */
@@ -2424,7 +2093,7 @@ void ModeleRobot_COMPORTEMENT(void)
              case ModeleRobot_IN_DETECT_OBSTACLE:
               /* During 'DETECT_OBSTACLE': '<S1>:3816' */
               if (ModeleRobot_DWork.local_Tempo > 2.0 /
-                  ModeleRobot_P.SFunction_p35) {
+                  ModeleRobot_P.SFunction_p36) {
                 /* Transition: '<S1>:3818' */
                 /* Exit 'DETECT_OBSTACLE': '<S1>:3816' */
                 /* Entry 'DETECT_OBSTACLE1': '<S1>:3815' */
@@ -2472,14 +2141,14 @@ void ModeleRobot_COMPORTEMENT(void)
                 /* Graphical Function 'setServo': '<S1>:4141' */
                 /* Transition: '<S1>:4143' */
                 ModeleRobot_B.CommandeServo[(int32_T)
-                  (ModeleRobot_P.SFunction_p27 - 1.0)] =
-                  ModeleRobot_P.SFunction_p30;
+                  (ModeleRobot_P.SFunction_p28 - 1.0)] =
+                  ModeleRobot_P.SFunction_p31;
 
                 /* Graphical Function 'setServo': '<S1>:4141' */
                 /* Transition: '<S1>:4143' */
                 ModeleRobot_B.CommandeServo[(int32_T)
-                  (ModeleRobot_P.SFunction_p23 - 1.0)] =
-                  ModeleRobot_P.SFunction_p26;
+                  (ModeleRobot_P.SFunction_p24 - 1.0)] =
+                  ModeleRobot_P.SFunction_p27;
                 ModeleRobot_DWork.is_DEMO = (uint8_T)
                   ModeleRobot_IN_NO_ACTIVE_CHILD;
               } else {
@@ -2497,6 +2166,7 @@ void ModeleRobot_COMPORTEMENT(void)
                 /* Exit 'ACTION_HOMOLO_01': '<S1>:4181' */
                 /* Exit 'ACTION_HOMOLO_02': '<S1>:4183' */
                 /* Exit 'ACTION_HOMOLO_03': '<S1>:4220' */
+                /* Exit 'ACTION_HOMOLO_04': '<S1>:4226' */
                 /* Exit 'ACTION_HOMOLO_10': '<S1>:4204' */
                 /* Exit 'ACTION_HOMOLO_11': '<S1>:4207' */
                 /* Exit 'ACTION_HOMOLO_12': '<S1>:4210' */
@@ -2545,7 +2215,7 @@ void ModeleRobot_COMPORTEMENT(void)
              case ModeleRobot_IN_INIT_STRATEGIE:
               /* During 'INIT_STRATEGIE': '<S1>:1128' */
               if (ModeleRobot_DWork.DureeMatch > 0.5 /
-                  ModeleRobot_P.SFunction_p35) {
+                  ModeleRobot_P.SFunction_p36) {
                 /* Transition: '<S1>:2244' */
                 /* Exit 'INIT_STRATEGIE': '<S1>:1128' */
                 ModeleRobot_DWork.is_STRATEGIE1 = (uint8_T)
@@ -2609,7 +2279,7 @@ void ModeleRobot_step(void)
    *  Inport: '<Root>/IN_ObstacleAVD'
    *  Inport: '<Root>/IN_ObstacleAVG'
    *  Logic: '<S2>/Logical Operator'
-   *  RelationalOperator: '<S14>/Compare'
+   *  RelationalOperator: '<S15>/Compare'
    *  RelationalOperator: '<S2>/Relational Operator'
    *  RelationalOperator: '<S2>/Relational Operator1'
    */
@@ -2627,7 +2297,7 @@ void ModeleRobot_step(void)
    *  Inport: '<Root>/IN_ObstacleARD'
    *  Inport: '<Root>/IN_ObstacleARG'
    *  Logic: '<S2>/Logical Operator1'
-   *  RelationalOperator: '<S13>/Compare'
+   *  RelationalOperator: '<S14>/Compare'
    *  RelationalOperator: '<S2>/Relational Operator2'
    *  RelationalOperator: '<S2>/Relational Operator3'
    */
@@ -2643,6 +2313,18 @@ void ModeleRobot_step(void)
    *  Logic: '<S2>/Logical Operator2'
    */
   ModeleRobot_Y.OUT_isObstacle = ((rtb_Switch != 0.0) || (rtb_Switch1 != 0.0));
+
+  /* DataTypeConversion: '<S3>/Data Type Conversion' incorporates:
+   *  Constant: '<S16>/Constant'
+   *  Inport: '<Root>/IN_ConvergenceMvt'
+   *  Logic: '<S3>/Logical Operator'
+   *  RelationalOperator: '<S16>/Compare'
+   *  RelationalOperator: '<S17>/FixPt Relational Operator'
+   *  UnitDelay: '<S17>/Delay Input1'
+   */
+  ModeleRobot_B.DataTypeConversion = (real_T)(((ModeleRobot_U.IN_ConvergenceMvt
+    != ModeleRobot_DWork.DelayInput1_DSTATE) != 0) &&
+    ((ModeleRobot_U.IN_ConvergenceMvt == ModeleRobot_P.Constant_Value) != 0));
 
   /* Stateflow: '<Root>/COMPORTEMENT' */
   ModeleRobot_COMPORTEMENT();
@@ -2722,12 +2404,20 @@ void ModeleRobot_step(void)
     /* Outport: '<Root>/OUT_RelacheServo' */
     ModeleRobot_Y.OUT_RelacheServo[i] = ModeleRobot_B.RelacheServo[i];
   }
+
+  /* Update for UnitDelay: '<S17>/Delay Input1' incorporates:
+   *  Update for Inport: '<Root>/IN_ConvergenceMvt'
+   */
+  ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_U.IN_ConvergenceMvt;
 }
 
 /* Model initialize function */
 void ModeleRobot_initialize(boolean_T firstTime)
 {
   (void)firstTime;
+
+  /* InitializeConditions for UnitDelay: '<S17>/Delay Input1' */
+  ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_P.DelayInput1_X0;
 
   /* InitializeConditions for Stateflow: '<Root>/COMPORTEMENT' */
   ModeleRobot_COMPORTEMENT_Init();

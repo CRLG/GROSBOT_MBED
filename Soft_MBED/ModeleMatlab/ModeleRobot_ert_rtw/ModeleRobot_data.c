@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model ModeleRobot.
  *
- * Model version                        : 1.1436
+ * Model version                        : 1.1442
  * Real-Time Workshop file version      : 7.4  (R2009b)  29-Jun-2009
- * Real-Time Workshop file generated on : Wed May 13 20:14:58 2015
+ * Real-Time Workshop file generated on : Thu May 14 08:56:38 2015
  * TLC version                          : 7.4 (Jul 14 2009)
- * C/C++ source code generated on       : Wed May 13 20:14:59 2015
+ * C/C++ source code generated on       : Thu May 14 08:56:39 2015
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -35,11 +35,29 @@ Parameters_ModeleRobot ModeleRobot_P = {
   -1.0,                                /* Expression: -1
                                         * Referenced by: '<S2>/Relay'
                                         */
+  0.0,                                 /* Expression: vinit
+                                        * Referenced by: '<S17>/Delay Input1'
+                                        */
   1.0,                                 /* Expression: const
-                                        * Referenced by: '<S6>/Constant'
+                                        * Referenced by: '<S16>/Constant'
+                                        */
+  0.0,                                 /* Expression: 0
+                                        * Referenced by: '<Root>/Constant'
+                                        */
+  1.0,                                 /* Expression: const
+                                        * Referenced by: '<S7>/Constant'
                                         */
   0.0,                                 /* Expression: vinit
-                                        * Referenced by: '<S7>/Delay Input1'
+                                        * Referenced by: '<S8>/Delay Input1'
+                                        */
+  2.0,                                 /* Expression: const
+                                        * Referenced by: '<S10>/Constant'
+                                        */
+  0.0,                                 /* Expression: vinit
+                                        * Referenced by: '<S11>/Delay Input1'
+                                        */
+  0.0,                                 /* Expression: DEBUG_ASCENSEUR
+                                        * Referenced by: '<Root>/COMPORTEMENT'
                                         */
   0.0,                                 /* Expression: DEBUG_TORCHE
                                         * Referenced by: '<Root>/COMPORTEMENT'
@@ -143,32 +161,21 @@ Parameters_ModeleRobot ModeleRobot_P = {
   0.0,                                 /* Expression: 0
                                         * Referenced by: '<S2>/Constant1'
                                         */
-  1,                                   /* Computed Parameter: SFunction_p4
+  1,                                   /* Computed Parameter: SFunction_p5
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  1,                                   /* Computed Parameter: SFunction_p11
+  1,                                   /* Computed Parameter: SFunction_p12
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  1,                                   /* Computed Parameter: SFunction_p34
+  1,                                   /* Computed Parameter: SFunction_p35
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
   1U,                                  /* Computed Parameter: Switch_Threshold
                                         * Referenced by: '<S2>/Switch'
                                         */
-  1U,                                  /* Computed Parameter: Switch1_Threshold
+  1U                                   /* Computed Parameter: Switch1_Threshold
                                         * Referenced by: '<S2>/Switch1'
                                         */
-
-  /* Start of '<Root>/COMPORTEMENT' */
-  {
-    2.0,                               /* Expression: const
-                                        * Referenced by: '<S9>/Constant'
-                                        */
-    0.0                                /* Expression: vinit
-                                        * Referenced by: '<S10>/Delay Input1'
-                                        */
-  }
-  /* End of '<Root>/COMPORTEMENT' */
 };
 
 /*

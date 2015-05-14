@@ -83,6 +83,7 @@ DEBUG_TORCHE=0; %pour debuguer la squence de chargement de la torche
 STT=1; %1 => stratégie d'évitement basique, on s'arrête et quand il n'y a plus d'obstacle on repart
 JUST_HOMOLO=1; %1 => on fait juste le programme d'homologation
 MODE_XYTETA=1; %1 => on utilise le mode XYTeta (economie de mouvement)
+DEBUG_ASCENSEUR=0;
 
 display ('Ouverture du modèle');
 open ModeleRobot.mdl;
