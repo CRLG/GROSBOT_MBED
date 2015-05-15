@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model ModeleRobot.
  *
- * Model version                        : 1.1507
+ * Model version                        : 1.1550
  * Real-Time Workshop file version      : 7.4  (R2009b)  29-Jun-2009
- * Real-Time Workshop file generated on : Fri May 15 14:53:50 2015
+ * Real-Time Workshop file generated on : Fri May 15 18:56:54 2015
  * TLC version                          : 7.4 (Jul 14 2009)
- * C/C++ source code generated on       : Fri May 15 14:53:51 2015
+ * C/C++ source code generated on       : Fri May 15 18:56:54 2015
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -23,11 +23,12 @@
 #define IN_ACTION_RETOUR_Z0_DECHARGE_02 (2)
 #define IN_ACTION_RETOUR_Z0_DECHARGE_03 (3)
 #define IN_ACTION_RETOUR_Z0_DECHARGE_04 (4)
-#define IN_ACTION_RETOUR_Z0_DECHARGE_05 (5)
-#define IN_ACTION_RETOUR_Z0_DECHARGE_06 (6)
-#define IN_ACTION_RETOUR_Z0_DECHARGE_07 (7)
-#define IN_GOTO_DISTRIBUTEURS_ET_RECUPE (2)
-#define IN_RETOUR_ZONE_DEPART_ET_DECHAR (4)
+#define IN_ACTION_RETOUR_Z0_DECHARGE_06 (5)
+#define IN_ACTION_RETOUR_Z0_DECHARGE_07 (6)
+#define IN_JAUNE_GOTO_DISTRIBUTEURS_ET_ (3)
+#define IN_JAUNE_RETOUR_ZONE_DEPART_ET_ (4)
+#define IN_VERT_GOTO_DISTRIBUTEURS_ET_R (5)
+#define IN_VERT_RETOUR_ZONE_DEPART_ET_D (6)
 #define ModeleR_IN_FIN_REPOS_ACTIONNEUR (4)
 #define ModeleRob_IN_ACTION_DISTRIB_010 (2)
 #define ModeleRob_IN_ACTION_DISTRIB_011 (3)
@@ -62,23 +63,29 @@
 #define ModeleRobot_IN_ACTION_HOMOLO_34 (20)
 #define ModeleRobot_IN_ACTION_HOMOLO_35 (21)
 #define ModeleRobot_IN_ACTION_HOMOLO_36 (22)
-#define ModeleRobot_IN_ACTION_HOMOLO_37 (23)
-#define ModeleRobot_IN_ACTION_HOMOLO_38 (24)
-#define ModeleRobot_IN_ACTION_HOMOLO_39 (25)
-#define ModeleRobot_IN_ACTION_HOMOLO_4 (26)
-#define ModeleRobot_IN_ACTION_HOMOLO_40 (27)
-#define ModeleRobot_IN_ACTION_HOMOLO_41 (28)
-#define ModeleRobot_IN_ACTION_HOMOLO_43 (29)
-#define ModeleRobot_IN_ACTION_HOMOLO_44 (30)
-#define ModeleRobot_IN_ACTION_HOMOLO_45 (31)
-#define ModeleRobot_IN_ACTION_HOMOLO_46 (32)
-#define ModeleRobot_IN_ACTION_HOMOLO_47 (33)
-#define ModeleRobot_IN_ACTION_HOMOLO_48 (34)
-#define ModeleRobot_IN_ACTION_HOMOLO_49 (35)
-#define ModeleRobot_IN_ACTION_HOMOLO_6 (36)
-#define ModeleRobot_IN_ACTION_HOMOLO_7 (37)
-#define ModeleRobot_IN_ACTION_HOMOLO_8 (38)
-#define ModeleRobot_IN_ACTION_HOMOLO_9 (39)
+#define ModeleRobot_IN_ACTION_HOMOLO_4 (23)
+#define ModeleRobot_IN_ACTION_HOMOLO_40 (24)
+#define ModeleRobot_IN_ACTION_HOMOLO_41 (25)
+#define ModeleRobot_IN_ACTION_HOMOLO_43 (26)
+#define ModeleRobot_IN_ACTION_HOMOLO_44 (27)
+#define ModeleRobot_IN_ACTION_HOMOLO_45 (28)
+#define ModeleRobot_IN_ACTION_HOMOLO_46 (29)
+#define ModeleRobot_IN_ACTION_HOMOLO_47 (30)
+#define ModeleRobot_IN_ACTION_HOMOLO_48 (31)
+#define ModeleRobot_IN_ACTION_HOMOLO_49 (32)
+#define ModeleRobot_IN_ACTION_HOMOLO_50 (33)
+#define ModeleRobot_IN_ACTION_HOMOLO_51 (34)
+#define ModeleRobot_IN_ACTION_HOMOLO_52 (35)
+#define ModeleRobot_IN_ACTION_HOMOLO_53 (36)
+#define ModeleRobot_IN_ACTION_HOMOLO_54 (37)
+#define ModeleRobot_IN_ACTION_HOMOLO_55 (38)
+#define ModeleRobot_IN_ACTION_HOMOLO_56 (39)
+#define ModeleRobot_IN_ACTION_HOMOLO_57 (40)
+#define ModeleRobot_IN_ACTION_HOMOLO_58 (41)
+#define ModeleRobot_IN_ACTION_HOMOLO_6 (42)
+#define ModeleRobot_IN_ACTION_HOMOLO_7 (43)
+#define ModeleRobot_IN_ACTION_HOMOLO_8 (44)
+#define ModeleRobot_IN_ACTION_HOMOLO_9 (45)
 #define ModeleRobot_IN_ATTENTE_TIRETTE (1)
 #define ModeleRobot_IN_DEMO            (1)
 #define ModeleRobot_IN_DETECT_OBSTACLE (1)
@@ -94,7 +101,7 @@
 #define ModeleRobot_IN_FIN_MATCH_05    (5)
 #define ModeleRobot_IN_INIT            (1)
 #define ModeleRobot_IN_INIT1           (2)
-#define ModeleRobot_IN_INIT_STRATEGIE  (3)
+#define ModeleRobot_IN_INIT_STRATEGIE  (2)
 #define ModeleRobot_IN_MATCH           (3)
 #define ModeleRobot_IN_NO_ACTIVE_CHILD (0)
 #define ModeleRobot_IN_REPOS_SERVOS    (5)
@@ -124,22 +131,37 @@ static void enter_internal_ACTIONNEURS_REPO(void);
 static void enter_internal_COMPORTEMENT_ROB(void);
 static void Mod_enter_atomic_INIT_STRATEGIE(void);
 static void ModeleRobot_enter_atomic_DEMO(void);
+static void Mo_enter_atomic_ACTION_HOMOLO_8(void);
 static void ModeleRobot_enter_internal_DEMO(void);
-static void enter_internal_GOTO_DISTRIBUTEU(void);
-static void enter_internal_RETOUR_ZONE_DEPA(void);
+static void enter_atomic_JAUNE_GOTO_DISTRIB(void);
+static void enter_internal_JAUNE_GOTO_DISTR(void);
+static void enter_atomic_JAUNE_RETOUR_ZONE_(void);
+static void enter_internal_JAUNE_RETOUR_ZON(void);
+static void enter_atomic_VERT_GOTO_DISTRIBU(void);
+static void enter_internal_VERT_GOTO_DISTRI(void);
+static void enter_atomic_VERT_RETOUR_ZONE_D(void);
+static void enter_internal_VERT_RETOUR_ZONE(void);
 static void Model_enter_internal_STRATEGIE1(void);
-static void ModeleRobot_ACTION_HOMOLO_45(void);
 static void ModeleRobot_ACTION_HOMOLO_46(void);
 static void ModeleRobot_ACTION_HOMOLO_47(void);
 static void ModeleRobot_ACTION_HOMOLO_48(void);
 static void ModeleRobot_ACTION_HOMOLO_49(void);
+static void ModeleRobot_ACTION_HOMOLO_50(void);
+static void ModeleRobot_ACTION_HOMOLO_51(void);
+static void ModeleRobot_ACTION_HOMOLO_52(void);
+static void ModeleRobot_ACTION_HOMOLO_53(void);
+static void ModeleRobot_ACTION_HOMOLO_54(void);
+static void ModeleRobot_ACTION_HOMOLO_55(void);
+static void ModeleRobot_ACTION_HOMOLO_56(void);
+static void ModeleRobot_ACTION_HOMOLO_57(void);
+static void ModeleRobot_ACTION_HOMOLO_58(void);
 static void ModeleRobot_ACTION_HOMOLO_6(void);
 static void ModeleRobot_ACTION_HOMOLO_7(void);
 static void ModeleRobot_ACTION_HOMOLO_8(void);
 static void ModeleRobot_ACTION_HOMOLO_9(void);
 static void ModeleRobot_exit_internal_DEMO(void);
-static void enter_atomic_GOTO_DISTRIBUTEURS(void);
 static void ModeleRobot_DEMO(void);
+static void VERT_GOTO_DISTRIBUTEURS_ET_RECU(void);
 static void ModeleRobot_STRATEGIE1(void);
 
 /* Function for Stateflow: '<Root>/COMPORTEMENT' */
@@ -315,6 +337,26 @@ static void ModeleRobot_enter_atomic_DEMO(void)
   ModeleRobot_DWork.x_old = 0.0;
   ModeleRobot_DWork.y_old = 0.0;
   ModeleRobot_DWork.inhibeObstacle = 0.0;
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void Mo_enter_atomic_ACTION_HOMOLO_8(void)
+{
+  /* Entry 'ACTION_HOMOLO_8': '<S1>:4192' */
+  ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_8;
+  ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_8;
+
+  /* on centre le spot */
+  /* Graphical Function 'setServo': '<S1>:4141' */
+  /* Transition: '<S1>:4143' */
+  ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
+    ModeleRobot_P.SFunction_p28;
+
+  /* Graphical Function 'setServo': '<S1>:4141' */
+  /* Transition: '<S1>:4143' */
+  ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
+    ModeleRobot_P.SFunction_p24;
+  ModeleRobot_DWork.TempoMot = 0.0;
 }
 
 /* Function for Stateflow: '<Root>/COMPORTEMENT' */
@@ -672,60 +714,6 @@ static void ModeleRobot_enter_internal_DEMO(void)
     ModeleRobot_DWork.TempoMot = 0.0;
     break;
 
-   case ModeleRobot_IN_ACTION_HOMOLO_37:
-    /* Entry 'ACTION_HOMOLO_37': '<S1>:4321' */
-    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_37;
-    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_37;
-
-    /* on degage le gobelet avec un centreur */
-    /* Graphical Function 'setServo': '<S1>:4141' */
-    /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
-      ModeleRobot_P.SFunction_p26;
-    ModeleRobot_DWork.TempoMot = 0.0;
-    break;
-
-   case ModeleRobot_IN_ACTION_HOMOLO_38:
-    /* Entry 'ACTION_HOMOLO_38': '<S1>:4328' */
-    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_38;
-    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_38;
-
-    /* on degage le gobelet avec un centreur */
-    /* Graphical Function 'setServoRelache': '<S1>:4198' */
-    /* Transition: '<S1>:4200' */
-    ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
-      0.0;
-
-    /* Graphical Function 'setServo': '<S1>:4141' */
-    /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
-      ModeleRobot_P.SFunction_p26;
-    ModeleRobot_DWork.TempoMot = 0.0;
-    break;
-
-   case ModeleRobot_IN_ACTION_HOMOLO_39:
-    /* Entry 'ACTION_HOMOLO_39': '<S1>:4329' */
-    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_39;
-    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_39;
-
-    /* on degage le gobelet avec un centreur */
-    /* Graphical Function 'setServoRelache': '<S1>:4198' */
-    /* Transition: '<S1>:4200' */
-    ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
-      1000.0;
-
-    /* Graphical Function 'setServo': '<S1>:4141' */
-    /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
-      ModeleRobot_P.SFunction_p25;
-
-    /* Graphical Function 'setServo': '<S1>:4141' */
-    /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
-      ModeleRobot_P.SFunction_p29;
-    ModeleRobot_DWork.TempoMot = 0.0;
-    break;
-
    case ModeleRobot_IN_ACTION_HOMOLO_4:
     /* Entry 'ACTION_HOMOLO_4': '<S1>:4169' */
     ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_4;
@@ -763,8 +751,8 @@ static void ModeleRobot_enter_internal_DEMO(void)
     /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
     /* Transition: '<S1>:1301' */
     ModeleRobot_B.DdeMvtManuel = ModeleRobot_B.DdeMvtManuel + 1.0;
-    ModeleRobot_B.CommandeManuelleG = -30.0;
-    ModeleRobot_B.CommandeManuelleD = -30.0;
+    ModeleRobot_B.CommandeManuelleG = -25.0;
+    ModeleRobot_B.CommandeManuelleD = -25.0;
     ModeleRobot_DWork.TempoMot = 0.0;
     break;
 
@@ -777,8 +765,8 @@ static void ModeleRobot_enter_internal_DEMO(void)
     /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
     /* Transition: '<S1>:1301' */
     ModeleRobot_B.DdeMvtManuel = ModeleRobot_B.DdeMvtManuel + 1.0;
-    ModeleRobot_B.CommandeManuelleG = 30.0;
-    ModeleRobot_B.CommandeManuelleD = 30.0;
+    ModeleRobot_B.CommandeManuelleG = 25.0;
+    ModeleRobot_B.CommandeManuelleD = 25.0;
     ModeleRobot_DWork.TempoMot = 0.0;
     break;
 
@@ -866,6 +854,125 @@ static void ModeleRobot_enter_internal_DEMO(void)
     ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
     break;
 
+   case ModeleRobot_IN_ACTION_HOMOLO_50:
+    /* Entry 'ACTION_HOMOLO_50': '<S1>:4471' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_50;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_50;
+
+    /* on avance parallelement a la bordure et on ferme les claps */
+    /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
+    /* Transition: '<S1>:1291' */
+    ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
+    ModeleRobot_B.ConsigneX = 19.0;
+    ModeleRobot_B.ConsigneY = -77.0 * ModeleRobot_DWork.invMouv;
+    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_51:
+    /* Entry 'ACTION_HOMOLO_51': '<S1>:4477' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_51;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_51;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p20 - 1.0)] =
+      ModeleRobot_P.SFunction_p21;
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_52:
+    /* Entry 'ACTION_HOMOLO_52': '<S1>:4489' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_52;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_52;
+
+    /* on avance parallelement a la bordure et on ferme les claps */
+    /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
+    /* Transition: '<S1>:1291' */
+    ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
+    ModeleRobot_B.ConsigneX = 62.0;
+    ModeleRobot_B.ConsigneY = -77.0 * ModeleRobot_DWork.invMouv;
+    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_53:
+    /* Entry 'ACTION_HOMOLO_53': '<S1>:4490' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_53;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_53;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p20 - 1.0)] =
+      ModeleRobot_P.SFunction_p22;
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_54:
+    /* Entry 'ACTION_HOMOLO_54': '<S1>:4491' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_54;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_54;
+
+    /* on avance parallelement a la bordure et on ferme les claps */
+    /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
+    /* Transition: '<S1>:1291' */
+    ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
+    ModeleRobot_B.ConsigneX = 82.0;
+    ModeleRobot_B.ConsigneY = -77.0 * ModeleRobot_DWork.invMouv;
+    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_55:
+    /* Entry 'ACTION_HOMOLO_55': '<S1>:4498' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_55;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_55;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
+      ModeleRobot_P.SFunction_p26;
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_56:
+    /* Entry 'ACTION_HOMOLO_56': '<S1>:4500' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_56;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_56;
+
+    /* Graphical Function 'setServoRelache': '<S1>:4198' */
+    /* Transition: '<S1>:4200' */
+    ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
+      0.0;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
+      ModeleRobot_P.SFunction_p30;
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_57:
+    /* Entry 'ACTION_HOMOLO_57': '<S1>:4502' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_57;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_57;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
+      ModeleRobot_P.SFunction_p25;
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
+   case ModeleRobot_IN_ACTION_HOMOLO_58:
+    /* Entry 'ACTION_HOMOLO_58': '<S1>:4504' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_58;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_58;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
+      ModeleRobot_P.SFunction_p29;
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
    case ModeleRobot_IN_ACTION_HOMOLO_6:
     /* Entry 'ACTION_HOMOLO_6': '<S1>:4187' */
     ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_6;
@@ -907,21 +1014,7 @@ static void ModeleRobot_enter_internal_DEMO(void)
     break;
 
    case ModeleRobot_IN_ACTION_HOMOLO_8:
-    /* Entry 'ACTION_HOMOLO_8': '<S1>:4192' */
-    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_8;
-    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_8;
-
-    /* on centre le spot */
-    /* Graphical Function 'setServo': '<S1>:4141' */
-    /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
-      ModeleRobot_P.SFunction_p28;
-
-    /* Graphical Function 'setServo': '<S1>:4141' */
-    /* Transition: '<S1>:4143' */
-    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
-      ModeleRobot_P.SFunction_p24;
-    ModeleRobot_DWork.TempoMot = 0.0;
+    Mo_enter_atomic_ACTION_HOMOLO_8();
     break;
 
    case ModeleRobot_IN_ACTION_HOMOLO_9:
@@ -963,14 +1056,27 @@ static void ModeleRobot_enter_internal_DEMO(void)
 }
 
 /* Function for Stateflow: '<Root>/COMPORTEMENT' */
-static void enter_internal_GOTO_DISTRIBUTEU(void)
+static void enter_atomic_JAUNE_GOTO_DISTRIB(void)
 {
-  switch (ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP) {
+  /* Entry 'JAUNE_GOTO_DISTRIBUTEURS_ET_RECUPERE': '<S1>:4353' */
+  ModeleRobot_DWork.is_STRATEGIE1 = (uint8_T)IN_JAUNE_GOTO_DISTRIBUTEURS_ET_;
+  ModeleRobot_DWork.was_STRATEGIE1 = (uint8_T)IN_JAUNE_GOTO_DISTRIBUTEURS_ET_;
+  ModeleRobot_DWork.TempoMot = 0.0;
+  ModeleRobot_DWork.inhibeObstacle = 0.0;
+  ModeleRobot_DWork.nbreDistributeursTraites = 0.0;
+  ModeleRobot_DWork.x_old = 0.0;
+  ModeleRobot_DWork.y_old = 0.0;
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void enter_internal_JAUNE_GOTO_DISTR(void)
+{
+  switch (ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET) {
    case ModeleRobo_IN_ACTION_DISTRIB_01:
     /* Entry 'ACTION_DISTRIB_01': '<S1>:4365' */
-    ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+    ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
       ModeleRobo_IN_ACTION_DISTRIB_01;
-    ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+    ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
       ModeleRobo_IN_ACTION_DISTRIB_01;
 
     /* Graphical Function 'CommandeLEDS_RVBO': '<S1>:1339' */
@@ -995,9 +1101,9 @@ static void enter_internal_GOTO_DISTRIBUTEU(void)
 
    case ModeleRob_IN_ACTION_DISTRIB_010:
     /* Entry 'ACTION_DISTRIB_010': '<S1>:4407' */
-    ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+    ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
       ModeleRob_IN_ACTION_DISTRIB_010;
-    ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+    ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
       ModeleRob_IN_ACTION_DISTRIB_010;
 
     /* va en marche arrière jusque devant le distributeur sans l'atteindre */
@@ -1014,9 +1120,9 @@ static void enter_internal_GOTO_DISTRIBUTEU(void)
 
    case ModeleRob_IN_ACTION_DISTRIB_011:
     /* Entry 'ACTION_DISTRIB_011': '<S1>:4415' */
-    ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+    ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
       ModeleRob_IN_ACTION_DISTRIB_011;
-    ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+    ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
       ModeleRob_IN_ACTION_DISTRIB_011;
 
     /*  s'éloinge de la bordure */
@@ -1033,18 +1139,18 @@ static void enter_internal_GOTO_DISTRIBUTEU(void)
 
    case ModeleRobo_IN_ACTION_DISTRIB_02:
     /* Entry 'ACTION_DISTRIB_02': '<S1>:4366' */
-    ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+    ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
       ModeleRobo_IN_ACTION_DISTRIB_02;
-    ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+    ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
       ModeleRobo_IN_ACTION_DISTRIB_02;
     ModeleRobot_DWork.inhibeObstacle = 1.0;
     break;
 
    case ModeleRobo_IN_ACTION_DISTRIB_03:
     /* Entry 'ACTION_DISTRIB_03': '<S1>:4368' */
-    ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+    ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
       ModeleRobo_IN_ACTION_DISTRIB_03;
-    ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+    ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
       ModeleRobo_IN_ACTION_DISTRIB_03;
 
     /*  termine en boucle ouverte pour venir buter contre la bordure */
@@ -1070,9 +1176,9 @@ static void enter_internal_GOTO_DISTRIBUTEU(void)
 
    case ModeleRobo_IN_ACTION_DISTRIB_04:
     /* Entry 'ACTION_DISTRIB_04': '<S1>:4369' */
-    ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+    ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
       ModeleRobo_IN_ACTION_DISTRIB_04;
-    ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+    ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
       ModeleRobo_IN_ACTION_DISTRIB_04;
 
     /*  arrête de buter contre la bordure */
@@ -1099,9 +1205,9 @@ static void enter_internal_GOTO_DISTRIBUTEU(void)
 
    case ModeleRobo_IN_ACTION_DISTRIB_05:
     /* Entry 'ACTION_DISTRIB_05': '<S1>:4370' */
-    ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+    ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
       ModeleRobo_IN_ACTION_DISTRIB_05;
-    ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+    ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
       ModeleRobo_IN_ACTION_DISTRIB_05;
 
     /*  Arrête la souflerie pour laisser les balles tomber (et attend un peu) */
@@ -1114,9 +1220,9 @@ static void enter_internal_GOTO_DISTRIBUTEU(void)
 
    case ModeleRobo_IN_ACTION_DISTRIB_06:
     /* Entry 'ACTION_DISTRIB_06': '<S1>:4372' */
-    ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+    ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
       ModeleRobo_IN_ACTION_DISTRIB_06;
-    ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+    ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
       ModeleRobo_IN_ACTION_DISTRIB_06;
     ModeleRobot_DWork.nbreDistributeursTraites =
       ModeleRobot_DWork.nbreDistributeursTraites + 1.0;
@@ -1124,9 +1230,9 @@ static void enter_internal_GOTO_DISTRIBUTEU(void)
 
    case ModeleRobo_IN_ACTION_DISTRIB_07:
     /* Entry 'ACTION_DISTRIB_07': '<S1>:4373' */
-    ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+    ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
       ModeleRobo_IN_ACTION_DISTRIB_07;
-    ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+    ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
       ModeleRobo_IN_ACTION_DISTRIB_07;
 
     /*  Ferme le servo du recolteur une fois tout terminé */
@@ -1142,16 +1248,16 @@ static void enter_internal_GOTO_DISTRIBUTEU(void)
     /* Transition: '<S1>:3697' */
     ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
     ModeleRobot_B.ConsigneX = ModeleRobot_DWork.posXReferenceEntreEtapes + 20.0;
-    ModeleRobot_B.ConsigneY = 15.0;
-    ModeleRobot_B.ConsigneTeta = ModeleRobot_P.SFunction_p19;
+    ModeleRobot_B.ConsigneY = 0.0;
+    ModeleRobot_B.ConsigneTeta = 0.0;
     ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
     break;
 
    case ModeleRobo_IN_ACTION_DISTRIB_08:
     /* Entry 'ACTION_DISTRIB_08': '<S1>:4375' */
-    ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+    ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
       ModeleRobo_IN_ACTION_DISTRIB_08;
-    ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+    ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
       ModeleRobo_IN_ACTION_DISTRIB_08;
 
     /* Fin d'étape */
@@ -1160,9 +1266,9 @@ static void enter_internal_GOTO_DISTRIBUTEU(void)
 
    case ModeleRobo_IN_ACTION_DISTRIB_09:
     /* Entry 'ACTION_DISTRIB_09': '<S1>:4405' */
-    ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+    ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
       ModeleRobo_IN_ACTION_DISTRIB_09;
-    ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+    ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
       ModeleRobo_IN_ACTION_DISTRIB_09;
 
     /* va en marche arrière jusque devant le distributeur sans l'atteindre */
@@ -1179,9 +1285,9 @@ static void enter_internal_GOTO_DISTRIBUTEU(void)
    default:
     /* Transition: '<S1>:4355' */
     /* Entry 'ACTION_DISTRIB_01': '<S1>:4365' */
-    ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+    ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
       ModeleRobo_IN_ACTION_DISTRIB_01;
-    ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+    ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
       ModeleRobo_IN_ACTION_DISTRIB_01;
 
     /* Graphical Function 'CommandeLEDS_RVBO': '<S1>:1339' */
@@ -1207,14 +1313,26 @@ static void enter_internal_GOTO_DISTRIBUTEU(void)
 }
 
 /* Function for Stateflow: '<Root>/COMPORTEMENT' */
-static void enter_internal_RETOUR_ZONE_DEPA(void)
+static void enter_atomic_JAUNE_RETOUR_ZONE_(void)
 {
-  switch (ModeleRobot_DWork.was_RETOUR_ZONE_DEPART_ET_DECHA) {
+  /* Entry 'JAUNE_RETOUR_ZONE_DEPART_ET_DECHARGE': '<S1>:4377' */
+  ModeleRobot_DWork.is_STRATEGIE1 = (uint8_T)IN_JAUNE_RETOUR_ZONE_DEPART_ET_;
+  ModeleRobot_DWork.was_STRATEGIE1 = (uint8_T)IN_JAUNE_RETOUR_ZONE_DEPART_ET_;
+  ModeleRobot_DWork.TempoMot = 0.0;
+  ModeleRobot_DWork.inhibeObstacle = 0.0;
+  ModeleRobot_DWork.x_old = 0.0;
+  ModeleRobot_DWork.y_old = 0.0;
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void enter_internal_JAUNE_RETOUR_ZON(void)
+{
+  switch (ModeleRobot_DWork.was_JAUNE_RETOUR_ZONE_DEPART_ET) {
    case IN_ACTION_RETOUR_Z0_DECHARGE_01:
     /* Entry 'ACTION_RETOUR_Z0_DECHARGE_01': '<S1>:4387' */
-    ModeleRobot_DWork.is_RETOUR_ZONE_DEPART_ET_DECHAR = (uint8_T)
+    ModeleRobot_DWork.is_JAUNE_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
       IN_ACTION_RETOUR_Z0_DECHARGE_01;
-    ModeleRobot_DWork.was_RETOUR_ZONE_DEPART_ET_DECHA = (uint8_T)
+    ModeleRobot_DWork.was_JAUNE_RETOUR_ZONE_DEPART_ET = (uint8_T)
       IN_ACTION_RETOUR_Z0_DECHARGE_01;
 
     /* va vers une position de référence */
@@ -1236,9 +1354,9 @@ static void enter_internal_RETOUR_ZONE_DEPA(void)
 
    case IN_ACTION_RETOUR_Z0_DECHARGE_02:
     /* Entry 'ACTION_RETOUR_Z0_DECHARGE_02': '<S1>:4388' */
-    ModeleRobot_DWork.is_RETOUR_ZONE_DEPART_ET_DECHAR = (uint8_T)
+    ModeleRobot_DWork.is_JAUNE_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
       IN_ACTION_RETOUR_Z0_DECHARGE_02;
-    ModeleRobot_DWork.was_RETOUR_ZONE_DEPART_ET_DECHA = (uint8_T)
+    ModeleRobot_DWork.was_JAUNE_RETOUR_ZONE_DEPART_ET = (uint8_T)
       IN_ACTION_RETOUR_Z0_DECHARGE_02;
 
     /*  termine en boucle ouverte pour venir buter contre la bordure */
@@ -1252,20 +1370,26 @@ static void enter_internal_RETOUR_ZONE_DEPA(void)
 
    case IN_ACTION_RETOUR_Z0_DECHARGE_03:
     /* Entry 'ACTION_RETOUR_Z0_DECHARGE_03': '<S1>:4392' */
-    ModeleRobot_DWork.is_RETOUR_ZONE_DEPART_ET_DECHAR = (uint8_T)
+    ModeleRobot_DWork.is_JAUNE_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
       IN_ACTION_RETOUR_Z0_DECHARGE_03;
-    ModeleRobot_DWork.was_RETOUR_ZONE_DEPART_ET_DECHA = (uint8_T)
+    ModeleRobot_DWork.was_JAUNE_RETOUR_ZONE_DEPART_ET = (uint8_T)
       IN_ACTION_RETOUR_Z0_DECHARGE_03;
 
     /*  fin d'étape */
+    /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
+    /* Transition: '<S1>:1301' */
+    ModeleRobot_B.DdeMvtManuel = ModeleRobot_B.DdeMvtManuel + 1.0;
+    ModeleRobot_B.CommandeManuelleG = 0.0;
+    ModeleRobot_B.CommandeManuelleD = 0.0;
     break;
 
    case IN_ACTION_RETOUR_Z0_DECHARGE_04:
     /* Entry 'ACTION_RETOUR_Z0_DECHARGE_04': '<S1>:4389' */
-    ModeleRobot_DWork.is_RETOUR_ZONE_DEPART_ET_DECHAR = (uint8_T)
+    ModeleRobot_DWork.is_JAUNE_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
       IN_ACTION_RETOUR_Z0_DECHARGE_04;
-    ModeleRobot_DWork.was_RETOUR_ZONE_DEPART_ET_DECHA = (uint8_T)
+    ModeleRobot_DWork.was_JAUNE_RETOUR_ZONE_DEPART_ET = (uint8_T)
       IN_ACTION_RETOUR_Z0_DECHARGE_04;
+    ModeleRobot_DWork.TempoMot = 0.0;
 
     /*  arrête de buter contre la bordure */
     /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
@@ -1286,29 +1410,13 @@ static void enter_internal_RETOUR_ZONE_DEPA(void)
       0.0;
     break;
 
-   case IN_ACTION_RETOUR_Z0_DECHARGE_05:
-    /* Entry 'ACTION_RETOUR_Z0_DECHARGE_05': '<S1>:4386' */
-    ModeleRobot_DWork.is_RETOUR_ZONE_DEPART_ET_DECHAR = (uint8_T)
-      IN_ACTION_RETOUR_Z0_DECHARGE_05;
-    ModeleRobot_DWork.was_RETOUR_ZONE_DEPART_ET_DECHA = (uint8_T)
-      IN_ACTION_RETOUR_Z0_DECHARGE_05;
-
-    /* Assure la direction du robot avant la ligne droite */
-    /* Graphical Function 'Mouvement_Angle': '<S1>:1354' */
-    /* Transition: '<S1>:1356' */
-    ModeleRobot_B.DdeMvtDistanceAngle = ModeleRobot_B.DdeMvtDistanceAngle + 1.0;
-    ModeleRobot_B.ConsigneDistance = 0.0;
-    ModeleRobot_B.ConsigneTeta = 0.0;
-    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
-    ModeleRobot_DWork.TempoMot = 0.0;
-    break;
-
    case IN_ACTION_RETOUR_Z0_DECHARGE_06:
     /* Entry 'ACTION_RETOUR_Z0_DECHARGE_06': '<S1>:4390' */
-    ModeleRobot_DWork.is_RETOUR_ZONE_DEPART_ET_DECHAR = (uint8_T)
+    ModeleRobot_DWork.is_JAUNE_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
       IN_ACTION_RETOUR_Z0_DECHARGE_06;
-    ModeleRobot_DWork.was_RETOUR_ZONE_DEPART_ET_DECHA = (uint8_T)
+    ModeleRobot_DWork.was_JAUNE_RETOUR_ZONE_DEPART_ET = (uint8_T)
       IN_ACTION_RETOUR_Z0_DECHARGE_06;
+    ModeleRobot_DWork.TempoMot = 0.0;
 
     /*  aide à l'évacuation */
     /* Graphical Function 'setPWM': '<S1>:4112' */
@@ -1319,10 +1427,11 @@ static void enter_internal_RETOUR_ZONE_DEPA(void)
 
    case IN_ACTION_RETOUR_Z0_DECHARGE_07:
     /* Entry 'ACTION_RETOUR_Z0_DECHARGE_07': '<S1>:4391' */
-    ModeleRobot_DWork.is_RETOUR_ZONE_DEPART_ET_DECHAR = (uint8_T)
+    ModeleRobot_DWork.is_JAUNE_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
       IN_ACTION_RETOUR_Z0_DECHARGE_07;
-    ModeleRobot_DWork.was_RETOUR_ZONE_DEPART_ET_DECHA = (uint8_T)
+    ModeleRobot_DWork.was_JAUNE_RETOUR_ZONE_DEPART_ET = (uint8_T)
       IN_ACTION_RETOUR_Z0_DECHARGE_07;
+    ModeleRobot_DWork.TempoMot = 0.0;
 
     /*  aide à l'évacuation */
     /* Graphical Function 'setPWM': '<S1>:4112' */
@@ -1331,30 +1440,456 @@ static void enter_internal_RETOUR_ZONE_DEPA(void)
       0.0;
 
     /*  remet le robot dans une position connue pour la prochaine étape */
-    /* Graphical Function 'Mouvement_Distance': '<S1>:1347' */
-    /* Transition: '<S1>:1349' */
-    ModeleRobot_B.DdeMvtDistanceAngle = ModeleRobot_B.DdeMvtDistanceAngle + 1.0;
-    ModeleRobot_B.ConsigneDistance = 10.0;
-
-    /*  ConsigneTeta reste inchangé. */
-    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+    /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
+    /* Transition: '<S1>:1301' */
+    ModeleRobot_B.DdeMvtManuel = ModeleRobot_B.DdeMvtManuel + 1.0;
+    ModeleRobot_B.CommandeManuelleG = 20.0;
+    ModeleRobot_B.CommandeManuelleD = 20.0;
     break;
 
    default:
     /* Transition: '<S1>:4379' */
-    /* Entry 'ACTION_RETOUR_Z0_DECHARGE_05': '<S1>:4386' */
-    ModeleRobot_DWork.is_RETOUR_ZONE_DEPART_ET_DECHAR = (uint8_T)
-      IN_ACTION_RETOUR_Z0_DECHARGE_05;
-    ModeleRobot_DWork.was_RETOUR_ZONE_DEPART_ET_DECHA = (uint8_T)
-      IN_ACTION_RETOUR_Z0_DECHARGE_05;
+    /* Entry 'ACTION_RETOUR_Z0_DECHARGE_01': '<S1>:4387' */
+    ModeleRobot_DWork.is_JAUNE_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
+      IN_ACTION_RETOUR_Z0_DECHARGE_01;
+    ModeleRobot_DWork.was_JAUNE_RETOUR_ZONE_DEPART_ET = (uint8_T)
+      IN_ACTION_RETOUR_Z0_DECHARGE_01;
 
-    /* Assure la direction du robot avant la ligne droite */
+    /* va vers une position de référence */
+    /* Graphical Function 'Mouvement_Distance': '<S1>:1347' */
+    /* Transition: '<S1>:1349' */
+    ModeleRobot_B.DdeMvtDistanceAngle = ModeleRobot_B.DdeMvtDistanceAngle + 1.0;
+    ModeleRobot_B.ConsigneDistance = -80.0;
+
+    /*  ConsigneTeta reste inchangé. */
+    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+
+    /*  le souffleur évacue les boules éventuellement derrière le robot qu pourraient gêner */
+    /* Graphical Function 'setPWM': '<S1>:4112' */
+    /* Transition: '<S1>:4114' */
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p18 - 1.0)] =
+      -100.0;
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+  }
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void enter_atomic_VERT_GOTO_DISTRIBU(void)
+{
+  /* Entry 'VERT_GOTO_DISTRIBUTEURS_ET_RECUPERE': '<S1>:4423' */
+  ModeleRobot_DWork.is_STRATEGIE1 = (uint8_T)IN_VERT_GOTO_DISTRIBUTEURS_ET_R;
+  ModeleRobot_DWork.was_STRATEGIE1 = (uint8_T)IN_VERT_GOTO_DISTRIBUTEURS_ET_R;
+  ModeleRobot_DWork.TempoMot = 0.0;
+  ModeleRobot_DWork.inhibeObstacle = 0.0;
+  ModeleRobot_DWork.nbreDistributeursTraites = 0.0;
+  ModeleRobot_DWork.x_old = 0.0;
+  ModeleRobot_DWork.y_old = 0.0;
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void enter_internal_VERT_GOTO_DISTRI(void)
+{
+  switch (ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_) {
+   case ModeleRobo_IN_ACTION_DISTRIB_01:
+    /* Entry 'ACTION_DISTRIB_01': '<S1>:4437' */
+    ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+      ModeleRobo_IN_ACTION_DISTRIB_01;
+    ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+      ModeleRobo_IN_ACTION_DISTRIB_01;
+
+    /* Graphical Function 'CommandeLEDS_RVBO': '<S1>:1339' */
+    /* Transition: '<S1>:1341' */
+    ModeleRobot_B.EtatLed1 = 1.0;
+    ModeleRobot_B.EtatLed2 = 1.0;
+    ModeleRobot_B.EtatLed3 = 1.0;
+    ModeleRobot_B.EtatLed4 = 1.0;
+    ModeleRobot_DWork.positionDistributeur_X = 42.0;
+
+    /*  erreur constatée en pratique (normalement 36cm)
+       va vers une position de référence */
+    /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
+    /* Transition: '<S1>:1291' */
+    ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
+    ModeleRobot_B.ConsigneX = ModeleRobot_DWork.positionDistributeur_X;
+    ModeleRobot_B.ConsigneY = 0.0;
+    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
+   case ModeleRob_IN_ACTION_DISTRIB_010:
+    /* Entry 'ACTION_DISTRIB_010': '<S1>:4439' */
+    ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+      ModeleRob_IN_ACTION_DISTRIB_010;
+    ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+      ModeleRob_IN_ACTION_DISTRIB_010;
+
+    /* va en marche arrière jusque devant le distributeur sans l'atteindre */
+    /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
+    /* Transition: '<S1>:3697' */
+    ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
+    ModeleRobot_B.ConsigneX = ModeleRobot_DWork.positionDistributeur_X;
+    ModeleRobot_B.ConsigneY = 70.0 * ModeleRobot_DWork.invMouv;
+    ModeleRobot_B.ConsigneTeta = (-ModeleRobot_P.SFunction_p19) / 2.0 *
+      ModeleRobot_DWork.invMouv;
+    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
+   case ModeleRob_IN_ACTION_DISTRIB_011:
+    /* Entry 'ACTION_DISTRIB_011': '<S1>:4445' */
+    ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+      ModeleRob_IN_ACTION_DISTRIB_011;
+    ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+      ModeleRob_IN_ACTION_DISTRIB_011;
+
+    /*  s'éloinge de la bordure */
+    ModeleRobot_DWork.inhibeObstacle = 0.0;
+
+    /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
+    /* Transition: '<S1>:1291' */
+    ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
+    ModeleRobot_B.ConsigneX = ModeleRobot_DWork.positionDistributeur_X;
+    ModeleRobot_B.ConsigneY = 63.0 * ModeleRobot_DWork.invMouv;
+    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p43 - 1.0)] =
+      ModeleRobot_P.SFunction_p44;
+
+    /*  petite pichnette sur le servo pour éviter de racler contre le distributeur */
+    break;
+
+   case ModeleRobo_IN_ACTION_DISTRIB_02:
+    /* Entry 'ACTION_DISTRIB_02': '<S1>:4441' */
+    ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+      ModeleRobo_IN_ACTION_DISTRIB_02;
+    ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+      ModeleRobo_IN_ACTION_DISTRIB_02;
+    ModeleRobot_DWork.inhibeObstacle = 1.0;
+    break;
+
+   case ModeleRobo_IN_ACTION_DISTRIB_03:
+    /* Entry 'ACTION_DISTRIB_03': '<S1>:4442' */
+    ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+      ModeleRobo_IN_ACTION_DISTRIB_03;
+    ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+      ModeleRobo_IN_ACTION_DISTRIB_03;
+
+    /*  termine en boucle ouverte pour venir buter contre la bordure */
+    /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
+    /* Transition: '<S1>:1301' */
+    ModeleRobot_B.DdeMvtManuel = ModeleRobot_B.DdeMvtManuel + 1.0;
+    ModeleRobot_B.CommandeManuelleG = -25.0;
+    ModeleRobot_B.CommandeManuelleD = -25.0;
+
+    /*  le souffleur évacue les boules éventuellement derrière le robot qu pourraient gêner */
+    /* Graphical Function 'setPWM': '<S1>:4112' */
+    /* Transition: '<S1>:4114' */
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p18 - 1.0)] =
+      -100.0;
+
+    /*  sort le tobogan et lance la souflerie */
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p43 - 1.0)] =
+      ModeleRobot_P.SFunction_p45;
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
+   case ModeleRobo_IN_ACTION_DISTRIB_04:
+    /* Entry 'ACTION_DISTRIB_04': '<S1>:4443' */
+    ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+      ModeleRobo_IN_ACTION_DISTRIB_04;
+    ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+      ModeleRobo_IN_ACTION_DISTRIB_04;
+
+    /*  arrête de buter contre la bordure */
+    /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
+    /* Transition: '<S1>:1301' */
+    ModeleRobot_B.DdeMvtManuel = ModeleRobot_B.DdeMvtManuel + 1.0;
+    ModeleRobot_B.CommandeManuelleG = 0.0;
+    ModeleRobot_B.CommandeManuelleD = 0.0;
+
+    /*  ATTENTION : recalage de la position du robot
+       setPosition(36,77.5*invMouv, (-PI/2)*invMouv); */
+    /* Graphical Function 'setPWM': '<S1>:4112' */
+    /* Transition: '<S1>:4114' */
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p16 - 1.0)] =
+      100.0;
+
+    /*  arrête le souffleur du bas */
+    /* Graphical Function 'setPWM': '<S1>:4112' */
+    /* Transition: '<S1>:4114' */
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p18 - 1.0)] =
+      0.0;
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
+   case ModeleRobo_IN_ACTION_DISTRIB_05:
+    /* Entry 'ACTION_DISTRIB_05': '<S1>:4444' */
+    ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+      ModeleRobo_IN_ACTION_DISTRIB_05;
+    ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+      ModeleRobo_IN_ACTION_DISTRIB_05;
+
+    /*  Arrête la souflerie pour laisser les balles tomber (et attend un peu) */
+    /* Graphical Function 'setPWM': '<S1>:4112' */
+    /* Transition: '<S1>:4114' */
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p16 - 1.0)] =
+      0.0;
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
+   case ModeleRobo_IN_ACTION_DISTRIB_06:
+    /* Entry 'ACTION_DISTRIB_06': '<S1>:4447' */
+    ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+      ModeleRobo_IN_ACTION_DISTRIB_06;
+    ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+      ModeleRobo_IN_ACTION_DISTRIB_06;
+    ModeleRobot_DWork.nbreDistributeursTraites =
+      ModeleRobot_DWork.nbreDistributeursTraites + 1.0;
+    break;
+
+   case ModeleRobo_IN_ACTION_DISTRIB_07:
+    /* Entry 'ACTION_DISTRIB_07': '<S1>:4448' */
+    ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+      ModeleRobo_IN_ACTION_DISTRIB_07;
+    ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+      ModeleRobo_IN_ACTION_DISTRIB_07;
+
+    /*  Ferme le servo du recolteur une fois tout terminé */
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p43 - 1.0)] =
+      ModeleRobot_P.SFunction_p44;
+
+    /*  retourne à la position de référence */
+    ModeleRobot_DWork.inhibeObstacle = 1.0;
+
+    /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
+    /* Transition: '<S1>:3697' */
+    ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
+    ModeleRobot_B.ConsigneX = 75.0;
+    ModeleRobot_B.ConsigneY = 0.0;
+    ModeleRobot_B.ConsigneTeta = 0.0;
+    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+    break;
+
+   case ModeleRobo_IN_ACTION_DISTRIB_08:
+    /* Entry 'ACTION_DISTRIB_08': '<S1>:4450' */
+    ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+      ModeleRobo_IN_ACTION_DISTRIB_08;
+    ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+      ModeleRobo_IN_ACTION_DISTRIB_08;
+
+    /* Fin d'étape */
+    ModeleRobot_DWork.Etape_recuperationDistributeurs = 0.0;
+    break;
+
+   case ModeleRobo_IN_ACTION_DISTRIB_09:
+    /* Entry 'ACTION_DISTRIB_09': '<S1>:4438' */
+    ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+      ModeleRobo_IN_ACTION_DISTRIB_09;
+    ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+      ModeleRobo_IN_ACTION_DISTRIB_09;
+
+    /* va en marche arrière jusque devant le distributeur sans l'atteindre */
     /* Graphical Function 'Mouvement_Angle': '<S1>:1354' */
     /* Transition: '<S1>:1356' */
     ModeleRobot_B.DdeMvtDistanceAngle = ModeleRobot_B.DdeMvtDistanceAngle + 1.0;
     ModeleRobot_B.ConsigneDistance = 0.0;
-    ModeleRobot_B.ConsigneTeta = 0.0;
+    ModeleRobot_B.ConsigneTeta = (-ModeleRobot_P.SFunction_p19) / 2.0 *
+      ModeleRobot_DWork.invMouv;
     ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
+   default:
+    /* Transition: '<S1>:4425' */
+    /* Entry 'ACTION_DISTRIB_01': '<S1>:4437' */
+    ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+      ModeleRobo_IN_ACTION_DISTRIB_01;
+    ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+      ModeleRobo_IN_ACTION_DISTRIB_01;
+
+    /* Graphical Function 'CommandeLEDS_RVBO': '<S1>:1339' */
+    /* Transition: '<S1>:1341' */
+    ModeleRobot_B.EtatLed1 = 1.0;
+    ModeleRobot_B.EtatLed2 = 1.0;
+    ModeleRobot_B.EtatLed3 = 1.0;
+    ModeleRobot_B.EtatLed4 = 1.0;
+    ModeleRobot_DWork.positionDistributeur_X = 42.0;
+
+    /*  erreur constatée en pratique (normalement 36cm)
+       va vers une position de référence */
+    /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
+    /* Transition: '<S1>:1291' */
+    ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
+    ModeleRobot_B.ConsigneX = ModeleRobot_DWork.positionDistributeur_X;
+    ModeleRobot_B.ConsigneY = 0.0;
+    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+  }
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void enter_atomic_VERT_RETOUR_ZONE_D(void)
+{
+  /* Entry 'VERT_RETOUR_ZONE_DEPART_ET_DECHARGE': '<S1>:4451' */
+  ModeleRobot_DWork.is_STRATEGIE1 = (uint8_T)IN_VERT_RETOUR_ZONE_DEPART_ET_D;
+  ModeleRobot_DWork.was_STRATEGIE1 = (uint8_T)IN_VERT_RETOUR_ZONE_DEPART_ET_D;
+  ModeleRobot_DWork.TempoMot = 0.0;
+  ModeleRobot_DWork.inhibeObstacle = 0.0;
+  ModeleRobot_DWork.x_old = 0.0;
+  ModeleRobot_DWork.y_old = 0.0;
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void enter_internal_VERT_RETOUR_ZONE(void)
+{
+  switch (ModeleRobot_DWork.was_VERT_RETOUR_ZONE_DEPART_ET_) {
+   case IN_ACTION_RETOUR_Z0_DECHARGE_01:
+    /* Entry 'ACTION_RETOUR_Z0_DECHARGE_01': '<S1>:4461' */
+    ModeleRobot_DWork.is_VERT_RETOUR_ZONE_DEPART_ET_D = (uint8_T)
+      IN_ACTION_RETOUR_Z0_DECHARGE_01;
+    ModeleRobot_DWork.was_VERT_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
+      IN_ACTION_RETOUR_Z0_DECHARGE_01;
+
+    /* va vers une position de référence */
+    /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
+    /* Transition: '<S1>:1291' */
+    ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
+    ModeleRobot_B.ConsigneX = 11.0;
+    ModeleRobot_B.ConsigneY = 0.0;
+    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+
+    /*  le souffleur évacue les boules éventuellement derrière le robot qu pourraient gêner */
+    /* Graphical Function 'setPWM': '<S1>:4112' */
+    /* Transition: '<S1>:4114' */
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p18 - 1.0)] =
+      -100.0;
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
+   case IN_ACTION_RETOUR_Z0_DECHARGE_02:
+    /* Entry 'ACTION_RETOUR_Z0_DECHARGE_02': '<S1>:4462' */
+    ModeleRobot_DWork.is_VERT_RETOUR_ZONE_DEPART_ET_D = (uint8_T)
+      IN_ACTION_RETOUR_Z0_DECHARGE_02;
+    ModeleRobot_DWork.was_VERT_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
+      IN_ACTION_RETOUR_Z0_DECHARGE_02;
+
+    /*  termine en boucle ouverte pour venir buter contre la bordure */
+    /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
+    /* Transition: '<S1>:1301' */
+    ModeleRobot_B.DdeMvtManuel = ModeleRobot_B.DdeMvtManuel + 1.0;
+    ModeleRobot_B.CommandeManuelleG = -20.0;
+    ModeleRobot_B.CommandeManuelleD = -20.0;
+    ModeleRobot_DWork.TempoMot = 0.0;
+    break;
+
+   case IN_ACTION_RETOUR_Z0_DECHARGE_03:
+    /* Entry 'ACTION_RETOUR_Z0_DECHARGE_03': '<S1>:4466' */
+    ModeleRobot_DWork.is_VERT_RETOUR_ZONE_DEPART_ET_D = (uint8_T)
+      IN_ACTION_RETOUR_Z0_DECHARGE_03;
+    ModeleRobot_DWork.was_VERT_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
+      IN_ACTION_RETOUR_Z0_DECHARGE_03;
+
+    /*  fin d'étape */
+    /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
+    /* Transition: '<S1>:1301' */
+    ModeleRobot_B.DdeMvtManuel = ModeleRobot_B.DdeMvtManuel + 1.0;
+    ModeleRobot_B.CommandeManuelleG = 0.0;
+    ModeleRobot_B.CommandeManuelleD = 0.0;
+    break;
+
+   case IN_ACTION_RETOUR_Z0_DECHARGE_04:
+    /* Entry 'ACTION_RETOUR_Z0_DECHARGE_04': '<S1>:4463' */
+    ModeleRobot_DWork.is_VERT_RETOUR_ZONE_DEPART_ET_D = (uint8_T)
+      IN_ACTION_RETOUR_Z0_DECHARGE_04;
+    ModeleRobot_DWork.was_VERT_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
+      IN_ACTION_RETOUR_Z0_DECHARGE_04;
+    ModeleRobot_DWork.TempoMot = 0.0;
+
+    /*  arrête de buter contre la bordure */
+    /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
+    /* Transition: '<S1>:1301' */
+    ModeleRobot_B.DdeMvtManuel = ModeleRobot_B.DdeMvtManuel + 1.0;
+    ModeleRobot_B.CommandeManuelleG = 0.0;
+    ModeleRobot_B.CommandeManuelleD = 0.0;
+
+    /*  ouvre le clapet de déchargement */
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p46 - 1.0)] =
+      ModeleRobot_P.SFunction_p47;
+
+    /* Graphical Function 'setPWM': '<S1>:4112' */
+    /* Transition: '<S1>:4114' */
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p18 - 1.0)] =
+      0.0;
+    break;
+
+   case IN_ACTION_RETOUR_Z0_DECHARGE_06:
+    /* Entry 'ACTION_RETOUR_Z0_DECHARGE_06': '<S1>:4464' */
+    ModeleRobot_DWork.is_VERT_RETOUR_ZONE_DEPART_ET_D = (uint8_T)
+      IN_ACTION_RETOUR_Z0_DECHARGE_06;
+    ModeleRobot_DWork.was_VERT_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
+      IN_ACTION_RETOUR_Z0_DECHARGE_06;
+    ModeleRobot_DWork.TempoMot = 0.0;
+
+    /*  aide à l'évacuation */
+    /* Graphical Function 'setPWM': '<S1>:4112' */
+    /* Transition: '<S1>:4114' */
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p16 - 1.0)] =
+      -100.0;
+    break;
+
+   case IN_ACTION_RETOUR_Z0_DECHARGE_07:
+    /* Entry 'ACTION_RETOUR_Z0_DECHARGE_07': '<S1>:4465' */
+    ModeleRobot_DWork.is_VERT_RETOUR_ZONE_DEPART_ET_D = (uint8_T)
+      IN_ACTION_RETOUR_Z0_DECHARGE_07;
+    ModeleRobot_DWork.was_VERT_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
+      IN_ACTION_RETOUR_Z0_DECHARGE_07;
+    ModeleRobot_DWork.TempoMot = 0.0;
+
+    /*  aide à l'évacuation */
+    /* Graphical Function 'setPWM': '<S1>:4112' */
+    /* Transition: '<S1>:4114' */
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p16 - 1.0)] =
+      0.0;
+
+    /*  remet le robot dans une position connue pour la prochaine étape */
+    /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
+    /* Transition: '<S1>:1301' */
+    ModeleRobot_B.DdeMvtManuel = ModeleRobot_B.DdeMvtManuel + 1.0;
+    ModeleRobot_B.CommandeManuelleG = 20.0;
+    ModeleRobot_B.CommandeManuelleD = 20.0;
+    break;
+
+   default:
+    /* Transition: '<S1>:4453' */
+    /* Entry 'ACTION_RETOUR_Z0_DECHARGE_01': '<S1>:4461' */
+    ModeleRobot_DWork.is_VERT_RETOUR_ZONE_DEPART_ET_D = (uint8_T)
+      IN_ACTION_RETOUR_Z0_DECHARGE_01;
+    ModeleRobot_DWork.was_VERT_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
+      IN_ACTION_RETOUR_Z0_DECHARGE_01;
+
+    /* va vers une position de référence */
+    /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
+    /* Transition: '<S1>:1291' */
+    ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
+    ModeleRobot_B.ConsigneX = 11.0;
+    ModeleRobot_B.ConsigneY = 0.0;
+    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+
+    /*  le souffleur évacue les boules éventuellement derrière le robot qu pourraient gêner */
+    /* Graphical Function 'setPWM': '<S1>:4112' */
+    /* Transition: '<S1>:4114' */
+    ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p18 - 1.0)] =
+      -100.0;
     ModeleRobot_DWork.TempoMot = 0.0;
     break;
   }
@@ -1369,62 +1904,34 @@ static void Model_enter_internal_STRATEGIE1(void)
     ModeleRobot_enter_internal_DEMO();
     break;
 
-   case IN_GOTO_DISTRIBUTEURS_ET_RECUPE:
-    /* Entry 'GOTO_DISTRIBUTEURS_ET_RECUPERE': '<S1>:4353' */
-    ModeleRobot_DWork.is_STRATEGIE1 = (uint8_T)IN_GOTO_DISTRIBUTEURS_ET_RECUPE;
-    ModeleRobot_DWork.was_STRATEGIE1 = (uint8_T)IN_GOTO_DISTRIBUTEURS_ET_RECUPE;
-    ModeleRobot_DWork.TempoMot = 0.0;
-    ModeleRobot_DWork.inhibeObstacle = 0.0;
-    ModeleRobot_DWork.nbreDistributeursTraites = 0.0;
-    enter_internal_GOTO_DISTRIBUTEU();
-    break;
-
    case ModeleRobot_IN_INIT_STRATEGIE:
     Mod_enter_atomic_INIT_STRATEGIE();
     break;
 
-   case IN_RETOUR_ZONE_DEPART_ET_DECHAR:
-    /* Entry 'RETOUR_ZONE_DEPART_ET_DECHARGE': '<S1>:4377' */
-    ModeleRobot_DWork.is_STRATEGIE1 = (uint8_T)IN_RETOUR_ZONE_DEPART_ET_DECHAR;
-    ModeleRobot_DWork.was_STRATEGIE1 = (uint8_T)IN_RETOUR_ZONE_DEPART_ET_DECHAR;
-    ModeleRobot_DWork.TempoMot = 0.0;
-    ModeleRobot_DWork.inhibeObstacle = 0.0;
-    enter_internal_RETOUR_ZONE_DEPA();
+   case IN_JAUNE_GOTO_DISTRIBUTEURS_ET_:
+    enter_atomic_JAUNE_GOTO_DISTRIB();
+    enter_internal_JAUNE_GOTO_DISTR();
+    break;
+
+   case IN_JAUNE_RETOUR_ZONE_DEPART_ET_:
+    enter_atomic_JAUNE_RETOUR_ZONE_();
+    enter_internal_JAUNE_RETOUR_ZON();
+    break;
+
+   case IN_VERT_GOTO_DISTRIBUTEURS_ET_R:
+    enter_atomic_VERT_GOTO_DISTRIBU();
+    enter_internal_VERT_GOTO_DISTRI();
+    break;
+
+   case IN_VERT_RETOUR_ZONE_DEPART_ET_D:
+    enter_atomic_VERT_RETOUR_ZONE_D();
+    enter_internal_VERT_RETOUR_ZONE();
     break;
 
    default:
     /* Transition: '<S1>:1125' */
     Mod_enter_atomic_INIT_STRATEGIE();
     break;
-  }
-}
-
-/* Function for Stateflow: '<Root>/COMPORTEMENT' */
-static void ModeleRobot_ACTION_HOMOLO_45(void)
-{
-  /* During 'ACTION_HOMOLO_45': '<S1>:4350' */
-  /* Graphical Function 'isFinMouvement': '<S1>:1282' */
-  /* Transition: '<S1>:1285' */
-  ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt +
-    1.0;
-
-  /* Transition: '<S1>:1286' */
-  /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
-  if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 / ModeleRobot_P.SFunction_p49)
-       || (ModeleRobot_B.DataTypeConversion != 0.0)) != 0) {
-    /* Transition: '<S1>:4298' */
-    /* Exit 'ACTION_HOMOLO_45': '<S1>:4350' */
-    /* Entry 'ACTION_HOMOLO_47': '<S1>:4409' */
-    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_47;
-    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_47;
-
-    /* on avance parallelement a la bordure et on ferme les claps */
-    /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
-    /* Transition: '<S1>:1291' */
-    ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
-    ModeleRobot_B.ConsigneX = 56.0;
-    ModeleRobot_B.ConsigneY = -77.0 * ModeleRobot_DWork.invMouv;
-    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
   }
 }
 
@@ -1457,15 +1964,14 @@ static void ModeleRobot_ACTION_HOMOLO_46(void)
 static void ModeleRobot_ACTION_HOMOLO_47(void)
 {
   /* During 'ACTION_HOMOLO_47': '<S1>:4409' */
-  /* Graphical Function 'isFinMouvement': '<S1>:1282' */
-  /* Transition: '<S1>:1285' */
+  /* Graphical Function 'isFinMouvementRapide': '<S1>:3865' */
+  /* Transition: '<S1>:3868' */
   ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt +
     1.0;
 
-  /* Transition: '<S1>:1286' */
-  /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+  /* Transition: '<S1>:3869' */
   if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 / ModeleRobot_P.SFunction_p49)
-       || (ModeleRobot_B.DataTypeConversion != 0.0)) != 0) {
+       || (ModeleRobot_B.DataTypeConversion_g != 0.0)) != 0) {
     /* Transition: '<S1>:4410' */
     /* Exit 'ACTION_HOMOLO_47': '<S1>:4409' */
     /* Entry 'ACTION_HOMOLO_48': '<S1>:4411' */
@@ -1505,15 +2011,14 @@ static void ModeleRobot_ACTION_HOMOLO_48(void)
 static void ModeleRobot_ACTION_HOMOLO_49(void)
 {
   /* During 'ACTION_HOMOLO_49': '<S1>:4413' */
-  /* Graphical Function 'isFinMouvement': '<S1>:1282' */
-  /* Transition: '<S1>:1285' */
+  /* Graphical Function 'isFinMouvementRapide': '<S1>:3865' */
+  /* Transition: '<S1>:3868' */
   ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt +
     1.0;
 
-  /* Transition: '<S1>:1286' */
-  /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+  /* Transition: '<S1>:3869' */
   if (((ModeleRobot_DWork.CompteurTimeoutMvt > 2.0 / ModeleRobot_P.SFunction_p49)
-       || (ModeleRobot_B.DataTypeConversion != 0.0)) != 0) {
+       || (ModeleRobot_B.DataTypeConversion_g != 0.0)) != 0) {
     /* Transition: '<S1>:4417' */
     /* Exit 'ACTION_HOMOLO_49': '<S1>:4413' */
     /* Entry 'ACTION_18': '<S1>:4139' */
@@ -1525,6 +2030,206 @@ static void ModeleRobot_ACTION_HOMOLO_49(void)
     ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p20 - 1.0)] =
       ModeleRobot_P.SFunction_p21;
     ModeleRobot_DWork.finHomologation = 1.0;
+  }
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void ModeleRobot_ACTION_HOMOLO_50(void)
+{
+  /* During 'ACTION_HOMOLO_50': '<S1>:4471' */
+  /* Graphical Function 'isFinMouvementRapide': '<S1>:3865' */
+  /* Transition: '<S1>:3868' */
+  ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt +
+    1.0;
+
+  /* Transition: '<S1>:3869' */
+  if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 / ModeleRobot_P.SFunction_p49)
+       || (ModeleRobot_B.DataTypeConversion_g != 0.0)) != 0) {
+    /* Transition: '<S1>:4476' */
+    /* Exit 'ACTION_HOMOLO_50': '<S1>:4471' */
+    /* Entry 'ACTION_HOMOLO_51': '<S1>:4477' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_51;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_51;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p20 - 1.0)] =
+      ModeleRobot_P.SFunction_p21;
+    ModeleRobot_DWork.TempoMot = 0.0;
+  }
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void ModeleRobot_ACTION_HOMOLO_51(void)
+{
+  /* During 'ACTION_HOMOLO_51': '<S1>:4477' */
+  if (ModeleRobot_DWork.TempoMot > 0.5 / ModeleRobot_P.SFunction_p49) {
+    /* Transition: '<S1>:4492' */
+    /* Exit 'ACTION_HOMOLO_51': '<S1>:4477' */
+    /* Entry 'ACTION_HOMOLO_52': '<S1>:4489' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_52;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_52;
+
+    /* on avance parallelement a la bordure et on ferme les claps */
+    /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
+    /* Transition: '<S1>:1291' */
+    ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
+    ModeleRobot_B.ConsigneX = 62.0;
+    ModeleRobot_B.ConsigneY = -77.0 * ModeleRobot_DWork.invMouv;
+    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+  }
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void ModeleRobot_ACTION_HOMOLO_52(void)
+{
+  /* During 'ACTION_HOMOLO_52': '<S1>:4489' */
+  /* Graphical Function 'isFinMouvementRapide': '<S1>:3865' */
+  /* Transition: '<S1>:3868' */
+  ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt +
+    1.0;
+
+  /* Transition: '<S1>:3869' */
+  if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 / ModeleRobot_P.SFunction_p49)
+       || (ModeleRobot_B.DataTypeConversion_g != 0.0)) != 0) {
+    /* Transition: '<S1>:4493' */
+    /* Exit 'ACTION_HOMOLO_52': '<S1>:4489' */
+    /* Entry 'ACTION_HOMOLO_53': '<S1>:4490' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_53;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_53;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p20 - 1.0)] =
+      ModeleRobot_P.SFunction_p22;
+    ModeleRobot_DWork.TempoMot = 0.0;
+  }
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void ModeleRobot_ACTION_HOMOLO_53(void)
+{
+  /* During 'ACTION_HOMOLO_53': '<S1>:4490' */
+  if (ModeleRobot_DWork.TempoMot > 0.5 / ModeleRobot_P.SFunction_p49) {
+    /* Transition: '<S1>:4494' */
+    /* Exit 'ACTION_HOMOLO_53': '<S1>:4490' */
+    /* Entry 'ACTION_HOMOLO_54': '<S1>:4491' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_54;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_54;
+
+    /* on avance parallelement a la bordure et on ferme les claps */
+    /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
+    /* Transition: '<S1>:1291' */
+    ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
+    ModeleRobot_B.ConsigneX = 82.0;
+    ModeleRobot_B.ConsigneY = -77.0 * ModeleRobot_DWork.invMouv;
+    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+  }
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void ModeleRobot_ACTION_HOMOLO_54(void)
+{
+  /* During 'ACTION_HOMOLO_54': '<S1>:4491' */
+  /* Graphical Function 'isFinMouvementRapide': '<S1>:3865' */
+  /* Transition: '<S1>:3868' */
+  ModeleRobot_DWork.CompteurTimeoutMvt = ModeleRobot_DWork.CompteurTimeoutMvt +
+    1.0;
+
+  /* Transition: '<S1>:3869' */
+  if (((ModeleRobot_DWork.CompteurTimeoutMvt > 2.0 / ModeleRobot_P.SFunction_p49)
+       || (ModeleRobot_B.DataTypeConversion_g != 0.0)) != 0) {
+    /* Transition: '<S1>:4495' */
+    /* Exit 'ACTION_HOMOLO_54': '<S1>:4491' */
+    /* Entry 'ACTION_18': '<S1>:4139' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_18;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_18;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p20 - 1.0)] =
+      ModeleRobot_P.SFunction_p21;
+    ModeleRobot_DWork.finHomologation = 1.0;
+  }
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void ModeleRobot_ACTION_HOMOLO_55(void)
+{
+  /* During 'ACTION_HOMOLO_55': '<S1>:4498' */
+  if (ModeleRobot_DWork.TempoMot > 1.0 / ModeleRobot_P.SFunction_p49) {
+    /* Transition: '<S1>:4499' */
+    /* Exit 'ACTION_HOMOLO_55': '<S1>:4498' */
+    /* Entry 'ACTION_HOMOLO_57': '<S1>:4502' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_57;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_57;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)] =
+      ModeleRobot_P.SFunction_p25;
+    ModeleRobot_DWork.TempoMot = 0.0;
+  }
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void ModeleRobot_ACTION_HOMOLO_56(void)
+{
+  /* During 'ACTION_HOMOLO_56': '<S1>:4500' */
+  if (ModeleRobot_DWork.TempoMot > 1.0 / ModeleRobot_P.SFunction_p49) {
+    /* Transition: '<S1>:4501' */
+    /* Exit 'ACTION_HOMOLO_56': '<S1>:4500' */
+    /* Entry 'ACTION_HOMOLO_58': '<S1>:4504' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_58;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_58;
+
+    /* Graphical Function 'setServo': '<S1>:4141' */
+    /* Transition: '<S1>:4143' */
+    ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)] =
+      ModeleRobot_P.SFunction_p29;
+    ModeleRobot_DWork.TempoMot = 0.0;
+  }
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void ModeleRobot_ACTION_HOMOLO_57(void)
+{
+  /* During 'ACTION_HOMOLO_57': '<S1>:4502' */
+  if (ModeleRobot_DWork.TempoMot > 0.5 / ModeleRobot_P.SFunction_p49) {
+    /* Transition: '<S1>:4503' */
+    /* Exit 'ACTION_HOMOLO_57': '<S1>:4502' */
+    /* Entry 'ACTION_HOMOLO_40': '<S1>:4338' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_40;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_40;
+
+    /* le bras est à droite du robot, demi tour */
+    /* Graphical Function 'Mouvement_Angle': '<S1>:1354' */
+    /* Transition: '<S1>:1356' */
+    ModeleRobot_B.DdeMvtDistanceAngle = ModeleRobot_B.DdeMvtDistanceAngle + 1.0;
+    ModeleRobot_B.ConsigneDistance = 0.0;
+    ModeleRobot_B.ConsigneTeta = 0.0;
+    ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+  }
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void ModeleRobot_ACTION_HOMOLO_58(void)
+{
+  /* During 'ACTION_HOMOLO_58': '<S1>:4504' */
+  if (ModeleRobot_DWork.TempoMot > 0.5 / ModeleRobot_P.SFunction_p49) {
+    /* Transition: '<S1>:4505' */
+    /* Exit 'ACTION_HOMOLO_58': '<S1>:4504' */
+    /* Entry 'ACTION_HOMOLO_43': '<S1>:4343' */
+    ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_43;
+    ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_43;
+
+    /* BO pour pousser les spots */
+    /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
+    /* Transition: '<S1>:1301' */
+    ModeleRobot_B.DdeMvtManuel = ModeleRobot_B.DdeMvtManuel + 1.0;
+    ModeleRobot_B.CommandeManuelleG = 25.0;
+    ModeleRobot_B.CommandeManuelleD = 25.0;
+    ModeleRobot_DWork.TempoMot = 0.0;
   }
 }
 
@@ -1685,9 +2390,6 @@ static void ModeleRobot_exit_internal_DEMO(void)
     /* Exit 'ACTION_HOMOLO_34': '<S1>:4311' */
     /* Exit 'ACTION_HOMOLO_35': '<S1>:4314' */
     /* Exit 'ACTION_HOMOLO_36': '<S1>:4316' */
-    /* Exit 'ACTION_HOMOLO_37': '<S1>:4321' */
-    /* Exit 'ACTION_HOMOLO_38': '<S1>:4328' */
-    /* Exit 'ACTION_HOMOLO_39': '<S1>:4329' */
     /* Exit 'ACTION_HOMOLO_4': '<S1>:4169' */
     /* Exit 'ACTION_HOMOLO_40': '<S1>:4338' */
     /* Exit 'ACTION_HOMOLO_41': '<S1>:4339' */
@@ -1698,6 +2400,15 @@ static void ModeleRobot_exit_internal_DEMO(void)
     /* Exit 'ACTION_HOMOLO_47': '<S1>:4409' */
     /* Exit 'ACTION_HOMOLO_48': '<S1>:4411' */
     /* Exit 'ACTION_HOMOLO_49': '<S1>:4413' */
+    /* Exit 'ACTION_HOMOLO_50': '<S1>:4471' */
+    /* Exit 'ACTION_HOMOLO_51': '<S1>:4477' */
+    /* Exit 'ACTION_HOMOLO_52': '<S1>:4489' */
+    /* Exit 'ACTION_HOMOLO_53': '<S1>:4490' */
+    /* Exit 'ACTION_HOMOLO_54': '<S1>:4491' */
+    /* Exit 'ACTION_HOMOLO_55': '<S1>:4498' */
+    /* Exit 'ACTION_HOMOLO_56': '<S1>:4500' */
+    /* Exit 'ACTION_HOMOLO_57': '<S1>:4502' */
+    /* Exit 'ACTION_HOMOLO_58': '<S1>:4504' */
     /* Exit 'ACTION_HOMOLO_6': '<S1>:4187' */
     /* Exit 'ACTION_HOMOLO_7': '<S1>:4189' */
     /* Exit 'ACTION_HOMOLO_8': '<S1>:4192' */
@@ -1706,28 +2417,85 @@ static void ModeleRobot_exit_internal_DEMO(void)
 }
 
 /* Function for Stateflow: '<Root>/COMPORTEMENT' */
-static void enter_atomic_GOTO_DISTRIBUTEURS(void)
-{
-  /* Entry 'GOTO_DISTRIBUTEURS_ET_RECUPERE': '<S1>:4353' */
-  ModeleRobot_DWork.is_STRATEGIE1 = (uint8_T)IN_GOTO_DISTRIBUTEURS_ET_RECUPE;
-  ModeleRobot_DWork.was_STRATEGIE1 = (uint8_T)IN_GOTO_DISTRIBUTEURS_ET_RECUPE;
-  ModeleRobot_DWork.TempoMot = 0.0;
-  ModeleRobot_DWork.inhibeObstacle = 0.0;
-  ModeleRobot_DWork.nbreDistributeursTraites = 0.0;
-}
-
-/* Function for Stateflow: '<Root>/COMPORTEMENT' */
 static void ModeleRobot_DEMO(void)
 {
   /* During 'DEMO': '<S1>:3463' */
   if (ModeleRobot_DWork.finHomologation == 1.0) {
     /* Transition: '<S1>:4396' */
-    ModeleRobot_exit_internal_DEMO();
+    if (ModeleRobot_DWork.CouleurEquipe_memo == ModeleRobot_P.SFunction_p5) {
+      /* Transition: '<S1>:4421' */
+      ModeleRobot_exit_internal_DEMO();
 
-    /* Exit 'DEMO': '<S1>:3463' */
-    ModeleRobot_DWork.is_STRATEGIE1 = (uint8_T)ModeleRobot_IN_NO_ACTIVE_CHILD;
-    enter_atomic_GOTO_DISTRIBUTEURS();
-    enter_internal_GOTO_DISTRIBUTEU();
+      /* Exit 'DEMO': '<S1>:3463' */
+      ModeleRobot_DWork.is_STRATEGIE1 = (uint8_T)ModeleRobot_IN_NO_ACTIVE_CHILD;
+      enter_atomic_JAUNE_GOTO_DISTRIB();
+      enter_internal_JAUNE_GOTO_DISTR();
+    } else {
+      /* Transition: '<S1>:4468' */
+      if (ModeleRobot_DWork.is_DEMO == ModeleRobot_IN_ACTION_HOMOLO_2) {
+        /* Exit 'ACTION_HOMOLO_2': '<S1>:4167' */
+        /* Graphical Function 'setServo': '<S1>:4141' */
+        /* Transition: '<S1>:4143' */
+        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p37 - 1.0)]
+          = ModeleRobot_P.SFunction_p41;
+
+        /* Graphical Function 'setServo': '<S1>:4141' */
+        /* Transition: '<S1>:4143' */
+        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p31 - 1.0)]
+          = ModeleRobot_P.SFunction_p35;
+        ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_NO_ACTIVE_CHILD;
+      } else {
+        /* Exit 'ACTION_18': '<S1>:4139' */
+        /* Exit 'ACTION_HOMOLO_0': '<S1>:4165' */
+        /* Exit 'ACTION_HOMOLO_01': '<S1>:4181' */
+        /* Exit 'ACTION_HOMOLO_02': '<S1>:4183' */
+        /* Exit 'ACTION_HOMOLO_03': '<S1>:4220' */
+        /* Exit 'ACTION_HOMOLO_05': '<S1>:4239' */
+        /* Exit 'ACTION_HOMOLO_09': '<S1>:4280' */
+        /* Exit 'ACTION_HOMOLO_10': '<S1>:4204' */
+        /* Exit 'ACTION_HOMOLO_11': '<S1>:4207' */
+        /* Exit 'ACTION_HOMOLO_12': '<S1>:4210' */
+        /* Exit 'ACTION_HOMOLO_13': '<S1>:4213' */
+        /* Exit 'ACTION_HOMOLO_14': '<S1>:4215' */
+        /* Exit 'ACTION_HOMOLO_15': '<S1>:4237' */
+        /* Exit 'ACTION_HOMOLO_16': '<S1>:4243' */
+        /* Exit 'ACTION_HOMOLO_24': '<S1>:4279' */
+        /* Exit 'ACTION_HOMOLO_25': '<S1>:4281' */
+        /* Exit 'ACTION_HOMOLO_30': '<S1>:4296' */
+        /* Exit 'ACTION_HOMOLO_33': '<S1>:4309' */
+        /* Exit 'ACTION_HOMOLO_34': '<S1>:4311' */
+        /* Exit 'ACTION_HOMOLO_35': '<S1>:4314' */
+        /* Exit 'ACTION_HOMOLO_36': '<S1>:4316' */
+        /* Exit 'ACTION_HOMOLO_4': '<S1>:4169' */
+        /* Exit 'ACTION_HOMOLO_40': '<S1>:4338' */
+        /* Exit 'ACTION_HOMOLO_41': '<S1>:4339' */
+        /* Exit 'ACTION_HOMOLO_43': '<S1>:4343' */
+        /* Exit 'ACTION_HOMOLO_44': '<S1>:4348' */
+        /* Exit 'ACTION_HOMOLO_45': '<S1>:4350' */
+        /* Exit 'ACTION_HOMOLO_46': '<S1>:4395' */
+        /* Exit 'ACTION_HOMOLO_47': '<S1>:4409' */
+        /* Exit 'ACTION_HOMOLO_48': '<S1>:4411' */
+        /* Exit 'ACTION_HOMOLO_49': '<S1>:4413' */
+        /* Exit 'ACTION_HOMOLO_50': '<S1>:4471' */
+        /* Exit 'ACTION_HOMOLO_51': '<S1>:4477' */
+        /* Exit 'ACTION_HOMOLO_52': '<S1>:4489' */
+        /* Exit 'ACTION_HOMOLO_53': '<S1>:4490' */
+        /* Exit 'ACTION_HOMOLO_54': '<S1>:4491' */
+        /* Exit 'ACTION_HOMOLO_55': '<S1>:4498' */
+        /* Exit 'ACTION_HOMOLO_56': '<S1>:4500' */
+        /* Exit 'ACTION_HOMOLO_57': '<S1>:4502' */
+        /* Exit 'ACTION_HOMOLO_58': '<S1>:4504' */
+        /* Exit 'ACTION_HOMOLO_6': '<S1>:4187' */
+        /* Exit 'ACTION_HOMOLO_7': '<S1>:4189' */
+        /* Exit 'ACTION_HOMOLO_8': '<S1>:4192' */
+        /* Exit 'ACTION_HOMOLO_9': '<S1>:4203' */
+      }
+
+      /* Exit 'DEMO': '<S1>:3463' */
+      ModeleRobot_DWork.is_STRATEGIE1 = (uint8_T)ModeleRobot_IN_NO_ACTIVE_CHILD;
+      enter_atomic_VERT_GOTO_DISTRIBU();
+      enter_internal_VERT_GOTO_DISTRI();
+    }
   } else {
     ModeleRobot_DWork.TempoMot = ModeleRobot_DWork.TempoMot + 1.0;
 
@@ -2116,35 +2884,33 @@ static void ModeleRobot_DEMO(void)
         /* Transition: '<S1>:4327' */
         if (ModeleRobot_DWork.CouleurEquipe_memo == ModeleRobot_P.SFunction_p5)
         {
-          /* Transition: '<S1>:4325' */
+          /* Transition: '<S1>:4335' */
           /* Exit 'ACTION_HOMOLO_24': '<S1>:4279' */
-          /* Entry 'ACTION_HOMOLO_37': '<S1>:4321' */
-          ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_37;
-          ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_37;
+          /* Entry 'ACTION_HOMOLO_55': '<S1>:4498' */
+          ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_55;
+          ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_55;
 
-          /* on degage le gobelet avec un centreur */
           /* Graphical Function 'setServo': '<S1>:4141' */
           /* Transition: '<S1>:4143' */
           ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 -
             1.0)] = ModeleRobot_P.SFunction_p26;
           ModeleRobot_DWork.TempoMot = 0.0;
         } else {
-          /* Transition: '<S1>:4326' */
+          /* Transition: '<S1>:4336' */
           /* Exit 'ACTION_HOMOLO_24': '<S1>:4279' */
-          /* Entry 'ACTION_HOMOLO_38': '<S1>:4328' */
-          ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_38;
-          ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_38;
+          /* Entry 'ACTION_HOMOLO_56': '<S1>:4500' */
+          ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_56;
+          ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_56;
 
-          /* on degage le gobelet avec un centreur */
           /* Graphical Function 'setServoRelache': '<S1>:4198' */
           /* Transition: '<S1>:4200' */
-          ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)]
+          ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)]
             = 0.0;
 
           /* Graphical Function 'setServo': '<S1>:4141' */
           /* Transition: '<S1>:4143' */
-          ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 -
-            1.0)] = ModeleRobot_P.SFunction_p26;
+          ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 -
+            1.0)] = ModeleRobot_P.SFunction_p30;
           ModeleRobot_DWork.TempoMot = 0.0;
         }
       }
@@ -2169,20 +2935,38 @@ static void ModeleRobot_DEMO(void)
 
      case ModeleRobot_IN_ACTION_HOMOLO_30:
       /* During 'ACTION_HOMOLO_30': '<S1>:4296' */
-      if (ModeleRobot_DWork.TempoMot > 2.0 / ModeleRobot_P.SFunction_p49) {
+      if (ModeleRobot_DWork.TempoMot > 0.5 / ModeleRobot_P.SFunction_p49) {
         /* Transition: '<S1>:4349' */
-        /* Exit 'ACTION_HOMOLO_30': '<S1>:4296' */
-        /* Entry 'ACTION_HOMOLO_44': '<S1>:4348' */
-        ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_44;
-        ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_44;
+        if (ModeleRobot_DWork.CouleurEquipe_memo == ModeleRobot_P.SFunction_p5)
+        {
+          /* Transition: '<S1>:4474' */
+          /* Exit 'ACTION_HOMOLO_30': '<S1>:4296' */
+          /* Entry 'ACTION_HOMOLO_44': '<S1>:4348' */
+          ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_44;
+          ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_44;
 
-        /* on avance parallelement a la bordure et on ferme les claps */
-        /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
-        /* Transition: '<S1>:1291' */
-        ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
-        ModeleRobot_B.ConsigneX = 14.5;
-        ModeleRobot_B.ConsigneY = -77.0 * ModeleRobot_DWork.invMouv;
-        ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+          /* on avance parallelement a la bordure et on ferme les claps */
+          /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
+          /* Transition: '<S1>:1291' */
+          ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
+          ModeleRobot_B.ConsigneX = 14.5;
+          ModeleRobot_B.ConsigneY = -77.0 * ModeleRobot_DWork.invMouv;
+          ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+        } else {
+          /* Transition: '<S1>:4475' */
+          /* Exit 'ACTION_HOMOLO_30': '<S1>:4296' */
+          /* Entry 'ACTION_HOMOLO_50': '<S1>:4471' */
+          ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_50;
+          ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_50;
+
+          /* on avance parallelement a la bordure et on ferme les claps */
+          /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
+          /* Transition: '<S1>:1291' */
+          ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
+          ModeleRobot_B.ConsigneX = 19.0;
+          ModeleRobot_B.ConsigneY = -77.0 * ModeleRobot_DWork.invMouv;
+          ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+        }
       }
       break;
 
@@ -2271,102 +3055,6 @@ static void ModeleRobot_DEMO(void)
       }
       break;
 
-     case ModeleRobot_IN_ACTION_HOMOLO_37:
-      /* During 'ACTION_HOMOLO_37': '<S1>:4321' */
-      /* Transition: '<S1>:4330' */
-      if (ModeleRobot_DWork.TempoMot > 2.0 / ModeleRobot_P.SFunction_p49) {
-        /* Transition: '<S1>:4333' */
-        /* Exit 'ACTION_HOMOLO_37': '<S1>:4321' */
-        /* Entry 'ACTION_HOMOLO_39': '<S1>:4329' */
-        ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_39;
-        ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_39;
-
-        /* on degage le gobelet avec un centreur */
-        /* Graphical Function 'setServoRelache': '<S1>:4198' */
-        /* Transition: '<S1>:4200' */
-        ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)]
-          = 1000.0;
-
-        /* Graphical Function 'setServo': '<S1>:4141' */
-        /* Transition: '<S1>:4143' */
-        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)]
-          = ModeleRobot_P.SFunction_p25;
-
-        /* Graphical Function 'setServo': '<S1>:4141' */
-        /* Transition: '<S1>:4143' */
-        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)]
-          = ModeleRobot_P.SFunction_p29;
-        ModeleRobot_DWork.TempoMot = 0.0;
-      }
-      break;
-
-     case ModeleRobot_IN_ACTION_HOMOLO_38:
-      /* During 'ACTION_HOMOLO_38': '<S1>:4328' */
-      /* Transition: '<S1>:4331' */
-      if (ModeleRobot_DWork.TempoMot > 2.0 / ModeleRobot_P.SFunction_p49) {
-        /* Transition: '<S1>:4333' */
-        /* Exit 'ACTION_HOMOLO_38': '<S1>:4328' */
-        /* Entry 'ACTION_HOMOLO_39': '<S1>:4329' */
-        ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_39;
-        ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_39;
-
-        /* on degage le gobelet avec un centreur */
-        /* Graphical Function 'setServoRelache': '<S1>:4198' */
-        /* Transition: '<S1>:4200' */
-        ModeleRobot_B.RelacheServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)]
-          = 1000.0;
-
-        /* Graphical Function 'setServo': '<S1>:4141' */
-        /* Transition: '<S1>:4143' */
-        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p23 - 1.0)]
-          = ModeleRobot_P.SFunction_p25;
-
-        /* Graphical Function 'setServo': '<S1>:4141' */
-        /* Transition: '<S1>:4143' */
-        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p27 - 1.0)]
-          = ModeleRobot_P.SFunction_p29;
-        ModeleRobot_DWork.TempoMot = 0.0;
-      }
-      break;
-
-     case ModeleRobot_IN_ACTION_HOMOLO_39:
-      /* During 'ACTION_HOMOLO_39': '<S1>:4329' */
-      if (ModeleRobot_DWork.TempoMot > 0.5 / ModeleRobot_P.SFunction_p49) {
-        /* Transition: '<S1>:4337' */
-        if (ModeleRobot_DWork.CouleurEquipe_memo == ModeleRobot_P.SFunction_p5)
-        {
-          /* Transition: '<S1>:4335' */
-          /* Exit 'ACTION_HOMOLO_39': '<S1>:4329' */
-          /* Entry 'ACTION_HOMOLO_40': '<S1>:4338' */
-          ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_40;
-          ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_40;
-
-          /* le bras est à droite du robot, demi tour */
-          /* Graphical Function 'Mouvement_Angle': '<S1>:1354' */
-          /* Transition: '<S1>:1356' */
-          ModeleRobot_B.DdeMvtDistanceAngle = ModeleRobot_B.DdeMvtDistanceAngle
-            + 1.0;
-          ModeleRobot_B.ConsigneDistance = 0.0;
-          ModeleRobot_B.ConsigneTeta = 0.0;
-          ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
-        } else {
-          /* Transition: '<S1>:4336' */
-          /* Exit 'ACTION_HOMOLO_39': '<S1>:4329' */
-          /* Entry 'ACTION_HOMOLO_43': '<S1>:4343' */
-          ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_43;
-          ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_43;
-
-          /* BO pour pousser les spots */
-          /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
-          /* Transition: '<S1>:1301' */
-          ModeleRobot_B.DdeMvtManuel = ModeleRobot_B.DdeMvtManuel + 1.0;
-          ModeleRobot_B.CommandeManuelleG = 30.0;
-          ModeleRobot_B.CommandeManuelleD = 30.0;
-          ModeleRobot_DWork.TempoMot = 0.0;
-        }
-      }
-      break;
-
      case ModeleRobot_IN_ACTION_HOMOLO_4:
       /* During 'ACTION_HOMOLO_4': '<S1>:4169' */
       /* Graphical Function 'isFinMouvement': '<S1>:1282' */
@@ -2398,16 +3086,15 @@ static void ModeleRobot_DEMO(void)
 
      case ModeleRobot_IN_ACTION_HOMOLO_40:
       /* During 'ACTION_HOMOLO_40': '<S1>:4338' */
-      /* Graphical Function 'isFinMouvement': '<S1>:1282' */
-      /* Transition: '<S1>:1285' */
+      /* Graphical Function 'isFinMouvementRapide': '<S1>:3865' */
+      /* Transition: '<S1>:3868' */
       ModeleRobot_DWork.CompteurTimeoutMvt =
         ModeleRobot_DWork.CompteurTimeoutMvt + 1.0;
 
-      /* Transition: '<S1>:1286' */
-      /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+      /* Transition: '<S1>:3869' */
       if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 /
-            ModeleRobot_P.SFunction_p49) || (ModeleRobot_B.DataTypeConversion !=
-            0.0)) != 0) {
+            ModeleRobot_P.SFunction_p49) || (ModeleRobot_B.DataTypeConversion_g
+            != 0.0)) != 0) {
         /* Transition: '<S1>:4341' */
         /* Exit 'ACTION_HOMOLO_40': '<S1>:4338' */
         /* Entry 'ACTION_HOMOLO_41': '<S1>:4339' */
@@ -2418,8 +3105,8 @@ static void ModeleRobot_DEMO(void)
         /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
         /* Transition: '<S1>:1301' */
         ModeleRobot_B.DdeMvtManuel = ModeleRobot_B.DdeMvtManuel + 1.0;
-        ModeleRobot_B.CommandeManuelleG = -30.0;
-        ModeleRobot_B.CommandeManuelleD = -30.0;
+        ModeleRobot_B.CommandeManuelleG = -25.0;
+        ModeleRobot_B.CommandeManuelleD = -25.0;
         ModeleRobot_DWork.TempoMot = 0.0;
       }
       break;
@@ -2427,7 +3114,7 @@ static void ModeleRobot_DEMO(void)
      case ModeleRobot_IN_ACTION_HOMOLO_41:
       /* During 'ACTION_HOMOLO_41': '<S1>:4339' */
       /* Transition: '<S1>:4344' */
-      if (ModeleRobot_DWork.TempoMot > 4.0 / ModeleRobot_P.SFunction_p49) {
+      if (ModeleRobot_DWork.TempoMot > 2.0 / ModeleRobot_P.SFunction_p49) {
         /* Transition: '<S1>:4347' */
         /* Exit 'ACTION_HOMOLO_41': '<S1>:4339' */
         /* Entry 'ACTION_HOMOLO_30': '<S1>:4296' */
@@ -2445,7 +3132,7 @@ static void ModeleRobot_DEMO(void)
      case ModeleRobot_IN_ACTION_HOMOLO_43:
       /* During 'ACTION_HOMOLO_43': '<S1>:4343' */
       /* Transition: '<S1>:4345' */
-      if (ModeleRobot_DWork.TempoMot > 4.0 / ModeleRobot_P.SFunction_p49) {
+      if (ModeleRobot_DWork.TempoMot > 2.0 / ModeleRobot_P.SFunction_p49) {
         /* Transition: '<S1>:4347' */
         /* Exit 'ACTION_HOMOLO_43': '<S1>:4343' */
         /* Entry 'ACTION_HOMOLO_30': '<S1>:4296' */
@@ -2462,16 +3149,15 @@ static void ModeleRobot_DEMO(void)
 
      case ModeleRobot_IN_ACTION_HOMOLO_44:
       /* During 'ACTION_HOMOLO_44': '<S1>:4348' */
-      /* Graphical Function 'isFinMouvement': '<S1>:1282' */
-      /* Transition: '<S1>:1285' */
+      /* Graphical Function 'isFinMouvementRapide': '<S1>:3865' */
+      /* Transition: '<S1>:3868' */
       ModeleRobot_DWork.CompteurTimeoutMvt =
         ModeleRobot_DWork.CompteurTimeoutMvt + 1.0;
 
-      /* Transition: '<S1>:1286' */
-      /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+      /* Transition: '<S1>:3869' */
       if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 /
-            ModeleRobot_P.SFunction_p49) || (ModeleRobot_B.DataTypeConversion !=
-            0.0)) != 0) {
+            ModeleRobot_P.SFunction_p49) || (ModeleRobot_B.DataTypeConversion_g
+            != 0.0)) != 0) {
         /* Transition: '<S1>:4351' */
         /* Exit 'ACTION_HOMOLO_44': '<S1>:4348' */
         /* Entry 'ACTION_HOMOLO_45': '<S1>:4350' */
@@ -2487,7 +3173,22 @@ static void ModeleRobot_DEMO(void)
       break;
 
      case ModeleRobot_IN_ACTION_HOMOLO_45:
-      ModeleRobot_ACTION_HOMOLO_45();
+      /* During 'ACTION_HOMOLO_45': '<S1>:4350' */
+      if (ModeleRobot_DWork.TempoMot > 0.5 / ModeleRobot_P.SFunction_p49) {
+        /* Transition: '<S1>:4298' */
+        /* Exit 'ACTION_HOMOLO_45': '<S1>:4350' */
+        /* Entry 'ACTION_HOMOLO_47': '<S1>:4409' */
+        ModeleRobot_DWork.is_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_47;
+        ModeleRobot_DWork.was_DEMO = (uint8_T)ModeleRobot_IN_ACTION_HOMOLO_47;
+
+        /* on avance parallelement a la bordure et on ferme les claps */
+        /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
+        /* Transition: '<S1>:1291' */
+        ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
+        ModeleRobot_B.ConsigneX = 56.0;
+        ModeleRobot_B.ConsigneY = -77.0 * ModeleRobot_DWork.invMouv;
+        ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+      }
       break;
 
      case ModeleRobot_IN_ACTION_HOMOLO_46:
@@ -2504,6 +3205,42 @@ static void ModeleRobot_DEMO(void)
 
      case ModeleRobot_IN_ACTION_HOMOLO_49:
       ModeleRobot_ACTION_HOMOLO_49();
+      break;
+
+     case ModeleRobot_IN_ACTION_HOMOLO_50:
+      ModeleRobot_ACTION_HOMOLO_50();
+      break;
+
+     case ModeleRobot_IN_ACTION_HOMOLO_51:
+      ModeleRobot_ACTION_HOMOLO_51();
+      break;
+
+     case ModeleRobot_IN_ACTION_HOMOLO_52:
+      ModeleRobot_ACTION_HOMOLO_52();
+      break;
+
+     case ModeleRobot_IN_ACTION_HOMOLO_53:
+      ModeleRobot_ACTION_HOMOLO_53();
+      break;
+
+     case ModeleRobot_IN_ACTION_HOMOLO_54:
+      ModeleRobot_ACTION_HOMOLO_54();
+      break;
+
+     case ModeleRobot_IN_ACTION_HOMOLO_55:
+      ModeleRobot_ACTION_HOMOLO_55();
+      break;
+
+     case ModeleRobot_IN_ACTION_HOMOLO_56:
+      ModeleRobot_ACTION_HOMOLO_56();
+      break;
+
+     case ModeleRobot_IN_ACTION_HOMOLO_57:
+      ModeleRobot_ACTION_HOMOLO_57();
+      break;
+
+     case ModeleRobot_IN_ACTION_HOMOLO_58:
+      ModeleRobot_ACTION_HOMOLO_58();
       break;
 
      case ModeleRobot_IN_ACTION_HOMOLO_6:
@@ -2524,6 +3261,348 @@ static void ModeleRobot_DEMO(void)
 
      default:
       ModeleRobot_enter_internal_DEMO();
+      break;
+    }
+  }
+}
+
+/* Function for Stateflow: '<Root>/COMPORTEMENT' */
+static void VERT_GOTO_DISTRIBUTEURS_ET_RECU(void)
+{
+  /* During 'VERT_GOTO_DISTRIBUTEURS_ET_RECUPERE': '<S1>:4423' */
+  if (ModeleRobot_DWork.Etape_recuperationDistributeurs == 0.0) {
+    /* Transition: '<S1>:4467' */
+    /* Exit 'ACTION_DISTRIB_01': '<S1>:4437' */
+    ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+      ModeleRobot_IN_NO_ACTIVE_CHILD;
+
+    /* Exit 'ACTION_DISTRIB_010': '<S1>:4439' */
+    /* Exit 'ACTION_DISTRIB_011': '<S1>:4445' */
+    /* Exit 'ACTION_DISTRIB_02': '<S1>:4441' */
+    /* Exit 'ACTION_DISTRIB_03': '<S1>:4442' */
+    /* Exit 'ACTION_DISTRIB_04': '<S1>:4443' */
+    /* Exit 'ACTION_DISTRIB_05': '<S1>:4444' */
+    /* Exit 'ACTION_DISTRIB_06': '<S1>:4447' */
+    /* Exit 'ACTION_DISTRIB_07': '<S1>:4448' */
+    /* Exit 'ACTION_DISTRIB_08': '<S1>:4450' */
+    /* Exit 'ACTION_DISTRIB_09': '<S1>:4438' */
+    /* Exit 'VERT_GOTO_DISTRIBUTEURS_ET_RECUPERE': '<S1>:4423' */
+    ModeleRobot_DWork.is_STRATEGIE1 = (uint8_T)ModeleRobot_IN_NO_ACTIVE_CHILD;
+    enter_atomic_VERT_RETOUR_ZONE_D();
+    enter_internal_VERT_RETOUR_ZONE();
+  } else {
+    ModeleRobot_DWork.TempoMot = ModeleRobot_DWork.TempoMot + 1.0;
+    switch (ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R) {
+     case ModeleRobo_IN_ACTION_DISTRIB_01:
+      /* During 'ACTION_DISTRIB_01': '<S1>:4437' */
+      /* Graphical Function 'isFinMouvementRapide': '<S1>:3865' */
+      /* Transition: '<S1>:3868' */
+      ModeleRobot_DWork.CompteurTimeoutMvt =
+        ModeleRobot_DWork.CompteurTimeoutMvt + 1.0;
+
+      /* Transition: '<S1>:3869' */
+      if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 /
+            ModeleRobot_P.SFunction_p49) || (ModeleRobot_B.DataTypeConversion_g
+            != 0.0)) != 0) {
+        /* Transition: '<S1>:4426' */
+        /* Exit 'ACTION_DISTRIB_01': '<S1>:4437' */
+        /* Entry 'ACTION_DISTRIB_09': '<S1>:4438' */
+        ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+          ModeleRobo_IN_ACTION_DISTRIB_09;
+        ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+          ModeleRobo_IN_ACTION_DISTRIB_09;
+
+        /* va en marche arrière jusque devant le distributeur sans l'atteindre */
+        /* Graphical Function 'Mouvement_Angle': '<S1>:1354' */
+        /* Transition: '<S1>:1356' */
+        ModeleRobot_B.DdeMvtDistanceAngle = ModeleRobot_B.DdeMvtDistanceAngle +
+          1.0;
+        ModeleRobot_B.ConsigneDistance = 0.0;
+        ModeleRobot_B.ConsigneTeta = (-ModeleRobot_P.SFunction_p19) / 2.0 *
+          ModeleRobot_DWork.invMouv;
+        ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+        ModeleRobot_DWork.TempoMot = 0.0;
+      }
+      break;
+
+     case ModeleRob_IN_ACTION_DISTRIB_010:
+      /* During 'ACTION_DISTRIB_010': '<S1>:4439' */
+      if (fabs(ModeleRobot_U.IN_y_pos) > 50.0) {
+        /* Transition: '<S1>:4429' */
+        /* Exit 'ACTION_DISTRIB_010': '<S1>:4439' */
+        /* Entry 'ACTION_DISTRIB_02': '<S1>:4441' */
+        ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+          ModeleRobo_IN_ACTION_DISTRIB_02;
+        ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+          ModeleRobo_IN_ACTION_DISTRIB_02;
+        ModeleRobot_DWork.inhibeObstacle = 1.0;
+      }
+      break;
+
+     case ModeleRob_IN_ACTION_DISTRIB_011:
+      /* During 'ACTION_DISTRIB_011': '<S1>:4445' */
+      /* Graphical Function 'isFinMouvementRapide': '<S1>:3865' */
+      /* Transition: '<S1>:3868' */
+      ModeleRobot_DWork.CompteurTimeoutMvt =
+        ModeleRobot_DWork.CompteurTimeoutMvt + 1.0;
+
+      /* Transition: '<S1>:3869' */
+      if (((ModeleRobot_DWork.CompteurTimeoutMvt > 2.0 /
+            ModeleRobot_P.SFunction_p49) || (ModeleRobot_B.DataTypeConversion_g
+            != 0.0)) != 0) {
+        /* Transition: '<S1>:4434' */
+        /* Exit 'ACTION_DISTRIB_011': '<S1>:4445' */
+        /* Entry 'ACTION_DISTRIB_06': '<S1>:4447' */
+        ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+          ModeleRobo_IN_ACTION_DISTRIB_06;
+        ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+          ModeleRobo_IN_ACTION_DISTRIB_06;
+        ModeleRobot_DWork.nbreDistributeursTraites =
+          ModeleRobot_DWork.nbreDistributeursTraites + 1.0;
+      }
+      break;
+
+     case ModeleRobo_IN_ACTION_DISTRIB_02:
+      /* During 'ACTION_DISTRIB_02': '<S1>:4441' */
+      /* Graphical Function 'isFinMouvement': '<S1>:1282' */
+      /* Transition: '<S1>:1285' */
+      ModeleRobot_DWork.CompteurTimeoutMvt =
+        ModeleRobot_DWork.CompteurTimeoutMvt + 1.0;
+
+      /* Transition: '<S1>:1286' */
+      /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+      if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 /
+            ModeleRobot_P.SFunction_p49) || (ModeleRobot_B.DataTypeConversion !=
+            0.0)) != 0) {
+        /* Transition: '<S1>:4430' */
+        /* Exit 'ACTION_DISTRIB_02': '<S1>:4441' */
+        /* Entry 'ACTION_DISTRIB_03': '<S1>:4442' */
+        ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+          ModeleRobo_IN_ACTION_DISTRIB_03;
+        ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+          ModeleRobo_IN_ACTION_DISTRIB_03;
+
+        /*  termine en boucle ouverte pour venir buter contre la bordure */
+        /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
+        /* Transition: '<S1>:1301' */
+        ModeleRobot_B.DdeMvtManuel = ModeleRobot_B.DdeMvtManuel + 1.0;
+        ModeleRobot_B.CommandeManuelleG = -25.0;
+        ModeleRobot_B.CommandeManuelleD = -25.0;
+
+        /*  le souffleur évacue les boules éventuellement derrière le robot qu pourraient gêner */
+        /* Graphical Function 'setPWM': '<S1>:4112' */
+        /* Transition: '<S1>:4114' */
+        ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p18 - 1.0)]
+          = -100.0;
+
+        /*  sort le tobogan et lance la souflerie */
+        /* Graphical Function 'setServo': '<S1>:4141' */
+        /* Transition: '<S1>:4143' */
+        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p43 - 1.0)]
+          = ModeleRobot_P.SFunction_p45;
+        ModeleRobot_DWork.TempoMot = 0.0;
+      }
+      break;
+
+     case ModeleRobo_IN_ACTION_DISTRIB_03:
+      /* During 'ACTION_DISTRIB_03': '<S1>:4442' */
+      if (ModeleRobot_DWork.TempoMot > 2.0 / ModeleRobot_P.SFunction_p49) {
+        /* Transition: '<S1>:4431' */
+        /* Exit 'ACTION_DISTRIB_03': '<S1>:4442' */
+        /* Entry 'ACTION_DISTRIB_04': '<S1>:4443' */
+        ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+          ModeleRobo_IN_ACTION_DISTRIB_04;
+        ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+          ModeleRobo_IN_ACTION_DISTRIB_04;
+
+        /*  arrête de buter contre la bordure */
+        /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
+        /* Transition: '<S1>:1301' */
+        ModeleRobot_B.DdeMvtManuel = ModeleRobot_B.DdeMvtManuel + 1.0;
+        ModeleRobot_B.CommandeManuelleG = 0.0;
+        ModeleRobot_B.CommandeManuelleD = 0.0;
+
+        /*  ATTENTION : recalage de la position du robot
+           setPosition(36,77.5*invMouv, (-PI/2)*invMouv); */
+        /* Graphical Function 'setPWM': '<S1>:4112' */
+        /* Transition: '<S1>:4114' */
+        ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p16 - 1.0)]
+          = 100.0;
+
+        /*  arrête le souffleur du bas */
+        /* Graphical Function 'setPWM': '<S1>:4112' */
+        /* Transition: '<S1>:4114' */
+        ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p18 - 1.0)]
+          = 0.0;
+        ModeleRobot_DWork.TempoMot = 0.0;
+      }
+      break;
+
+     case ModeleRobo_IN_ACTION_DISTRIB_04:
+      /* During 'ACTION_DISTRIB_04': '<S1>:4443' */
+      if (ModeleRobot_DWork.TempoMot > 3.0 / ModeleRobot_P.SFunction_p49) {
+        /* Transition: '<S1>:4432' */
+        /* Exit 'ACTION_DISTRIB_04': '<S1>:4443' */
+        /* Entry 'ACTION_DISTRIB_05': '<S1>:4444' */
+        ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+          ModeleRobo_IN_ACTION_DISTRIB_05;
+        ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+          ModeleRobo_IN_ACTION_DISTRIB_05;
+
+        /*  Arrête la souflerie pour laisser les balles tomber (et attend un peu) */
+        /* Graphical Function 'setPWM': '<S1>:4112' */
+        /* Transition: '<S1>:4114' */
+        ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p16 - 1.0)]
+          = 0.0;
+        ModeleRobot_DWork.TempoMot = 0.0;
+      }
+      break;
+
+     case ModeleRobo_IN_ACTION_DISTRIB_05:
+      /* During 'ACTION_DISTRIB_05': '<S1>:4444' */
+      if (ModeleRobot_DWork.TempoMot > 1.0 / ModeleRobot_P.SFunction_p49) {
+        /* Transition: '<S1>:4433' */
+        /* Exit 'ACTION_DISTRIB_05': '<S1>:4444' */
+        /* Entry 'ACTION_DISTRIB_011': '<S1>:4445' */
+        ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+          ModeleRob_IN_ACTION_DISTRIB_011;
+        ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+          ModeleRob_IN_ACTION_DISTRIB_011;
+
+        /*  s'éloinge de la bordure */
+        ModeleRobot_DWork.inhibeObstacle = 0.0;
+
+        /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
+        /* Transition: '<S1>:1291' */
+        ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
+        ModeleRobot_B.ConsigneX = ModeleRobot_DWork.positionDistributeur_X;
+        ModeleRobot_B.ConsigneY = 63.0 * ModeleRobot_DWork.invMouv;
+        ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+
+        /* Graphical Function 'setServo': '<S1>:4141' */
+        /* Transition: '<S1>:4143' */
+        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p43 - 1.0)]
+          = ModeleRobot_P.SFunction_p44;
+
+        /*  petite pichnette sur le servo pour éviter de racler contre le distributeur */
+      }
+      break;
+
+     case ModeleRobo_IN_ACTION_DISTRIB_06:
+      /* During 'ACTION_DISTRIB_06': '<S1>:4447' */
+      if (ModeleRobot_DWork.nbreDistributeursTraites >= 2.0) {
+        /* Transition: '<S1>:4435' */
+        /* Exit 'ACTION_DISTRIB_06': '<S1>:4447' */
+        /* Entry 'ACTION_DISTRIB_07': '<S1>:4448' */
+        ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+          ModeleRobo_IN_ACTION_DISTRIB_07;
+        ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+          ModeleRobo_IN_ACTION_DISTRIB_07;
+
+        /*  Ferme le servo du recolteur une fois tout terminé */
+        /* Graphical Function 'setServo': '<S1>:4141' */
+        /* Transition: '<S1>:4143' */
+        ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p43 - 1.0)]
+          = ModeleRobot_P.SFunction_p44;
+
+        /*  retourne à la position de référence */
+        ModeleRobot_DWork.inhibeObstacle = 1.0;
+
+        /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
+        /* Transition: '<S1>:3697' */
+        ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
+        ModeleRobot_B.ConsigneX = 75.0;
+        ModeleRobot_B.ConsigneY = 0.0;
+        ModeleRobot_B.ConsigneTeta = 0.0;
+        ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+      } else {
+        /* Transition: '<S1>:4427' */
+        /* Exit 'ACTION_DISTRIB_06': '<S1>:4447' */
+        ModeleRobot_DWork.positionDistributeur_X =
+          ModeleRobot_DWork.positionDistributeur_X - 30.0;
+
+        /* Entry 'ACTION_DISTRIB_09': '<S1>:4438' */
+        ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+          ModeleRobo_IN_ACTION_DISTRIB_09;
+        ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+          ModeleRobo_IN_ACTION_DISTRIB_09;
+
+        /* va en marche arrière jusque devant le distributeur sans l'atteindre */
+        /* Graphical Function 'Mouvement_Angle': '<S1>:1354' */
+        /* Transition: '<S1>:1356' */
+        ModeleRobot_B.DdeMvtDistanceAngle = ModeleRobot_B.DdeMvtDistanceAngle +
+          1.0;
+        ModeleRobot_B.ConsigneDistance = 0.0;
+        ModeleRobot_B.ConsigneTeta = (-ModeleRobot_P.SFunction_p19) / 2.0 *
+          ModeleRobot_DWork.invMouv;
+        ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+        ModeleRobot_DWork.TempoMot = 0.0;
+      }
+      break;
+
+     case ModeleRobo_IN_ACTION_DISTRIB_07:
+      /* During 'ACTION_DISTRIB_07': '<S1>:4448' */
+      /* Graphical Function 'isFinMouvement': '<S1>:1282' */
+      /* Transition: '<S1>:1285' */
+      ModeleRobot_DWork.CompteurTimeoutMvt =
+        ModeleRobot_DWork.CompteurTimeoutMvt + 1.0;
+
+      /* Transition: '<S1>:1286' */
+      /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+      if (((ModeleRobot_DWork.CompteurTimeoutMvt > 4.0 /
+            ModeleRobot_P.SFunction_p49) || (ModeleRobot_B.DataTypeConversion !=
+            0.0)) != 0) {
+        /* Transition: '<S1>:4436' */
+        /* Exit 'ACTION_DISTRIB_07': '<S1>:4448' */
+        /* Entry 'ACTION_DISTRIB_08': '<S1>:4450' */
+        ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+          ModeleRobo_IN_ACTION_DISTRIB_08;
+        ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+          ModeleRobo_IN_ACTION_DISTRIB_08;
+
+        /* Fin d'étape */
+        ModeleRobot_DWork.Etape_recuperationDistributeurs = 0.0;
+      }
+      break;
+
+     case ModeleRobo_IN_ACTION_DISTRIB_08:
+      break;
+
+     case ModeleRobo_IN_ACTION_DISTRIB_09:
+      /* During 'ACTION_DISTRIB_09': '<S1>:4438' */
+      /* Graphical Function 'isFinMouvement': '<S1>:1282' */
+      /* Transition: '<S1>:1285' */
+      ModeleRobot_DWork.CompteurTimeoutMvt =
+        ModeleRobot_DWork.CompteurTimeoutMvt + 1.0;
+
+      /* Transition: '<S1>:1286' */
+      /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
+      if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 /
+            ModeleRobot_P.SFunction_p49) || (ModeleRobot_B.DataTypeConversion !=
+            0.0)) != 0) {
+        /* Transition: '<S1>:4428' */
+        /* Exit 'ACTION_DISTRIB_09': '<S1>:4438' */
+        /* Entry 'ACTION_DISTRIB_010': '<S1>:4439' */
+        ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+          ModeleRob_IN_ACTION_DISTRIB_010;
+        ModeleRobot_DWork.was_VERT_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
+          ModeleRob_IN_ACTION_DISTRIB_010;
+
+        /* va en marche arrière jusque devant le distributeur sans l'atteindre */
+        /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
+        /* Transition: '<S1>:3697' */
+        ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
+        ModeleRobot_B.ConsigneX = ModeleRobot_DWork.positionDistributeur_X;
+        ModeleRobot_B.ConsigneY = 70.0 * ModeleRobot_DWork.invMouv;
+        ModeleRobot_B.ConsigneTeta = (-ModeleRobot_P.SFunction_p19) / 2.0 *
+          ModeleRobot_DWork.invMouv;
+        ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+        ModeleRobot_DWork.TempoMot = 0.0;
+      }
+      break;
+
+     default:
+      enter_internal_VERT_GOTO_DISTRI();
       break;
     }
   }
@@ -2571,9 +3650,6 @@ static void ModeleRobot_STRATEGIE1(void)
         /* Exit 'ACTION_HOMOLO_34': '<S1>:4311' */
         /* Exit 'ACTION_HOMOLO_35': '<S1>:4314' */
         /* Exit 'ACTION_HOMOLO_36': '<S1>:4316' */
-        /* Exit 'ACTION_HOMOLO_37': '<S1>:4321' */
-        /* Exit 'ACTION_HOMOLO_38': '<S1>:4328' */
-        /* Exit 'ACTION_HOMOLO_39': '<S1>:4329' */
         /* Exit 'ACTION_HOMOLO_4': '<S1>:4169' */
         /* Exit 'ACTION_HOMOLO_40': '<S1>:4338' */
         /* Exit 'ACTION_HOMOLO_41': '<S1>:4339' */
@@ -2584,6 +3660,15 @@ static void ModeleRobot_STRATEGIE1(void)
         /* Exit 'ACTION_HOMOLO_47': '<S1>:4409' */
         /* Exit 'ACTION_HOMOLO_48': '<S1>:4411' */
         /* Exit 'ACTION_HOMOLO_49': '<S1>:4413' */
+        /* Exit 'ACTION_HOMOLO_50': '<S1>:4471' */
+        /* Exit 'ACTION_HOMOLO_51': '<S1>:4477' */
+        /* Exit 'ACTION_HOMOLO_52': '<S1>:4489' */
+        /* Exit 'ACTION_HOMOLO_53': '<S1>:4490' */
+        /* Exit 'ACTION_HOMOLO_54': '<S1>:4491' */
+        /* Exit 'ACTION_HOMOLO_55': '<S1>:4498' */
+        /* Exit 'ACTION_HOMOLO_56': '<S1>:4500' */
+        /* Exit 'ACTION_HOMOLO_57': '<S1>:4502' */
+        /* Exit 'ACTION_HOMOLO_58': '<S1>:4504' */
         /* Exit 'ACTION_HOMOLO_6': '<S1>:4187' */
         /* Exit 'ACTION_HOMOLO_7': '<S1>:4189' */
         /* Exit 'ACTION_HOMOLO_8': '<S1>:4192' */
@@ -2593,10 +3678,9 @@ static void ModeleRobot_STRATEGIE1(void)
       /* Exit 'DEMO': '<S1>:3463' */
       ModeleRobot_DWork.is_STRATEGIE1 = (uint8_T)ModeleRobot_IN_NO_ACTIVE_CHILD;
     } else {
-      ModeleRobot_DWork.is_STRATEGIE1 = (uint8_T)ModeleRobot_IN_NO_ACTIVE_CHILD;
-
+      /* Exit 'INIT_STRATEGIE': '<S1>:1128' */
       /* Exit 'ACTION_DISTRIB_01': '<S1>:4365' */
-      ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+      ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
         ModeleRobot_IN_NO_ACTIVE_CHILD;
 
       /* Exit 'ACTION_DISTRIB_010': '<S1>:4407' */
@@ -2609,19 +3693,42 @@ static void ModeleRobot_STRATEGIE1(void)
       /* Exit 'ACTION_DISTRIB_07': '<S1>:4373' */
       /* Exit 'ACTION_DISTRIB_08': '<S1>:4375' */
       /* Exit 'ACTION_DISTRIB_09': '<S1>:4405' */
-      /* Exit 'GOTO_DISTRIBUTEURS_ET_RECUPERE': '<S1>:4353' */
-      /* Exit 'INIT_STRATEGIE': '<S1>:1128' */
+      /* Exit 'JAUNE_GOTO_DISTRIBUTEURS_ET_RECUPERE': '<S1>:4353' */
       /* Exit 'ACTION_RETOUR_Z0_DECHARGE_01': '<S1>:4387' */
-      ModeleRobot_DWork.is_RETOUR_ZONE_DEPART_ET_DECHAR = (uint8_T)
+      ModeleRobot_DWork.is_JAUNE_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
         ModeleRobot_IN_NO_ACTIVE_CHILD;
 
       /* Exit 'ACTION_RETOUR_Z0_DECHARGE_02': '<S1>:4388' */
       /* Exit 'ACTION_RETOUR_Z0_DECHARGE_03': '<S1>:4392' */
       /* Exit 'ACTION_RETOUR_Z0_DECHARGE_04': '<S1>:4389' */
-      /* Exit 'ACTION_RETOUR_Z0_DECHARGE_05': '<S1>:4386' */
       /* Exit 'ACTION_RETOUR_Z0_DECHARGE_06': '<S1>:4390' */
       /* Exit 'ACTION_RETOUR_Z0_DECHARGE_07': '<S1>:4391' */
-      /* Exit 'RETOUR_ZONE_DEPART_ET_DECHARGE': '<S1>:4377' */
+      /* Exit 'JAUNE_RETOUR_ZONE_DEPART_ET_DECHARGE': '<S1>:4377' */
+      /* Exit 'ACTION_DISTRIB_01': '<S1>:4437' */
+      ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+        ModeleRobot_IN_NO_ACTIVE_CHILD;
+
+      /* Exit 'ACTION_DISTRIB_010': '<S1>:4439' */
+      /* Exit 'ACTION_DISTRIB_011': '<S1>:4445' */
+      /* Exit 'ACTION_DISTRIB_02': '<S1>:4441' */
+      /* Exit 'ACTION_DISTRIB_03': '<S1>:4442' */
+      /* Exit 'ACTION_DISTRIB_04': '<S1>:4443' */
+      /* Exit 'ACTION_DISTRIB_05': '<S1>:4444' */
+      /* Exit 'ACTION_DISTRIB_06': '<S1>:4447' */
+      /* Exit 'ACTION_DISTRIB_07': '<S1>:4448' */
+      /* Exit 'ACTION_DISTRIB_08': '<S1>:4450' */
+      /* Exit 'ACTION_DISTRIB_09': '<S1>:4438' */
+      /* Exit 'VERT_GOTO_DISTRIBUTEURS_ET_RECUPERE': '<S1>:4423' */
+      /* Exit 'ACTION_RETOUR_Z0_DECHARGE_01': '<S1>:4461' */
+      ModeleRobot_DWork.is_VERT_RETOUR_ZONE_DEPART_ET_D = (uint8_T)
+        ModeleRobot_IN_NO_ACTIVE_CHILD;
+
+      /* Exit 'ACTION_RETOUR_Z0_DECHARGE_02': '<S1>:4462' */
+      /* Exit 'ACTION_RETOUR_Z0_DECHARGE_03': '<S1>:4466' */
+      /* Exit 'ACTION_RETOUR_Z0_DECHARGE_04': '<S1>:4463' */
+      /* Exit 'ACTION_RETOUR_Z0_DECHARGE_06': '<S1>:4464' */
+      /* Exit 'ACTION_RETOUR_Z0_DECHARGE_07': '<S1>:4465' */
+      /* Exit 'VERT_RETOUR_ZONE_DEPART_ET_DECHARGE': '<S1>:4451' */
     }
 
     /* Exit 'STRATEGIE1': '<S1>:1123' */
@@ -2648,12 +3755,24 @@ static void ModeleRobot_STRATEGIE1(void)
       ModeleRobot_DEMO();
       break;
 
-     case IN_GOTO_DISTRIBUTEURS_ET_RECUPE:
-      /* During 'GOTO_DISTRIBUTEURS_ET_RECUPERE': '<S1>:4353' */
+     case ModeleRobot_IN_INIT_STRATEGIE:
+      /* During 'INIT_STRATEGIE': '<S1>:1128' */
+      if (ModeleRobot_DWork.DureeMatch > 0.5 / ModeleRobot_P.SFunction_p49) {
+        /* Transition: '<S1>:2244' */
+        /* Exit 'INIT_STRATEGIE': '<S1>:1128' */
+        ModeleRobot_DWork.is_STRATEGIE1 = (uint8_T)
+          ModeleRobot_IN_NO_ACTIVE_CHILD;
+        ModeleRobot_enter_atomic_DEMO();
+        ModeleRobot_enter_internal_DEMO();
+      }
+      break;
+
+     case IN_JAUNE_GOTO_DISTRIBUTEURS_ET_:
+      /* During 'JAUNE_GOTO_DISTRIBUTEURS_ET_RECUPERE': '<S1>:4353' */
       if (ModeleRobot_DWork.Etape_recuperationDistributeurs == 0.0) {
         /* Transition: '<S1>:4376' */
         /* Exit 'ACTION_DISTRIB_01': '<S1>:4365' */
-        ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+        ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
           ModeleRobot_IN_NO_ACTIVE_CHILD;
 
         /* Exit 'ACTION_DISTRIB_010': '<S1>:4407' */
@@ -2666,18 +3785,14 @@ static void ModeleRobot_STRATEGIE1(void)
         /* Exit 'ACTION_DISTRIB_07': '<S1>:4373' */
         /* Exit 'ACTION_DISTRIB_08': '<S1>:4375' */
         /* Exit 'ACTION_DISTRIB_09': '<S1>:4405' */
-        /* Exit 'GOTO_DISTRIBUTEURS_ET_RECUPERE': '<S1>:4353' */
-        /* Entry 'RETOUR_ZONE_DEPART_ET_DECHARGE': '<S1>:4377' */
+        /* Exit 'JAUNE_GOTO_DISTRIBUTEURS_ET_RECUPERE': '<S1>:4353' */
         ModeleRobot_DWork.is_STRATEGIE1 = (uint8_T)
-          IN_RETOUR_ZONE_DEPART_ET_DECHAR;
-        ModeleRobot_DWork.was_STRATEGIE1 = (uint8_T)
-          IN_RETOUR_ZONE_DEPART_ET_DECHAR;
-        ModeleRobot_DWork.TempoMot = 0.0;
-        ModeleRobot_DWork.inhibeObstacle = 0.0;
-        enter_internal_RETOUR_ZONE_DEPA();
+          ModeleRobot_IN_NO_ACTIVE_CHILD;
+        enter_atomic_JAUNE_RETOUR_ZONE_();
+        enter_internal_JAUNE_RETOUR_ZON();
       } else {
         ModeleRobot_DWork.TempoMot = ModeleRobot_DWork.TempoMot + 1.0;
-        switch (ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE) {
+        switch (ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_) {
          case ModeleRobo_IN_ACTION_DISTRIB_01:
           /* During 'ACTION_DISTRIB_01': '<S1>:4365' */
           /* Graphical Function 'isFinMouvement': '<S1>:1282' */
@@ -2687,15 +3802,15 @@ static void ModeleRobot_STRATEGIE1(void)
 
           /* Transition: '<S1>:1286' */
           /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
-          if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 /
+          if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
                 ModeleRobot_P.SFunction_p49) ||
                (ModeleRobot_B.DataTypeConversion != 0.0)) != 0) {
             /* Transition: '<S1>:4357' */
             /* Exit 'ACTION_DISTRIB_01': '<S1>:4365' */
             /* Entry 'ACTION_DISTRIB_09': '<S1>:4405' */
-            ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+            ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
               ModeleRobo_IN_ACTION_DISTRIB_09;
-            ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+            ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
               ModeleRobo_IN_ACTION_DISTRIB_09;
 
             /* va en marche arrière jusque devant le distributeur sans l'atteindre */
@@ -2717,9 +3832,9 @@ static void ModeleRobot_STRATEGIE1(void)
             /* Transition: '<S1>:4408' */
             /* Exit 'ACTION_DISTRIB_010': '<S1>:4407' */
             /* Entry 'ACTION_DISTRIB_02': '<S1>:4366' */
-            ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+            ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
               ModeleRobo_IN_ACTION_DISTRIB_02;
-            ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+            ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
               ModeleRobo_IN_ACTION_DISTRIB_02;
             ModeleRobot_DWork.inhibeObstacle = 1.0;
           }
@@ -2727,13 +3842,21 @@ static void ModeleRobot_STRATEGIE1(void)
 
          case ModeleRob_IN_ACTION_DISTRIB_011:
           /* During 'ACTION_DISTRIB_011': '<S1>:4415' */
-          if (ModeleRobot_DWork.TempoMot > 2.0 / ModeleRobot_P.SFunction_p49) {
+          /* Graphical Function 'isFinMouvementRapide': '<S1>:3865' */
+          /* Transition: '<S1>:3868' */
+          ModeleRobot_DWork.CompteurTimeoutMvt =
+            ModeleRobot_DWork.CompteurTimeoutMvt + 1.0;
+
+          /* Transition: '<S1>:3869' */
+          if (((ModeleRobot_DWork.CompteurTimeoutMvt > 2.0 /
+                ModeleRobot_P.SFunction_p49) ||
+               (ModeleRobot_B.DataTypeConversion_g != 0.0)) != 0) {
             /* Transition: '<S1>:4416' */
             /* Exit 'ACTION_DISTRIB_011': '<S1>:4415' */
             /* Entry 'ACTION_DISTRIB_06': '<S1>:4372' */
-            ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+            ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
               ModeleRobo_IN_ACTION_DISTRIB_06;
-            ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+            ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
               ModeleRobo_IN_ACTION_DISTRIB_06;
             ModeleRobot_DWork.nbreDistributeursTraites =
               ModeleRobot_DWork.nbreDistributeursTraites + 1.0;
@@ -2755,9 +3878,9 @@ static void ModeleRobot_STRATEGIE1(void)
             /* Transition: '<S1>:4359' */
             /* Exit 'ACTION_DISTRIB_02': '<S1>:4366' */
             /* Entry 'ACTION_DISTRIB_03': '<S1>:4368' */
-            ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+            ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
               ModeleRobo_IN_ACTION_DISTRIB_03;
-            ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+            ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
               ModeleRobo_IN_ACTION_DISTRIB_03;
 
             /*  termine en boucle ouverte pour venir buter contre la bordure */
@@ -2788,9 +3911,9 @@ static void ModeleRobot_STRATEGIE1(void)
             /* Transition: '<S1>:4360' */
             /* Exit 'ACTION_DISTRIB_03': '<S1>:4368' */
             /* Entry 'ACTION_DISTRIB_04': '<S1>:4369' */
-            ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+            ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
               ModeleRobo_IN_ACTION_DISTRIB_04;
-            ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+            ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
               ModeleRobo_IN_ACTION_DISTRIB_04;
 
             /*  arrête de buter contre la bordure */
@@ -2822,9 +3945,9 @@ static void ModeleRobot_STRATEGIE1(void)
             /* Transition: '<S1>:4361' */
             /* Exit 'ACTION_DISTRIB_04': '<S1>:4369' */
             /* Entry 'ACTION_DISTRIB_05': '<S1>:4370' */
-            ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+            ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
               ModeleRobo_IN_ACTION_DISTRIB_05;
-            ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+            ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
               ModeleRobo_IN_ACTION_DISTRIB_05;
 
             /*  Arrête la souflerie pour laisser les balles tomber (et attend un peu) */
@@ -2842,9 +3965,9 @@ static void ModeleRobot_STRATEGIE1(void)
             /* Transition: '<S1>:4362' */
             /* Exit 'ACTION_DISTRIB_05': '<S1>:4370' */
             /* Entry 'ACTION_DISTRIB_011': '<S1>:4415' */
-            ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+            ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
               ModeleRob_IN_ACTION_DISTRIB_011;
-            ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+            ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
               ModeleRob_IN_ACTION_DISTRIB_011;
 
             /*  s'éloinge de la bordure */
@@ -2867,9 +3990,9 @@ static void ModeleRobot_STRATEGIE1(void)
             /* Transition: '<S1>:4363' */
             /* Exit 'ACTION_DISTRIB_06': '<S1>:4372' */
             /* Entry 'ACTION_DISTRIB_07': '<S1>:4373' */
-            ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+            ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
               ModeleRobo_IN_ACTION_DISTRIB_07;
-            ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+            ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
               ModeleRobo_IN_ACTION_DISTRIB_07;
 
             /*  Ferme le servo du recolteur une fois tout terminé */
@@ -2886,8 +4009,8 @@ static void ModeleRobot_STRATEGIE1(void)
             ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
             ModeleRobot_B.ConsigneX = ModeleRobot_DWork.posXReferenceEntreEtapes
               + 20.0;
-            ModeleRobot_B.ConsigneY = 15.0;
-            ModeleRobot_B.ConsigneTeta = ModeleRobot_P.SFunction_p19;
+            ModeleRobot_B.ConsigneY = 0.0;
+            ModeleRobot_B.ConsigneTeta = 0.0;
             ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
           } else {
             /* Transition: '<S1>:4356' */
@@ -2895,9 +4018,9 @@ static void ModeleRobot_STRATEGIE1(void)
             ModeleRobot_DWork.positionDistributeur_X = 1.0;
 
             /* Entry 'ACTION_DISTRIB_09': '<S1>:4405' */
-            ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+            ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
               ModeleRobo_IN_ACTION_DISTRIB_09;
-            ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+            ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
               ModeleRobo_IN_ACTION_DISTRIB_09;
 
             /* va en marche arrière jusque devant le distributeur sans l'atteindre */
@@ -2928,9 +4051,9 @@ static void ModeleRobot_STRATEGIE1(void)
             /* Transition: '<S1>:4364' */
             /* Exit 'ACTION_DISTRIB_07': '<S1>:4373' */
             /* Entry 'ACTION_DISTRIB_08': '<S1>:4375' */
-            ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+            ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
               ModeleRobo_IN_ACTION_DISTRIB_08;
-            ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+            ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
               ModeleRobo_IN_ACTION_DISTRIB_08;
 
             /* Fin d'étape */
@@ -2956,9 +4079,9 @@ static void ModeleRobot_STRATEGIE1(void)
             /* Transition: '<S1>:4406' */
             /* Exit 'ACTION_DISTRIB_09': '<S1>:4405' */
             /* Entry 'ACTION_DISTRIB_010': '<S1>:4407' */
-            ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+            ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
               ModeleRob_IN_ACTION_DISTRIB_010;
-            ModeleRobot_DWork.was_GOTO_DISTRIBUTEURS_ET_RECUP = (uint8_T)
+            ModeleRobot_DWork.was_JAUNE_GOTO_DISTRIBUTEURS_ET = (uint8_T)
               ModeleRob_IN_ACTION_DISTRIB_010;
 
             /* va en marche arrière jusque devant le distributeur sans l'atteindre */
@@ -2975,28 +4098,16 @@ static void ModeleRobot_STRATEGIE1(void)
           break;
 
          default:
-          enter_internal_GOTO_DISTRIBUTEU();
+          enter_internal_JAUNE_GOTO_DISTR();
           break;
         }
       }
       break;
 
-     case ModeleRobot_IN_INIT_STRATEGIE:
-      /* During 'INIT_STRATEGIE': '<S1>:1128' */
-      if (ModeleRobot_DWork.DureeMatch > 0.5 / ModeleRobot_P.SFunction_p49) {
-        /* Transition: '<S1>:2244' */
-        /* Exit 'INIT_STRATEGIE': '<S1>:1128' */
-        ModeleRobot_DWork.is_STRATEGIE1 = (uint8_T)
-          ModeleRobot_IN_NO_ACTIVE_CHILD;
-        ModeleRobot_enter_atomic_DEMO();
-        ModeleRobot_enter_internal_DEMO();
-      }
-      break;
-
-     case IN_RETOUR_ZONE_DEPART_ET_DECHAR:
-      /* During 'RETOUR_ZONE_DEPART_ET_DECHARGE': '<S1>:4377' */
+     case IN_JAUNE_RETOUR_ZONE_DEPART_ET_:
+      /* During 'JAUNE_RETOUR_ZONE_DEPART_ET_DECHARGE': '<S1>:4377' */
       ModeleRobot_DWork.TempoMot = ModeleRobot_DWork.TempoMot + 1.0;
-      switch (ModeleRobot_DWork.is_RETOUR_ZONE_DEPART_ET_DECHAR) {
+      switch (ModeleRobot_DWork.is_JAUNE_RETOUR_ZONE_DEPART_ET_) {
        case IN_ACTION_RETOUR_Z0_DECHARGE_01:
         /* During 'ACTION_RETOUR_Z0_DECHARGE_01': '<S1>:4387' */
         /* Graphical Function 'isFinMouvement': '<S1>:1282' */
@@ -3012,9 +4123,9 @@ static void ModeleRobot_STRATEGIE1(void)
           /* Transition: '<S1>:4381' */
           /* Exit 'ACTION_RETOUR_Z0_DECHARGE_01': '<S1>:4387' */
           /* Entry 'ACTION_RETOUR_Z0_DECHARGE_02': '<S1>:4388' */
-          ModeleRobot_DWork.is_RETOUR_ZONE_DEPART_ET_DECHAR = (uint8_T)
+          ModeleRobot_DWork.is_JAUNE_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
             IN_ACTION_RETOUR_Z0_DECHARGE_02;
-          ModeleRobot_DWork.was_RETOUR_ZONE_DEPART_ET_DECHA = (uint8_T)
+          ModeleRobot_DWork.was_JAUNE_RETOUR_ZONE_DEPART_ET = (uint8_T)
             IN_ACTION_RETOUR_Z0_DECHARGE_02;
 
           /*  termine en boucle ouverte pour venir buter contre la bordure */
@@ -3033,10 +4144,11 @@ static void ModeleRobot_STRATEGIE1(void)
           /* Transition: '<S1>:4382' */
           /* Exit 'ACTION_RETOUR_Z0_DECHARGE_02': '<S1>:4388' */
           /* Entry 'ACTION_RETOUR_Z0_DECHARGE_04': '<S1>:4389' */
-          ModeleRobot_DWork.is_RETOUR_ZONE_DEPART_ET_DECHAR = (uint8_T)
+          ModeleRobot_DWork.is_JAUNE_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
             IN_ACTION_RETOUR_Z0_DECHARGE_04;
-          ModeleRobot_DWork.was_RETOUR_ZONE_DEPART_ET_DECHA = (uint8_T)
+          ModeleRobot_DWork.was_JAUNE_RETOUR_ZONE_DEPART_ET = (uint8_T)
             IN_ACTION_RETOUR_Z0_DECHARGE_04;
+          ModeleRobot_DWork.TempoMot = 0.0;
 
           /*  arrête de buter contre la bordure */
           /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
@@ -3067,55 +4179,17 @@ static void ModeleRobot_STRATEGIE1(void)
           /* Transition: '<S1>:4383' */
           /* Exit 'ACTION_RETOUR_Z0_DECHARGE_04': '<S1>:4389' */
           /* Entry 'ACTION_RETOUR_Z0_DECHARGE_06': '<S1>:4390' */
-          ModeleRobot_DWork.is_RETOUR_ZONE_DEPART_ET_DECHAR = (uint8_T)
+          ModeleRobot_DWork.is_JAUNE_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
             IN_ACTION_RETOUR_Z0_DECHARGE_06;
-          ModeleRobot_DWork.was_RETOUR_ZONE_DEPART_ET_DECHA = (uint8_T)
+          ModeleRobot_DWork.was_JAUNE_RETOUR_ZONE_DEPART_ET = (uint8_T)
             IN_ACTION_RETOUR_Z0_DECHARGE_06;
+          ModeleRobot_DWork.TempoMot = 0.0;
 
           /*  aide à l'évacuation */
           /* Graphical Function 'setPWM': '<S1>:4112' */
           /* Transition: '<S1>:4114' */
           ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p16 -
             1.0)] = -100.0;
-        }
-        break;
-
-       case IN_ACTION_RETOUR_Z0_DECHARGE_05:
-        /* During 'ACTION_RETOUR_Z0_DECHARGE_05': '<S1>:4386' */
-        /* Graphical Function 'isFinMouvement': '<S1>:1282' */
-        /* Transition: '<S1>:1285' */
-        ModeleRobot_DWork.CompteurTimeoutMvt =
-          ModeleRobot_DWork.CompteurTimeoutMvt + 1.0;
-
-        /* Transition: '<S1>:1286' */
-        /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
-        if (((ModeleRobot_DWork.CompteurTimeoutMvt > 2.0 /
-              ModeleRobot_P.SFunction_p49) || (ModeleRobot_B.DataTypeConversion
-              != 0.0)) != 0) {
-          /* Transition: '<S1>:4380' */
-          /* Exit 'ACTION_RETOUR_Z0_DECHARGE_05': '<S1>:4386' */
-          /* Entry 'ACTION_RETOUR_Z0_DECHARGE_01': '<S1>:4387' */
-          ModeleRobot_DWork.is_RETOUR_ZONE_DEPART_ET_DECHAR = (uint8_T)
-            IN_ACTION_RETOUR_Z0_DECHARGE_01;
-          ModeleRobot_DWork.was_RETOUR_ZONE_DEPART_ET_DECHA = (uint8_T)
-            IN_ACTION_RETOUR_Z0_DECHARGE_01;
-
-          /* va vers une position de référence */
-          /* Graphical Function 'Mouvement_Distance': '<S1>:1347' */
-          /* Transition: '<S1>:1349' */
-          ModeleRobot_B.DdeMvtDistanceAngle = ModeleRobot_B.DdeMvtDistanceAngle
-            + 1.0;
-          ModeleRobot_B.ConsigneDistance = -80.0;
-
-          /*  ConsigneTeta reste inchangé. */
-          ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
-
-          /*  le souffleur évacue les boules éventuellement derrière le robot qu pourraient gêner */
-          /* Graphical Function 'setPWM': '<S1>:4112' */
-          /* Transition: '<S1>:4114' */
-          ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p18 -
-            1.0)] = -100.0;
-          ModeleRobot_DWork.TempoMot = 0.0;
         }
         break;
 
@@ -3125,10 +4199,11 @@ static void ModeleRobot_STRATEGIE1(void)
           /* Transition: '<S1>:4384' */
           /* Exit 'ACTION_RETOUR_Z0_DECHARGE_06': '<S1>:4390' */
           /* Entry 'ACTION_RETOUR_Z0_DECHARGE_07': '<S1>:4391' */
-          ModeleRobot_DWork.is_RETOUR_ZONE_DEPART_ET_DECHAR = (uint8_T)
+          ModeleRobot_DWork.is_JAUNE_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
             IN_ACTION_RETOUR_Z0_DECHARGE_07;
-          ModeleRobot_DWork.was_RETOUR_ZONE_DEPART_ET_DECHA = (uint8_T)
+          ModeleRobot_DWork.was_JAUNE_RETOUR_ZONE_DEPART_ET = (uint8_T)
             IN_ACTION_RETOUR_Z0_DECHARGE_07;
+          ModeleRobot_DWork.TempoMot = 0.0;
 
           /*  aide à l'évacuation */
           /* Graphical Function 'setPWM': '<S1>:4112' */
@@ -3137,19 +4212,50 @@ static void ModeleRobot_STRATEGIE1(void)
             1.0)] = 0.0;
 
           /*  remet le robot dans une position connue pour la prochaine étape */
-          /* Graphical Function 'Mouvement_Distance': '<S1>:1347' */
-          /* Transition: '<S1>:1349' */
-          ModeleRobot_B.DdeMvtDistanceAngle = ModeleRobot_B.DdeMvtDistanceAngle
-            + 1.0;
-          ModeleRobot_B.ConsigneDistance = 10.0;
-
-          /*  ConsigneTeta reste inchangé. */
-          ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
+          /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
+          /* Transition: '<S1>:1301' */
+          ModeleRobot_B.DdeMvtManuel = ModeleRobot_B.DdeMvtManuel + 1.0;
+          ModeleRobot_B.CommandeManuelleG = 20.0;
+          ModeleRobot_B.CommandeManuelleD = 20.0;
         }
         break;
 
        case IN_ACTION_RETOUR_Z0_DECHARGE_07:
         /* During 'ACTION_RETOUR_Z0_DECHARGE_07': '<S1>:4391' */
+        if (ModeleRobot_DWork.TempoMot > 2.0 / ModeleRobot_P.SFunction_p49) {
+          /* Transition: '<S1>:4385' */
+          /* Exit 'ACTION_RETOUR_Z0_DECHARGE_07': '<S1>:4391' */
+          /* Entry 'ACTION_RETOUR_Z0_DECHARGE_03': '<S1>:4392' */
+          ModeleRobot_DWork.is_JAUNE_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
+            IN_ACTION_RETOUR_Z0_DECHARGE_03;
+          ModeleRobot_DWork.was_JAUNE_RETOUR_ZONE_DEPART_ET = (uint8_T)
+            IN_ACTION_RETOUR_Z0_DECHARGE_03;
+
+          /*  fin d'étape */
+          /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
+          /* Transition: '<S1>:1301' */
+          ModeleRobot_B.DdeMvtManuel = ModeleRobot_B.DdeMvtManuel + 1.0;
+          ModeleRobot_B.CommandeManuelleG = 0.0;
+          ModeleRobot_B.CommandeManuelleD = 0.0;
+        }
+        break;
+
+       default:
+        enter_internal_JAUNE_RETOUR_ZON();
+        break;
+      }
+      break;
+
+     case IN_VERT_GOTO_DISTRIBUTEURS_ET_R:
+      VERT_GOTO_DISTRIBUTEURS_ET_RECU();
+      break;
+
+     case IN_VERT_RETOUR_ZONE_DEPART_ET_D:
+      /* During 'VERT_RETOUR_ZONE_DEPART_ET_DECHARGE': '<S1>:4451' */
+      ModeleRobot_DWork.TempoMot = ModeleRobot_DWork.TempoMot + 1.0;
+      switch (ModeleRobot_DWork.is_VERT_RETOUR_ZONE_DEPART_ET_D) {
+       case IN_ACTION_RETOUR_Z0_DECHARGE_01:
+        /* During 'ACTION_RETOUR_Z0_DECHARGE_01': '<S1>:4461' */
         /* Graphical Function 'isFinMouvement': '<S1>:1282' */
         /* Transition: '<S1>:1285' */
         ModeleRobot_DWork.CompteurTimeoutMvt =
@@ -3160,20 +4266,128 @@ static void ModeleRobot_STRATEGIE1(void)
         if (((ModeleRobot_DWork.CompteurTimeoutMvt > 3.0 /
               ModeleRobot_P.SFunction_p49) || (ModeleRobot_B.DataTypeConversion
               != 0.0)) != 0) {
-          /* Transition: '<S1>:4385' */
-          /* Exit 'ACTION_RETOUR_Z0_DECHARGE_07': '<S1>:4391' */
-          /* Entry 'ACTION_RETOUR_Z0_DECHARGE_03': '<S1>:4392' */
-          ModeleRobot_DWork.is_RETOUR_ZONE_DEPART_ET_DECHAR = (uint8_T)
+          /* Transition: '<S1>:4455' */
+          /* Exit 'ACTION_RETOUR_Z0_DECHARGE_01': '<S1>:4461' */
+          /* Entry 'ACTION_RETOUR_Z0_DECHARGE_02': '<S1>:4462' */
+          ModeleRobot_DWork.is_VERT_RETOUR_ZONE_DEPART_ET_D = (uint8_T)
+            IN_ACTION_RETOUR_Z0_DECHARGE_02;
+          ModeleRobot_DWork.was_VERT_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
+            IN_ACTION_RETOUR_Z0_DECHARGE_02;
+
+          /*  termine en boucle ouverte pour venir buter contre la bordure */
+          /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
+          /* Transition: '<S1>:1301' */
+          ModeleRobot_B.DdeMvtManuel = ModeleRobot_B.DdeMvtManuel + 1.0;
+          ModeleRobot_B.CommandeManuelleG = -20.0;
+          ModeleRobot_B.CommandeManuelleD = -20.0;
+          ModeleRobot_DWork.TempoMot = 0.0;
+        }
+        break;
+
+       case IN_ACTION_RETOUR_Z0_DECHARGE_02:
+        /* During 'ACTION_RETOUR_Z0_DECHARGE_02': '<S1>:4462' */
+        if (ModeleRobot_DWork.TempoMot > 3.0 / ModeleRobot_P.SFunction_p49) {
+          /* Transition: '<S1>:4456' */
+          /* Exit 'ACTION_RETOUR_Z0_DECHARGE_02': '<S1>:4462' */
+          /* Entry 'ACTION_RETOUR_Z0_DECHARGE_04': '<S1>:4463' */
+          ModeleRobot_DWork.is_VERT_RETOUR_ZONE_DEPART_ET_D = (uint8_T)
+            IN_ACTION_RETOUR_Z0_DECHARGE_04;
+          ModeleRobot_DWork.was_VERT_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
+            IN_ACTION_RETOUR_Z0_DECHARGE_04;
+          ModeleRobot_DWork.TempoMot = 0.0;
+
+          /*  arrête de buter contre la bordure */
+          /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
+          /* Transition: '<S1>:1301' */
+          ModeleRobot_B.DdeMvtManuel = ModeleRobot_B.DdeMvtManuel + 1.0;
+          ModeleRobot_B.CommandeManuelleG = 0.0;
+          ModeleRobot_B.CommandeManuelleD = 0.0;
+
+          /*  ouvre le clapet de déchargement */
+          /* Graphical Function 'setServo': '<S1>:4141' */
+          /* Transition: '<S1>:4143' */
+          ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p46 -
+            1.0)] = ModeleRobot_P.SFunction_p47;
+
+          /* Graphical Function 'setPWM': '<S1>:4112' */
+          /* Transition: '<S1>:4114' */
+          ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p18 -
+            1.0)] = 0.0;
+        }
+        break;
+
+       case IN_ACTION_RETOUR_Z0_DECHARGE_03:
+        break;
+
+       case IN_ACTION_RETOUR_Z0_DECHARGE_04:
+        /* During 'ACTION_RETOUR_Z0_DECHARGE_04': '<S1>:4463' */
+        if (ModeleRobot_DWork.TempoMot > 0.5 / ModeleRobot_P.SFunction_p49) {
+          /* Transition: '<S1>:4457' */
+          /* Exit 'ACTION_RETOUR_Z0_DECHARGE_04': '<S1>:4463' */
+          /* Entry 'ACTION_RETOUR_Z0_DECHARGE_06': '<S1>:4464' */
+          ModeleRobot_DWork.is_VERT_RETOUR_ZONE_DEPART_ET_D = (uint8_T)
+            IN_ACTION_RETOUR_Z0_DECHARGE_06;
+          ModeleRobot_DWork.was_VERT_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
+            IN_ACTION_RETOUR_Z0_DECHARGE_06;
+          ModeleRobot_DWork.TempoMot = 0.0;
+
+          /*  aide à l'évacuation */
+          /* Graphical Function 'setPWM': '<S1>:4112' */
+          /* Transition: '<S1>:4114' */
+          ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p16 -
+            1.0)] = -100.0;
+        }
+        break;
+
+       case IN_ACTION_RETOUR_Z0_DECHARGE_06:
+        /* During 'ACTION_RETOUR_Z0_DECHARGE_06': '<S1>:4464' */
+        if (ModeleRobot_DWork.TempoMot > 1.5 / ModeleRobot_P.SFunction_p49) {
+          /* Transition: '<S1>:4458' */
+          /* Exit 'ACTION_RETOUR_Z0_DECHARGE_06': '<S1>:4464' */
+          /* Entry 'ACTION_RETOUR_Z0_DECHARGE_07': '<S1>:4465' */
+          ModeleRobot_DWork.is_VERT_RETOUR_ZONE_DEPART_ET_D = (uint8_T)
+            IN_ACTION_RETOUR_Z0_DECHARGE_07;
+          ModeleRobot_DWork.was_VERT_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
+            IN_ACTION_RETOUR_Z0_DECHARGE_07;
+          ModeleRobot_DWork.TempoMot = 0.0;
+
+          /*  aide à l'évacuation */
+          /* Graphical Function 'setPWM': '<S1>:4112' */
+          /* Transition: '<S1>:4114' */
+          ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p16 -
+            1.0)] = 0.0;
+
+          /*  remet le robot dans une position connue pour la prochaine étape */
+          /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
+          /* Transition: '<S1>:1301' */
+          ModeleRobot_B.DdeMvtManuel = ModeleRobot_B.DdeMvtManuel + 1.0;
+          ModeleRobot_B.CommandeManuelleG = 20.0;
+          ModeleRobot_B.CommandeManuelleD = 20.0;
+        }
+        break;
+
+       case IN_ACTION_RETOUR_Z0_DECHARGE_07:
+        /* During 'ACTION_RETOUR_Z0_DECHARGE_07': '<S1>:4465' */
+        if (ModeleRobot_DWork.TempoMot > 2.0 / ModeleRobot_P.SFunction_p49) {
+          /* Transition: '<S1>:4459' */
+          /* Exit 'ACTION_RETOUR_Z0_DECHARGE_07': '<S1>:4465' */
+          /* Entry 'ACTION_RETOUR_Z0_DECHARGE_03': '<S1>:4466' */
+          ModeleRobot_DWork.is_VERT_RETOUR_ZONE_DEPART_ET_D = (uint8_T)
             IN_ACTION_RETOUR_Z0_DECHARGE_03;
-          ModeleRobot_DWork.was_RETOUR_ZONE_DEPART_ET_DECHA = (uint8_T)
+          ModeleRobot_DWork.was_VERT_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
             IN_ACTION_RETOUR_Z0_DECHARGE_03;
 
           /*  fin d'étape */
+          /* Graphical Function 'Mouvement_Manuel': '<S1>:1299' */
+          /* Transition: '<S1>:1301' */
+          ModeleRobot_B.DdeMvtManuel = ModeleRobot_B.DdeMvtManuel + 1.0;
+          ModeleRobot_B.CommandeManuelleG = 0.0;
+          ModeleRobot_B.CommandeManuelleD = 0.0;
         }
         break;
 
        default:
-        enter_internal_RETOUR_ZONE_DEPA();
+        enter_internal_VERT_RETOUR_ZONE();
         break;
       }
       break;
@@ -3672,6 +4886,21 @@ void ModeleRobot_COMPORTEMENT(void)
         ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p31 - 1.0)]
           = ModeleRobot_P.SFunction_p35;
 
+        /* Graphical Function 'setPWM': '<S1>:4112' */
+        /* Transition: '<S1>:4114' */
+        ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p15 - 1.0)]
+          = 0.0;
+
+        /* Graphical Function 'setPWM': '<S1>:4112' */
+        /* Transition: '<S1>:4114' */
+        ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p16 - 1.0)]
+          = 0.0;
+
+        /* Graphical Function 'setPWM': '<S1>:4112' */
+        /* Transition: '<S1>:4114' */
+        ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p18 - 1.0)]
+          = 0.0;
+
         /* Graphical Function 'CommandeLEDS_RVBO': '<S1>:1339' */
         /* Transition: '<S1>:1341' */
         ModeleRobot_B.EtatLed1 = 1.0;
@@ -3723,9 +4952,6 @@ void ModeleRobot_COMPORTEMENT(void)
               /* Exit 'ACTION_HOMOLO_34': '<S1>:4311' */
               /* Exit 'ACTION_HOMOLO_35': '<S1>:4314' */
               /* Exit 'ACTION_HOMOLO_36': '<S1>:4316' */
-              /* Exit 'ACTION_HOMOLO_37': '<S1>:4321' */
-              /* Exit 'ACTION_HOMOLO_38': '<S1>:4328' */
-              /* Exit 'ACTION_HOMOLO_39': '<S1>:4329' */
               /* Exit 'ACTION_HOMOLO_4': '<S1>:4169' */
               /* Exit 'ACTION_HOMOLO_40': '<S1>:4338' */
               /* Exit 'ACTION_HOMOLO_41': '<S1>:4339' */
@@ -3736,6 +4962,15 @@ void ModeleRobot_COMPORTEMENT(void)
               /* Exit 'ACTION_HOMOLO_47': '<S1>:4409' */
               /* Exit 'ACTION_HOMOLO_48': '<S1>:4411' */
               /* Exit 'ACTION_HOMOLO_49': '<S1>:4413' */
+              /* Exit 'ACTION_HOMOLO_50': '<S1>:4471' */
+              /* Exit 'ACTION_HOMOLO_51': '<S1>:4477' */
+              /* Exit 'ACTION_HOMOLO_52': '<S1>:4489' */
+              /* Exit 'ACTION_HOMOLO_53': '<S1>:4490' */
+              /* Exit 'ACTION_HOMOLO_54': '<S1>:4491' */
+              /* Exit 'ACTION_HOMOLO_55': '<S1>:4498' */
+              /* Exit 'ACTION_HOMOLO_56': '<S1>:4500' */
+              /* Exit 'ACTION_HOMOLO_57': '<S1>:4502' */
+              /* Exit 'ACTION_HOMOLO_58': '<S1>:4504' */
               /* Exit 'ACTION_HOMOLO_6': '<S1>:4187' */
               /* Exit 'ACTION_HOMOLO_7': '<S1>:4189' */
               /* Exit 'ACTION_HOMOLO_8': '<S1>:4192' */
@@ -3746,11 +4981,9 @@ void ModeleRobot_COMPORTEMENT(void)
             ModeleRobot_DWork.is_STRATEGIE1 = (uint8_T)
               ModeleRobot_IN_NO_ACTIVE_CHILD;
           } else {
-            ModeleRobot_DWork.is_STRATEGIE1 = (uint8_T)
-              ModeleRobot_IN_NO_ACTIVE_CHILD;
-
+            /* Exit 'INIT_STRATEGIE': '<S1>:1128' */
             /* Exit 'ACTION_DISTRIB_01': '<S1>:4365' */
-            ModeleRobot_DWork.is_GOTO_DISTRIBUTEURS_ET_RECUPE = (uint8_T)
+            ModeleRobot_DWork.is_JAUNE_GOTO_DISTRIBUTEURS_ET_ = (uint8_T)
               ModeleRobot_IN_NO_ACTIVE_CHILD;
 
             /* Exit 'ACTION_DISTRIB_010': '<S1>:4407' */
@@ -3763,19 +4996,42 @@ void ModeleRobot_COMPORTEMENT(void)
             /* Exit 'ACTION_DISTRIB_07': '<S1>:4373' */
             /* Exit 'ACTION_DISTRIB_08': '<S1>:4375' */
             /* Exit 'ACTION_DISTRIB_09': '<S1>:4405' */
-            /* Exit 'GOTO_DISTRIBUTEURS_ET_RECUPERE': '<S1>:4353' */
-            /* Exit 'INIT_STRATEGIE': '<S1>:1128' */
+            /* Exit 'JAUNE_GOTO_DISTRIBUTEURS_ET_RECUPERE': '<S1>:4353' */
             /* Exit 'ACTION_RETOUR_Z0_DECHARGE_01': '<S1>:4387' */
-            ModeleRobot_DWork.is_RETOUR_ZONE_DEPART_ET_DECHAR = (uint8_T)
+            ModeleRobot_DWork.is_JAUNE_RETOUR_ZONE_DEPART_ET_ = (uint8_T)
               ModeleRobot_IN_NO_ACTIVE_CHILD;
 
             /* Exit 'ACTION_RETOUR_Z0_DECHARGE_02': '<S1>:4388' */
             /* Exit 'ACTION_RETOUR_Z0_DECHARGE_03': '<S1>:4392' */
             /* Exit 'ACTION_RETOUR_Z0_DECHARGE_04': '<S1>:4389' */
-            /* Exit 'ACTION_RETOUR_Z0_DECHARGE_05': '<S1>:4386' */
             /* Exit 'ACTION_RETOUR_Z0_DECHARGE_06': '<S1>:4390' */
             /* Exit 'ACTION_RETOUR_Z0_DECHARGE_07': '<S1>:4391' */
-            /* Exit 'RETOUR_ZONE_DEPART_ET_DECHARGE': '<S1>:4377' */
+            /* Exit 'JAUNE_RETOUR_ZONE_DEPART_ET_DECHARGE': '<S1>:4377' */
+            /* Exit 'ACTION_DISTRIB_01': '<S1>:4437' */
+            ModeleRobot_DWork.is_VERT_GOTO_DISTRIBUTEURS_ET_R = (uint8_T)
+              ModeleRobot_IN_NO_ACTIVE_CHILD;
+
+            /* Exit 'ACTION_DISTRIB_010': '<S1>:4439' */
+            /* Exit 'ACTION_DISTRIB_011': '<S1>:4445' */
+            /* Exit 'ACTION_DISTRIB_02': '<S1>:4441' */
+            /* Exit 'ACTION_DISTRIB_03': '<S1>:4442' */
+            /* Exit 'ACTION_DISTRIB_04': '<S1>:4443' */
+            /* Exit 'ACTION_DISTRIB_05': '<S1>:4444' */
+            /* Exit 'ACTION_DISTRIB_06': '<S1>:4447' */
+            /* Exit 'ACTION_DISTRIB_07': '<S1>:4448' */
+            /* Exit 'ACTION_DISTRIB_08': '<S1>:4450' */
+            /* Exit 'ACTION_DISTRIB_09': '<S1>:4438' */
+            /* Exit 'VERT_GOTO_DISTRIBUTEURS_ET_RECUPERE': '<S1>:4423' */
+            /* Exit 'ACTION_RETOUR_Z0_DECHARGE_01': '<S1>:4461' */
+            ModeleRobot_DWork.is_VERT_RETOUR_ZONE_DEPART_ET_D = (uint8_T)
+              ModeleRobot_IN_NO_ACTIVE_CHILD;
+
+            /* Exit 'ACTION_RETOUR_Z0_DECHARGE_02': '<S1>:4462' */
+            /* Exit 'ACTION_RETOUR_Z0_DECHARGE_03': '<S1>:4466' */
+            /* Exit 'ACTION_RETOUR_Z0_DECHARGE_04': '<S1>:4463' */
+            /* Exit 'ACTION_RETOUR_Z0_DECHARGE_06': '<S1>:4464' */
+            /* Exit 'ACTION_RETOUR_Z0_DECHARGE_07': '<S1>:4465' */
+            /* Exit 'VERT_RETOUR_ZONE_DEPART_ET_DECHARGE': '<S1>:4451' */
           }
 
           /* Exit 'STRATEGIE1': '<S1>:1123' */
@@ -3820,6 +5076,21 @@ void ModeleRobot_COMPORTEMENT(void)
         /* Transition: '<S1>:4143' */
         ModeleRobot_B.CommandeServo[(int32_T)(ModeleRobot_P.SFunction_p31 - 1.0)]
           = ModeleRobot_P.SFunction_p35;
+
+        /* Graphical Function 'setPWM': '<S1>:4112' */
+        /* Transition: '<S1>:4114' */
+        ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p15 - 1.0)]
+          = 0.0;
+
+        /* Graphical Function 'setPWM': '<S1>:4112' */
+        /* Transition: '<S1>:4114' */
+        ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p16 - 1.0)]
+          = 0.0;
+
+        /* Graphical Function 'setPWM': '<S1>:4112' */
+        /* Transition: '<S1>:4114' */
+        ModeleRobot_B.CommandeMoteur[(int32_T)(ModeleRobot_P.SFunction_p18 - 1.0)]
+          = 0.0;
 
         /* Graphical Function 'CommandeLEDS_RVBO': '<S1>:1339' */
         /* Transition: '<S1>:1341' */

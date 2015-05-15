@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model ModeleRobot.
  *
- * Model version                        : 1.1507
+ * Model version                        : 1.1550
  * Real-Time Workshop file version      : 7.4  (R2009b)  29-Jun-2009
- * Real-Time Workshop file generated on : Fri May 15 14:53:50 2015
+ * Real-Time Workshop file generated on : Fri May 15 18:56:54 2015
  * TLC version                          : 7.4 (Jul 14 2009)
- * C/C++ source code generated on       : Fri May 15 14:53:51 2015
+ * C/C++ source code generated on       : Fri May 15 18:56:54 2015
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -117,10 +117,14 @@ typedef struct {
   uint8_T is_active_CLOCK;             /* '<Root>/COMPORTEMENT' */
   uint8_T is_active_FONCTIONS_RECalAGE_PO;/* '<Root>/COMPORTEMENT' */
   uint8_T is_EVITEMENT;                /* '<Root>/COMPORTEMENT' */
-  uint8_T is_GOTO_DISTRIBUTEURS_ET_RECUPE;/* '<Root>/COMPORTEMENT' */
-  uint8_T was_GOTO_DISTRIBUTEURS_ET_RECUP;/* '<Root>/COMPORTEMENT' */
-  uint8_T is_RETOUR_ZONE_DEPART_ET_DECHAR;/* '<Root>/COMPORTEMENT' */
-  uint8_T was_RETOUR_ZONE_DEPART_ET_DECHA;/* '<Root>/COMPORTEMENT' */
+  uint8_T is_JAUNE_GOTO_DISTRIBUTEURS_ET_;/* '<Root>/COMPORTEMENT' */
+  uint8_T was_JAUNE_GOTO_DISTRIBUTEURS_ET;/* '<Root>/COMPORTEMENT' */
+  uint8_T is_JAUNE_RETOUR_ZONE_DEPART_ET_;/* '<Root>/COMPORTEMENT' */
+  uint8_T was_JAUNE_RETOUR_ZONE_DEPART_ET;/* '<Root>/COMPORTEMENT' */
+  uint8_T is_VERT_GOTO_DISTRIBUTEURS_ET_R;/* '<Root>/COMPORTEMENT' */
+  uint8_T was_VERT_GOTO_DISTRIBUTEURS_ET_;/* '<Root>/COMPORTEMENT' */
+  uint8_T is_VERT_RETOUR_ZONE_DEPART_ET_D;/* '<Root>/COMPORTEMENT' */
+  uint8_T was_VERT_RETOUR_ZONE_DEPART_ET_;/* '<Root>/COMPORTEMENT' */
   boolean_T Relay_Mode;                /* '<S2>/Relay' */
 } D_Work_ModeleRobot;
 
