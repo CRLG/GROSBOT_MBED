@@ -195,7 +195,7 @@ Model {
       Name		      "OUT_RelacheServo"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.1550"
+    ComputedModelVersion    "1.1555"
     NumModelReferences	    0
     NumTestPointedSignals   1
     TestPointedSignal {
@@ -219,9 +219,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "PC"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri May 15 18:56:20 2015"
-  RTWModifiedTimeStamp	  353616844
-  ModelVersionFormat	  "1.%<AutoIncrement:1550>"
+  LastModifiedDate	  "Sat May 16 00:45:14 2015"
+  RTWModifiedTimeStamp	  353637815
+  ModelVersionFormat	  "1.%<AutoIncrement:1555>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -2572,7 +2572,7 @@ Model {
 	  SourceType		  "CMBlock"
 	  ShowPortLabels	  "FromPortIcon"
 	  SystemSampleTime	  "-1"
-	  FunctionWithSeparateData off
+	  FunctionWithSeparateData "off"
 	  RTWMemSecFuncInitTerm	  "Inherit from model"
 	  RTWMemSecFuncExecute	  "Inherit from model"
 	  RTWMemSecDataConstants  "Inherit from model"
@@ -2725,7 +2725,7 @@ Model {
 	  SourceType		  "Compare To Zero"
 	  ShowPortLabels	  "FromPortIcon"
 	  SystemSampleTime	  "-1"
-	  FunctionWithSeparateData off
+	  FunctionWithSeparateData "off"
 	  RTWMemSecFuncInitTerm	  "Inherit from model"
 	  RTWMemSecFuncExecute	  "Inherit from model"
 	  RTWMemSecDataConstants  "Inherit from model"
@@ -2733,7 +2733,7 @@ Model {
 	  RTWMemSecDataParameters "Inherit from model"
 	  relop			  "<"
 	  LogicOutDataTypeMode	  "uint8"
-	  ZeroCross		  on
+	  ZeroCross		  "on"
 	}
 	Block {
 	  BlockType		  Reference
@@ -2746,7 +2746,7 @@ Model {
 	  SourceType		  "Compare To Zero"
 	  ShowPortLabels	  "FromPortIcon"
 	  SystemSampleTime	  "-1"
-	  FunctionWithSeparateData off
+	  FunctionWithSeparateData "off"
 	  RTWMemSecFuncInitTerm	  "Inherit from model"
 	  RTWMemSecFuncExecute	  "Inherit from model"
 	  RTWMemSecDataConstants  "Inherit from model"
@@ -2754,7 +2754,7 @@ Model {
 	  RTWMemSecDataParameters "Inherit from model"
 	  relop			  ">"
 	  LogicOutDataTypeMode	  "uint8"
-	  ZeroCross		  on
+	  ZeroCross		  "on"
 	}
 	Block {
 	  BlockType		  Outport
@@ -3163,7 +3163,7 @@ Model {
 	  SourceType		  "Compare To Constant"
 	  ShowPortLabels	  "FromPortIcon"
 	  SystemSampleTime	  "-1"
-	  FunctionWithSeparateData off
+	  FunctionWithSeparateData "off"
 	  RTWMemSecFuncInitTerm	  "Inherit from model"
 	  RTWMemSecFuncExecute	  "Inherit from model"
 	  RTWMemSecDataConstants  "Inherit from model"
@@ -3172,7 +3172,7 @@ Model {
 	  relop			  "=="
 	  const			  "1.0"
 	  LogicOutDataTypeMode	  "uint8"
-	  ZeroCross		  on
+	  ZeroCross		  "on"
 	}
 	Block {
 	  BlockType		  DataTypeConversion
@@ -3197,7 +3197,7 @@ Model {
 	  SourceType		  "Detect Change"
 	  ShowPortLabels	  "FromPortIcon"
 	  SystemSampleTime	  "-1"
-	  FunctionWithSeparateData off
+	  FunctionWithSeparateData "off"
 	  RTWMemSecFuncInitTerm	  "Inherit from model"
 	  RTWMemSecFuncExecute	  "Inherit from model"
 	  RTWMemSecDataConstants  "Inherit from model"
@@ -3230,7 +3230,7 @@ Model {
 	  SourceType		  "CMBlock"
 	  ShowPortLabels	  "FromPortIcon"
 	  SystemSampleTime	  "-1"
-	  FunctionWithSeparateData off
+	  FunctionWithSeparateData "off"
 	  RTWMemSecFuncInitTerm	  "Inherit from model"
 	  RTWMemSecFuncExecute	  "Inherit from model"
 	  RTWMemSecDataConstants  "Inherit from model"
@@ -3261,7 +3261,7 @@ Model {
 	  SourceType		  "CMBlock"
 	  ShowPortLabels	  "FromPortIcon"
 	  SystemSampleTime	  "-1"
-	  FunctionWithSeparateData off
+	  FunctionWithSeparateData "off"
 	  RTWMemSecFuncInitTerm	  "Inherit from model"
 	  RTWMemSecFuncExecute	  "Inherit from model"
 	  RTWMemSecDataConstants  "Inherit from model"
@@ -3371,7 +3371,7 @@ Model {
 	  SourceType		  "Compare To Constant"
 	  ShowPortLabels	  "FromPortIcon"
 	  SystemSampleTime	  "-1"
-	  FunctionWithSeparateData off
+	  FunctionWithSeparateData "off"
 	  RTWMemSecFuncInitTerm	  "Inherit from model"
 	  RTWMemSecFuncExecute	  "Inherit from model"
 	  RTWMemSecDataConstants  "Inherit from model"
@@ -3380,7 +3380,7 @@ Model {
 	  relop			  "=="
 	  const			  "1.0"
 	  LogicOutDataTypeMode	  "uint8"
-	  ZeroCross		  on
+	  ZeroCross		  "on"
 	}
 	Block {
 	  BlockType		  DataTypeConversion
@@ -3405,7 +3405,7 @@ Model {
 	  SourceType		  "Detect Change"
 	  ShowPortLabels	  "FromPortIcon"
 	  SystemSampleTime	  "-1"
-	  FunctionWithSeparateData off
+	  FunctionWithSeparateData "off"
 	  RTWMemSecFuncInitTerm	  "Inherit from model"
 	  RTWMemSecFuncExecute	  "Inherit from model"
 	  RTWMemSecDataConstants  "Inherit from model"
@@ -3438,7 +3438,7 @@ Model {
 	  SourceType		  "CMBlock"
 	  ShowPortLabels	  "FromPortIcon"
 	  SystemSampleTime	  "-1"
-	  FunctionWithSeparateData off
+	  FunctionWithSeparateData "off"
 	  RTWMemSecFuncInitTerm	  "Inherit from model"
 	  RTWMemSecFuncExecute	  "Inherit from model"
 	  RTWMemSecDataConstants  "Inherit from model"
@@ -3469,7 +3469,7 @@ Model {
 	  SourceType		  "CMBlock"
 	  ShowPortLabels	  "FromPortIcon"
 	  SystemSampleTime	  "-1"
-	  FunctionWithSeparateData off
+	  FunctionWithSeparateData "off"
 	  RTWMemSecFuncInitTerm	  "Inherit from model"
 	  RTWMemSecFuncExecute	  "Inherit from model"
 	  RTWMemSecDataConstants  "Inherit from model"
@@ -4353,10 +4353,10 @@ Stateflow {
     id			    2
     name		    "COMPORTEMENT"
     windowPosition	    [0 22.5 960 525]
-    viewLimits		    [744.269 1660.769 1549.8 2038.8]
+    viewLimits		    [351.6 1268.1 963 1452]
     screen		    [1 1 1280 800 1.333333333333333]
     treeNode		    [0 3 0 0]
-    viewObj		    110
+    viewObj		    122
     machine		    1
     subviewS {
       x1		      458.25
@@ -5268,7 +5268,7 @@ Stateflow {
     subviewer		    40
     subviewS {
       x1		      675.562
-      y1		      2763.94
+      y1		      3864.189
       zoomFactor	      1.25
       pos		      [0 0 4589.448 4727.91]
     }
@@ -6197,7 +6197,7 @@ Stateflow {
   state {
     id			    108
     labelString		    "ACTION_HOMOLO_44\nentry:\n//on avance parallelement a la bordure et on ferme les claps\nMouvemen"
-    "t_XY(14.5,-77*invMouv);"
+    "t_XY(17.5,-77*invMouv);"
     position		    [659.1687 3368.9734 255.625 80.875]
     chart		    2
     treeNode		    [49 0 153 154]
@@ -6234,10 +6234,11 @@ Stateflow {
     firstTransition	    312
     firstJunction	    202
     superState		    SUBCHART
+    visible		    0
     subviewer		    40
     subviewS {
-      x1		      744.269
-      y1		      229.5
+      x1		      652.619
+      y1		      1598.7
       pos		      [0 0 4388.198 4697.91]
     }
     ssIdNumber		    4353
@@ -6345,6 +6346,7 @@ Stateflow {
     superState		    GROUPED
     isNoteBox		    1
     noteBox		    [0 0 0 1]
+    visible		    0
     subviewer		    110
     ssIdNumber		    4371
     type		    GROUP_STATE
@@ -6357,6 +6359,7 @@ Stateflow {
     chart		    2
     treeNode		    [110 0 117 119]
     superState		    GROUPED
+    visible		    0
     subviewer		    110
     ssIdNumber		    4372
     type		    OR_STATE
@@ -6366,11 +6369,12 @@ Stateflow {
     id			    119
     labelString		    "ACTION_DISTRIB_07\nentry:\n// Ferme le servo du recolteur une fois tout terminé\nsetServo(SERVO_"
     "RECOLTEURS, SERVO_RECOLTEURS_FERME);\n// retourne à la position de référence\ninhibeObstacle=1;\nMouvement_XYTeta("
-    "posXReferenceEntreEtapes+20,0,0);"
+    "80,2,0);"
     position		    [717.5781 1709.0624 535.3438 108.0625]
     chart		    2
     treeNode		    [110 0 118 120]
     superState		    GROUPED
+    visible		    0
     subviewer		    110
     ssIdNumber		    4373
     type		    OR_STATE
@@ -6386,6 +6390,7 @@ Stateflow {
     superState		    GROUPED
     isNoteBox		    1
     noteBox		    [0 0 0 1]
+    visible		    0
     subviewer		    110
     ssIdNumber		    4374
     type		    GROUP_STATE
@@ -6398,6 +6403,7 @@ Stateflow {
     chart		    2
     treeNode		    [110 0 120 0]
     superState		    GROUPED
+    visible		    0
     subviewer		    110
     ssIdNumber		    4375
     type		    OR_STATE
@@ -6416,7 +6422,6 @@ Stateflow {
     firstTransition	    323
     firstJunction	    203
     superState		    SUBCHART
-    visible		    0
     subviewer		    40
     subviewS {
       x1		      -15
@@ -6447,9 +6452,9 @@ Stateflow {
   }
   state {
     id			    124
-    labelString		    "ACTION_RETOUR_Z0_DECHARGE_01\nentry:\n//va vers une position de référence\nMouvement_Distance(-8"
-    "0);\n\n// le souffleur évacue les boules éventuellement derrière le robot qu pourraient gêner\nsetPWM(MOTEUR_SOUFF"
-    "LEUR, -100);\n\nTempoMot=0;"
+    labelString		    "ACTION_RETOUR_Z0_DECHARGE_01\nentry:\n//va vers une position de référence\nMouvement_XY(15,2);\n"
+    "\n// le souffleur évacue les boules éventuellement derrière le robot qu pourraient gêner\nsetPWM(MOTEUR_SOUFFLEUR,"
+    " -100);\n\nTempoMot=0;"
     position		    [532.9062 265.125 344.0938 111.8125]
     chart		    2
     treeNode		    [122 0 0 125]
@@ -6525,7 +6530,6 @@ Stateflow {
     chart		    2
     treeNode		    [122 0 128 0]
     superState		    GROUPED
-    visible		    0
     subviewer		    122
     ssIdNumber		    4392
     type		    OR_STATE
@@ -6562,7 +6566,7 @@ Stateflow {
   state {
     id			    132
     labelString		    "ACTION_HOMOLO_47\nentry:\n//on avance parallelement a la bordure et on ferme les claps\nMouvemen"
-    "t_XY(56,-77*invMouv);"
+    "t_XY(59,-77*invMouv);"
     position		    [693.6063 3635.9734 256.625 69.625]
     chart		    2
     treeNode		    [49 0 156 157]
@@ -6589,7 +6593,7 @@ Stateflow {
   state {
     id			    134
     labelString		    "ACTION_HOMOLO_49\nentry:\n//on avance parallelement a la bordure et on ferme les claps\nMouvemen"
-    "t_XY(74,-77*invMouv);"
+    "t_XY(77,-77*invMouv);"
     position		    [686.2313 3873.3484 256.625 69.625]
     chart		    2
     treeNode		    [49 0 155 66]
@@ -6674,7 +6678,7 @@ Stateflow {
   state {
     id			    139
     labelString		    "on s'approche des arbitres -> inhibe la détection d'obstacle"
-    position		    [1087.6667 576.311 251.1321 17.2251]
+    position		    [1087.6667 576.311 238.0134 17.5994]
     chart		    2
     treeNode		    [135 0 138 140]
     superState		    GROUPED
@@ -6762,7 +6766,7 @@ Stateflow {
   state {
     id			    145
     labelString		    "il y a 2 distributeurs à traiter : pos_x=60 d'abord puis pos_y=30 ensuite"
-    position		    [1359.1567 1539.4529 297.6096 17.2251]
+    position		    [1359.1567 1539.4529 287.6769 17.5994]
     chart		    2
     treeNode		    [135 0 144 146]
     superState		    GROUPED
@@ -6806,7 +6810,7 @@ Stateflow {
     id			    148
     labelString		    "s'assure que la position du robot est évacuée de la bordure\nde départ avant le prochain mouveme"
     "nt"
-    position		    [1205.1539 1822.1 252.6313 28.4532]
+    position		    [1205.1539 1822.1 240.8246 28.8275]
     chart		    2
     treeNode		    [135 0 147 149]
     superState		    GROUPED
@@ -7487,6 +7491,7 @@ Stateflow {
     position		    [289.6963 90.5951 7]
     chart		    2
     linkNode		    [110 0 0]
+    visible		    0
     subviewer		    110
     ssIdNumber		    4354
     type		    HISTORY_JUNCTION
@@ -7497,7 +7502,6 @@ Stateflow {
     position		    [289.6963 90.5951 7]
     chart		    2
     linkNode		    [122 0 0]
-    visible		    0
     subviewer		    122
     ssIdNumber		    4378
     type		    HISTORY_JUNCTION
@@ -7696,7 +7700,7 @@ Stateflow {
   }
   transition {
     id			    213
-    labelPosition	    [93.627 79.85 7.997 15.305]
+    labelPosition	    [93.627 79.85 8.433 16.842]
     fontSize		    12
     arrowSize		    8.824
     src {
@@ -7718,7 +7722,7 @@ Stateflow {
   transition {
     id			    214
     labelString		    "[CouleurEquipe == EQUIPE_JAUNE]"
-    labelPosition	    [198.6 104.911 198.595 15.305]
+    labelPosition	    [198.6 104.911 202.402 16.842]
     fontSize		    12
     arrowSize		    8.824
     src {
@@ -7743,7 +7747,7 @@ Stateflow {
   transition {
     id			    215
     labelString		    "[CouleurEquipe == EQUIPE_VERTE]"
-    labelPosition	    [216.753 144.374 199.928 15.305]
+    labelPosition	    [216.753 144.374 203.339 16.842]
     fontSize		    12
     arrowSize		    8.824
     src {
@@ -7787,8 +7791,6 @@ Stateflow {
     stampAngle		    NaN
     subviewer		    40
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    3821
   }
@@ -8145,8 +8147,6 @@ Stateflow {
     stampAngle		    NaN
     subviewer		    37
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    1260
   }
@@ -8712,11 +8712,11 @@ Stateflow {
     fontSize		    12
     src {
       id		      109
-      intersection	      [3 -0 1 0.4825 822.7721 3595.0671 0 -5.7375]
+      intersection	      [3 0 1 0.4825 822.7657 3595.0672 0 -5.7375]
     }
     dst {
       id		      132
-      intersection	      [1 0 -1 0.5033 822.7721 3635.9734 0 5.7375]
+      intersection	      [1 -0 -1 0.5033 822.7657 3635.9734 0 5.7375]
     }
     midPoint		    [822.7721 3612.1488]
     chart		    2
@@ -8993,8 +8993,6 @@ Stateflow {
     stampAngle		    NaN
     subviewer		    40
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    3819
   }
@@ -9038,7 +9036,7 @@ Stateflow {
     chart		    2
     linkNode		    [41 330 336]
     visible		    0
-    dataLimits		    [371.218 594.072 487.288 536.773]
+    dataLimits		    [371.218 594.072 490.13 536.773]
     stampAngle		    0.1651
     subviewer		    40
     drawStyle		    SMART
@@ -9262,8 +9260,6 @@ Stateflow {
     stampAngle		    -0.197
     subviewer		    49
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4341
   }
@@ -9842,7 +9838,7 @@ Stateflow {
   transition {
     id			    302
     labelString		    "[TempoMot>(1.5/Te)]"
-    labelPosition	    [692.449 765.3 110.946 14.971]
+    labelPosition	    [692.449 765.3 115.257 16.842]
     fontSize		    12
     src {
       id		      106
@@ -9860,15 +9856,13 @@ Stateflow {
     stampAngle		    NaN
     subviewer		    150
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4458
   }
   transition {
     id			    303
     labelString		    "[TempoMot >(2/Te)]"
-    labelPosition	    [682.662 971.284 104.2 14.971]
+    labelPosition	    [682.662 971.284 108.697 16.842]
     fontSize		    12
     src {
       id		      123
@@ -9886,8 +9880,6 @@ Stateflow {
     stampAngle		    NaN
     subviewer		    150
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4459
   }
@@ -9909,7 +9901,6 @@ Stateflow {
     linkNode		    [49 299 308]
     visible		    0
     dataLimits		    [1073.444 1078.244 2590.807 2736.293]
-    stampAngle		    -0
     subviewer		    49
     drawStyle		    SMART
     slide {
@@ -9922,7 +9913,7 @@ Stateflow {
   transition {
     id			    305
     labelString		    "[isFinMouvement(3/Te)]"
-    labelPosition	    [683.202 378.297 123.69 14.971]
+    labelPosition	    [683.202 378.297 128.375 16.842]
     fontSize		    12
     src {
       id		      152
@@ -9940,15 +9931,13 @@ Stateflow {
     stampAngle		    NaN
     subviewer		    150
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4455
   }
   transition {
     id			    306
     labelString		    "[TempoMot>(3/Te)]"
-    labelPosition	    [692.834 488.884 101.201 14.971]
+    labelPosition	    [692.834 488.884 104.949 16.842]
     fontSize		    12
     src {
       id		      56
@@ -9966,15 +9955,13 @@ Stateflow {
     stampAngle		    NaN
     subviewer		    150
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4456
   }
   transition {
     id			    307
     labelString		    "[TempoMot>(0.5/Te)]"
-    labelPosition	    [698.869 651.192 110.946 14.971]
+    labelPosition	    [698.869 651.192 115.257 16.842]
     fontSize		    12
     src {
       id		      107
@@ -9992,8 +9979,6 @@ Stateflow {
     stampAngle		    NaN
     subviewer		    150
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4457
   }
@@ -10042,7 +10027,7 @@ Stateflow {
     chart		    2
     linkNode		    [49 308 358]
     visible		    0
-    dataLimits		    [1081.423 1264.524 2746.572 2779.858]
+    dataLimits		    [1081.424 1264.524 2747.52 2779.858]
     stampAngle		    0.1639
     subviewer		    49
     slide {
@@ -10071,7 +10056,6 @@ Stateflow {
     linkNode		    [49 280 350]
     visible		    0
     dataLimits		    [1018.172 1022.972 3297.692 3357.106]
-    stampAngle		    -0
     subviewer		    49
     drawStyle		    SMART
     slide {
@@ -10087,11 +10071,11 @@ Stateflow {
     fontSize		    12
     src {
       id		      108
-      intersection	      [3 0 1 0.3757 818.7625 3449.8484 0 -0.5469]
+      intersection	      [3 -0 1 0.3757 818.7554 3449.8484 0 -0.5469]
     }
     dst {
       id		      109
-      intersection	      [1 -0 -1 0.5021 818.7625 3516.3484 0 0.5469]
+      intersection	      [1 0 -1 0.5021 818.7554 3516.3484 0 0.5469]
     }
     midPoint		    [818.7625 3480.2833]
     chart		    2
@@ -10120,6 +10104,7 @@ Stateflow {
     midPoint		    [1025.9606 128.6415]
     chart		    2
     linkNode		    [110 0 314]
+    visible		    0
     dataLimits		    [1023.561 1028.361 117.25 147.25]
     subviewer		    110
     executionOrder	    1
@@ -10141,6 +10126,7 @@ Stateflow {
     midPoint		    [1300.486 334.7214]
     chart		    2
     linkNode		    [110 314 331]
+    visible		    0
     dataLimits		    [1124.538 2144.828 278.078 1604.712]
     stampAngle		    NaN
     subviewer		    110
@@ -10168,6 +10154,7 @@ Stateflow {
     midPoint		    [961.9379 284.3779]
     chart		    2
     linkNode		    [110 312 313]
+    visible		    0
     dataLimits		    [959.538 964.338 259.063 315.75]
     stampAngle		    NaN
     subviewer		    110
@@ -10191,6 +10178,7 @@ Stateflow {
     midPoint		    [974.2817 574.0396]
     chart		    2
     linkNode		    [110 331 316]
+    visible		    0
     dataLimits		    [971.882 976.682 549.719 604.5]
     stampAngle		    NaN
     subviewer		    110
@@ -10214,6 +10202,7 @@ Stateflow {
     midPoint		    [971.5712 715.0192]
     chart		    2
     linkNode		    [110 315 317]
+    visible		    0
     dataLimits		    [969.171 973.971 700.188 736.781]
     stampAngle		    NaN
     subviewer		    110
@@ -10237,6 +10226,7 @@ Stateflow {
     midPoint		    [996.7214 948.4431]
     chart		    2
     linkNode		    [110 316 318]
+    visible		    0
     dataLimits		    [994.321 999.121 903.938 997.406]
     subviewer		    110
     drawStyle		    SMART
@@ -10259,6 +10249,7 @@ Stateflow {
     midPoint		    [987.4386 1216.1374]
     chart		    2
     linkNode		    [110 317 319]
+    visible		    0
     dataLimits		    [985.039 989.839 1197.344 1241.531]
     stampAngle		    NaN
     subviewer		    110
@@ -10282,12 +10273,11 @@ Stateflow {
     midPoint		    [989.375 1362.0735]
     chart		    2
     linkNode		    [110 318 334]
-    dataLimits		    [986.975 991.775 1323.813 1405.312]
+    visible		    0
+    dataLimits		    [986.978 991.778 1323.813 1405.312]
     stampAngle		    NaN
     subviewer		    110
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4362
   }
@@ -10298,15 +10288,16 @@ Stateflow {
     fontSize		    12
     src {
       id		      118
-      intersection	      [3 -0 1 0.5773 988.9688 1605.4375 0 29.8281]
+      intersection	      [3 -0 1 0.5773 988.9833 1605.4375 0 29.8281]
     }
     dst {
       id		      119
-      intersection	      [1 0 -1 0.5069 988.9688 1709.0624 0 -29.8281]
+      intersection	      [1 0 -1 0.507 988.9833 1709.0624 0 -29.8281]
     }
     midPoint		    [988.9688 1655.242]
     chart		    2
     linkNode		    [110 334 321]
+    visible		    0
     dataLimits		    [986.569 991.369 1605.438 1709.062]
     stampAngle		    -0.3588
     subviewer		    110
@@ -10319,7 +10310,7 @@ Stateflow {
   }
   transition {
     id			    321
-    labelString		    "[isFinMouvement(4/Te)]"
+    labelString		    "[isFinMouvement(5/Te)]"
     labelPosition	    [1024.564 1825.85 123.69 14.971]
     fontSize		    12
     src {
@@ -10333,6 +10324,7 @@ Stateflow {
     midPoint		    [1017.6882 1831.5164]
     chart		    2
     linkNode		    [110 320 0]
+    visible		    0
     dataLimits		    [1015.288 1020.088 1817.125 1852.875]
     stampAngle		    NaN
     subviewer		    110
@@ -10350,11 +10342,11 @@ Stateflow {
     arrowSize		    16.074
     src {
       id		      110
-      intersection	      [3 -0 1 0.5451 190.9972 629.095 0 12.8611]
+      intersection	      [3 0 1 0.5451 190.9972 629.095 0 12.8611]
     }
     dst {
       id		      122
-      intersection	      [1 0 -1 0.4319 190.9972 683.8834 0 -12.8611]
+      intersection	      [1 -0 -1 0.4319 190.9972 683.8834 0 -12.8611]
     }
     midPoint		    [190.9972 649.1194]
     chart		    2
@@ -10383,12 +10375,9 @@ Stateflow {
     midPoint		    [677.75 244.1233]
     chart		    2
     linkNode		    [122 0 325]
-    visible		    0
     dataLimits		    [675.35 680.15 230.121 265.125]
     subviewer		    122
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4379
   }
@@ -10414,8 +10403,6 @@ Stateflow {
     stampAngle		    NaN
     subviewer		    40
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4467
   }
@@ -10426,17 +10413,16 @@ Stateflow {
     fontSize		    12
     src {
       id		      124
-      intersection	      [3 0 1 0.5654 682.457 376.9375 0 -2.6286]
+      intersection	      [3 -0 1 0.5654 682.4494 376.9375 0 -2.6286]
     }
     dst {
       id		      125
-      intersection	      [1 -0 -1 0.4213 682.457 408.7969 0 0.3786]
+      intersection	      [1 0 -1 0.4213 682.4494 408.7969 0 0.3786]
     }
     midPoint		    [682.4494 389.2991]
     chart		    2
     linkNode		    [122 323 326]
-    visible		    0
-    dataLimits		    [680.049 684.849 376.938 408.797]
+    dataLimits		    [680.057 684.857 376.938 408.797]
     stampAngle		    NaN
     subviewer		    122
     drawStyle		    SMART
@@ -10461,13 +10447,10 @@ Stateflow {
     midPoint		    [687.9882 499.8283]
     chart		    2
     linkNode		    [122 325 327]
-    visible		    0
     dataLimits		    [685.588 690.388 489.203 517.734]
     stampAngle		    NaN
     subviewer		    122
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4382
   }
@@ -10487,13 +10470,10 @@ Stateflow {
     midPoint		    [698.2231 659.7862]
     chart		    2
     linkNode		    [122 326 328]
-    visible		    0
     dataLimits		    [695.823 700.623 646.422 680.203]
     stampAngle		    NaN
     subviewer		    122
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4383
   }
@@ -10513,13 +10493,10 @@ Stateflow {
     midPoint		    [686.8889 775.4165]
     chart		    2
     linkNode		    [122 327 329]
-    visible		    0
     dataLimits		    [684.489 689.289 760.609 797.156]
     stampAngle		    NaN
     subviewer		    122
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4384
   }
@@ -10539,13 +10516,10 @@ Stateflow {
     midPoint		    [677.1017 954.176]
     chart		    2
     linkNode		    [122 328 0]
-    visible		    0
     dataLimits		    [674.702 679.502 915.223 998.049]
     stampAngle		    NaN
     subviewer		    122
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4385
   }
@@ -10592,6 +10566,7 @@ Stateflow {
     midPoint		    [972.4067 429.3997]
     chart		    2
     linkNode		    [110 313 315]
+    visible		    0
     dataLimits		    [970.007 974.807 411.438 454.031]
     stampAngle		    NaN
     subviewer		    110
@@ -10632,11 +10607,11 @@ Stateflow {
     fontSize		    12
     src {
       id		      133
-      intersection	      [3 0 1 0.4891 805.4079 3840.2234 0 -2.4875]
+      intersection	      [3 0 1 0.4891 805.408 3840.2234 0 -2.4875]
     }
     dst {
       id		      134
-      intersection	      [1 0 -1 0.4644 805.4079 3873.3484 0 2.4875]
+      intersection	      [1 -0 -1 0.4644 805.408 3873.3484 0 2.4875]
     }
     midPoint		    [805.4063 3853.2452]
     chart		    2
@@ -10667,12 +10642,11 @@ Stateflow {
     midPoint		    [987.8125 1519.1536]
     chart		    2
     linkNode		    [110 319 320]
-    dataLimits		    [985.413 990.212 1504.469 1540.781]
+    visible		    0
+    dataLimits		    [985.426 990.226 1504.469 1540.781]
     stampAngle		    NaN
     subviewer		    110
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4416
   }
@@ -10683,7 +10657,7 @@ Stateflow {
     fontSize		    12
     src {
       id		      134
-      intersection	      [2 1 0 0.4742 942.8563 3906.3613 0 -57.5516]
+      intersection	      [2 1 0 0.4742 942.8563 3906.3613 0 -57.5517]
     }
     dst {
       id		      66
@@ -10722,7 +10696,7 @@ Stateflow {
     chart		    2
     linkNode		    [41 268 324]
     visible		    0
-    dataLimits		    [221.25 357.751 491.872 537.898]
+    dataLimits		    [221.25 357.751 490.612 537.898]
     stampAngle		    -1.3712
     subviewer		    40
     drawStyle		    SMART
@@ -10736,7 +10710,7 @@ Stateflow {
   }
   transition {
     id			    337
-    labelPosition	    [1011.561 125.641 8.246 14.971]
+    labelPosition	    [1011.561 125.641 8.433 16.842]
     fontSize		    12
     src {
       intersection	      [0 0 1 0 1025.9606 117.25 0 0]
@@ -10757,7 +10731,7 @@ Stateflow {
   transition {
     id			    338
     labelString		    "[isFinMouvementRapide(3/Te)]"
-    labelPosition	    [962.691 281.681 161.922 14.971]
+    labelPosition	    [962.691 281.681 165.857 16.842]
     fontSize		    12
     src {
       id		      136
@@ -10775,15 +10749,13 @@ Stateflow {
     stampAngle		    NaN
     subviewer		    135
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4426
   }
   transition {
     id			    339
     labelString		    "/positionDistributeur_X = positionDistributeur_X-30;"
-    labelPosition	    [1442.892 407.059 269.869 14.971]
+    labelPosition	    [1442.892 407.059 275.492 16.842]
     fontSize		    12
     src {
       id		      146
@@ -10811,7 +10783,7 @@ Stateflow {
   transition {
     id			    340
     labelString		    "[isFinMouvement(3/Te)]"
-    labelPosition	    [977.25 411.844 123.69 14.971]
+    labelPosition	    [977.25 411.844 128.375 16.842]
     fontSize		    12
     src {
       id		      137
@@ -10829,15 +10801,13 @@ Stateflow {
     stampAngle		    NaN
     subviewer		    135
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4428
   }
   transition {
     id			    341
     labelString		    "[abs(y_pos)>50]"
-    labelPosition	    [982.875 574.219 86.208 14.971]
+    labelPosition	    [982.875 574.219 89.956 16.842]
     fontSize		    12
     src {
       id		      138
@@ -10855,15 +10825,13 @@ Stateflow {
     stampAngle		    NaN
     subviewer		    135
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4429
   }
   transition {
     id			    342
     labelString		    "[isFinMouvement(3/Te)]"
-    labelPosition	    [990.227 708.227 123.69 14.971]
+    labelPosition	    [990.227 708.227 128.375 16.842]
     fontSize		    12
     src {
       id		      140
@@ -10881,15 +10849,13 @@ Stateflow {
     stampAngle		    NaN
     subviewer		    135
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4430
   }
   transition {
     id			    343
     labelString		    "[TempoMot>(2/Te)]"
-    labelPosition	    [1002.963 971.263 101.201 14.971]
+    labelPosition	    [1002.963 971.263 104.949 16.842]
     fontSize		    12
     src {
       id		      141
@@ -10906,15 +10872,13 @@ Stateflow {
     dataLimits		    [994.321 999.121 903.938 997.406]
     subviewer		    135
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4431
   }
   transition {
     id			    344
     labelString		    "[TempoMot>(3/Te)]"
-    labelPosition	    [994.314 1216.475 101.201 14.971]
+    labelPosition	    [994.314 1216.475 104.949 16.842]
     fontSize		    12
     src {
       id		      142
@@ -10938,7 +10902,7 @@ Stateflow {
   transition {
     id			    345
     labelString		    "[TempoMot>(1/Te)]"
-    labelPosition	    [996.25 1367.073 101.201 14.971]
+    labelPosition	    [996.25 1367.073 104.949 16.842]
     fontSize		    12
     src {
       id		      143
@@ -10956,15 +10920,13 @@ Stateflow {
     stampAngle		    NaN
     subviewer		    135
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4433
   }
   transition {
     id			    346
     labelString		    "[isFinMouvementRapide(2/Te)]"
-    labelPosition	    [994.531 1514.043 161.922 14.971]
+    labelPosition	    [994.531 1514.043 165.857 16.842]
     fontSize		    12
     src {
       id		      144
@@ -10982,15 +10944,13 @@ Stateflow {
     stampAngle		    NaN
     subviewer		    135
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4434
   }
   transition {
     id			    347
     labelString		    "[nbreDistributeursTraites>=2]"
-    labelPosition	    [1009.272 1606.743 152.926 14.971]
+    labelPosition	    [1009.272 1606.743 159.298 16.842]
     fontSize		    12
     src {
       id		      146
@@ -11017,7 +10977,7 @@ Stateflow {
   transition {
     id			    348
     labelString		    "[isFinMouvement(4/Te)]"
-    labelPosition	    [1024.564 1825.85 123.69 14.971]
+    labelPosition	    [1024.564 1825.85 128.375 16.842]
     fontSize		    12
     src {
       id		      147
@@ -11035,14 +10995,12 @@ Stateflow {
     stampAngle		    NaN
     subviewer		    135
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4436
   }
   transition {
     id			    349
-    labelPosition	    [685.482 243.516 8.246 14.971]
+    labelPosition	    [685.482 243.516 8.433 16.842]
     fontSize		    12
     src {
       intersection	      [0 0 1 0 699.882 212.25 0 0]
@@ -11058,8 +11016,6 @@ Stateflow {
     dataLimits		    [697.482 702.282 212.25 265.125]
     subviewer		    150
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4453
   }
@@ -11138,8 +11094,6 @@ Stateflow {
     stampAngle		    NaN
     subviewer		    49
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4476
   }
@@ -11163,8 +11117,6 @@ Stateflow {
     dataLimits		    [1232.613 1237.413 3571.63 3616.755]
     subviewer		    49
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4492
   }
@@ -11189,8 +11141,6 @@ Stateflow {
     stampAngle		    -0.197
     subviewer		    49
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4493
   }
@@ -11215,8 +11165,6 @@ Stateflow {
     stampAngle		    NaN
     subviewer		    49
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4494
   }
@@ -11237,11 +11185,9 @@ Stateflow {
     chart		    2
     linkNode		    [49 333 335]
     visible		    0
-    dataLimits		    [1055.425 1098.888 3892.504 4039.375]
+    dataLimits		    [1055.191 1098.888 3892.504 4039.375]
     stampAngle		    NaN
     subviewer		    49
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4495
   }
@@ -11263,11 +11209,8 @@ Stateflow {
     linkNode		    [49 358 360]
     visible		    0
     dataLimits		    [896.912 901.712 2845.452 2907.358]
-    stampAngle		    -0
     subviewer		    49
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4499
   }
@@ -11289,11 +11232,8 @@ Stateflow {
     linkNode		    [49 309 357]
     visible		    0
     dataLimits		    [1281.287 1286.087 2844.983 2905.014]
-    stampAngle		    -0
     subviewer		    49
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4501
   }
@@ -11315,11 +11255,8 @@ Stateflow {
     linkNode		    [49 360 277]
     visible		    0
     dataLimits		    [861.287 866.087 2972.483 3017.502]
-    stampAngle		    -0
     subviewer		    49
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4503
   }
@@ -11341,11 +11278,8 @@ Stateflow {
     linkNode		    [49 357 359]
     visible		    0
     dataLimits		    [1241.912 1246.712 2970.139 3020.877]
-    stampAngle		    -0
     subviewer		    49
     drawStyle		    SMART
-    slide {
-    }
     executionOrder	    1
     ssIdNumber		    4505
   }

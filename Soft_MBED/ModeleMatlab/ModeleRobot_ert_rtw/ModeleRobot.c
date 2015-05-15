@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model ModeleRobot.
  *
- * Model version                        : 1.1550
+ * Model version                        : 1.1555
  * Real-Time Workshop file version      : 7.4  (R2009b)  29-Jun-2009
- * Real-Time Workshop file generated on : Fri May 15 18:56:54 2015
+ * Real-Time Workshop file generated on : Sat May 16 00:46:05 2015
  * TLC version                          : 7.4 (Jul 14 2009)
- * C/C++ source code generated on       : Fri May 15 18:56:54 2015
+ * C/C++ source code generated on       : Sat May 16 00:46:05 2015
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -779,7 +779,7 @@ static void ModeleRobot_enter_internal_DEMO(void)
     /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
     /* Transition: '<S1>:1291' */
     ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
-    ModeleRobot_B.ConsigneX = 14.5;
+    ModeleRobot_B.ConsigneX = 17.5;
     ModeleRobot_B.ConsigneY = -77.0 * ModeleRobot_DWork.invMouv;
     ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
     break;
@@ -823,7 +823,7 @@ static void ModeleRobot_enter_internal_DEMO(void)
     /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
     /* Transition: '<S1>:1291' */
     ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
-    ModeleRobot_B.ConsigneX = 56.0;
+    ModeleRobot_B.ConsigneX = 59.0;
     ModeleRobot_B.ConsigneY = -77.0 * ModeleRobot_DWork.invMouv;
     ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
     break;
@@ -849,7 +849,7 @@ static void ModeleRobot_enter_internal_DEMO(void)
     /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
     /* Transition: '<S1>:1291' */
     ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
-    ModeleRobot_B.ConsigneX = 74.0;
+    ModeleRobot_B.ConsigneX = 77.0;
     ModeleRobot_B.ConsigneY = -77.0 * ModeleRobot_DWork.invMouv;
     ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
     break;
@@ -1247,8 +1247,8 @@ static void enter_internal_JAUNE_GOTO_DISTR(void)
     /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
     /* Transition: '<S1>:3697' */
     ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
-    ModeleRobot_B.ConsigneX = ModeleRobot_DWork.posXReferenceEntreEtapes + 20.0;
-    ModeleRobot_B.ConsigneY = 0.0;
+    ModeleRobot_B.ConsigneX = 80.0;
+    ModeleRobot_B.ConsigneY = 2.0;
     ModeleRobot_B.ConsigneTeta = 0.0;
     ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
     break;
@@ -1336,12 +1336,11 @@ static void enter_internal_JAUNE_RETOUR_ZON(void)
       IN_ACTION_RETOUR_Z0_DECHARGE_01;
 
     /* va vers une position de référence */
-    /* Graphical Function 'Mouvement_Distance': '<S1>:1347' */
-    /* Transition: '<S1>:1349' */
-    ModeleRobot_B.DdeMvtDistanceAngle = ModeleRobot_B.DdeMvtDistanceAngle + 1.0;
-    ModeleRobot_B.ConsigneDistance = -80.0;
-
-    /*  ConsigneTeta reste inchangé. */
+    /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
+    /* Transition: '<S1>:1291' */
+    ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
+    ModeleRobot_B.ConsigneX = 15.0;
+    ModeleRobot_B.ConsigneY = 2.0;
     ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
 
     /*  le souffleur évacue les boules éventuellement derrière le robot qu pourraient gêner */
@@ -1456,12 +1455,11 @@ static void enter_internal_JAUNE_RETOUR_ZON(void)
       IN_ACTION_RETOUR_Z0_DECHARGE_01;
 
     /* va vers une position de référence */
-    /* Graphical Function 'Mouvement_Distance': '<S1>:1347' */
-    /* Transition: '<S1>:1349' */
-    ModeleRobot_B.DdeMvtDistanceAngle = ModeleRobot_B.DdeMvtDistanceAngle + 1.0;
-    ModeleRobot_B.ConsigneDistance = -80.0;
-
-    /*  ConsigneTeta reste inchangé. */
+    /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
+    /* Transition: '<S1>:1291' */
+    ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
+    ModeleRobot_B.ConsigneX = 15.0;
+    ModeleRobot_B.ConsigneY = 2.0;
     ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
 
     /*  le souffleur évacue les boules éventuellement derrière le robot qu pourraient gêner */
@@ -2001,7 +1999,7 @@ static void ModeleRobot_ACTION_HOMOLO_48(void)
     /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
     /* Transition: '<S1>:1291' */
     ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
-    ModeleRobot_B.ConsigneX = 74.0;
+    ModeleRobot_B.ConsigneX = 77.0;
     ModeleRobot_B.ConsigneY = -77.0 * ModeleRobot_DWork.invMouv;
     ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
   }
@@ -2949,7 +2947,7 @@ static void ModeleRobot_DEMO(void)
           /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
           /* Transition: '<S1>:1291' */
           ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
-          ModeleRobot_B.ConsigneX = 14.5;
+          ModeleRobot_B.ConsigneX = 17.5;
           ModeleRobot_B.ConsigneY = -77.0 * ModeleRobot_DWork.invMouv;
           ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
         } else {
@@ -3185,7 +3183,7 @@ static void ModeleRobot_DEMO(void)
         /* Graphical Function 'Mouvement_XY': '<S1>:1289' */
         /* Transition: '<S1>:1291' */
         ModeleRobot_B.DdeMvtXY = ModeleRobot_B.DdeMvtXY + 1.0;
-        ModeleRobot_B.ConsigneX = 56.0;
+        ModeleRobot_B.ConsigneX = 59.0;
         ModeleRobot_B.ConsigneY = -77.0 * ModeleRobot_DWork.invMouv;
         ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
       }
@@ -4007,9 +4005,8 @@ static void ModeleRobot_STRATEGIE1(void)
             /* Graphical Function 'Mouvement_XYTeta': '<S1>:3695' */
             /* Transition: '<S1>:3697' */
             ModeleRobot_B.DdeMvtXYTeta = ModeleRobot_B.DdeMvtXYTeta + 1.0;
-            ModeleRobot_B.ConsigneX = ModeleRobot_DWork.posXReferenceEntreEtapes
-              + 20.0;
-            ModeleRobot_B.ConsigneY = 0.0;
+            ModeleRobot_B.ConsigneX = 80.0;
+            ModeleRobot_B.ConsigneY = 2.0;
             ModeleRobot_B.ConsigneTeta = 0.0;
             ModeleRobot_DWork.CompteurTimeoutMvt = 0.0;
           } else {
@@ -4045,7 +4042,7 @@ static void ModeleRobot_STRATEGIE1(void)
 
           /* Transition: '<S1>:1286' */
           /* ret = (CompteurTimeoutMvt > timeout) || (isFrontMontantConvergence(ConvergenceMvt)); */
-          if (((ModeleRobot_DWork.CompteurTimeoutMvt > 4.0 /
+          if (((ModeleRobot_DWork.CompteurTimeoutMvt > 5.0 /
                 ModeleRobot_P.SFunction_p49) ||
                (ModeleRobot_B.DataTypeConversion != 0.0)) != 0) {
             /* Transition: '<S1>:4364' */
