@@ -197,6 +197,17 @@ void CMatch::step(void)
  	if ((Application.m_capteurs.m_b_Etor2<=0)&& (ModeleRobot_Y.OUT_CommandeMoteur[MOTEUR_ASCENSEUR-1]<0)){
 		Application.m_moteurs.CommandeVitesse(MOTEUR_ASCENSEUR, 0); //ASCENSEUR
 	}
+	// Distributeur
+	if (ModeleRobot_Y.OUT_CommandeMoteur[MOTEUR_DISTRIBUTEUR-1] != m_old_cde_mot[MOTEUR_DISTRIBUTEUR]) { 
+        Application.m_moteurs.CommandeVitesse(MOTEUR_DISTRIBUTEUR, ModeleRobot_Y.OUT_CommandeMoteur[MOTEUR_DISTRIBUTEUR-1]);
+        m_old_cde_mot[MOTEUR_DISTRIBUTEUR] = ModeleRobot_Y.OUT_CommandeMoteur[MOTEUR_DISTRIBUTEUR-1];
+    }
+	// Souffleur
+	if (ModeleRobot_Y.OUT_CommandeMoteur[MOTEUR_SOUFFLEUR-1] != m_old_cde_mot[MOTEUR_SOUFFLEUR]) { 
+        Application.m_moteurs.CommandeVitesse(MOTEUR_SOUFFLEUR, ModeleRobot_Y.OUT_CommandeMoteur[MOTEUR_SOUFFLEUR-1]);
+        m_old_cde_mot[MOTEUR_SOUFFLEUR] = ModeleRobot_Y.OUT_CommandeMoteur[MOTEUR_SOUFFLEUR-1];
+    }
+	
 
 	// ___________________________ 
 	// Commande des servos moteurs

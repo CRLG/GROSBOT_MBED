@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model ModeleRobot.
  *
- * Model version                        : 1.1476
+ * Model version                        : 1.1501
  * Real-Time Workshop file version      : 7.4  (R2009b)  29-Jun-2009
- * Real-Time Workshop file generated on : Fri May 15 03:07:52 2015
+ * Real-Time Workshop file generated on : Fri May 15 08:09:39 2015
  * TLC version                          : 7.4 (Jul 14 2009)
- * C/C++ source code generated on       : Fri May 15 03:07:52 2015
+ * C/C++ source code generated on       : Fri May 15 08:09:39 2015
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -19,6 +19,7 @@
 #define RTW_HEADER_ModeleRobot_h_
 #ifndef ModeleRobot_COMMON_INCLUDES_
 # define ModeleRobot_COMMON_INCLUDES_
+#include <math.h>
 #include <string.h>
 #include "rtwtypes.h"
 #endif                                 /* ModeleRobot_COMMON_INCLUDES_ */
@@ -86,6 +87,10 @@ typedef struct {
   real_T y_old;                        /* '<Root>/COMPORTEMENT' */
   real_T local_Tempo;                  /* '<Root>/COMPORTEMENT' */
   real_T inhibeObstacle;               /* '<Root>/COMPORTEMENT' */
+  real_T Etape_recuperationDistributeurs;/* '<Root>/COMPORTEMENT' */
+  real_T nbreDistributeursTraites;     /* '<Root>/COMPORTEMENT' */
+  real_T posXReferenceEntreEtapes;     /* '<Root>/COMPORTEMENT' */
+  real_T positionDistributeur_X;       /* '<Root>/COMPORTEMENT' */
   uint8_T is_active_c1_ModeleRobot;    /* '<Root>/COMPORTEMENT' */
   uint8_T is_active_COMPORTEMENT_ROBOT;/* '<Root>/COMPORTEMENT' */
   uint8_T is_COMPORTEMENT_ROBOT;       /* '<Root>/COMPORTEMENT' */
@@ -111,6 +116,10 @@ typedef struct {
   uint8_T is_active_CLOCK;             /* '<Root>/COMPORTEMENT' */
   uint8_T is_active_FONCTIONS_RECalAGE_PO;/* '<Root>/COMPORTEMENT' */
   uint8_T is_EVITEMENT;                /* '<Root>/COMPORTEMENT' */
+  uint8_T is_GOTO_DISTRIBUTEURS_ET_RECUPE;/* '<Root>/COMPORTEMENT' */
+  uint8_T was_GOTO_DISTRIBUTEURS_ET_RECUP;/* '<Root>/COMPORTEMENT' */
+  uint8_T is_RETOUR_ZONE_DEPART_ET_DECHAR;/* '<Root>/COMPORTEMENT' */
+  uint8_T was_RETOUR_ZONE_DEPART_ET_DECHA;/* '<Root>/COMPORTEMENT' */
   boolean_T Relay_Mode;                /* '<S2>/Relay' */
 } D_Work_ModeleRobot;
 
@@ -336,7 +345,13 @@ struct Parameters_ModeleRobot_ {
   real_T SFunction_p45;                /* Expression: SERVO_RECOLTEURS_OUVERT
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  real_T SFunction_p47;                /* Expression: Te
+  real_T SFunction_p46;                /* Expression: SERVO_VOLET
+                                        * Referenced by: '<Root>/COMPORTEMENT'
+                                        */
+  real_T SFunction_p47;                /* Expression: SERVO_VOLET_OUVERT
+                                        * Referenced by: '<Root>/COMPORTEMENT'
+                                        */
+  real_T SFunction_p49;                /* Expression: Te
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
   real_T Constant_Value_e;             /* Expression: 0
@@ -351,7 +366,7 @@ struct Parameters_ModeleRobot_ {
   int8_T SFunction_p14;                /* Computed Parameter: SFunction_p14
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
-  int8_T SFunction_p46;                /* Computed Parameter: SFunction_p46
+  int8_T SFunction_p48;                /* Computed Parameter: SFunction_p48
                                         * Referenced by: '<Root>/COMPORTEMENT'
                                         */
   uint8_T Switch_Threshold;            /* Computed Parameter: Switch_Threshold
