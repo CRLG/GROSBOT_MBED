@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model ModeleRobot.
  *
- * Model version                        : 1.1501
+ * Model version                        : 1.1507
  * Real-Time Workshop file version      : 7.4  (R2009b)  29-Jun-2009
- * Real-Time Workshop file generated on : Fri May 15 08:09:39 2015
+ * Real-Time Workshop file generated on : Fri May 15 14:53:50 2015
  * TLC version                          : 7.4 (Jul 14 2009)
- * C/C++ source code generated on       : Fri May 15 08:09:39 2015
+ * C/C++ source code generated on       : Fri May 15 14:53:51 2015
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -3189,14 +3189,10 @@ static void ModeleRobot_STRATEGIE1(void)
 void ModeleRobot_COMPORTEMENT_Init(void)
 {
   /* InitializeConditions for Stateflow: '<Root>/COMPORTEMENT' incorporates:
-   *  InitializeConditions for SubSystem: '<S1>/isFrontMontantConvergence'
    *  InitializeConditions for SubSystem: '<S1>/isFrontMontantMvtBloque'
    */
 
   /* InitializeConditions for UnitDelay: '<S8>/Delay Input1' */
-  ModeleRobot_DWork.DelayInput1_DSTATE_d = ModeleRobot_P.DelayInput1_X0_m;
-
-  /* InitializeConditions for UnitDelay: '<S11>/Delay Input1' */
   ModeleRobot_DWork.DelayInput1_DSTATE_p = ModeleRobot_P.DelayInput1_X0_o;
 }
 
@@ -3944,7 +3940,7 @@ void ModeleRobot_step(void)
    *  Inport: '<Root>/IN_ObstacleAVD'
    *  Inport: '<Root>/IN_ObstacleAVG'
    *  Logic: '<S2>/Logical Operator'
-   *  RelationalOperator: '<S15>/Compare'
+   *  RelationalOperator: '<S12>/Compare'
    *  RelationalOperator: '<S2>/Relational Operator'
    *  RelationalOperator: '<S2>/Relational Operator1'
    */
@@ -3962,7 +3958,7 @@ void ModeleRobot_step(void)
    *  Inport: '<Root>/IN_ObstacleARD'
    *  Inport: '<Root>/IN_ObstacleARG'
    *  Logic: '<S2>/Logical Operator1'
-   *  RelationalOperator: '<S14>/Compare'
+   *  RelationalOperator: '<S11>/Compare'
    *  RelationalOperator: '<S2>/Relational Operator2'
    *  RelationalOperator: '<S2>/Relational Operator3'
    */
@@ -3980,16 +3976,30 @@ void ModeleRobot_step(void)
   ModeleRobot_Y.OUT_isObstacle = ((rtb_Switch != 0.0) || (rtb_Switch1 != 0.0));
 
   /* DataTypeConversion: '<S3>/Data Type Conversion' incorporates:
-   *  Constant: '<S16>/Constant'
+   *  Constant: '<S13>/Constant'
    *  Inport: '<Root>/IN_ConvergenceMvt'
    *  Logic: '<S3>/Logical Operator'
-   *  RelationalOperator: '<S16>/Compare'
-   *  RelationalOperator: '<S17>/FixPt Relational Operator'
-   *  UnitDelay: '<S17>/Delay Input1'
+   *  RelationalOperator: '<S13>/Compare'
+   *  RelationalOperator: '<S14>/FixPt Relational Operator'
+   *  UnitDelay: '<S14>/Delay Input1'
    */
   ModeleRobot_B.DataTypeConversion = (real_T)(((ModeleRobot_U.IN_ConvergenceMvt
     != ModeleRobot_DWork.DelayInput1_DSTATE) != 0) &&
     ((ModeleRobot_U.IN_ConvergenceMvt == ModeleRobot_P.Constant_Value) != 0));
+
+  /* DataTypeConversion: '<S4>/Data Type Conversion' incorporates:
+   *  Constant: '<S17>/Constant'
+   *  Inport: '<Root>/IN_ConvergenceMvt_Rapide'
+   *  Logic: '<S4>/Logical Operator'
+   *  RelationalOperator: '<S17>/Compare'
+   *  RelationalOperator: '<S18>/FixPt Relational Operator'
+   *  UnitDelay: '<S18>/Delay Input1'
+   */
+  ModeleRobot_B.DataTypeConversion_g = (real_T)
+    (((ModeleRobot_U.IN_ConvergenceMvt_Rapide !=
+       ModeleRobot_DWork.DelayInput1_DSTATE_m) != 0) &&
+     ((ModeleRobot_U.IN_ConvergenceMvt_Rapide == ModeleRobot_P.Constant_Value_g)
+      != 0));
 
   /* Stateflow: '<Root>/COMPORTEMENT' */
   ModeleRobot_COMPORTEMENT();
@@ -4070,10 +4080,16 @@ void ModeleRobot_step(void)
     ModeleRobot_Y.OUT_RelacheServo[i] = ModeleRobot_B.RelacheServo[i];
   }
 
-  /* Update for UnitDelay: '<S17>/Delay Input1' incorporates:
+  /* Update for UnitDelay: '<S14>/Delay Input1' incorporates:
    *  Update for Inport: '<Root>/IN_ConvergenceMvt'
    */
   ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_U.IN_ConvergenceMvt;
+
+  /* Update for UnitDelay: '<S18>/Delay Input1' incorporates:
+   *  Update for Inport: '<Root>/IN_ConvergenceMvt_Rapide'
+   */
+  ModeleRobot_DWork.DelayInput1_DSTATE_m =
+    ModeleRobot_U.IN_ConvergenceMvt_Rapide;
 }
 
 /* Model initialize function */
@@ -4081,8 +4097,11 @@ void ModeleRobot_initialize(boolean_T firstTime)
 {
   (void)firstTime;
 
-  /* InitializeConditions for UnitDelay: '<S17>/Delay Input1' */
+  /* InitializeConditions for UnitDelay: '<S14>/Delay Input1' */
   ModeleRobot_DWork.DelayInput1_DSTATE = ModeleRobot_P.DelayInput1_X0;
+
+  /* InitializeConditions for UnitDelay: '<S18>/Delay Input1' */
+  ModeleRobot_DWork.DelayInput1_DSTATE_m = ModeleRobot_P.DelayInput1_X0_m;
 
   /* InitializeConditions for Stateflow: '<Root>/COMPORTEMENT' */
   ModeleRobot_COMPORTEMENT_Init();

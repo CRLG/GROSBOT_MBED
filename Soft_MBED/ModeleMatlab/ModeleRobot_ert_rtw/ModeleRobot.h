@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model ModeleRobot.
  *
- * Model version                        : 1.1501
+ * Model version                        : 1.1507
  * Real-Time Workshop file version      : 7.4  (R2009b)  29-Jun-2009
- * Real-Time Workshop file generated on : Fri May 15 08:09:39 2015
+ * Real-Time Workshop file generated on : Fri May 15 14:53:50 2015
  * TLC version                          : 7.4 (Jul 14 2009)
- * C/C++ source code generated on       : Fri May 15 08:09:39 2015
+ * C/C++ source code generated on       : Fri May 15 14:53:51 2015
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -42,6 +42,7 @@
 /* Block signals (auto storage) */
 typedef struct {
   real_T DataTypeConversion;           /* '<S3>/Data Type Conversion' */
+  real_T DataTypeConversion_g;         /* '<S4>/Data Type Conversion' */
   real_T ConsigneX;                    /* '<Root>/COMPORTEMENT' */
   real_T ConsigneY;                    /* '<Root>/COMPORTEMENT' */
   real_T DdeMvtXY;                     /* '<Root>/COMPORTEMENT' */
@@ -69,9 +70,9 @@ typedef struct {
 
 /* Block states (auto storage) for system '<Root>' */
 typedef struct {
-  real_T DelayInput1_DSTATE;           /* '<S17>/Delay Input1' */
-  real_T DelayInput1_DSTATE_p;         /* '<S11>/Delay Input1' */
-  real_T DelayInput1_DSTATE_d;         /* '<S8>/Delay Input1' */
+  real_T DelayInput1_DSTATE;           /* '<S14>/Delay Input1' */
+  real_T DelayInput1_DSTATE_m;         /* '<S18>/Delay Input1' */
+  real_T DelayInput1_DSTATE_p;         /* '<S8>/Delay Input1' */
   real_T DureeMatch;                   /* '<Root>/COMPORTEMENT' */
   real_T CouleurEquipe_memo;           /* '<Root>/COMPORTEMENT' */
   real_T CompteurTimeoutMvt;           /* '<Root>/COMPORTEMENT' */
@@ -143,11 +144,11 @@ typedef struct {
   real_T IN_Ascenseur_pos;             /* '<Root>/IN_Ascenseur_pos' */
   uint8_T IN_FinCourseBarillet;        /* '<Root>/IN_FinCourseBarillet' */
   real_T IN_Barillet_pos;              /* '<Root>/IN_Barillet_pos' */
-  real_T IN_ConvergenceMvt_Rapide;     /* '<Root>/IN_ConvergenceMvt_Rapide' */
   real_T IN_Vitesse;                   /* '<Root>/IN_Vitesse' */
   real_T IN_SensDeplacement;           /* '<Root>/IN_SensDeplacement' */
   uint8_T IN_isDepression;             /* '<Root>/IN_isDepression' */
   uint8_T IN_FinCourseHauteAscenseur;  /* '<Root>/IN_FinCourseHauteAscenseur' */
+  real_T IN_ConvergenceMvt_Rapide;     /* '<Root>/IN_ConvergenceMvt_Rapide' */
 } ExternalInputs_ModeleRobot;
 
 /* External outputs (root outports fed by signals with auto storage) */
@@ -196,25 +197,22 @@ struct Parameters_ModeleRobot_ {
                                         * Referenced by: '<S2>/Relay'
                                         */
   real_T DelayInput1_X0;               /* Expression: vinit
-                                        * Referenced by: '<S17>/Delay Input1'
+                                        * Referenced by: '<S14>/Delay Input1'
                                         */
   real_T Constant_Value;               /* Expression: const
-                                        * Referenced by: '<S16>/Constant'
-                                        */
-  real_T Constant_Value_n;             /* Expression: 0
-                                        * Referenced by: '<Root>/Constant'
-                                        */
-  real_T Constant_Value_g;             /* Expression: const
-                                        * Referenced by: '<S7>/Constant'
+                                        * Referenced by: '<S13>/Constant'
                                         */
   real_T DelayInput1_X0_m;             /* Expression: vinit
-                                        * Referenced by: '<S8>/Delay Input1'
+                                        * Referenced by: '<S18>/Delay Input1'
+                                        */
+  real_T Constant_Value_g;             /* Expression: const
+                                        * Referenced by: '<S17>/Constant'
                                         */
   real_T Constant_Value_h;             /* Expression: const
-                                        * Referenced by: '<S10>/Constant'
+                                        * Referenced by: '<S7>/Constant'
                                         */
   real_T DelayInput1_X0_o;             /* Expression: vinit
-                                        * Referenced by: '<S11>/Delay Input1'
+                                        * Referenced by: '<S8>/Delay Input1'
                                         */
   real_T SFunction_p1;                 /* Expression: DEBUG_ASCENSEUR
                                         * Referenced by: '<Root>/COMPORTEMENT'
@@ -414,22 +412,23 @@ extern void ModeleRobot_step(void);
  * '<S1>'   : ModeleRobot/COMPORTEMENT
  * '<S2>'   : ModeleRobot/DetectionObstacle
  * '<S3>'   : ModeleRobot/FrontMontantConvergence
- * '<S4>'   : ModeleRobot/Model Info
- * '<S5>'   : ModeleRobot/COMPORTEMENT/isFrontMontantConvergence
+ * '<S4>'   : ModeleRobot/FrontMontantConvergenceRapide
+ * '<S5>'   : ModeleRobot/Model Info
  * '<S6>'   : ModeleRobot/COMPORTEMENT/isFrontMontantMvtBloque
- * '<S7>'   : ModeleRobot/COMPORTEMENT/isFrontMontantConvergence/Compare To Constant
- * '<S8>'   : ModeleRobot/COMPORTEMENT/isFrontMontantConvergence/Detect Change
- * '<S9>'   : ModeleRobot/COMPORTEMENT/isFrontMontantConvergence/Model Info
- * '<S10>'  : ModeleRobot/COMPORTEMENT/isFrontMontantMvtBloque/Compare To Constant
- * '<S11>'  : ModeleRobot/COMPORTEMENT/isFrontMontantMvtBloque/Detect Change
- * '<S12>'  : ModeleRobot/COMPORTEMENT/isFrontMontantMvtBloque/Model Info
- * '<S13>'  : ModeleRobot/DetectionObstacle/Model Info
- * '<S14>'  : ModeleRobot/DetectionObstacle/marcheArriere
- * '<S15>'  : ModeleRobot/DetectionObstacle/marcheAvant
- * '<S16>'  : ModeleRobot/FrontMontantConvergence/Compare To Constant
- * '<S17>'  : ModeleRobot/FrontMontantConvergence/Detect Change
- * '<S18>'  : ModeleRobot/FrontMontantConvergence/Model Info
- * '<S19>'  : ModeleRobot/FrontMontantConvergence/Model Info1
+ * '<S7>'   : ModeleRobot/COMPORTEMENT/isFrontMontantMvtBloque/Compare To Constant
+ * '<S8>'   : ModeleRobot/COMPORTEMENT/isFrontMontantMvtBloque/Detect Change
+ * '<S9>'   : ModeleRobot/COMPORTEMENT/isFrontMontantMvtBloque/Model Info
+ * '<S10>'  : ModeleRobot/DetectionObstacle/Model Info
+ * '<S11>'  : ModeleRobot/DetectionObstacle/marcheArriere
+ * '<S12>'  : ModeleRobot/DetectionObstacle/marcheAvant
+ * '<S13>'  : ModeleRobot/FrontMontantConvergence/Compare To Constant
+ * '<S14>'  : ModeleRobot/FrontMontantConvergence/Detect Change
+ * '<S15>'  : ModeleRobot/FrontMontantConvergence/Model Info
+ * '<S16>'  : ModeleRobot/FrontMontantConvergence/Model Info1
+ * '<S17>'  : ModeleRobot/FrontMontantConvergenceRapide/Compare To Constant
+ * '<S18>'  : ModeleRobot/FrontMontantConvergenceRapide/Detect Change
+ * '<S19>'  : ModeleRobot/FrontMontantConvergenceRapide/Model Info
+ * '<S20>'  : ModeleRobot/FrontMontantConvergenceRapide/Model Info1
  */
 #endif                                 /* RTW_HEADER_ModeleRobot_h_ */
 
