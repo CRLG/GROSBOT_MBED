@@ -29,10 +29,14 @@ typedef enum {
 
 //! cet enumere contient les numeros d'attribution des servos SD20 pour 2014
 typedef enum {
-	SERVO_CENTREUR_G=14,
+	SERVO_BRAS=13,
+	SERVO_CENTREUR_G,
 	SERVO_CENTREUR_D,
 	SERVO_PINCE_D,
-	SERVO_PINCE_G
+	SERVO_PINCE_G,
+	SERVO_BALLE,
+	SERVO_RECOLTEURS,
+	SERVO_VOLET
 } eATTRIBUTION_SERVOS_SD20;
 
 //! cet enumere contient les numeros d'attribution des servos AX pour 2014

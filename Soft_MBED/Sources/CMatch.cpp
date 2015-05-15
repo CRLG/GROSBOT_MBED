@@ -236,6 +236,43 @@ void CMatch::step(void)
         Application.m_servos_sd20.CommandePositionVitesse(SERVO_CENTREUR_D, ModeleRobot_Y.OUT_CommandeServo[SERVO_CENTREUR_D-1],ModeleRobot_Y.OUT_SpeedServo[SERVO_CENTREUR_D-1]);
         m_old_cde_servo[SERVO_CENTREUR_D] = ModeleRobot_Y.OUT_CommandeServo[SERVO_CENTREUR_D-1];
     }
+
+	if (ModeleRobot_Y.OUT_CommandeServo[SERVO_BRAS-1] != m_old_cde_servo[SERVO_BRAS]) {
+		if (ModeleRobot_Y.OUT_RelacheServo[SERVO_BRAS-1]==0)
+			Application.m_servos_sd20.setDureeAvantRelache(SERVO_BRAS, RELACHE_SERVO_OFF);
+		else
+			Application.m_servos_sd20.setDureeAvantRelache(SERVO_BRAS, ModeleRobot_Y.OUT_RelacheServo[SERVO_BRAS-1]);
+        Application.m_servos_sd20.CommandePositionVitesse(SERVO_BRAS, ModeleRobot_Y.OUT_CommandeServo[SERVO_BRAS-1], ModeleRobot_Y.OUT_SpeedServo[SERVO_BRAS-1]);
+        m_old_cde_servo[SERVO_BRAS] = ModeleRobot_Y.OUT_CommandeServo[SERVO_BRAS-1];
+    }
+
+	if (ModeleRobot_Y.OUT_CommandeServo[SERVO_BALLE-1] != m_old_cde_servo[SERVO_BALLE]) {
+		if (ModeleRobot_Y.OUT_RelacheServo[SERVO_BALLE-1]==0)
+			Application.m_servos_sd20.setDureeAvantRelache(SERVO_BALLE, RELACHE_SERVO_OFF);
+		else
+			Application.m_servos_sd20.setDureeAvantRelache(SERVO_BALLE, ModeleRobot_Y.OUT_RelacheServo[SERVO_BALLE-1]);
+        Application.m_servos_sd20.CommandePositionVitesse(SERVO_BALLE, ModeleRobot_Y.OUT_CommandeServo[SERVO_BALLE-1], ModeleRobot_Y.OUT_SpeedServo[SERVO_BALLE-1]);
+        m_old_cde_servo[SERVO_BALLE] = ModeleRobot_Y.OUT_CommandeServo[SERVO_BALLE-1];
+    }
+
+	if (ModeleRobot_Y.OUT_CommandeServo[SERVO_RECOLTEURS-1] != m_old_cde_servo[SERVO_RECOLTEURS]) {
+		if (ModeleRobot_Y.OUT_RelacheServo[SERVO_RECOLTEURS-1]==0)
+			Application.m_servos_sd20.setDureeAvantRelache(SERVO_RECOLTEURS, RELACHE_SERVO_OFF);
+		else
+			Application.m_servos_sd20.setDureeAvantRelache(SERVO_RECOLTEURS, ModeleRobot_Y.OUT_RelacheServo[SERVO_RECOLTEURS-1]);
+        Application.m_servos_sd20.CommandePositionVitesse(SERVO_RECOLTEURS, ModeleRobot_Y.OUT_CommandeServo[SERVO_RECOLTEURS-1], ModeleRobot_Y.OUT_SpeedServo[SERVO_RECOLTEURS-1]);
+        m_old_cde_servo[SERVO_RECOLTEURS] = ModeleRobot_Y.OUT_CommandeServo[SERVO_RECOLTEURS-1];
+    }
+
+	if (ModeleRobot_Y.OUT_CommandeServo[SERVO_VOLET-1] != m_old_cde_servo[SERVO_VOLET]) {
+		if (ModeleRobot_Y.OUT_RelacheServo[SERVO_VOLET-1]==0)
+			Application.m_servos_sd20.setDureeAvantRelache(SERVO_VOLET, RELACHE_SERVO_OFF);
+		else
+			Application.m_servos_sd20.setDureeAvantRelache(SERVO_VOLET, ModeleRobot_Y.OUT_RelacheServo[SERVO_VOLET-1]);
+        Application.m_servos_sd20.CommandePositionVitesse(SERVO_VOLET, ModeleRobot_Y.OUT_CommandeServo[SERVO_VOLET-1], ModeleRobot_Y.OUT_SpeedServo[SERVO_VOLET-1]);
+        m_old_cde_servo[SERVO_VOLET] = ModeleRobot_Y.OUT_CommandeServo[SERVO_VOLET-1];
+    }
+
 	
 	//SORTIES de MODELE
 	m_obstacleDetecte=ModeleRobot_Y.OUT_isObstacle;

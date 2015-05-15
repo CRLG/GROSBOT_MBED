@@ -31,8 +31,8 @@ SERVO_RECOLTEURS=19;
 SERVO_VOLET=20;
 
 %SERVO BRAS
-SERVO_BRAS_OUVERT = 21;
-SERVO_BRAS_FERME=152;
+SERVO_BRAS_OUVERT = 55;
+SERVO_BRAS_FERME=147;
 
 %SERVO CENTREUR G
 SERVO_CENTREUR_G_OUVERT = 134;
@@ -85,6 +85,8 @@ KMAR_POSITION_SPOT_BAS=810;
 
 % ---------------------------------------------------
 % BITS DE CONFIGURATION
+DEGAGE_PREMIER_GOBELET=1;
+CLAP_COLLABORATIF=0;
 DEBUG_TORCHE=0; %pour debuguer la squence de chargement de la torche
 STT=1; %1 => stratégie d'évitement basique, on s'arrête et quand il n'y a plus d'obstacle on repart
 JUST_HOMOLO=1; %1 => on fait juste le programme d'homologation
