@@ -1,0 +1,16 @@
+GeneratorModel for yakindu::cpp {
+
+	statechart IA {
+
+		feature Outlet {
+			targetProject = "ModeleSCT"
+			targetFolder = "src-gen"
+		}
+		
+		feature GeneratorOptions {
+ 			innerFunctionVisibility =  "protected"
+ 			staticOperationCallback = true
+		}
+	}
+	
+}

@@ -57,8 +57,7 @@ void CGlobale::Run(void)
   // Attends la montée de toutes les alimentation et l'initialisation de l'écran
   // Temps nécessaire en pratique pour que l'écran tactile ai fini de démarrer
   // avant de commencer à lui en envoyer des messages (et d'en recevoir) 
-  wait_ms(3000); 
-
+  //wait_ms(3000);
 
   // Active les pull up sur les entrées
   //_Etor1.mode(PullUp);
@@ -68,7 +67,7 @@ void CGlobale::Run(void)
  // Lecture des paramètres EEPROM et recopie dans les données membres 
  // de chaque classe en RAM
  m_eeprom.Read();
- 
+
  // Initialisation des servos moteurs
  m_servos_sd20.Init();
  m_servos_ax.Init();

@@ -5,20 +5,12 @@
 #ifndef _MATCH_H_
 #define _MATCH_H_
 
+#include "IA.h"
 #include "CMoteurs.h"
 #include "CServoMoteurSD20.h"
 #include "CServoMoteurAX.h"
-//! cet enumere contient les numeros d'attribution des servos pour 2014
-/*
-typedef enum {
-	SERVO_ANCRAGE_FILET=13,
-	SERVO_CROCHET_AR,
-	SERVO_RETOURNE_FEU,
-	SERVO_NERF,
-	SERVO_KMAR
-} eATTRIBUTION_SERVOS;
-*/
-	
+
+
 // -----------------------------
 //! Classe de gestion des options d'exécution passees en ligne de commande
 class CMatch {
@@ -43,18 +35,29 @@ public :
 	//! Debug sur la RS232
 	void debug(void);
 
+    IA m_ia;
+    IA::DefaultSCI *m_iaSCI;
+    static bool frontMontant(float prec_value, float value);
 
-private : 
-  float m_DdeMvtManuel_old;
-  float m_DdeMvtDistanceAngle_old;
-  float m_DdeMvtXY_old;
-  float m_DdeMvtXYTeta_old;
-  float m_DdeRecalagePosition_old;
-  float m_ResetCodeurAscenseur_old;
-  float m_ResetCodeurBarillet_old;
+    float m_obstacle_AVG;
+    float m_obstacle_AVD;
+    float m_obstacle_ARG;
+    float m_obstacle_ARD;
+
+    int isObstacle(float x, float y, float teta, float speed, float sens);
+
+private :
+  float m_convergence_old;
+  float m_convergence_rapide_old;
+
 
 };
 
+/*class methodeAsser : public GROSBOT::SCI_Ascenseur_OCB
+{
+public:
+    void Manuel(sc_real mot_gauche, sc_real mot_droit) = 0;
+};*/
 
 #endif
 

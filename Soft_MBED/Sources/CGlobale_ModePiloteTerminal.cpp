@@ -31,10 +31,10 @@ void CGlobale::ModePiloteTerminal(void)
     wait_ms(4000);
    
    while(1) {
-		if (Tick) {
+        CheckReceptionTrame();
+        CheckReceptionTrameEcran();
+        if (Tick) {
 			Tick = 0;
-			CheckReceptionTrame();
-			CheckReceptionTrameEcran();
 			SequenceurModePiloteTerminal();
 		}	
    }

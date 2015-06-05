@@ -5,7 +5,7 @@
 #include "RessourcesHardware.h"
 #include "CGlobale.h"
 
-void SendTrameEcran(void);
+//void SendTrameEcran(void);
 
 //___________________________________________________________________________
  /*!
@@ -20,16 +20,17 @@ void CGlobale::ModePiloteLaBotBox(void)
    // Initialise une IRQ sur réception RS232 d'LABOTBOX
    _rs232_pc_rx.attach(&Application, &CGlobale::ReceiveRS232_ModePiloteLaBotBox);  	// Callback sur réception d'une donnée sur la RS232
 
-   periodicTick.attach(&Application, &CGlobale::IRQ_Tick_ModePiloteLaBotBox, (float(PERIODE_TICK)/1000.0));
+   periodicTick.attach(&Application, &CGlobale::IRQ_Tick_ModePiloteLaBotBox, 0.01f);
+   _rs232_pc_tx.printf("\n\rInit IRQ RS et Timer\n\r");
 
    while(1) {
-		if (Tick) {
-			Tick = 0;
-			CheckReceptionTrame();
-			SequenceurModePiloteLaBotBox();
+       CheckReceptionTrame();
+       if (Tick>0) {
+            Tick = 0;
+            //CheckReceptionTrame();  -> déplacé au dessus pour problème de blocage mécanisme
+            SequenceurModePiloteLaBotBox();
 		}	
    }
-
 }
 
 
@@ -53,7 +54,7 @@ void CGlobale::ReceiveRS232_ModePiloteLaBotBox(void)
 */
 void CGlobale::IRQ_Tick_ModePiloteLaBotBox(void)
 {
-	Tick = 1;
+    Tick = 1;
 }
 
 
@@ -88,7 +89,7 @@ void CGlobale::SequenceurModePiloteLaBotBox(void)
   if (cpt20msec >= TEMPO_20msec) {
   	cpt20msec = 0;
 
-	m_capteurs.Traitement();
+    m_capteurs.Traitement();
     m_asservissement.CalculsMouvementsRobots();
 
   }

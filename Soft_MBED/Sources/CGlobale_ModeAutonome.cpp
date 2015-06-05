@@ -33,10 +33,10 @@ void CGlobale::ModeAutonome(void)
    periodicTick.attach(&Application, &CGlobale::IRQ_Tick_ModeAutonome, (float(PERIODE_TICK)/1000.0));
 
    while(1) {
-		if (Tick) {
+        CheckReceptionTrameEcran();
+        CheckReceptionTrameCamera();
+        if (Tick) {
 			Tick = 0;
-			CheckReceptionTrameEcran();
-            CheckReceptionTrameCamera();
 			SequenceurModeAutonome();
 		}	
    }
@@ -136,6 +136,7 @@ void CGlobale::SequenceurModeAutonome(void)
   cpt50msec++;
   if (cpt50msec >= TEMPO_50msec) {
   	cpt50msec = 0;
+    _led1 = (!_led1) && matchEnCours;
   }
 
   // ______________________________
