@@ -18,6 +18,7 @@ void CGlobale::ModePiloteLaBotBox(void)
 {
    _rs232_pc_tx.printf("\n\rCeci est le mode piloté via LABOTBOX\n\r");
    // Initialise une IRQ sur réception RS232 d'LABOTBOX
+   //_rs232_pc_rx.attach(&Application, &CGlobale::ReceiveRS232_ModePiloteLaBotBox);  	// Callback sur réception d'une donnée sur la RS232
    _rs232_pc_rx.attach(&Application, &CGlobale::ReceiveRS232_ModePiloteLaBotBox);  	// Callback sur réception d'une donnée sur la RS232
 
    periodicTick.attach(&Application, &CGlobale::IRQ_Tick_ModePiloteLaBotBox, 0.01f);
@@ -108,7 +109,7 @@ void CGlobale::SequenceurModePiloteLaBotBox(void)
   if (cpt100msec >= TEMPO_100msec) {
   	cpt100msec = 0;
 
-	_led3 = !_led3;
+    //_led3 = !_led3;
   }
 
   // ______________________________
@@ -122,7 +123,7 @@ void CGlobale::SequenceurModePiloteLaBotBox(void)
 	//_rs232_pc_tx.printf("Capteur analogique = %f\n\r", _Eana1.read()*3.3);
 	//_rs232_pc_tx.printf("Capteur Etor1 = %d\n\r", _Etor1.read());
 
-	SendTramesLaBotBox();
+    //SendTramesLaBotBox();
 
   }
   // ______________________________
@@ -323,7 +324,7 @@ void CGlobale::CheckReceptionTrame(void)
   // ___________________________
   if  (m_LaBotBox.m_COMMANDE_DISTANCE_ANGLE.isNewTrame() ) {
    m_asservissement.CommandeMouvementDistanceAngle(	m_LaBotBox.m_COMMANDE_DISTANCE_ANGLE.distance_consigne,
-   													m_LaBotBox.m_COMMANDE_DISTANCE_ANGLE.angle_consigne
+                                                    BRUTE2PHYS_angle_consigne(m_LaBotBox.m_COMMANDE_DISTANCE_ANGLE.angle_consigne)
    												  );
   }
 
