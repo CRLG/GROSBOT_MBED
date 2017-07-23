@@ -8,7 +8,7 @@
 #include "ConfigFile.h"
 
 // -----------------------------
-//! Classe de gestion des options d'exécution passees en ligne de commande
+//! Classe de gestion des options d'exÃ©cution passees en ligne de commande
 class CEEPROM {
 public :
 	CEEPROM();
@@ -24,19 +24,19 @@ public :
 	bool setValue(char *key, unsigned short val);
 	
 
-	//! Lit une donnée de type flottant dont le nom (la cle) est passee en parametre
+	//! Lit une donnÃ©e de type flottant dont le nom (la cle) est passee en parametre
 	bool getValue(char *key, float *val);
-	//! Lit une donnée de type long dont le nom (la cle) est passee en parametre
+	//! Lit une donnÃ©e de type long dont le nom (la cle) est passee en parametre
 	bool getValue(char *key, long *val);
-	//! Lit une donnée de type uint dont le nom (la cle) est passee en parametre
+	//! Lit une donnÃ©e de type uint dont le nom (la cle) est passee en parametre
 	bool getValue(char *key, unsigned int *val);
-	//! Lit une donnée de type uint dont le nom (la cle) est passee en parametre
+	//! Lit une donnÃ©e de type uint dont le nom (la cle) est passee en parametre
 	bool getValue(char *key, int *val);
-	//! Lit une donnée de type string dont le nom (la cle) est passee en parametre
+	//! Lit une donnÃ©e de type string dont le nom (la cle) est passee en parametre
 	bool getValue(char *key, char *val);
 
 	
-	//! TODO : implémenter les méthodes setValue
+	//! TODO : implÃ©menter les mÃ©thodes setValue
 private : 
 	//! Buffer de recuperation d'une valeur 
     char value[BUFSIZ];
@@ -47,4 +47,5 @@ private :
 
 
 #endif
+
 

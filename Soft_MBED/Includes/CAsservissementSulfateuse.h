@@ -7,7 +7,7 @@
 
 
 // -----------------------------
-//! Classe de gestion des options d'exécution passees en ligne de commande
+//! Classe de gestion des options d'exÃ©cution passees en ligne de commande
 class CAsservissementSulfateuse {
 public :
  
@@ -15,7 +15,7 @@ public :
 	CAsservissementSulfateuse();
 	~CAsservissementSulfateuse();
 
-	//! Réinitilise tous les paramètres et valeurs
+	//! RÃ©initilise tous les paramÃ¨tres et valeurs
 	void Init(void);	
 
 private : 
@@ -28,4 +28,5 @@ private :
 
 
 #endif
+
 

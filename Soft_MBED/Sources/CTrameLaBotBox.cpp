@@ -1,5 +1,5 @@
 /*! \file CTrameLaBotBox.cpp
-	\brief Classe qui contient les méthodes pour le dialogue avec ANACONBOT
+	\brief Classe qui contient les mÃ©thodes pour le dialogue avec ANACONBOT
 */
 #include "mbed.h"
 #include "RessourcesHardware.h"
@@ -45,6 +45,7 @@ bool CTrameLaBotBox::isNewTrame(void)
   }
   return(false);
 }
+
 
 
 

@@ -10,7 +10,7 @@ void ScanI2C(void);
 
 //___________________________________________________________________________
  /*!
-   \brief Gestion du mode piloté via Anaconbot
+   \brief Gestion du mode pilotÃ© via Anaconbot
 
    \param --
    \return --
@@ -18,23 +18,25 @@ void ScanI2C(void);
 void CGlobale::ModePiloteTerminal(void)
 {
    	_rs232_pc_tx.printf("%c", 0xc);
-   _rs232_pc_tx.printf("\n\rCeci est le mode piloté par un terminal RS232\n\r");
-   // Initialise une IRQ sur réception RS232 d'ANACONBOT
-   _rs232_pc_rx.attach(&Application, &CGlobale::ReceiveRS232_ModePiloteTerminal);  	// Callback sur réception d'une donnée sur la RS232
-   // Initialise une IRQ sur réception RS232 de l'écran
-   _rs232_ecran_rx.attach(&Application, &CGlobale::ReceiveRS232_Ecran);  	// Callback sur réception d'une donnée sur la RS232
+   _rs232_pc_tx.printf("\n\rCeci est le mode pilotÃ© par un terminal RS232\n\r");
+   // Initialise une IRQ sur rÃ©ception RS232 d'ANACONBOT
+   _rs232_pc_rx.attach(&Application, &CGlobale::ReceiveRS232_ModePiloteTerminal);  	// Callback sur rÃ©ception d'une donnÃ©e sur la RS232
+   // Initialise une IRQ sur rÃ©ception RS232 de l'Ã©cran
+   _rs232_ecran_rx.attach(&Application, &CGlobale::ReceiveRS232_Ecran);  	// Callback sur rÃ©ception d'une donnÃ©e sur la RS232
 
    periodicTick.attach(&Application, &CGlobale::IRQ_Tick_ModePiloteTerminal, (float(PERIODE_TICK)/1000.0));
    
 
-    ScanI2C();
-    wait_ms(4000);
+    //ScanI2C();
+    //wait_ms(4000);
+   Application.m_moteurs.CommandeVitesse(5, 100);
    
    while(1) {
-		if (Tick) {
+        CheckReceptionTrame();
+        wait_us(1);
+        //CheckReceptionTrameEcran();
+        if (Tick) {
 			Tick = 0;
-			CheckReceptionTrame();
-			CheckReceptionTrameEcran();
 			SequenceurModePiloteTerminal();
 		}	
    }
@@ -89,7 +91,7 @@ void CGlobale::SequenceurModePiloteTerminal(void)
   if (cpt10msec >= TEMPO_10msec) {
   	cpt10msec = 0;
 
- 	m_servos_sd20.GestionTransfert();
+  	m_servos_sd20.GestionTransfert();
  }
 
   // ______________________________
@@ -97,14 +99,9 @@ void CGlobale::SequenceurModePiloteTerminal(void)
   if (cpt20msec >= TEMPO_20msec) {
   	cpt20msec = 0;
 
-	m_capteurs.Traitement();
-	//TO REMOVE: Pour tester le codeur ascenseur
-	unsigned char fincourse;
-	fincourse=!Application.m_capteurs.m_b_Etor2;
-	if(fincourse==1)
-		Application.m_capteurs.m_CumulCodeurPosition2 = 0;
+  	m_capteurs.Traitement();
 		
-    m_asservissement.CalculsMouvementsRobots();
+  	m_asservissement.CalculsMouvementsRobots();
 
   }
 
@@ -120,7 +117,7 @@ void CGlobale::SequenceurModePiloteTerminal(void)
   cpt100msec++;
   if (cpt100msec >= TEMPO_100msec) {
   	cpt100msec = 0;
-	SendTramesEcran();
+	//SendTramesEcran();
 
   }
 
@@ -130,89 +127,90 @@ void CGlobale::SequenceurModePiloteTerminal(void)
   	cpt200msec = 0;
 
 	_rs232_pc_tx.printf("%c", 0xc);
-	_rs232_pc_tx.printf("Entrees Etor = %d %d %d %d %d %d %d %d\n\r", 
-				Application.m_capteurs.m_b_Etor1,
-				Application.m_capteurs.m_b_Etor2,
-				Application.m_capteurs.m_b_Etor3,
-				Application.m_capteurs.m_b_Etor4,
-				Application.m_capteurs.m_b_Etor5,
-				Application.m_capteurs.m_b_Etor6,
-                Application.m_capteurs.m_b_Etor_CanRx,
-                Application.m_capteurs.m_b_Etor_CanTx
+	/*_rs232_pc_tx.printf("Entrees Etor = %d %d %d %d %d %d %d %d\n\r",
+				m_capteurs.m_b_Etor1,
+				m_capteurs.m_b_Etor2,
+				m_capteurs.m_b_Etor3,
+				m_capteurs.m_b_Etor4,
+				m_capteurs.m_b_Etor5,
+				m_capteurs.m_b_Etor6,
+                m_capteurs.m_b_Etor_CanRx,
+                m_capteurs.m_b_Etor_CanTx
 				);
-
-	_rs232_pc_tx.printf("Entrees Eana MBED = %.3f %.3f %.3f %.3f %.3f %.3f\n\r", 
-				Application.m_capteurs.m_b_Mes_Vbat,
-				Application.m_capteurs.m_b_Eana1,
-				Application.m_capteurs.m_b_Eana2,
-				Application.m_capteurs.m_b_Eana3,
-				Application.m_capteurs.m_b_Eana4,
-				Application.m_capteurs.m_b_Eana5
+*/
+	_rs232_pc_tx.printf("Entrees Eana MBED = %f %f %f %f %f %f\n\r",
+			Application.m_capteurs.m_b_Mes_Vbat,
+			Application.m_capteurs.m_b_Eana1,
+			Application.m_capteurs.m_b_Eana2,
+			Application.m_capteurs.m_b_Eana3,
+			Application.m_capteurs.m_b_Eana4,
+			Application.m_capteurs.m_b_Eana5
 				);
-
+/*
 	_rs232_pc_tx.printf("Entrees Eana dsPIC1 = %.3f %.3f %.3f %.3f\n\r", 
-				Application.m_capteurs.m_b_Eana6,
-				Application.m_capteurs.m_b_Eana7,
-				Application.m_capteurs.m_b_Eana8,
-				Application.m_capteurs.m_b_Eana9
+				m_capteurs.m_b_Eana6,
+				m_capteurs.m_b_Eana7,
+				m_capteurs.m_b_Eana8,
+				m_capteurs.m_b_Eana9
 				);
 
 	_rs232_pc_tx.printf("Entrees Eana dsPIC2 = %.3f %.3f %.3f %.3f\n\r", 
-				Application.m_capteurs.m_b_Eana10,
-				Application.m_capteurs.m_b_Eana11,
-				Application.m_capteurs.m_b_Eana12,
-				Application.m_capteurs.m_b_Eana13
-				);
+				m_capteurs.m_b_Eana10,
+				m_capteurs.m_b_Eana11,
+				m_capteurs.m_b_Eana12,
+				m_capteurs.m_b_Eana13
+				);*/
 
  	_rs232_pc_tx.printf("Tension batterie = %.2f [V] / %s\n\r", 
-				Application.m_capteurs.m_tension_batterie,
-				((Application.m_capteurs.m_alerte_batterie_faible==0)?"OK":"! Batterie faible")
+ 			Application.m_capteurs.m_tension_batterie,
+				((m_capteurs.m_alerte_batterie_faible==0)?"OK":"! Batterie faible")
                 );
-	_rs232_pc_tx.printf("Codeurs brut = %d %d %d %d\n\r", 
-				Application.m_capteurs.m_CodeurPosition1,
-				Application.m_capteurs.m_CodeurPosition2,
-				Application.m_capteurs.m_CodeurPosition3,
-				Application.m_capteurs.m_CodeurPosition4
+	/*_rs232_pc_tx.printf("Codeurs brut = %d %d %d %d\n\r",
+				m_capteurs.m_CodeurPosition1,
+				m_capteurs.m_CodeurPosition2,
+				m_capteurs.m_CodeurPosition3,
+				m_capteurs.m_CodeurPosition4
 				);
 
 	_rs232_pc_tx.printf("Codeurs cumul = %d %d %d %d\n\r", 
-				Application.m_capteurs.m_CumulCodeurPosition1,
-				Application.m_capteurs.m_CumulCodeurPosition2,
-				Application.m_capteurs.m_CumulCodeurPosition3,
-				Application.m_capteurs.m_CumulCodeurPosition4
+				m_capteurs.m_CumulCodeurPosition1,
+				m_capteurs.m_CumulCodeurPosition2,
+				m_capteurs.m_CumulCodeurPosition3,
+				m_capteurs.m_CumulCodeurPosition4
 				);
 
 	_rs232_pc_tx.printf("Err COM dsPIC1=%d / dsPIC2=%d\n\r", 
-				Application.m_capteurs.m_compteurErrCom_dsPIC1,
-				Application.m_capteurs.m_compteurErrCom_dsPIC2
+				m_capteurs.m_compteurErrCom_dsPIC1,
+				m_capteurs.m_compteurErrCom_dsPIC2
 				);
 
 
 	_rs232_pc_tx.printf("Capteurs US = %.2f %.2f %.2f %.2f\n\r", 
-				Application.m_capteurs.m_telemetres.m_distance[0],
-				Application.m_capteurs.m_telemetres.m_distance[1],
-                Application.m_capteurs.m_telemetres.m_distance[2],
-                Application.m_capteurs.m_telemetres.m_distance[3]
+				m_capteurs.m_telemetres.m_distance[0],
+				m_capteurs.m_telemetres.m_distance[1],
+                m_capteurs.m_telemetres.m_distance[2],
+                m_capteurs.m_telemetres.m_distance[3]
 				);
 
 	_rs232_pc_tx.printf("Commandes moteurs = %.1f %.1f %.1f %.1f %.1f %.1f\n\r",
-                Application.m_roues.m_cde_roue_G,
-                Application.m_roues.m_cde_roue_D,
-                Application.m_moteurs.m_cde_mot_3,
-                Application.m_moteurs.m_cde_mot_4,
-                Application.m_moteurs.m_cde_mot_5,
-                Application.m_moteurs.m_cde_mot_6
+                m_roues.m_cde_roue_G,
+                m_roues.m_cde_roue_D,
+                m_moteurs.m_cde_mot_3,
+                m_moteurs.m_cde_mot_4,
+                m_moteurs.m_cde_mot_5,
+                m_moteurs.m_cde_mot_6
                 ); 
 
-	_rs232_pc_tx.printf("Position Ascenseur = %d\n\r",
-                Application.m_capteurs.m_CumulCodeurPosition2                
-                );
-
 	_rs232_pc_tx.printf("Position robot x=%.4f / y=%.4f / teta=%.4f rad\n\r",
-                Application.m_asservissement.X_robot,
-                Application.m_asservissement.Y_robot,
-                Application.m_asservissement.angle_robot                
-                );
+                m_asservissement.X_robot,
+                m_asservissement.Y_robot,
+                m_asservissement.angle_robot
+                );*/
+	/*_rs232_pc_tx.printf("Capteur couleur R=%d\tG=%d\tB=%d\n\r",
+	                m_capteurs.m_color_sensor_R,
+	                m_capteurs.m_color_sensor_G,
+	                m_capteurs.m_color_sensor_B
+	                );*/
 
   }
   // ______________________________
@@ -221,7 +219,7 @@ void CGlobale::SequenceurModePiloteTerminal(void)
   	cpt500msec = 0;
 	_led1=!_led1;
 
-    compteur++;
+    /*compteur++;
     if (compteur>2) { 
         compteur = 0; 
         toggle = !toggle;
@@ -231,7 +229,7 @@ void CGlobale::SequenceurModePiloteTerminal(void)
         //Application.m_moteurs.CommandeVitesse(MOTEUR_4, (toggle&0x1)==0?50:-50);
         //Application.m_moteurs.CommandeVitesse(MOTEUR_5, (toggle&0x1)==0?-50:50);
         //Application.m_moteurs.CommandeVitesse(MOTEUR_6, (toggle&0x1)==0?-50:50);
-    }
+    }*/
 
 
   }
@@ -271,6 +269,7 @@ void ScanI2C(void)
    			de retarder le sequenceur
 */
 #define CONVERSION_VOLT2TRAME 10.0
+
 
 
 

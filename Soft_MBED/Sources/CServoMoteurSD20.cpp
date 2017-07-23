@@ -1,9 +1,9 @@
 /*! \file CServoMoteurSD20.cpp
-	\brief Classe qui contient les méthodes pour le dialogue avec ANACONBOT
+	\brief Classe qui contient les mÃ©thodes pour le dialogue avec ANACONBOT
 */
 #include "mbed.h"
 #include "RessourcesHardware.h"
-#include "CGlobale.h" // pour l'accès au module EEPROM
+#include "CGlobale.h" // pour l'accÃ¨s au module EEPROM
 #include "CServoMoteurSD20.h"
 
 
@@ -18,7 +18,7 @@ CServoMoteurSD20::CServoMoteurSD20()
 {
   unsigned char i=0;
 
-  // Initialisation des données
+  // Initialisation des donnÃ©es
   for (i=0; i<NBRE_SERVOS_SD20; i++) {
 	 m_position[i] = 0;
 	 m_vitesse[i] = 0;
@@ -46,24 +46,25 @@ CServoMoteurSD20::~CServoMoteurSD20()
 
 //___________________________________________________________________________
  /*!
-   \brief Initialisation des servos pour la configuration matérielle courante
+   \brief Initialisation des servos pour la configuration matÃ©rielle courante
    \return --
 */
 void CServoMoteurSD20::Init(void)
 {
-  // Exemple : configure le comportement de relâché automatique pour chaque servo utilisé
-  // setDureeAvantRelache(13, 2000); // servo n°13 relâché automatiquement au bout de 2sec
-  // setDureeAvantRelache(14, RELACHE_SERVO_OFF);  // pour le servo 14, pas de relâché automatique de la commande
+  // Exemple : configure le comportement de relÃ¢chÃ© automatique pour chaque servo utilisÃ©
+  // setDureeAvantRelache(13, 2000); // servo nÂ°13 relÃ¢chÃ© automatiquement au bout de 2sec
+  // setDureeAvantRelache(14, RELACHE_SERVO_OFF);  // pour le servo 14, pas de relÃ¢chÃ© automatique de la commande
   // setDureeAvantRelache(17, 1000);
   // ...
-  // Configure les durées min/max de l'impulsion du servo
-  // si la fonction n'est pas appelée, c'est les valeurs par défaut du SD20
-  // qui sont utilisées (1msec->2msec)
-  setDureesMinMaxPulseSD20(500, 3000); // impulsion entre 500µsec(0.4msec) et 3000µsec (2.3msec)
+  // Configure les durÃ©es min/max de l'impulsion du servo
+  // si la fonction n'est pas appelÃ©e, c'est les valeurs par dÃ©faut du SD20
+  // qui sont utilisÃ©es (1msec->2msec)
+  //setDureesMinMaxPulseSD20(500, 3000); // impulsion entre 500Âµsec(0.4msec) et 3000Âµsec (2.3msec)
+	setDureesMinMaxPulseSD20(900, 2100); // impulsion entre 500Âµsec(0.4msec) et 3000Âµsec (2.3msec)
   wait(0.05);
 
-  // dévérouille tous les servos du SD20
-  // Envoie une consigne de position à "0" sur chaque servo pour le dévérouiller
+  // dÃ©vÃ©rouille tous les servos du SD20
+  // Envoie une consigne de position Ã  "0" sur chaque servo pour le dÃ©vÃ©rouiller
   // (pour que les commandes suivantes soient prises en compte) 
   for (unsigned int i=0; i<NBRE_SERVOS_SD20; i++) {
     m_update[i] = true;
@@ -80,13 +81,13 @@ void CServoMoteurSD20::Init(void)
 
 //___________________________________________________________________________
  /*!
-   \brief Lecture des paramètres EEPROM du module
+   \brief Lecture des paramÃ¨tres EEPROM du module
    \return --
     \remarks 
-   Lecture des parmaètres de configuration des servos dans l'EEPROM : 
-      - Butée min
-      - Butée max
-      - Position initiale à la mise sous tension
+   Lecture des parmaÃ¨tres de configuration des servos dans l'EEPROM : 
+      - ButÃ©e min
+      - ButÃ©e max
+      - Position initiale Ã  la mise sous tension
 */
 void CServoMoteurSD20::readEEPROM(void)
 {
@@ -121,7 +122,7 @@ void CServoMoteurSD20::readEEPROM(void)
  /*!
    \brief Commande d'un servo moteur
 
-   \param numServo le servomoteur a piloter  (1 à 20)
+   \param numServo le servomoteur a piloter  (1 Ã  20)
    \param pos position du servomoteur
    \param vitesse vitesse a laquelle se deplace le servo
 
@@ -137,7 +138,7 @@ void CServoMoteurSD20::CommandePositionVitesse(unsigned char numServo, unsigned 
  /*!
    \brief Commande d'un servo moteur
 
-   \param numServo le servomoteur a piloter  (1 à 20)
+   \param numServo le servomoteur a piloter  (1 Ã  20)
    \param pos position du servomoteur
 
    \return --
@@ -149,7 +150,7 @@ void CServoMoteurSD20::CommandePosition(unsigned char numServo, unsigned int pos
 
   numServo = numServo - 1;  // -1 car numServo varie entre 1 et 20 (et pas entre 0 et 19)
 
-  // gestion des butées min et max
+  // gestion des butÃ©es min et max
   position = saturePositionButees(numServo, position, m_pos_butee_min[numServo], m_pos_butee_max[numServo]);
 
   if (m_position_utilisateur[numServo] != position) {
@@ -157,7 +158,7 @@ void CServoMoteurSD20::CommandePosition(unsigned char numServo, unsigned int pos
       m_position[numServo] = position;
 	  m_update[numServo] = true;
       if (m_duree_relache[numServo] != RELACHE_SERVO_OFF) {
-        m_timer_relache[numServo] = 0;  // Relance la tempo avant relâché de la commande
+        m_timer_relache[numServo] = 0;  // Relance la tempo avant relÃ¢chÃ© de la commande
       }
   }
 }
@@ -166,7 +167,7 @@ void CServoMoteurSD20::CommandePosition(unsigned char numServo, unsigned int pos
  /*!
    \brief Commande d'un servo moteur
 
-   \param numServo le servomoteur a piloter  (1 à 20)
+   \param numServo le servomoteur a piloter  (1 Ã  20)
    \param vitesse vitesse a laquelle se deplace le servo
 
    \return --
@@ -190,7 +191,7 @@ void CServoMoteurSD20::CommandeVitesse(unsigned char numServo, unsigned int vite
    \brief Gestion des transferts
    \description le module SD20 ne permet pas une communication
    				continue. Entre la commande de 2 servos, il faut
-				un temps de pause de environ 100µsec
+				un temps de pause de environ 100Âµsec
 				Cette fonction doit etre appelee periodiquement
 				Cette fonction n'envoie qu'une seule commande de servo
 				a la fois
@@ -200,27 +201,27 @@ void CServoMoteurSD20::CommandeVitesse(unsigned char numServo, unsigned int vite
 */
 void CServoMoteurSD20::GestionTransfert(void)
 {
-  static unsigned char servo=0;	 // Mémorise le dernier servo traité
+  static unsigned char servo=0;	 // MÃ©morise le dernier servo traitÃ©
   char cmd[2];
   unsigned char i=0;
 	
-  // Gestion de l'arrêt automatique des servos au bout de quelques instants pour éviter les vibrations
-  // Faut il stopper automatiquement la commande appliquée à un servo ?
+  // Gestion de l'arrÃªt automatique des servos au bout de quelques instants pour Ã©viter les vibrations
+  // Faut il stopper automatiquement la commande appliquÃ©e Ã  un servo ?
   for (i=0; i<NBRE_SERVOS_SD20; i++) {
   	if (m_timer_relache[i] < 0xFFFF) {
 		m_timer_relache[i]++;
 		if (m_timer_relache[i] > m_duree_relache[i]) { 
-			m_timer_relache[i] = 0xFFFF; // Pour ne plus incrémenter le timer et arrêter le traitement
-			m_position[i] = 0; // La valeur "0" permet de relâcher la commande du servo (il reste à sa place, mais ne bouge plus)
-			m_update[i] = true; // Un transfert est nécessaire
-		} // if il est temps de relâcher le servo
-     } // if le timer de relâchement est à gérer
+			m_timer_relache[i] = 0xFFFF; // Pour ne plus incrÃ©menter le timer et arrÃªter le traitement
+			m_position[i] = 0; // La valeur "0" permet de relÃ¢cher la commande du servo (il reste Ã  sa place, mais ne bouge plus)
+			m_update[i] = true; // Un transfert est nÃ©cessaire
+		} // if il est temps de relÃ¢cher le servo
+     } // if le timer de relÃ¢chement est Ã  gÃ©rer
   } // for tous les servos 
   
 
   
-  // Recherche le prochain servo à piloter
-  // servo est une variable static qui mémorise le dernier servo mis à jour
+  // Recherche le prochain servo Ã  piloter
+  // servo est une variable static qui mÃ©morise le dernier servo mis Ã  jour
   // 
   for (i=0; i<NBRE_SERVOS_SD20; i++) {
      servo++;
@@ -231,7 +232,7 @@ void CServoMoteurSD20::GestionTransfert(void)
 	 }  
   }
   // En sortie de cette boucle, si update[servo] vaut "1", c'est que servo
-  // contient le numéro du servo à rafraichir
+  // contient le numÃ©ro du servo Ã  rafraichir
   if (m_update[servo] == true) {
     m_update[servo] = false;
 
@@ -245,13 +246,13 @@ void CServoMoteurSD20::GestionTransfert(void)
 
 //___________________________________________________________________________
  /*!
-   \brief Configure la duree avant de relâcher la commande du servo
-   \description la relâche de la commande permet de preserver la mécanique
-   				en arrêtant la consigne de position au servo.
-                Dans certains cas d'utilisation, il ne faut pas relâcher la commande
-   \param numServo le servomoteur a piloter  (1 à 20)
+   \brief Configure la duree avant de relÃ¢cher la commande du servo
+   \description la relÃ¢che de la commande permet de preserver la mÃ©canique
+   				en arrÃªtant la consigne de position au servo.
+                Dans certains cas d'utilisation, il ne faut pas relÃ¢cher la commande
+   \param numServo le servomoteur a piloter  (1 Ã  20)
    \param duree la duree avant relach [msec] (ou RELACHE_SERVO_OFF pour que le servo ne 
-                soit jamais relâché automatiquement mais uniquement sur demande de l'applicatif)
+                soit jamais relÃ¢chÃ© automatiquement mais uniquement sur demande de l'applicatif)
    \return --
 */
 void CServoMoteurSD20::setDureeAvantRelache(unsigned char numServo, unsigned int duree_ms)
@@ -271,11 +272,11 @@ void CServoMoteurSD20::setDureeAvantRelache(unsigned char numServo, unsigned int
 
 //___________________________________________________________________________
  /*!
-   \brief Configure les butées min et max a ne pas dépasser
-   \description gère les butées pour préserver le matériel
-   \param numServo le servomoteur a piloter  (1 à 20)
-   \param butee_min la butée min à ne pas dépasser (ou BUTEE_SERVO_OFF pour le pas gérer la butée)
-   \param butee_max la butée max à ne pas dépasser (ou BUTEE_SERVO_OFF pour le pas gérer la butée)
+   \brief Configure les butÃ©es min et max a ne pas dÃ©passer
+   \description gÃ¨re les butÃ©es pour prÃ©server le matÃ©riel
+   \param numServo le servomoteur a piloter  (1 Ã  20)
+   \param butee_min la butÃ©e min Ã  ne pas dÃ©passer (ou BUTEE_SERVO_OFF pour le pas gÃ©rer la butÃ©e)
+   \param butee_max la butÃ©e max Ã  ne pas dÃ©passer (ou BUTEE_SERVO_OFF pour le pas gÃ©rer la butÃ©e)
    \return --
 */
 void CServoMoteurSD20::setButeesMinMaxPosition(unsigned char numServo, unsigned int butee_min, unsigned int butee_max)
@@ -286,10 +287,10 @@ void CServoMoteurSD20::setButeesMinMaxPosition(unsigned char numServo, unsigned 
 
 //___________________________________________________________________________
  /*!
-   \brief Configure les butées min a ne pas dépasser
-   \description gère les butées pour préserver le matériel
-   \param numServo le servomoteur a piloter  (1 à 20)
-   \param butee_min la butée min à ne pas dépasser (ou BUTEE_SERVO_OFF pour le pas gérer la butée)
+   \brief Configure les butÃ©es min a ne pas dÃ©passer
+   \description gÃ¨re les butÃ©es pour prÃ©server le matÃ©riel
+   \param numServo le servomoteur a piloter  (1 Ã  20)
+   \param butee_min la butÃ©e min Ã  ne pas dÃ©passer (ou BUTEE_SERVO_OFF pour le pas gÃ©rer la butÃ©e)
    \return --
 */
 void CServoMoteurSD20::setButeeMinPosition(unsigned char numServo, unsigned int butee_min)
@@ -302,10 +303,10 @@ void CServoMoteurSD20::setButeeMinPosition(unsigned char numServo, unsigned int 
 }
 //___________________________________________________________________________
  /*!
-   \brief Configure les butées min et max a ne pas dépasser
-   \description gère les butées pour préserver le matériel
-   \param numServo le servomoteur a piloter  (1 à 20)
-   \param butee_min la butée max à ne pas dépasser (ou BUTEE_SERVO_OFF pour le pas gérer la butée)
+   \brief Configure les butÃ©es min et max a ne pas dÃ©passer
+   \description gÃ¨re les butÃ©es pour prÃ©server le matÃ©riel
+   \param numServo le servomoteur a piloter  (1 Ã  20)
+   \param butee_min la butÃ©e max Ã  ne pas dÃ©passer (ou BUTEE_SERVO_OFF pour le pas gÃ©rer la butÃ©e)
    \return --
 */
 void CServoMoteurSD20::setButeeMaxPosition(unsigned char numServo, unsigned int butee_max)
@@ -320,12 +321,12 @@ void CServoMoteurSD20::setButeeMaxPosition(unsigned char numServo, unsigned int 
 //___________________________________________________________________________
  /*!
    \brief Configure la duree min et max des impulsions du signal PMW.
-   \description le SD20 permet d'utilisre un mode étendu dans lequel les impulsions peuvent aller au delà des servos standards [1msec;2msec].
+   \description le SD20 permet d'utilisre un mode Ã©tendu dans lequel les impulsions peuvent aller au delÃ  des servos standards [1msec;2msec].
     
-   \param duree_min_us duree minimum de l'impulsion en [µsec]
-   \param duree_max_us duree maximum de l'impulsion en [µsec]
+   \param duree_min_us duree minimum de l'impulsion en [Âµsec]
+   \param duree_max_us duree maximum de l'impulsion en [Âµsec]
    \description le registre 21 contient la variation possible de la largeur d'impulsion
-                le registre 22:23 contient l'offset (lié à la duree min de l'impulsion)    
+                le registre 22:23 contient l'offset (liÃ© Ã  la duree min de l'impulsion)    
    \return --
 */
 void CServoMoteurSD20::setDureesMinMaxPulseSD20(unsigned int duree_min_us, unsigned int duree_max_us)
@@ -335,15 +336,15 @@ void CServoMoteurSD20::setDureesMinMaxPulseSD20(unsigned int duree_min_us, unsig
   unsigned int reg22_23;
                     
   // (duree_max_us - duree_min_us) donne le range de l'impulsion
-  reg21     = 65280 / (duree_max_us - duree_min_us); // [µsec]. 65280 = 255*256 (voir formule SD20)
-  reg22_23  = duree_min_us - 20; // [µsec].
+  reg21     = 65280 / (duree_max_us - duree_min_us); // [Âµsec]. 65280 = 255*256 (voir formule SD20)
+  reg22_23  = duree_min_us - 20; // [Âµsec].
 
-  // L'écriture dans les registres se fait en 2 fois (contrainte du composant SD20)
+  // L'Ã©criture dans les registres se fait en 2 fois (contrainte du composant SD20)
   cmd[0] = 21;                      // Registre 21
   cmd[1] = (char)reg21;             // contenu du registre 21 : standard/expanded mode control
   _i2c.write(ADRESSE_I2C_SD20, cmd, 2);
 
-  wait_ms(10); // temps nécessaire au SD20 entre 2 écritures de registres
+  wait_ms(10); // temps nÃ©cessaire au SD20 entre 2 Ã©critures de registres
   cmd[0] = 22;                      // Registre 22-23
   cmd[1] = (char)(reg22_23 >> 8);   // contenu du registre 22 : expand mode offset MSB
   cmd[2] = (char)(reg22_23);        // contenu du registre 22 : expand mode offset MSB
@@ -353,12 +354,12 @@ void CServoMoteurSD20::setDureesMinMaxPulseSD20(unsigned int duree_min_us, unsig
 //___________________________________________________________________________
  /*!
    \brief Configure la duree min et max des impulsions du signal PMW.
-   \description le SD20 permet d'utilisre un mode étendu dans lequel les impulsions peuvent aller au delà des servos standards [1msec;2msec].
+   \description le SD20 permet d'utilisre un mode Ã©tendu dans lequel les impulsions peuvent aller au delÃ  des servos standards [1msec;2msec].
     
-   \param duree_min_us duree minimum de l'impulsion en [µsec]
-   \param duree_max_us duree maximum de l'impulsion en [µsec]
+   \param duree_min_us duree minimum de l'impulsion en [Âµsec]
+   \param duree_max_us duree maximum de l'impulsion en [Âµsec]
    \description le registre 21 contient la variation possible de la largeur d'impulsion
-                le registre 22:23 contient l'offset (lié à la duree min de l'impulsion)    
+                le registre 22:23 contient l'offset (liÃ© Ã  la duree min de l'impulsion)    
    \return --
 */
 unsigned int CServoMoteurSD20::saturePositionButees(unsigned char numServo, unsigned int position, unsigned int butee_min, unsigned int butee_max)
@@ -376,4 +377,5 @@ unsigned int CServoMoteurSD20::saturePositionButees(unsigned char numServo, unsi
   }
   return(ret_pos);
 }
+
 

@@ -1,14 +1,14 @@
 //			Asservissement 2014
 //
-//	Modifications ‡ valider ou calibrer :
+//	Modifications √† valider ou calibrer :
 //
-//	Diag de blocage ‡ calibrer
+//	Diag de blocage √† calibrer
 //	Calcul du coeff facteur_correction_avance_angle ne fonctionne pas correctement en passant pas la carto ?
-//	Correction batterie ‡ valider
-//	Mouvement XY_TETA ‡ valider
+//	Correction batterie √† valider
+//	Mouvement XY_TETA √† valider
 //	Initialisation des zones mortes suppr (en commentaire)
-//	Flag de convergence rapide ‡ valider
-//	Todo : Diag de blocage par Ècart de boucle ?
+//	Flag de convergence rapide √† valider
+//	Todo : Diag de blocage par √©cart de boucle ?
 
 /*! \file CAsservissement.cpp
 	\brief Classe qui contient toute l'application
@@ -55,17 +55,21 @@ void CAsservissement::Init(void)
 {
  int i;
  
- // initialisation des paramËtres de l'asservissement
- cde_max = 100;				// %	Commande maximum normalisÈe pour saturer la rÈgulation
- cde_min = -100 ;			// %	Commande minimum normalisÈe pour saturer la rÈgulation
- kp_distance =  1.0;		// 		Gain proportionnel pour la rÈgulation en distance
- ki_distance =  1.0;		// 		Gain intÈgral pour la rÈgulation en distance
- kp_angle =  0.1;			// 		Gain proportionnel pour la rÈgulation en angle
- ki_angle =  0.1;			// 		Gain intÈgral pour la rÈgulation en angle
- k_angle = 0.5;				//		Coeff de filtrage pour le terme dÈrivÈ
- seuil_conv_distance =  1;	// cm	Erreur en dessous de laquelle on considËre que le robot est en position sur la distance
- seuil_conv_angle =  0.5;	// rad	Erreur en dessous de laquelle on considËre que le robot est en position sur l'angle
- compteur_max = 5;			// 		Nombre de coups d'horloge (N*te) avant de confirmer que le robot est en position
+ // initialisation des param√®tres de l'asservissement
+ cde_max = 100;				// %	Commande maximum normalis√©e pour saturer la r√©gulation
+ cde_min = -100 ;			// %	Commande minimum normalis√©e pour saturer la r√©gulation
+ kp_distance =  1.7;		// 		Gain proportionnel pour la r√©gulation en distance
+ ki_distance =  3.0;		// 		Gain int√©gral pour la r√©gulation en distance
+ kp_angle =  20;			// 		Gain proportionnel pour la r√©gulation en angle
+ ki_angle =  10;			// 		Gain int√©gral pour la r√©gulation en angle
+ k_angle = 0.5;				//		Coeff de filtrage pour le terme d√©riv√©
+ seuil_conv_distance =  1;	// cm	Erreur en dessous de laquelle on consid√®re que le robot est en position sur la distance
+ seuil_conv_angle =  0.02;	// rad	Erreur en dessous de laquelle on consid√®re que le robot est en position sur l'angle
+ compteur_max = 3;			// 		Nombre de coups d'horloge (N*te) avant de confirmer que le robot est en position
+
+ // Initialisation des zones mortes
+ zone_morte_D = 12;
+ zone_morte_G = 12;
 
  // Les variables de l'asservissement
  distance_consigne = 0;
@@ -140,7 +144,7 @@ void CAsservissement::Init(void)
  consigne_vitesse_rotation_filt = 0;
  facteur_correction_avance_angle = 0;
  seuil_vitesse_diag_blocage = 2;		// cm/s
- commande_min_diag_blocage = 38;		// En cas de blocage l'Ègrateur charge rapidement ‡ des valeurs importantes
+ commande_min_diag_blocage = 38;		// En cas de blocage l'√©grateur charge rapidement √† des valeurs importantes
  seuil_vitesse_diag_rotation = 0.1;	// rad/s
  seuil_max_compteur_diag_blocage = 20;	// k * te = g secondes
  inc_diag_blocage = 1;
@@ -148,7 +152,7 @@ void CAsservissement::Init(void)
  compteur_diag_blocage = 0;
  diag_blocage = 0;
  convergence = 0;
- convergence_conf = 0;					// 0: Mvt en cours, 1: Convergence ok, 2: Blocage dÈtectÈ
+ convergence_conf = 0;					// 0: Mvt en cours, 1: Convergence ok, 2: Blocage d√©tect√©
  saturation_distance = 0;
  saturation_angle = 0;
  saturation_moteur_D = 0;
@@ -165,7 +169,7 @@ void CAsservissement::Init(void)
  vitesse_rotation_max = 3;				//	[rad/s]
  Ind_perfo = 0.7;
 
- // Initialisation des valeurs par dÈfauts des tableaux
+ // Initialisation des valeurs par d√©fauts des tableaux
  for (i=0; i<NBRE_POINTS_CARTO_ERREUR; i++) {
 	 conv_erreur_dist_vitesse_cur_x[i] = ini_conv_erreur_dist_vitesse_cur_x[i];
 	 conv_erreur_dist_vitesse_1_cur[i] = ini_conv_erreur_dist_vitesse_1_cur[i];
@@ -179,9 +183,7 @@ void CAsservissement::Init(void)
 	 //facteur_cor_vitesse_avance_cur[i] = ini_facteur_cor_vitesse_avance_cur[i];
  }
 
- // Initialisation des zones mortes
- //zone_morte_D = 8;
- //zone_morte_G = 8; 
+
 
 
  // Initialise les positions des codeurs
@@ -189,7 +191,7 @@ void CAsservissement::Init(void)
 
 }
 
-// Routine de calcul des cartographies avec interpolation linÈaire
+// Routine de calcul des cartographies avec interpolation lin√©aire
 
 float CAsservissement::Calc_carto_cur(float entree_x, float axe_x[], float axe_z[], int nb_point_x)
 {
@@ -210,7 +212,7 @@ float CAsservissement::Calc_carto_cur(float entree_x, float axe_x[], float axe_z
 			{
 			while (axe_x[i-1] <= entree_x)
 				{
-				if (axe_x[i] >= entree_x) // L'ÈlÈment i est le point support sup, i-1 le point support inf
+				if (axe_x[i] >= entree_x) // L'√©l√©ment i est le point support sup, i-1 le point support inf
 					{
 					sortie = ( (axe_z[i] - axe_z[i-1]) / (axe_x[i] - axe_x[i-1]) ) * (entree_x - axe_x[i]) + axe_z[i];
 					}
@@ -233,32 +235,32 @@ void CAsservissement::Initialisation_PID(void)
 	int_terme_prec_angle = 0;
 	int_terme_distance = 0;
 	int_terme_angle = 0;
-	consigne_vitesse_rotation_filt = vitesse_rotation_robot_filt;	// Permet dans le cas d'un blocage de rÈinitialiser le gradient
-	consigne_vitesse_avance_filt = vitesse_avance_robot_filt;		// Permet dans le cas d'un blocage de rÈinitialiser le gradient
-	offset_vitesse_avance = 3.2*Ind_perfo + 0.6;					// TODO mettre dans dÈcode.c sur rÈception de trame
+	consigne_vitesse_rotation_filt = vitesse_rotation_robot_filt;	// Permet dans le cas d'un blocage de r√©initialiser le gradient
+	consigne_vitesse_avance_filt = vitesse_avance_robot_filt;		// Permet dans le cas d'un blocage de r√©initialiser le gradient
+	offset_vitesse_avance = 3.2*Ind_perfo + 0.6;					// TODO mettre dans d√©code.c sur r√©ception de trame
 	offset_vitesse_rotation = 0.3*Ind_perfo + 0.1;					// TODO
 }
 
 //*******************************************************************************************
-//									Reset des pas cumulÈs
+//									Reset des pas cumul√©s
 //*******************************************************************************************
 
 void CAsservissement::Reset_Pas_Cumules(void)
 {
-// Reset des 2 registres de la chaÓne d'acquisisiton
+// Reset des 2 registres de la cha√Æne d'acquisisiton
 Application.m_roues.resetCodeurs();
-// Les mÈmoires pour le calcul de la position sont resetÈes
+// Les m√©moires pour le calcul de la position sont reset√©es
 distance_roue_D_prec = 0;
 distance_roue_G_prec = 0;
 
-// Les consignes relatives sont resetÈes
+// Les consignes relatives sont reset√©es
 distance_consigne = 0;
 angle_consigne = 0;
 
 }
 
 //*******************************************************************************************
-//								ArrÍt de la commande brutale
+//								Arr√™t de la commande brutale
 //*******************************************************************************************
 
 void CAsservissement::Stop_robot(void)
@@ -305,7 +307,7 @@ void CAsservissement::LectureCodeurCalculDistance(void)
 
 void CAsservissement::asservissement(void)
 {
-// Calcul de la convergence basÈe sur l'erreur entre les consignes et les mesures
+// Calcul de la convergence bas√©e sur l'erreur entre les consignes et les mesures
 
 if (ModeAsservissement == cMODE_DISTANCE_ANGLE)
 	{
@@ -323,7 +325,7 @@ if (ModeAsservissement == cMODE_DISTANCE_ANGLE)
 		if (compteur_convergence == compteur_max)
 			{
 			convergence_conf = 1;
-			Stop_robot();			// Commande nulle pour Èconomiser la batterie, ligne ‡ retirer si la piste n'est pas plane
+			Stop_robot();			// Commande nulle pour √©conomiser la batterie, ligne √† retirer si la piste n'est pas plane
 			}
 		else
 			{
@@ -334,7 +336,7 @@ if (ModeAsservissement == cMODE_DISTANCE_ANGLE)
 	else
 		{
 		convergence_conf = 0;
-		compteur_convergence = 0;	// Reset du Compteur de convergence dËs que l'on n'est plus dans les conditions
+		compteur_convergence = 0;	// Reset du Compteur de convergence d√®s que l'on n'est plus dans les conditions
 		}
 	}
 
@@ -354,7 +356,7 @@ else // Asservissement XY_AUTO...
 		if (compteur_convergence == compteur_max)
 			{
 			convergence_conf = 1;
-			Stop_robot();			// Commande nulle pour Èconomiser la batterie, ligne ‡ retirer si la piste n'est pas plane
+			Stop_robot();			// Commande nulle pour √©conomiser la batterie, ligne √† retirer si la piste n'est pas plane
 			}
 		else
 			{
@@ -365,20 +367,20 @@ else // Asservissement XY_AUTO...
 	else
 		{
 		convergence_conf = 0;
-		compteur_convergence = 0;	// Reset du Compteur de convergence dËs que l'on n'est plus dans les conditions
+		compteur_convergence = 0;	// Reset du Compteur de convergence d√®s que l'on n'est plus dans les conditions
 		}
 	}
 
 	
-if (convergence_conf == 0) // Pas la peine de calculer la commande si on a convergÈ => Terrain plat
+if (convergence_conf == 0) // Pas la peine de calculer la commande si on a converg√© => Terrain plat
 	{
 	//------------------------------------------------------------------------------------------
 	// Le Premier PI calcul une commande pour faire avancer ou reculer le robot
 	//------------------------------------------------------------------------------------------
-		// Si une des commandes est saturÈe on fige le terme intÈgral
+		// Si une des commandes est satur√©e on fige le terme int√©gral
 		if ((saturation_distance == 0) && (saturation_angle == 0) && (saturation_moteur_D == 0) && (saturation_moteur_G == 0))
 			{
-			int_terme_prec_distance = int_terme_distance; // MÈmoire z-1
+			int_terme_prec_distance = int_terme_distance; // M√©moire z-1
 			int_terme_distance = ki_distance * te * erreur_vitesse_avance + int_terme_prec_distance;
 			}
 
@@ -398,10 +400,10 @@ if (convergence_conf == 0) // Pas la peine de calculer la commande si on a conve
 	//-------------------------------------------------------------------------------------------
 	// Le second PI calcul une commande pour corriger l'angle du robot
 	//-------------------------------------------------------------------------------------------
-		// Attention : Seule la saturation du PI en angle doit pouvoir figer le terme intÈgral
+		// Attention : Seule la saturation du PI en angle doit pouvoir figer le terme int√©gral
 		if (saturation_angle == 0)
 			{
-			int_terme_prec_angle = int_terme_angle; // MÈmoire z-1
+			int_terme_prec_angle = int_terme_angle; // M√©moire z-1
 			int_terme_angle = ki_angle * te * erreur_vitesse_rotation + int_terme_prec_angle;
 			}
 	
@@ -419,7 +421,7 @@ if (convergence_conf == 0) // Pas la peine de calculer la commande si on a conve
 		cde_angle = saturation(cde_angle_ulim, cde_min, cde_max);
 	
 	//-------------------------------------------------------------------------------------------
-	// On fait la coordination des commandes selon le thÈorËme de superposition
+	// On fait la coordination des commandes selon le th√©or√®me de superposition
 	// + recalcul de la commande en distance pour prioriser la commande en angle
 	// + correction batterie et saturations
 	// + Diag de blocage
@@ -476,7 +478,7 @@ if (convergence_conf == 0) // Pas la peine de calculer la commande si on a conve
 	
 		cde_moteur_G = saturation(cde_moteur_G_ulim, cde_min, cde_max);
 
-	// Correction des zones mortes des moteurs par prÈcommande
+	// Correction des zones mortes des moteurs par pr√©commande
 		if (cde_moteur_D > 0)
 			{
 			cde_moteur_D += cde_offset_min_D;
@@ -485,7 +487,7 @@ if (convergence_conf == 0) // Pas la peine de calculer la commande si on a conve
 			{
 			cde_moteur_D -= cde_offset_min_D;
 			}
-		/* else ne rien faire : laisser la commande ‡ "0" */
+		/* else ne rien faire : laisser la commande √† "0" */
 	
 		if (cde_moteur_G > 0)
 			{
@@ -495,7 +497,7 @@ if (convergence_conf == 0) // Pas la peine de calculer la commande si on a conve
 			{
 			cde_moteur_G -= cde_offset_min_G;
 			}
-		/* else ne rien faire : laisser la commande ‡ "0" */
+		/* else ne rien faire : laisser la commande √† "0" */
 	
 		// Correction de la commande en fonction des fluctuations de la tension batterie.
 		
@@ -503,20 +505,20 @@ if (convergence_conf == 0) // Pas la peine de calculer la commande si on a conve
 		m_tension_batterie_filt_prec = m_tension_batterie_filt;
 		// Nico:mise en commentaire
 		//m_tension_batterie_filt = m_tension_batterie_filt_prec + k_batt * ((Application.m_capteurs.m_b_Mes_Vbat) - m_tension_batterie_filt_prec);
-        // Nico->Guigui : pour rÈcupÈrer la tension batterie, il faut faire "Application.m_capteurs.m_b_Mes_Vbat"
+        // Nico->Guigui : pour r√©cup√©rer la tension batterie, il faut faire "Application.m_capteurs.m_b_Mes_Vbat"
 		
-        // Correction de la commande de maniËre proportionnelle ‡ la variation de tension batterie avant saturation
+        // Correction de la commande de mani√®re proportionnelle √† la variation de tension batterie avant saturation
 		// Nico:mise en commentaire
 		//correction_ubatt = ubatt_nominale / m_tension_batterie_filt;
 		cde_moteur_G *= correction_ubatt;
 		cde_moteur_D *= correction_ubatt;
 	
-		// Nouvelle saturation aprËs correction batterie et anti zone morte
+		// Nouvelle saturation apr√®s correction batterie et anti zone morte
 		cde_moteur_G = saturation(cde_moteur_G, -100, 100);
 		cde_moteur_D = saturation(cde_moteur_D, -100, 100);
 
 		// Diag de blocage
-		//if ( (vitesse_avance_robot * cde_distance_recal) > 0) // On regarde si la commande et la vitesse sont de mÍme signe car par la suite on est en valeur abs, Èvite d'incrÈmenter le compteur durant le freinage
+		//if ( (vitesse_avance_robot * cde_distance_recal) > 0) // On regarde si la commande et la vitesse sont de m√™me signe car par la suite on est en valeur abs, √©vite d'incr√©menter le compteur durant le freinage
 			//{
 			if ( ((fabsf(vitesse_avance_robot) < seuil_vitesse_diag_blocage) && (fabsf(cde_distance_recal) > commande_min_diag_blocage)) || ((fabsf(vitesse_rotation_robot) < seuil_vitesse_diag_rotation) && (fabsf(cde_angle) > commande_min_diag_blocage)) )
 				{
@@ -527,12 +529,12 @@ if (convergence_conf == 0) // Pas la peine de calculer la commande si on a conve
 				else
 					{
 					diag_blocage = 1;
-					// Pour informer sur le CAN que l'asservissement ‡ des problËmes, sur encode.c on envoi convergence_conf ‡ 2
+					// Pour informer sur le CAN que l'asservissement √† des probl√®mes, sur encode.c on envoi convergence_conf √† 2
 					}
 				}
-			else // Pas de problËme de blocage
+			else // Pas de probl√®me de blocage
 				{
-				if ((compteur_diag_blocage > 0) && (diag_blocage == 0)) // && diag_blocage == 0 pour crÈer un Ètat piËge une fois le diag tiltÈ, la rÈinit ce fait sur un nouvel ordre de mvt
+				if ((compteur_diag_blocage > 0) && (diag_blocage == 0)) // && diag_blocage == 0 pour cr√©er un √©tat pi√®ge une fois le diag tilt√©, la r√©init ce fait sur un nouvel ordre de mvt
 					{
 					compteur_diag_blocage -= dec_diag_blocage;
 					}
@@ -546,7 +548,7 @@ if (convergence_conf == 0) // Pas la peine de calculer la commande si on a conve
 		if (diag_blocage == 1)
 			{
 			Stop_robot();
-			ModeAsservissement = cMODE_MANUEL; // Pour ne plus calculer le gÈnÈrateur de trajectoire
+			ModeAsservissement = cMODE_MANUEL; // Pour ne plus calculer le g√©n√©rateur de trajectoire
 			}
 		else
 			{
@@ -561,40 +563,40 @@ if (convergence_conf == 0) // Pas la peine de calculer la commande si on a conve
 //
 //					Calcul de la position absolue du robot V1.1
 //
-//		1.0 ValidÈ fonctionnellement le 01/03/08
+//		1.0 Valid√© fonctionnellement le 01/03/08
 //		1.1 Ajout du calculs des positions des points A et B
 //
-//		EntrÈes : Cumul des pas des codeurs D du robot
-//		Sorties : X, Y, Xa, Ya, Xb, Yb l'angle du robot (angle normalisÈ ]-pi; pi]),
-//		,la distance parcourue, les vitesses filtrÈes du robot (avance et rotation)
+//		Entr√©es : Cumul des pas des codeurs D du robot
+//		Sorties : X, Y, Xa, Ya, Xb, Yb l'angle du robot (angle normalis√© ]-pi; pi]),
+//		,la distance parcourue, les vitesses filtr√©es du robot (avance et rotation)
 //
 //
 //*************************************************************************************
 
 void CAsservissement::CalculXY (void)
 {
-// On ne prend que les pas rÈalisÈs entre deux appels de t‚che dans ddistance_roue_X
+// On ne prend que les pas r√©alis√©s entre deux appels de t√¢che dans ddistance_roue_X
 ddistance_roue_D = distance_roue_D - distance_roue_D_prec;
-distance_roue_D_prec = distance_roue_D; // Cette offset est remis ‡ 0 par Reset_Pas_Cumules()
+distance_roue_D_prec = distance_roue_D; // Cette offset est remis √† 0 par Reset_Pas_Cumules()
 
 ddistance_roue_G = distance_roue_G - distance_roue_G_prec;
-distance_roue_G_prec = distance_roue_G; // Cette offset est remis ‡ 0 par Reset_Pas_Cumules()
+distance_roue_G_prec = distance_roue_G; // Cette offset est remis √† 0 par Reset_Pas_Cumules()
 
-// On calcul les estimations ÈlÈmentaires de la distance et de la rotation rÈalisÈes par le robot
+// On calcul les estimations √©l√©mentaires de la distance et de la rotation r√©alis√©es par le robot
 ddistance_robot = (ddistance_roue_D + ddistance_roue_G)*0.5;
 dangle_robot = (ddistance_roue_D - ddistance_roue_G)*FACTEUR_CONV_DELTA_DIST_VERS_ANGLE; // 2pi/(pi*voie_robot) Conversion distance vers angle
 
-// On calcul la vitesse instantanÈe [cm/s] du robot
+// On calcul la vitesse instantan√©e [cm/s] du robot
 vitesse_avance_robot = ddistance_robot / te;
 vitesse_avance_robot_filt_prec = vitesse_avance_robot_filt;
 vitesse_avance_robot_filt = vitesse_avance_robot_filt_prec + k_filt_avance * (vitesse_avance_robot - vitesse_avance_robot_filt_prec);
 
-// On calcul la vitesse instantannÈe [rad/s] du robot
+// On calcul la vitesse instantann√©e [rad/s] du robot
 vitesse_rotation_robot = dangle_robot / te;
 vitesse_rotation_robot_filt_prec = vitesse_rotation_robot_filt;
 vitesse_rotation_robot_filt = vitesse_rotation_robot_filt_prec + k_filt_rotation * (vitesse_rotation_robot - vitesse_rotation_robot_filt_prec);
 
-// On calcul l'angle robot en cumulant les rotations ÈlÈmentaires et on le normalise ]-pi ; pi]
+// On calcul l'angle robot en cumulant les rotations √©l√©mentaires et on le normalise ]-pi ; pi]
 angle_robot = dangle_robot + angle_robot_prec;
 
 // On calcul la distance parcourue du robot
@@ -612,15 +614,15 @@ if (angle_robot <= -3.14)
 	}
 angle_robot_prec = angle_robot;
 
-// On calcul cos(angle_robot) et sin(angle_robot) => temp afin d'Èviter de faire plusieurs fois le calcul pas la suite
+// On calcul cos(angle_robot) et sin(angle_robot) => temp afin d'√©viter de faire plusieurs fois le calcul pas la suite
 temp_cos_angle_robot = cos(angle_robot);
 temp_sin_angle_robot = sin(angle_robot);
 
-// On calcul les dÈplacements ÈlÈmentaires en X et Y
+// On calcul les d√©placements √©l√©mentaires en X et Y
 dX_robot = ddistance_robot*temp_cos_angle_robot;
 dY_robot = ddistance_robot*temp_sin_angle_robot;
 
-// On calcul la position du robot en cumulant les dÈplacements ÈlÈmentaires
+// On calcul la position du robot en cumulant les d√©placements √©l√©mentaires
 X_robot = dX_robot + X_robot_prec;
 X_robot_prec = X_robot;
 
@@ -637,13 +639,13 @@ Yb = Y_robot - Offset_b*temp_sin_angle_robot;
 
 //*************************************************************************************
 //
-//							GÈnÈrateur de trajectoire V1.3
+//							G√©n√©rateur de trajectoire V1.3
 //
-//		1. EntrÈes : CoordonnÈes absolues cible X_consigne, Y_consigne ou distance et angle
+//		1. Entr√©es : Coordonn√©es absolues cible X_consigne, Y_consigne ou distance et angle
 //		2. Sorties : Erreurs des boucles d'asservissement en vitesse de distance et en vitesse angulaire
 //
 //		1.2 Recalcul de la vitesse d'avance VS vitesse de rotation
-//		1.3 Ajout du switch sur la position ‡ asservir (X,Y , Xa,Ya ou Xb,Yb)
+//		1.3 Ajout du switch sur la position √† asservir (X,Y , Xa,Ya ou Xb,Yb)
 //
 //*************************************************************************************
 
@@ -651,14 +653,14 @@ void CAsservissement::Generateur_trajectoire (void)
 {
 // Normalisation de l'angle de consigne par le principe des 4 cadrans
 //
-//	   Ó y
+//	   √Æ y
 //	   |
 //	 3 | 1
 //	--------> x
 //	 4 | 2
 //
 
-if ((ModeAsservissement == cMODE_XY_AUTO) || (ModeAsservissement == cMODE_XY_AUTO_A) ||(ModeAsservissement == cMODE_XY_AUTO_B || (ModeAsservissement == cMODE_XY_TETA))) // asservissement polaire ou polaire dÈcalÈ
+if ((ModeAsservissement == cMODE_XY_AUTO) || (ModeAsservissement == cMODE_XY_AUTO_A) ||(ModeAsservissement == cMODE_XY_AUTO_B || (ModeAsservissement == cMODE_XY_TETA))) // asservissement polaire ou polaire d√©cal√©
 	{
 
 	switch (ModeAsservissement)
@@ -716,7 +718,7 @@ if ((ModeAsservissement == cMODE_XY_AUTO) || (ModeAsservissement == cMODE_XY_AUT
 			}
 		}
 
-	// On calcul la diffÈrence entre l'angle consigne et l'angle robot puis on dÈternime le sens de rotation le plus court
+	// On calcul la diff√©rence entre l'angle consigne et l'angle robot puis on d√©ternime le sens de rotation le plus court
 
 	erreur_angle = angle_consigne - angle_robot;
 	if (erreur_angle > 3.14)
@@ -728,13 +730,13 @@ if ((ModeAsservissement == cMODE_XY_AUTO) || (ModeAsservissement == cMODE_XY_AUT
 		erreur_angle += 6.28;
 		}
 	
-	// On dÈtermine si le robot doit avancer ou reculer pour atteindre le point cible
+	// On d√©termine si le robot doit avancer ou reculer pour atteindre le point cible
 	
-	if (fabsf(erreur_angle) > 1.57) // Le point est derriËre le robot
+	if (fabsf(erreur_angle) > 1.57) // Le point est derri√®re le robot
 		{
-		erreur_distance = -erreur_distance;	// On change le signe de l'erreur pour faire marche arriËre
+		erreur_distance = -erreur_distance;	// On change le signe de l'erreur pour faire marche arri√®re
 		
-		if (erreur_angle >= 0)		// On change de repËre pour l'erreur de l'angle
+		if (erreur_angle >= 0)		// On change de rep√®re pour l'erreur de l'angle
 			{
 			erreur_angle -= 3.14;
 			}
@@ -746,7 +748,7 @@ if ((ModeAsservissement == cMODE_XY_AUTO) || (ModeAsservissement == cMODE_XY_AUT
 
 	// A ce stade il faut corriger l'erreur angle afin de ne pas avoir un robot qui danse autour du point XY consigne
 
-	// Si le robot est proche du point de convergence et dans l'axe on impose une erreur d'angle nulle, on dÈsactive la stratÈgie si l'erreur en distance devient trop importante
+	// Si le robot est proche du point de convergence et dans l'axe on impose une erreur d'angle nulle, on d√©sactive la strat√©gie si l'erreur en distance devient trop importante
 	if ((fabs(erreur_distance) < 2) && (fabsf(erreur_angle) < 3*seuil_conv_angle))
 		{
 		verouillage_approche = 1; // Set verrouillage
@@ -759,7 +761,7 @@ if ((ModeAsservissement == cMODE_XY_AUTO) || (ModeAsservissement == cMODE_XY_AUT
 	
 	if (verouillage_approche == 1)
 		{
-		erreur_angle = 0; // Si verrouillage, le robot est ‡ peu prËs dans l'axe, reste ‡ avancer un peu !
+		erreur_angle = 0; // Si verrouillage, le robot est √† peu pr√®s dans l'axe, reste √† avancer un peu !
 		}
 	}
 
@@ -769,9 +771,9 @@ else	// asservissement distance, angle
 	// Calcul des erreurs de distance et d'angle
 	
 	erreur_distance = distance_consigne - distance_robot;
-	erreur_angle = angle_consigne - angle_robot; // Erreur brute ‡ ce stade il faut la corriger selon le sens de rotation le plus court
+	erreur_angle = angle_consigne - angle_robot; // Erreur brute √† ce stade il faut la corriger selon le sens de rotation le plus court
 
-	// On dÈtermine le sens de rotation le plus court avec la gestion du modulo de l'angle du robot
+	// On d√©termine le sens de rotation le plus court avec la gestion du modulo de l'angle du robot
 
 	if (erreur_angle > 3.14)
 		{
@@ -783,7 +785,7 @@ else	// asservissement distance, angle
 		}
 	}
 	
-	// On calcul la consigne de vitesse de rotation en fonction de l'erreur d'angle (Forumule thÈorique v = sqrt(2*Accel*erreur) pour mvt accel uniforme)
+	// On calcul la consigne de vitesse de rotation en fonction de l'erreur d'angle (Forumule th√©orique v = sqrt(2*Accel*erreur) pour mvt accel uniforme)
 	consigne_vitesse_rotation_base = Calc_carto_cur(erreur_angle, conv_erreur_angle_vitesse_cur_x, conv_erreur_angle_vitesse_1_cur, NBRE_POINTS_CARTO_ERREUR);
 	consigne_vitesse_rotation_perfo = Calc_carto_cur(erreur_angle, conv_erreur_angle_vitesse_cur_x, conv_erreur_angle_vitesse_2_cur, NBRE_POINTS_CARTO_ERREUR);
 	// Interpolation entre les deux courbes base et perfo
@@ -791,16 +793,16 @@ else	// asservissement distance, angle
 	// Limitation de vitesse au besoin
 	consigne_vitesse_rotation = saturation(consigne_vitesse_rotation, -vitesse_rotation_max, vitesse_rotation_max);
 	
-	// On calcul la consigne de vitesse d'avance en fonction de l'erreur de distance (Forumule thÈorique v = sqrt(2*Accel*erreur) pour mvt accel uniforme)
+	// On calcul la consigne de vitesse d'avance en fonction de l'erreur de distance (Forumule th√©orique v = sqrt(2*Accel*erreur) pour mvt accel uniforme)
 	consigne_vitesse_avance_base = Calc_carto_cur(erreur_distance, conv_erreur_dist_vitesse_cur_x, conv_erreur_dist_vitesse_1_cur, NBRE_POINTS_CARTO_ERREUR);
 	consigne_vitesse_avance_perfo = Calc_carto_cur(erreur_distance, conv_erreur_dist_vitesse_cur_x, conv_erreur_dist_vitesse_2_cur, NBRE_POINTS_CARTO_ERREUR);
 	// Interpolation entre les deux courbes base et perfo
 	consigne_vitesse_avance = consigne_vitesse_avance_base * (1 - Ind_perfo) + consigne_vitesse_avance_perfo * Ind_perfo;
 	consigne_vitesse_avance = saturation(consigne_vitesse_avance, -vitesse_avance_max, vitesse_avance_max);
 	
-	// Diminution de la vitesse d'avance si l'erreur d'angle est importante => PrioritÈ rotation sur l'avance mais pas trop pour faire des courbes
+	// Diminution de la vitesse d'avance si l'erreur d'angle est importante => Priorit√© rotation sur l'avance mais pas trop pour faire des courbes
 	//facteur_correction_avance_angle = Cal_carto_cur(erreur_angle, facteur_cor_vitesse_avance_cur_x, facteur_cor_vitesse_avance_cur, NBRE_POINTS_CARTO_ERREUR);
-	// Le calcul de la carto de correction semble avoir un problËme... TO CHECK... On utlise la vieille mÈthode qui marche de 2012.
+	// Le calcul de la carto de correction semble avoir un probl√®me... TO CHECK... On utlise la vieille m√©thode qui marche de 2012.
 	if (erreur_angle >= 0)
 		{
 		facteur_correction_avance_angle = -0.8 * erreur_angle + 1;
@@ -867,14 +869,14 @@ else	// asservissement distance, angle
 			}
 		}	
 		
-	// Calcul des erreurs de boucle pour les rÈgulateurs
+	// Calcul des erreurs de boucle pour les r√©gulateurs
 	erreur_vitesse_avance = consigne_vitesse_avance_filt - vitesse_avance_robot_filt;
 	erreur_vitesse_rotation = consigne_vitesse_rotation_filt - vitesse_rotation_robot_filt;
 
 }
 
 // -----------------------------------------------------------------------------------------------------------------------
-// Fonction qui regroupe tous les appels pour l'asservissement en fonction du mode de dÈplacement
+// Fonction qui regroupe tous les appels pour l'asservissement en fonction du mode de d√©placement
 
 void CAsservissement::CalculsMouvementsRobots(void)
 {
@@ -906,12 +908,12 @@ void CAsservissement::CalculsMouvementsRobots(void)
 		
 		case cMODE_XY_TETA :
 			Generateur_trajectoire(); 		// Actions identiques au mode XY_AUTO dans un premier temps
-			asservissement();				// Fait tomber le flag de convergence la premiËre fois et le compteur_convergence est ‡ 0		
+			asservissement();				// Fait tomber le flag de convergence la premi√®re fois et le compteur_convergence est √† 0		
 			if (compteur_convergence >= 1)	// On est en mode XY_TETA, attendre la convergence pour basculer en mode distance angle /!\ on regarde le compteur et non convergence_conf afin de ne pas avoir deux fronts de convergence_conf
 				{
 					Reset_Pas_Cumules();							// Reset du Feedback
 					distance_consigne = 0;							// Ne pas avancer ou reculer
-					angle_consigne = TETA_consigne;					// Mais tourner jusqu'‡ l'angle TETA_consigne
+					angle_consigne = TETA_consigne;					// Mais tourner jusqu'√† l'angle TETA_consigne
 					ModeAsservissement = cMODE_DISTANCE_ANGLE;		// On bascule de mode de fonctionnement
 				}			
 		break;
@@ -973,33 +975,33 @@ float  CAsservissement::BornageAngle(float angle){
 // ************************************************************************************
 
 // ----------------------------------------------------------
-// DÈcodage de la trame et affectation des variables
+// D√©codage de la trame et affectation des variables
 void CAsservissement::CommandeMouvementXY(float x, float y)
 {
 	diag_blocage = 0;
 	compteur_diag_blocage = 0;
-	Reset_Pas_Cumules();	// Nouvelle commande -> nouvel origine relatif pour Èviter les dÈbordements aprËs plusieurs appels ( ‡ mettre avant l'Ècrasement des consignes)
-	Initialisation_PID();	// Permet de ne pas avoir l'effet mÈmoire de la commande du mouvement prÈcÈdent
+	Reset_Pas_Cumules();	// Nouvelle commande -> nouvel origine relatif pour √©viter les d√©bordements apr√®s plusieurs appels ( √† mettre avant l'√©crasement des consignes)
+	Initialisation_PID();	// Permet de ne pas avoir l'effet m√©moire de la commande du mouvement pr√©c√©dent
 	X_consigne = x;
 	Y_consigne = y;
 	ModeAsservissement = cMODE_XY_AUTO;	
 }
 
 // -------------------------------------
-// DÈcodage de la trame et affectation des variables
+// D√©codage de la trame et affectation des variables
 void CAsservissement::CommandeMouvementDistanceAngle(float distance, float angle)
 {
 	diag_blocage = 0;
 	compteur_diag_blocage = 0;
-	Reset_Pas_Cumules();	// Nouvelle commande -> nouvel origine relatif pour Èviter les dÈbordements aprËs plusieurs appels ( ‡ mettre avant l'Ècrasement des consignes)
-	Initialisation_PID();	// Permet de ne pas avoir l'effet mÈmoire de la commande du mouvement prÈcÈdent
+	Reset_Pas_Cumules();	// Nouvelle commande -> nouvel origine relatif pour √©viter les d√©bordements apr√®s plusieurs appels ( √† mettre avant l'√©crasement des consignes)
+	Initialisation_PID();	// Permet de ne pas avoir l'effet m√©moire de la commande du mouvement pr√©c√©dent
 	distance_consigne = distance;
 	angle_consigne = BornageAngle(angle);
 	ModeAsservissement = cMODE_DISTANCE_ANGLE;
 } 
 
 // -------------------------------------
-// DÈcodage de la trame et affectation des variables
+// D√©codage de la trame et affectation des variables
 void CAsservissement::CommandeManuelle(float cde_G, float cde_D)
 {
 	diag_blocage = 0;
@@ -1010,26 +1012,26 @@ void CAsservissement::CommandeManuelle(float cde_G, float cde_D)
 }
 
 // ----------------------------------------------------------
-// DÈcodage de la trame et affectation des variables 
+// D√©codage de la trame et affectation des variables 
 void CAsservissement::CommandeMouvementXY_A(float x, float y)
 {
 	diag_blocage = 0;
 	compteur_diag_blocage = 0;
-	Reset_Pas_Cumules();	// Nouvelle commande -> nouvel origine relatif pour Èviter les dÈbordements aprËs plusieurs appels ( ‡ mettre avant l'Ècrasement des consignes)
-	Initialisation_PID();	// Permet de ne pas avoir l'effet mÈmoire de la commande du mouvement prÈcÈdent
+	Reset_Pas_Cumules();	// Nouvelle commande -> nouvel origine relatif pour √©viter les d√©bordements apr√®s plusieurs appels ( √† mettre avant l'√©crasement des consignes)
+	Initialisation_PID();	// Permet de ne pas avoir l'effet m√©moire de la commande du mouvement pr√©c√©dent
 	X_consigne = x;
 	Y_consigne = y;
 	ModeAsservissement = cMODE_XY_AUTO_A;	
 }
 
 // ----------------------------------------------------------
-// DÈcodage de la trame et affectation des variables
+// D√©codage de la trame et affectation des variables
 void CAsservissement::CommandeMouvementXY_B(float x, float y) 
 {
 	diag_blocage = 0;
 	compteur_diag_blocage = 0;
-	Reset_Pas_Cumules();	// Nouvelle commande -> nouvel origine relatif pour Èviter les dÈbordements aprËs plusieurs appels ( ‡ mettre avant l'Ècrasement des consignes)
-	Initialisation_PID();	// Permet de ne pas avoir l'effet mÈmoire de la commande du mouvement prÈcÈdent
+	Reset_Pas_Cumules();	// Nouvelle commande -> nouvel origine relatif pour √©viter les d√©bordements apr√®s plusieurs appels ( √† mettre avant l'√©crasement des consignes)
+	Initialisation_PID();	// Permet de ne pas avoir l'effet m√©moire de la commande du mouvement pr√©c√©dent
 	X_consigne = x;
 	Y_consigne = y;
 	ModeAsservissement = cMODE_XY_AUTO_B;	
@@ -1037,7 +1039,7 @@ void CAsservissement::CommandeMouvementXY_B(float x, float y)
 
 
 // -------------------------------------
-// DÈcodage de la trame et affectation des variables
+// D√©codage de la trame et affectation des variables
 void CAsservissement::CommandeVitesseMouvement(float vit_avance, float vit_angle) 
 {
 	vitesse_avance_max = vit_avance;
@@ -1045,20 +1047,20 @@ void CAsservissement::CommandeVitesseMouvement(float vit_avance, float vit_angle
 }
 
 // ----------------------------------------------------------
-// DÈcodage de la trame et affectation des variables
+// D√©codage de la trame et affectation des variables
 void CAsservissement::CommandeMouvementXY_TETA(float x, float y, float teta) 
 {
 	diag_blocage = 0;
 	compteur_diag_blocage = 0;
-	Reset_Pas_Cumules();	// Nouvelle commande -> nouvel origine relatif pour Èviter les dÈbordements aprËs plusieurs appels ( ‡ mettre avant l'Ècrasement des consignes)
-	Initialisation_PID();	// Permet de ne pas avoir l'effet mÈmoire de la commande du mouvement prÈcÈdent
+	Reset_Pas_Cumules();	// Nouvelle commande -> nouvel origine relatif pour √©viter les d√©bordements apr√®s plusieurs appels ( √† mettre avant l'√©crasement des consignes)
+	Initialisation_PID();	// Permet de ne pas avoir l'effet m√©moire de la commande du mouvement pr√©c√©dent
 	X_consigne = x;
 	Y_consigne = y;
 	TETA_consigne = teta;
 	ModeAsservissement = cMODE_XY_TETA;
 }
 // -----------------------------------------------------------------------------------------------------------------------
-// Fonction qui initialise la position du robot avec des valeurs donnÈes
+// Fonction qui initialise la position du robot avec des valeurs donn√©es
 void CAsservissement::setPosition_XYTeta(float x, float y, float teta)
 {
   X_robot = x;
@@ -1067,5 +1069,11 @@ void CAsservissement::setPosition_XYTeta(float x, float y, float teta)
   Y_robot_prec = y;
   angle_robot = teta;
   angle_robot_prec=teta;
-}	
+}
+
+void CAsservissement::setIndiceSportivite(float idx)
+{
+  Ind_perfo=idx;
+}
+
 

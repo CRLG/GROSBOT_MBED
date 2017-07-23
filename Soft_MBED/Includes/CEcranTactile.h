@@ -8,9 +8,9 @@
 #include "MessagerieEcranTactile.h"
 
 
-//! Enuméré des codes commandes de l'écran vers le MBED
+//! EnumÃ©rÃ© des codes commandes de l'Ã©cran vers le MBED
 typedef enum {
-    // Générique pour toutes les années
+    // GÃ©nÃ©rique pour toutes les annÃ©es
     CMDE_INVALIDE = 0,
     CMDE_CHOIX_EQUIPE,
     CMDE_CHOIX_NUMERO_STRATEGIE,
@@ -35,7 +35,7 @@ typedef enum {
     CMDE_TEST_ACTIONNEURS,
     CMDE_INIT_ACTIONNEURS,
 
-    // Spécifique année 2014
+    // SpÃ©cifique annÃ©e 2014
     CMDE_PILOTAGE_ELECTROVANNE,
     CMDE_PILOTAGE_SERVO_NERF,
     CMDE_PILOTAGE_SERVO_KMAR,
@@ -99,8 +99,10 @@ public :
 	//! Trames
 	CTrameEcranTactile_ECRAN_ETAT_CAPTEURS_1    m_ETAT_CAPTEURS_1;
 	CTrameEcranTactile_ECRAN_ETAT_CAPTEURS_2    m_ETAT_CAPTEURS_2;
+#ifndef _ECRAN_LABOTBOX_
 	CTrameEcranTactile_ECRAN_ETAT_MATCH         m_ETAT_MATCH;
 	CTrameEcranTactile_ECRAN_ETAT_ECRAN         m_ETAT_ECRAN;
+#endif
     CTrameEcranTactile_ECRAN_ETAT_TELEMETRE     m_ETAT_TELEMETRE;
     CTrameEcranTactile_ECRAN_ETAT_CODEURS_1_2   m_ETAT_CODEURS_1_2;
     CTrameEcranTactile_ECRAN_ETAT_CODEURS_3_4   m_ETAT_CODEURS_3_4;
@@ -118,4 +120,5 @@ private :
 
 
 #endif
+
 

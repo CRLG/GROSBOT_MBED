@@ -1,5 +1,5 @@
 // FICHIER GENERE PAR L'OUTIL MESS2C_robot V1.0
-// Date de génération : Mon May 12 23:18:17 2014
+// Date de gÃ©nÃ©ration : Mon May 12 23:18:17 2014
 // PLATEFORME CIBLE : MINIBOT_CAMERA
 /*! \file MessagerieCamera.cpp
 	\brief Fichier qui contient toutes les classes messageries heritees de la classe CTrameCAN
@@ -32,7 +32,7 @@ CTrameCamera_CAM_RESULT_TRACKING::CTrameCamera_CAM_RESULT_TRACKING()
    */
 void CTrameCamera_CAM_RESULT_TRACKING::Decode(tStructTrameBruteCamera *trameRecue)
 {
-  long lDonnee_temp = 0; // utilisé si besoin pour le décodage des données en flottant
+  long lDonnee_temp = 0; // utilisÃ© si besoin pour le dÃ©codage des donnÃ©es en flottant
 
    // Decode les signaux de la trame
    Etat_Tracking = ( ( ((unsigned char)(trameRecue->Data[4])) & 0xFF) );
@@ -91,3 +91,4 @@ tStructTrameBruteCamera* CTrameCamera_CAM_MODE_TRACKING_COLOR::Encode(void)
 
 
 /*! @} */
+

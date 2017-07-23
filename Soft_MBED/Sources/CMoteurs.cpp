@@ -55,25 +55,25 @@ void CMoteurs::CommandeVitesse(unsigned char num_mot, float vitesse)
       m_cde_mot_2 = vitesse;    
     break;
     case MOTEUR_3 : 
-        if (m_cde_mot_3 != vitesse) {  // Pas de dialogue si la consigne n'a pas changé
+        if (m_cde_mot_3 != vitesse) {  // Pas de dialogue si la consigne n'a pas changÃ©
             CommandeVitesse_3(vitesse);
             m_cde_mot_3 = vitesse;
         }    
     break;
     case MOTEUR_4 : 
-        if (m_cde_mot_4 != vitesse) {  // Pas de dialogue si la consigne n'a pas changé
+        if (m_cde_mot_4 != vitesse) {  // Pas de dialogue si la consigne n'a pas changÃ©
             CommandeVitesse_4(vitesse);
             m_cde_mot_4 = vitesse;
         }    
     break;
     case MOTEUR_5 : 
-        if (m_cde_mot_5 != vitesse) {  // Pas de dialogue si la consigne n'a pas changé
+        if (m_cde_mot_5 != vitesse) {  // Pas de dialogue si la consigne n'a pas changÃ©
             CommandeVitesse_5(vitesse);
             m_cde_mot_5 = vitesse;
-        }    
+        }
     break;
     case MOTEUR_6 : 
-        if (m_cde_mot_6 != vitesse) {  // Pas de dialogue si la consigne n'a pas changé
+        if (m_cde_mot_6 != vitesse) {  // Pas de dialogue si la consigne n'a pas changÃ©
             CommandeVitesse_6(vitesse);
             m_cde_mot_6 = vitesse;
         }    
@@ -212,6 +212,7 @@ void CMoteurs::CommandeVitesse_6(float vitesse)
   buff[3] =  buff[0] + buff[1] + buff[2];
   _i2c.write(ADRESSE_I2C_dsPIC2, buff, 4);
 }
+
 
 
 

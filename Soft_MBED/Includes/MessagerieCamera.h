@@ -1,5 +1,5 @@
 // FICHIER GENERE PAR L'OUTIL MESS2C_robot V1.0
-// Date de génération : Mon May 12 23:18:17 2014
+// Date de gÃ©nÃ©ration : Mon May 12 23:18:17 2014
 // PLATEFORME CIBLE : MINIBOT_CAMERA
 /*************************************************************************************/
 /*! \file MessagerieCamera.h
@@ -20,7 +20,7 @@
 #include "CTrameCamera.h"
 
 
-// Enumérés, defines, ...
+// EnumÃ©rÃ©s, defines, ...
 #define ID_CAM_RESULT_TRACKING 0x20
 #define ID_CAM_MODE_TRACKING_COLOR 0x10
 
@@ -73,4 +73,5 @@ public :
 
 #endif
 /*! @} */
+
 

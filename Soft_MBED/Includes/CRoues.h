@@ -8,7 +8,7 @@
 #define FREQ_MOTEUR_ROUES   20000
 
 // -----------------------------
-//! Classe de gestion des options d'exécution passees en ligne de commande
+//! Classe de gestion des options d'exÃ©cution passees en ligne de commande
 class CRoues {
 public :
 	//! Memorise la commande des moteurs
@@ -34,4 +34,5 @@ private :
 
 
 #endif
+
 

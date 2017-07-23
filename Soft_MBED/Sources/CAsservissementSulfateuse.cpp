@@ -1,14 +1,14 @@
 //			Asservissement 2014
 //
-//	Modifications à valider ou calibrer :
+//	Modifications Ã  valider ou calibrer :
 //
-//	Diag de blocage à calibrer
+//	Diag de blocage Ã  calibrer
 //	Calcul du coeff facteur_correction_avance_angle ne fonctionne pas correctement en passant pas la carto ?
-//	Correction batterie à valider
-//	Mouvement XY_TETA à valider
+//	Correction batterie Ã  valider
+//	Mouvement XY_TETA Ã  valider
 //	Initialisation des zones mortes suppr (en commentaire)
-//	Flag de convergence rapide à valider
-//	Todo : Diag de blocage par écart de boucle ?
+//	Flag de convergence rapide Ã  valider
+//	Todo : Diag de blocage par Ã©cart de boucle ?
 
 /*! \file CAsservissementSulfateuse.cpp
 	\brief Classe qui contient toute l'application
@@ -87,6 +87,7 @@ float CAsservissementSulfateuse::SAT(float Inp_max, float Inp_min, float Inp)
 {
 	return 	min(Inp_max,max(Inp,Inp_min));
 }
+
 
 
 

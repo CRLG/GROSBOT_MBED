@@ -1,5 +1,5 @@
 // FICHIER GENERE PAR L'OUTIL MESS2C_robot V1.0
-// Date de gÈnÈration : Tue May 05 22:19:15 2015
+// Date de g√©n√©ration : Tue May 05 22:19:15 2015
 // PLATEFORME CIBLE : MINIBOT
 /*************************************************************************************/
 /*! \file MessagerieLaBotBox.h
@@ -20,7 +20,7 @@
 #include "CTrameLaBotBox.h"
 
 
-// EnumÈrÈs, defines, ...
+// Enum√©r√©s, defines, ...
 #define ID_ELECTROBOT_CDE_SERVOS_SD20 0x53
 #define ID_ELECTROBOT_CDE_SERVOS_AX 0x52
 #define ID_ELECTROBOT_CDE_MOTEURS 0x50
@@ -44,6 +44,8 @@
 #define ID_ELECTROBOT_ETAT_CODEURS_3_4 0x31
 #define ID_ELECTROBOT_ETAT_CAPTEURS_2 0x20
 #define ID_ELECTROBOT_ETAT_CAPTEURS_1 0x10
+#define ID_ETAT_RACK 0x154
+#define ID_ELECTROBOT_COLOR_SENSOR 0x21
 
 #define DLC_ELECTROBOT_CDE_SERVOS_SD20 5
 #define DLC_ELECTROBOT_CDE_SERVOS_AX 5
@@ -68,6 +70,8 @@
 #define DLC_ELECTROBOT_ETAT_CODEURS_3_4 8
 #define DLC_ELECTROBOT_ETAT_CAPTEURS_2 8
 #define DLC_ELECTROBOT_ETAT_CAPTEURS_1 8
+#define DLC_ETAT_RACK 8
+#define DLC_ELECTROBOT_COLOR_SENSOR 6
 
 #define BRUTE2PHYS_valeur_commande_sd20(val) ( ((float)val * (1.000000)) + (0.000000) ) 
 #define PHYS2BRUTE_valeur_commande_sd20(val) (unsigned short)( (val - (0.000000)) / (1.000000) ) 
@@ -259,7 +263,16 @@
 #define PHYS2BRUTE_Eana2(val) (unsigned char)( (val - (0.000000)) / (0.100000) ) 
 #define BRUTE2PHYS_Eana1(val) ( ((float)val * (0.100000)) + (0.000000) ) 
 #define PHYS2BRUTE_Eana1(val) (unsigned char)( (val - (0.000000)) / (0.100000) ) 
-
+#define BRUTE2PHYS_rack_reserve(val) ( ((float)val * (1.000000)) + (0.000000) )
+#define PHYS2BRUTE_rack_reserve(val) (short)( (val - (0.000000)) / (1.000000) )
+#define BRUTE2PHYS_rack_modeAsservissement(val) ( ((float)val * (1.000000)) + (0.000000) )
+#define PHYS2BRUTE_rack_modeAsservissement(val) (unsigned char)( (val - (0.000000)) / (1.000000) )
+#define BRUTE2PHYS_rack_cde_moteur(val) ( ((float)val * (1.000000)) + (0.000000) )
+#define PHYS2BRUTE_rack_cde_moteur(val) (short)( (val - (0.000000)) / (1.000000) )
+#define BRUTE2PHYS_rack_consigne_moteur(val) ( ((float)val * (1.000000)) + (0.000000) )
+#define PHYS2BRUTE_rack_consigne_moteur(val) (short)( (val - (0.000000)) / (1.000000) )
+#define BRUTE2PHYS_rack_convergence(val) ( ((float)val * (1.000000)) + (0.000000) )
+#define PHYS2BRUTE_rack_convergence(val) (unsigned char)( (val - (0.000000)) / (1.000000) )
 
 // -----------------------------
 //! Classe de base pour les trames CAN
@@ -611,7 +624,90 @@ public :
 
 
 
+// Enum√©r√©s, defines, ...
+#define ID_ECRAN_LBB_ETAT_ECRAN 0x91
+#define ID_ECRAN_LBB_ETAT_MATCH 0x41
+
+#define DLC_ECRAN_LBB_ETAT_ECRAN 4
+#define DLC_ECRAN_LBB_ETAT_MATCH 3
+/*
+#define BRUTE2PHYS_Valeur(val) ( ((float)val * (1.000000)) + (0.000000) )
+#define PHYS2BRUTE_Valeur(val) (short)( (val - (0.000000)) / (1.000000) )
+#define BRUTE2PHYS_CodeCommande(val) ( ((float)val * (1.000000)) + (0.000000) )
+#define PHYS2BRUTE_CodeCommande(val) (unsigned short)( (val - (0.000000)) / (1.000000) )
+#define BRUTE2PHYS_ObstacleDetecte(val) ( ((float)val * (1.000000)) + (0.000000) )
+#define PHYS2BRUTE_ObstacleDetecte(val) (unsigned char)( (val - (0.000000)) / (1.000000) )
+#define BRUTE2PHYS_DiagBlocage(val) ( ((float)val * (1.000000)) + (0.000000) )
+#define PHYS2BRUTE_DiagBlocage(val) (unsigned char)( (val - (0.000000)) / (1.000000) )
+#define BRUTE2PHYS_ConvergenceAsserv(val) ( ((float)val * (1.000000)) + (0.000000) )
+#define PHYS2BRUTE_ConvergenceAsserv(val) (unsigned char)( (val - (0.000000)) / (1.000000) )
+#define BRUTE2PHYS_ModeFonctionnement(val) ( ((float)val * (1.000000)) + (0.000000) )
+#define PHYS2BRUTE_ModeFonctionnement(val) (unsigned char)( (val - (0.000000)) / (1.000000) )
+#define BRUTE2PHYS_CouleurEquipe(val) ( ((float)val * (1.000000)) + (0.000000) )
+#define PHYS2BRUTE_CouleurEquipe(val) (unsigned char)( (val - (0.000000)) / (1.000000) )
+#define BRUTE2PHYS_TempsMatch(val) ( ((float)val * (1.000000)) + (0.000000) )
+#define PHYS2BRUTE_TempsMatch(val) (unsigned char)( (val - (0.000000)) / (1.000000) )
+*/
+// -----------------------------
+//! Classe de base pour les trames CAN
+class CTrameLaBotBox_ECRAN_ETAT_ECRAN : public CTrameLaBotBox {
+public :
+	//! Les signaux de la messagerie
+	short Valeur;
+	unsigned short CodeCommande;
+
+	CTrameLaBotBox_ECRAN_ETAT_ECRAN();
+	void Decode(tStructTrameLaBotBox* trameRecue);
+};
+
+// -----------------------------
+//! Classe de base pour les trames CAN
+class CTrameLaBotBox_ECRAN_ETAT_MATCH : public CTrameLaBotBox {
+public :
+	//! Les signaux de la messagerie
+	unsigned char ObstacleDetecte;
+	unsigned char DiagBlocage;
+	unsigned char ConvergenceAsserv;
+	unsigned char ModeFonctionnement;
+	unsigned char CouleurEquipe;
+	unsigned char TempsMatch;
+
+	CTrameLaBotBox_ECRAN_ETAT_MATCH();
+	tStructTrameLaBotBox* Encode(void);
+};
+
+
+// -----------------------------
+//! Classe de base pour les trames CAN
+class CTrameLaBotBox_ETAT_RACK : public CTrameLaBotBox {
+public :
+	//! Les signaux de la messagerie
+	short rack_reserve;
+	unsigned char rack_modeAsservissement;
+	short rack_cde_moteur;
+	short rack_consigne_moteur;
+	unsigned char rack_convergence;
+
+	CTrameLaBotBox_ETAT_RACK();
+	tStructTrameLaBotBox* Encode(void);
+};
+
+// -----------------------------
+//! Classe de base pour les trames CAN
+class CTrameLaBotBox_ELECTROBOT_COLOR_SENSOR : public CTrameLaBotBox {
+public :
+	//! Les signaux de la messagerie
+	short R;
+	short G;
+	short B;
+
+	CTrameLaBotBox_ELECTROBOT_COLOR_SENSOR();
+	tStructTrameLaBotBox* Encode(void);
+};
+
+
 
 #endif
 /*! @} */
+
 

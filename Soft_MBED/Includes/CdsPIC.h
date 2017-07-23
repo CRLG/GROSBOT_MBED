@@ -68,11 +68,11 @@ typedef enum {
 
 
 // -----------------------------
-//! Classe de gestion des options d'exécution passees en ligne de commande
+//! Classe de gestion des options d'exÃ©cution passees en ligne de commande
 class CdsPIC {
 public :
-	//static int ReadRegister(void);	// TODO : mettre les bons paramètres
-	//static int WriteRegister(void); // TODO : mettre les bons paramètres
+	//static int ReadRegister(void);	// TODO : mettre les bons paramÃ¨tres
+	//static int WriteRegister(void); // TODO : mettre les bons paramÃ¨tres
 
 private : 
 
@@ -80,4 +80,5 @@ private :
 
 
 #endif
+
 

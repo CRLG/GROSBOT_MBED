@@ -1,5 +1,5 @@
 // FICHIER GENERE PAR L'OUTIL MESS2C_robot V1.0
-// Date de génération : Thu May 29 18:15:36 2014
+// Date de gÃ©nÃ©ration : Thu May 29 18:15:36 2014
 // PLATEFORME CIBLE : MINIBOT_ECRAN_TACTILE
 /*! \file MessagerieEcranTactile.cpp
 	\brief Fichier qui contient toutes les classes messageries heritees de la classe CTrameCAN
@@ -94,39 +94,6 @@ tStructTrameBruteEcran* CTrameEcranTactile_ECRAN_ETAT_CODEURS_1_2::Encode(void)
 }
 
 
-//___________________________________________________________________________
- /*!
-   \brief Constructeur
-   \param --
-   \return --
-   */
-CTrameEcranTactile_ECRAN_ETAT_ECRAN::CTrameEcranTactile_ECRAN_ETAT_ECRAN()
-{
-  m_trame_brute.ID = ID_ECRAN_ETAT_ECRAN;
-  m_trame_brute.DLC = DLC_ECRAN_ETAT_ECRAN;
-}
-//___________________________________________________________________________
- /*!
-   \brief Decode les signaux de la trame ECRAN_ETAT_ECRAN
-
-		- Renseigne les champs de la structure de donnee de la trame
-   \param bufBrut le buffer des octets de la trames a decoder
-   \return --
-   */
-void CTrameEcranTactile_ECRAN_ETAT_ECRAN::Decode(tStructTrameBruteEcran *trameRecue)
-{
-  long lDonnee_temp = 0; // utilisé si besoin pour le décodage des données en flottant
-
-   // Decode les signaux de la trame
-   Valeur = ( ( ((short)(trameRecue->Data[3])) & 0xFF) )  |  ( ( ((short)(trameRecue->Data[2])) & 0xFF) << 8 );
-
-   CodeCommande = ( ( ((unsigned short)(trameRecue->Data[1])) & 0xFF) )  |  ( ( ((unsigned short)(trameRecue->Data[0])) & 0xFF) << 8 );
-
-
-  m_new_trame = true;
-  m_nombre_recue++;
-}
-
 
 //___________________________________________________________________________
  /*!
@@ -163,50 +130,6 @@ tStructTrameBruteEcran* CTrameEcranTactile_ECRAN_ETAT_TELEMETRE::Encode(void)
     m_trame_brute.Data[1] |= (unsigned char)( ( (Telemetre2) & 0xFF) );
 
     m_trame_brute.Data[0] |= (unsigned char)( ( (Telemetre1) & 0xFF) );
-
-	return(&m_trame_brute);
-}
-
-
-//___________________________________________________________________________
- /*!
-   \brief Constructeur
-   \param --
-   \return --
-   */
-CTrameEcranTactile_ECRAN_ETAT_MATCH::CTrameEcranTactile_ECRAN_ETAT_MATCH()
-{
-  m_trame_brute.ID = ID_ECRAN_ETAT_MATCH;
-  m_trame_brute.DLC = DLC_ECRAN_ETAT_MATCH;
-}
-//___________________________________________________________________________
- /*!
-   \brief Decode les signaux de la trame ECRAN_ETAT_MATCH
-
-		- Renseigne les champs de la structure de donnee de la trame
-   \param bufBrut le buffer des octets de la trames a decoder
-   \return --
-   */
-tStructTrameBruteEcran* CTrameEcranTactile_ECRAN_ETAT_MATCH::Encode(void)
-{
-  unsigned char i=0;
-
-  for (i=0; i<DLC_ECRAN_ETAT_MATCH; i++) {
-    m_trame_brute.Data[i] = 0;
-  }
-
-  	// Encode chacun des signaux de la trame
-    m_trame_brute.Data[2] |= (unsigned char)( ( (ObstacleDetecte) & 0x3) << 6 );
-
-    m_trame_brute.Data[2] |= (unsigned char)( ( (DiagBlocage) & 0x1) << 5 );
-
-    m_trame_brute.Data[2] |= (unsigned char)( ( (ConvergenceAsserv) & 0x1) << 4 );
-
-    m_trame_brute.Data[2] |= (unsigned char)( ( (ModeFonctionnement) & 0xF) );
-
-    m_trame_brute.Data[1] |= (unsigned char)( ( (CouleurEquipe) & 0xFF) );
-
-    m_trame_brute.Data[0] |= (unsigned char)( ( (TempsMatch) & 0xFF) );
 
 	return(&m_trame_brute);
 }
@@ -378,6 +301,86 @@ tStructTrameBruteEcran* CTrameEcranTactile_ECRAN_ETAT_CAPTEURS_1::Encode(void)
 }
 
 
+//___________________________________________________________________________
+ /*!
+   \brief Constructeur
+   \param --
+   \return --
+   */
+CTrameEcranTactile_ECRAN_ETAT_ECRAN::CTrameEcranTactile_ECRAN_ETAT_ECRAN()
+{
+  m_trame_brute.ID = ID_ECRAN_ETAT_ECRAN;
+  m_trame_brute.DLC = DLC_ECRAN_ETAT_ECRAN;
+}
+//___________________________________________________________________________
+ /*!
+   \brief Decode les signaux de la trame ECRAN_ETAT_ECRAN
+
+		- Renseigne les champs de la structure de donnee de la trame
+   \param bufBrut le buffer des octets de la trames a decoder
+   \return --
+   */
+void CTrameEcranTactile_ECRAN_ETAT_ECRAN::Decode(tStructTrameBruteEcran *trameRecue)
+{
+  //long lDonnee_temp = 0; // utilisÃ© si besoin pour le dÃ©codage des donnÃ©es en flottant
+
+   // Decode les signaux de la trame
+   Valeur = ( ( ((short)(trameRecue->Data[3])) & 0xFF) )  |  ( ( ((short)(trameRecue->Data[2])) & 0xFF) << 8 );
+
+   CodeCommande = ( ( ((unsigned short)(trameRecue->Data[1])) & 0xFF) )  |  ( ( ((unsigned short)(trameRecue->Data[0])) & 0xFF) << 8 );
+
+
+  m_new_trame = true;
+  m_nombre_recue++;
+}
+
+
+//___________________________________________________________________________
+ /*!
+   \brief Constructeur
+   \param --
+   \return --
+   */
+CTrameEcranTactile_ECRAN_ETAT_MATCH::CTrameEcranTactile_ECRAN_ETAT_MATCH()
+{
+  m_trame_brute.ID = ID_ECRAN_ETAT_MATCH;
+  m_trame_brute.DLC = DLC_ECRAN_ETAT_MATCH;
+}
+//___________________________________________________________________________
+ /*!
+   \brief Decode les signaux de la trame ECRAN_ETAT_MATCH
+
+		- Renseigne les champs de la structure de donnee de la trame
+   \param bufBrut le buffer des octets de la trames a decoder
+   \return --
+   */
+tStructTrameBruteEcran* CTrameEcranTactile_ECRAN_ETAT_MATCH::Encode(void)
+{
+  unsigned char i=0;
+
+  for (i=0; i<DLC_ECRAN_ETAT_MATCH; i++) {
+    m_trame_brute.Data[i] = 0;
+  }
+
+  	// Encode chacun des signaux de la trame
+    m_trame_brute.Data[2] |= (unsigned char)( ( (ObstacleDetecte) & 0x3) << 6 );
+
+    m_trame_brute.Data[2] |= (unsigned char)( ( (DiagBlocage) & 0x1) << 5 );
+
+    m_trame_brute.Data[2] |= (unsigned char)( ( (ConvergenceAsserv) & 0x1) << 4 );
+
+    m_trame_brute.Data[2] |= (unsigned char)( ( (ModeFonctionnement) & 0xF) );
+
+    m_trame_brute.Data[1] |= (unsigned char)( ( (CouleurEquipe) & 0xFF) );
+
+    m_trame_brute.Data[0] |= (unsigned char)( ( (TempsMatch) & 0xFF) );
+
+	return(&m_trame_brute);
+}
+
+
+
 
 
 /*! @} */
+

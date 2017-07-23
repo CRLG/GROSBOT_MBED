@@ -24,7 +24,7 @@
 #define ADRESSE_SRF08_N0_15     0xFC
 #define ADRESSE_SRF08_N0_16     0xFE
 
-// Enum pour les adresses des registres : modèle en BANK0
+// Enum pour les adresses des registres : modÃ¨le en BANK0
 // Registres accessibles en lecture
 #define SRF08_reg_SWVERSION     0x00
 #define SRF08_reg_LIGHT_SENSOR  0x01
@@ -35,7 +35,7 @@
 
 
 
-// Registres accessibles en écriture
+// Registres accessibles en Ã©criture
 #define SRF08_reg_COMMAND     0x00
 #define SRF08_reg_MAX_GAIN    0x01
 #define SRF08_reg_RANGE       0x02
@@ -54,7 +54,7 @@
 // ---------------------------------
 
 // -----------------------------
-//! Classe de gestion des options d'exécution passees en ligne de commande
+//! Classe de gestion des options d'exÃ©cution passees en ligne de commande
 class CTelemetres {
 public :
 	CTelemetres();
@@ -64,14 +64,14 @@ public :
 	void Config(void);
 	//! Traitements
 	void Traitement(void);
-	//! Recupere la dernière mesure lue sur le capteur en [cm]
+	//! Recupere la derniÃ¨re mesure lue sur le capteur en [cm]
 	float getDistance_Telemetre(unsigned char numero);
     //! Ecrit une valeur dans un registre du SRF08 
     void WriteRegister(unsigned char add, unsigned char reg, unsigned char val);
     //! Change l'adresse I2C d'un capteur
     void ChangeAdresse(unsigned char oldAdd, unsigned char newAdd);
 
-    //! Mémorise la dernière distanc mesurée 
+    //! MÃ©morise la derniÃ¨re distanc mesurÃ©e 
     float m_distance[NOMBRE_TELEMETRES];
 
     //! Compte rendu de l'autodiagnostic
@@ -81,7 +81,7 @@ private :
 	unsigned char m_adresseI2C[NOMBRE_TELEMETRES];
     //! Buffer pour la transmission
     char m_buff[10];
-    // Pour la machine d'état    
+    // Pour la machine d'Ã©tat    
     unsigned char m_numSRF08;  
 
 };
@@ -89,4 +89,5 @@ private :
 #endif
 
 // END
+
 

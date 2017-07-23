@@ -1,5 +1,5 @@
 /*! \file CTrameEcranTactile.cpp
-	\brief Classe qui contient les méthodes pour le dialogue avec l'écran tactile
+	\brief Classe qui contient les mÃ©thodes pour le dialogue avec l'Ã©cran tactile
 */
 #include "mbed.h"
 #include "RessourcesHardware.h"
@@ -45,6 +45,7 @@ bool CTrameEcranTactile::isNewTrame(void)
   }
   return(false);
 }
+
 
 
 

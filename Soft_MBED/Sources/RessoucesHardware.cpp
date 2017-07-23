@@ -1,7 +1,7 @@
 /*! \file RessoucesHardware.cpp
-	\brief DÈclare les ressources hardware du MBED utilisÈes par le reste du logiciel
+	\brief D√©clare les ressources hardware du MBED utilis√©es par le reste du logiciel
 */
-#include "RessourcesHardware.h"
+/*#include "RessourcesHardware.h"
 
 // __________________________________________________LEDs DU MBED
 // Les LED du MBED
@@ -13,11 +13,11 @@ DigitalOut _led4(LED4);
 // __________________________________________________ENTREES TOUT OU RIEN
 DigitalIn  	_Etor1(p5);
 DigitalIn  	_Etor2(p6);
-// DigitalIn  	_Etor3(p7);     -> configurÈe en STOR pour les besoins 2014
+// DigitalIn  	_Etor3(p7);     -> configur√©e en STOR pour les besoins 2014
 DigitalIn  	_Etor4(p8);
 DigitalIn  	_Etor5(p11);
 DigitalIn  	_Etor6(p12);
-DigitalIn  	_Etor_CanRx(p30);	// pins du CAN utilisÈe en entrÈe TOR lorsque
+DigitalIn  	_Etor_CanRx(p30);	// pins du CAN utilis√©e en entr√©e TOR lorsque
 DigitalIn  	_Etor_CanTx(p29);	//  l'application n'a pas besoin du bus CAN
 
 
@@ -64,6 +64,7 @@ I2C _i2c(p9, p10); //SDA, SCL pour les servos
 LocalFileSystem local("local");
 
 // __________________________________________________ RS232 de pilotage des servos AX
-Serial _ax12_serial (p28, p27);
+Serial _ax12_serial (p28, p27);*/
     
+
 

@@ -1,5 +1,5 @@
 /*! \file CEcranTactile.cpp
-	\brief Classe qui contient les méthodes pour le dialogue avec EcranTactile
+	\brief Classe qui contient les mÃ©thodes pour le dialogue avec EcranTactile
 */
 #include "CEcranTactile.h"
 #include "RessourcesHardware.h"
@@ -60,7 +60,7 @@ void CEcranTactile::SerialiseTrame(tStructTrameBruteEcran *trameBrute)
   _rs232_ecran_tx.putc(trameBrute->ID);
   // _________________
   tmp = ( (((trameBrute->ID)>>3) & 0xE0) +      		// ID>>3 = ( (ID>>8) << 5 )
-			(((trameBrute->Channel)&0x01) << 4) +		// Numéro de channel
+			(((trameBrute->Channel)&0x01) << 4) +		// NumÃ©ro de channel
 			((trameBrute->DLC)&0x0F)
 		);
   _rs232_ecran_tx.putc(tmp);
@@ -89,7 +89,7 @@ unsigned char CEcranTactile::getChecksum(tStructTrameBruteEcran *trameBrute)
  unsigned char checksum = 0;
 
  checksum+= ( (((trameBrute->ID)>>3) & 0xE0) +      // ID>>3 = ( (ID>>8) << 5 ) -> MSB de l'ID
-			  (((trameBrute->Channel)<<4) & 0x10) +  // Numéro de channel
+			  (((trameBrute->Channel)<<4) & 0x10) +  // NumÃ©ro de channel
 			  ((trameBrute->DLC)&0x0F)
 			);
  checksum+= (unsigned char)(trameBrute->ID);	// LSB de l'ID
@@ -118,7 +118,7 @@ void CEcranTactile::Reconstitution(unsigned char newData)
    {
 		// ----------------------------------------- ETATS PRIMAIRE D'AIGUILLAGE DU TYPE D'INFO RECUES
 		case  cETAT_ECRAN_INIT :
-			// Initialise les champs d'une précédente réception
+			// Initialise les champs d'une prÃ©cÃ©dente rÃ©ception
 			Init_Reconstitution();
 			
 			// Le message est une trame
@@ -145,12 +145,12 @@ void CEcranTactile::Reconstitution(unsigned char newData)
 			else
 			    {  m_etatReconst = cETAT_ECRAN_CHECKSUM; }
 		break;
-		// ----------------------------------------- Les DLC données
+		// ----------------------------------------- Les DLC donnÃ©es
        	case  cETAT_ECRAN_DATA_i :
 			m_trameCourante.Data[m_numero_data] = newData;
 			m_numero_data++;
 			if (m_trameCourante.DLC > m_numero_data)
-			    {  /* ne rien faire : il reste des données à recevoir */ }
+			    {  /* ne rien faire : il reste des donnÃ©es Ã  recevoir */ }
 			else
 			    {  m_etatReconst = cETAT_ECRAN_CHECKSUM; }
 		break;
@@ -205,15 +205,18 @@ void CEcranTactile::DecodeTrame(tStructTrameBruteEcran *trameRecue)
    // Aiguillage en fonction de l'ID de la trame
    switch(trameRecue->ID)
    {
-      case ID_ECRAN_ETAT_ECRAN :
+
+   	   case ID_ECRAN_ETAT_ECRAN :
 		m_ETAT_ECRAN.Decode(trameRecue);
       break;
+
       default :  // L'ID de la trame n'est pas connue de la messagerie
          // ne rien faire
       break;
     }
 
  }
+
 
 
 

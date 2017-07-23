@@ -7,7 +7,7 @@
 
 
 // -----------------------------
-//! Classe de gestion des options d'exécution passees en ligne de commande
+//! Classe de gestion des options d'exÃ©cution passees en ligne de commande
 class CServoMoteurAX {
 #define NBRE_SERVOS_AX              255
 #define RELACHE_SERVO_OFF           0xFFFF
@@ -52,7 +52,7 @@ public :
    	void CommandePosition(unsigned char id, unsigned int position);
 	void CommandeVitesse(unsigned char id, unsigned int vitesse);
 
-    // API de contrôle des servos
+    // API de contrÃ´le des servos
     /** Set the mode of the servo
      * @param unsigned char id, the Bus ID of the servo 1-255 
      * @param mode
@@ -146,10 +146,11 @@ private :
     void readEEPROM(void);
 
 private : 
-   // Baudrate de la communication série
+   // Baudrate de la communication sÃ©rie
     int _baud;
 };
 
 
 #endif // _SERVO_MOTEUR_AX_H_
+
 

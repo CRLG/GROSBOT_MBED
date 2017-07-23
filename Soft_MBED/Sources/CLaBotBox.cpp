@@ -1,5 +1,5 @@
 /*! \file CLaBotBox.cpp
-	\brief Classe qui contient les méthodes pour le dialogue avec ANACONBOT
+	\brief Classe qui contient les mÃ©thodes pour le dialogue avec ANACONBOT
 */
 #include "CLaBotBox.h"
 #include "RessourcesHardware.h"
@@ -112,7 +112,7 @@ void CLaBotBox::Reconstitution(unsigned char newData)
    {
       // ----------------------------------------- ETATS PRIMAIRE D'AIGUILLAGE DU TYPE D'INFO RECUES
           case  cETAT_INIT :
-                  // Initialise les champs d'une précédente réception
+                  // Initialise les champs d'une prÃ©cÃ©dente rÃ©ception
                   Init_Reconstitution();
 
                   // Le message est une trame
@@ -121,7 +121,7 @@ void CLaBotBox::Reconstitution(unsigned char newData)
                    //m_trameCourante.Datation = clock();
                   }
                   // Le message est un message de diag
-                  //! todo mettre en place un mécanisme plus complet pour le diag
+                  //! todo mettre en place un mÃ©canisme plus complet pour le diag
                   else if (newData == 'D') {
                    //PresencePIC_OK();
                   }
@@ -240,7 +240,7 @@ void CLaBotBox::Reconstitution(unsigned char newData)
                            if (isChecksumTrameCouranteOK(newData)) {
                                // Trame de config ou trame CAN
                                if (m_trameCourante.ID <= 0x7FF) {
-                                   //printf("trame %x reçue\n",m_trameCourante.ID);
+                                   //printf("trame %x reÃ§ue\n",m_trameCourante.ID);
                                         DecodeTrame(&m_trameCourante);
                                 }
                                 else {
@@ -299,7 +299,7 @@ void CLaBotBox::Init_Reconstitution(void)
 
     - Calcul le checksum de la trame courante et le compare au parametre d'entree de la fonction
 
-   \param CS_attendu le checksum attendu à comparer avec le checksum calcule de la trame courante
+   \param CS_attendu le checksum attendu Ã  comparer avec le checksum calcule de la trame courante
    \return 	1 si le checksum est OK \n
                 0 sinon
    */
@@ -332,7 +332,34 @@ unsigned char CLaBotBox::isChecksumTrameCouranteOK(unsigned char CS_attendu)
    */
 void CLaBotBox::DecodeTrame(tStructTrameLaBotBox *trameRecue)
 {
-
+    /*
+	CTrameLaBotBox_ELECTROBOT_CDE_MOTEURS       m_ELECTROBOT_CDE_MOTEURS;
+    CTrameLaBotBox_COMMANDE_MVT_XY              m_COMMANDE_MVT_XY;
+    CTrameLaBotBox_ASSERV_RESET                 m_ASSERV_RESET;
+    CTrameLaBotBox_ASSERV_DIAG_WRITE_PARAM      m_ASSERV_DIAG_WRITE_PARAM;
+    CTrameLaBotBox_AUTOAPPRENTISSAGE_ASSERV     m_AUTOAPPRENTISSAGE_ASSERV;
+    CTrameLaBotBox_COMMANDE_REINIT_XY_TETA      m_COMMANDE_REINIT_XY_TETA;
+    CTrameLaBotBox_COMMANDE_VITESSE_MVT         m_COMMANDE_VITESSE_MVT;
+    CTrameLaBotBox_COMMANDE_REGUL_VITESSE       m_COMMANDE_REGUL_VITESSE;
+    CTrameLaBotBox_COMMANDE_DISTANCE_ANGLE      m_COMMANDE_DISTANCE_ANGLE;
+    CTrameLaBotBox_COMMANDE_MVT_XY_TETA         m_COMMANDE_MVT_XY_TETA;
+    CTrameLaBotBox_ELECTROBOT_CDE_SERVOS        m_ELECTROBOT_CDE_SERVOS;
+    CTrameLaBotBox_ELECTROBOT_CDE_SERVOS_AX     m_ELECTROBOT_CDE_SERVOS_AX;
+    CTrameLaBotBox_ELECTROBOT_CDE_SERVOS_SD20   m_ELECTROBOT_CDE_SERVOS_SD20;
+    CTrameLaBotBox_COMMANDE_MVT_MANUEL          m_COMMANDE_MVT_MANUEL;
+    CTrameLaBotBox_ETAT_PID_ASSERVISSEMENT      m_ETAT_PID_ASSERVISSEMENT;
+    CTrameLaBotBox_ETAT_ASSERVISSEMENT          m_ETAT_ASSERVISSEMENT;
+    CTrameLaBotBox_POSITION_CODEURS             m_POSITION_CODEURS;
+    CTrameLaBotBox_POSITION_ABSOLUE_XY_TETA     m_POSITION_ABSOLUE_XY_TETA;
+    CTrameLaBotBox_ELECTROBOT_ETAT_CODEURS_1_2  m_ELECTROBOT_ETAT_CODEURS_1_2;
+    CTrameLaBotBox_ELECTROBOT_ETAT_TELEMETRES   m_ELECTROBOT_ETAT_TELEMETRES;
+    CTrameLaBotBox_ELECTROBOT_ETAT_CODEURS_3_4  m_ELECTROBOT_ETAT_CODEURS_3_4;
+    CTrameLaBotBox_ELECTROBOT_ETAT_CAPTEURS_2   m_ELECTROBOT_ETAT_CAPTEURS_2;
+    CTrameLaBotBox_ELECTROBOT_ETAT_CAPTEURS_1   m_ELECTROBOT_ETAT_CAPTEURS_1;
+    CTrameLaBotBox_ECRAN_ETAT_ECRAN				m_ETAT_ECRAN;
+    CTrameLaBotBox_ECRAN_ETAT_MATCH				m_ETAT_MATCH;
+    CTrameLaBotBox_ETAT_RACK          			m_ETAT_RACK;
+    */
    // Aiguillage en fonction de l'ID de la trame
    switch(trameRecue->ID)
    {
@@ -372,12 +399,25 @@ void CLaBotBox::DecodeTrame(tStructTrameLaBotBox *trameRecue)
         m_COMMANDE_MVT_XY.Decode(trameRecue);
       break;
 
+      case ID_COMMANDE_MVT_XY_TETA :
+              m_COMMANDE_MVT_XY_TETA.Decode(trameRecue);
+      break;
+
+      case ID_COMMANDE_REINIT_XY_TETA:
+    	  m_COMMANDE_REINIT_XY_TETA.Decode(trameRecue);
+    	  break;
+
+      case ID_ECRAN_LBB_ETAT_ECRAN :
+    	 m_ETAT_ECRAN.Decode(trameRecue);
+    	  break;
+
       default :  // L'ID de la trame n'est pas connue de la messagerie
          // ne rien faire
       break;
     }
 
  }
+
 
 
 

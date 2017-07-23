@@ -7,6 +7,20 @@
 
 #include "MessagerieLaBotBox.h"
 
+//! Enuméré des codes commandes de l'écran vers le MBED
+typedef enum {
+    // Générique pour toutes les années
+    LBB_CMDE_INVALIDE = 0,
+    LBB_CMDE_CHOIX_EQUIPE,
+    LBB_CMDE_CHOIX_NUMERO_STRATEGIE,
+    LBB_CMDE_RAZ_CODEURS_ROUES,
+    LBB_CMDE_RAZ_CODEUR_3,
+    LBB_CMDE_RAZ_CODEUR_4,
+    LBB_CMDE_RESET_MODELE_SIMULINK_MATCH,
+    LBB_CMDE_TEST_ACTIONNEURS,
+    LBB_CMDE_INIT_ACTIONNEURS
+}tCodeCommandeLabotBox;
+
 //! Enumere les differents etats de la machine d'etat de l'automate.
 //! Cet enumere contient toutes les valeurs prises par la machine d'etat de reconstitution des donnees
 typedef enum {
@@ -72,7 +86,12 @@ typedef enum {
    cASSERV_DIAG_WR_KI_DISTANCE,
    cASSERV_DIAG_WR_KP_DISTANCE,
    cASSERV_DIAG_WR_CDE_MIN,
-   cASSERV_DIAG_WR_CDE_MAX
+   cASSERV_DIAG_WR_CDE_MAX,
+   cASSERV_DIAG_RACK_CDE_MAX,
+   cASSERV_DIAG_RACK_K_POSVIT,
+   cASSERV_DIAG_RACK_KP,
+   cASSERV_DIAG_RACK_KI,
+   cASSERV_DIAG_RACK_CONV
 }eASSERV_WRITE_PARAM;
 
 
@@ -128,6 +147,10 @@ public :
     CTrameLaBotBox_ELECTROBOT_ETAT_CODEURS_3_4  m_ELECTROBOT_ETAT_CODEURS_3_4;
     CTrameLaBotBox_ELECTROBOT_ETAT_CAPTEURS_2   m_ELECTROBOT_ETAT_CAPTEURS_2;
     CTrameLaBotBox_ELECTROBOT_ETAT_CAPTEURS_1   m_ELECTROBOT_ETAT_CAPTEURS_1;
+    CTrameLaBotBox_ECRAN_ETAT_ECRAN				m_ETAT_ECRAN;
+    CTrameLaBotBox_ECRAN_ETAT_MATCH				m_ETAT_MATCH;
+    CTrameLaBotBox_ETAT_RACK          			m_ETAT_RACK;
+    CTrameLaBotBox_ELECTROBOT_COLOR_SENSOR		m_COLOR_SENSOR;
 
 private : 
 	//! Etat de la machine d'etat de reconstitution
@@ -139,4 +162,5 @@ private :
 
 
 #endif
+
 

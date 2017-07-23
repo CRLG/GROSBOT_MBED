@@ -1,9 +1,9 @@
 /*! \file CServoMoteurAX.cpp
-	\brief Classe qui contient les mÈthodes pour le dialogue avec ANACONBOT
+	\brief Classe qui contient les m√©thodes pour le dialogue avec ANACONBOT
 */
 #include "mbed.h"
 #include "RessourcesHardware.h"
-#include "CGlobale.h"  // pour l'accËs au module EEPROM
+#include "CGlobale.h"  // pour l'acc√®s au module EEPROM
 #include "CServoMoteurAX.h"
 
 //___________________________________________________________________________
@@ -17,7 +17,7 @@ CServoMoteurAX::CServoMoteurAX()
     : _baud(1000000)
 {
   _ax12_serial.baud(_baud);
-  setReturnLevel(0xFE, 1);  // rÈponse demandÈe uniquement sur les requÍtes de LECTURE
+  setReturnLevel(0xFE, 1);  // r√©ponse demand√©e uniquement sur les requ√™tes de LECTURE
 }
 
 
@@ -36,14 +36,14 @@ CServoMoteurAX::~CServoMoteurAX()
 
 //___________________________________________________________________________
  /*!
-   \brief Initialisation des servos pour la configuration matÈrielle courante
+   \brief Initialisation des servos pour la configuration mat√©rielle courante
    \return --
 */
 void CServoMoteurAX::Init(void)
 {
-  // Exemple : configure le comportement de rel‚chÈ automatique pour chaque servo utilisÈ
-  // setDureeAvantRelache(13, 2000); // servo n∞13 rel‚chÈ automatiquement au bout de 2sec
-  // setDureeAvantRelache(14, RELACHE_SERVO_OFF);  // pour le servo 14, pas de rel‚chÈ automatique de la commande
+  // Exemple : configure le comportement de rel√¢ch√© automatique pour chaque servo utilis√©
+  // setDureeAvantRelache(13, 2000); // servo n¬∞13 rel√¢ch√© automatiquement au bout de 2sec
+  // setDureeAvantRelache(14, RELACHE_SERVO_OFF);  // pour le servo 14, pas de rel√¢ch√© automatique de la commande
   // setDureeAvantRelache(17, 1000);
   // ...
 
@@ -53,23 +53,23 @@ void CServoMoteurAX::Init(void)
 
 //___________________________________________________________________________
  /*!
-   \brief Lecture des paramËtres EEPROM du module
+   \brief Lecture des param√®tres EEPROM du module
    \return --
     \remarks 
-   Lecture des parmaËtres de configuration des servos dans l'EEPROM : 
-      - ButÈe min
-      - ButÈe max
-      - Position initiale ‡ la mise sous tension
-    \warning les butÈes min et max sont dÈj‡ mÈmorisÈes dans l'EEPROM des servos AX
-             rÈ-Ècrire la valeur ‡ chaque dÈmarrage peut rÈduire la durÈe de vie de l'EEPROM du servo
+   Lecture des parma√®tres de configuration des servos dans l'EEPROM : 
+      - But√©e min
+      - But√©e max
+      - Position initiale √† la mise sous tension
+    \warning les but√©es min et max sont d√©j√† m√©moris√©es dans l'EEPROM des servos AX
+             r√©-√©crire la valeur √† chaque d√©marrage peut r√©duire la dur√©e de vie de l'EEPROM du servo
 */
 void CServoMoteurAX::readEEPROM(void)
 {
   // _________________________
-  // Lecture des parmaËtres de configuration des servos dans l'EEPROM : 
-  //    - ButÈe min
-  //    - ButÈe max
-  //    - Position initiale ‡ la mise sous tension
+  // Lecture des parma√®tres de configuration des servos dans l'EEPROM : 
+  //    - But√©e min
+  //    - But√©e max
+  //    - Position initiale √† la mise sous tension
   char sBuff[64]="\0";
   unsigned int servo_val;
   for (unsigned int i=0; i<NBRE_SERVOS_AX; i++) {
@@ -86,7 +86,7 @@ void CServoMoteurAX::readEEPROM(void)
     sprintf(sBuff, "position_initiale_servo_ax_%d", i);
     if (Application.m_eeprom.getValue(sBuff, &servo_val)) {
          setGoal(i, servo_val);
-         wait (0.4); // Tempo pour Ítre certain que tous les servos ne bougent pas en mÍme temps (surconsommation)
+         wait (0.4); // Tempo pour √™tre certain que tous les servos ne bougent pas en m√™me temps (surconsommation)
     }
   }
 }
@@ -97,7 +97,7 @@ void CServoMoteurAX::readEEPROM(void)
  /*!
    \brief Commande d'un servo moteur
 
-   \param numServo le servomoteur a piloter  (1 ‡ 20)
+   \param numServo le servomoteur a piloter  (1 √† 20)
    \param pos position du servomoteur
    \param vitesse vitesse a laquelle se deplace le servo
 
@@ -113,7 +113,7 @@ void CServoMoteurAX::CommandePositionVitesse(unsigned char id, unsigned int posi
  /*!
    \brief Commande d'un servo moteur
 
-   \param numServo le servomoteur a piloter  (1 ‡ 20)
+   \param numServo le servomoteur a piloter  (1 √† 20)
    \param pos position du servomoteur
 
    \return --
@@ -128,7 +128,7 @@ void CServoMoteurAX::CommandePosition(unsigned char id, unsigned int position)
  /*!
    \brief Commande d'un servo moteur
 
-   \param numServo le servomoteur a piloter  (1 ‡ 20)
+   \param numServo le servomoteur a piloter  (1 √† 20)
    \param vitesse vitesse a laquelle se deplace le servo
 
    \return --
@@ -142,11 +142,11 @@ void CServoMoteurAX::CommandeVitesse(unsigned char id, unsigned int vitesse)
 
 //___________________________________________________________________________
  /*!
-   \brief Configure les butÈes min et max a ne pas dÈpasser
-   \description gËre les butÈes pour prÈserver le matÈriel
-   \param numServo le servomoteur a piloter  (1 ‡ 20)
-   \param butee_min la butÈe min ‡ ne pas dÈpasser (ou BUTEE_SERVO_OFF pour le pas gÈrer la butÈe)
-   \param butee_max la butÈe max ‡ ne pas dÈpasser (ou BUTEE_SERVO_OFF pour le pas gÈrer la butÈe)
+   \brief Configure les but√©es min et max a ne pas d√©passer
+   \description g√®re les but√©es pour pr√©server le mat√©riel
+   \param numServo le servomoteur a piloter  (1 √† 20)
+   \param butee_min la but√©e min √† ne pas d√©passer (ou BUTEE_SERVO_OFF pour le pas g√©rer la but√©e)
+   \param butee_max la but√©e max √† ne pas d√©passer (ou BUTEE_SERVO_OFF pour le pas g√©rer la but√©e)
    \return --
 */
 void CServoMoteurAX::setButeesMinMaxPosition(unsigned char id, unsigned int butee_min, unsigned int butee_max)
@@ -156,10 +156,10 @@ void CServoMoteurAX::setButeesMinMaxPosition(unsigned char id, unsigned int bute
 }
 //___________________________________________________________________________
  /*!
-   \brief Configure les butÈes min a ne pas dÈpasser
-   \description gËre les butÈes pour prÈserver le matÈriel
-   \param numServo le servomoteur a piloter  (1 ‡ 20)
-   \param butee_min la butÈe min ‡ ne pas dÈpasser (ou BUTEE_SERVO_OFF pour le pas gÈrer la butÈe)
+   \brief Configure les but√©es min a ne pas d√©passer
+   \description g√®re les but√©es pour pr√©server le mat√©riel
+   \param numServo le servomoteur a piloter  (1 √† 20)
+   \param butee_min la but√©e min √† ne pas d√©passer (ou BUTEE_SERVO_OFF pour le pas g√©rer la but√©e)
    \return --
 */
 void CServoMoteurAX::setButeeMinPosition(unsigned char id, unsigned int butee_min)
@@ -168,10 +168,10 @@ void CServoMoteurAX::setButeeMinPosition(unsigned char id, unsigned int butee_mi
 }
 //___________________________________________________________________________
  /*!
-   \brief Configure les butÈes min et max a ne pas dÈpasser
-   \description gËre les butÈes pour prÈserver le matÈriel
-   \param numServo le servomoteur a piloter  (1 ‡ 20)
-   \param butee_min la butÈe max ‡ ne pas dÈpasser (ou BUTEE_SERVO_OFF pour le pas gÈrer la butÈe)
+   \brief Configure les but√©es min et max a ne pas d√©passer
+   \description g√®re les but√©es pour pr√©server le mat√©riel
+   \param numServo le servomoteur a piloter  (1 √† 20)
+   \param butee_min la but√©e max √† ne pas d√©passer (ou BUTEE_SERVO_OFF pour le pas g√©rer la but√©e)
    \return --
 */
 void CServoMoteurAX::setButeeMaxPosition(unsigned char id, unsigned int butee_max)
@@ -458,4 +458,5 @@ int CServoMoteurAX::write(unsigned char id, int start, int bytes, char* data, in
 
     return(0); // return error code
 }
+
 

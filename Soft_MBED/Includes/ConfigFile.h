@@ -5,6 +5,7 @@
  * http://shinta.main.jp/
  */
 #include "mbed.h"
+#include <string.h>
 
 #ifndef _CONFIG_FILE_H_
 #define _CONFIG_FILE_H_
@@ -119,3 +120,4 @@ private:
 };
 
 #endif
+

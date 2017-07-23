@@ -13,9 +13,11 @@
                                 
 #define TENSION_REF_EANA_MBED	3.3
 
-#define SEUIL_TENSION_BATT_FAIBLE 9.0
+#define SEUIL_TENSION_BATT_FAIBLE 14.0
 
 #define COEF_TENSION_ANA_dsPIC  (0.075796875)
+
+#define ADRESSE_I2C_COLOR_SENSOR 	0x52
 
 typedef enum {
  CODEUR_1 = 0,
@@ -25,7 +27,7 @@ typedef enum {
 }eCODEURS_POSITION;
 
 // -----------------------------
-//! Classe de gestion des options d'exécution passees en ligne de commande
+//! Classe de gestion des options d'exÃ©cution passees en ligne de commande
 class CCapteurs {
 public :
 	//! Indique si la valeur lue par le capteur
@@ -45,11 +47,17 @@ public :
 	unsigned char m_suiveurLigne01_ARD;
 	float m_seuil_suiveurLigne_ARD;
 
+	//! Valeurs lues par le cpateur de couleur
+	int m_color_sensor_R;
+	int m_color_sensor_G;
+	int m_color_sensor_B;
+	bool m_color_sensor_OK;
+
 	//! Valeur lue par le capteur ultrason avant
 	float m_ultrason_AV;
 	//! Tableau du filtrage  
 	float m_tabFiltUS_AV[NBRE_ECH_FILTRAGE_CAPTEURS_US];
-	//! Flag d'indication d'un obstacle détecté
+	//! Flag d'indication d'un obstacle dÃ©tectÃ©
 	unsigned char m_obstacleDetecte_AV;
 
 
@@ -57,7 +65,7 @@ public :
 	float m_ultrason_AR;
 	//! Tableau du filtrage  
 	float m_tabFiltUS_AR[NBRE_ECH_FILTRAGE_CAPTEURS_US];
-	//! Flag d'indication d'un obstacle détecté
+	//! Flag d'indication d'un obstacle dÃ©tectÃ©
 	unsigned char  m_obstacleDetecte_AR;
 
 	//! Flag de recallage AVD
@@ -67,10 +75,10 @@ public :
 
 	
 
-	//! Ordre de départ
+	//! Ordre de dÃ©part
 	unsigned char DepartMatch;
 
-    // Valeurs brutes sur les entrées TOR ("_b" pour "brute")
+    // Valeurs brutes sur les entrÃ©es TOR ("_b" pour "brute")
 	unsigned char m_b_Etor1;
 	unsigned char m_b_Etor2;
 	unsigned char m_b_Etor3;
@@ -80,7 +88,7 @@ public :
 	unsigned char m_b_Etor_CanRx;
 	unsigned char m_b_Etor_CanTx;
 
-    // Valeurs brutes sur les entrées analogiques
+    // Valeurs brutes sur les entrÃ©es analogiques
 	float m_b_Mes_Vbat;
 	float m_b_Eana1;
 	float m_b_Eana2;
@@ -107,7 +115,7 @@ public :
 	signed long m_CumulCodeurPosition3;
 	signed long m_CumulCodeurPosition4;
 
-	// Les télémètres
+	// Les tÃ©lÃ©mÃ¨tres
     CTelemetres m_telemetres;
 	float m_TelemetreAVD;
 	float m_TelemetreAVG;
@@ -135,11 +143,17 @@ public :
 	void Traitement(void);
     //! RAZ de la position d'un codeur
     void RAZ_PositionCodeur(unsigned char num_codeur, signed long val=0);
+
+	//! Lecture des donnees du capteur couleur TCS34725
+	void Lecture_CapteurCouleur(void);
 private : 
 
-	//! Traitements pour les entrées TOR du MBED
+    //init du capteur couleur
+    void Init_CapteurCouleur(void);
+
+    //! Traitements pour les entrÃ©es TOR du MBED
 	void AcquisitionEntreesTOR(void);
-	//! Traitements pour les entrées analogiques du MBED
+	//! Traitements pour les entrÃ©es analogiques du MBED
 	void AcquisitionEntreesANA(void);
 
     //! Traitement pour la mesure de la tension batterie
@@ -151,9 +165,9 @@ private :
 	//! Traitement des capteurs de recalage avant
 	void TraitementCapteurRecalageBordure(void);
 
-	//! Lecture des données du dsPIC1
+	//! Lecture des donnÃ©es du dsPIC1
 	void Lecture_dsPIC1(void);
-	//! Lecture des données du dsPIC2
+	//! Lecture des donnÃ©es du dsPIC2
 	void Lecture_dsPIC2(void);
 
     // ____________________________________________
@@ -171,4 +185,5 @@ private :
 
 
 #endif
+
 

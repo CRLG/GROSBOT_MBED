@@ -1,5 +1,5 @@
 // FICHIER GENERE PAR L'OUTIL MESS2C_robot V1.0
-// Date de gÈnÈration : Thu May 29 18:15:36 2014
+// Date de g√©n√©ration : Thu May 29 18:15:36 2014
 // PLATEFORME CIBLE : MINIBOT_ECRAN_TACTILE
 /*************************************************************************************/
 /*! \file MessagerieEcranTactile.h
@@ -20,7 +20,7 @@
 #include "CTrameEcranTactile.h"
 
 
-// EnumÈrÈs, defines, ...
+// Enum√©r√©s, defines, ...
 #define ID_ECRAN_POSITION_ROBOT 0x50
 #define ID_ECRAN_ETAT_CODEURS_1_2 0x30
 #define ID_ECRAN_ETAT_ECRAN 0x90
@@ -168,19 +168,6 @@ public :
 
 // -----------------------------
 //! Classe de base pour les trames CAN
-class CTrameEcranTactile_ECRAN_ETAT_ECRAN : public CTrameEcranTactile {
-public :
-	//! Les signaux de la messagerie
-	short Valeur;
-	unsigned short CodeCommande;
-
-	CTrameEcranTactile_ECRAN_ETAT_ECRAN();
-	void Decode(tStructTrameBruteEcran* trameRecue);
-};
-
-
-// -----------------------------
-//! Classe de base pour les trames CAN
 class CTrameEcranTactile_ECRAN_ETAT_TELEMETRE : public CTrameEcranTactile {
 public :
 	//! Les signaux de la messagerie
@@ -190,23 +177,6 @@ public :
 	unsigned char Telemetre1;
 
 	CTrameEcranTactile_ECRAN_ETAT_TELEMETRE();
-	tStructTrameBruteEcran* Encode(void);
-};
-
-
-// -----------------------------
-//! Classe de base pour les trames CAN
-class CTrameEcranTactile_ECRAN_ETAT_MATCH : public CTrameEcranTactile {
-public :
-	//! Les signaux de la messagerie
-	unsigned char ObstacleDetecte;
-	unsigned char DiagBlocage;
-	unsigned char ConvergenceAsserv;
-	unsigned char ModeFonctionnement;
-	unsigned char CouleurEquipe;
-	unsigned char TempsMatch;
-
-	CTrameEcranTactile_ECRAN_ETAT_MATCH();
 	tStructTrameBruteEcran* Encode(void);
 };
 
@@ -276,8 +246,62 @@ public :
 };
 
 
+// Enum√©r√©s, defines, ...
+#define ID_ECRAN_ETAT_ECRAN 0x90
+#define ID_ECRAN_ETAT_MATCH 0x40
+
+#define DLC_ECRAN_ETAT_ECRAN 4
+#define DLC_ECRAN_ETAT_MATCH 3
+
+#define BRUTE2PHYS_Valeur(val) ( ((float)val * (1.000000)) + (0.000000) )
+#define PHYS2BRUTE_Valeur(val) (short)( (val - (0.000000)) / (1.000000) )
+#define BRUTE2PHYS_CodeCommande(val) ( ((float)val * (1.000000)) + (0.000000) )
+#define PHYS2BRUTE_CodeCommande(val) (unsigned short)( (val - (0.000000)) / (1.000000) )
+#define BRUTE2PHYS_ObstacleDetecte(val) ( ((float)val * (1.000000)) + (0.000000) )
+#define PHYS2BRUTE_ObstacleDetecte(val) (unsigned char)( (val - (0.000000)) / (1.000000) )
+#define BRUTE2PHYS_DiagBlocage(val) ( ((float)val * (1.000000)) + (0.000000) )
+#define PHYS2BRUTE_DiagBlocage(val) (unsigned char)( (val - (0.000000)) / (1.000000) )
+#define BRUTE2PHYS_ConvergenceAsserv(val) ( ((float)val * (1.000000)) + (0.000000) )
+#define PHYS2BRUTE_ConvergenceAsserv(val) (unsigned char)( (val - (0.000000)) / (1.000000) )
+#define BRUTE2PHYS_ModeFonctionnement(val) ( ((float)val * (1.000000)) + (0.000000) )
+#define PHYS2BRUTE_ModeFonctionnement(val) (unsigned char)( (val - (0.000000)) / (1.000000) )
+#define BRUTE2PHYS_CouleurEquipe(val) ( ((float)val * (1.000000)) + (0.000000) )
+#define PHYS2BRUTE_CouleurEquipe(val) (unsigned char)( (val - (0.000000)) / (1.000000) )
+#define BRUTE2PHYS_TempsMatch(val) ( ((float)val * (1.000000)) + (0.000000) )
+#define PHYS2BRUTE_TempsMatch(val) (unsigned char)( (val - (0.000000)) / (1.000000) )
+
+// -----------------------------
+//! Classe de base pour les trames CAN
+class CTrameEcranTactile_ECRAN_ETAT_ECRAN : public CTrameEcranTactile {
+public :
+	//! Les signaux de la messagerie
+	short Valeur;
+	unsigned short CodeCommande;
+
+	CTrameEcranTactile_ECRAN_ETAT_ECRAN();
+	void Decode(tStructTrameBruteEcran* trameRecue);
+};
+
+// -----------------------------
+//! Classe de base pour les trames CAN
+class CTrameEcranTactile_ECRAN_ETAT_MATCH : public CTrameEcranTactile {
+public :
+	//! Les signaux de la messagerie
+	unsigned char ObstacleDetecte;
+	unsigned char DiagBlocage;
+	unsigned char ConvergenceAsserv;
+	unsigned char ModeFonctionnement;
+	unsigned char CouleurEquipe;
+	unsigned char TempsMatch;
+
+	CTrameEcranTactile_ECRAN_ETAT_MATCH();
+	tStructTrameBruteEcran* Encode(void);
+};
+
+
 
 
 #endif
 /*! @} */
+
 

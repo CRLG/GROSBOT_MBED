@@ -130,7 +130,7 @@ int CRoues::getCodeurG(void)
 */
 int CRoues::getCodeurD(void)
 {
-  return(Application.m_capteurs.m_CumulCodeurPosition3);
+  return(Application.m_capteurs.m_CumulCodeurPosition2);
 }
 
 
@@ -143,9 +143,10 @@ int CRoues::getCodeurD(void)
 */
 void CRoues::resetCodeurs(void)
 {
-  Application.m_capteurs.m_CumulCodeurPosition3 = 0;
+  Application.m_capteurs.m_CumulCodeurPosition2 = 0;
   Application.m_capteurs.m_CumulCodeurPosition4 = 0;
 }
+
 
 
 

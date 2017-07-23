@@ -1,9 +1,10 @@
 /*! \file CEEPROM.cpp
-	\brief Classe qui contient les méthoes pour la simulation EEPROM
+	\brief Classe qui contient les mÃ©thoes pour la simulation EEPROM
 */
 #include "mbed.h"
 #include "RessourcesHardware.h"
 #include "CGlobale.h"
+//#include <sys/string.h>
 
 
 //___________________________________________________________________________
@@ -15,7 +16,8 @@
 */
 CEEPROM::CEEPROM() 
 {
- // Commence par lire le fichier d'entrée et affecter les valeurs de certaines données membres des claasses
+ // Commence par lire le fichier d'entrÃ©e et affecter les valeurs de certaines donnÃ©es membres des claasses
+
  m_configFile.read("/local/eeprom.ini");
 }
 
@@ -41,32 +43,36 @@ CEEPROM::~CEEPROM()
 */
 void CEEPROM::Read(void)
 {
-	 // Lit les paramèrtes de l'EEPROM et initialise les valeurs
-	
+	 // Lit les paramÃ¨rtes de l'EEPROM et initialise les valeurs
 	 // valeurs pour le module Globale
-	 getValue("ModeFonctionnement", &Application.ModeFonctionnement);
+//    char *key;
+//    key=strdup("ModeFonctionnement");
+//    getValue(key, &Application.ModeFonctionnement);
+//    free(key);
+//    key=NULL;
+     getValue("ModeFonctionnement", &Application.ModeFonctionnement);
 	
 	
 	 // valeurs pour le module Asservissement
-	 getValue("kp_angle", &Application.m_asservissement.kp_angle);
-	 getValue("cde_max", &Application.m_asservissement.cde_max);
-	 getValue("cde_min", &Application.m_asservissement.cde_min);
-	 getValue("kp_distance", &Application.m_asservissement.kp_distance);
-	 getValue("ki_distance", &Application.m_asservissement.ki_distance);
-	 getValue("kp_angle", &Application.m_asservissement.kp_angle);
-	 getValue("ki_angle", &Application.m_asservissement.ki_angle);
-	 getValue("k_angle", &Application.m_asservissement.k_angle);
-	 getValue("seuil_conv_distance", &Application.m_asservissement.seuil_conv_distance);
-	 getValue("seuil_conv_angle", &Application.m_asservissement.seuil_conv_angle);
-	 getValue("compteur_max", &Application.m_asservissement.compteur_max);
-	 getValue("zone_morte_D", &Application.m_asservissement.zone_morte_D);
-	 getValue("zone_morte_G", &Application.m_asservissement.zone_morte_G);
-	
-	 getValue("seuil_suiveurLigne_ARD", &Application.m_capteurs.m_seuil_suiveurLigne_ARD);
-	 getValue("seuil_suiveurLigne_ARG", &Application.m_capteurs.m_seuil_suiveurLigne_ARG);
-	 getValue("seuil_suiveurLigne_ARM", &Application.m_capteurs.m_seuil_suiveurLigne_ARM);
-	
-	 getValue("TEMPS_MAX_GONFLAGE", &Application.TempsMaxGonflage);
+	getValue("cde_max", &(Application.m_asservissement.cde_max));
+	getValue("cde_min", &(Application.m_asservissement.cde_min));
+	getValue("kp_distance", &(Application.m_asservissement.kp_distance));
+	getValue("ki_distance", &(Application.m_asservissement.ki_distance));
+	getValue("kp_angle", &(Application.m_asservissement.kp_angle));
+	getValue("ki_angle", &(Application.m_asservissement.ki_angle));
+	getValue("k_angle", &(Application.m_asservissement.k_angle));
+	getValue("seuil_conv_distance", &(Application.m_asservissement.seuil_conv_distance));
+	getValue("seuil_conv_angle", &(Application.m_asservissement.seuil_conv_angle));
+	getValue("compteur_max", &(Application.m_asservissement.compteur_max));
+	getValue("zone_morte_D", &(Application.m_asservissement.zone_morte_D));
+	getValue("zone_morte_G", &(Application.m_asservissement.zone_morte_G));
+
+	getValue("rackCommandeMax", &(Application.m_asservissement_chariot.commande_chariot_max_C));
+	getValue("rackGainPosVit", &(Application.m_asservissement_chariot.gain_position_vitesse_C));
+	getValue("rackGainP", &(Application.m_asservissement_chariot.gain_prop_C));
+	getValue("rackGainI", &(Application.m_asservissement_chariot.gain_int_C));
+	getValue("rackSeuilConv", &(Application.m_asservissement_chariot.seuil_conv_C));
+
 }
 	
 
@@ -85,7 +91,7 @@ bool CEEPROM::getValue(char *key, float *val)
    
   if (m_configFile.getValue(key, &value[0], sizeof(value))) {
 	sscanf(value, "%f", val);
-	ret= true;  // La donnée existe
+	ret= true;  // La donnÃ©e existe
   }
   return(ret);
 }
@@ -104,7 +110,7 @@ bool CEEPROM::getValue(char *key, long *val)
 
    if (m_configFile.getValue(key, &value[0], sizeof(value))) {
     sscanf(value, "%d", val);
-	ret= true;  // La donnée existe
+	ret= true;  // La donnÃ©e existe
   }
   return(ret);
 }
@@ -123,7 +129,7 @@ bool CEEPROM::getValue(char *key, unsigned int *val)
   			 
   if (m_configFile.getValue(key, &value[0], sizeof(value))) {
     sscanf(value, "%d", val);
-	ret= true;  // La donnée existe
+	ret= true;  // La donnÃ©e existe
   }
   return(ret);
 }
@@ -141,7 +147,7 @@ bool CEEPROM::getValue(char *key, int *val)
 				 
   if (m_configFile.getValue(key, &value[0], sizeof(value))) {
 	sscanf(value, "%d", val);
-	ret= true;  // La donnée existe
+	ret= true;  // La donnÃ©e existe
   }
   return(ret);
 }
@@ -159,8 +165,8 @@ bool CEEPROM::getValue(char *key, char *val)
   bool ret = false;
 
   if (m_configFile.getValue(key, &val[0], sizeof(value))) {
-	// pas de recopie, la valeur est rangée directement dans val
-	ret= true;  // La donnée existe
+	// pas de recopie, la valeur est rangÃ©e directement dans val
+	ret= true;  // La donnÃ©e existe
   }
   return(ret);
 }
@@ -215,3 +221,4 @@ bool CEEPROM::setValue(char *key, unsigned short val)
 }
 //todo: ecriture en eeprom en fin de programme et les fonctions d'ecriture pour les autres types de donnees
  
+

@@ -7,7 +7,7 @@
 
 
 // -----------------------------
-//! Classe de gestion des options d'exÈcution passees en ligne de commande
+//! Classe de gestion des options d'ex√©cution passees en ligne de commande
 class CServoMoteurSD20 {
 #define ADRESSE_I2C_SD20 	0xC2
 #define NBRE_SERVOS_SD20	20
@@ -41,23 +41,24 @@ private :
 private :	 
 	//! Memorise la position relle envoyee au servo
 	unsigned int m_position[NBRE_SERVOS_SD20];
-	//! Memorise la consigne de position demandÈe par l'applicatif
+	//! Memorise la consigne de position demand√©e par l'applicatif
 	unsigned int m_position_utilisateur[NBRE_SERVOS_SD20];
 	//! Memorise la vitesse
 	unsigned int m_vitesse[NBRE_SERVOS_SD20];
-	//! ButÈe min sur la position
+	//! But√©e min sur la position
 	unsigned int m_pos_butee_min[NBRE_SERVOS_SD20];
-	//! ButÈe max sur la position
+	//! But√©e max sur la position
 	unsigned int m_pos_butee_max[NBRE_SERVOS_SD20];
 	//! Flag qui indique s'il faut renvoyer la valeur au SD20 pour ce servo
 	bool m_update[NBRE_SERVOS_SD20];
-	//! Timer de rel‚chÈ de la commande du servo 
+	//! Timer de rel√¢ch√© de la commande du servo 
     unsigned int m_timer_relache[NBRE_SERVOS_SD20];
-	//! Duree avant rel‚chÈe de la commande du servo (unitÈ = nombre de passage dans la boucle de gestion)
+	//! Duree avant rel√¢ch√©e de la commande du servo (unit√© = nombre de passage dans la boucle de gestion)
     unsigned int m_duree_relache[NBRE_SERVOS_SD20];
 	 
 };
 
 
 #endif  // _SERVO_MOTEUR_SD20_H_
+
 

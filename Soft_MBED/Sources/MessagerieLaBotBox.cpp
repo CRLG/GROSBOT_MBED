@@ -1,5 +1,5 @@
 // FICHIER GENERE PAR L'OUTIL MESS2C_robot V1.0
-// Date de génération : Tue May 05 22:19:15 2015
+// Date de gÃ©nÃ©ration : Tue May 05 22:19:15 2015
 // PLATEFORME CIBLE : MINIBOT
 /*! \file MessagerieLaBotBox.cpp
 	\brief Fichier qui contient toutes les classes messageries heritees de la classe CTrameCAN
@@ -31,7 +31,7 @@ CTrameLaBotBox_ELECTROBOT_CDE_SERVOS_SD20::CTrameLaBotBox_ELECTROBOT_CDE_SERVOS_
    */
 void CTrameLaBotBox_ELECTROBOT_CDE_SERVOS_SD20::Decode(tStructTrameLaBotBox *trameRecue)
 {
-  long lDonnee_temp = 0; // utilisé si besoin pour le décodage des données en flottant
+  //long lDonnee_temp = 0; // utilisÃ© si besoin pour le dÃ©codage des donnÃ©es en flottant
 
    // Decode les signaux de la trame
    valeur_commande_sd20 = ( ( ((unsigned short)(trameRecue->Data[4])) & 0xFF) )  |  ( ( ((unsigned short)(trameRecue->Data[3])) & 0xFF) << 8 );
@@ -96,7 +96,7 @@ CTrameLaBotBox_ELECTROBOT_CDE_SERVOS_AX::CTrameLaBotBox_ELECTROBOT_CDE_SERVOS_AX
    */
 void CTrameLaBotBox_ELECTROBOT_CDE_SERVOS_AX::Decode(tStructTrameLaBotBox *trameRecue)
 {
-  long lDonnee_temp = 0; // utilisé si besoin pour le décodage des données en flottant
+  //long lDonnee_temp = 0; // utilisÃ© si besoin pour le dÃ©codage des donnÃ©es en flottant
 
    // Decode les signaux de la trame
    valeur_commande_ax = ( ( ((unsigned short)(trameRecue->Data[4])) & 0xFF) )  |  ( ( ((unsigned short)(trameRecue->Data[3])) & 0xFF) << 8 );
@@ -132,7 +132,7 @@ CTrameLaBotBox_ELECTROBOT_CDE_MOTEURS::CTrameLaBotBox_ELECTROBOT_CDE_MOTEURS()
    */
 void CTrameLaBotBox_ELECTROBOT_CDE_MOTEURS::Decode(tStructTrameLaBotBox *trameRecue)
 {
-  long lDonnee_temp = 0; // utilisé si besoin pour le décodage des données en flottant
+  //long lDonnee_temp = 0; // utilisÃ© si besoin pour le dÃ©codage des donnÃ©es en flottant
 
    // Decode les signaux de la trame
    cde_moteur_6 = ( ( ((char)(trameRecue->Data[5])) & 0xFF) );
@@ -174,7 +174,7 @@ CTrameLaBotBox_COMMANDE_MVT_XY::CTrameLaBotBox_COMMANDE_MVT_XY()
    */
 void CTrameLaBotBox_COMMANDE_MVT_XY::Decode(tStructTrameLaBotBox *trameRecue)
 {
-  long lDonnee_temp = 0; // utilisé si besoin pour le décodage des données en flottant
+  //long lDonnee_temp = 0; // utilisÃ© si besoin pour le dÃ©codage des donnÃ©es en flottant
 
    // Decode les signaux de la trame
    Y_consigne = ( ( ((short)(trameRecue->Data[3])) & 0xFF) )  |  ( ( ((short)(trameRecue->Data[2])) & 0xFF) << 8 );
@@ -210,7 +210,7 @@ CTrameLaBotBox_ASSERV_RESET::CTrameLaBotBox_ASSERV_RESET()
    */
 void CTrameLaBotBox_ASSERV_RESET::Decode(tStructTrameLaBotBox *trameRecue)
 {
-  long lDonnee_temp = 0; // utilisé si besoin pour le décodage des données en flottant
+  //long lDonnee_temp = 0; // utilisÃ© si besoin pour le dÃ©codage des donnÃ©es en flottant
 
    // Decode les signaux de la trame
    SECURITE_RESET = ( ( ((unsigned char)(trameRecue->Data[0])) & 0xFF) );
@@ -242,7 +242,7 @@ CTrameLaBotBox_AUTOAPPRENTISSAGE_ASSERV::CTrameLaBotBox_AUTOAPPRENTISSAGE_ASSERV
    */
 void CTrameLaBotBox_AUTOAPPRENTISSAGE_ASSERV::Decode(tStructTrameLaBotBox *trameRecue)
 {
-  long lDonnee_temp = 0; // utilisé si besoin pour le décodage des données en flottant
+  //long lDonnee_temp = 0; // utilisÃ© si besoin pour le dÃ©codage des donnÃ©es en flottant
 
    // Decode les signaux de la trame
    Type_autoapprentissage = ( ( ((unsigned char)(trameRecue->Data[0])) & 0xFF) );
@@ -274,7 +274,7 @@ CTrameLaBotBox_COMMANDE_REINIT_XY_TETA::CTrameLaBotBox_COMMANDE_REINIT_XY_TETA()
    */
 void CTrameLaBotBox_COMMANDE_REINIT_XY_TETA::Decode(tStructTrameLaBotBox *trameRecue)
 {
-  long lDonnee_temp = 0; // utilisé si besoin pour le décodage des données en flottant
+  //long lDonnee_temp = 0; // utilisÃ© si besoin pour le dÃ©codage des donnÃ©es en flottant
 
    // Decode les signaux de la trame
    reinit_teta_pos = ( ( ((short)(trameRecue->Data[5])) & 0xFF) )  |  ( ( ((short)(trameRecue->Data[4])) & 0xFF) << 8 );
@@ -310,7 +310,7 @@ CTrameLaBotBox_COMMANDE_VITESSE_MVT::CTrameLaBotBox_COMMANDE_VITESSE_MVT()
    */
 void CTrameLaBotBox_COMMANDE_VITESSE_MVT::Decode(tStructTrameLaBotBox *trameRecue)
 {
-  long lDonnee_temp = 0; // utilisé si besoin pour le décodage des données en flottant
+  //long lDonnee_temp = 0; // utilisÃ© si besoin pour le dÃ©codage des donnÃ©es en flottant
 
    // Decode les signaux de la trame
    indice_sportivite_decel = ( ( ((unsigned char)(trameRecue->Data[5])) & 0xFF) );
@@ -348,7 +348,7 @@ CTrameLaBotBox_COMMANDE_REGUL_VITESSE::CTrameLaBotBox_COMMANDE_REGUL_VITESSE()
    */
 void CTrameLaBotBox_COMMANDE_REGUL_VITESSE::Decode(tStructTrameLaBotBox *trameRecue)
 {
-  long lDonnee_temp = 0; // utilisé si besoin pour le décodage des données en flottant
+  //long lDonnee_temp = 0; // utilisÃ© si besoin pour le dÃ©codage des donnÃ©es en flottant
 
    // Decode les signaux de la trame
    consigne_vitesse_roue_D = ( ( ((short)(trameRecue->Data[3])) & 0xFF) )  |  ( ( ((short)(trameRecue->Data[2])) & 0xFF) << 8 );
@@ -382,7 +382,7 @@ CTrameLaBotBox_COMMANDE_DISTANCE_ANGLE::CTrameLaBotBox_COMMANDE_DISTANCE_ANGLE()
    */
 void CTrameLaBotBox_COMMANDE_DISTANCE_ANGLE::Decode(tStructTrameLaBotBox *trameRecue)
 {
-  long lDonnee_temp = 0; // utilisé si besoin pour le décodage des données en flottant
+  //long lDonnee_temp = 0; // utilisÃ© si besoin pour le dÃ©codage des donnÃ©es en flottant
 
    // Decode les signaux de la trame
    angle_consigne = ( ( ((short)(trameRecue->Data[3])) & 0xFF) )  |  ( ( ((short)(trameRecue->Data[2])) & 0xFF) << 8 );
@@ -418,7 +418,7 @@ CTrameLaBotBox_COMMANDE_MVT_XY_TETA::CTrameLaBotBox_COMMANDE_MVT_XY_TETA()
    */
 void CTrameLaBotBox_COMMANDE_MVT_XY_TETA::Decode(tStructTrameLaBotBox *trameRecue)
 {
-  long lDonnee_temp = 0; // utilisé si besoin pour le décodage des données en flottant
+  //long lDonnee_temp = 0; // utilisÃ© si besoin pour le dÃ©codage des donnÃ©es en flottant
 
    // Decode les signaux de la trame
    angle_consigne = ( ( ((short)(trameRecue->Data[5])) & 0xFF) )  |  ( ( ((short)(trameRecue->Data[4])) & 0xFF) << 8 );
@@ -456,7 +456,7 @@ CTrameLaBotBox_ASSERV_DIAG_WRITE_PARAM::CTrameLaBotBox_ASSERV_DIAG_WRITE_PARAM()
    */
 void CTrameLaBotBox_ASSERV_DIAG_WRITE_PARAM::Decode(tStructTrameLaBotBox *trameRecue)
 {
-  long lDonnee_temp = 0; // utilisé si besoin pour le décodage des données en flottant
+  //long lDonnee_temp = 0; // utilisÃ© si besoin pour le dÃ©codage des donnÃ©es en flottant
 
    // Decode les signaux de la trame
    ASSERV_DIAG_WRITE_VALUE = ( ( ((short)(trameRecue->Data[3])) & 0xFF) )  |  ( ( ((short)(trameRecue->Data[2])) & 0xFF) << 8 );
@@ -490,7 +490,7 @@ CTrameLaBotBox_ELECTROBOT_CDE_SERVOS::CTrameLaBotBox_ELECTROBOT_CDE_SERVOS()
    */
 void CTrameLaBotBox_ELECTROBOT_CDE_SERVOS::Decode(tStructTrameLaBotBox *trameRecue)
 {
-  long lDonnee_temp = 0; // utilisé si besoin pour le décodage des données en flottant
+  //long lDonnee_temp = 0; // utilisÃ© si besoin pour le dÃ©codage des donnÃ©es en flottant
 
    // Decode les signaux de la trame
    PositionServoMoteur2 = ( ( ((unsigned short)(trameRecue->Data[7])) & 0xFF) )  |  ( ( ((unsigned short)(trameRecue->Data[6])) & 0xFF) << 8 );
@@ -532,7 +532,7 @@ CTrameLaBotBox_COMMANDE_MVT_MANUEL::CTrameLaBotBox_COMMANDE_MVT_MANUEL()
    */
 void CTrameLaBotBox_COMMANDE_MVT_MANUEL::Decode(tStructTrameLaBotBox *trameRecue)
 {
-  long lDonnee_temp = 0; // utilisé si besoin pour le décodage des données en flottant
+  //long lDonnee_temp = 0; // utilisÃ© si besoin pour le dÃ©codage des donnÃ©es en flottant
 
    // Decode les signaux de la trame
    PuissanceMotD = ( ( ((short)(trameRecue->Data[3])) & 0xFF) )  |  ( ( ((short)(trameRecue->Data[2])) & 0xFF) << 8 );
@@ -962,5 +962,169 @@ tStructTrameLaBotBox* CTrameLaBotBox_ELECTROBOT_ETAT_CAPTEURS_1::Encode(void)
 
 
 
+//___________________________________________________________________________
+ /*!
+   \brief Constructeur
+   \param --
+   \return --
+   */
+CTrameLaBotBox_ECRAN_ETAT_ECRAN::CTrameLaBotBox_ECRAN_ETAT_ECRAN()
+{
+  m_trame_brute.ID = ID_ECRAN_LBB_ETAT_ECRAN;
+  m_trame_brute.DLC = DLC_ECRAN_LBB_ETAT_ECRAN;
+}
+//___________________________________________________________________________
+ /*!
+   \brief Decode les signaux de la trame ECRAN_ETAT_ECRAN
+
+		- Renseigne les champs de la structure de donnee de la trame
+   \param bufBrut le buffer des octets de la trames a decoder
+   \return --
+   */
+void CTrameLaBotBox_ECRAN_ETAT_ECRAN::Decode(tStructTrameLaBotBox *trameRecue)
+{
+  //long lDonnee_temp = 0; // utilisÃ© si besoin pour le dÃ©codage des donnÃ©es en flottant
+
+   // Decode les signaux de la trame
+   Valeur = ( ( ((short)(trameRecue->Data[3])) & 0xFF) )  |  ( ( ((short)(trameRecue->Data[2])) & 0xFF) << 8 );
+
+   CodeCommande = ( ( ((unsigned short)(trameRecue->Data[1])) & 0xFF) )  |  ( ( ((unsigned short)(trameRecue->Data[0])) & 0xFF) << 8 );
+
+
+  m_new_trame = true;
+  m_nombre_recue++;
+}
+
+
+//___________________________________________________________________________
+ /*!
+   \brief Constructeur
+   \param --
+   \return --
+   */
+CTrameLaBotBox_ECRAN_ETAT_MATCH::CTrameLaBotBox_ECRAN_ETAT_MATCH()
+{
+  m_trame_brute.ID = ID_ECRAN_LBB_ETAT_MATCH;
+  m_trame_brute.DLC = DLC_ECRAN_LBB_ETAT_MATCH;
+}
+//___________________________________________________________________________
+ /*!
+   \brief Decode les signaux de la trame ECRAN_ETAT_MATCH
+
+		- Renseigne les champs de la structure de donnee de la trame
+   \param bufBrut le buffer des octets de la trames a decoder
+   \return --
+   */
+tStructTrameLaBotBox* CTrameLaBotBox_ECRAN_ETAT_MATCH::Encode(void)
+{
+  unsigned char i=0;
+
+  for (i=0; i<DLC_ECRAN_LBB_ETAT_MATCH; i++) {
+    m_trame_brute.Data[i] = 0;
+  }
+
+  	// Encode chacun des signaux de la trame
+    m_trame_brute.Data[2] |= (unsigned char)( ( (ObstacleDetecte) & 0x3) << 6 );
+
+    m_trame_brute.Data[2] |= (unsigned char)( ( (DiagBlocage) & 0x1) << 5 );
+
+    m_trame_brute.Data[2] |= (unsigned char)( ( (ConvergenceAsserv) & 0x1) << 4 );
+
+    m_trame_brute.Data[2] |= (unsigned char)( ( (ModeFonctionnement) & 0xF) );
+
+    m_trame_brute.Data[1] |= (unsigned char)( ( (CouleurEquipe) & 0xFF) );
+
+    m_trame_brute.Data[0] |= (unsigned char)( ( (TempsMatch) & 0xFF) );
+
+	return(&m_trame_brute);
+}
+
+//___________________________________________________________________________
+ /*!
+   \brief Constructeur
+   \param --
+   \return --
+   */
+CTrameLaBotBox_ETAT_RACK::CTrameLaBotBox_ETAT_RACK()
+{
+  m_trame_brute.ID = ID_ETAT_RACK;
+  m_trame_brute.DLC = DLC_ETAT_RACK;
+}
+//___________________________________________________________________________
+ /*!
+   \brief Decode les signaux de la trame ETAT_RACK
+
+		- Renseigne les champs de la structure de donnee de la trame
+   \param bufBrut le buffer des octets de la trames a decoder
+   \return --
+   */
+tStructTrameLaBotBox* CTrameLaBotBox_ETAT_RACK::Encode(void)
+{
+  unsigned char i=0;
+
+  for (i=0; i<DLC_ETAT_RACK; i++) {
+    m_trame_brute.Data[i] = 0;
+  }
+
+  	// Encode chacun des signaux de la trame
+    m_trame_brute.Data[7] |= (unsigned char)( ( (rack_reserve) & 0xFF) );
+    m_trame_brute.Data[6] |= (unsigned char)( ( (rack_reserve >> 8) & 0xFF) );
+
+    m_trame_brute.Data[5] |= (unsigned char)( ( (rack_modeAsservissement) & 0xFF) );
+
+    m_trame_brute.Data[3] |= (unsigned char)( ( (rack_cde_moteur) & 0xFF) );
+    m_trame_brute.Data[2] |= (unsigned char)( ( (rack_cde_moteur >> 8) & 0xFF) );
+
+    m_trame_brute.Data[1] |= (unsigned char)( ( (rack_consigne_moteur) & 0xFF) );
+    m_trame_brute.Data[0] |= (unsigned char)( ( (rack_consigne_moteur >> 8) & 0xFF) );
+
+    m_trame_brute.Data[4] |= (unsigned char)( ( (rack_convergence) & 0xFF) );
+
+	return(&m_trame_brute);
+}
+
+//___________________________________________________________________________
+ /*!
+   \brief Constructeur
+   \param --
+   \return --
+   */
+CTrameLaBotBox_ELECTROBOT_COLOR_SENSOR::CTrameLaBotBox_ELECTROBOT_COLOR_SENSOR()
+{
+  m_trame_brute.ID = ID_ELECTROBOT_COLOR_SENSOR;
+  m_trame_brute.DLC = DLC_ELECTROBOT_COLOR_SENSOR;
+}
+//___________________________________________________________________________
+ /*!
+   \brief Decode les signaux de la trame ELECTROBOT_COLOR_SENSOR
+
+		- Renseigne les champs de la structure de donnee de la trame
+   \param bufBrut le buffer des octets de la trames a decoder
+   \return --
+   */
+tStructTrameLaBotBox* CTrameLaBotBox_ELECTROBOT_COLOR_SENSOR::Encode(void)
+{
+  unsigned char i=0;
+
+  for (i=0; i<DLC_ELECTROBOT_COLOR_SENSOR; i++) {
+    m_trame_brute.Data[i] = 0;
+  }
+
+	m_trame_brute.Data[1] |= (unsigned char)( ( (R) & 0xFF) );
+	m_trame_brute.Data[0] |= (unsigned char)( ( (R >> 8) & 0xFF) );
+
+	m_trame_brute.Data[3] |= (unsigned char)( ( (G) & 0xFF) );
+	m_trame_brute.Data[2] |= (unsigned char)( ( (G >> 8) & 0xFF) );
+
+	m_trame_brute.Data[5] |= (unsigned char)( ( (B) & 0xFF) );
+	m_trame_brute.Data[4] |= (unsigned char)( ( (B >> 8) & 0xFF) );
+
+
+
+	return(&m_trame_brute);
+}
+
+
 
 /*! @} */
+
