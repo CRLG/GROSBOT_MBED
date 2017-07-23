@@ -1,0 +1,7 @@
+Includes
+ModeleSCT/src-gen
+/opt/gcc4mbed/external/mbed/libraries/mbed/api
+/opt/gcc4mbed/external/mbed/libraries/mbed/hal
+/opt/gcc4mbed/external/mbed/libraries/mbed/targets/hal/TARGET_NXP/TARGET_LPC176X
+/opt/gcc4mbed/external/mbed/libraries/mbed/targets/hal/TARGET_NXP/TARGET_LPC176X/TARGET_MBED_LPC1768
+/opt/gcc4mbed/external/mbed/libraries/mbed/targets/cmsis/TARGET_NXP/TARGET_LPC176X

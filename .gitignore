@@ -1,3 +1,8 @@
 build
 *.bak
-
+.d
+.o
+.elf
+.hex
+.map
+.diasm

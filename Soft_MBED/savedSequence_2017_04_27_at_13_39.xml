@@ -1,9 +1,0 @@
-<!DOCTYPE sequence_xml>
-<sequence>
- 
- <ligne comments="fin de mouvement" value="2000" id="convRack" type="Event"/>
- <ligne comments="on revient en position initiale pour une autre sequence" value="0" id="Rack" type="Asser"/>
- <ligne comments="fin de mouvement" value="2000" id="convRack" type="Event"/>
- <ligne comments="LEVIER: on revient en position initiale pour une autre sequence" value="530" id="4" type="AX-Position"/>
- <ligne comments="ROTATION: en position pour pousser un module dans la zone" value="505" id="1" type="AX-Position"/>
-</sequence>
