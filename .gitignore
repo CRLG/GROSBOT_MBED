@@ -1,8 +1,8 @@
 build
 *.bak
-.d
-.o
-.elf
-.hex
-.map
-.diasm
+*.d
+*.o
+*.elf
+*.hex
+*.map
+*.disasm
