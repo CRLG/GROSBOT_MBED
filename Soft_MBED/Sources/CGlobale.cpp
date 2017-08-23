@@ -41,9 +41,9 @@ CGlobale::~CGlobale()
 void CGlobale::Run(void)
 {
   // Initialise la vitesse de transmission avec le PC
-  _rs232_pc_tx.baud(57600);
+  _rs232_pc_tx.baud(115200);
   _rs232_pc_tx.format(8, Serial::None, 1);   	// 8 bits de données / Pas de parité / 1 bit de stop
-  _rs232_pc_rx.baud(57600);
+  _rs232_pc_rx.baud(115200);
   _rs232_pc_rx.format(8, Serial::None, 1);   	// 8 bits de données / Pas de parité / 1 bit de stop
 
  _rs232_pc_tx.printf("\n\rHello\n\r");
