@@ -48,18 +48,12 @@ void CGlobale::Run(void)
 
  _rs232_pc_tx.printf("\n\rHello\n\r");
 
-  // Initialise la vitesse de transmission avec l'écran
-  _rs232_ecran_tx.baud(57600);
-  _rs232_ecran_tx.format(8, Serial::None, 1);   	// 8 bits de données / Pas de parité / 1 bit de stop
-  _rs232_ecran_tx.baud(57600);
-  _rs232_ecran_tx.format(8, Serial::None, 1);   	// 8 bits de données / Pas de parité / 1 bit de stop
-
   //initialise la vitesse i2c
   //_i2c.frequency(200000);
 
   // Attends la montée de toutes les alimentation et l'initialisation de l'écran
   // Temps nécessaire en pratique pour que l'écran tactile ai fini de démarrer
-  // avant de commencer à lui en envoyer des messages (et d'en recevoir) 
+  // avant de commencer �  lui en envoyer des messages (et d'en recevoir) 
   wait_ms(3000);
 
   // Active les pull up sur les entrées

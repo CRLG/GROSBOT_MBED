@@ -5,7 +5,6 @@
 #include "RessourcesHardware.h"
 #include "CGlobale.h"
 
-void SendTrameEcran(void);
 void ScanI2C(void);
 
 //___________________________________________________________________________
@@ -21,8 +20,6 @@ void CGlobale::ModePiloteTerminal(void)
    _rs232_pc_tx.printf("\n\rCeci est le mode piloté par un terminal RS232\n\r");
    // Initialise une IRQ sur réception RS232 d'ANACONBOT
    _rs232_pc_rx.attach(&Application, &CGlobale::ReceiveRS232_ModePiloteTerminal);  	// Callback sur réception d'une donnée sur la RS232
-   // Initialise une IRQ sur réception RS232 de l'écran
-   _rs232_ecran_rx.attach(&Application, &CGlobale::ReceiveRS232_Ecran);  	// Callback sur réception d'une donnée sur la RS232
 
    periodicTick.attach(&Application, &CGlobale::IRQ_Tick_ModePiloteTerminal, (float(PERIODE_TICK)/1000.0));
    
@@ -34,7 +31,6 @@ void CGlobale::ModePiloteTerminal(void)
    while(1) {
         CheckReceptionTrame();
         wait_us(1);
-        //CheckReceptionTrameEcran();
         if (Tick) {
 			Tick = 0;
 			SequenceurModePiloteTerminal();
@@ -258,22 +254,3 @@ void ScanI2C(void)
     }
  }
 }
-
-//___________________________________________________________________________
- /*!
-   \brief Envoie les trames vers l'ecran
-
-   \param --
-   \return --
-   \remarks n'emet pas toutes les trames d'un seul coup pour ne pas risquer
-   			de retarder le sequenceur
-*/
-#define CONVERSION_VOLT2TRAME 10.0
-
-
-
-
-
-
-
-

@@ -21,7 +21,6 @@ Includes/CdsPIC.h
 Includes/ConfigFile.h
 Includes/ConfigSpecifiqueCoupe.h
 Includes/MessagerieCamera.h
-Includes/MessagerieEcranTactile.h
 Includes/MessagerieLaBotBox.h
 Includes/RessourcesHardware.h
 ModeleSCT/src-gen/IA.cpp
@@ -34,7 +33,6 @@ Sources/CAsservissementSulfateuse.cpp
 Sources/CCamera.cpp
 Sources/CCapteurs.cpp
 Sources/CEEPROM.cpp
-Sources/CEcranTactile.cpp
 Sources/CGlobale.cpp
 Sources/CGlobale_ModeAutonome.cpp
 Sources/CGlobale_ModePiloteLaBotBox.cpp

@@ -13,12 +13,9 @@
 #include "CServoMoteurSD20.h"
 #include "CServoMoteurAX.h"
 #include "CMoteurs.h"
-#include "CEcranTactile.h"
 #include "CCamera.h"
 #include "CAsservissementSulfateuse.h"
 #include "CAsservissementChariot.h"
-
-#define _ECRAN_LABOTBOX_
 
 typedef enum {
 	MODE_AUTONOME = 0,
@@ -52,7 +49,7 @@ public :
 	//le temps max de gonflage du ballon
 	unsigned int TempsMaxGonflage;
 
-	//! Le match à jouer
+	//! Le match �  jouer
 	CMatch m_match;
 	//! La gestion des roues gauches et droites
 	CRoues m_roues;
@@ -65,9 +62,6 @@ public :
 	//! L'asservissement de vitesse/position du robot
 	// ATTENTION : l'instance de la classe asservisement doit être mise après l'instance de eeprom car CAsservissement utilise CEEPROM dans son constructeur
 	CAsservissement m_asservissement;
-
-	//! La gestion de l'ecran tactile
-	CEcranTactile m_ecran_tactile;
 
 	//! La gestion de la caméra
 	CCamera m_camera;
@@ -111,12 +105,6 @@ private :
 	
 	//! Gestion du mode autonome
 	void ModeAutonome(void);
-	//! Reception RS232 en IRQ
-	void ReceiveRS232_Ecran(void);
-	//! Verifie et traite la reception de trames de l'écran
-	void CheckReceptionTrameEcran(void);
-	//! Envoie les trames vers l'écran
-	void SendTramesEcran(void);
 	//! Reception RS232 en IRQ
 	void ReceiveRS232_Camera(void);
 	//! Verifie et traite la reception de trames de la camera

@@ -50,9 +50,6 @@ Ticker periodicTick;
 Serial _rs232_pc_tx(USBTX, USBRX);
 Serial _rs232_pc_rx(USBTX, USBRX);
 
-Serial _rs232_ecran_tx(p13, p14);
-Serial _rs232_ecran_rx(p13, p14);
-
 Serial _rs232_camera_tx(p28, p27);
 Serial _rs232_camera_rx(p28, p27);
 
