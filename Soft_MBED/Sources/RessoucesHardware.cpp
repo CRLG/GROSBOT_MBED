@@ -44,6 +44,7 @@ PwmOut _Mot2_PWM (p24);
 
 // __________________________________________________ TIMERS
 Ticker periodicTick;
+Timer  _Global_Timer;  // pour connaitre l'heure depuis le démarrage avec résolution usec (attention : débordement au bout de 30minutes)
 
 
 // __________________________________________________ RS232

@@ -38,7 +38,7 @@ extern PwmOut _Mot1_PWM;
 extern PwmOut _Mot2_PWM;
 extern PwmOut _Moeldar_PWM;
 extern Ticker periodicTick;
-
+extern Timer  _Global_Timer;
 
 
 extern Serial _rs232_pc_tx;
