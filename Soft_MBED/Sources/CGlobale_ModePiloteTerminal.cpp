@@ -29,7 +29,6 @@ void CGlobale::ModePiloteTerminal(void)
    Application.m_moteurs.CommandeVitesse(5, 100);
    
    while(1) {
-        CheckReceptionTrame();
         wait_us(1);
         if (Tick) {
 			Tick = 0;

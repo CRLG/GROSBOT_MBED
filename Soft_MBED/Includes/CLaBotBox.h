@@ -16,7 +16,7 @@ typedef enum {
     LBB_CMDE_RAZ_CODEURS_ROUES,
     LBB_CMDE_RAZ_CODEUR_3,
     LBB_CMDE_RAZ_CODEUR_4,
-    LBB_CMDE_RESET_MODELE_SIMULINK_MATCH,
+    LBB_CMDE_RESET_STATEFLOW_MATCH,
     LBB_CMDE_TEST_ACTIONNEURS,
     LBB_CMDE_INIT_ACTIONNEURS
 }tCodeCommandeLabotBox;
@@ -101,6 +101,15 @@ public :
 	CLaBotBox();
 	~CLaBotBox();
 
+    void Start();
+    void Stop();
+    void StopRx();
+    void StopTx();
+    bool isRxEnabled();
+    bool isTxEnabled();
+    void Execute();
+    void IRQ_ReceiveRS232();
+
 
 	// __________________________________________ TRAMES EN RECEPTION	
 	//! Reconstitution d'une trame a partir d'informations entrantes
@@ -113,6 +122,10 @@ public :
 	unsigned char isChecksumTrameCouranteOK(unsigned char CS_attendu);
 
 
+    //! Verifie et traite la reception de trames d'Anaconbot
+    void CheckReceptionTrame(void);
+    //! Envoie les trames vers LABOTBOX
+    void SendTramesLaBotBox(void);
 
 	// __________________________________________ TRAMES EN EMISSION	
 	//! Serialise une trame
@@ -121,7 +134,7 @@ public :
 	//! Checksum de trame brut
 	unsigned char getCheckSumTrame(tStructTrameLaBotBox *trameBrute);
 
-
+#define NOMBRE_MAX_TRAMES_LABOTBOX 30
 	// __________________________________________ INSTANCE DE CHAQUE TRAME
 	//! Trame
     CTrameLaBotBox_ELECTROBOT_CDE_MOTEURS       m_ELECTROBOT_CDE_MOTEURS;
@@ -153,10 +166,22 @@ public :
     CTrameLaBotBox_ELECTROBOT_COLOR_SENSOR		m_COLOR_SENSOR;
 
 private : 
-	//! Etat de la machine d'etat de reconstitution
+    //! Autorise la réception de données en IRQ en provenance de Labotbox
+    bool m_rx_enabled;
+    //! Autorise la transmission de données vers Labotbox
+    bool m_tx_enabled;
+    //! Etat de la machine d'etat de reconstitution
 	unsigned char m_etatReconst;
 	//! Trame en cours de reconstruction
 	tStructTrameLaBotBox m_trameCourante;
+
+    CTrameLaBotBox* m_liste_trames[NOMBRE_MAX_TRAMES_LABOTBOX];
+    unsigned int m_nombre_trames;
+
+    //! Crée la liste des trames
+    void initListeTrames();
+    //! Renvoie le pointeur sur la trame à partir de son identifiant
+    CTrameLaBotBox* getTrameFromID(unsigned int ID);
 
 };
 

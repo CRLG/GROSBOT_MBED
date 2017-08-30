@@ -30,6 +30,29 @@ CTrameLaBotBox::~CTrameLaBotBox()
 
 }
 
+//___________________________________________________________________________
+ /*!
+   \brief Decodage d'une trame brute reçue
+   \param trameRecue la trame brute à décoder
+   \return --
+   \remark Méthode de la classe mère jamais appelée
+*/
+void CTrameLaBotBox::Decode(tStructTrameLaBotBox *trameRecue)
+{
+    (void*)trameRecue;  // pour éviter les warnings de compilation
+}
+
+//___________________________________________________________________________
+ /*!
+   \brief Encodage de la trame pour envoie
+   \param --
+   \return la trame à envoyer
+   \remark Méthode de la classe mère jamais appelée
+*/
+tStructTrameLaBotBox* CTrameLaBotBox::Encode(void)
+{
+    return nullptr;
+}
 
 //___________________________________________________________________________
  /*!
@@ -45,6 +68,8 @@ bool CTrameLaBotBox::isNewTrame(void)
   }
   return(false);
 }
+
+
 
 
 

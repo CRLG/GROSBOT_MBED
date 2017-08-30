@@ -111,7 +111,6 @@ private :
 	void CheckReceptionTrameCamera(void);
 	//! Envoie les trames vers la caméra
 	void SendTramesCamera(void);
-	void SendTramesEcranLaBotBox(bool activMode);
 
 	//! Sequenceur de taches en mode autonome
 	void SequenceurModeAutonome(void);
@@ -125,11 +124,11 @@ private :
 	//! Gestion du mode piloté via Anaconbot
 	void ModePiloteLaBotBox(void);
 	//! Reception RS232 en IRQ
-	void ReceiveRS232_ModePiloteLaBotBox(void);
+    //void ReceiveRS232_ModePiloteLaBotBox(void);
 	//! Verifie et traite la reception de trames d'Anaconbot
-	void CheckReceptionTrame(void);
+    //void CheckReceptionTrame(void);
 	//! Envoie les trames vers LABOTBOX
-	void SendTramesLaBotBox(void);
+    //void SendTramesLaBotBox(void);
 
 	//! Gestion du mode piloté par terminal
 	void ModePiloteTerminal(void);

@@ -46,6 +46,9 @@
 #define ID_ELECTROBOT_ETAT_CAPTEURS_1 0x10
 #define ID_ETAT_RACK 0x154
 #define ID_ELECTROBOT_COLOR_SENSOR 0x21
+#define ID_ETAT_ECRAN 0x91
+#define ID_ETAT_MATCH 0x41
+
 
 #define DLC_ELECTROBOT_CDE_SERVOS_SD20 5
 #define DLC_ELECTROBOT_CDE_SERVOS_AX 5
@@ -72,6 +75,8 @@
 #define DLC_ELECTROBOT_ETAT_CAPTEURS_1 8
 #define DLC_ETAT_RACK 8
 #define DLC_ELECTROBOT_COLOR_SENSOR 6
+#define DLC_ETAT_ECRAN 4
+#define DLC_ETAT_MATCH 3
 
 #define BRUTE2PHYS_valeur_commande_sd20(val) ( ((float)val * (1.000000)) + (0.000000) ) 
 #define PHYS2BRUTE_valeur_commande_sd20(val) (unsigned short)( (val - (0.000000)) / (1.000000) ) 
@@ -623,31 +628,6 @@ public :
 };
 
 
-
-// Enumérés, defines, ...
-#define ID_ECRAN_LBB_ETAT_ECRAN 0x91
-#define ID_ECRAN_LBB_ETAT_MATCH 0x41
-
-#define DLC_ECRAN_LBB_ETAT_ECRAN 4
-#define DLC_ECRAN_LBB_ETAT_MATCH 3
-/*
-#define BRUTE2PHYS_Valeur(val) ( ((float)val * (1.000000)) + (0.000000) )
-#define PHYS2BRUTE_Valeur(val) (short)( (val - (0.000000)) / (1.000000) )
-#define BRUTE2PHYS_CodeCommande(val) ( ((float)val * (1.000000)) + (0.000000) )
-#define PHYS2BRUTE_CodeCommande(val) (unsigned short)( (val - (0.000000)) / (1.000000) )
-#define BRUTE2PHYS_ObstacleDetecte(val) ( ((float)val * (1.000000)) + (0.000000) )
-#define PHYS2BRUTE_ObstacleDetecte(val) (unsigned char)( (val - (0.000000)) / (1.000000) )
-#define BRUTE2PHYS_DiagBlocage(val) ( ((float)val * (1.000000)) + (0.000000) )
-#define PHYS2BRUTE_DiagBlocage(val) (unsigned char)( (val - (0.000000)) / (1.000000) )
-#define BRUTE2PHYS_ConvergenceAsserv(val) ( ((float)val * (1.000000)) + (0.000000) )
-#define PHYS2BRUTE_ConvergenceAsserv(val) (unsigned char)( (val - (0.000000)) / (1.000000) )
-#define BRUTE2PHYS_ModeFonctionnement(val) ( ((float)val * (1.000000)) + (0.000000) )
-#define PHYS2BRUTE_ModeFonctionnement(val) (unsigned char)( (val - (0.000000)) / (1.000000) )
-#define BRUTE2PHYS_CouleurEquipe(val) ( ((float)val * (1.000000)) + (0.000000) )
-#define PHYS2BRUTE_CouleurEquipe(val) (unsigned char)( (val - (0.000000)) / (1.000000) )
-#define BRUTE2PHYS_TempsMatch(val) ( ((float)val * (1.000000)) + (0.000000) )
-#define PHYS2BRUTE_TempsMatch(val) (unsigned char)( (val - (0.000000)) / (1.000000) )
-*/
 // -----------------------------
 //! Classe de base pour les trames CAN
 class CTrameLaBotBox_ECRAN_ETAT_ECRAN : public CTrameLaBotBox {

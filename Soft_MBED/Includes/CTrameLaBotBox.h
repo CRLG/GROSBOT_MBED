@@ -25,13 +25,10 @@ public :
 	CTrameLaBotBox();
 	~CTrameLaBotBox();
 
-	void Decode(tStructTrameLaBotBox *trameRecue);
-	tStructTrameLaBotBox* Encode(void);
-	bool isNewTrame(void);
-	 
-	 
+    virtual void Decode(tStructTrameLaBotBox *trameRecue);
+    virtual tStructTrameLaBotBox* Encode(void);
 
-
+    bool isNewTrame(void);
 };
 
 

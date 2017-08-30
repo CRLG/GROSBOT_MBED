@@ -970,8 +970,8 @@ tStructTrameLaBotBox* CTrameLaBotBox_ELECTROBOT_ETAT_CAPTEURS_1::Encode(void)
    */
 CTrameLaBotBox_ECRAN_ETAT_ECRAN::CTrameLaBotBox_ECRAN_ETAT_ECRAN()
 {
-  m_trame_brute.ID = ID_ECRAN_LBB_ETAT_ECRAN;
-  m_trame_brute.DLC = DLC_ECRAN_LBB_ETAT_ECRAN;
+  m_trame_brute.ID = ID_ETAT_ECRAN;
+  m_trame_brute.DLC = DLC_ETAT_ECRAN;
 }
 //___________________________________________________________________________
  /*!
@@ -1004,8 +1004,8 @@ void CTrameLaBotBox_ECRAN_ETAT_ECRAN::Decode(tStructTrameLaBotBox *trameRecue)
    */
 CTrameLaBotBox_ECRAN_ETAT_MATCH::CTrameLaBotBox_ECRAN_ETAT_MATCH()
 {
-  m_trame_brute.ID = ID_ECRAN_LBB_ETAT_MATCH;
-  m_trame_brute.DLC = DLC_ECRAN_LBB_ETAT_MATCH;
+  m_trame_brute.ID = ID_ETAT_MATCH;
+  m_trame_brute.DLC = DLC_ETAT_MATCH;
 }
 //___________________________________________________________________________
  /*!
@@ -1019,7 +1019,7 @@ tStructTrameLaBotBox* CTrameLaBotBox_ECRAN_ETAT_MATCH::Encode(void)
 {
   unsigned char i=0;
 
-  for (i=0; i<DLC_ECRAN_LBB_ETAT_MATCH; i++) {
+  for (i=0; i<DLC_ETAT_MATCH; i++) {
     m_trame_brute.Data[i] = 0;
   }
 
