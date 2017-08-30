@@ -70,6 +70,7 @@ void CLaBotBox::initListeTrames()
     m_liste_trames[m_nombre_trames++] = &m_ETAT_MATCH;
     m_liste_trames[m_nombre_trames++] = &m_ETAT_RACK;
     m_liste_trames[m_nombre_trames++] = &m_COLOR_SENSOR;
+    m_liste_trames[m_nombre_trames++] = &m_CONFIG_PERIODE_TRAME;
 }
 
 
@@ -750,6 +751,16 @@ void CLaBotBox::CheckReceptionTrame(void)
           break;
       } // switch
   }
+  // ___________________________
+  if  (m_CONFIG_PERIODE_TRAME.isNewTrame() ) {
+      CTrameLaBotBox *trame = getTrameFromID(m_CONFIG_PERIODE_TRAME.ID);
+      if (trame)
+      {
+          trame->setTransmitPeriod(m_CONFIG_PERIODE_TRAME.Periode);
+      }
+  }
+
+
 
 }
 

@@ -167,6 +167,7 @@ public :
     CTrameLaBotBox_ECRAN_ETAT_MATCH				m_ETAT_MATCH;
     CTrameLaBotBox_ETAT_RACK          			m_ETAT_RACK;
     CTrameLaBotBox_ELECTROBOT_COLOR_SENSOR		m_COLOR_SENSOR;
+    CTrameLaBotBox_CONFIG_PERIODE_TRAME         m_CONFIG_PERIODE_TRAME;
 
 private : 
     //! Autorise la réception de données en IRQ en provenance de Labotbox

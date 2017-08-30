@@ -48,6 +48,7 @@
 #define ID_ELECTROBOT_COLOR_SENSOR 0x21
 #define ID_ETAT_ECRAN 0x91
 #define ID_ETAT_MATCH 0x41
+#define ID_CONFIG_PERIODE_TRAME 0x108
 
 
 #define DLC_ELECTROBOT_CDE_SERVOS_SD20 5
@@ -77,6 +78,7 @@
 #define DLC_ELECTROBOT_COLOR_SENSOR 6
 #define DLC_ETAT_ECRAN 4
 #define DLC_ETAT_MATCH 3
+#define DLC_CONFIG_PERIODE_TRAME 4
 
 #define BRUTE2PHYS_valeur_commande_sd20(val) ( ((float)val * (1.000000)) + (0.000000) ) 
 #define PHYS2BRUTE_valeur_commande_sd20(val) (unsigned short)( (val - (0.000000)) / (1.000000) ) 
@@ -685,6 +687,17 @@ public :
 	tStructTrameLaBotBox* Encode(void);
 };
 
+// -----------------------------
+//! Classe
+class CTrameLaBotBox_CONFIG_PERIODE_TRAME : public CTrameLaBotBox {
+public :
+    //! Les signaux de la messagerie
+    unsigned short ID;
+    short Periode;
+
+    CTrameLaBotBox_CONFIG_PERIODE_TRAME();
+    void Decode(tStructTrameLaBotBox* trameRecue);
+};
 
 
 #endif

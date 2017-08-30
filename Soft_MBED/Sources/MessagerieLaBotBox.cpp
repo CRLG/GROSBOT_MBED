@@ -1124,6 +1124,36 @@ tStructTrameLaBotBox* CTrameLaBotBox_ELECTROBOT_COLOR_SENSOR::Encode(void)
 	return(&m_trame_brute);
 }
 
+//___________________________________________________________________________
+ /*!
+   \brief Constructeur
+   \param --
+   \return --
+   */
+CTrameLaBotBox_CONFIG_PERIODE_TRAME::CTrameLaBotBox_CONFIG_PERIODE_TRAME()
+{
+  m_trame_brute.ID = ID_CONFIG_PERIODE_TRAME;
+  m_trame_brute.DLC = DLC_CONFIG_PERIODE_TRAME;
+}
+//___________________________________________________________________________
+ /*!
+   \brief Decode les signaux de la trame CONFIG_PERIODE_TRAME
+
+        - Renseigne les champs de la structure de donnee de la trame
+   \param bufBrut le buffer des octets de la trames a decoder
+   \return --
+   */
+void CTrameLaBotBox_CONFIG_PERIODE_TRAME::Decode(tStructTrameLaBotBox *trameRecue)
+{
+   // Decode les signaux de la trame
+   Periode = ( ( ((short)(trameRecue->Data[3])) & 0xFF) )  |  ( ( ((short)(trameRecue->Data[2])) & 0xFF) << 8 );
+
+   ID = ( ( ((unsigned short)(trameRecue->Data[1])) & 0xFF) )  |  ( ( ((unsigned short)(trameRecue->Data[0])) & 0xFF) << 8 );
+
+
+  m_new_trame = true;
+  m_nombre_recue++;
+}
 
 
 /*! @} */
