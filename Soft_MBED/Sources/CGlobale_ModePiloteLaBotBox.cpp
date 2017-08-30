@@ -16,6 +16,7 @@ void CGlobale::ModePiloteLaBotBox(void)
 {
    _rs232_pc_tx.printf("\n\rCeci est le mode piloté via LABOTBOX\n\r");
    m_LaBotBox.Start();
+   m_LaBotBox.setAllTransmitPeriod(200);  // Toutes les trames sont envoyées à Labotbox avec la même période
 
    periodicTick.attach(&Application, &CGlobale::IRQ_Tick_ModePiloteLaBotBox, float(PERIODE_TICK)/1000.0f);
 

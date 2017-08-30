@@ -191,8 +191,6 @@ bool CLaBotBox::isTxEnabled()
 */
 void CLaBotBox::Execute()
 {
-    static unsigned int cpt=0;
-
     if (m_rx_enabled)
     {
         CheckReceptionTrame();
@@ -200,13 +198,7 @@ void CLaBotBox::Execute()
 
     if (m_tx_enabled)
     {
-        cpt++;
-        if(cpt>20)
-        {
-            cpt = 0;
-            SendTramesLaBotBox();
-        }
-
+        SendTramesLaBotBox();
     }
 }
 
@@ -775,87 +767,125 @@ void CLaBotBox::CheckReceptionTrame(void)
    \return --
 */
 void CLaBotBox::SendTramesLaBotBox(void)
-{   // _____________________________________________
-    m_ETAT_ASSERVISSEMENT.cde_moteur_G = (int)Application.m_roues.m_cde_roue_G;
-    m_ETAT_ASSERVISSEMENT.cde_moteur_D = (int)Application.m_roues.m_cde_roue_D;
-    m_ETAT_ASSERVISSEMENT.Convergence = (Application.m_asservissement.diag_blocage==1)?2:Application.m_asservissement.convergence_conf;
-    m_ETAT_ASSERVISSEMENT.ModeAsservissement = Application.m_asservissement.ModeAsservissement;
-    SerialiseTrame(	m_ETAT_ASSERVISSEMENT.Encode());
+{
     // _____________________________________________
-    m_POSITION_CODEURS.PosCodeurG = Application.m_roues.getCodeurG();
-    m_POSITION_CODEURS.PosCodeurD = Application.m_roues.getCodeurD();
-    SerialiseTrame(	m_POSITION_CODEURS.Encode());
+    if (m_ETAT_ASSERVISSEMENT.isTimeToSend())
+    {
+        m_ETAT_ASSERVISSEMENT.cde_moteur_G = (int)Application.m_roues.m_cde_roue_G;
+        m_ETAT_ASSERVISSEMENT.cde_moteur_D = (int)Application.m_roues.m_cde_roue_D;
+        m_ETAT_ASSERVISSEMENT.Convergence = (Application.m_asservissement.diag_blocage==1)?2:Application.m_asservissement.convergence_conf;
+        m_ETAT_ASSERVISSEMENT.ModeAsservissement = Application.m_asservissement.ModeAsservissement;
+        SerialiseTrame(	m_ETAT_ASSERVISSEMENT.Encode());
+    }
     // _____________________________________________
-    m_POSITION_ABSOLUE_XY_TETA.x_pos = PHYS2BRUTE_x_pos(Application.m_asservissement.X_robot);
-    m_POSITION_ABSOLUE_XY_TETA.y_pos = PHYS2BRUTE_y_pos(Application.m_asservissement.Y_robot);
-    m_POSITION_ABSOLUE_XY_TETA.teta_pos = PHYS2BRUTE_teta_pos(Application.m_asservissement.angle_robot);
-    SerialiseTrame(	m_POSITION_ABSOLUE_XY_TETA.Encode());
+    if (m_POSITION_CODEURS.isTimeToSend())
+    {
+        m_POSITION_CODEURS.PosCodeurG = Application.m_roues.getCodeurG();
+        m_POSITION_CODEURS.PosCodeurD = Application.m_roues.getCodeurD();
+        SerialiseTrame(	m_POSITION_CODEURS.Encode());
+    }
     // _____________________________________________
-    m_ETAT_PID_ASSERVISSEMENT.vitesse_avance_robot_filt      = PHYS2BRUTE_vitesse_avance_robot_filt(Application.m_asservissement.vitesse_avance_robot_filt);
-    m_ETAT_PID_ASSERVISSEMENT.consigne_vitesse_avance_filt   = PHYS2BRUTE_consigne_vitesse_avance_filt(Application.m_asservissement.consigne_vitesse_avance_filt);
-    m_ETAT_PID_ASSERVISSEMENT.vitesse_rotation_robot_filt    = PHYS2BRUTE_vitesse_rotation_robot_filt(Application.m_asservissement.vitesse_rotation_robot_filt);
-    m_ETAT_PID_ASSERVISSEMENT.consigne_vitesse_rotation_filt = PHYS2BRUTE_consigne_vitesse_rotation_filt(Application.m_asservissement.consigne_vitesse_rotation_filt);
-    SerialiseTrame(	m_ETAT_PID_ASSERVISSEMENT.Encode());
+    if (m_POSITION_ABSOLUE_XY_TETA.isTimeToSend())
+    {
+        m_POSITION_ABSOLUE_XY_TETA.x_pos = PHYS2BRUTE_x_pos(Application.m_asservissement.X_robot);
+        m_POSITION_ABSOLUE_XY_TETA.y_pos = PHYS2BRUTE_y_pos(Application.m_asservissement.Y_robot);
+        m_POSITION_ABSOLUE_XY_TETA.teta_pos = PHYS2BRUTE_teta_pos(Application.m_asservissement.angle_robot);
+        SerialiseTrame(	m_POSITION_ABSOLUE_XY_TETA.Encode());
+    }
     // _____________________________________________
-    m_ELECTROBOT_ETAT_CAPTEURS_1.Eana1 = PHYS2BRUTE_Eana1(Application.m_capteurs.m_b_Eana1);
-    m_ELECTROBOT_ETAT_CAPTEURS_1.Eana2 = PHYS2BRUTE_Eana2(Application.m_capteurs.m_b_Eana2);
-    m_ELECTROBOT_ETAT_CAPTEURS_1.Eana3 = PHYS2BRUTE_Eana3(Application.m_capteurs.m_b_Eana3);
-    m_ELECTROBOT_ETAT_CAPTEURS_1.Eana4 = PHYS2BRUTE_Eana4(Application.m_capteurs.m_b_Eana4);
-    m_ELECTROBOT_ETAT_CAPTEURS_1.Eana5 = PHYS2BRUTE_Eana5(Application.m_capteurs.m_b_Eana5);
-    m_ELECTROBOT_ETAT_CAPTEURS_1.Eana6 = PHYS2BRUTE_Eana6(Application.m_capteurs.m_b_Eana6);
-    m_ELECTROBOT_ETAT_CAPTEURS_1.Eana7 = PHYS2BRUTE_Eana7(Application.m_capteurs.m_b_Eana7);
-    m_ELECTROBOT_ETAT_CAPTEURS_1.Eana8 = PHYS2BRUTE_Eana8(Application.m_capteurs.m_b_Eana8);
-    SerialiseTrame(	m_ELECTROBOT_ETAT_CAPTEURS_1.Encode());
-   // _____________________________________________
-    m_ELECTROBOT_ETAT_CAPTEURS_2.Eana9 = PHYS2BRUTE_Eana9(Application.m_capteurs.m_b_Eana9);
-    m_ELECTROBOT_ETAT_CAPTEURS_2.Eana10 = PHYS2BRUTE_Eana10(Application.m_capteurs.m_b_Eana10);
-    m_ELECTROBOT_ETAT_CAPTEURS_2.Eana11 = PHYS2BRUTE_Eana11(Application.m_capteurs.m_b_Eana11);
-    m_ELECTROBOT_ETAT_CAPTEURS_2.Eana12 = PHYS2BRUTE_Eana12(Application.m_capteurs.m_b_Eana12);
-    m_ELECTROBOT_ETAT_CAPTEURS_2.Eana13 = PHYS2BRUTE_Eana13(Application.m_capteurs.m_b_Eana13);
-    m_ELECTROBOT_ETAT_CAPTEURS_2.Vbat = PHYS2BRUTE_Vbat(Application.m_capteurs.m_tension_batterie);
-    m_ELECTROBOT_ETAT_CAPTEURS_2.Etor1 = !Application.m_capteurs.m_b_Etor1;
-    m_ELECTROBOT_ETAT_CAPTEURS_2.Etor2 = !Application.m_capteurs.m_b_Etor2;
-    m_ELECTROBOT_ETAT_CAPTEURS_2.Etor3 = !Application.m_capteurs.m_b_Etor3;
-    m_ELECTROBOT_ETAT_CAPTEURS_2.Etor4 = !Application.m_capteurs.m_b_Etor4;
-    m_ELECTROBOT_ETAT_CAPTEURS_2.Etor5 = !Application.m_capteurs.m_b_Etor5;
-    m_ELECTROBOT_ETAT_CAPTEURS_2.Etor6 = !Application.m_capteurs.m_b_Etor6;
-    m_ELECTROBOT_ETAT_CAPTEURS_2.Etor_CAN_TX = !Application.m_capteurs.m_b_Etor_CanTx;
-    m_ELECTROBOT_ETAT_CAPTEURS_2.Etor_CAN_RX = !Application.m_capteurs.m_b_Etor_CanRx;
-    SerialiseTrame(	m_ELECTROBOT_ETAT_CAPTEURS_2.Encode());
+    if (m_ETAT_PID_ASSERVISSEMENT.isTimeToSend())
+    {
+        m_ETAT_PID_ASSERVISSEMENT.vitesse_avance_robot_filt      = PHYS2BRUTE_vitesse_avance_robot_filt(Application.m_asservissement.vitesse_avance_robot_filt);
+        m_ETAT_PID_ASSERVISSEMENT.consigne_vitesse_avance_filt   = PHYS2BRUTE_consigne_vitesse_avance_filt(Application.m_asservissement.consigne_vitesse_avance_filt);
+        m_ETAT_PID_ASSERVISSEMENT.vitesse_rotation_robot_filt    = PHYS2BRUTE_vitesse_rotation_robot_filt(Application.m_asservissement.vitesse_rotation_robot_filt);
+        m_ETAT_PID_ASSERVISSEMENT.consigne_vitesse_rotation_filt = PHYS2BRUTE_consigne_vitesse_rotation_filt(Application.m_asservissement.consigne_vitesse_rotation_filt);
+        SerialiseTrame(	m_ETAT_PID_ASSERVISSEMENT.Encode());
+    }
     // _____________________________________________
-    m_ELECTROBOT_ETAT_CODEURS_1_2.Codeur_1 = Application.m_capteurs.m_CumulCodeurPosition1;
-    m_ELECTROBOT_ETAT_CODEURS_1_2.Codeur_2 = Application.m_capteurs.m_CumulCodeurPosition2;
-    SerialiseTrame(m_ELECTROBOT_ETAT_CODEURS_1_2.Encode());
+    if (m_ELECTROBOT_ETAT_CAPTEURS_1.isTimeToSend())
+    {
+        m_ELECTROBOT_ETAT_CAPTEURS_1.Eana1 = PHYS2BRUTE_Eana1(Application.m_capteurs.m_b_Eana1);
+        m_ELECTROBOT_ETAT_CAPTEURS_1.Eana2 = PHYS2BRUTE_Eana2(Application.m_capteurs.m_b_Eana2);
+        m_ELECTROBOT_ETAT_CAPTEURS_1.Eana3 = PHYS2BRUTE_Eana3(Application.m_capteurs.m_b_Eana3);
+        m_ELECTROBOT_ETAT_CAPTEURS_1.Eana4 = PHYS2BRUTE_Eana4(Application.m_capteurs.m_b_Eana4);
+        m_ELECTROBOT_ETAT_CAPTEURS_1.Eana5 = PHYS2BRUTE_Eana5(Application.m_capteurs.m_b_Eana5);
+        m_ELECTROBOT_ETAT_CAPTEURS_1.Eana6 = PHYS2BRUTE_Eana6(Application.m_capteurs.m_b_Eana6);
+        m_ELECTROBOT_ETAT_CAPTEURS_1.Eana7 = PHYS2BRUTE_Eana7(Application.m_capteurs.m_b_Eana7);
+        m_ELECTROBOT_ETAT_CAPTEURS_1.Eana8 = PHYS2BRUTE_Eana8(Application.m_capteurs.m_b_Eana8);
+        SerialiseTrame(	m_ELECTROBOT_ETAT_CAPTEURS_1.Encode());
+    }
     // _____________________________________________
-    m_ELECTROBOT_ETAT_CODEURS_3_4.Codeur_3 = Application.m_capteurs.m_CumulCodeurPosition3;
-    m_ELECTROBOT_ETAT_CODEURS_3_4.Codeur_4 = Application.m_capteurs.m_CumulCodeurPosition4;
-    SerialiseTrame(m_ELECTROBOT_ETAT_CODEURS_3_4.Encode());
+    if (m_ELECTROBOT_ETAT_CAPTEURS_2.isTimeToSend())
+    {
+        m_ELECTROBOT_ETAT_CAPTEURS_2.Eana9 = PHYS2BRUTE_Eana9(Application.m_capteurs.m_b_Eana9);
+        m_ELECTROBOT_ETAT_CAPTEURS_2.Eana10 = PHYS2BRUTE_Eana10(Application.m_capteurs.m_b_Eana10);
+        m_ELECTROBOT_ETAT_CAPTEURS_2.Eana11 = PHYS2BRUTE_Eana11(Application.m_capteurs.m_b_Eana11);
+        m_ELECTROBOT_ETAT_CAPTEURS_2.Eana12 = PHYS2BRUTE_Eana12(Application.m_capteurs.m_b_Eana12);
+        m_ELECTROBOT_ETAT_CAPTEURS_2.Eana13 = PHYS2BRUTE_Eana13(Application.m_capteurs.m_b_Eana13);
+        m_ELECTROBOT_ETAT_CAPTEURS_2.Vbat = PHYS2BRUTE_Vbat(Application.m_capteurs.m_tension_batterie);
+        m_ELECTROBOT_ETAT_CAPTEURS_2.Etor1 = !Application.m_capteurs.m_b_Etor1;
+        m_ELECTROBOT_ETAT_CAPTEURS_2.Etor2 = !Application.m_capteurs.m_b_Etor2;
+        m_ELECTROBOT_ETAT_CAPTEURS_2.Etor3 = !Application.m_capteurs.m_b_Etor3;
+        m_ELECTROBOT_ETAT_CAPTEURS_2.Etor4 = !Application.m_capteurs.m_b_Etor4;
+        m_ELECTROBOT_ETAT_CAPTEURS_2.Etor5 = !Application.m_capteurs.m_b_Etor5;
+        m_ELECTROBOT_ETAT_CAPTEURS_2.Etor6 = !Application.m_capteurs.m_b_Etor6;
+        m_ELECTROBOT_ETAT_CAPTEURS_2.Etor_CAN_TX = !Application.m_capteurs.m_b_Etor_CanTx;
+        m_ELECTROBOT_ETAT_CAPTEURS_2.Etor_CAN_RX = !Application.m_capteurs.m_b_Etor_CanRx;
+        SerialiseTrame(	m_ELECTROBOT_ETAT_CAPTEURS_2.Encode());
+    }
     // _____________________________________________
-    m_ELECTROBOT_ETAT_TELEMETRES.Telemetre1 = Application.m_capteurs.m_telemetres.m_distance[0];
-    m_ELECTROBOT_ETAT_TELEMETRES.Telemetre2 = Application.m_capteurs.m_telemetres.m_distance[1];
-    m_ELECTROBOT_ETAT_TELEMETRES.Telemetre3 = Application.m_capteurs.m_telemetres.m_distance[2];
-    m_ELECTROBOT_ETAT_TELEMETRES.Telemetre4 = Application.m_capteurs.m_telemetres.m_distance[3];
-    SerialiseTrame(m_ELECTROBOT_ETAT_TELEMETRES.Encode());
+    if (m_ELECTROBOT_ETAT_CODEURS_1_2.isTimeToSend())
+    {
+        m_ELECTROBOT_ETAT_CODEURS_1_2.Codeur_1 = Application.m_capteurs.m_CumulCodeurPosition1;
+        m_ELECTROBOT_ETAT_CODEURS_1_2.Codeur_2 = Application.m_capteurs.m_CumulCodeurPosition2;
+        SerialiseTrame(m_ELECTROBOT_ETAT_CODEURS_1_2.Encode());
+    }
     // _____________________________________________
-    m_ETAT_MATCH.TempsMatch = (unsigned char)(Application.m_match.m_duree);
-    m_ETAT_MATCH.CouleurEquipe = Application.m_match.m_couleur_equipe;
-    m_ETAT_MATCH.ModeFonctionnement = Application.ModeFonctionnement;
-    m_ETAT_MATCH.ObstacleDetecte = Application.m_match.m_obstacleDetecte;
-    m_ETAT_MATCH.ConvergenceAsserv = (Application.m_asservissement.convergence_conf == 1);
-    m_ETAT_MATCH.DiagBlocage = Application.m_asservissement.diag_blocage;
-    SerialiseTrame(	m_ETAT_MATCH.Encode());
+    if (m_ELECTROBOT_ETAT_CODEURS_3_4.isTimeToSend())
+    {
+        m_ELECTROBOT_ETAT_CODEURS_3_4.Codeur_3 = Application.m_capteurs.m_CumulCodeurPosition3;
+        m_ELECTROBOT_ETAT_CODEURS_3_4.Codeur_4 = Application.m_capteurs.m_CumulCodeurPosition4;
+        SerialiseTrame(m_ELECTROBOT_ETAT_CODEURS_3_4.Encode());
+    }
     // _____________________________________________
-    m_ETAT_RACK.rack_cde_moteur = (int)Application.m_moteurs.m_cde_mot_6;
-    m_ETAT_RACK.rack_consigne_moteur = (int)Application.m_asservissement_chariot.commande_moteur_chariot;
-    m_ETAT_RACK.rack_convergence = (Application.m_asservissement_chariot.etat_asser_chariot==2)?1:0;
-    m_ETAT_RACK.rack_modeAsservissement = Application.m_asservissement_chariot.etat_asser_chariot;
-    SerialiseTrame(	m_ETAT_RACK.Encode());
+    if (m_ELECTROBOT_ETAT_TELEMETRES.isTimeToSend())
+    {
+        m_ELECTROBOT_ETAT_TELEMETRES.Telemetre1 = Application.m_capteurs.m_telemetres.m_distance[0];
+        m_ELECTROBOT_ETAT_TELEMETRES.Telemetre2 = Application.m_capteurs.m_telemetres.m_distance[1];
+        m_ELECTROBOT_ETAT_TELEMETRES.Telemetre3 = Application.m_capteurs.m_telemetres.m_distance[2];
+        m_ELECTROBOT_ETAT_TELEMETRES.Telemetre4 = Application.m_capteurs.m_telemetres.m_distance[3];
+        SerialiseTrame(m_ELECTROBOT_ETAT_TELEMETRES.Encode());
+    }
     // _____________________________________________
-    m_COLOR_SENSOR.R=Application.m_capteurs.m_color_sensor_R;
-    m_COLOR_SENSOR.G=Application.m_capteurs.m_color_sensor_G;
-    m_COLOR_SENSOR.B=Application.m_capteurs.m_color_sensor_B;
-    SerialiseTrame(	m_COLOR_SENSOR.Encode());
+    if (m_ETAT_MATCH.isTimeToSend())
+    {
+        m_ETAT_MATCH.TempsMatch = (unsigned char)(Application.m_match.m_duree);
+        m_ETAT_MATCH.CouleurEquipe = Application.m_match.m_couleur_equipe;
+        m_ETAT_MATCH.ModeFonctionnement = Application.ModeFonctionnement;
+        m_ETAT_MATCH.ObstacleDetecte = Application.m_match.m_obstacleDetecte;
+        m_ETAT_MATCH.ConvergenceAsserv = (Application.m_asservissement.convergence_conf == 1);
+        m_ETAT_MATCH.DiagBlocage = Application.m_asservissement.diag_blocage;
+        SerialiseTrame(	m_ETAT_MATCH.Encode());
+    }
+    // _____________________________________________
+    if (m_ETAT_RACK.isTimeToSend())
+    {
+        m_ETAT_RACK.rack_cde_moteur = (int)Application.m_moteurs.m_cde_mot_6;
+        m_ETAT_RACK.rack_consigne_moteur = (int)Application.m_asservissement_chariot.commande_moteur_chariot;
+        m_ETAT_RACK.rack_convergence = (Application.m_asservissement_chariot.etat_asser_chariot==2)?1:0;
+        m_ETAT_RACK.rack_modeAsservissement = Application.m_asservissement_chariot.etat_asser_chariot;
+        SerialiseTrame(	m_ETAT_RACK.Encode());
+    }
+    // _____________________________________________
+    if (m_COLOR_SENSOR.isTimeToSend())
+    {
+        m_COLOR_SENSOR.R=Application.m_capteurs.m_color_sensor_R;
+        m_COLOR_SENSOR.G=Application.m_capteurs.m_color_sensor_G;
+        m_COLOR_SENSOR.B=Application.m_capteurs.m_color_sensor_B;
+        SerialiseTrame(	m_COLOR_SENSOR.Encode());
+    }
 }
+
 
 
 
@@ -909,6 +939,24 @@ unsigned char CLaBotBox::getCheckSumTrame(tStructTrameLaBotBox *trameBrute)
  return(checksum);
 }
 
+
+//___________________________________________________________________________
+ /*!
+   \brief Fixe la même période d'émission pour toutes les trames
+   \param period_msec la période souhaitée pour toutes les trames
+            CTrameLaBotBox::NO_PERIODIC pour mettre toutes les trames non périodiques
+   \return --
+   */
+void CLaBotBox::setAllTransmitPeriod(int period_msec)
+{
+    for (unsigned int i=0; i<m_nombre_trames; i++)
+    {
+        if (m_liste_trames[i])
+        {
+            m_liste_trames[i]->setTransmitPeriod(period_msec);
+        }
+    }
+}
 
 
 

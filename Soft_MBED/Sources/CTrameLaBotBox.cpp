@@ -16,6 +16,8 @@ CTrameLaBotBox::CTrameLaBotBox()
 {
   m_nombre_recue = 0;
   m_new_trame = false;
+  m_tx_periode = NO_PERIODIC;
+  m_last_time_tx = 0;
 }
 
 //___________________________________________________________________________
@@ -39,7 +41,6 @@ CTrameLaBotBox::~CTrameLaBotBox()
 */
 void CTrameLaBotBox::Decode(tStructTrameLaBotBox *trameRecue)
 {
-    (void*)trameRecue;  // pour éviter les warnings de compilation
 }
 
 //___________________________________________________________________________
@@ -67,6 +68,36 @@ bool CTrameLaBotBox::isNewTrame(void)
 		return(true); 
   }
   return(false);
+}
+
+//___________________________________________________________________________
+ /*!
+   \brief Fixe la période d'émission de la trame
+   \param period_msec la période souhaitée en msec
+   \return --
+*/
+void CTrameLaBotBox::setTransmitPeriod(int period_msec)
+{
+    m_tx_periode = period_msec;
+}
+
+//___________________________________________________________________________
+ /*!
+   \brief Vérifie s'il est l'heure d'émettre la trame périodique
+   \param --
+   \return true si l'heure est venue d'émettre la trame / false sinon
+*/
+bool CTrameLaBotBox::isTimeToSend()
+{
+    if (m_tx_periode == NO_PERIODIC) return false;
+
+    int current_time = _Global_Timer.read_ms();
+    if ( (current_time - m_last_time_tx) >= m_tx_periode )
+    {
+        m_last_time_tx = current_time;
+        return true;
+    }
+    return false;
 }
 
 

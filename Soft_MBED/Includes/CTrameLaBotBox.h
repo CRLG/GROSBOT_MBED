@@ -15,7 +15,9 @@ typedef struct {
 //! Classe de base pour les trames CAN
 class CTrameLaBotBox {
 public :
-	//!	Structure brute
+    static const int NO_PERIODIC = -1;  // Indique que la trame n'est pas périodique
+
+    //!	Structure brute
 	tStructTrameLaBotBox m_trame_brute;
 	//! Memorise le nombre de trame recues
 	unsigned int m_nombre_recue;
@@ -29,6 +31,14 @@ public :
     virtual tStructTrameLaBotBox* Encode(void);
 
     bool isNewTrame(void);
+    bool isTimeToSend();
+    void setTransmitPeriod(int period_msec);
+
+protected:
+    //! Période d'émission souhaitée [msec]
+    unsigned short m_tx_periode;
+    //! Instant de la dernière émission
+    int m_last_time_tx;
 };
 
 

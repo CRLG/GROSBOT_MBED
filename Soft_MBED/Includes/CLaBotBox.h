@@ -134,6 +134,9 @@ public :
 	//! Checksum de trame brut
 	unsigned char getCheckSumTrame(tStructTrameLaBotBox *trameBrute);
 
+    //! Fixe la période de toutes les trames TX d'un seul coup
+    void setAllTransmitPeriod(int period_msec);
+
 #define NOMBRE_MAX_TRAMES_LABOTBOX 30
 	// __________________________________________ INSTANCE DE CHAQUE TRAME
 	//! Trame

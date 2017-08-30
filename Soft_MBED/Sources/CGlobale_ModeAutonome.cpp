@@ -131,15 +131,18 @@ void CGlobale::SequenceurModeAutonome(void)
   	cpt200msec = 0;
 
     // dès que le match est commencé, supprime l'IRQ sur RS232 de l'ecran pour ne pas risquer d'interrompre le match
-    // lorsque le match est terminé, ré-active la communication entrante
+    // lorsque le match est terminé, ré-active la communication entrante et diffuse à nouveau toutes les trames
     if (m_match.isMatchEnCours()) {
         if (m_LaBotBox.isRxEnabled()) {  // Ca permet de détecter un front montant du début de match
             m_LaBotBox.StopRx();
+            m_LaBotBox.setAllTransmitPeriod(CTrameLaBotBox::NO_PERIODIC);  // Inhibe toutes les émissions de trames
+            m_LaBotBox.m_ETAT_MATCH.setTransmitPeriod(200);                // sauf la trame spécifique match
         }
     }
     else {
         if (!m_LaBotBox.isRxEnabled()) {
             m_LaBotBox.Start();
+            m_LaBotBox.setAllTransmitPeriod(200);  // Toutes les trames sont envoyées à Labotbox avec la même période
         }
     }
   }
