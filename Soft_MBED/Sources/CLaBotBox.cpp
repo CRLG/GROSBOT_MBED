@@ -753,15 +753,20 @@ void CLaBotBox::CheckReceptionTrame(void)
   }
   // ___________________________
   if  (m_CONFIG_PERIODE_TRAME.isNewTrame() ) {
-      CTrameLaBotBox *trame = getTrameFromID(m_CONFIG_PERIODE_TRAME.ID);
-      if (trame)
+      // Valeur particulière pour indiquer que la demande concerne toutes les trames d'un seul coup
+      if (m_CONFIG_PERIODE_TRAME.ID == 0xFFFF)
       {
-          trame->setTransmitPeriod(m_CONFIG_PERIODE_TRAME.Periode);
+          setAllTransmitPeriod(m_CONFIG_PERIODE_TRAME.Periode);
+      }
+      else
+      {
+          CTrameLaBotBox *trame = getTrameFromID(m_CONFIG_PERIODE_TRAME.ID);
+          if (trame)
+          {
+              trame->setTransmitPeriod(m_CONFIG_PERIODE_TRAME.Periode);
+          }
       }
   }
-
-
-
 }
 
 

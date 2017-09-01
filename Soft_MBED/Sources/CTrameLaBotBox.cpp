@@ -76,7 +76,7 @@ bool CTrameLaBotBox::isNewTrame(void)
    \param period_msec la période souhaitée en msec
    \return --
 */
-void CTrameLaBotBox::setTransmitPeriod(int period_msec)
+void CTrameLaBotBox::setTransmitPeriod(short period_msec)
 {
     m_tx_periode = period_msec;
 }
