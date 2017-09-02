@@ -92,7 +92,8 @@ bool CTrameLaBotBox::isTimeToSend()
     if (m_tx_periode == NO_PERIODIC) return false;
 
     int current_time = _Global_Timer.read_ms();
-    if ( (current_time - m_last_time_tx) >= m_tx_periode )
+    int diff = current_time - m_last_time_tx;
+    if ( (diff >= m_tx_periode) || (diff < 0) )  // test sur diff<0 : prend en compte le cas du débordement du  GLobal_Timer au bout de 30minutes après le boot
     {
         m_last_time_tx = current_time;
         return true;
