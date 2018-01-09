@@ -72,6 +72,10 @@ void CEEPROM::Read(void)
 	getValue("rackGainP", &(Application.m_asservissement_chariot.gain_prop_C));
 	getValue("rackGainI", &(Application.m_asservissement_chariot.gain_int_C));
 	getValue("rackSeuilConv", &(Application.m_asservissement_chariot.seuil_conv_C));
+    getValue("rackZMdw", &(Application.m_asservissement_chariot.compensation_zone_morte_dw_C));
+    getValue("rackZMup", &(Application.m_asservissement_chariot.compensation_zone_morte_up_C));
+    getValue("rackGradVit", &(Application.m_asservissement_chariot.offset_vitesse_max_C));
+
 
 }
 	

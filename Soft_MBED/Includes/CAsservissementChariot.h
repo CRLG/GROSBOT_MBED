@@ -58,6 +58,8 @@ public :
 	float pas_C;						//nb de pas codeur par cm
 	char apprentissage_auto_C;			// Si l'apprentissage n'est pas fait, il se réalise sans demande externe
 	float compensation_zone_morte_C;	// A quantifier
+    float compensation_zone_morte_dw_C;
+    float compensation_zone_morte_up_C;
 	float vitesse_consigne_recalage_C; 	// Pas par seconde
 
 	float seuil_min_blocage_C;			// vitesse de détection blocage
@@ -69,12 +71,13 @@ public :
 	float gain_int_C;					//Gain integrateur du PI
 	float gain_prop_C;					//Gain proportionnel du PI
 	float seuil_conv_C;					//seuil de convergence
+    float offset_vitesse_max_C;         // gradient de consigne de vitesse / Te
 
 
 private : 
 // Variables internes
-int butee_droite;
-int butee_gauche;
+int butee_basse;
+int butee_haute;
 
 float erreur_position;
 float erreur_vitesse;
@@ -88,6 +91,7 @@ float terme_integral_prev;
 float vitesse_chariot;
 char demande_stop_chariot_prev;
 int position_consigne_prev;
+ float vitesse_consigne_filt;
 
 
 

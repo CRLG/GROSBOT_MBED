@@ -2,6 +2,7 @@
 #include "math.h"
 #include "CAsservissementChariot.h"
 #include "CGlobale.h"
+#include <algorithm>
 
 /*
 //etat_recalage_butee
@@ -33,8 +34,8 @@ void CAsservissementChariot::Init(void)
 	etat_asser_chariot=STOP; //0 stopped, 1 deplacement, 2 converge
 
 	// Variables internes
-	butee_droite=0;
-	butee_gauche=0;
+    butee_haute=0;
+    butee_basse=0;
 	erreur_position=0;
 	vitesse_consigne=0;
 	erreur_vitesse=0;
@@ -50,15 +51,17 @@ void CAsservissementChariot::Init(void)
 	// Calibrations
 	pas_C=70.0; 						//pas par cm
 	apprentissage_auto_C = 0;			// Si l'apprentissage n'est pas fait, il se r√©alise sans demande externe
-	vitesse_consigne_recalage_C = 1000; 	// Pas par seconde
+    vitesse_consigne_recalage_C = 50; 	// Pas par seconde
 	seuil_min_blocage_C = 5;			// vitesse de d√©tection blocage
 	seuil_tempo_conf_C = 0;				// Nb de Te pour confirmer la mise en but√©e
 	seuil_tempo_time_out_C = 30000;		// Nb de Te pour considerer un echec d'apprentissage
+    offset_vitesse_max_C = 0.4;			// gradient de consigne de vitesse / Te
 
 	//Pour l'instant c'est initialise par l'EEPROM
-	compensation_zone_morte_C = 40;
-	commande_chariot_max_C = 100;		// Saturation pour la securite ou limiter
-	gain_position_vitesse_C = 6.0;		// une Carto serait un must mais pas utile (systeme tres amorti)
+    compensation_zone_morte_dw_C = 30;	// New
+    compensation_zone_morte_up_C = 50;	// New
+    commande_chariot_max_C = 65;		// Saturation pour la securite ou limiter
+    gain_position_vitesse_C = 6.0;		// une Carto serait un must mais pas utile (systeme tres amorti)
 	gain_int_C = 0.0;
 	gain_prop_C = 0.01;
 	seuil_conv_C=35;
@@ -74,7 +77,7 @@ void CAsservissementChariot::Asser_chariot(void)
 	//(1/z) de la position
 	codeur_position_chariot_prev = codeur_position_chariot;
 	
-	// si etat asser a† STOP
+	// si etat asser a  STOP
 	if(	etat_asser_chariot==STOP)
 	{
 		if(commande_moteur_chariot!=0.0)
@@ -96,21 +99,27 @@ void CAsservissementChariot::Asser_chariot(void)
 				}
 			break;
 				
-			case EN_COURS: // Apprentissage demandee, on demande un d√©placement doucement jusqu'√† vitesse nulle avec tempo de confirmation
+			case EN_COURS: // Apprentissage demandee, on demande un d√©placement doucement jusqu'√  vitesse nulle avec tempo de confirmation
 				tempo_time_out++;
 
-				//on commence par la butee droite (valeur nÈgative)
-				if(butee_droite==0)
+                //on commence par la butee droite (valeur nÈgative) butee haute
+                if(butee_haute==0)
 				{
-					vitesse_consigne = -vitesse_consigne_recalage_C;
+                    vitesse_consigne = vitesse_consigne_recalage_C;
 					//regulation sur la vitesse
-					Regul_chariot();
+                    //Regul_chariot();
+                    //manuel
+                    commande_moteur_chariot=55.0;
+                    Application.m_moteurs.CommandeVitesse(MOTEUR_6, commande_moteur_chariot);
 				}
-				else if (butee_gauche==0)
+                else if (butee_basse==0) //butee basse
 				{
-					vitesse_consigne = vitesse_consigne_recalage_C;
+                    vitesse_consigne = -vitesse_consigne_recalage_C;
 					//regulation sur la vitesse
-					Regul_chariot();
+                    //Regul_chariot();
+                    //manuel
+                    commande_moteur_chariot=-35.0;
+                    Application.m_moteurs.CommandeVitesse(MOTEUR_6, commande_moteur_chariot);
 				}
 				else
 				{
@@ -120,16 +129,16 @@ void CAsservissementChariot::Asser_chariot(void)
 						Application.m_moteurs.CommandeVitesse(MOTEUR_6, commande_moteur_chariot);
 					}
 					etat_recalage_butee = FAIT;
-					int half_range_rack=floorf(fabsf((butee_droite-butee_gauche)/2.0f));
+                    int half_range_rack=floorf(fabsf((butee_haute-butee_basse)/2.0f));
 
-					butee_droite=-half_range_rack;
-					butee_gauche=half_range_rack;
-					Application.m_capteurs.RAZ_PositionCodeur(CODEUR_3,butee_gauche);
+                    butee_haute=-half_range_rack;
+                    butee_basse=half_range_rack;
+                    Application.m_capteurs.RAZ_PositionCodeur(CODEUR_3,butee_basse);
 
 					setConsigne(0);
 				}
 
-				if((Application.m_capteurs.m_b_Etor4==false)&&(vitesse_consigne<0))
+                if((Application.m_capteurs.m_b_Etor4==false)&&(vitesse_consigne<0))
 				{
 					if(commande_moteur_chariot!=0.0)
 					{
@@ -137,10 +146,10 @@ void CAsservissementChariot::Asser_chariot(void)
 						Application.m_moteurs.CommandeVitesse(MOTEUR_6, commande_moteur_chariot);
 					}
 
-					butee_droite=codeur_position_chariot;
+                    butee_basse=codeur_position_chariot;
 
 				}
-				if((Application.m_capteurs.m_b_Etor2==false)&&(vitesse_consigne>0))
+                if((Application.m_capteurs.m_b_Etor2==false)&&(vitesse_consigne>0))
 				{
 					if(commande_moteur_chariot!=0.0)
 					{
@@ -148,7 +157,7 @@ void CAsservissementChariot::Asser_chariot(void)
 						Application.m_moteurs.CommandeVitesse(MOTEUR_6, commande_moteur_chariot);
 					}
 
-					butee_gauche=codeur_position_chariot;
+                    butee_haute=codeur_position_chariot;
 				}
 				if (tempo_time_out > seuil_tempo_time_out_C)
 				{
@@ -159,14 +168,48 @@ void CAsservissementChariot::Asser_chariot(void)
 			case FAIT: // Cas nominal, on calcul l'erreur de boucle et la consigne de vitesse pour le r√©gulateur que l'on appel
 				erreur_position = position_consigne - codeur_position_chariot;
 				vitesse_consigne = gain_position_vitesse_C*erreur_position;
+                // New gradient max consigne de vitesse pour dÈcollage en douceur sur changement de consigne
+                                if (vitesse_consigne >= 0)
+                                    {
+                                    if (vitesse_consigne_filt < vitesse_consigne)
+                                        {
+                                        vitesse_consigne_filt += offset_vitesse_max_C;
+                                        vitesse_consigne_filt = std::min(vitesse_consigne_filt, vitesse_consigne);
+                                        }
+                                    else
+                                        {
+                                        vitesse_consigne_filt = vitesse_consigne;
+                                        }
+                                    }
+
+                                else if (vitesse_consigne < 0)
+                                    {
+                                    if (vitesse_consigne_filt > vitesse_consigne)
+                                        {
+                                        vitesse_consigne_filt -= offset_vitesse_max_C;
+                                        vitesse_consigne_filt = std::max(vitesse_consigne_filt, vitesse_consigne);
+                                        }
+                                    else
+                                        {
+                                        vitesse_consigne_filt = vitesse_consigne;
+                                        }
+                                    }
 				if(fabs(erreur_position)<=seuil_conv_C)
 				{
+					// On ne coupe pas la commande en mode ascensseur car on en a besoin pour vaincre le poids des ÈlÈments, on reste en boucle fermÈe ‡ moins que le systËme soit trËs irrÈversible
+					// Sinon on peut essayer de mettre une commande de maintient en boucle ouverte mais Áa sera moins bon qu'une boucle fermÈe bien stable
 					etat_asser_chariot=CONVERGE;
-					if(commande_moteur_chariot!=0.0)
-					{
-						commande_moteur_chariot=0.0;
-						Application.m_moteurs.CommandeVitesse(MOTEUR_6, commande_moteur_chariot);
-					}
+					Regul_chariot();
+
+					/*if(commande_moteur_chariot!=0.0)
+					//{
+					//	commande_moteur_chariot=0.0;
+					//	Application.m_moteurs.CommandeVitesse(MOTEUR_6, commande_moteur_chariot);
+					}*/
+				}
+				else
+				{
+				etat_asser_chariot=DEPLACEMENT; // New, si une perturbation ou un changement de consigne on n'a plus l'Ètat convergÈ
 				}
 
 				if(etat_asser_chariot==DEPLACEMENT)
@@ -183,7 +226,7 @@ void CAsservissementChariot::Asser_chariot(void)
 
 void CAsservissementChariot::Regul_chariot(void) // R√©gulateutr de vitesse PI
 {
-	erreur_vitesse = vitesse_consigne-vitesse_chariot;
+    erreur_vitesse = vitesse_consigne_filt-vitesse_chariot;
 	
 	float terme_integral=0;
 	
@@ -196,9 +239,9 @@ void CAsservissementChariot::Regul_chariot(void) // R√©gulateutr de vitesse PI
 
 	float commande_unlim = -(gain_prop_C*erreur_vitesse + terme_integral);
 	if(commande_unlim>0)
-		commande_unlim=commande_unlim+compensation_zone_morte_C;
+        commande_unlim=(commande_unlim+compensation_zone_morte_up_C);	// New, attention la commande positive doit aller dans le sens montÈe
 	else
-		commande_unlim=commande_unlim-compensation_zone_morte_C;
+        commande_unlim=(commande_unlim-compensation_zone_morte_dw_C);	// New, attention la commande nÈgative doit aller dans le sens descente
 	
 	// Saturation commande
 	float commande_lim = commande_unlim;
@@ -228,10 +271,10 @@ void CAsservissementChariot::Regul_chariot(void) // R√©gulateutr de vitesse PI
 void CAsservissementChariot::setConsigne(int pos)
 {
 	int pos_seuil=pos;
-	if(pos_seuil<=butee_droite)
-		pos_seuil=butee_droite;
-	if(pos_seuil>=butee_gauche)
-		pos_seuil=butee_gauche;
+    if(pos_seuil<=butee_haute)
+        pos_seuil=butee_haute;
+    if(pos_seuil>=butee_basse)
+        pos_seuil=butee_basse;
 	position_consigne=(float)pos_seuil;
 	etat_asser_chariot=DEPLACEMENT;
 }
@@ -246,8 +289,8 @@ void CAsservissementChariot::Recal_Chariot(void)
 	etat_asser_chariot=DEPLACEMENT;
 	etat_recalage_butee=EN_COURS;
 	tempo_time_out=0;
-	butee_droite=0;
-		butee_gauche=0;
+    butee_haute=0;
+        butee_basse=0;
 }
 
 void CAsservissementChariot::setCommandeMax(float calib){commande_chariot_max_C=calib;}

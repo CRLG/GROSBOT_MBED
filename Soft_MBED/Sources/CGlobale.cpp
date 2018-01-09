@@ -67,6 +67,10 @@ void CGlobale::Run(void)
 }*/
   //wait_ms(3000);
 
+  //Init de l'asservissement chariot
+  m_asservissement_chariot.Init();
+
+
  // Lecture des paramètres EEPROM et recopie dans les données membres 
  // de chaque classe en RAM
  m_eeprom.Read();
@@ -75,8 +79,11 @@ void CGlobale::Run(void)
  m_servos_sd20.Init();
  m_servos_ax.Init();
  
- //Init de l'asservissement chariot
- m_asservissement_chariot.Init();
+ //Init de l'asservissement chariot en cas de plantage de l'eeprom
+ if ((Application.m_asservissement_chariot.commande_chariot_max_C==0) ||
+     (Application.m_asservissement_chariot.compensation_zone_morte_dw_C==0) ||
+     (Application.m_asservissement_chariot.compensation_zone_morte_up_C==0))
+        m_asservissement_chariot.Init();
 
  _rs232_pc_tx.printf("ki_angle = %f\n\r", Application.m_asservissement.ki_angle);
  _rs232_pc_tx.printf("cde_max = %d\n\r", Application.m_asservissement.cde_max);
