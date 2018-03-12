@@ -169,7 +169,7 @@ void CAsservissementChariot::Asser_chariot(void)
 				erreur_position = position_consigne - codeur_position_chariot;
 				vitesse_consigne = gain_position_vitesse_C*erreur_position;
                 // New gradient max consigne de vitesse pour décollage en douceur sur changement de consigne
-                                if (vitesse_consigne >= 0)
+                               /* if (vitesse_consigne >= 0)
                                     {
                                     if (vitesse_consigne_filt < vitesse_consigne)
                                         {
@@ -193,19 +193,19 @@ void CAsservissementChariot::Asser_chariot(void)
                                         {
                                         vitesse_consigne_filt = vitesse_consigne;
                                         }
-                                    }
+                                    }*/
 				if(fabs(erreur_position)<=seuil_conv_C)
 				{
 					// On ne coupe pas la commande en mode ascensseur car on en a besoin pour vaincre le poids des éléments, on reste en boucle fermée à moins que le système soit très irréversible
 					// Sinon on peut essayer de mettre une commande de maintient en boucle ouverte mais ça sera moins bon qu'une boucle fermée bien stable
 					etat_asser_chariot=CONVERGE;
-					Regul_chariot();
+                    //Regul_chariot();
 
-					/*if(commande_moteur_chariot!=0.0)
-					//{
-					//	commande_moteur_chariot=0.0;
-					//	Application.m_moteurs.CommandeVitesse(MOTEUR_6, commande_moteur_chariot);
-					}*/
+                    if(commande_moteur_chariot!=0.0)
+                    {
+                        commande_moteur_chariot=0.0;
+                        Application.m_moteurs.CommandeVitesse(MOTEUR_6, commande_moteur_chariot);
+                    }
 				}
 				else
 				{
@@ -226,7 +226,8 @@ void CAsservissementChariot::Asser_chariot(void)
 
 void CAsservissementChariot::Regul_chariot(void) // RÃ©gulateutr de vitesse PI
 {
-    erreur_vitesse = vitesse_consigne_filt-vitesse_chariot;
+    //erreur_vitesse = vitesse_consigne_filt-vitesse_chariot;
+    erreur_vitesse = vitesse_consigne-vitesse_chariot;
 	
 	float terme_integral=0;
 	
@@ -272,9 +273,9 @@ void CAsservissementChariot::setConsigne(int pos)
 {
 	int pos_seuil=pos;
     if(pos_seuil<=butee_haute)
-        pos_seuil=butee_haute;
+        pos_seuil=butee_haute+5;
     if(pos_seuil>=butee_basse)
-        pos_seuil=butee_basse;
+        pos_seuil=butee_basse-5;
 	position_consigne=(float)pos_seuil;
 	etat_asser_chariot=DEPLACEMENT;
 }
