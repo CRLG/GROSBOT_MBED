@@ -39,7 +39,7 @@ CMatch::~CMatch()
 
 //___________________________________________________________________________
  /*!
-   \brief Initialise toutes les structures de donnéess du match �  jouer
+   \brief Initialise toutes les structures de donnéess du match à  jouer
 
    \param --
    \return --
@@ -100,7 +100,7 @@ bool CMatch::isMatchEnCours()
 
 //___________________________________________________________________________
  /*!
-   \brief Inidique si le match est termin�
+   \brief Inidique si le match est terminé
 
    \param --
    \return --
@@ -249,7 +249,7 @@ bool CMatch::frontMontant(float prec_value, float value)
 
 /*!
  * \brief CMatch::isObstacle Stratégie de détection d'obstacle. Si la distance séparant le robot de l'objet détecté
- * est inférieure �  un seuil un flag est levé. TODO: rendre le seuil dépendant de la vitesse
+ * est inférieure à  un seuil un flag est levé. TODO: rendre le seuil dépendant de la vitesse
  * \param x
  * \param y
  * \param teta
@@ -363,7 +363,7 @@ void IA::SCI_Asser_OCB::setSportivite(sc_real idx){
 }
 
 /*!
- * \brief IA::SCI_Servo_OCB::setPos implémentation du callback du modèle pour contrôler les servos
+ * \brief IA::SCI_Servo_OCB::setPos implémentation du callback du modèle pour contrà´ler les servos
  * \param idServo
  * \param value
  */
@@ -372,7 +372,7 @@ void IA::SCI_Servo_OCB::setPos(sc_integer idServo, sc_integer value){
 }
 
 /*!
- * \brief IA::SCI_Servo_OCB::setPos implémentation du callback du modèle pour contrôler les servos
+ * \brief IA::SCI_Servo_OCB::setPos implémentation du callback du modèle pour contrà´ler les servos
  * \param idServo
  * \param value
  */
@@ -398,7 +398,7 @@ void IA::SCI_Servo_OCB::setRelache(sc_integer idServo, sc_real time_ms){
 
 /*!
  * \brief IA::SCI_Moteur_OCB::setPWM implémentation du callback du modèle pour la vitesse des moteurs
- * WARNING: �  appeler en oncycle, sinon on ne verra pas le capteur de fin de course de l'ascenseur
+ * WARNING: à  appeler en oncycle, sinon on ne verra pas le capteur de fin de course de l'ascenseur
  * \param idMot
  * \param pwm
  */
@@ -416,7 +416,7 @@ void IA::SCI_Moteur_OCB::setPWM(sc_integer idMot, sc_real pwm){
 }
 
 /*!
- * \brief IA::SCI_Capteur_OCB::resetCodeur implémentation du callback du modèle pour remettre �  zero les compteurs des codeurs
+ * \brief IA::SCI_Capteur_OCB::resetCodeur implémentation du callback du modèle pour remettre à  zero les compteurs des codeurs
  * \param idCodeur
  * \param value
  */
@@ -425,7 +425,7 @@ void IA::SCI_Capteur_OCB::resetCodeur(sc_integer idCodeur, sc_integer value){
 }
 
 /*!
- * \brief IA::SCI_Ihm_OCB::setLed implémentation du callback du modèle pour contrôler les led
+ * \brief IA::SCI_Ihm_OCB::setLed implémentation du callback du modèle pour contrà´ler les led
  * \param idLed
  * \param onoff
  */
@@ -446,7 +446,7 @@ void IA::SCI_Ihm_OCB::setLed(sc_integer idLed, sc_boolean onoff){
 
 /*!
  * \brief IA::SCI_Chariot_OCB::init implémentation du callback du modèle pour l'init de l'ascenseur
- * WARNING: �  appeler en oncycle, sinon on ne verra pas le capteur de fin de course de l'ascenseur
+ * WARNING: à  appeler en oncycle, sinon on ne verra pas le capteur de fin de course de l'ascenseur
  */
 void IA::SCI_Chariot_OCB::init()
 {
@@ -470,7 +470,7 @@ void IA::SCI_Chariot_OCB::init()
 
 /*!
  * \brief IA::SCI_Chariot_OCB::goTo_ID implémentation du callback du modèle pour le déplacement de l'ascenseur
- * WARNING: �  appeler en oncycle, sinon on ne verra pas le capteur de fin de course de l'ascenseur
+ * WARNING: à  appeler en oncycle, sinon on ne verra pas le capteur de fin de course de l'ascenseur
  * \param position
  */
 void IA::SCI_Chariot_OCB::setPos(sc_integer position)

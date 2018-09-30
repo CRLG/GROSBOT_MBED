@@ -30,7 +30,7 @@ void CAsservissementChariot::Init(void)
 
 	//Output
 	commande_moteur_chariot=0;
-	etat_recalage_butee=FAIT; 		// 0 non fait, 1 en cours, 2 fait et OK, 3 Raté(timeout)
+    etat_recalage_butee=FAIT; 		// 0 non fait, 1 en cours, 2 fait et OK, 3 Raté(timeout)
 	etat_asser_chariot=STOP; //0 stopped, 1 deplacement, 2 converge
 
 	// Variables internes
@@ -50,10 +50,10 @@ void CAsservissementChariot::Init(void)
 
 	// Calibrations
 	pas_C=70.0; 						//pas par cm
-	apprentissage_auto_C = 0;			// Si l'apprentissage n'est pas fait, il se réalise sans demande externe
+    apprentissage_auto_C = 0;			// Si l'apprentissage n'est pas fait, il se réalise sans demande externe
     vitesse_consigne_recalage_C = 50; 	// Pas par seconde
-	seuil_min_blocage_C = 5;			// vitesse de détection blocage
-	seuil_tempo_conf_C = 0;				// Nb de Te pour confirmer la mise en butée
+    seuil_min_blocage_C = 5;			// vitesse de détection blocage
+    seuil_tempo_conf_C = 0;				// Nb de Te pour confirmer la mise en butée
 	seuil_tempo_time_out_C = 30000;		// Nb de Te pour considerer un echec d'apprentissage
     offset_vitesse_max_C = 0.4;			// gradient de consigne de vitesse / Te
 
@@ -99,10 +99,10 @@ void CAsservissementChariot::Asser_chariot(void)
 				}
 			break;
 				
-			case EN_COURS: // Apprentissage demandee, on demande un déplacement doucement jusqu'�  vitesse nulle avec tempo de confirmation
+            case EN_COURS: // Apprentissage demandee, on demande un déplacement doucement jusqu'à  vitesse nulle avec tempo de confirmation
 				tempo_time_out++;
 
-                //on commence par la butee droite (valeur n�gative) butee haute
+                //on commence par la butee droite (valeur négative) butee haute
                 if(butee_haute==0)
 				{
                     vitesse_consigne = vitesse_consigne_recalage_C;
@@ -165,10 +165,10 @@ void CAsservissementChariot::Asser_chariot(void)
 				}
 			break;
 			
-			case FAIT: // Cas nominal, on calcul l'erreur de boucle et la consigne de vitesse pour le régulateur que l'on appel
+            case FAIT: // Cas nominal, on calcul l'erreur de boucle et la consigne de vitesse pour le régulateur que l'on appel
 				erreur_position = position_consigne - codeur_position_chariot;
 				vitesse_consigne = gain_position_vitesse_C*erreur_position;
-                // New gradient max consigne de vitesse pour d�collage en douceur sur changement de consigne
+                // New gradient max consigne de vitesse pour décollage en douceur sur changement de consigne
                                /* if (vitesse_consigne >= 0)
                                     {
                                     if (vitesse_consigne_filt < vitesse_consigne)
@@ -196,8 +196,8 @@ void CAsservissementChariot::Asser_chariot(void)
                                     }*/
 				if(fabs(erreur_position)<=seuil_conv_C)
 				{
-					// On ne coupe pas la commande en mode ascensseur car on en a besoin pour vaincre le poids des �l�ments, on reste en boucle ferm�e � moins que le syst�me soit tr�s irr�versible
-					// Sinon on peut essayer de mettre une commande de maintient en boucle ouverte mais �a sera moins bon qu'une boucle ferm�e bien stable
+					// On ne coupe pas la commande en mode ascensseur car on en a besoin pour vaincre le poids des éléments, on reste en boucle fermée à moins que le système soit très irréversible
+					// Sinon on peut essayer de mettre une commande de maintient en boucle ouverte mais ça sera moins bon qu'une boucle fermée bien stable
 					etat_asser_chariot=CONVERGE;
                     //Regul_chariot();
 
@@ -209,14 +209,14 @@ void CAsservissementChariot::Asser_chariot(void)
 				}
 				else
 				{
-				etat_asser_chariot=DEPLACEMENT; // New, si une perturbation ou un changement de consigne on n'a plus l'�tat converg�
+				etat_asser_chariot=DEPLACEMENT; // New, si une perturbation ou un changement de consigne on n'a plus l'état convergé
 				}
 
 				if(etat_asser_chariot==DEPLACEMENT)
 					Regul_chariot();
 			break;
 			
-			case ECHEC: // Pas de mise en butée après 3 plombes, on coupe la commande
+            case ECHEC: // Pas de mise en butée après 3 plombes, on coupe la commande
 				commande_moteur_chariot = 0;
 			break;
 		}
@@ -240,9 +240,9 @@ void CAsservissementChariot::Regul_chariot(void) // Régulateutr de vitesse PI
 
 	float commande_unlim = -(gain_prop_C*erreur_vitesse + terme_integral);
 	if(commande_unlim>0)
-        commande_unlim=(commande_unlim+compensation_zone_morte_up_C);	// New, attention la commande positive doit aller dans le sens mont�e
+        commande_unlim=(commande_unlim+compensation_zone_morte_up_C);	// New, attention la commande positive doit aller dans le sens montée
 	else
-        commande_unlim=(commande_unlim-compensation_zone_morte_dw_C);	// New, attention la commande n�gative doit aller dans le sens descente
+        commande_unlim=(commande_unlim-compensation_zone_morte_dw_C);	// New, attention la commande négative doit aller dans le sens descente
 	
 	// Saturation commande
 	float commande_lim = commande_unlim;
@@ -255,7 +255,7 @@ void CAsservissementChariot::Regul_chariot(void) // Régulateutr de vitesse PI
 		commande_lim = -commande_chariot_max_C;
 		}
 	
-	// détection de saturation
+    // détection de saturation
 	if (commande_unlim != commande_lim)
 		{
 		saturation = 1;

@@ -33,8 +33,8 @@ CLaBotBox::~CLaBotBox()
 
 //___________________________________________________________________________
  /*!
-   \brief CrÈÈ la liste des trames.
-    En cas d'ajout d'une trame ‡ la messagerie, ajouter cette trame ‡ la liste
+   \brief Cr√©√© la liste des trames.
+    En cas d'ajout d'une trame √† la messagerie, ajouter cette trame √† la liste
 
    \param --
    \return --
@@ -76,7 +76,7 @@ void CLaBotBox::initListeTrames()
 
 //___________________________________________________________________________
 /*!
-   \brief Renvoie le pointeur sur la trame ‡ partir de son identifiant.
+   \brief Renvoie le pointeur sur la trame √† partir de son identifiant.
 
     - Fonction appelee lorsqu'une trame valide est recue
     - Implemente le necessaire pour transformer une trame brute en signaux de la structure dediee
@@ -105,7 +105,7 @@ void CLaBotBox::Start()
 {
     if (!m_rx_enabled) {
         while (_rs232_pc_rx.readable()) _rs232_pc_rx.getc(); // Nettoie tout octet en attente dans le buffer
-        for (unsigned int i=0; i<m_nombre_trames; i++) {  // Supprime les trames reÁues en attente pas encore traitÈes
+        for (unsigned int i=0; i<m_nombre_trames; i++) {  // Supprime les trames re√ßues en attente pas encore trait√©es
             if (m_liste_trames[i]) m_liste_trames[i]->isNewTrame();
         }
     }
@@ -135,15 +135,15 @@ void CLaBotBox::Stop()
 
    \param --
    \return --
-   \remark Cette mÈthode permet d'inhiber les octets entrants
-            tout en laissant la possibilitÈ d'envoyer des octets
-           Une fois que le match a commencÈ, cela permet de sÈcuriser
+   \remark Cette m√©thode permet d'inhiber les octets entrants
+            tout en laissant la possibilit√© d'envoyer des octets
+           Une fois que le match a commenc√©, cela permet de s√©curiser
            les informations entrantes et ne pas prendre le risque de recevoir
            une trame par erreur qui pourrait perturber le match.
 */
 void CLaBotBox::StopRx()
 {
-    _rs232_pc_rx.attach(NULL); // Supprime l'IRQ sur rÈception RS232
+    _rs232_pc_rx.attach(NULL); // Supprime l'IRQ sur r√©ception RS232
     m_rx_enabled = false;
 }
 //___________________________________________________________________________
@@ -160,7 +160,7 @@ void CLaBotBox::StopTx()
 
 //___________________________________________________________________________
  /*!
-   \brief Indique si la communication entrante est activÈe
+   \brief Indique si la communication entrante est activ√©e
 
    \param --
    \return --
@@ -172,7 +172,7 @@ bool CLaBotBox::isRxEnabled()
 
 //___________________________________________________________________________
  /*!
-   \brief Indique si la communication sortante est activÈe
+   \brief Indique si la communication sortante est activ√©e
 
    \param --
    \return --
@@ -184,11 +184,11 @@ bool CLaBotBox::isTxEnabled()
 
 //___________________________________________________________________________
  /*!
-   \brief RÈalise les traitements pÈriodiques
+   \brief R√©alise les traitements p√©riodiques
 
    \param --
    \return --
-   \remark Fonction ‡ appeler pÈriodiquement par la couche supÈrieure (toutes les 10msec)
+   \remark Fonction √† appeler p√©riodiquement par la couche sup√©rieure (toutes les 10msec)
 */
 void CLaBotBox::Execute()
 {
@@ -414,7 +414,7 @@ void CLaBotBox::Init_Reconstitution(void)
 
     - Calcul le checksum de la trame courante et le compare au parametre d'entree de la fonction
 
-   \param CS_attendu le checksum attendu √  comparer avec le checksum calcule de la trame courante
+   \param CS_attendu le checksum attendu √†  comparer avec le checksum calcule de la trame courante
    \return 	1 si le checksum est OK \n
                 0 sinon
    */
@@ -523,7 +523,7 @@ void CLaBotBox::CheckReceptionTrame(void)
 
   // ___________________________
   if  (m_ELECTROBOT_CDE_SERVOS_AX.isNewTrame() ) {
-    // sous adressage : le champ commande_ax donne le type d'action √  r√©aliser
+    // sous adressage : le champ commande_ax donne le type d'action √†  r√©aliser
     switch (m_ELECTROBOT_CDE_SERVOS_AX.commande_ax) {
         case cSERVO_AX_POSITION :
             Application.m_servos_ax.CommandePosition(
@@ -578,7 +578,7 @@ void CLaBotBox::CheckReceptionTrame(void)
   // ___________________________
   if  (m_ELECTROBOT_CDE_SERVOS_SD20.isNewTrame() ) {
      //_led2 = !_led2;
-    // sous adressage : le champ commande_sd20 donne le type d'action √  r√©aliser
+    // sous adressage : le champ commande_sd20 donne le type d'action √†  r√©aliser
     switch (m_ELECTROBOT_CDE_SERVOS_SD20.commande_sd20) {
         case cSERVO_SD20_POSITION :
             Application.m_servos_sd20.CommandePosition(
@@ -617,7 +617,7 @@ void CLaBotBox::CheckReceptionTrame(void)
   if  (m_ASSERV_DIAG_WRITE_PARAM.isNewTrame() ) {
     float fval_coef100 	= (float)m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE / 100.0f;
     //float fval_coef10 	= (float)m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_VALUE / 10.0f;
-    // sous adressage : le champ commande_ax donne le type d'action √  r√©aliser
+    // sous adressage : le champ commande_ax donne le type d'action √†  r√©aliser
     switch (m_ASSERV_DIAG_WRITE_PARAM.ASSERV_DIAG_WRITE_PARAM) {
         case cASSERV_SEUIL_CONV_DIST :
             Application.m_asservissement.seuil_conv_distance=fval_coef100;
@@ -734,7 +734,7 @@ void CLaBotBox::CheckReceptionTrame(void)
       //_led1 = !_led1;
       switch(m_ETAT_ECRAN.CodeCommande) {
       // _________________________________________
-      case LBB_CMDE_CHOIX_EQUIPE : // Choix couleur Èquipe
+      case LBB_CMDE_CHOIX_EQUIPE : // Choix couleur √©quipe
           Application.m_match.m_couleur_equipe = m_ETAT_ECRAN.Valeur;
           break;
       // _________________________________________
@@ -742,7 +742,7 @@ void CLaBotBox::CheckReceptionTrame(void)
           Application.m_match.m_dde_test_actionneurs=1;
           break;
       // _________________________________________
-      case LBB_CMDE_CHOIX_NUMERO_STRATEGIE : //Choix de la stratÈgie
+      case LBB_CMDE_CHOIX_NUMERO_STRATEGIE : //Choix de la strat√©gie
           Application.m_match.m_choix_strategie = m_ETAT_ECRAN.Valeur;
           break;
       // _______________________
@@ -753,7 +753,7 @@ void CLaBotBox::CheckReceptionTrame(void)
   }
   // ___________________________
   if  (m_CONFIG_PERIODE_TRAME.isNewTrame() ) {
-      // Valeur particuliËre pour indiquer que la demande concerne toutes les trames d'un seul coup
+      // Valeur particuli√®re pour indiquer que la demande concerne toutes les trames d'un seul coup
       if (m_CONFIG_PERIODE_TRAME.ID == 0xFFFF)
       {
           setAllTransmitPeriod(m_CONFIG_PERIODE_TRAME.Periode);
@@ -958,9 +958,9 @@ unsigned char CLaBotBox::getCheckSumTrame(tStructTrameLaBotBox *trameBrute)
 
 //___________________________________________________________________________
  /*!
-   \brief Fixe la mÍme pÈriode d'Èmission pour toutes les trames
-   \param period_msec la pÈriode souhaitÈe pour toutes les trames
-            CTrameLaBotBox::NO_PERIODIC pour mettre toutes les trames non pÈriodiques
+   \brief Fixe la m√™me p√©riode d'√©mission pour toutes les trames
+   \param period_msec la p√©riode souhait√©e pour toutes les trames
+            CTrameLaBotBox::NO_PERIODIC pour mettre toutes les trames non p√©riodiques
    \return --
    */
 void CLaBotBox::setAllTransmitPeriod(int period_msec)

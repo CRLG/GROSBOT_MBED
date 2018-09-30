@@ -22,7 +22,7 @@ public :
 	unsigned char m_couleur_equipe;
 	unsigned char m_dde_test_actionneurs;
     unsigned char m_choix_strategie;
-    float m_old_cde_mot[NBRE_MAX_MOTEURS+1]; // +1 par facilité de lecture du code car l'index utilisé MOTEUR_1, ... commence �  1 et pas �  "0"
+    float m_old_cde_mot[NBRE_MAX_MOTEURS+1]; // +1 par facilité de lecture du code car l'index utilisé MOTEUR_1, ... commence à  1 et pas à  "0"
     float m_old_cde_servo[NBRE_SERVOS_SD20+1]; // +1 (même explication)
 	int m_obstacleDetecte;   
 
@@ -37,7 +37,7 @@ public :
 
     //! Indique si le match est en cours ou non
     bool isMatchEnCours();
-    //! Indique si le match est termin�
+    //! Indique si le match est terminé
     bool isMatchTermine();
 
     //! Debug sur la RS232

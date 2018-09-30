@@ -49,7 +49,7 @@ public :
 	//le temps max de gonflage du ballon
 	unsigned int TempsMaxGonflage;
 
-	//! Le match �  jouer
+    //! Le match à  jouer
 	CMatch m_match;
 	//! La gestion des roues gauches et droites
 	CRoues m_roues;
@@ -60,7 +60,7 @@ public :
 	//! Le gestionnaire d'EEPROM
 	CEEPROM m_eeprom;	
 	//! L'asservissement de vitesse/position du robot
-	// ATTENTION : l'instance de la classe asservisement doit être mise après l'instance de eeprom car CAsservissement utilise CEEPROM dans son constructeur
+    // ATTENTION : l'instance de la classe asservisement doit être mise après l'instance de eeprom car CAsservissement utilise CEEPROM dans son constructeur
 	CAsservissement m_asservissement;
 
 	//! La gestion de la caméra

@@ -34,10 +34,10 @@ CTrameLaBotBox::~CTrameLaBotBox()
 
 //___________________________________________________________________________
  /*!
-   \brief Decodage d'une trame brute reçue
-   \param trameRecue la trame brute à décoder
+   \brief Decodage d'une trame brute reÃ§ue
+   \param trameRecue la trame brute Ã  dÃ©coder
    \return --
-   \remark Méthode de la classe mère jamais appelée
+   \remark MÃ©thode de la classe mÃ¨re jamais appelÃ©e
 */
 void CTrameLaBotBox::Decode(tStructTrameLaBotBox *trameRecue)
 {
@@ -47,8 +47,8 @@ void CTrameLaBotBox::Decode(tStructTrameLaBotBox *trameRecue)
  /*!
    \brief Encodage de la trame pour envoie
    \param --
-   \return la trame à envoyer
-   \remark Méthode de la classe mère jamais appelée
+   \return la trame Ã  envoyer
+   \remark MÃ©thode de la classe mÃ¨re jamais appelÃ©e
 */
 tStructTrameLaBotBox* CTrameLaBotBox::Encode(void)
 {
@@ -72,8 +72,8 @@ bool CTrameLaBotBox::isNewTrame(void)
 
 //___________________________________________________________________________
  /*!
-   \brief Fixe la période d'émission de la trame
-   \param period_msec la période souhaitée en msec
+   \brief Fixe la pÃ©riode d'Ã©mission de la trame
+   \param period_msec la pÃ©riode souhaitÃ©e en msec
    \return --
 */
 void CTrameLaBotBox::setTransmitPeriod(short period_msec)
@@ -83,9 +83,9 @@ void CTrameLaBotBox::setTransmitPeriod(short period_msec)
 
 //___________________________________________________________________________
  /*!
-   \brief Vérifie s'il est l'heure d'émettre la trame périodique
+   \brief VÃ©rifie s'il est l'heure d'Ã©mettre la trame pÃ©riodique
    \param --
-   \return true si l'heure est venue d'émettre la trame / false sinon
+   \return true si l'heure est venue d'Ã©mettre la trame / false sinon
 */
 bool CTrameLaBotBox::isTimeToSend()
 {
@@ -93,7 +93,7 @@ bool CTrameLaBotBox::isTimeToSend()
 
     int current_time = _Global_Timer.read_ms();
     int diff = current_time - m_last_time_tx;
-    if ( (diff >= m_tx_periode) || (diff < 0) )  // test sur diff<0 : prend en compte le cas du débordement du  GLobal_Timer au bout de 30minutes après le boot
+    if ( (diff >= m_tx_periode) || (diff < 0) )  // test sur diff<0 : prend en compte le cas du dÃ©bordement du  GLobal_Timer au bout de 30minutes aprÃ¨s le boot
     {
         m_last_time_tx = current_time;
         return true;

@@ -134,7 +134,7 @@ public :
 	//! Checksum de trame brut
 	unsigned char getCheckSumTrame(tStructTrameLaBotBox *trameBrute);
 
-    //! Fixe la période de toutes les trames TX d'un seul coup
+    //! Fixe la pÃ©riode de toutes les trames TX d'un seul coup
     void setAllTransmitPeriod(int period_msec);
 
 #define NOMBRE_MAX_TRAMES_LABOTBOX 30
@@ -170,9 +170,9 @@ public :
     CTrameLaBotBox_CONFIG_PERIODE_TRAME         m_CONFIG_PERIODE_TRAME;
 
 private : 
-    //! Autorise la réception de données en IRQ en provenance de Labotbox
+    //! Autorise la rÃ©ception de donnÃ©es en IRQ en provenance de Labotbox
     bool m_rx_enabled;
-    //! Autorise la transmission de données vers Labotbox
+    //! Autorise la transmission de donnÃ©es vers Labotbox
     bool m_tx_enabled;
     //! Etat de la machine d'etat de reconstitution
 	unsigned char m_etatReconst;
@@ -182,9 +182,9 @@ private :
     CTrameLaBotBox* m_liste_trames[NOMBRE_MAX_TRAMES_LABOTBOX];
     unsigned int m_nombre_trames;
 
-    //! Crée la liste des trames
+    //! CrÃ©e la liste des trames
     void initListeTrames();
-    //! Renvoie le pointeur sur la trame à partir de son identifiant
+    //! Renvoie le pointeur sur la trame Ã  partir de son identifiant
     CTrameLaBotBox* getTrameFromID(unsigned int ID);
 
 };

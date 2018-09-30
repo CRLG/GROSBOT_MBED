@@ -15,7 +15,7 @@ typedef struct {
 //! Classe de base pour les trames CAN
 class CTrameLaBotBox {
 public :
-    static const short NO_PERIODIC = -1;  // Indique que la trame n'est pas périodique
+    static const short NO_PERIODIC = -1;  // Indique que la trame n'est pas pÃ©riodique
 
     //!	Structure brute
 	tStructTrameLaBotBox m_trame_brute;
@@ -35,9 +35,9 @@ public :
     void setTransmitPeriod(short period_msec);
 
 protected:
-    //! Période d'émission souhaitée [msec]
+    //! PÃ©riode d'Ã©mission souhaitÃ©e [msec]
     short m_tx_periode;
-    //! Instant de la dernière émission
+    //! Instant de la derniÃ¨re Ã©mission
     int m_last_time_tx;
 };
 

@@ -29,7 +29,7 @@ void CGlobale::ModeAutonome(void)
 
    // Initialise une IRQ sur réception RS232 de la caméra
    // Ligne ci-dessous mise en commentaire volontairement tant que la pinoche RX est en l'air (pour éviter d'avoir des IRQ parasites)
-   // TODO: �  décommenter dès que la caméra sera branchée
+   // TODO: à  décommenter dès que la caméra sera branchée
    //_rs232_camera_rx.attach(&Application, &CGlobale::ReceiveRS232_Camera);  	// Callback sur réception d'une donnée sur la RS232
   
    periodicTick.attach(&Application, &CGlobale::IRQ_Tick_ModeAutonome, (float(PERIODE_TICK)/1000.0f));
@@ -130,19 +130,19 @@ void CGlobale::SequenceurModeAutonome(void)
   if (cpt200msec >= TEMPO_200msec) {
   	cpt200msec = 0;
 
-    // d�s que le match est commenc�, supprime l'IRQ sur RS232 de l'ecran pour ne pas risquer d'interrompre le match
-    // lorsque le match est termin�, r�-active la communication entrante et diffuse � nouveau toutes les trames
+    // dès que le match est commencé, supprime l'IRQ sur RS232 de l'ecran pour ne pas risquer d'interrompre le match
+    // lorsque le match est terminé, ré-active la communication entrante et diffuse à nouveau toutes les trames
     if (m_match.isMatchEnCours()) {
-        if (m_LaBotBox.isRxEnabled()) {  // Ca permet de d�tecter un front montant du d�but de match
+        if (m_LaBotBox.isRxEnabled()) {  // Ca permet de détecter un front montant du début de match
             m_LaBotBox.StopRx();
-            m_LaBotBox.setAllTransmitPeriod(CTrameLaBotBox::NO_PERIODIC);  // Inhibe toutes les �missions de trames
-            m_LaBotBox.m_ETAT_MATCH.setTransmitPeriod(200);                // sauf la trame sp�cifique match
+            m_LaBotBox.setAllTransmitPeriod(CTrameLaBotBox::NO_PERIODIC);  // Inhibe toutes les émissions de trames
+            m_LaBotBox.m_ETAT_MATCH.setTransmitPeriod(200);                // sauf la trame spécifique match
         }
     }
     else {
         if (!m_LaBotBox.isRxEnabled()) {
             m_LaBotBox.Start();
-            m_LaBotBox.setAllTransmitPeriod(200);  // Toutes les trames sont envoy�es � Labotbox avec la m�me p�riode
+            m_LaBotBox.setAllTransmitPeriod(200);  // Toutes les trames sont envoyées à Labotbox avec la même période
         }
     }
   }
@@ -172,7 +172,7 @@ void CGlobale::CheckReceptionTrameCamera(void)
 {
   // ___________________________
   if  (m_camera.m_CAM_RESULT_TRACKING.isNewTrame() ) {
-    // TODO : �  relier avec les entrées du modèle SIMULINK
+    // TODO : à  relier avec les entrées du modèle SIMULINK
     // modele.IN_xxx = m_camera.m_CAM_RESULT_TRACKING.Pos_X;
     // modele.IN_xxx = m_camera.m_CAM_RESULT_TRACKING.Pos_Y;
   }
