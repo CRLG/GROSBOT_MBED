@@ -5,15 +5,23 @@
 /*! \file Implementation of the state machine 'IA'
 */
 
-IA::IA()
+
+IA::IA():
+	timer(null),
+	stateConfVectorPosition(0),
+	iface(),
+	ifaceInternalSCI(),
+	ifaceAsser(),
+	ifaceServo(),
+	ifaceAx(),
+	ifaceMoteur(),
+	ifaceChariot(),
+	ifaceCapteur(),
+	ifaceIhm()
 {
-	
-	
-	for (int i = 0; i < maxHistoryStates; ++i)
+	for (sc_ushort i = 0; i < maxHistoryStates; ++i)
 		historyVector[i] = IA_last_state;
-	
-	stateConfVectorPosition = 0;
-	
+		
 }
 
 IA::~IA()
@@ -49,10 +57,10 @@ const sc_integer IA::DefaultSCI::CODEUR_ROUE_GAUCHE = 3;
 
 void IA::init()
 {
-	for (int i = 0; i < maxOrthogonalStates; ++i)
+	for (sc_ushort i = 0; i < maxOrthogonalStates; ++i)
 		stateConfVector[i] = IA_last_state;
 	
-	for (int i = 0; i < maxHistoryStates; ++i)
+	for (sc_ushort i = 0; i < maxHistoryStates; ++i)
 		historyVector[i] = IA_last_state;
 	
 	stateConfVectorPosition = 0;
@@ -78,8 +86,10 @@ void IA::init()
 	iface.y_pos_mem = 0;
 	iface.teta_pos_mem = 0;
 	iface.nb_Modules = 1;
-	iface.JAUNE = 1;
-	iface.BLEU = 0;
+	iface.ORANGE = 1;
+	iface.VERT = 0;
+	iface.BLEU = 2;
+	iface.JAUNE = 3;
 	ifaceInternalSCI.Couleur = 1;
 	ifaceInternalSCI.invMouv = 1;
 	ifaceInternalSCI.Te = 0.02;
@@ -103,6 +113,7 @@ void IA::enter()
 	/* Default react sequence for initial entry  */
 	/* 'default' enter sequence for state TEMPS_INIT */
 	/* Entry action for state 'TEMPS_INIT'. */
+	timer->setTimer(this, (sc_eventid)(&timeEvents[0]), 500, false);
 	iface.countTime = 0;
 	stateConfVector[0] = STRATEGIE_TEMPS_INIT;
 	stateConfVectorPosition = 0;
@@ -501,6 +512,8 @@ void IA::exit()
 			/* Default exit sequence for state TEMPS_INIT */
 			stateConfVector[0] = IA_last_state;
 			stateConfVectorPosition = 0;
+			/* Exit action for state 'TEMPS_INIT'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
 			break;
 		}
 		default: break;
@@ -559,7 +572,7 @@ void IA::exit()
 	}
 }
 
-sc_boolean IA::isActive()
+sc_boolean IA::isActive() const
 {
 	return stateConfVector[0] != IA_last_state||stateConfVector[1] != IA_last_state||stateConfVector[2] != IA_last_state;
 }
@@ -567,7 +580,7 @@ sc_boolean IA::isActive()
 /* 
  * Always returns 'false' since this state machine can never become final.
  */
-sc_boolean IA::isFinal()
+sc_boolean IA::isFinal() const
 {
    return false;}
 
@@ -575,7 +588,6 @@ void IA::runCycle()
 {
 	
 	clearOutEvents();
-	
 	for (stateConfVectorPosition = 0;
 		stateConfVectorPosition < maxOrthogonalStates;
 		stateConfVectorPosition++)
@@ -882,7 +894,6 @@ void IA::runCycle()
 			break;
 		}
 	}
-	
 	clearInEvents();
 }
 
@@ -893,6 +904,7 @@ void IA::clearInEvents()
 	iface.EV_ConvergenceMvt_raised = false;
 	iface.EV_ConvergenceMvt_Rapide_raised = false;
 	iface.EV_ConvergenceChariot_raised = false;
+	timeEvents[0] = false; 
 }
 
 void IA::clearOutEvents()
@@ -900,204 +912,222 @@ void IA::clearOutEvents()
 }
 
 
-sc_boolean IA::isStateActive(IAStates state)
+void IA::setTimer(TimerInterface* timerInterface)
+{
+	this->timer = timerInterface;
+}
+
+TimerInterface* IA::getTimer()
+{
+	return timer;
+}
+
+void IA::raiseTimeEvent(sc_eventid evid)
+{
+	if ((evid >= (sc_eventid)timeEvents) && (evid < (sc_eventid)(&timeEvents[timeEventsCount])))
+	{
+		*(sc_boolean*)evid = true;
+	}				
+}
+
+sc_boolean IA::isStateActive(IAStates state) const
 {
 	switch (state)
 	{
 		case STRATEGIE_ATTENTE_DEBUT_MATCH : 
-			return (sc_boolean) (stateConfVector[0] >= STRATEGIE_ATTENTE_DEBUT_MATCH
-				&& stateConfVector[0] <= STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_CHENILLARD_02);
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH] >= STRATEGIE_ATTENTE_DEBUT_MATCH
+				&& stateConfVector[SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH] <= STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_CHENILLARD_02);
 		case STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_1 : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_1
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_1] == STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_1
 			);
 		case STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_2 : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_2
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_2] == STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_2
 			);
 		case STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_U065064 : 
-			return (sc_boolean) (stateConfVector[1] == STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_U065064
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_U065064] == STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_U065064
 			);
 		case STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_Copy_1_POSITION_ASCENSEUR_INIT : 
-			return (sc_boolean) (stateConfVector[1] == STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_Copy_1_POSITION_ASCENSEUR_INIT
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_COPY_1_POSITION_ASCENSEUR_INIT] == STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_Copy_1_POSITION_ASCENSEUR_INIT
 			);
 		case STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_Copy_1_INIT : 
-			return (sc_boolean) (stateConfVector[1] == STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_Copy_1_INIT
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_COPY_1_INIT] == STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_Copy_1_INIT
 			);
 		case STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_INIT : 
-			return (sc_boolean) (stateConfVector[2] == STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_INIT
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_INIT] == STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_INIT
 			);
 		case STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_CHENILLARD_01 : 
-			return (sc_boolean) (stateConfVector[2] == STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_CHENILLARD_01
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_CHENILLARD_01] == STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_CHENILLARD_01
 			);
 		case STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_CHENILLARD_02 : 
-			return (sc_boolean) (stateConfVector[2] == STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_CHENILLARD_02
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_CHENILLARD_02] == STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_CHENILLARD_02
 			);
 		case STRATEGIE_MATCH : 
-			return (sc_boolean) (stateConfVector[0] >= STRATEGIE_MATCH
-				&& stateConfVector[0] <= STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_AU_DESSUS_ZONE);
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH] >= STRATEGIE_MATCH
+				&& stateConfVector[SCVI_STRATEGIE_MATCH] <= STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_AU_DESSUS_ZONE);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE : 
-			return (sc_boolean) (stateConfVector[0] >= STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE
-				&& stateConfVector[0] <= STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_FIN_DEPLACEMENT_BLEU);
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE] >= STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE
+				&& stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE] <= STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_FIN_DEPLACEMENT_BLEU);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_DEPOSE_MODULE : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_DEPOSE_MODULE
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_DEPOSE_MODULE] == STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_DEPOSE_MODULE
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_LARGAGE_MODULES : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_LARGAGE_MODULES
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_LARGAGE_MODULES] == STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_LARGAGE_MODULES
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION__final_ : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION__final_
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION__FINAL_] == STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION__final_
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_POSITION_INIT : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_POSITION_INIT
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_POSITION_INIT] == STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_POSITION_INIT
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_DIRECTION_ZONE_ADVERSE : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_DIRECTION_ZONE_ADVERSE
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_DIRECTION_ZONE_ADVERSE] == STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_DIRECTION_ZONE_ADVERSE
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_PRISE_MODULE_01 : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_PRISE_MODULE_01
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_PRISE_MODULE_01] == STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_PRISE_MODULE_01
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_FIN_DEPLACEMENT_JAUNE : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_FIN_DEPLACEMENT_JAUNE
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_FIN_DEPLACEMENT_JAUNE] == STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_FIN_DEPLACEMENT_JAUNE
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_FIN_DEPLACEMENT_BLEU : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_FIN_DEPLACEMENT_BLEU
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_FIN_DEPLACEMENT_BLEU] == STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_FIN_DEPLACEMENT_BLEU
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_EVITEMENT : 
-			return (sc_boolean) (stateConfVector[0] >= STRATEGIE_MATCH_MATCH_REGION_EVITEMENT
-				&& stateConfVector[0] <= STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION__final_);
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_EVITEMENT] >= STRATEGIE_MATCH_MATCH_REGION_EVITEMENT
+				&& stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_EVITEMENT] <= STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION__final_);
 		case STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION_ARRET_ROBOT : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION_ARRET_ROBOT
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION_ARRET_ROBOT] == STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION_ARRET_ROBOT
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION_SORTIE_EVITEMENT : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION_SORTIE_EVITEMENT
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION_SORTIE_EVITEMENT] == STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION_SORTIE_EVITEMENT
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION__final_ : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION__final_
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION__FINAL_] == STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION__final_
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_INIT_MATCH : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_INIT_MATCH
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_INIT_MATCH] == STRATEGIE_MATCH_MATCH_REGION_INIT_MATCH
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE : 
-			return (sc_boolean) (stateConfVector[0] >= STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE
-				&& stateConfVector[0] <= STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_AU_DESSUS_ZONE);
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE] >= STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE
+				&& stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE] <= STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_AU_DESSUS_ZONE);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_KMAR : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_KMAR
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_KMAR] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_KMAR
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_FACE_FUSEE : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_FACE_FUSEE
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_FACE_FUSEE] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_FACE_FUSEE
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_VENTOUSAGE_INCERTAIN : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_VENTOUSAGE_INCERTAIN
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_VENTOUSAGE_INCERTAIN] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_VENTOUSAGE_INCERTAIN
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ATTENTE_VENTOUSAGE : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ATTENTE_VENTOUSAGE
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ATTENTE_VENTOUSAGE] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ATTENTE_VENTOUSAGE
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RETIRE_MODULE : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RETIRE_MODULE
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RETIRE_MODULE] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RETIRE_MODULE
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DEGAGE_MODULE : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DEGAGE_MODULE
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DEGAGE_MODULE] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DEGAGE_MODULE
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_PROCHE_BORDURE : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_PROCHE_BORDURE
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_PROCHE_BORDURE] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_PROCHE_BORDURE
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RALENTI_ROTATION : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RALENTI_ROTATION
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RALENTI_ROTATION] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RALENTI_ROTATION
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_SOULEVE_MODULE : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_SOULEVE_MODULE
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_SOULEVE_MODULE] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_SOULEVE_MODULE
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_CHOISI_COULEUR : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_CHOISI_COULEUR
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_CHOISI_COULEUR] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_CHOISI_COULEUR
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_COULEUR : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_COULEUR
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_COULEUR] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_COULEUR
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RALENTI_AX_COULEUR : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RALENTI_AX_COULEUR
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RALENTI_AX_COULEUR] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RALENTI_AX_COULEUR
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_TOURNE_POUR_FUSEE : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_TOURNE_POUR_FUSEE
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_TOURNE_POUR_FUSEE] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_TOURNE_POUR_FUSEE
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_PROCHE_ZONE : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_PROCHE_ZONE
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_PROCHE_ZONE] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_PROCHE_ZONE
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_AU_DESSUS_ZONE : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_AU_DESSUS_ZONE
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_AU_DESSUS_ZONE] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_AU_DESSUS_ZONE
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DEVENTOUSAGE : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DEVENTOUSAGE
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DEVENTOUSAGE] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DEVENTOUSAGE
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ACCELERE_AX_ROTATION : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ACCELERE_AX_ROTATION
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ACCELERE_AX_ROTATION] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ACCELERE_AX_ROTATION
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ACCELERE_AX_LEVIER : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ACCELERE_AX_LEVIER
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ACCELERE_AX_LEVIER] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ACCELERE_AX_LEVIER
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_AX_LEVIER : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_AX_LEVIER
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_AX_LEVIER] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_AX_LEVIER
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE__final_ : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE__final_
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE__FINAL_] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE__final_
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_MAX_HORS_ZONE : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_MAX_HORS_ZONE
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_MAX_HORS_ZONE] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_MAX_HORS_ZONE
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DECALE_MODULES : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DECALE_MODULES
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DECALE_MODULES] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DECALE_MODULES
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_CHARIOT_COTE : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_CHARIOT_COTE
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_CHARIOT_COTE] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_CHARIOT_COTE
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RECENTRAGE_BRAS : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RECENTRAGE_BRAS
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RECENTRAGE_BRAS] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RECENTRAGE_BRAS
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_FIN_INIT_CHARIOT_COTE : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_FIN_INIT_CHARIOT_COTE
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_FIN_INIT_CHARIOT_COTE] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_FIN_INIT_CHARIOT_COTE
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RANGE_BRAS_02 : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RANGE_BRAS_02
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RANGE_BRAS_02] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RANGE_BRAS_02
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_CHOISI_COULEUR : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_CHOISI_COULEUR
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_COPY_1_CHOISI_COULEUR] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_CHOISI_COULEUR
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_LEVIER_RECULE_AU_MAX : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_LEVIER_RECULE_AU_MAX
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_LEVIER_RECULE_AU_MAX] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_LEVIER_RECULE_AU_MAX
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_CHERCHE_FUSEE : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_CHERCHE_FUSEE
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_CHERCHE_FUSEE] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_CHERCHE_FUSEE
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_LEVIER_RECULE_AU_MAX : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_LEVIER_RECULE_AU_MAX
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_COPY_1_LEVIER_RECULE_AU_MAX] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_LEVIER_RECULE_AU_MAX
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_VENTOUSAGE_CERTAIN : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_VENTOUSAGE_CERTAIN
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_VENTOUSAGE_CERTAIN] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_VENTOUSAGE_CERTAIN
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RANGE_BRAS_01 : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RANGE_BRAS_01
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RANGE_BRAS_01] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RANGE_BRAS_01
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_TOURNE_POUR_FUSEE : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_TOURNE_POUR_FUSEE
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_COPY_1_TOURNE_POUR_FUSEE] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_TOURNE_POUR_FUSEE
 			);
 		case STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_AU_DESSUS_ZONE : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_AU_DESSUS_ZONE
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_COPY_1_AU_DESSUS_ZONE] == STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_AU_DESSUS_ZONE
 			);
 		case STRATEGIE_FIN_MATCH : 
-			return (sc_boolean) (stateConfVector[0] >= STRATEGIE_FIN_MATCH
-				&& stateConfVector[0] <= STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_ARRET_MOELDAR);
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_FIN_MATCH] >= STRATEGIE_FIN_MATCH
+				&& stateConfVector[SCVI_STRATEGIE_FIN_MATCH] <= STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_ARRET_MOELDAR);
 		case STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_ARRET_ACTIONNEURS : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_ARRET_ACTIONNEURS
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_ARRET_ACTIONNEURS] == STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_ARRET_ACTIONNEURS
 			);
 		case STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_FIN_FUNNY : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_FIN_FUNNY
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_FIN_FUNNY] == STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_FIN_FUNNY
 			);
 		case STRATEGIE_FIN_MATCH_FIN_MATCH_REGION__final_ : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_FIN_MATCH_FIN_MATCH_REGION__final_
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_FIN_MATCH_FIN_MATCH_REGION__FINAL_] == STRATEGIE_FIN_MATCH_FIN_MATCH_REGION__final_
 			);
 		case STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_ARRET_MOELDAR : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_ARRET_MOELDAR
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_ARRET_MOELDAR] == STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_ARRET_MOELDAR
 			);
 		case STRATEGIE_TEMPS_INIT : 
-			return (sc_boolean) (stateConfVector[0] == STRATEGIE_TEMPS_INIT
+			return (sc_boolean) (stateConfVector[SCVI_STRATEGIE_TEMPS_INIT] == STRATEGIE_TEMPS_INIT
 			);
 		default: return false;
 	}
@@ -1107,64 +1137,57 @@ IA::DefaultSCI* IA::getDefaultSCI()
 {
 	return &iface;
 }
-
+/* Functions for event EV_Tirette in interface DefaultSCI */
 void IA::DefaultSCI::raise_eV_Tirette()
 {
 	EV_Tirette_raised = true;
 }
-
 void IA::raise_eV_Tirette()
 {
 	iface.raise_eV_Tirette();
 }
-
+/* Functions for event EV_Obstacle in interface DefaultSCI */
 void IA::DefaultSCI::raise_eV_Obstacle()
 {
 	EV_Obstacle_raised = true;
 }
-
 void IA::raise_eV_Obstacle()
 {
 	iface.raise_eV_Obstacle();
 }
-
+/* Functions for event EV_ConvergenceMvt in interface DefaultSCI */
 void IA::DefaultSCI::raise_eV_ConvergenceMvt()
 {
 	EV_ConvergenceMvt_raised = true;
 }
-
 void IA::raise_eV_ConvergenceMvt()
 {
 	iface.raise_eV_ConvergenceMvt();
 }
-
+/* Functions for event EV_ConvergenceMvt_Rapide in interface DefaultSCI */
 void IA::DefaultSCI::raise_eV_ConvergenceMvt_Rapide()
 {
 	EV_ConvergenceMvt_Rapide_raised = true;
 }
-
 void IA::raise_eV_ConvergenceMvt_Rapide()
 {
 	iface.raise_eV_ConvergenceMvt_Rapide();
 }
-
+/* Functions for event EV_ConvergenceChariot in interface DefaultSCI */
 void IA::DefaultSCI::raise_eV_ConvergenceChariot()
 {
 	EV_ConvergenceChariot_raised = true;
 }
-
 void IA::raise_eV_ConvergenceChariot()
 {
 	iface.raise_eV_ConvergenceChariot();
 }
-
-
-sc_real IA::DefaultSCI::get_iN_x_pos()
+sc_real IA::DefaultSCI::get_iN_x_pos() const
 {
 	return IN_x_pos;
 }
 
-sc_real IA::get_iN_x_pos()
+sc_real IA::get_iN_x_pos() const
 {
 	return iface.IN_x_pos;
 }
@@ -1179,12 +1202,12 @@ void IA::set_iN_x_pos(sc_real value)
 	iface.IN_x_pos = value;
 }
 
-sc_real IA::DefaultSCI::get_iN_y_pos()
+sc_real IA::DefaultSCI::get_iN_y_pos() const
 {
 	return IN_y_pos;
 }
 
-sc_real IA::get_iN_y_pos()
+sc_real IA::get_iN_y_pos() const
 {
 	return iface.IN_y_pos;
 }
@@ -1199,12 +1222,12 @@ void IA::set_iN_y_pos(sc_real value)
 	iface.IN_y_pos = value;
 }
 
-sc_real IA::DefaultSCI::get_iN_teta_pos()
+sc_real IA::DefaultSCI::get_iN_teta_pos() const
 {
 	return IN_teta_pos;
 }
 
-sc_real IA::get_iN_teta_pos()
+sc_real IA::get_iN_teta_pos() const
 {
 	return iface.IN_teta_pos;
 }
@@ -1219,12 +1242,12 @@ void IA::set_iN_teta_pos(sc_real value)
 	iface.IN_teta_pos = value;
 }
 
-sc_real IA::DefaultSCI::get_iN_vitesse()
+sc_real IA::DefaultSCI::get_iN_vitesse() const
 {
 	return IN_vitesse;
 }
 
-sc_real IA::get_iN_vitesse()
+sc_real IA::get_iN_vitesse() const
 {
 	return iface.IN_vitesse;
 }
@@ -1239,12 +1262,12 @@ void IA::set_iN_vitesse(sc_real value)
 	iface.IN_vitesse = value;
 }
 
-sc_real IA::DefaultSCI::get_iN_sens_deplacement()
+sc_real IA::DefaultSCI::get_iN_sens_deplacement() const
 {
 	return IN_sens_deplacement;
 }
 
-sc_real IA::get_iN_sens_deplacement()
+sc_real IA::get_iN_sens_deplacement() const
 {
 	return iface.IN_sens_deplacement;
 }
@@ -1259,12 +1282,12 @@ void IA::set_iN_sens_deplacement(sc_real value)
 	iface.IN_sens_deplacement = value;
 }
 
-sc_integer IA::DefaultSCI::get_iN_Couleur()
+sc_integer IA::DefaultSCI::get_iN_Couleur() const
 {
 	return IN_Couleur;
 }
 
-sc_integer IA::get_iN_Couleur()
+sc_integer IA::get_iN_Couleur() const
 {
 	return iface.IN_Couleur;
 }
@@ -1279,12 +1302,12 @@ void IA::set_iN_Couleur(sc_integer value)
 	iface.IN_Couleur = value;
 }
 
-sc_integer IA::DefaultSCI::get_iN_Obstacle()
+sc_integer IA::DefaultSCI::get_iN_Obstacle() const
 {
 	return IN_Obstacle;
 }
 
-sc_integer IA::get_iN_Obstacle()
+sc_integer IA::get_iN_Obstacle() const
 {
 	return iface.IN_Obstacle;
 }
@@ -1299,12 +1322,12 @@ void IA::set_iN_Obstacle(sc_integer value)
 	iface.IN_Obstacle = value;
 }
 
-sc_boolean IA::DefaultSCI::get_iN_Depression()
+sc_boolean IA::DefaultSCI::get_iN_Depression() const
 {
 	return IN_Depression;
 }
 
-sc_boolean IA::get_iN_Depression()
+sc_boolean IA::get_iN_Depression() const
 {
 	return iface.IN_Depression;
 }
@@ -1319,12 +1342,12 @@ void IA::set_iN_Depression(sc_boolean value)
 	iface.IN_Depression = value;
 }
 
-sc_real IA::DefaultSCI::get_countTimeMvt()
+sc_real IA::DefaultSCI::get_countTimeMvt() const
 {
 	return countTimeMvt;
 }
 
-sc_real IA::get_countTimeMvt()
+sc_real IA::get_countTimeMvt() const
 {
 	return iface.countTimeMvt;
 }
@@ -1339,12 +1362,12 @@ void IA::set_countTimeMvt(sc_real value)
 	iface.countTimeMvt = value;
 }
 
-sc_integer IA::DefaultSCI::get_tempsMatch()
+sc_integer IA::DefaultSCI::get_tempsMatch() const
 {
 	return tempsMatch;
 }
 
-sc_integer IA::get_tempsMatch()
+sc_integer IA::get_tempsMatch() const
 {
 	return iface.tempsMatch;
 }
@@ -1359,12 +1382,12 @@ void IA::set_tempsMatch(sc_integer value)
 	iface.tempsMatch = value;
 }
 
-sc_integer IA::DefaultSCI::get_countTempo()
+sc_integer IA::DefaultSCI::get_countTempo() const
 {
 	return countTempo;
 }
 
-sc_integer IA::get_countTempo()
+sc_integer IA::get_countTempo() const
 {
 	return iface.countTempo;
 }
@@ -1379,12 +1402,12 @@ void IA::set_countTempo(sc_integer value)
 	iface.countTempo = value;
 }
 
-sc_integer IA::DefaultSCI::get_countTempo2()
+sc_integer IA::DefaultSCI::get_countTempo2() const
 {
 	return countTempo2;
 }
 
-sc_integer IA::get_countTempo2()
+sc_integer IA::get_countTempo2() const
 {
 	return iface.countTempo2;
 }
@@ -1399,12 +1422,12 @@ void IA::set_countTempo2(sc_integer value)
 	iface.countTempo2 = value;
 }
 
-sc_real IA::DefaultSCI::get_countTime()
+sc_real IA::DefaultSCI::get_countTime() const
 {
 	return countTime;
 }
 
-sc_real IA::get_countTime()
+sc_real IA::get_countTime() const
 {
 	return iface.countTime;
 }
@@ -1419,12 +1442,12 @@ void IA::set_countTime(sc_real value)
 	iface.countTime = value;
 }
 
-sc_real IA::DefaultSCI::get_x_pos_mem()
+sc_real IA::DefaultSCI::get_x_pos_mem() const
 {
 	return x_pos_mem;
 }
 
-sc_real IA::get_x_pos_mem()
+sc_real IA::get_x_pos_mem() const
 {
 	return iface.x_pos_mem;
 }
@@ -1439,12 +1462,12 @@ void IA::set_x_pos_mem(sc_real value)
 	iface.x_pos_mem = value;
 }
 
-sc_real IA::DefaultSCI::get_y_pos_mem()
+sc_real IA::DefaultSCI::get_y_pos_mem() const
 {
 	return y_pos_mem;
 }
 
-sc_real IA::get_y_pos_mem()
+sc_real IA::get_y_pos_mem() const
 {
 	return iface.y_pos_mem;
 }
@@ -1459,12 +1482,12 @@ void IA::set_y_pos_mem(sc_real value)
 	iface.y_pos_mem = value;
 }
 
-sc_real IA::DefaultSCI::get_teta_pos_mem()
+sc_real IA::DefaultSCI::get_teta_pos_mem() const
 {
 	return teta_pos_mem;
 }
 
-sc_real IA::get_teta_pos_mem()
+sc_real IA::get_teta_pos_mem() const
 {
 	return iface.teta_pos_mem;
 }
@@ -1479,12 +1502,12 @@ void IA::set_teta_pos_mem(sc_real value)
 	iface.teta_pos_mem = value;
 }
 
-sc_integer IA::DefaultSCI::get_nb_Modules()
+sc_integer IA::DefaultSCI::get_nb_Modules() const
 {
 	return nb_Modules;
 }
 
-sc_integer IA::get_nb_Modules()
+sc_integer IA::get_nb_Modules() const
 {
 	return iface.nb_Modules;
 }
@@ -1499,278 +1522,337 @@ void IA::set_nb_Modules(sc_integer value)
 	iface.nb_Modules = value;
 }
 
-const sc_integer IA::DefaultSCI::get_sERVO_VENTOUSE()
+const sc_integer IA::DefaultSCI::get_sERVO_VENTOUSE() const
 {
 	return SERVO_VENTOUSE;
 }
 
-const sc_integer IA::get_sERVO_VENTOUSE()
+const sc_integer IA::get_sERVO_VENTOUSE() const
 {
 	return IA::DefaultSCI::SERVO_VENTOUSE;
 }
 
-const sc_integer IA::DefaultSCI::get_sERVO_CENTREUR_G()
+const sc_integer IA::DefaultSCI::get_sERVO_CENTREUR_G() const
 {
 	return SERVO_CENTREUR_G;
 }
 
-const sc_integer IA::get_sERVO_CENTREUR_G()
+const sc_integer IA::get_sERVO_CENTREUR_G() const
 {
 	return IA::DefaultSCI::SERVO_CENTREUR_G;
 }
 
-const sc_integer IA::DefaultSCI::get_sERVO_CENTREUR_D()
+const sc_integer IA::DefaultSCI::get_sERVO_CENTREUR_D() const
 {
 	return SERVO_CENTREUR_D;
 }
 
-const sc_integer IA::get_sERVO_CENTREUR_D()
+const sc_integer IA::get_sERVO_CENTREUR_D() const
 {
 	return IA::DefaultSCI::SERVO_CENTREUR_D;
 }
 
-const sc_integer IA::DefaultSCI::get_sERVO_PINCE_D()
+const sc_integer IA::DefaultSCI::get_sERVO_PINCE_D() const
 {
 	return SERVO_PINCE_D;
 }
 
-const sc_integer IA::get_sERVO_PINCE_D()
+const sc_integer IA::get_sERVO_PINCE_D() const
 {
 	return IA::DefaultSCI::SERVO_PINCE_D;
 }
 
-const sc_integer IA::DefaultSCI::get_sERVO_PINCE_G()
+const sc_integer IA::DefaultSCI::get_sERVO_PINCE_G() const
 {
 	return SERVO_PINCE_G;
 }
 
-const sc_integer IA::get_sERVO_PINCE_G()
+const sc_integer IA::get_sERVO_PINCE_G() const
 {
 	return IA::DefaultSCI::SERVO_PINCE_G;
 }
 
-const sc_integer IA::DefaultSCI::get_sERVO_BALLE()
+const sc_integer IA::DefaultSCI::get_sERVO_BALLE() const
 {
 	return SERVO_BALLE;
 }
 
-const sc_integer IA::get_sERVO_BALLE()
+const sc_integer IA::get_sERVO_BALLE() const
 {
 	return IA::DefaultSCI::SERVO_BALLE;
 }
 
-const sc_integer IA::DefaultSCI::get_sERVO_RECOLTEURS()
+const sc_integer IA::DefaultSCI::get_sERVO_RECOLTEURS() const
 {
 	return SERVO_RECOLTEURS;
 }
 
-const sc_integer IA::get_sERVO_RECOLTEURS()
+const sc_integer IA::get_sERVO_RECOLTEURS() const
 {
 	return IA::DefaultSCI::SERVO_RECOLTEURS;
 }
 
-const sc_integer IA::DefaultSCI::get_sERVO_VOLET()
+const sc_integer IA::DefaultSCI::get_sERVO_VOLET() const
 {
 	return SERVO_VOLET;
 }
 
-const sc_integer IA::get_sERVO_VOLET()
+const sc_integer IA::get_sERVO_VOLET() const
 {
 	return IA::DefaultSCI::SERVO_VOLET;
 }
 
-const sc_integer IA::DefaultSCI::get_aX_ROTATION()
+const sc_integer IA::DefaultSCI::get_aX_ROTATION() const
 {
 	return AX_ROTATION;
 }
 
-const sc_integer IA::get_aX_ROTATION()
+const sc_integer IA::get_aX_ROTATION() const
 {
 	return IA::DefaultSCI::AX_ROTATION;
 }
 
-const sc_integer IA::DefaultSCI::get_aX_COULEUR()
+const sc_integer IA::DefaultSCI::get_aX_COULEUR() const
 {
 	return AX_COULEUR;
 }
 
-const sc_integer IA::get_aX_COULEUR()
+const sc_integer IA::get_aX_COULEUR() const
 {
 	return IA::DefaultSCI::AX_COULEUR;
 }
 
-const sc_integer IA::DefaultSCI::get_aX_LEVIER()
+const sc_integer IA::DefaultSCI::get_aX_LEVIER() const
 {
 	return AX_LEVIER;
 }
 
-const sc_integer IA::get_aX_LEVIER()
+const sc_integer IA::get_aX_LEVIER() const
 {
 	return IA::DefaultSCI::AX_LEVIER;
 }
 
-const sc_integer IA::DefaultSCI::get_kMAR_SORTI()
+const sc_integer IA::DefaultSCI::get_kMAR_SORTI() const
 {
 	return KMAR_SORTI;
 }
 
-const sc_integer IA::get_kMAR_SORTI()
+const sc_integer IA::get_kMAR_SORTI() const
 {
 	return IA::DefaultSCI::KMAR_SORTI;
 }
 
-const sc_integer IA::DefaultSCI::get_kMAR_RENTRE()
+const sc_integer IA::DefaultSCI::get_kMAR_RENTRE() const
 {
 	return KMAR_RENTRE;
 }
 
-const sc_integer IA::get_kMAR_RENTRE()
+const sc_integer IA::get_kMAR_RENTRE() const
 {
 	return IA::DefaultSCI::KMAR_RENTRE;
 }
 
-const sc_integer IA::DefaultSCI::get_kMAR_PRENDRE()
+const sc_integer IA::DefaultSCI::get_kMAR_PRENDRE() const
 {
 	return KMAR_PRENDRE;
 }
 
-const sc_integer IA::get_kMAR_PRENDRE()
+const sc_integer IA::get_kMAR_PRENDRE() const
 {
 	return IA::DefaultSCI::KMAR_PRENDRE;
 }
 
-const sc_integer IA::DefaultSCI::get_vENTOUSE_G()
+const sc_integer IA::DefaultSCI::get_vENTOUSE_G() const
 {
 	return VENTOUSE_G;
 }
 
-const sc_integer IA::get_vENTOUSE_G()
+const sc_integer IA::get_vENTOUSE_G() const
 {
 	return IA::DefaultSCI::VENTOUSE_G;
 }
 
-const sc_integer IA::DefaultSCI::get_vENTOUSE_D()
+const sc_integer IA::DefaultSCI::get_vENTOUSE_D() const
 {
 	return VENTOUSE_D;
 }
 
-const sc_integer IA::get_vENTOUSE_D()
+const sc_integer IA::get_vENTOUSE_D() const
 {
 	return IA::DefaultSCI::VENTOUSE_D;
 }
 
-const sc_integer IA::DefaultSCI::get_kMAR_DROIT()
+const sc_integer IA::DefaultSCI::get_kMAR_DROIT() const
 {
 	return KMAR_DROIT;
 }
 
-const sc_integer IA::get_kMAR_DROIT()
+const sc_integer IA::get_kMAR_DROIT() const
 {
 	return IA::DefaultSCI::KMAR_DROIT;
 }
 
-const sc_integer IA::DefaultSCI::get_mOTEUR_ROUE_GAUCHE()
+const sc_integer IA::DefaultSCI::get_mOTEUR_ROUE_GAUCHE() const
 {
 	return MOTEUR_ROUE_GAUCHE;
 }
 
-const sc_integer IA::get_mOTEUR_ROUE_GAUCHE()
+const sc_integer IA::get_mOTEUR_ROUE_GAUCHE() const
 {
 	return IA::DefaultSCI::MOTEUR_ROUE_GAUCHE;
 }
 
-const sc_integer IA::DefaultSCI::get_mOTEUR_ROUE_DROITE()
+const sc_integer IA::DefaultSCI::get_mOTEUR_ROUE_DROITE() const
 {
 	return MOTEUR_ROUE_DROITE;
 }
 
-const sc_integer IA::get_mOTEUR_ROUE_DROITE()
+const sc_integer IA::get_mOTEUR_ROUE_DROITE() const
 {
 	return IA::DefaultSCI::MOTEUR_ROUE_DROITE;
 }
 
-const sc_integer IA::DefaultSCI::get_mOTEUR_FUNNY()
+const sc_integer IA::DefaultSCI::get_mOTEUR_FUNNY() const
 {
 	return MOTEUR_FUNNY;
 }
 
-const sc_integer IA::get_mOTEUR_FUNNY()
+const sc_integer IA::get_mOTEUR_FUNNY() const
 {
 	return IA::DefaultSCI::MOTEUR_FUNNY;
 }
 
-const sc_integer IA::DefaultSCI::get_mOTEUR_MOELDAR()
+const sc_integer IA::DefaultSCI::get_mOTEUR_MOELDAR() const
 {
 	return MOTEUR_MOELDAR;
 }
 
-const sc_integer IA::get_mOTEUR_MOELDAR()
+const sc_integer IA::get_mOTEUR_MOELDAR() const
 {
 	return IA::DefaultSCI::MOTEUR_MOELDAR;
 }
 
-const sc_integer IA::DefaultSCI::get_cODEUR_NON_DEFINI()
+const sc_integer IA::DefaultSCI::get_cODEUR_NON_DEFINI() const
 {
 	return CODEUR_NON_DEFINI;
 }
 
-const sc_integer IA::get_cODEUR_NON_DEFINI()
+const sc_integer IA::get_cODEUR_NON_DEFINI() const
 {
 	return IA::DefaultSCI::CODEUR_NON_DEFINI;
 }
 
-const sc_integer IA::DefaultSCI::get_cODEUR_CHARIOT()
+const sc_integer IA::DefaultSCI::get_cODEUR_CHARIOT() const
 {
 	return CODEUR_CHARIOT;
 }
 
-const sc_integer IA::get_cODEUR_CHARIOT()
+const sc_integer IA::get_cODEUR_CHARIOT() const
 {
 	return IA::DefaultSCI::CODEUR_CHARIOT;
 }
 
-const sc_integer IA::DefaultSCI::get_cODEUR_ROUE_DROITE()
+const sc_integer IA::DefaultSCI::get_cODEUR_ROUE_DROITE() const
 {
 	return CODEUR_ROUE_DROITE;
 }
 
-const sc_integer IA::get_cODEUR_ROUE_DROITE()
+const sc_integer IA::get_cODEUR_ROUE_DROITE() const
 {
 	return IA::DefaultSCI::CODEUR_ROUE_DROITE;
 }
 
-const sc_integer IA::DefaultSCI::get_cODEUR_ROUE_GAUCHE()
+const sc_integer IA::DefaultSCI::get_cODEUR_ROUE_GAUCHE() const
 {
 	return CODEUR_ROUE_GAUCHE;
 }
 
-const sc_integer IA::get_cODEUR_ROUE_GAUCHE()
+const sc_integer IA::get_cODEUR_ROUE_GAUCHE() const
 {
 	return IA::DefaultSCI::CODEUR_ROUE_GAUCHE;
 }
 
-sc_integer IA::DefaultSCI::get_jAUNE()
+sc_integer IA::DefaultSCI::get_oRANGE() const
 {
-	return JAUNE;
+	return ORANGE;
 }
 
-sc_integer IA::get_jAUNE()
+sc_integer IA::get_oRANGE() const
 {
-	return iface.JAUNE;
+	return iface.ORANGE;
 }
 
-sc_integer IA::DefaultSCI::get_bLEU()
+void IA::DefaultSCI::set_oRANGE(sc_integer value)
+{
+	ORANGE = value;
+}
+
+void IA::set_oRANGE(sc_integer value)
+{
+	iface.ORANGE = value;
+}
+
+sc_integer IA::DefaultSCI::get_vERT() const
+{
+	return VERT;
+}
+
+sc_integer IA::get_vERT() const
+{
+	return iface.VERT;
+}
+
+void IA::DefaultSCI::set_vERT(sc_integer value)
+{
+	VERT = value;
+}
+
+void IA::set_vERT(sc_integer value)
+{
+	iface.VERT = value;
+}
+
+sc_integer IA::DefaultSCI::get_bLEU() const
 {
 	return BLEU;
 }
 
-sc_integer IA::get_bLEU()
+sc_integer IA::get_bLEU() const
 {
 	return iface.BLEU;
 }
 
+void IA::DefaultSCI::set_bLEU(sc_integer value)
+{
+	BLEU = value;
+}
 
-sc_integer IA::InternalSCI::get_couleur()
+void IA::set_bLEU(sc_integer value)
+{
+	iface.BLEU = value;
+}
+
+sc_integer IA::DefaultSCI::get_jAUNE() const
+{
+	return JAUNE;
+}
+
+sc_integer IA::get_jAUNE() const
+{
+	return iface.JAUNE;
+}
+
+void IA::DefaultSCI::set_jAUNE(sc_integer value)
+{
+	JAUNE = value;
+}
+
+void IA::set_jAUNE(sc_integer value)
+{
+	iface.JAUNE = value;
+}
+
+sc_integer IA::InternalSCI::get_couleur() const
 {
 	return Couleur;
 }
@@ -1780,7 +1862,7 @@ void IA::InternalSCI::set_couleur(sc_integer value)
 	Couleur = value;
 }
 
-sc_integer IA::InternalSCI::get_invMouv()
+sc_integer IA::InternalSCI::get_invMouv() const
 {
 	return invMouv;
 }
@@ -1790,7 +1872,7 @@ void IA::InternalSCI::set_invMouv(sc_integer value)
 	invMouv = value;
 }
 
-sc_real IA::InternalSCI::get_te()
+sc_real IA::InternalSCI::get_te() const
 {
 	return Te;
 }
@@ -1800,12 +1882,17 @@ void IA::InternalSCI::set_te(sc_real value)
 	Te = value;
 }
 
-sc_real IA::InternalSCI::get_pI()
+sc_real IA::InternalSCI::get_pI() const
 {
 	return PI;
 }
 
-sc_boolean IA::InternalSCI::get_inhibeObstacle()
+void IA::InternalSCI::set_pI(sc_real value)
+{
+	PI = value;
+}
+
+sc_boolean IA::InternalSCI::get_inhibeObstacle() const
 {
 	return inhibeObstacle;
 }
@@ -1815,7 +1902,7 @@ void IA::InternalSCI::set_inhibeObstacle(sc_boolean value)
 	inhibeObstacle = value;
 }
 
-sc_boolean IA::InternalSCI::get_evitementEnCours()
+sc_boolean IA::InternalSCI::get_evitementEnCours() const
 {
 	return evitementEnCours;
 }
@@ -1825,7 +1912,7 @@ void IA::InternalSCI::set_evitementEnCours(sc_boolean value)
 	evitementEnCours = value;
 }
 
-sc_real IA::InternalSCI::get_evitementTempo()
+sc_real IA::InternalSCI::get_evitementTempo() const
 {
 	return evitementTempo;
 }
@@ -1835,7 +1922,7 @@ void IA::InternalSCI::set_evitementTempo(sc_real value)
 	evitementTempo = value;
 }
 
-sc_boolean IA::InternalSCI::get_sequence1()
+sc_boolean IA::InternalSCI::get_sequence1() const
 {
 	return sequence1;
 }
@@ -1845,7 +1932,7 @@ void IA::InternalSCI::set_sequence1(sc_boolean value)
 	sequence1 = value;
 }
 
-sc_boolean IA::InternalSCI::get_sequence2()
+sc_boolean IA::InternalSCI::get_sequence2() const
 {
 	return sequence2;
 }
@@ -1855,7 +1942,7 @@ void IA::InternalSCI::set_sequence2(sc_boolean value)
 	sequence2 = value;
 }
 
-sc_integer IA::InternalSCI::get_pos_fusee()
+sc_integer IA::InternalSCI::get_pos_fusee() const
 {
 	return pos_fusee;
 }
@@ -1865,7 +1952,7 @@ void IA::InternalSCI::set_pos_fusee(sc_integer value)
 	pos_fusee = value;
 }
 
-sc_integer IA::InternalSCI::get_nb_tentatives()
+sc_integer IA::InternalSCI::get_nb_tentatives() const
 {
 	return nb_tentatives;
 }
@@ -1879,38 +1966,33 @@ IA::SCI_Asser* IA::getSCI_Asser()
 {
 	return &ifaceAsser;
 }
-
-
 IA::SCI_Servo* IA::getSCI_Servo()
 {
 	return &ifaceServo;
 }
-
-
 IA::SCI_Ax* IA::getSCI_Ax()
 {
 	return &ifaceAx;
 }
-
-
-sc_integer IA::SCI_Ax::get_bRAS_OUVERT()
+sc_integer IA::SCI_Ax::get_bRAS_OUVERT() const
 {
 	return BRAS_OUVERT;
+}
+
+void IA::SCI_Ax::set_bRAS_OUVERT(sc_integer value)
+{
+	BRAS_OUVERT = value;
 }
 
 IA::SCI_Moteur* IA::getSCI_Moteur()
 {
 	return &ifaceMoteur;
 }
-
-
 IA::SCI_Chariot* IA::getSCI_Chariot()
 {
 	return &ifaceChariot;
 }
-
-
-sc_boolean IA::SCI_Chariot::get_isReady()
+sc_boolean IA::SCI_Chariot::get_isReady() const
 {
 	return isReady;
 }
@@ -1920,7 +2002,7 @@ void IA::SCI_Chariot::set_isReady(sc_boolean value)
 	isReady = value;
 }
 
-sc_boolean IA::SCI_Chariot::get_isConv()
+sc_boolean IA::SCI_Chariot::get_isConv() const
 {
 	return isConv;
 }
@@ -1934,14 +2016,10 @@ IA::SCI_Capteur* IA::getSCI_Capteur()
 {
 	return &ifaceCapteur;
 }
-
-
 IA::SCI_Ihm* IA::getSCI_Ihm()
 {
 	return &ifaceIhm;
 }
-
-
 
 // implementations of all internal functions
 
@@ -2508,14 +2586,14 @@ void IA::react_STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_1()
 		iface.countTime = iface.countTime + 1;
 		iface.countTempo = iface.countTempo + 1;
 		iface.countTempo2 = iface.countTempo2 + 1;
-		if (iface.IN_Couleur == iface.BLEU)
+		if (iface.IN_Couleur == iface.VERT)
 		{ 
 			/* Default exit sequence for state EQUIPE_1 */
 			stateConfVector[0] = IA_last_state;
 			stateConfVectorPosition = 0;
 			/* 'default' enter sequence for state EQUIPE_2 */
 			/* Entry action for state 'EQUIPE_2'. */
-			ifaceInternalSCI.Couleur = iface.BLEU;
+			ifaceInternalSCI.Couleur = iface.VERT;
 			SCI_Ihm_OCB::setLed(4, false);
 			ifaceInternalSCI.invMouv = -1;
 			stateConfVector[0] = STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_2;
@@ -2629,14 +2707,14 @@ void IA::react_STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_2()
 		iface.countTime = iface.countTime + 1;
 		iface.countTempo = iface.countTempo + 1;
 		iface.countTempo2 = iface.countTempo2 + 1;
-		if (iface.IN_Couleur == iface.JAUNE)
+		if (iface.IN_Couleur == iface.ORANGE)
 		{ 
 			/* Default exit sequence for state EQUIPE_2 */
 			stateConfVector[0] = IA_last_state;
 			stateConfVectorPosition = 0;
 			/* 'default' enter sequence for state EQUIPE_1 */
 			/* Entry action for state 'EQUIPE_1'. */
-			ifaceInternalSCI.Couleur = iface.JAUNE;
+			ifaceInternalSCI.Couleur = iface.ORANGE;
 			SCI_Ihm_OCB::setLed(4, true);
 			ifaceInternalSCI.invMouv = 1;
 			stateConfVector[0] = STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_1;
@@ -4434,9 +4512,7 @@ void IA::react_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_R
 				stateConfVector[0] = STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_KMAR;
 				stateConfVectorPosition = 0;
 				historyVector[1] = stateConfVector[0];
-			}  else
-			{
-			}
+			} 
 		}
 	}
 }
@@ -22081,7 +22157,6 @@ void IA::react_STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_FIN_FUNNY()
 /* The reactions of state null. */
 void IA::react_STRATEGIE_FIN_MATCH_FIN_MATCH_REGION__final_()
 {
-	/* The reactions of state null. */
 }
 
 /* The reactions of state ARRET_MOELDAR. */
@@ -22105,11 +22180,13 @@ void IA::react_STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_ARRET_MOELDAR()
 void IA::react_STRATEGIE_TEMPS_INIT()
 {
 	/* The reactions of state TEMPS_INIT. */
-	if (iface.countTime > (0.5 / ifaceInternalSCI.Te))
+	if (timeEvents[0])
 	{ 
 		/* Default exit sequence for state TEMPS_INIT */
 		stateConfVector[0] = IA_last_state;
 		stateConfVectorPosition = 0;
+		/* Exit action for state 'TEMPS_INIT'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
 		/* 'default' enter sequence for state ATTENTE_DEBUT_MATCH */
 		/* Entry action for state 'ATTENTE_DEBUT_MATCH'. */
 		iface.countTimeMvt = 0;
@@ -22120,7 +22197,7 @@ void IA::react_STRATEGIE_TEMPS_INIT()
 		/* Default react sequence for initial entry  */
 		/* 'default' enter sequence for state EQUIPE_1 */
 		/* Entry action for state 'EQUIPE_1'. */
-		ifaceInternalSCI.Couleur = iface.JAUNE;
+		ifaceInternalSCI.Couleur = iface.ORANGE;
 		SCI_Ihm_OCB::setLed(4, true);
 		ifaceInternalSCI.invMouv = 1;
 		stateConfVector[0] = STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_1;
@@ -22422,5 +22499,6 @@ void IA::react_STRATEGIE_MATCH_MATCH_REGION__choice_0()
 		} 
 	}
 }
+
 
 

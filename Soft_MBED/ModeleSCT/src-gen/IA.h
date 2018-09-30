@@ -4,15 +4,82 @@
 
 #include "sc_types.h"
 #include "StatemachineInterface.h"
+#include "TimedStatemachineInterface.h"
 
 /*! \file Header of the state machine 'IA'.
 */
 
-class IA : public StatemachineInterface
+
+/*! Define indices of states in the StateConfVector */
+#define SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH 0
+#define SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_1 0
+#define SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_2 0
+#define SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_U065064 1
+#define SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_COPY_1_POSITION_ASCENSEUR_INIT 1
+#define SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_COPY_1_INIT 1
+#define SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_INIT 2
+#define SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_CHENILLARD_01 2
+#define SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_CHENILLARD_02 2
+#define SCVI_STRATEGIE_MATCH 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_DEPOSE_MODULE 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_LARGAGE_MODULES 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION__FINAL_ 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_POSITION_INIT 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_DIRECTION_ZONE_ADVERSE 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_PRISE_MODULE_01 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_FIN_DEPLACEMENT_JAUNE 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_FIN_DEPLACEMENT_BLEU 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_EVITEMENT 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION_ARRET_ROBOT 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION_SORTIE_EVITEMENT 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION__FINAL_ 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_INIT_MATCH 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_KMAR 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_FACE_FUSEE 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_VENTOUSAGE_INCERTAIN 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ATTENTE_VENTOUSAGE 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RETIRE_MODULE 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DEGAGE_MODULE 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_PROCHE_BORDURE 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RALENTI_ROTATION 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_SOULEVE_MODULE 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_CHOISI_COULEUR 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_COULEUR 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RALENTI_AX_COULEUR 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_TOURNE_POUR_FUSEE 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_PROCHE_ZONE 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_AU_DESSUS_ZONE 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DEVENTOUSAGE 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ACCELERE_AX_ROTATION 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ACCELERE_AX_LEVIER 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_AX_LEVIER 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE__FINAL_ 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_MAX_HORS_ZONE 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DECALE_MODULES 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_CHARIOT_COTE 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RECENTRAGE_BRAS 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_FIN_INIT_CHARIOT_COTE 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RANGE_BRAS_02 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_COPY_1_CHOISI_COULEUR 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_LEVIER_RECULE_AU_MAX 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_CHERCHE_FUSEE 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_COPY_1_LEVIER_RECULE_AU_MAX 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_VENTOUSAGE_CERTAIN 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RANGE_BRAS_01 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_COPY_1_TOURNE_POUR_FUSEE 0
+#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_COPY_1_AU_DESSUS_ZONE 0
+#define SCVI_STRATEGIE_FIN_MATCH 0
+#define SCVI_STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_ARRET_ACTIONNEURS 0
+#define SCVI_STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_FIN_FUNNY 0
+#define SCVI_STRATEGIE_FIN_MATCH_FIN_MATCH_REGION__FINAL_ 0
+#define SCVI_STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_ARRET_MOELDAR 0
+#define SCVI_STRATEGIE_TEMPS_INIT 0
+
+class IA : public TimedStatemachineInterface, public StatemachineInterface
 {
-	
 	public:
-		
 		IA();
 		
 		~IA();
@@ -20,6 +87,7 @@ class IA : public StatemachineInterface
 		/*! Enumeration of all states */ 
 		typedef enum
 		{
+			IA_last_state,
 			STRATEGIE_ATTENTE_DEBUT_MATCH,
 			STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_1,
 			STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_2,
@@ -84,8 +152,7 @@ class IA : public StatemachineInterface
 			STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_FIN_FUNNY,
 			STRATEGIE_FIN_MATCH_FIN_MATCH_REGION__final_,
 			STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_ARRET_MOELDAR,
-			STRATEGIE_TEMPS_INIT,
-			IA_last_state
+			STRATEGIE_TEMPS_INIT
 		} IAStates;
 		
 		//! Inner class for default interface scope.
@@ -109,187 +176,205 @@ class IA : public StatemachineInterface
 				void raise_eV_ConvergenceChariot();
 				
 				/*! Gets the value of the variable 'IN_x_pos' that is defined in the default interface scope. */
-				sc_real get_iN_x_pos();
+				sc_real get_iN_x_pos() const;
 				
 				/*! Sets the value of the variable 'IN_x_pos' that is defined in the default interface scope. */
 				void set_iN_x_pos(sc_real value);
 				
 				/*! Gets the value of the variable 'IN_y_pos' that is defined in the default interface scope. */
-				sc_real get_iN_y_pos();
+				sc_real get_iN_y_pos() const;
 				
 				/*! Sets the value of the variable 'IN_y_pos' that is defined in the default interface scope. */
 				void set_iN_y_pos(sc_real value);
 				
 				/*! Gets the value of the variable 'IN_teta_pos' that is defined in the default interface scope. */
-				sc_real get_iN_teta_pos();
+				sc_real get_iN_teta_pos() const;
 				
 				/*! Sets the value of the variable 'IN_teta_pos' that is defined in the default interface scope. */
 				void set_iN_teta_pos(sc_real value);
 				
 				/*! Gets the value of the variable 'IN_vitesse' that is defined in the default interface scope. */
-				sc_real get_iN_vitesse();
+				sc_real get_iN_vitesse() const;
 				
 				/*! Sets the value of the variable 'IN_vitesse' that is defined in the default interface scope. */
 				void set_iN_vitesse(sc_real value);
 				
 				/*! Gets the value of the variable 'IN_sens_deplacement' that is defined in the default interface scope. */
-				sc_real get_iN_sens_deplacement();
+				sc_real get_iN_sens_deplacement() const;
 				
 				/*! Sets the value of the variable 'IN_sens_deplacement' that is defined in the default interface scope. */
 				void set_iN_sens_deplacement(sc_real value);
 				
 				/*! Gets the value of the variable 'IN_Couleur' that is defined in the default interface scope. */
-				sc_integer get_iN_Couleur();
+				sc_integer get_iN_Couleur() const;
 				
 				/*! Sets the value of the variable 'IN_Couleur' that is defined in the default interface scope. */
 				void set_iN_Couleur(sc_integer value);
 				
 				/*! Gets the value of the variable 'IN_Obstacle' that is defined in the default interface scope. */
-				sc_integer get_iN_Obstacle();
+				sc_integer get_iN_Obstacle() const;
 				
 				/*! Sets the value of the variable 'IN_Obstacle' that is defined in the default interface scope. */
 				void set_iN_Obstacle(sc_integer value);
 				
 				/*! Gets the value of the variable 'IN_Depression' that is defined in the default interface scope. */
-				sc_boolean get_iN_Depression();
+				sc_boolean get_iN_Depression() const;
 				
 				/*! Sets the value of the variable 'IN_Depression' that is defined in the default interface scope. */
 				void set_iN_Depression(sc_boolean value);
 				
 				/*! Gets the value of the variable 'countTimeMvt' that is defined in the default interface scope. */
-				sc_real get_countTimeMvt();
+				sc_real get_countTimeMvt() const;
 				
 				/*! Sets the value of the variable 'countTimeMvt' that is defined in the default interface scope. */
 				void set_countTimeMvt(sc_real value);
 				
 				/*! Gets the value of the variable 'tempsMatch' that is defined in the default interface scope. */
-				sc_integer get_tempsMatch();
+				sc_integer get_tempsMatch() const;
 				
 				/*! Sets the value of the variable 'tempsMatch' that is defined in the default interface scope. */
 				void set_tempsMatch(sc_integer value);
 				
 				/*! Gets the value of the variable 'countTempo' that is defined in the default interface scope. */
-				sc_integer get_countTempo();
+				sc_integer get_countTempo() const;
 				
 				/*! Sets the value of the variable 'countTempo' that is defined in the default interface scope. */
 				void set_countTempo(sc_integer value);
 				
 				/*! Gets the value of the variable 'countTempo2' that is defined in the default interface scope. */
-				sc_integer get_countTempo2();
+				sc_integer get_countTempo2() const;
 				
 				/*! Sets the value of the variable 'countTempo2' that is defined in the default interface scope. */
 				void set_countTempo2(sc_integer value);
 				
 				/*! Gets the value of the variable 'countTime' that is defined in the default interface scope. */
-				sc_real get_countTime();
+				sc_real get_countTime() const;
 				
 				/*! Sets the value of the variable 'countTime' that is defined in the default interface scope. */
 				void set_countTime(sc_real value);
 				
 				/*! Gets the value of the variable 'x_pos_mem' that is defined in the default interface scope. */
-				sc_real get_x_pos_mem();
+				sc_real get_x_pos_mem() const;
 				
 				/*! Sets the value of the variable 'x_pos_mem' that is defined in the default interface scope. */
 				void set_x_pos_mem(sc_real value);
 				
 				/*! Gets the value of the variable 'y_pos_mem' that is defined in the default interface scope. */
-				sc_real get_y_pos_mem();
+				sc_real get_y_pos_mem() const;
 				
 				/*! Sets the value of the variable 'y_pos_mem' that is defined in the default interface scope. */
 				void set_y_pos_mem(sc_real value);
 				
 				/*! Gets the value of the variable 'teta_pos_mem' that is defined in the default interface scope. */
-				sc_real get_teta_pos_mem();
+				sc_real get_teta_pos_mem() const;
 				
 				/*! Sets the value of the variable 'teta_pos_mem' that is defined in the default interface scope. */
 				void set_teta_pos_mem(sc_real value);
 				
 				/*! Gets the value of the variable 'nb_Modules' that is defined in the default interface scope. */
-				sc_integer get_nb_Modules();
+				sc_integer get_nb_Modules() const;
 				
 				/*! Sets the value of the variable 'nb_Modules' that is defined in the default interface scope. */
 				void set_nb_Modules(sc_integer value);
 				
 				/*! Gets the value of the variable 'SERVO_VENTOUSE' that is defined in the default interface scope. */
-				const sc_integer get_sERVO_VENTOUSE();
+				const sc_integer get_sERVO_VENTOUSE() const;
 				
 				/*! Gets the value of the variable 'SERVO_CENTREUR_G' that is defined in the default interface scope. */
-				const sc_integer get_sERVO_CENTREUR_G();
+				const sc_integer get_sERVO_CENTREUR_G() const;
 				
 				/*! Gets the value of the variable 'SERVO_CENTREUR_D' that is defined in the default interface scope. */
-				const sc_integer get_sERVO_CENTREUR_D();
+				const sc_integer get_sERVO_CENTREUR_D() const;
 				
 				/*! Gets the value of the variable 'SERVO_PINCE_D' that is defined in the default interface scope. */
-				const sc_integer get_sERVO_PINCE_D();
+				const sc_integer get_sERVO_PINCE_D() const;
 				
 				/*! Gets the value of the variable 'SERVO_PINCE_G' that is defined in the default interface scope. */
-				const sc_integer get_sERVO_PINCE_G();
+				const sc_integer get_sERVO_PINCE_G() const;
 				
 				/*! Gets the value of the variable 'SERVO_BALLE' that is defined in the default interface scope. */
-				const sc_integer get_sERVO_BALLE();
+				const sc_integer get_sERVO_BALLE() const;
 				
 				/*! Gets the value of the variable 'SERVO_RECOLTEURS' that is defined in the default interface scope. */
-				const sc_integer get_sERVO_RECOLTEURS();
+				const sc_integer get_sERVO_RECOLTEURS() const;
 				
 				/*! Gets the value of the variable 'SERVO_VOLET' that is defined in the default interface scope. */
-				const sc_integer get_sERVO_VOLET();
+				const sc_integer get_sERVO_VOLET() const;
 				
 				/*! Gets the value of the variable 'AX_ROTATION' that is defined in the default interface scope. */
-				const sc_integer get_aX_ROTATION();
+				const sc_integer get_aX_ROTATION() const;
 				
 				/*! Gets the value of the variable 'AX_COULEUR' that is defined in the default interface scope. */
-				const sc_integer get_aX_COULEUR();
+				const sc_integer get_aX_COULEUR() const;
 				
 				/*! Gets the value of the variable 'AX_LEVIER' that is defined in the default interface scope. */
-				const sc_integer get_aX_LEVIER();
+				const sc_integer get_aX_LEVIER() const;
 				
 				/*! Gets the value of the variable 'KMAR_SORTI' that is defined in the default interface scope. */
-				const sc_integer get_kMAR_SORTI();
+				const sc_integer get_kMAR_SORTI() const;
 				
 				/*! Gets the value of the variable 'KMAR_RENTRE' that is defined in the default interface scope. */
-				const sc_integer get_kMAR_RENTRE();
+				const sc_integer get_kMAR_RENTRE() const;
 				
 				/*! Gets the value of the variable 'KMAR_PRENDRE' that is defined in the default interface scope. */
-				const sc_integer get_kMAR_PRENDRE();
+				const sc_integer get_kMAR_PRENDRE() const;
 				
 				/*! Gets the value of the variable 'VENTOUSE_G' that is defined in the default interface scope. */
-				const sc_integer get_vENTOUSE_G();
+				const sc_integer get_vENTOUSE_G() const;
 				
 				/*! Gets the value of the variable 'VENTOUSE_D' that is defined in the default interface scope. */
-				const sc_integer get_vENTOUSE_D();
+				const sc_integer get_vENTOUSE_D() const;
 				
 				/*! Gets the value of the variable 'KMAR_DROIT' that is defined in the default interface scope. */
-				const sc_integer get_kMAR_DROIT();
+				const sc_integer get_kMAR_DROIT() const;
 				
 				/*! Gets the value of the variable 'MOTEUR_ROUE_GAUCHE' that is defined in the default interface scope. */
-				const sc_integer get_mOTEUR_ROUE_GAUCHE();
+				const sc_integer get_mOTEUR_ROUE_GAUCHE() const;
 				
 				/*! Gets the value of the variable 'MOTEUR_ROUE_DROITE' that is defined in the default interface scope. */
-				const sc_integer get_mOTEUR_ROUE_DROITE();
+				const sc_integer get_mOTEUR_ROUE_DROITE() const;
 				
 				/*! Gets the value of the variable 'MOTEUR_FUNNY' that is defined in the default interface scope. */
-				const sc_integer get_mOTEUR_FUNNY();
+				const sc_integer get_mOTEUR_FUNNY() const;
 				
 				/*! Gets the value of the variable 'MOTEUR_MOELDAR' that is defined in the default interface scope. */
-				const sc_integer get_mOTEUR_MOELDAR();
+				const sc_integer get_mOTEUR_MOELDAR() const;
 				
 				/*! Gets the value of the variable 'CODEUR_NON_DEFINI' that is defined in the default interface scope. */
-				const sc_integer get_cODEUR_NON_DEFINI();
+				const sc_integer get_cODEUR_NON_DEFINI() const;
 				
 				/*! Gets the value of the variable 'CODEUR_CHARIOT' that is defined in the default interface scope. */
-				const sc_integer get_cODEUR_CHARIOT();
+				const sc_integer get_cODEUR_CHARIOT() const;
 				
 				/*! Gets the value of the variable 'CODEUR_ROUE_DROITE' that is defined in the default interface scope. */
-				const sc_integer get_cODEUR_ROUE_DROITE();
+				const sc_integer get_cODEUR_ROUE_DROITE() const;
 				
 				/*! Gets the value of the variable 'CODEUR_ROUE_GAUCHE' that is defined in the default interface scope. */
-				const sc_integer get_cODEUR_ROUE_GAUCHE();
+				const sc_integer get_cODEUR_ROUE_GAUCHE() const;
 				
-				/*! Gets the value of the variable 'JAUNE' that is defined in the default interface scope. */
-				sc_integer get_jAUNE();
+				/*! Gets the value of the variable 'ORANGE' that is defined in the default interface scope. */
+				sc_integer get_oRANGE() const;
+				
+				/*! Sets the value of the variable 'ORANGE' that is defined in the default interface scope. */
+				void set_oRANGE(sc_integer value);
+				
+				/*! Gets the value of the variable 'VERT' that is defined in the default interface scope. */
+				sc_integer get_vERT() const;
+				
+				/*! Sets the value of the variable 'VERT' that is defined in the default interface scope. */
+				void set_vERT(sc_integer value);
 				
 				/*! Gets the value of the variable 'BLEU' that is defined in the default interface scope. */
-				sc_integer get_bLEU();
+				sc_integer get_bLEU() const;
+				
+				/*! Sets the value of the variable 'BLEU' that is defined in the default interface scope. */
+				void set_bLEU(sc_integer value);
+				
+				/*! Gets the value of the variable 'JAUNE' that is defined in the default interface scope. */
+				sc_integer get_jAUNE() const;
+				
+				/*! Sets the value of the variable 'JAUNE' that is defined in the default interface scope. */
+				void set_jAUNE(sc_integer value);
 				
 				
 			protected:
@@ -341,10 +426,11 @@ class IA : public StatemachineInterface
 				static const sc_integer CODEUR_CHARIOT;
 				static const sc_integer CODEUR_ROUE_DROITE;
 				static const sc_integer CODEUR_ROUE_GAUCHE;
-				sc_integer JAUNE;
+				sc_integer ORANGE;
+				sc_integer VERT;
 				sc_integer BLEU;
+				sc_integer JAUNE;
 		};
-				
 		
 		/*! Returns an instance of the interface class 'DefaultSCI'. */
 		DefaultSCI* getDefaultSCI();
@@ -365,188 +451,205 @@ class IA : public StatemachineInterface
 		void raise_eV_ConvergenceChariot();
 		
 		/*! Gets the value of the variable 'IN_x_pos' that is defined in the default interface scope. */
-		sc_real get_iN_x_pos();
+		sc_real get_iN_x_pos() const;
 		
 		/*! Sets the value of the variable 'IN_x_pos' that is defined in the default interface scope. */
 		void set_iN_x_pos(sc_real value);
 		
 		/*! Gets the value of the variable 'IN_y_pos' that is defined in the default interface scope. */
-		sc_real get_iN_y_pos();
+		sc_real get_iN_y_pos() const;
 		
 		/*! Sets the value of the variable 'IN_y_pos' that is defined in the default interface scope. */
 		void set_iN_y_pos(sc_real value);
 		
 		/*! Gets the value of the variable 'IN_teta_pos' that is defined in the default interface scope. */
-		sc_real get_iN_teta_pos();
+		sc_real get_iN_teta_pos() const;
 		
 		/*! Sets the value of the variable 'IN_teta_pos' that is defined in the default interface scope. */
 		void set_iN_teta_pos(sc_real value);
 		
 		/*! Gets the value of the variable 'IN_vitesse' that is defined in the default interface scope. */
-		sc_real get_iN_vitesse();
+		sc_real get_iN_vitesse() const;
 		
 		/*! Sets the value of the variable 'IN_vitesse' that is defined in the default interface scope. */
 		void set_iN_vitesse(sc_real value);
 		
 		/*! Gets the value of the variable 'IN_sens_deplacement' that is defined in the default interface scope. */
-		sc_real get_iN_sens_deplacement();
+		sc_real get_iN_sens_deplacement() const;
 		
 		/*! Sets the value of the variable 'IN_sens_deplacement' that is defined in the default interface scope. */
 		void set_iN_sens_deplacement(sc_real value);
 		
 		/*! Gets the value of the variable 'IN_Couleur' that is defined in the default interface scope. */
-		sc_integer get_iN_Couleur();
+		sc_integer get_iN_Couleur() const;
 		
 		/*! Sets the value of the variable 'IN_Couleur' that is defined in the default interface scope. */
 		void set_iN_Couleur(sc_integer value);
 		
 		/*! Gets the value of the variable 'IN_Obstacle' that is defined in the default interface scope. */
-		sc_integer get_iN_Obstacle();
+		sc_integer get_iN_Obstacle() const;
 		
 		/*! Sets the value of the variable 'IN_Obstacle' that is defined in the default interface scope. */
 		void set_iN_Obstacle(sc_integer value);
 		
 		/*! Gets the value of the variable 'IN_Depression' that is defined in the default interface scope. */
-		sc_boolean get_iN_Depression();
+		sc_boolean get_iN_Depression() const;
 		
 		/*! Sets the value of the variable 'IN_Depression' that is defined in the default interface scope. */
 		void set_iN_Depression(sc_boolean value);
 		
 		/*! Gets the value of the variable 'countTimeMvt' that is defined in the default interface scope. */
-		sc_real get_countTimeMvt();
+		sc_real get_countTimeMvt() const;
 		
 		/*! Sets the value of the variable 'countTimeMvt' that is defined in the default interface scope. */
 		void set_countTimeMvt(sc_real value);
 		
 		/*! Gets the value of the variable 'tempsMatch' that is defined in the default interface scope. */
-		sc_integer get_tempsMatch();
+		sc_integer get_tempsMatch() const;
 		
 		/*! Sets the value of the variable 'tempsMatch' that is defined in the default interface scope. */
 		void set_tempsMatch(sc_integer value);
 		
 		/*! Gets the value of the variable 'countTempo' that is defined in the default interface scope. */
-		sc_integer get_countTempo();
+		sc_integer get_countTempo() const;
 		
 		/*! Sets the value of the variable 'countTempo' that is defined in the default interface scope. */
 		void set_countTempo(sc_integer value);
 		
 		/*! Gets the value of the variable 'countTempo2' that is defined in the default interface scope. */
-		sc_integer get_countTempo2();
+		sc_integer get_countTempo2() const;
 		
 		/*! Sets the value of the variable 'countTempo2' that is defined in the default interface scope. */
 		void set_countTempo2(sc_integer value);
 		
 		/*! Gets the value of the variable 'countTime' that is defined in the default interface scope. */
-		sc_real get_countTime();
+		sc_real get_countTime() const;
 		
 		/*! Sets the value of the variable 'countTime' that is defined in the default interface scope. */
 		void set_countTime(sc_real value);
 		
 		/*! Gets the value of the variable 'x_pos_mem' that is defined in the default interface scope. */
-		sc_real get_x_pos_mem();
+		sc_real get_x_pos_mem() const;
 		
 		/*! Sets the value of the variable 'x_pos_mem' that is defined in the default interface scope. */
 		void set_x_pos_mem(sc_real value);
 		
 		/*! Gets the value of the variable 'y_pos_mem' that is defined in the default interface scope. */
-		sc_real get_y_pos_mem();
+		sc_real get_y_pos_mem() const;
 		
 		/*! Sets the value of the variable 'y_pos_mem' that is defined in the default interface scope. */
 		void set_y_pos_mem(sc_real value);
 		
 		/*! Gets the value of the variable 'teta_pos_mem' that is defined in the default interface scope. */
-		sc_real get_teta_pos_mem();
+		sc_real get_teta_pos_mem() const;
 		
 		/*! Sets the value of the variable 'teta_pos_mem' that is defined in the default interface scope. */
 		void set_teta_pos_mem(sc_real value);
 		
 		/*! Gets the value of the variable 'nb_Modules' that is defined in the default interface scope. */
-		sc_integer get_nb_Modules();
+		sc_integer get_nb_Modules() const;
 		
 		/*! Sets the value of the variable 'nb_Modules' that is defined in the default interface scope. */
 		void set_nb_Modules(sc_integer value);
 		
 		/*! Gets the value of the variable 'SERVO_VENTOUSE' that is defined in the default interface scope. */
-		const sc_integer get_sERVO_VENTOUSE();
+		const sc_integer get_sERVO_VENTOUSE() const;
 		
 		/*! Gets the value of the variable 'SERVO_CENTREUR_G' that is defined in the default interface scope. */
-		const sc_integer get_sERVO_CENTREUR_G();
+		const sc_integer get_sERVO_CENTREUR_G() const;
 		
 		/*! Gets the value of the variable 'SERVO_CENTREUR_D' that is defined in the default interface scope. */
-		const sc_integer get_sERVO_CENTREUR_D();
+		const sc_integer get_sERVO_CENTREUR_D() const;
 		
 		/*! Gets the value of the variable 'SERVO_PINCE_D' that is defined in the default interface scope. */
-		const sc_integer get_sERVO_PINCE_D();
+		const sc_integer get_sERVO_PINCE_D() const;
 		
 		/*! Gets the value of the variable 'SERVO_PINCE_G' that is defined in the default interface scope. */
-		const sc_integer get_sERVO_PINCE_G();
+		const sc_integer get_sERVO_PINCE_G() const;
 		
 		/*! Gets the value of the variable 'SERVO_BALLE' that is defined in the default interface scope. */
-		const sc_integer get_sERVO_BALLE();
+		const sc_integer get_sERVO_BALLE() const;
 		
 		/*! Gets the value of the variable 'SERVO_RECOLTEURS' that is defined in the default interface scope. */
-		const sc_integer get_sERVO_RECOLTEURS();
+		const sc_integer get_sERVO_RECOLTEURS() const;
 		
 		/*! Gets the value of the variable 'SERVO_VOLET' that is defined in the default interface scope. */
-		const sc_integer get_sERVO_VOLET();
+		const sc_integer get_sERVO_VOLET() const;
 		
 		/*! Gets the value of the variable 'AX_ROTATION' that is defined in the default interface scope. */
-		const sc_integer get_aX_ROTATION();
+		const sc_integer get_aX_ROTATION() const;
 		
 		/*! Gets the value of the variable 'AX_COULEUR' that is defined in the default interface scope. */
-		const sc_integer get_aX_COULEUR();
+		const sc_integer get_aX_COULEUR() const;
 		
 		/*! Gets the value of the variable 'AX_LEVIER' that is defined in the default interface scope. */
-		const sc_integer get_aX_LEVIER();
+		const sc_integer get_aX_LEVIER() const;
 		
 		/*! Gets the value of the variable 'KMAR_SORTI' that is defined in the default interface scope. */
-		const sc_integer get_kMAR_SORTI();
+		const sc_integer get_kMAR_SORTI() const;
 		
 		/*! Gets the value of the variable 'KMAR_RENTRE' that is defined in the default interface scope. */
-		const sc_integer get_kMAR_RENTRE();
+		const sc_integer get_kMAR_RENTRE() const;
 		
 		/*! Gets the value of the variable 'KMAR_PRENDRE' that is defined in the default interface scope. */
-		const sc_integer get_kMAR_PRENDRE();
+		const sc_integer get_kMAR_PRENDRE() const;
 		
 		/*! Gets the value of the variable 'VENTOUSE_G' that is defined in the default interface scope. */
-		const sc_integer get_vENTOUSE_G();
+		const sc_integer get_vENTOUSE_G() const;
 		
 		/*! Gets the value of the variable 'VENTOUSE_D' that is defined in the default interface scope. */
-		const sc_integer get_vENTOUSE_D();
+		const sc_integer get_vENTOUSE_D() const;
 		
 		/*! Gets the value of the variable 'KMAR_DROIT' that is defined in the default interface scope. */
-		const sc_integer get_kMAR_DROIT();
+		const sc_integer get_kMAR_DROIT() const;
 		
 		/*! Gets the value of the variable 'MOTEUR_ROUE_GAUCHE' that is defined in the default interface scope. */
-		const sc_integer get_mOTEUR_ROUE_GAUCHE();
+		const sc_integer get_mOTEUR_ROUE_GAUCHE() const;
 		
 		/*! Gets the value of the variable 'MOTEUR_ROUE_DROITE' that is defined in the default interface scope. */
-		const sc_integer get_mOTEUR_ROUE_DROITE();
+		const sc_integer get_mOTEUR_ROUE_DROITE() const;
 		
 		/*! Gets the value of the variable 'MOTEUR_FUNNY' that is defined in the default interface scope. */
-		const sc_integer get_mOTEUR_FUNNY();
+		const sc_integer get_mOTEUR_FUNNY() const;
 		
 		/*! Gets the value of the variable 'MOTEUR_MOELDAR' that is defined in the default interface scope. */
-		const sc_integer get_mOTEUR_MOELDAR();
+		const sc_integer get_mOTEUR_MOELDAR() const;
 		
 		/*! Gets the value of the variable 'CODEUR_NON_DEFINI' that is defined in the default interface scope. */
-		const sc_integer get_cODEUR_NON_DEFINI();
+		const sc_integer get_cODEUR_NON_DEFINI() const;
 		
 		/*! Gets the value of the variable 'CODEUR_CHARIOT' that is defined in the default interface scope. */
-		const sc_integer get_cODEUR_CHARIOT();
+		const sc_integer get_cODEUR_CHARIOT() const;
 		
 		/*! Gets the value of the variable 'CODEUR_ROUE_DROITE' that is defined in the default interface scope. */
-		const sc_integer get_cODEUR_ROUE_DROITE();
+		const sc_integer get_cODEUR_ROUE_DROITE() const;
 		
 		/*! Gets the value of the variable 'CODEUR_ROUE_GAUCHE' that is defined in the default interface scope. */
-		const sc_integer get_cODEUR_ROUE_GAUCHE();
+		const sc_integer get_cODEUR_ROUE_GAUCHE() const;
 		
-		/*! Gets the value of the variable 'JAUNE' that is defined in the default interface scope. */
-		sc_integer get_jAUNE();
+		/*! Gets the value of the variable 'ORANGE' that is defined in the default interface scope. */
+		sc_integer get_oRANGE() const;
+		
+		/*! Sets the value of the variable 'ORANGE' that is defined in the default interface scope. */
+		void set_oRANGE(sc_integer value);
+		
+		/*! Gets the value of the variable 'VERT' that is defined in the default interface scope. */
+		sc_integer get_vERT() const;
+		
+		/*! Sets the value of the variable 'VERT' that is defined in the default interface scope. */
+		void set_vERT(sc_integer value);
 		
 		/*! Gets the value of the variable 'BLEU' that is defined in the default interface scope. */
-		sc_integer get_bLEU();
+		sc_integer get_bLEU() const;
 		
+		/*! Sets the value of the variable 'BLEU' that is defined in the default interface scope. */
+		void set_bLEU(sc_integer value);
+		
+		/*! Gets the value of the variable 'JAUNE' that is defined in the default interface scope. */
+		sc_integer get_jAUNE() const;
+		
+		/*! Sets the value of the variable 'JAUNE' that is defined in the default interface scope. */
+		void set_jAUNE(sc_integer value);
 		
 		//! Inner class for asser interface scope.
 		class SCI_Asser
@@ -557,7 +660,6 @@ class IA : public StatemachineInterface
 			protected:
 				friend class IA;
 		};
-				
 				//! Inner class for asser interface scope operation callbacks.
 				class SCI_Asser_OCB
 				{
@@ -589,7 +691,6 @@ class IA : public StatemachineInterface
 			protected:
 				friend class IA;
 		};
-				
 				//! Inner class for servo interface scope operation callbacks.
 				class SCI_Servo_OCB
 				{
@@ -610,14 +711,16 @@ class IA : public StatemachineInterface
 			
 			public:
 				/*! Gets the value of the variable 'BRAS_OUVERT' that is defined in the interface scope 'ax'. */
-				sc_integer get_bRAS_OUVERT();
+				sc_integer get_bRAS_OUVERT() const;
+				
+				/*! Sets the value of the variable 'BRAS_OUVERT' that is defined in the interface scope 'ax'. */
+				void set_bRAS_OUVERT(sc_integer value);
 				
 				
 			protected:
 				friend class IA;
 				sc_integer BRAS_OUVERT;
 		};
-				
 				//! Inner class for ax interface scope operation callbacks.
 				class SCI_Ax_OCB
 				{
@@ -641,7 +744,6 @@ class IA : public StatemachineInterface
 			protected:
 				friend class IA;
 		};
-				
 				//! Inner class for moteur interface scope operation callbacks.
 				class SCI_Moteur_OCB
 				{
@@ -658,13 +760,13 @@ class IA : public StatemachineInterface
 			
 			public:
 				/*! Gets the value of the variable 'isReady' that is defined in the interface scope 'chariot'. */
-				sc_boolean get_isReady();
+				sc_boolean get_isReady() const;
 				
 				/*! Sets the value of the variable 'isReady' that is defined in the interface scope 'chariot'. */
 				void set_isReady(sc_boolean value);
 				
 				/*! Gets the value of the variable 'isConv' that is defined in the interface scope 'chariot'. */
-				sc_boolean get_isConv();
+				sc_boolean get_isConv() const;
 				
 				/*! Sets the value of the variable 'isConv' that is defined in the interface scope 'chariot'. */
 				void set_isConv(sc_boolean value);
@@ -675,7 +777,6 @@ class IA : public StatemachineInterface
 				sc_boolean isReady;
 				sc_boolean isConv;
 		};
-				
 				//! Inner class for chariot interface scope operation callbacks.
 				class SCI_Chariot_OCB
 				{
@@ -697,7 +798,6 @@ class IA : public StatemachineInterface
 			protected:
 				friend class IA;
 		};
-				
 				//! Inner class for capteur interface scope operation callbacks.
 				class SCI_Capteur_OCB
 				{
@@ -717,7 +817,6 @@ class IA : public StatemachineInterface
 			protected:
 				friend class IA;
 		};
-				
 				//! Inner class for ihm interface scope operation callbacks.
 				class SCI_Ihm_OCB
 				{
@@ -729,97 +828,118 @@ class IA : public StatemachineInterface
 		SCI_Ihm* getSCI_Ihm();
 		
 		
-		void init();
+		/*
+		 * Functions inherited from StatemachineInterface
+		 */
+		virtual void init();
 		
-		void enter();
+		virtual void enter();
 		
-		void exit();
+		virtual void exit();
 		
-		void runCycle();
+		virtual void runCycle();
 		
 		/*!
 		* Checks if the state machine is active (until 2.4.1 this method was used for states).
 		* A state machine is active if it has been entered. It is inactive if it has not been entered at all or if it has been exited.
 		*/
-		sc_boolean isActive();
+		virtual sc_boolean isActive() const;
 		
 		
 		/*!
 		* Checks if all active states are final. 
 		* If there are no active states then the state machine is considered being inactive. In this case this method returns false.
 		*/
-		sc_boolean isFinal();
+		virtual sc_boolean isFinal() const;
 		
+		/*
+		 * Functions inherited from TimedStatemachineInterface
+		 */
+		virtual void setTimer(TimerInterface* timerInterface);
+		
+		virtual TimerInterface* getTimer();
+		
+		virtual void raiseTimeEvent(sc_eventid event);
 		
 		/*! Checks if the specified state is active (until 2.4.1 the used method for states was calles isActive()). */
-		sc_boolean isStateActive(IAStates state);
-	
+		sc_boolean isStateActive(IAStates state) const;
+		
+		//! number of time events used by the state machine.
+		static const sc_integer timeEventsCount = 1;
+		
+		//! number of time events that can be active at once.
+		static const sc_integer parallelTimeEventsCount = 1;
 	protected:
-	
+		IA(const IA &rhs);
+		IA& operator=(const IA&);
+		
 		//! Inner class for internal interface scope.
 		class InternalSCI
 		{
 			
 			public:
 				/*! Gets the value of the variable 'Couleur' that is defined in the internal scope. */
-				sc_integer get_couleur();
+				sc_integer get_couleur() const;
 				
 				/*! Sets the value of the variable 'Couleur' that is defined in the internal scope. */
 				void set_couleur(sc_integer value);
 				
 				/*! Gets the value of the variable 'invMouv' that is defined in the internal scope. */
-				sc_integer get_invMouv();
+				sc_integer get_invMouv() const;
 				
 				/*! Sets the value of the variable 'invMouv' that is defined in the internal scope. */
 				void set_invMouv(sc_integer value);
 				
 				/*! Gets the value of the variable 'Te' that is defined in the internal scope. */
-				sc_real get_te();
+				sc_real get_te() const;
 				
 				/*! Sets the value of the variable 'Te' that is defined in the internal scope. */
 				void set_te(sc_real value);
 				
 				/*! Gets the value of the variable 'PI' that is defined in the internal scope. */
-				sc_real get_pI();
+				sc_real get_pI() const;
+				
+				/*! Sets the value of the variable 'PI' that is defined in the internal scope. */
+				void set_pI(sc_real value);
 				
 				/*! Gets the value of the variable 'inhibeObstacle' that is defined in the internal scope. */
-				sc_boolean get_inhibeObstacle();
+				sc_boolean get_inhibeObstacle() const;
 				
 				/*! Sets the value of the variable 'inhibeObstacle' that is defined in the internal scope. */
 				void set_inhibeObstacle(sc_boolean value);
 				
 				/*! Gets the value of the variable 'evitementEnCours' that is defined in the internal scope. */
-				sc_boolean get_evitementEnCours();
+				sc_boolean get_evitementEnCours() const;
 				
 				/*! Sets the value of the variable 'evitementEnCours' that is defined in the internal scope. */
 				void set_evitementEnCours(sc_boolean value);
 				
 				/*! Gets the value of the variable 'evitementTempo' that is defined in the internal scope. */
-				sc_real get_evitementTempo();
+				sc_real get_evitementTempo() const;
 				
 				/*! Sets the value of the variable 'evitementTempo' that is defined in the internal scope. */
 				void set_evitementTempo(sc_real value);
 				
 				/*! Gets the value of the variable 'sequence1' that is defined in the internal scope. */
-				sc_boolean get_sequence1();
+				sc_boolean get_sequence1() const;
 				
 				/*! Sets the value of the variable 'sequence1' that is defined in the internal scope. */
 				void set_sequence1(sc_boolean value);
 				
 				/*! Gets the value of the variable 'sequence2' that is defined in the internal scope. */
-				sc_boolean get_sequence2();
+				sc_boolean get_sequence2() const;
 				
 				/*! Sets the value of the variable 'sequence2' that is defined in the internal scope. */
 				void set_sequence2(sc_boolean value);
 				
 				/*! Gets the value of the variable 'pos_fusee' that is defined in the internal scope. */
-				sc_integer get_pos_fusee();
+				sc_integer get_pos_fusee() const;
 				
 				/*! Sets the value of the variable 'pos_fusee' that is defined in the internal scope. */
 				void set_pos_fusee(sc_integer value);
 				
 				/*! Gets the value of the variable 'nb_tentatives' that is defined in the internal scope. */
-				sc_integer get_nb_tentatives();
+				sc_integer get_nb_tentatives() const;
 				
 				/*! Sets the value of the variable 'nb_tentatives' that is defined in the internal scope. */
 				void set_nb_tentatives(sc_integer value);
@@ -839,12 +959,14 @@ class IA : public StatemachineInterface
 				sc_integer pos_fusee;
 				sc_integer nb_tentatives;
 		};
-	
-		//! the maximum number of orthogonal states defines the dimension of the state configuration vector.
-		static const sc_integer maxOrthogonalStates = 3;
-		//! dimension of the state configuration vector for history states
-		static const sc_integer maxHistoryStates = 2;
 		
+		//! the maximum number of orthogonal states defines the dimension of the state configuration vector.
+		static const sc_ushort maxOrthogonalStates = 3;
+		//! dimension of the state configuration vector for history states
+		static const sc_ushort maxHistoryStates = 2;
+		
+		TimerInterface* timer;
+		sc_boolean timeEvents[timeEventsCount];
 		
 		IAStates stateConfVector[maxOrthogonalStates];
 		
@@ -937,5 +1059,9 @@ class IA : public StatemachineInterface
 		void clearInEvents();
 		void clearOutEvents();
 		
+	private:
 };
+
+
+
 #endif /* IA_H_ */

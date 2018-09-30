@@ -6,6 +6,7 @@
 #define _MATCH_H_
 
 #include "../ModeleSCT/src-gen/IA.h"
+#include "../ModeleSCT/src-gen/CPPTimerInterface.h"
 #include "CMoteurs.h"
 #include "CServoMoteurSD20.h"
 #include "CServoMoteurAX.h"
@@ -17,6 +18,7 @@
 // -----------------------------
 //! Classe de gestion des options d'exécution passees en ligne de commande
 class CMatch {
+#define MODEL_REFRESH_PERIOD 20 // [msec]
 public :
 	float m_duree;
 	unsigned char m_couleur_equipe;
@@ -44,6 +46,7 @@ public :
 	void debug(void);
 
     IA m_ia;
+    CPPTimerInterface m_timer_sct;
     IA::DefaultSCI *m_iaSCI;
     IA::SCI_Chariot *m_iaSCI_Chariot;
     static bool frontMontant(float prec_value, float value);

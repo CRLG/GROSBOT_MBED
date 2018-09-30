@@ -54,7 +54,9 @@ void CMatch::Initialise(void)
 	
 	m_iaSCI=m_ia.getDefaultSCI();
     m_iaSCI_Chariot=m_ia.getSCI_Chariot();
+    m_ia.setTimer(&m_timer_sct);
     m_ia.init();
+
 
     m_distance_mem=0;
     m_teta_mem=0;
@@ -200,6 +202,7 @@ void CMatch::step(void)
 
 	// ___________________________ 
     //Appel de la strategie du modele
+    m_timer_sct.updateActiveTimer(&m_ia, MODEL_REFRESH_PERIOD);   // Pour la gestion du temps dans le modèle (instructions "after" et "every")
     m_ia.runCycle();
 
 	

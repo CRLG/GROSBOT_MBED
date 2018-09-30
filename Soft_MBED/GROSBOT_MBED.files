@@ -23,10 +23,12 @@ Includes/ConfigSpecifiqueCoupe.h
 Includes/MessagerieCamera.h
 Includes/MessagerieLaBotBox.h
 Includes/RessourcesHardware.h
-ModeleSCT/src-gen/IA.cpp
 ModeleSCT/src-gen/IA.h
 ModeleSCT/src-gen/StatemachineInterface.h
 ModeleSCT/src-gen/sc_types.h
+ModeleSCT/src-gen/CPPTimerInterface.h
+ModeleSCT/src-gen/TimedStatemachineInterface.h
+ModeleSCT/src-gen/TimerInterface.h
 Sources/CAsservissement.cpp
 Sources/CAsservissementChariot.cpp
 Sources/CAsservissementSulfateuse.cpp
@@ -53,4 +55,6 @@ Sources/MessagerieCamera.cpp
 Sources/MessagerieEcranTactile.cpp
 Sources/MessagerieLaBotBox.cpp
 Sources/RessoucesHardware.cpp
+ModeleSCT/src-gen/IA.cpp
+ModeleSCT/src-gen/CPPTimerInterface.cpp
 Sources/main.cpp
