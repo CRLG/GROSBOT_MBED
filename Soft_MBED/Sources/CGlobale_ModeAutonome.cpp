@@ -117,6 +117,8 @@ void CGlobale::SequenceurModeAutonome(void)
   if (cpt50msec >= TEMPO_50msec) {
   	cpt50msec = 0;
 
+    m_leds.compute();
+
   }
 
   // ______________________________

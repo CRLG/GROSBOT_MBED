@@ -23,6 +23,7 @@ Includes/ConfigSpecifiqueCoupe.h
 Includes/MessagerieCamera.h
 Includes/MessagerieLaBotBox.h
 Includes/RessourcesHardware.h
+Includes/CLeds.h
 ModeleSCT/src-gen/IA.h
 ModeleSCT/src-gen/StatemachineInterface.h
 ModeleSCT/src-gen/sc_types.h
@@ -55,6 +56,7 @@ Sources/MessagerieCamera.cpp
 Sources/MessagerieEcranTactile.cpp
 Sources/MessagerieLaBotBox.cpp
 Sources/RessoucesHardware.cpp
+Sources/CLeds.cpp
 ModeleSCT/src-gen/IA.cpp
 ModeleSCT/src-gen/CPPTimerInterface.cpp
 Sources/main.cpp

@@ -9,6 +9,7 @@
 #include "CRoues.h"
 #include "CLaBotBox.h"
 #include "CCapteurs.h"
+#include "CLeds.h"
 #include "CEEPROM.h"
 #include "CServoMoteurSD20.h"
 #include "CServoMoteurAX.h"
@@ -58,7 +59,9 @@ public :
 	//! La gestion des capteurs
 	CCapteurs m_capteurs;
 	//! Le gestionnaire d'EEPROM
-	CEEPROM m_eeprom;	
+    CEEPROM m_eeprom;
+    //! La gestion des Led
+    CLeds m_leds;
 	//! L'asservissement de vitesse/position du robot
     // ATTENTION : l'instance de la classe asservisement doit être mise après l'instance de eeprom car CAsservissement utilise CEEPROM dans son constructeur
 	CAsservissement m_asservissement;
