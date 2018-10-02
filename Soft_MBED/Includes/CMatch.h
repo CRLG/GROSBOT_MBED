@@ -5,7 +5,6 @@
 #ifndef _MATCH_H_
 #define _MATCH_H_
 
-#include "../ModeleSCT/src-gen/IA.h"
 #include "../ModeleSCT/src-gen/CPPTimerInterface.h"
 #include "CMoteurs.h"
 #include "CServoMoteurSD20.h"
@@ -14,6 +13,7 @@
 
 #define SQUARE(A) (A*A)
 
+class IA;
 
 // -----------------------------
 //! Classe de gestion des options d'exécution passees en ligne de commande
@@ -45,10 +45,10 @@ public :
     //! Debug sur la RS232
 	void debug(void);
 
-    IA m_ia;
+    IA *m_ia;
     CPPTimerInterface m_timer_sct;
-    IA::DefaultSCI *m_iaSCI;
-    IA::SCI_Chariot *m_iaSCI_Chariot;
+//    IA::DefaultSCI *m_iaSCI;
+//    IA::SCI_Chariot *m_iaSCI_Chariot;
     static bool frontMontant(float prec_value, float value);
 
     float m_obstacle_AVG;

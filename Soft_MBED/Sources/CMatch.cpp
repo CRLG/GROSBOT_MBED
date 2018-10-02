@@ -8,6 +8,8 @@
 #include "CGlobale.h"
 #include "ConfigSpecifiqueCoupe.h"
 
+#include "../ModeleSCT/src-gen/IA.h"
+
 //extern "C" {
 // #include "ModeleRobot.h"  		// Le code généré par Matlab Simulink est en "C" et pas en "C++"
 //}
@@ -22,6 +24,7 @@
 CMatch::CMatch() 
 {
     //Initialise();
+    m_ia = new IA();
 }
 
 //___________________________________________________________________________
@@ -52,10 +55,10 @@ void CMatch::Initialise(void)
 //   _led1 = false;_led2 = false;_led3 = false;_led4 = true;wait(1);
 //   _led1 = false;_led2 = false;_led3 = false;_led4 = false;wait(1);
 	
-	m_iaSCI=m_ia.getDefaultSCI();
-    m_iaSCI_Chariot=m_ia.getSCI_Chariot();
-    m_ia.setTimer(&m_timer_sct);
-    m_ia.init();
+    //m_iaSCI=m_ia->getDefaultSCI();
+    //m_iaSCI_Chariot=m_ia->getSCI_Chariot();
+    m_ia->setTimer(&m_timer_sct);
+    m_ia->init();
 
 
     m_distance_mem=0;
@@ -85,7 +88,7 @@ void CMatch::Initialise(void)
     _led2 = 0;
     _led3 = 0;
     _led4 = 0;
-    m_ia.enter();
+    m_ia->enter();
 }
 	
 //___________________________________________________________________________
@@ -122,14 +125,15 @@ bool CMatch::isMatchTermine()
 */
 void CMatch::step(void)
 {
-    
+    IA::DefaultSCI *m_iaSCI = m_ia->getDefaultSCI();
+    IA::SCI_Chariot *m_iaSCI_Chariot = m_ia->getSCI_Chariot();
     // ___________________________
     // Recopie les valeurs de l'environnement vers les entrées du modèle
 	//Pour binariser le capteur de depression
 		if (Application.m_capteurs.m_b_Eana1>=0.55)
-			m_iaSCI->set_iN_Depression(true);
+            m_iaSCI->set_iN_Depression(true);
 		else
-			m_iaSCI->set_iN_Depression(false);
+            m_iaSCI->set_iN_Depression(false);
 	//m_iaSCI->set_iN_Depression(Application.m_capteurs.m_b_Eana1);
 	
     //____________________________
@@ -202,8 +206,8 @@ void CMatch::step(void)
 
 	// ___________________________ 
     //Appel de la strategie du modele
-    m_timer_sct.updateActiveTimer(&m_ia, MODEL_REFRESH_PERIOD);   // Pour la gestion du temps dans le modèle (instructions "after" et "every")
-    m_ia.runCycle();
+    m_timer_sct.updateActiveTimer(m_ia, MODEL_REFRESH_PERIOD);   // Pour la gestion du temps dans le modèle (instructions "after" et "every")
+    m_ia->runCycle();
 
 	
 	//SORTIES de MODELE
@@ -284,7 +288,7 @@ int CMatch::isObstacle(float x, float y, float teta, float speed, float sens)
  * \param mot_droit
  */
 void IA::SCI_Asser_OCB::Manuel(sc_real mot_gauche, sc_real mot_droit){
-	Application.m_match.m_iaSCI->set_countTimeMvt(0);
+    Application.m_match.m_ia->getDefaultSCI()->set_countTimeMvt(0);
     Application.m_asservissement.CommandeManuelle(mot_gauche, mot_droit);
 }
 
@@ -295,7 +299,7 @@ void IA::SCI_Asser_OCB::Manuel(sc_real mot_gauche, sc_real mot_droit){
  * \param teta
  */
 void IA::SCI_Asser_OCB::XYTeta(sc_real x, sc_real y, sc_real teta){
-    Application.m_match.m_iaSCI->set_countTimeMvt(0);
+    Application.m_match.m_ia->getDefaultSCI()->set_countTimeMvt(0);
     Application.m_asservissement.CommandeMouvementXY_TETA(x,y,teta);
     Application.m_x_debug=x;
     Application.m_y_debug=y;
@@ -316,13 +320,13 @@ void IA::SCI_Asser_OCB::DistanceAngle(sc_real distance, sc_real angle){
         //calcul de la distance restante
         distance_restante=sqrt(SQUARE(Application.m_match.m_x_pos_hold-Application.m_asservissement.X_robot)
                                +SQUARE(Application.m_match.m_y_pos_hold-Application.m_asservissement.Y_robot));
-        Application.m_match.m_iaSCI->set_countTimeMvt(0);
+        Application.m_match.m_ia->getDefaultSCI()->set_countTimeMvt(0);
         Application.m_asservissement.CommandeMouvementDistanceAngle(distance_restante, angle);
         //on ne rememorise pas les ordres
     }
     else
     {
-        Application.m_match.m_iaSCI->set_countTimeMvt(0);
+        Application.m_match.m_ia->getDefaultSCI()->set_countTimeMvt(0);
         Application.m_asservissement.CommandeMouvementDistanceAngle(distance, angle);
         Application.m_match.m_distance_mem=distance;
         Application.m_match.m_teta_mem=angle;
@@ -335,7 +339,7 @@ void IA::SCI_Asser_OCB::DistanceAngle(sc_real distance, sc_real angle){
  * \param y
  */
 void IA::SCI_Asser_OCB::XY(sc_real x, sc_real y){
-    Application.m_match.m_iaSCI->set_countTimeMvt(0);
+    Application.m_match.m_ia->getDefaultSCI()->set_countTimeMvt(0);
     Application.m_asservissement.CommandeMouvementXY(x, y);
     Application.m_x_debug=x;
     Application.m_y_debug=y;
@@ -529,6 +533,6 @@ void IA::SCI_Chariot_OCB::setPos(sc_integer position)
             Application.m_match.m_iaSCI_Chariot->set_isReady(true);
         }
     }*/
-    Application.m_match.m_iaSCI_Chariot->set_isReady(true);
+    Application.m_match.m_ia->getSCI_Chariot()->set_isReady(true);
 }
 
