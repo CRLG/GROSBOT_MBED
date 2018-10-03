@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_svMXwMZxEeiRdIDC4qhyQQ" specification="//interface avec l'environnement MBED&#xA;interface :&#xA;//evenement&#xA;in event EV_Tirette&#xA;in event EV_Obstacle&#xA;in event EV_ConvergenceMvt&#xA;in event EV_ConvergenceMvt_Rapide&#xA;in event EV_ConvergenceChariot&#xA;&#xA;&#xA;//entrees&#xA;var IN_x_pos:double&#xA;var IN_y_pos:double&#xA;var IN_teta_pos:double&#xA;var IN_vitesse:double&#xA;var IN_sens_deplacement:double&#xA;var IN_Couleur:int32_t&#xA;var IN_Obstacle:int32_t&#xA;var IN_Depression:bool&#xA;&#xA;//utile pour l'environnement&#xA;var countTimeMvt:double=0&#xA;var tempsMatch:int32_t=0&#xA;var countTempo:int32_t=0&#xA;var countTempo2:int32_t=0&#xA;var countTime:double=0&#xA;var x_pos_mem:double=0&#xA;var y_pos_mem:double=0&#xA;var teta_pos_mem:double=0&#xA;var nb_Modules:int32_t=1&#xA;&#xA;//nommage des servos (SD20 et AX)&#xA;const SERVO_VENTOUSE:int32_t=13&#xA;const SERVO_CENTREUR_G:int32_t=14&#xA;const SERVO_CENTREUR_D:int32_t=15&#xA;const SERVO_PINCE_D:int32_t=16&#xA;const SERVO_PINCE_G:int32_t=17&#xA;const SERVO_BALLE:int32_t=18&#xA;const SERVO_RECOLTEURS:int32_t=19&#xA;const SERVO_VOLET:int32_t=20&#xA;const AX_ROTATION:int32_t=1&#xA;const AX_COULEUR:int32_t=2&#xA;const AX_LEVIER:int32_t=4&#xA;&#xA;//position des servos&#xA;const KMAR_SORTI:int32_t=180&#xA;const KMAR_RENTRE:int32_t=0&#xA;const KMAR_PRENDRE:int32_t=255&#xA;const VENTOUSE_G:int32_t=0&#xA;const VENTOUSE_D:int32_t=255&#xA;const KMAR_DROIT:int32_t=0&#xA;&#xA;//nommage des moteurs&#xA;const MOTEUR_ROUE_GAUCHE:int32_t = 1&#xA;const MOTEUR_ROUE_DROITE:int32_t = 2&#xA;const MOTEUR_FUNNY:int32_t = 3&#xA;//const MOTEUR_DISTRIBUTEUR:int32_t = 4&#xA;const MOTEUR_MOELDAR:int32_t = 5&#xA;//const MOTEUR_SOUFFLEUR:int32_t = 6&#xA;&#xA;//nommage des codeurs&#xA;const CODEUR_NON_DEFINI:int32_t=0&#xA;const CODEUR_CHARIOT:int32_t=1&#xA;const CODEUR_ROUE_DROITE:int32_t=2&#xA;const CODEUR_ROUE_GAUCHE:int32_t=3&#xA;&#xA;//config coupe&#xA;var ORANGE:int32_t=1&#xA;var VERT:int32_t=0&#xA;var BLEU:int32_t=2&#xA;var JAUNE:int32_t=3&#xA;&#xA;&#xA;//variabales internes&#xA;internal:&#xA;var Couleur:int32_t=1&#xA;var invMouv:int32_t=1&#xA;var Te:double=0.02&#xA;var PI:double=3.14&#xA;var inhibeObstacle:bool=false&#xA;var evitementEnCours:bool=false&#xA;var evitementTempo:double=0&#xA;var sequence1:bool=false&#xA;var sequence2:bool=false&#xA;var pos_fusee:int32_t=-800&#xA;var nb_tentatives:int32_t=0&#xA;&#xA;&#xA;//fonctions d'asservissement&#xA;interface asser:&#xA;operation XY(x:double,y:double):void&#xA;operation XYTeta(x:double,y:double,teta:double):void&#xA;operation Manuel(mot_gauche:double,mot_droit:double):void&#xA;operation DistanceAngle(distance:double,angle:double):void&#xA;operation Vitesse(speedDist:double,speedRot:double):void&#xA;operation setPosition(x:double,y:double,teta:double):void&#xA;operation setSportivite(idx:double):void&#xA;&#xA;//fonctions servos SD20&#xA;interface servo:&#xA;operation setPos(idServo:int32_t,value:int32_t):void&#xA;operation setPosSpd(idServo:int32_t,pos:int32_t,spd:int32_t):void&#xA;operation setRelache(idServo:int32_t, time_ms:double):void&#xA;&#xA;//fonctions AX&#xA;interface ax:&#xA;operation setPos(idServo:int32_t,value:int32_t):void&#xA;operation setPosSpd(idServo:int32_t,pos:int32_t,spd:int32_t):void&#xA;operation setSpd(idServo:int32_t, spd:int32_t):void&#xA;&#xA;//SERVO BRAS&#xA;var BRAS_OUVERT:int32_t = 55&#xA;//var readonly BRAS_FERME:int32_t=147&#xA;&#xA;//fonctions moteurs&#xA;interface moteur:&#xA;operation setPWM(idMot:int32_t,pwm:double):void&#xA;&#xA;//fonctions chariot&#xA;interface chariot:&#xA;var isReady:bool=false&#xA;var isConv:bool=false&#xA;operation init():void&#xA;operation setPos(position:int32_t):void&#xA;&#xA;//fonctions capteurs&#xA;interface capteur:&#xA;operation resetCodeur(idCodeur:int32_t,value:int32_t):void&#xA;&#xA;//fonction IHM&#xA;interface ihm:&#xA;operation setLed(idLed:int32_t,onoff:bool):void" name="IA" domainID="com.yakindu.domain.c">
+  <sgraph:Statechart xmi:id="_svMXwMZxEeiRdIDC4qhyQQ" specification="import :&#xA;   '../Includes/CGlobale.h'&#xA;   '../Includes/CLeds.h'&#xA;&#xA;//interface avec l'environnement MBED&#xA;interface :&#xA;//evenement &#xA;in event EV_Tirette&#xA;in event EV_Obstacle&#xA;in event EV_ConvergenceMvt&#xA;in event EV_ConvergenceMvt_Rapide&#xA;in event EV_ConvergenceChariot&#xA;&#xA;&#xA;//entrees&#xA;var IN_x_pos:double&#xA;var IN_y_pos:double&#xA;var IN_teta_pos:double&#xA;var IN_vitesse:double&#xA;var IN_sens_deplacement:double&#xA;var IN_Couleur:int32_t&#xA;var IN_Obstacle:int32_t&#xA;var IN_Depression:bool&#xA;&#xA;//utile pour l'environnement&#xA;var countTimeMvt:double=0&#xA;var tempsMatch:int32_t=0&#xA;var countTempo:int32_t=0&#xA;var countTempo2:int32_t=0&#xA;var countTime:double=0&#xA;var x_pos_mem:double=0&#xA;var y_pos_mem:double=0&#xA;var teta_pos_mem:double=0&#xA;var nb_Modules:int32_t=1&#xA;&#xA;//nommage des servos (SD20 et AX)&#xA;const SERVO_VENTOUSE:int32_t=13&#xA;const SERVO_CENTREUR_G:int32_t=14&#xA;const SERVO_CENTREUR_D:int32_t=15&#xA;const SERVO_PINCE_D:int32_t=16&#xA;const SERVO_PINCE_G:int32_t=17&#xA;const SERVO_BALLE:int32_t=18&#xA;const SERVO_RECOLTEURS:int32_t=19&#xA;const SERVO_VOLET:int32_t=20&#xA;const AX_ROTATION:int32_t=1&#xA;const AX_COULEUR:int32_t=2&#xA;const AX_LEVIER:int32_t=4&#xA;&#xA;//position des servos&#xA;const KMAR_SORTI:int32_t=180&#xA;const KMAR_RENTRE:int32_t=0&#xA;const KMAR_PRENDRE:int32_t=255&#xA;const VENTOUSE_G:int32_t=0&#xA;const VENTOUSE_D:int32_t=255&#xA;const KMAR_DROIT:int32_t=0&#xA;&#xA;//nommage des moteurs&#xA;const MOTEUR_ROUE_GAUCHE:int32_t = 1&#xA;const MOTEUR_ROUE_DROITE:int32_t = 2&#xA;const MOTEUR_FUNNY:int32_t = 3&#xA;//const MOTEUR_DISTRIBUTEUR:int32_t = 4&#xA;const MOTEUR_MOELDAR:int32_t = 5&#xA;//const MOTEUR_SOUFFLEUR:int32_t = 6&#xA;&#xA;//nommage des codeurs&#xA;const CODEUR_NON_DEFINI:int32_t=0&#xA;const CODEUR_CHARIOT:int32_t=1&#xA;const CODEUR_ROUE_DROITE:int32_t=2&#xA;const CODEUR_ROUE_GAUCHE:int32_t=3&#xA;&#xA;//config coupe&#xA;var ORANGE:int32_t=1&#xA;var VERT:int32_t=0&#xA;var BLEU:int32_t=2&#xA;var JAUNE:int32_t=3&#xA;&#xA;&#xA;//variabales internes&#xA;internal:&#xA;var Couleur:int32_t=1&#xA;var invMouv:int32_t=1&#xA;var Te:double=0.02&#xA;var PI:double=3.14&#xA;var inhibeObstacle:bool=false&#xA;var evitementEnCours:bool=false&#xA;var evitementTempo:double=0&#xA;var sequence1:bool=false&#xA;var sequence2:bool=false&#xA;var pos_fusee:int32_t=-800&#xA;var nb_tentatives:int32_t=0&#xA;&#xA;&#xA;//fonctions d'asservissement&#xA;interface asser:&#xA;operation XY(x:double,y:double):void&#xA;operation XYTeta(x:double,y:double,teta:double):void&#xA;operation Manuel(mot_gauche:double,mot_droit:double):void&#xA;operation DistanceAngle(distance:double,angle:double):void&#xA;operation Vitesse(speedDist:double,speedRot:double):void&#xA;operation setPosition(x:double,y:double,teta:double):void&#xA;operation setSportivite(idx:double):void&#xA;&#xA;//fonctions servos SD20&#xA;interface servo:&#xA;operation setPos(idServo:int32_t,value:int32_t):void&#xA;operation setPosSpd(idServo:int32_t,pos:int32_t,spd:int32_t):void&#xA;operation setRelache(idServo:int32_t, time_ms:double):void&#xA;&#xA;//fonctions AX&#xA;interface ax:&#xA;operation setPos(idServo:int32_t,value:int32_t):void&#xA;operation setPosSpd(idServo:int32_t,pos:int32_t,spd:int32_t):void&#xA;operation setSpd(idServo:int32_t, spd:int32_t):void&#xA;&#xA;//SERVO BRAS&#xA;var BRAS_OUVERT:int32_t = 55&#xA;//var readonly BRAS_FERME:int32_t=147&#xA;&#xA;//fonctions moteurs&#xA;interface moteur:&#xA;operation setPWM(idMot:int32_t,pwm:double):void&#xA;&#xA;//fonctions chariot&#xA;interface chariot:&#xA;var isReady:bool=false&#xA;var isConv:bool=false&#xA;operation init():void&#xA;operation setPos(position:int32_t):void&#xA;&#xA;//fonctions capteurs&#xA;interface capteur:&#xA;operation resetCodeur(idCodeur:int32_t,value:int32_t):void&#xA;&#xA;//fonction IHM&#xA;interface ihm:&#xA;operation setLed(idLed:int32_t,onoff:bool):void" name="IA" domainID="com.yakindu.domain.c">
     <regions xmi:id="_svU6o8ZxEeiRdIDC4qhyQQ" name="main region">
       <vertices xsi:type="sgraph:Entry" xmi:id="_svfSscZxEeiRdIDC4qhyQQ">
         <outgoingTransitions xmi:id="_svt8MMZxEeiRdIDC4qhyQQ" target="_svkLMcZxEeiRdIDC4qhyQQ"/>
       </vertices>
-      <vertices xsi:type="sgraph:State" xmi:id="_svkLMcZxEeiRdIDC4qhyQQ" specification="entry / &#xA;    asser.Manuel(0, 4)" name="StateA" incomingTransitions="_svt8MMZxEeiRdIDC4qhyQQ _6MgRAMbrEeiH2cPk3IYaRQ">
+      <vertices xsi:type="sgraph:State" xmi:id="_svkLMcZxEeiRdIDC4qhyQQ" specification="entry / &#xA;     Application.m_leds.setPattern(tLedPattern.PATTERN_CLIGNO_1234)" name="StateA" incomingTransitions="_svt8MMZxEeiRdIDC4qhyQQ _6MgRAMbrEeiH2cPk3IYaRQ">
         <outgoingTransitions xmi:id="_1vUUAMbrEeiH2cPk3IYaRQ" specification="after 10s" target="_0WCz8MbrEeiH2cPk3IYaRQ"/>
       </vertices>
-      <vertices xsi:type="sgraph:State" xmi:id="_0WCz8MbrEeiH2cPk3IYaRQ" specification="entry / &#xA;  Couleur += 1" name="StateB" incomingTransitions="_1vUUAMbrEeiH2cPk3IYaRQ">
-        <outgoingTransitions xmi:id="_6MgRAMbrEeiH2cPk3IYaRQ" specification="after 1s" target="_svkLMcZxEeiRdIDC4qhyQQ"/>
+      <vertices xsi:type="sgraph:State" xmi:id="_0WCz8MbrEeiH2cPk3IYaRQ" specification="entry / &#xA;  Application.m_leds.setPattern(tLedPattern.PATTERN_CHENILLE)" name="StateB" incomingTransitions="_1vUUAMbrEeiH2cPk3IYaRQ">
+        <outgoingTransitions xmi:id="_6MgRAMbrEeiH2cPk3IYaRQ" specification="after 5s" target="_svkLMcZxEeiRdIDC4qhyQQ"/>
       </vertices>
     </regions>
   </sgraph:Statechart>
@@ -47,7 +47,7 @@
           <styles xsi:type="notation:ShapeStyle" xmi:id="_svmAYMZxEeiRdIDC4qhyQQ" fontName="Verdana" fillColor="15981773" lineColor="12632256"/>
           <styles xsi:type="notation:FontStyle" xmi:id="_svmAYcZxEeiRdIDC4qhyQQ"/>
           <styles xsi:type="notation:BooleanValueStyle" xmi:id="_svsuEcZxEeiRdIDC4qhyQQ" name="isHorizontal" booleanValue="true"/>
-          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_svsuEsZxEeiRdIDC4qhyQQ" x="40" y="80" width="195"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_svsuEsZxEeiRdIDC4qhyQQ" x="40" y="80" width="453"/>
         </children>
         <children xmi:id="_0WQPUMbrEeiH2cPk3IYaRQ" type="State" element="_0WCz8MbrEeiH2cPk3IYaRQ">
           <children xsi:type="notation:DecorationNode" xmi:id="_0WTSoMbrEeiH2cPk3IYaRQ" type="StateName">
@@ -63,12 +63,12 @@
           <styles xsi:type="notation:ShapeStyle" xmi:id="_0WQPUcbrEeiH2cPk3IYaRQ" fontName="Verdana" fillColor="15981773" lineColor="12632256"/>
           <styles xsi:type="notation:FontStyle" xmi:id="_0WQPUsbrEeiH2cPk3IYaRQ"/>
           <styles xsi:type="notation:BooleanValueStyle" xmi:id="_0WXkEMbrEeiH2cPk3IYaRQ" name="isHorizontal" booleanValue="true"/>
-          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_0WQPU8brEeiH2cPk3IYaRQ" x="38" y="188" width="197"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_0WQPU8brEeiH2cPk3IYaRQ" x="38" y="188" width="455"/>
         </children>
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_svcPZMZxEeiRdIDC4qhyQQ"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="_svX98cZxEeiRdIDC4qhyQQ" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_svfSsMZxEeiRdIDC4qhyQQ" x="110" y="15" width="400" height="400"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_svfSsMZxEeiRdIDC4qhyQQ" x="110" y="15" width="536" height="400"/>
     </children>
     <children xsi:type="notation:Shape" xmi:id="_sv3tMMZxEeiRdIDC4qhyQQ" type="StatechartText" fontName="Verdana" lineColor="4210752">
       <children xsi:type="notation:DecorationNode" xmi:id="_sv47UMZxEeiRdIDC4qhyQQ" type="StatechartName">
@@ -90,7 +90,7 @@
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_sv0C0cZxEeiRdIDC4qhyQQ" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_sv0p4MZxEeiRdIDC4qhyQQ" fontName="Verdana"/>
       <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_sv0C0sZxEeiRdIDC4qhyQQ" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
-      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_20Rw8MbrEeiH2cPk3IYaRQ" id="(0.1394736842105263,0.5)"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_20Rw8MbrEeiH2cPk3IYaRQ" id="(0.059151785714285705,0.5)"/>
     </edges>
     <edges xmi:id="_1vX-YMbrEeiH2cPk3IYaRQ" type="Transition" element="_1vUUAMbrEeiH2cPk3IYaRQ" source="_svlZUsZxEeiRdIDC4qhyQQ" target="_0WQPUMbrEeiH2cPk3IYaRQ">
       <children xsi:type="notation:DecorationNode" xmi:id="_1vZMgMbrEeiH2cPk3IYaRQ" type="TransitionExpression">
@@ -99,9 +99,9 @@
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_1vX-YcbrEeiH2cPk3IYaRQ" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_1vYlcMbrEeiH2cPk3IYaRQ" fontName="Verdana"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_1vX-YsbrEeiH2cPk3IYaRQ" points="[0, 0, -9, -81]$[14, 60, 5, -21]"/>
-      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_1veFAMbrEeiH2cPk3IYaRQ" id="(0.16833030852994554,1.0)"/>
-      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_1veFAcbrEeiH2cPk3IYaRQ" id="(0.22368893678160917,0.45283018867924535)"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_1vX-YsbrEeiH2cPk3IYaRQ" points="[43, 0, 34, -74]$[43, 47, 34, -27]"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_1veFAMbrEeiH2cPk3IYaRQ" id="(0.07139008620689655,1.0)"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_1veFAcbrEeiH2cPk3IYaRQ" id="(0.09544061302681991,0.45283018867924535)"/>
     </edges>
     <edges xmi:id="_6MkicMbrEeiH2cPk3IYaRQ" type="Transition" element="_6MgRAMbrEeiH2cPk3IYaRQ" source="_0WQPUMbrEeiH2cPk3IYaRQ" target="_svlZUsZxEeiRdIDC4qhyQQ">
       <children xsi:type="notation:DecorationNode" xmi:id="_6MlwkMbrEeiH2cPk3IYaRQ" type="TransitionExpression">
@@ -110,9 +110,9 @@
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_6MkiccbrEeiH2cPk3IYaRQ" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_6MlJgMbrEeiH2cPk3IYaRQ" fontName="Verdana"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_6MkicsbrEeiH2cPk3IYaRQ" points="[4, -7, 4, 60]$[4, -67, 4, 0]"/>
-      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_6MqCAMbrEeiH2cPk3IYaRQ" id="(0.6294416243654822,0.1509433962264151)"/>
-      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_6MqCAcbrEeiH2cPk3IYaRQ" id="(0.6256410256410256,1.0)"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_6MkicsbrEeiH2cPk3IYaRQ" points="[251, -9, 251, 47]$[251, -56, 251, 0]"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_6MqCAMbrEeiH2cPk3IYaRQ" id="(0.26856175972927243,0.1509433962264151)"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_6MqCAcbrEeiH2cPk3IYaRQ" id="(0.26533882783882784,1.0)"/>
     </edges>
   </notation:Diagram>
 </xmi:XMI>
