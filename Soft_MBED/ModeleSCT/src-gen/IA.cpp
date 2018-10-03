@@ -108,7 +108,7 @@ void IA::enter()
 	/* 'default' enter sequence for state StateA */
 	/* Entry action for state 'StateA'. */
 	timer->setTimer(this, (sc_eventid)(&timeEvents[0]), 10 * 1000, false);
-	SCI_Asser_OCB::Manuel(0, 4);
+	Application.m_leds.setPattern(PATTERN_CLIGNO_1234);
 	stateConfVector[0] = main_region_StateA;
 	stateConfVectorPosition = 0;
 }
@@ -1133,8 +1133,8 @@ void IA::react_main_region_StateA()
 		timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
 		/* 'default' enter sequence for state StateB */
 		/* Entry action for state 'StateB'. */
-		timer->setTimer(this, (sc_eventid)(&timeEvents[1]), 1 * 1000, false);
-		ifaceInternalSCI.Couleur += 1;
+		timer->setTimer(this, (sc_eventid)(&timeEvents[1]), 5 * 1000, false);
+		Application.m_leds.setPattern(PATTERN_CHENILLE);
 		stateConfVector[0] = main_region_StateB;
 		stateConfVectorPosition = 0;
 	} 
@@ -1154,7 +1154,7 @@ void IA::react_main_region_StateB()
 		/* 'default' enter sequence for state StateA */
 		/* Entry action for state 'StateA'. */
 		timer->setTimer(this, (sc_eventid)(&timeEvents[0]), 10 * 1000, false);
-		SCI_Asser_OCB::Manuel(0, 4);
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234);
 		stateConfVector[0] = main_region_StateA;
 		stateConfVectorPosition = 0;
 	} 

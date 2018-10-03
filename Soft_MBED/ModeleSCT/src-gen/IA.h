@@ -5,6 +5,8 @@
 #include "../src/sc_types.h"
 #include "../src/StatemachineInterface.h"
 #include "../src/TimedStatemachineInterface.h"
+#include "../../Includes/CLeds.h"
+#include "../../Includes/CGlobale.h"
 
 /*! \file Header of the state machine 'IA'.
 */
