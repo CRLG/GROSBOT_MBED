@@ -25,11 +25,11 @@ Includes/MessagerieLaBotBox.h
 Includes/RessourcesHardware.h
 Includes/CLeds.h
 ModeleSCT/src-gen/IA.h
-ModeleSCT/src-gen/StatemachineInterface.h
-ModeleSCT/src-gen/sc_types.h
-ModeleSCT/src-gen/CPPTimerInterface.h
-ModeleSCT/src-gen/TimedStatemachineInterface.h
-ModeleSCT/src-gen/TimerInterface.h
+ModeleSCT/src/StatemachineInterface.h
+ModeleSCT/src/sc_types.h
+ModeleSCT/src/CPPTimerInterface.h
+ModeleSCT/src/TimedStatemachineInterface.h
+ModeleSCT/src/TimerInterface.h
 Sources/CAsservissement.cpp
 Sources/CAsservissementChariot.cpp
 Sources/CAsservissementSulfateuse.cpp

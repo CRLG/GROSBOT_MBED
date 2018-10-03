@@ -5,7 +5,7 @@
 #ifndef _MATCH_H_
 #define _MATCH_H_
 
-#include "../ModeleSCT/src-gen/CPPTimerInterface.h"
+#include "../ModeleSCT/src/CPPTimerInterface.h"
 #include "CMoteurs.h"
 #include "CServoMoteurSD20.h"
 #include "CServoMoteurAX.h"

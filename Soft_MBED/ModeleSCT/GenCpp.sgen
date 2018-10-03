@@ -4,14 +4,15 @@ GeneratorModel for yakindu::cpp {
 
 		feature Outlet {
 			targetProject = "ModeleSCT"
-			targetFolder = "src-gen"
+			targetFolder = "ModeleSCT/src-gen"
+			libraryTargetFolder = "ModeleSCT/src"
 		}
-		
+
 		feature GeneratorOptions {
  			innerFunctionVisibility =  "protected"
  			staticOperationCallback = true
 		}
-		
+
 		feature FunctionInlining {
 			inlineReactions = true
 			inlineEntryActions = true
@@ -24,5 +25,4 @@ GeneratorModel for yakindu::cpp {
 			inlineEntries = true
 		}
 	}
-	
 }

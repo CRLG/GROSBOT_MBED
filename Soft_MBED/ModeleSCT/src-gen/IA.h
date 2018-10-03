@@ -2,80 +2,17 @@
 #ifndef IA_H_
 #define IA_H_
 
-#include "sc_types.h"
-#include "StatemachineInterface.h"
-#include "TimedStatemachineInterface.h"
+#include "../src/sc_types.h"
+#include "../src/StatemachineInterface.h"
+#include "../src/TimedStatemachineInterface.h"
 
 /*! \file Header of the state machine 'IA'.
 */
 
 
 /*! Define indices of states in the StateConfVector */
-#define SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH 0
-#define SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_1 0
-#define SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_2 0
-#define SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_U065064 1
-#define SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_COPY_1_POSITION_ASCENSEUR_INIT 1
-#define SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_COPY_1_INIT 1
-#define SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_INIT 2
-#define SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_CHENILLARD_01 2
-#define SCVI_STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_CHENILLARD_02 2
-#define SCVI_STRATEGIE_MATCH 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_DEPOSE_MODULE 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_LARGAGE_MODULES 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION__FINAL_ 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_POSITION_INIT 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_DIRECTION_ZONE_ADVERSE 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_PRISE_MODULE_01 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_FIN_DEPLACEMENT_JAUNE 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_FIN_DEPLACEMENT_BLEU 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_EVITEMENT 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION_ARRET_ROBOT 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION_SORTIE_EVITEMENT 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION__FINAL_ 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_INIT_MATCH 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_KMAR 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_FACE_FUSEE 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_VENTOUSAGE_INCERTAIN 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ATTENTE_VENTOUSAGE 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RETIRE_MODULE 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DEGAGE_MODULE 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_PROCHE_BORDURE 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RALENTI_ROTATION 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_SOULEVE_MODULE 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_CHOISI_COULEUR 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_COULEUR 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RALENTI_AX_COULEUR 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_TOURNE_POUR_FUSEE 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_PROCHE_ZONE 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_AU_DESSUS_ZONE 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DEVENTOUSAGE 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ACCELERE_AX_ROTATION 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ACCELERE_AX_LEVIER 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_AX_LEVIER 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE__FINAL_ 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_MAX_HORS_ZONE 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DECALE_MODULES 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_CHARIOT_COTE 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RECENTRAGE_BRAS 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_FIN_INIT_CHARIOT_COTE 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RANGE_BRAS_02 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_COPY_1_CHOISI_COULEUR 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_LEVIER_RECULE_AU_MAX 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_CHERCHE_FUSEE 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_COPY_1_LEVIER_RECULE_AU_MAX 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_VENTOUSAGE_CERTAIN 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RANGE_BRAS_01 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_COPY_1_TOURNE_POUR_FUSEE 0
-#define SCVI_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_COPY_1_AU_DESSUS_ZONE 0
-#define SCVI_STRATEGIE_FIN_MATCH 0
-#define SCVI_STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_ARRET_ACTIONNEURS 0
-#define SCVI_STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_FIN_FUNNY 0
-#define SCVI_STRATEGIE_FIN_MATCH_FIN_MATCH_REGION__FINAL_ 0
-#define SCVI_STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_ARRET_MOELDAR 0
-#define SCVI_STRATEGIE_TEMPS_INIT 0
+#define SCVI_MAIN_REGION_STATEA 0
+#define SCVI_MAIN_REGION_STATEB 0
 
 class IA : public TimedStatemachineInterface, public StatemachineInterface
 {
@@ -88,71 +25,8 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		typedef enum
 		{
 			IA_last_state,
-			STRATEGIE_ATTENTE_DEBUT_MATCH,
-			STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_1,
-			STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_2,
-			STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_U065064,
-			STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_Copy_1_POSITION_ASCENSEUR_INIT,
-			STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_Copy_1_INIT,
-			STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_INIT,
-			STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_CHENILLARD_01,
-			STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_CHENILLARD_02,
-			STRATEGIE_MATCH,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_DEPOSE_MODULE,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_LARGAGE_MODULES,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION__final_,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_POSITION_INIT,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_DIRECTION_ZONE_ADVERSE,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_PRISE_MODULE_01,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_FIN_DEPLACEMENT_JAUNE,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_FIN_DEPLACEMENT_BLEU,
-			STRATEGIE_MATCH_MATCH_REGION_EVITEMENT,
-			STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION_ARRET_ROBOT,
-			STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION_SORTIE_EVITEMENT,
-			STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION__final_,
-			STRATEGIE_MATCH_MATCH_REGION_INIT_MATCH,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_KMAR,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_FACE_FUSEE,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_VENTOUSAGE_INCERTAIN,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ATTENTE_VENTOUSAGE,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RETIRE_MODULE,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DEGAGE_MODULE,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_PROCHE_BORDURE,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RALENTI_ROTATION,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_SOULEVE_MODULE,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_CHOISI_COULEUR,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_COULEUR,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RALENTI_AX_COULEUR,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_TOURNE_POUR_FUSEE,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_PROCHE_ZONE,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_AU_DESSUS_ZONE,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DEVENTOUSAGE,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ACCELERE_AX_ROTATION,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ACCELERE_AX_LEVIER,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_AX_LEVIER,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE__final_,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_MAX_HORS_ZONE,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DECALE_MODULES,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_CHARIOT_COTE,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RECENTRAGE_BRAS,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_FIN_INIT_CHARIOT_COTE,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RANGE_BRAS_02,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_CHOISI_COULEUR,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_LEVIER_RECULE_AU_MAX,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_CHERCHE_FUSEE,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_LEVIER_RECULE_AU_MAX,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_VENTOUSAGE_CERTAIN,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RANGE_BRAS_01,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_TOURNE_POUR_FUSEE,
-			STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_AU_DESSUS_ZONE,
-			STRATEGIE_FIN_MATCH,
-			STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_ARRET_ACTIONNEURS,
-			STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_FIN_FUNNY,
-			STRATEGIE_FIN_MATCH_FIN_MATCH_REGION__final_,
-			STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_ARRET_MOELDAR,
-			STRATEGIE_TEMPS_INIT
+			main_region_StateA,
+			main_region_StateB
 		} IAStates;
 		
 		//! Inner class for default interface scope.
@@ -176,46 +50,46 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				void raise_eV_ConvergenceChariot();
 				
 				/*! Gets the value of the variable 'IN_x_pos' that is defined in the default interface scope. */
-				sc_real get_iN_x_pos() const;
+				double get_iN_x_pos() const;
 				
 				/*! Sets the value of the variable 'IN_x_pos' that is defined in the default interface scope. */
-				void set_iN_x_pos(sc_real value);
+				void set_iN_x_pos(double value);
 				
 				/*! Gets the value of the variable 'IN_y_pos' that is defined in the default interface scope. */
-				sc_real get_iN_y_pos() const;
+				double get_iN_y_pos() const;
 				
 				/*! Sets the value of the variable 'IN_y_pos' that is defined in the default interface scope. */
-				void set_iN_y_pos(sc_real value);
+				void set_iN_y_pos(double value);
 				
 				/*! Gets the value of the variable 'IN_teta_pos' that is defined in the default interface scope. */
-				sc_real get_iN_teta_pos() const;
+				double get_iN_teta_pos() const;
 				
 				/*! Sets the value of the variable 'IN_teta_pos' that is defined in the default interface scope. */
-				void set_iN_teta_pos(sc_real value);
+				void set_iN_teta_pos(double value);
 				
 				/*! Gets the value of the variable 'IN_vitesse' that is defined in the default interface scope. */
-				sc_real get_iN_vitesse() const;
+				double get_iN_vitesse() const;
 				
 				/*! Sets the value of the variable 'IN_vitesse' that is defined in the default interface scope. */
-				void set_iN_vitesse(sc_real value);
+				void set_iN_vitesse(double value);
 				
 				/*! Gets the value of the variable 'IN_sens_deplacement' that is defined in the default interface scope. */
-				sc_real get_iN_sens_deplacement() const;
+				double get_iN_sens_deplacement() const;
 				
 				/*! Sets the value of the variable 'IN_sens_deplacement' that is defined in the default interface scope. */
-				void set_iN_sens_deplacement(sc_real value);
+				void set_iN_sens_deplacement(double value);
 				
 				/*! Gets the value of the variable 'IN_Couleur' that is defined in the default interface scope. */
-				sc_integer get_iN_Couleur() const;
+				int32_t get_iN_Couleur() const;
 				
 				/*! Sets the value of the variable 'IN_Couleur' that is defined in the default interface scope. */
-				void set_iN_Couleur(sc_integer value);
+				void set_iN_Couleur(int32_t value);
 				
 				/*! Gets the value of the variable 'IN_Obstacle' that is defined in the default interface scope. */
-				sc_integer get_iN_Obstacle() const;
+				int32_t get_iN_Obstacle() const;
 				
 				/*! Sets the value of the variable 'IN_Obstacle' that is defined in the default interface scope. */
-				void set_iN_Obstacle(sc_integer value);
+				void set_iN_Obstacle(int32_t value);
 				
 				/*! Gets the value of the variable 'IN_Depression' that is defined in the default interface scope. */
 				sc_boolean get_iN_Depression() const;
@@ -224,157 +98,157 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				void set_iN_Depression(sc_boolean value);
 				
 				/*! Gets the value of the variable 'countTimeMvt' that is defined in the default interface scope. */
-				sc_real get_countTimeMvt() const;
+				double get_countTimeMvt() const;
 				
 				/*! Sets the value of the variable 'countTimeMvt' that is defined in the default interface scope. */
-				void set_countTimeMvt(sc_real value);
+				void set_countTimeMvt(double value);
 				
 				/*! Gets the value of the variable 'tempsMatch' that is defined in the default interface scope. */
-				sc_integer get_tempsMatch() const;
+				int32_t get_tempsMatch() const;
 				
 				/*! Sets the value of the variable 'tempsMatch' that is defined in the default interface scope. */
-				void set_tempsMatch(sc_integer value);
+				void set_tempsMatch(int32_t value);
 				
 				/*! Gets the value of the variable 'countTempo' that is defined in the default interface scope. */
-				sc_integer get_countTempo() const;
+				int32_t get_countTempo() const;
 				
 				/*! Sets the value of the variable 'countTempo' that is defined in the default interface scope. */
-				void set_countTempo(sc_integer value);
+				void set_countTempo(int32_t value);
 				
 				/*! Gets the value of the variable 'countTempo2' that is defined in the default interface scope. */
-				sc_integer get_countTempo2() const;
+				int32_t get_countTempo2() const;
 				
 				/*! Sets the value of the variable 'countTempo2' that is defined in the default interface scope. */
-				void set_countTempo2(sc_integer value);
+				void set_countTempo2(int32_t value);
 				
 				/*! Gets the value of the variable 'countTime' that is defined in the default interface scope. */
-				sc_real get_countTime() const;
+				double get_countTime() const;
 				
 				/*! Sets the value of the variable 'countTime' that is defined in the default interface scope. */
-				void set_countTime(sc_real value);
+				void set_countTime(double value);
 				
 				/*! Gets the value of the variable 'x_pos_mem' that is defined in the default interface scope. */
-				sc_real get_x_pos_mem() const;
+				double get_x_pos_mem() const;
 				
 				/*! Sets the value of the variable 'x_pos_mem' that is defined in the default interface scope. */
-				void set_x_pos_mem(sc_real value);
+				void set_x_pos_mem(double value);
 				
 				/*! Gets the value of the variable 'y_pos_mem' that is defined in the default interface scope. */
-				sc_real get_y_pos_mem() const;
+				double get_y_pos_mem() const;
 				
 				/*! Sets the value of the variable 'y_pos_mem' that is defined in the default interface scope. */
-				void set_y_pos_mem(sc_real value);
+				void set_y_pos_mem(double value);
 				
 				/*! Gets the value of the variable 'teta_pos_mem' that is defined in the default interface scope. */
-				sc_real get_teta_pos_mem() const;
+				double get_teta_pos_mem() const;
 				
 				/*! Sets the value of the variable 'teta_pos_mem' that is defined in the default interface scope. */
-				void set_teta_pos_mem(sc_real value);
+				void set_teta_pos_mem(double value);
 				
 				/*! Gets the value of the variable 'nb_Modules' that is defined in the default interface scope. */
-				sc_integer get_nb_Modules() const;
+				int32_t get_nb_Modules() const;
 				
 				/*! Sets the value of the variable 'nb_Modules' that is defined in the default interface scope. */
-				void set_nb_Modules(sc_integer value);
+				void set_nb_Modules(int32_t value);
 				
 				/*! Gets the value of the variable 'SERVO_VENTOUSE' that is defined in the default interface scope. */
-				const sc_integer get_sERVO_VENTOUSE() const;
+				const int32_t get_sERVO_VENTOUSE() const;
 				
 				/*! Gets the value of the variable 'SERVO_CENTREUR_G' that is defined in the default interface scope. */
-				const sc_integer get_sERVO_CENTREUR_G() const;
+				const int32_t get_sERVO_CENTREUR_G() const;
 				
 				/*! Gets the value of the variable 'SERVO_CENTREUR_D' that is defined in the default interface scope. */
-				const sc_integer get_sERVO_CENTREUR_D() const;
+				const int32_t get_sERVO_CENTREUR_D() const;
 				
 				/*! Gets the value of the variable 'SERVO_PINCE_D' that is defined in the default interface scope. */
-				const sc_integer get_sERVO_PINCE_D() const;
+				const int32_t get_sERVO_PINCE_D() const;
 				
 				/*! Gets the value of the variable 'SERVO_PINCE_G' that is defined in the default interface scope. */
-				const sc_integer get_sERVO_PINCE_G() const;
+				const int32_t get_sERVO_PINCE_G() const;
 				
 				/*! Gets the value of the variable 'SERVO_BALLE' that is defined in the default interface scope. */
-				const sc_integer get_sERVO_BALLE() const;
+				const int32_t get_sERVO_BALLE() const;
 				
 				/*! Gets the value of the variable 'SERVO_RECOLTEURS' that is defined in the default interface scope. */
-				const sc_integer get_sERVO_RECOLTEURS() const;
+				const int32_t get_sERVO_RECOLTEURS() const;
 				
 				/*! Gets the value of the variable 'SERVO_VOLET' that is defined in the default interface scope. */
-				const sc_integer get_sERVO_VOLET() const;
+				const int32_t get_sERVO_VOLET() const;
 				
 				/*! Gets the value of the variable 'AX_ROTATION' that is defined in the default interface scope. */
-				const sc_integer get_aX_ROTATION() const;
+				const int32_t get_aX_ROTATION() const;
 				
 				/*! Gets the value of the variable 'AX_COULEUR' that is defined in the default interface scope. */
-				const sc_integer get_aX_COULEUR() const;
+				const int32_t get_aX_COULEUR() const;
 				
 				/*! Gets the value of the variable 'AX_LEVIER' that is defined in the default interface scope. */
-				const sc_integer get_aX_LEVIER() const;
+				const int32_t get_aX_LEVIER() const;
 				
 				/*! Gets the value of the variable 'KMAR_SORTI' that is defined in the default interface scope. */
-				const sc_integer get_kMAR_SORTI() const;
+				const int32_t get_kMAR_SORTI() const;
 				
 				/*! Gets the value of the variable 'KMAR_RENTRE' that is defined in the default interface scope. */
-				const sc_integer get_kMAR_RENTRE() const;
+				const int32_t get_kMAR_RENTRE() const;
 				
 				/*! Gets the value of the variable 'KMAR_PRENDRE' that is defined in the default interface scope. */
-				const sc_integer get_kMAR_PRENDRE() const;
+				const int32_t get_kMAR_PRENDRE() const;
 				
 				/*! Gets the value of the variable 'VENTOUSE_G' that is defined in the default interface scope. */
-				const sc_integer get_vENTOUSE_G() const;
+				const int32_t get_vENTOUSE_G() const;
 				
 				/*! Gets the value of the variable 'VENTOUSE_D' that is defined in the default interface scope. */
-				const sc_integer get_vENTOUSE_D() const;
+				const int32_t get_vENTOUSE_D() const;
 				
 				/*! Gets the value of the variable 'KMAR_DROIT' that is defined in the default interface scope. */
-				const sc_integer get_kMAR_DROIT() const;
+				const int32_t get_kMAR_DROIT() const;
 				
 				/*! Gets the value of the variable 'MOTEUR_ROUE_GAUCHE' that is defined in the default interface scope. */
-				const sc_integer get_mOTEUR_ROUE_GAUCHE() const;
+				const int32_t get_mOTEUR_ROUE_GAUCHE() const;
 				
 				/*! Gets the value of the variable 'MOTEUR_ROUE_DROITE' that is defined in the default interface scope. */
-				const sc_integer get_mOTEUR_ROUE_DROITE() const;
+				const int32_t get_mOTEUR_ROUE_DROITE() const;
 				
 				/*! Gets the value of the variable 'MOTEUR_FUNNY' that is defined in the default interface scope. */
-				const sc_integer get_mOTEUR_FUNNY() const;
+				const int32_t get_mOTEUR_FUNNY() const;
 				
 				/*! Gets the value of the variable 'MOTEUR_MOELDAR' that is defined in the default interface scope. */
-				const sc_integer get_mOTEUR_MOELDAR() const;
+				const int32_t get_mOTEUR_MOELDAR() const;
 				
 				/*! Gets the value of the variable 'CODEUR_NON_DEFINI' that is defined in the default interface scope. */
-				const sc_integer get_cODEUR_NON_DEFINI() const;
+				const int32_t get_cODEUR_NON_DEFINI() const;
 				
 				/*! Gets the value of the variable 'CODEUR_CHARIOT' that is defined in the default interface scope. */
-				const sc_integer get_cODEUR_CHARIOT() const;
+				const int32_t get_cODEUR_CHARIOT() const;
 				
 				/*! Gets the value of the variable 'CODEUR_ROUE_DROITE' that is defined in the default interface scope. */
-				const sc_integer get_cODEUR_ROUE_DROITE() const;
+				const int32_t get_cODEUR_ROUE_DROITE() const;
 				
 				/*! Gets the value of the variable 'CODEUR_ROUE_GAUCHE' that is defined in the default interface scope. */
-				const sc_integer get_cODEUR_ROUE_GAUCHE() const;
+				const int32_t get_cODEUR_ROUE_GAUCHE() const;
 				
 				/*! Gets the value of the variable 'ORANGE' that is defined in the default interface scope. */
-				sc_integer get_oRANGE() const;
+				int32_t get_oRANGE() const;
 				
 				/*! Sets the value of the variable 'ORANGE' that is defined in the default interface scope. */
-				void set_oRANGE(sc_integer value);
+				void set_oRANGE(int32_t value);
 				
 				/*! Gets the value of the variable 'VERT' that is defined in the default interface scope. */
-				sc_integer get_vERT() const;
+				int32_t get_vERT() const;
 				
 				/*! Sets the value of the variable 'VERT' that is defined in the default interface scope. */
-				void set_vERT(sc_integer value);
+				void set_vERT(int32_t value);
 				
 				/*! Gets the value of the variable 'BLEU' that is defined in the default interface scope. */
-				sc_integer get_bLEU() const;
+				int32_t get_bLEU() const;
 				
 				/*! Sets the value of the variable 'BLEU' that is defined in the default interface scope. */
-				void set_bLEU(sc_integer value);
+				void set_bLEU(int32_t value);
 				
 				/*! Gets the value of the variable 'JAUNE' that is defined in the default interface scope. */
-				sc_integer get_jAUNE() const;
+				int32_t get_jAUNE() const;
 				
 				/*! Sets the value of the variable 'JAUNE' that is defined in the default interface scope. */
-				void set_jAUNE(sc_integer value);
+				void set_jAUNE(int32_t value);
 				
 				
 			protected:
@@ -384,52 +258,52 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				sc_boolean EV_ConvergenceMvt_raised;
 				sc_boolean EV_ConvergenceMvt_Rapide_raised;
 				sc_boolean EV_ConvergenceChariot_raised;
-				sc_real IN_x_pos;
-				sc_real IN_y_pos;
-				sc_real IN_teta_pos;
-				sc_real IN_vitesse;
-				sc_real IN_sens_deplacement;
-				sc_integer IN_Couleur;
-				sc_integer IN_Obstacle;
+				double IN_x_pos;
+				double IN_y_pos;
+				double IN_teta_pos;
+				double IN_vitesse;
+				double IN_sens_deplacement;
+				int32_t IN_Couleur;
+				int32_t IN_Obstacle;
 				sc_boolean IN_Depression;
-				sc_real countTimeMvt;
-				sc_integer tempsMatch;
-				sc_integer countTempo;
-				sc_integer countTempo2;
-				sc_real countTime;
-				sc_real x_pos_mem;
-				sc_real y_pos_mem;
-				sc_real teta_pos_mem;
-				sc_integer nb_Modules;
-				static const sc_integer SERVO_VENTOUSE;
-				static const sc_integer SERVO_CENTREUR_G;
-				static const sc_integer SERVO_CENTREUR_D;
-				static const sc_integer SERVO_PINCE_D;
-				static const sc_integer SERVO_PINCE_G;
-				static const sc_integer SERVO_BALLE;
-				static const sc_integer SERVO_RECOLTEURS;
-				static const sc_integer SERVO_VOLET;
-				static const sc_integer AX_ROTATION;
-				static const sc_integer AX_COULEUR;
-				static const sc_integer AX_LEVIER;
-				static const sc_integer KMAR_SORTI;
-				static const sc_integer KMAR_RENTRE;
-				static const sc_integer KMAR_PRENDRE;
-				static const sc_integer VENTOUSE_G;
-				static const sc_integer VENTOUSE_D;
-				static const sc_integer KMAR_DROIT;
-				static const sc_integer MOTEUR_ROUE_GAUCHE;
-				static const sc_integer MOTEUR_ROUE_DROITE;
-				static const sc_integer MOTEUR_FUNNY;
-				static const sc_integer MOTEUR_MOELDAR;
-				static const sc_integer CODEUR_NON_DEFINI;
-				static const sc_integer CODEUR_CHARIOT;
-				static const sc_integer CODEUR_ROUE_DROITE;
-				static const sc_integer CODEUR_ROUE_GAUCHE;
-				sc_integer ORANGE;
-				sc_integer VERT;
-				sc_integer BLEU;
-				sc_integer JAUNE;
+				double countTimeMvt;
+				int32_t tempsMatch;
+				int32_t countTempo;
+				int32_t countTempo2;
+				double countTime;
+				double x_pos_mem;
+				double y_pos_mem;
+				double teta_pos_mem;
+				int32_t nb_Modules;
+				static const int32_t SERVO_VENTOUSE;
+				static const int32_t SERVO_CENTREUR_G;
+				static const int32_t SERVO_CENTREUR_D;
+				static const int32_t SERVO_PINCE_D;
+				static const int32_t SERVO_PINCE_G;
+				static const int32_t SERVO_BALLE;
+				static const int32_t SERVO_RECOLTEURS;
+				static const int32_t SERVO_VOLET;
+				static const int32_t AX_ROTATION;
+				static const int32_t AX_COULEUR;
+				static const int32_t AX_LEVIER;
+				static const int32_t KMAR_SORTI;
+				static const int32_t KMAR_RENTRE;
+				static const int32_t KMAR_PRENDRE;
+				static const int32_t VENTOUSE_G;
+				static const int32_t VENTOUSE_D;
+				static const int32_t KMAR_DROIT;
+				static const int32_t MOTEUR_ROUE_GAUCHE;
+				static const int32_t MOTEUR_ROUE_DROITE;
+				static const int32_t MOTEUR_FUNNY;
+				static const int32_t MOTEUR_MOELDAR;
+				static const int32_t CODEUR_NON_DEFINI;
+				static const int32_t CODEUR_CHARIOT;
+				static const int32_t CODEUR_ROUE_DROITE;
+				static const int32_t CODEUR_ROUE_GAUCHE;
+				int32_t ORANGE;
+				int32_t VERT;
+				int32_t BLEU;
+				int32_t JAUNE;
 		};
 		
 		/*! Returns an instance of the interface class 'DefaultSCI'. */
@@ -451,46 +325,46 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		void raise_eV_ConvergenceChariot();
 		
 		/*! Gets the value of the variable 'IN_x_pos' that is defined in the default interface scope. */
-		sc_real get_iN_x_pos() const;
+		double get_iN_x_pos() const;
 		
 		/*! Sets the value of the variable 'IN_x_pos' that is defined in the default interface scope. */
-		void set_iN_x_pos(sc_real value);
+		void set_iN_x_pos(double value);
 		
 		/*! Gets the value of the variable 'IN_y_pos' that is defined in the default interface scope. */
-		sc_real get_iN_y_pos() const;
+		double get_iN_y_pos() const;
 		
 		/*! Sets the value of the variable 'IN_y_pos' that is defined in the default interface scope. */
-		void set_iN_y_pos(sc_real value);
+		void set_iN_y_pos(double value);
 		
 		/*! Gets the value of the variable 'IN_teta_pos' that is defined in the default interface scope. */
-		sc_real get_iN_teta_pos() const;
+		double get_iN_teta_pos() const;
 		
 		/*! Sets the value of the variable 'IN_teta_pos' that is defined in the default interface scope. */
-		void set_iN_teta_pos(sc_real value);
+		void set_iN_teta_pos(double value);
 		
 		/*! Gets the value of the variable 'IN_vitesse' that is defined in the default interface scope. */
-		sc_real get_iN_vitesse() const;
+		double get_iN_vitesse() const;
 		
 		/*! Sets the value of the variable 'IN_vitesse' that is defined in the default interface scope. */
-		void set_iN_vitesse(sc_real value);
+		void set_iN_vitesse(double value);
 		
 		/*! Gets the value of the variable 'IN_sens_deplacement' that is defined in the default interface scope. */
-		sc_real get_iN_sens_deplacement() const;
+		double get_iN_sens_deplacement() const;
 		
 		/*! Sets the value of the variable 'IN_sens_deplacement' that is defined in the default interface scope. */
-		void set_iN_sens_deplacement(sc_real value);
+		void set_iN_sens_deplacement(double value);
 		
 		/*! Gets the value of the variable 'IN_Couleur' that is defined in the default interface scope. */
-		sc_integer get_iN_Couleur() const;
+		int32_t get_iN_Couleur() const;
 		
 		/*! Sets the value of the variable 'IN_Couleur' that is defined in the default interface scope. */
-		void set_iN_Couleur(sc_integer value);
+		void set_iN_Couleur(int32_t value);
 		
 		/*! Gets the value of the variable 'IN_Obstacle' that is defined in the default interface scope. */
-		sc_integer get_iN_Obstacle() const;
+		int32_t get_iN_Obstacle() const;
 		
 		/*! Sets the value of the variable 'IN_Obstacle' that is defined in the default interface scope. */
-		void set_iN_Obstacle(sc_integer value);
+		void set_iN_Obstacle(int32_t value);
 		
 		/*! Gets the value of the variable 'IN_Depression' that is defined in the default interface scope. */
 		sc_boolean get_iN_Depression() const;
@@ -499,157 +373,157 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		void set_iN_Depression(sc_boolean value);
 		
 		/*! Gets the value of the variable 'countTimeMvt' that is defined in the default interface scope. */
-		sc_real get_countTimeMvt() const;
+		double get_countTimeMvt() const;
 		
 		/*! Sets the value of the variable 'countTimeMvt' that is defined in the default interface scope. */
-		void set_countTimeMvt(sc_real value);
+		void set_countTimeMvt(double value);
 		
 		/*! Gets the value of the variable 'tempsMatch' that is defined in the default interface scope. */
-		sc_integer get_tempsMatch() const;
+		int32_t get_tempsMatch() const;
 		
 		/*! Sets the value of the variable 'tempsMatch' that is defined in the default interface scope. */
-		void set_tempsMatch(sc_integer value);
+		void set_tempsMatch(int32_t value);
 		
 		/*! Gets the value of the variable 'countTempo' that is defined in the default interface scope. */
-		sc_integer get_countTempo() const;
+		int32_t get_countTempo() const;
 		
 		/*! Sets the value of the variable 'countTempo' that is defined in the default interface scope. */
-		void set_countTempo(sc_integer value);
+		void set_countTempo(int32_t value);
 		
 		/*! Gets the value of the variable 'countTempo2' that is defined in the default interface scope. */
-		sc_integer get_countTempo2() const;
+		int32_t get_countTempo2() const;
 		
 		/*! Sets the value of the variable 'countTempo2' that is defined in the default interface scope. */
-		void set_countTempo2(sc_integer value);
+		void set_countTempo2(int32_t value);
 		
 		/*! Gets the value of the variable 'countTime' that is defined in the default interface scope. */
-		sc_real get_countTime() const;
+		double get_countTime() const;
 		
 		/*! Sets the value of the variable 'countTime' that is defined in the default interface scope. */
-		void set_countTime(sc_real value);
+		void set_countTime(double value);
 		
 		/*! Gets the value of the variable 'x_pos_mem' that is defined in the default interface scope. */
-		sc_real get_x_pos_mem() const;
+		double get_x_pos_mem() const;
 		
 		/*! Sets the value of the variable 'x_pos_mem' that is defined in the default interface scope. */
-		void set_x_pos_mem(sc_real value);
+		void set_x_pos_mem(double value);
 		
 		/*! Gets the value of the variable 'y_pos_mem' that is defined in the default interface scope. */
-		sc_real get_y_pos_mem() const;
+		double get_y_pos_mem() const;
 		
 		/*! Sets the value of the variable 'y_pos_mem' that is defined in the default interface scope. */
-		void set_y_pos_mem(sc_real value);
+		void set_y_pos_mem(double value);
 		
 		/*! Gets the value of the variable 'teta_pos_mem' that is defined in the default interface scope. */
-		sc_real get_teta_pos_mem() const;
+		double get_teta_pos_mem() const;
 		
 		/*! Sets the value of the variable 'teta_pos_mem' that is defined in the default interface scope. */
-		void set_teta_pos_mem(sc_real value);
+		void set_teta_pos_mem(double value);
 		
 		/*! Gets the value of the variable 'nb_Modules' that is defined in the default interface scope. */
-		sc_integer get_nb_Modules() const;
+		int32_t get_nb_Modules() const;
 		
 		/*! Sets the value of the variable 'nb_Modules' that is defined in the default interface scope. */
-		void set_nb_Modules(sc_integer value);
+		void set_nb_Modules(int32_t value);
 		
 		/*! Gets the value of the variable 'SERVO_VENTOUSE' that is defined in the default interface scope. */
-		const sc_integer get_sERVO_VENTOUSE() const;
+		const int32_t get_sERVO_VENTOUSE() const;
 		
 		/*! Gets the value of the variable 'SERVO_CENTREUR_G' that is defined in the default interface scope. */
-		const sc_integer get_sERVO_CENTREUR_G() const;
+		const int32_t get_sERVO_CENTREUR_G() const;
 		
 		/*! Gets the value of the variable 'SERVO_CENTREUR_D' that is defined in the default interface scope. */
-		const sc_integer get_sERVO_CENTREUR_D() const;
+		const int32_t get_sERVO_CENTREUR_D() const;
 		
 		/*! Gets the value of the variable 'SERVO_PINCE_D' that is defined in the default interface scope. */
-		const sc_integer get_sERVO_PINCE_D() const;
+		const int32_t get_sERVO_PINCE_D() const;
 		
 		/*! Gets the value of the variable 'SERVO_PINCE_G' that is defined in the default interface scope. */
-		const sc_integer get_sERVO_PINCE_G() const;
+		const int32_t get_sERVO_PINCE_G() const;
 		
 		/*! Gets the value of the variable 'SERVO_BALLE' that is defined in the default interface scope. */
-		const sc_integer get_sERVO_BALLE() const;
+		const int32_t get_sERVO_BALLE() const;
 		
 		/*! Gets the value of the variable 'SERVO_RECOLTEURS' that is defined in the default interface scope. */
-		const sc_integer get_sERVO_RECOLTEURS() const;
+		const int32_t get_sERVO_RECOLTEURS() const;
 		
 		/*! Gets the value of the variable 'SERVO_VOLET' that is defined in the default interface scope. */
-		const sc_integer get_sERVO_VOLET() const;
+		const int32_t get_sERVO_VOLET() const;
 		
 		/*! Gets the value of the variable 'AX_ROTATION' that is defined in the default interface scope. */
-		const sc_integer get_aX_ROTATION() const;
+		const int32_t get_aX_ROTATION() const;
 		
 		/*! Gets the value of the variable 'AX_COULEUR' that is defined in the default interface scope. */
-		const sc_integer get_aX_COULEUR() const;
+		const int32_t get_aX_COULEUR() const;
 		
 		/*! Gets the value of the variable 'AX_LEVIER' that is defined in the default interface scope. */
-		const sc_integer get_aX_LEVIER() const;
+		const int32_t get_aX_LEVIER() const;
 		
 		/*! Gets the value of the variable 'KMAR_SORTI' that is defined in the default interface scope. */
-		const sc_integer get_kMAR_SORTI() const;
+		const int32_t get_kMAR_SORTI() const;
 		
 		/*! Gets the value of the variable 'KMAR_RENTRE' that is defined in the default interface scope. */
-		const sc_integer get_kMAR_RENTRE() const;
+		const int32_t get_kMAR_RENTRE() const;
 		
 		/*! Gets the value of the variable 'KMAR_PRENDRE' that is defined in the default interface scope. */
-		const sc_integer get_kMAR_PRENDRE() const;
+		const int32_t get_kMAR_PRENDRE() const;
 		
 		/*! Gets the value of the variable 'VENTOUSE_G' that is defined in the default interface scope. */
-		const sc_integer get_vENTOUSE_G() const;
+		const int32_t get_vENTOUSE_G() const;
 		
 		/*! Gets the value of the variable 'VENTOUSE_D' that is defined in the default interface scope. */
-		const sc_integer get_vENTOUSE_D() const;
+		const int32_t get_vENTOUSE_D() const;
 		
 		/*! Gets the value of the variable 'KMAR_DROIT' that is defined in the default interface scope. */
-		const sc_integer get_kMAR_DROIT() const;
+		const int32_t get_kMAR_DROIT() const;
 		
 		/*! Gets the value of the variable 'MOTEUR_ROUE_GAUCHE' that is defined in the default interface scope. */
-		const sc_integer get_mOTEUR_ROUE_GAUCHE() const;
+		const int32_t get_mOTEUR_ROUE_GAUCHE() const;
 		
 		/*! Gets the value of the variable 'MOTEUR_ROUE_DROITE' that is defined in the default interface scope. */
-		const sc_integer get_mOTEUR_ROUE_DROITE() const;
+		const int32_t get_mOTEUR_ROUE_DROITE() const;
 		
 		/*! Gets the value of the variable 'MOTEUR_FUNNY' that is defined in the default interface scope. */
-		const sc_integer get_mOTEUR_FUNNY() const;
+		const int32_t get_mOTEUR_FUNNY() const;
 		
 		/*! Gets the value of the variable 'MOTEUR_MOELDAR' that is defined in the default interface scope. */
-		const sc_integer get_mOTEUR_MOELDAR() const;
+		const int32_t get_mOTEUR_MOELDAR() const;
 		
 		/*! Gets the value of the variable 'CODEUR_NON_DEFINI' that is defined in the default interface scope. */
-		const sc_integer get_cODEUR_NON_DEFINI() const;
+		const int32_t get_cODEUR_NON_DEFINI() const;
 		
 		/*! Gets the value of the variable 'CODEUR_CHARIOT' that is defined in the default interface scope. */
-		const sc_integer get_cODEUR_CHARIOT() const;
+		const int32_t get_cODEUR_CHARIOT() const;
 		
 		/*! Gets the value of the variable 'CODEUR_ROUE_DROITE' that is defined in the default interface scope. */
-		const sc_integer get_cODEUR_ROUE_DROITE() const;
+		const int32_t get_cODEUR_ROUE_DROITE() const;
 		
 		/*! Gets the value of the variable 'CODEUR_ROUE_GAUCHE' that is defined in the default interface scope. */
-		const sc_integer get_cODEUR_ROUE_GAUCHE() const;
+		const int32_t get_cODEUR_ROUE_GAUCHE() const;
 		
 		/*! Gets the value of the variable 'ORANGE' that is defined in the default interface scope. */
-		sc_integer get_oRANGE() const;
+		int32_t get_oRANGE() const;
 		
 		/*! Sets the value of the variable 'ORANGE' that is defined in the default interface scope. */
-		void set_oRANGE(sc_integer value);
+		void set_oRANGE(int32_t value);
 		
 		/*! Gets the value of the variable 'VERT' that is defined in the default interface scope. */
-		sc_integer get_vERT() const;
+		int32_t get_vERT() const;
 		
 		/*! Sets the value of the variable 'VERT' that is defined in the default interface scope. */
-		void set_vERT(sc_integer value);
+		void set_vERT(int32_t value);
 		
 		/*! Gets the value of the variable 'BLEU' that is defined in the default interface scope. */
-		sc_integer get_bLEU() const;
+		int32_t get_bLEU() const;
 		
 		/*! Sets the value of the variable 'BLEU' that is defined in the default interface scope. */
-		void set_bLEU(sc_integer value);
+		void set_bLEU(int32_t value);
 		
 		/*! Gets the value of the variable 'JAUNE' that is defined in the default interface scope. */
-		sc_integer get_jAUNE() const;
+		int32_t get_jAUNE() const;
 		
 		/*! Sets the value of the variable 'JAUNE' that is defined in the default interface scope. */
-		void set_jAUNE(sc_integer value);
+		void set_jAUNE(int32_t value);
 		
 		//! Inner class for asser interface scope.
 		class SCI_Asser
@@ -664,19 +538,19 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				class SCI_Asser_OCB
 				{
 					public:
-						static void XY(sc_real x, sc_real y);
+						static void XY(double x, double y);
 						
-						static void XYTeta(sc_real x, sc_real y, sc_real teta);
+						static void XYTeta(double x, double y, double teta);
 						
-						static void Manuel(sc_real mot_gauche, sc_real mot_droit);
+						static void Manuel(double mot_gauche, double mot_droit);
 						
-						static void DistanceAngle(sc_real distance, sc_real angle);
+						static void DistanceAngle(double distance, double angle);
 						
-						static void Vitesse(sc_real speedDist, sc_real speedRot);
+						static void Vitesse(double speedDist, double speedRot);
 						
-						static void setPosition(sc_real x, sc_real y, sc_real teta);
+						static void setPosition(double x, double y, double teta);
 						
-						static void setSportivite(sc_real idx);
+						static void setSportivite(double idx);
 				};
 		
 		/*! Returns an instance of the interface class 'SCI_Asser'. */
@@ -695,11 +569,11 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				class SCI_Servo_OCB
 				{
 					public:
-						static void setPos(sc_integer idServo, sc_integer value);
+						static void setPos(int32_t idServo, int32_t value);
 						
-						static void setPosSpd(sc_integer idServo, sc_integer pos, sc_integer spd);
+						static void setPosSpd(int32_t idServo, int32_t pos, int32_t spd);
 						
-						static void setRelache(sc_integer idServo, sc_real time_ms);
+						static void setRelache(int32_t idServo, double time_ms);
 				};
 		
 		/*! Returns an instance of the interface class 'SCI_Servo'. */
@@ -711,25 +585,25 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 			
 			public:
 				/*! Gets the value of the variable 'BRAS_OUVERT' that is defined in the interface scope 'ax'. */
-				sc_integer get_bRAS_OUVERT() const;
+				int32_t get_bRAS_OUVERT() const;
 				
 				/*! Sets the value of the variable 'BRAS_OUVERT' that is defined in the interface scope 'ax'. */
-				void set_bRAS_OUVERT(sc_integer value);
+				void set_bRAS_OUVERT(int32_t value);
 				
 				
 			protected:
 				friend class IA;
-				sc_integer BRAS_OUVERT;
+				int32_t BRAS_OUVERT;
 		};
 				//! Inner class for ax interface scope operation callbacks.
 				class SCI_Ax_OCB
 				{
 					public:
-						static void setPos(sc_integer idServo, sc_integer value);
+						static void setPos(int32_t idServo, int32_t value);
 						
-						static void setPosSpd(sc_integer idServo, sc_integer pos, sc_integer spd);
+						static void setPosSpd(int32_t idServo, int32_t pos, int32_t spd);
 						
-						static void setSpd(sc_integer idServo, sc_integer spd);
+						static void setSpd(int32_t idServo, int32_t spd);
 				};
 		
 		/*! Returns an instance of the interface class 'SCI_Ax'. */
@@ -748,7 +622,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				class SCI_Moteur_OCB
 				{
 					public:
-						static void setPWM(sc_integer idMot, sc_real pwm);
+						static void setPWM(int32_t idMot, double pwm);
 				};
 		
 		/*! Returns an instance of the interface class 'SCI_Moteur'. */
@@ -783,7 +657,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 					public:
 						static void init();
 						
-						static void setPos(sc_integer position);
+						static void setPos(int32_t position);
 				};
 		
 		/*! Returns an instance of the interface class 'SCI_Chariot'. */
@@ -802,7 +676,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				class SCI_Capteur_OCB
 				{
 					public:
-						static void resetCodeur(sc_integer idCodeur, sc_integer value);
+						static void resetCodeur(int32_t idCodeur, int32_t value);
 				};
 		
 		/*! Returns an instance of the interface class 'SCI_Capteur'. */
@@ -821,7 +695,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				class SCI_Ihm_OCB
 				{
 					public:
-						static void setLed(sc_integer idLed, sc_boolean onoff);
+						static void setLed(int32_t idLed, sc_boolean onoff);
 				};
 		
 		/*! Returns an instance of the interface class 'SCI_Ihm'. */
@@ -865,7 +739,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		sc_boolean isStateActive(IAStates state) const;
 		
 		//! number of time events used by the state machine.
-		static const sc_integer timeEventsCount = 1;
+		static const sc_integer timeEventsCount = 2;
 		
 		//! number of time events that can be active at once.
 		static const sc_integer parallelTimeEventsCount = 1;
@@ -879,28 +753,28 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 			
 			public:
 				/*! Gets the value of the variable 'Couleur' that is defined in the internal scope. */
-				sc_integer get_couleur() const;
+				int32_t get_couleur() const;
 				
 				/*! Sets the value of the variable 'Couleur' that is defined in the internal scope. */
-				void set_couleur(sc_integer value);
+				void set_couleur(int32_t value);
 				
 				/*! Gets the value of the variable 'invMouv' that is defined in the internal scope. */
-				sc_integer get_invMouv() const;
+				int32_t get_invMouv() const;
 				
 				/*! Sets the value of the variable 'invMouv' that is defined in the internal scope. */
-				void set_invMouv(sc_integer value);
+				void set_invMouv(int32_t value);
 				
 				/*! Gets the value of the variable 'Te' that is defined in the internal scope. */
-				sc_real get_te() const;
+				double get_te() const;
 				
 				/*! Sets the value of the variable 'Te' that is defined in the internal scope. */
-				void set_te(sc_real value);
+				void set_te(double value);
 				
 				/*! Gets the value of the variable 'PI' that is defined in the internal scope. */
-				sc_real get_pI() const;
+				double get_pI() const;
 				
 				/*! Sets the value of the variable 'PI' that is defined in the internal scope. */
-				void set_pI(sc_real value);
+				void set_pI(double value);
 				
 				/*! Gets the value of the variable 'inhibeObstacle' that is defined in the internal scope. */
 				sc_boolean get_inhibeObstacle() const;
@@ -915,10 +789,10 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				void set_evitementEnCours(sc_boolean value);
 				
 				/*! Gets the value of the variable 'evitementTempo' that is defined in the internal scope. */
-				sc_real get_evitementTempo() const;
+				double get_evitementTempo() const;
 				
 				/*! Sets the value of the variable 'evitementTempo' that is defined in the internal scope. */
-				void set_evitementTempo(sc_real value);
+				void set_evitementTempo(double value);
 				
 				/*! Gets the value of the variable 'sequence1' that is defined in the internal scope. */
 				sc_boolean get_sequence1() const;
@@ -933,44 +807,41 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				void set_sequence2(sc_boolean value);
 				
 				/*! Gets the value of the variable 'pos_fusee' that is defined in the internal scope. */
-				sc_integer get_pos_fusee() const;
+				int32_t get_pos_fusee() const;
 				
 				/*! Sets the value of the variable 'pos_fusee' that is defined in the internal scope. */
-				void set_pos_fusee(sc_integer value);
+				void set_pos_fusee(int32_t value);
 				
 				/*! Gets the value of the variable 'nb_tentatives' that is defined in the internal scope. */
-				sc_integer get_nb_tentatives() const;
+				int32_t get_nb_tentatives() const;
 				
 				/*! Sets the value of the variable 'nb_tentatives' that is defined in the internal scope. */
-				void set_nb_tentatives(sc_integer value);
+				void set_nb_tentatives(int32_t value);
 				
 				
 			protected:
 				friend class IA;
-				sc_integer Couleur;
-				sc_integer invMouv;
-				sc_real Te;
-				sc_real PI;
+				int32_t Couleur;
+				int32_t invMouv;
+				double Te;
+				double PI;
 				sc_boolean inhibeObstacle;
 				sc_boolean evitementEnCours;
-				sc_real evitementTempo;
+				double evitementTempo;
 				sc_boolean sequence1;
 				sc_boolean sequence2;
-				sc_integer pos_fusee;
-				sc_integer nb_tentatives;
+				int32_t pos_fusee;
+				int32_t nb_tentatives;
 		};
 		
 		//! the maximum number of orthogonal states defines the dimension of the state configuration vector.
-		static const sc_ushort maxOrthogonalStates = 3;
-		//! dimension of the state configuration vector for history states
-		static const sc_ushort maxHistoryStates = 2;
+		static const sc_ushort maxOrthogonalStates = 1;
 		
 		TimerInterface* timer;
 		sc_boolean timeEvents[timeEventsCount];
 		
 		IAStates stateConfVector[maxOrthogonalStates];
 		
-		IAStates historyVector[maxHistoryStates];
 		sc_ushort stateConfVectorPosition;
 		
 		DefaultSCI iface;
@@ -985,77 +856,8 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		
 		// prototypes of all internal functions
 		
-		void shenseq_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION();
-		void shenseq_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE();
-		void react_STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_1();
-		void react_STRATEGIE_ATTENTE_DEBUT_MATCH_CHOIX_EQUIPE_EQUIPE_2();
-		void react_STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_U065064();
-		void react_STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_Copy_1_POSITION_ASCENSEUR_INIT();
-		void react_STRATEGIE_ATTENTE_DEBUT_MATCH_APPRENTISSAGE_ACTIONNEUR_Copy_1_INIT();
-		void react_STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_INIT();
-		void react_STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_CHENILLARD_01();
-		void react_STRATEGIE_ATTENTE_DEBUT_MATCH_CHENILLARD_CHENILLARD_02();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_DEPOSE_MODULE();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_LARGAGE_MODULES();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION__final_();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_POSITION_INIT();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_DIRECTION_ZONE_ADVERSE();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_PRISE_MODULE_01();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_FIN_DEPLACEMENT_JAUNE();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION_FIN_DEPLACEMENT_BLEU();
-		void react_STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION_ARRET_ROBOT();
-		void react_STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION_SORTIE_EVITEMENT();
-		void react_STRATEGIE_MATCH_MATCH_REGION_EVITEMENT_EVITEMENT_REGION__final_();
-		void react_STRATEGIE_MATCH_MATCH_REGION_INIT_MATCH();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_KMAR();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_FACE_FUSEE();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_VENTOUSAGE_INCERTAIN();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ATTENTE_VENTOUSAGE();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RETIRE_MODULE();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DEGAGE_MODULE();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_PROCHE_BORDURE();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RALENTI_ROTATION();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_SOULEVE_MODULE();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_CHOISI_COULEUR();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_COULEUR();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RALENTI_AX_COULEUR();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_TOURNE_POUR_FUSEE();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_PROCHE_ZONE();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_AU_DESSUS_ZONE();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DEVENTOUSAGE();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ACCELERE_AX_ROTATION();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_ACCELERE_AX_LEVIER();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_AX_LEVIER();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE__final_();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_MAX_HORS_ZONE();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_DECALE_MODULES();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_INIT_CHARIOT_COTE();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RECENTRAGE_BRAS();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_FIN_INIT_CHARIOT_COTE();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RANGE_BRAS_02();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_CHOISI_COULEUR();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_LEVIER_RECULE_AU_MAX();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_CHERCHE_FUSEE();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_LEVIER_RECULE_AU_MAX();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_VENTOUSAGE_CERTAIN();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_RANGE_BRAS_01();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_TOURNE_POUR_FUSEE();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE_Copy_1_AU_DESSUS_ZONE();
-		void react_STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_ARRET_ACTIONNEURS();
-		void react_STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_FIN_FUNNY();
-		void react_STRATEGIE_FIN_MATCH_FIN_MATCH_REGION__final_();
-		void react_STRATEGIE_FIN_MATCH_FIN_MATCH_REGION_ARRET_MOELDAR();
-		void react_STRATEGIE_TEMPS_INIT();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_LUNAIRES_COTE_HOMOLOGATION_REGION__choice_0();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE__choice_0();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE__choice_1();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE__choice_2();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE__choice_3();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE__choice_4();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE__choice_5();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE__choice_6();
-		void react_STRATEGIE_MATCH_MATCH_REGION_MODULES_COTE_JAUNE_SEQUENCE_MODULES_FUSEE__choice_7();
-		void react_STRATEGIE_MATCH_MATCH_REGION__choice_0();
+		void react_main_region_StateA();
+		void react_main_region_StateB();
 		void clearInEvents();
 		void clearOutEvents();
 		
