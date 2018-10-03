@@ -82,38 +82,38 @@ private :
     unsigned char m_index_array;
 };
 
+
 // ============================================================
 //        Gestion des LEDs
 // ============================================================
+typedef enum {
+    LED_1 = 1,
+    LED_2,
+    LED_3,
+    LED_4,
+    ALL_LED = 0xFFFF
+}tLed;
+
+// Attention : cet enum doit être dans le même ordre que m_patterns
+typedef enum {
+    PATTERN_CLIGNO_1234 = 0,
+    PATTERN_CLIGNO_12,
+    PATTERN_CLIGNO_13,
+    PATTERN_CLIGNO_14,
+    PATTERN_CLIGNO_24,
+    PATTERN_CLIGNO_34,
+    PATTERN_CLIGNO_12_34,
+    PATTERN_CLIGNO_13_24,
+    PATTERN_CLIGNO_14_23,
+    PATTERN_K2000,
+    PATTERN_CHENILLE,
+    // __________________ à laisser en dernier
+    PATTERNS_MAX_SIZE
+}tLedPattern;
+
 //! Classe de gestion des LED
 class CLeds
 {
-public :
-    typedef enum {
-        LED_1 = 1,
-        LED_2,
-        LED_3,
-        LED_4,
-        ALL_LED = 0xFFFF
-    }tLed;
-
-    // Attention : cet enum doit être dans le même ordre que m_patterns
-    typedef enum {
-        PATTERN_CLIGNO_1234 = 0,
-        PATTERN_CLIGNO_12,
-        PATTERN_CLIGNO_13,
-        PATTERN_CLIGNO_14,
-        PATTERN_CLIGNO_24,
-        PATTERN_CLIGNO_34,
-        PATTERN_CLIGNO_12_34,
-        PATTERN_CLIGNO_13_24,
-        PATTERN_CLIGNO_14_23,
-        PATTERN_K2000,
-        PATTERN_CHENILLE,
-        // __________________ à laisser en dernier
-        PATTERNS_MAX_SIZE
-    }tLedPattern;
-
 public :
     CLeds();
     ~CLeds();
