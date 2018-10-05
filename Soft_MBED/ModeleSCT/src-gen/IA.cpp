@@ -107,8 +107,9 @@ void IA::enter()
 	/* Default react sequence for initial entry  */
 	/* 'default' enter sequence for state StateA */
 	/* Entry action for state 'StateA'. */
-	timer->setTimer(this, (sc_eventid)(&timeEvents[0]), 10 * 1000, false);
-	Application.m_leds.setPattern(PATTERN_CLIGNO_1234);
+	timer->setTimer(this, (sc_eventid)(&timeEvents[0]), 15 * 1000, false);
+	Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 400);
+	Application.m_asservissement.CommandeMouvementXY_TETA(100, 20, 0);
 	stateConfVector[0] = main_region_StateA;
 	stateConfVectorPosition = 0;
 }
@@ -1133,8 +1134,9 @@ void IA::react_main_region_StateA()
 		timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
 		/* 'default' enter sequence for state StateB */
 		/* Entry action for state 'StateB'. */
-		timer->setTimer(this, (sc_eventid)(&timeEvents[1]), 5 * 1000, false);
-		Application.m_leds.setPattern(PATTERN_CHENILLE);
+		timer->setTimer(this, (sc_eventid)(&timeEvents[1]), 15 * 1000, false);
+		Application.m_leds.setPattern(PATTERN_K2000, 50);
+		Application.m_asservissement.CommandeMouvementXY_TETA(0, 0, 0);
 		stateConfVector[0] = main_region_StateB;
 		stateConfVectorPosition = 0;
 	} 
@@ -1153,8 +1155,9 @@ void IA::react_main_region_StateB()
 		timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
 		/* 'default' enter sequence for state StateA */
 		/* Entry action for state 'StateA'. */
-		timer->setTimer(this, (sc_eventid)(&timeEvents[0]), 10 * 1000, false);
-		Application.m_leds.setPattern(PATTERN_CLIGNO_1234);
+		timer->setTimer(this, (sc_eventid)(&timeEvents[0]), 15 * 1000, false);
+		Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 400);
+		Application.m_asservissement.CommandeMouvementXY_TETA(100, 20, 0);
 		stateConfVector[0] = main_region_StateA;
 		stateConfVectorPosition = 0;
 	} 

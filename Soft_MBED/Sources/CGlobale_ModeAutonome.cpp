@@ -102,6 +102,7 @@ void CGlobale::SequenceurModeAutonome(void)
 	cpt20msec = 0;
 
     _led1 = !_led1;
+   // _led1 = !_led1;
 
     m_capteurs.Traitement();
 	m_asservissement.CalculsMouvementsRobots();
