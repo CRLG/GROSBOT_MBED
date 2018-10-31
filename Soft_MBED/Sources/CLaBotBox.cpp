@@ -526,30 +526,30 @@ void CLaBotBox::CheckReceptionTrame(void)
     // sous adressage : le champ commande_ax donne le type d'action à  réaliser
     switch (m_ELECTROBOT_CDE_SERVOS_AX.commande_ax) {
         case cSERVO_AX_POSITION :
-            Application.m_servos_ax.CommandePosition(
+            Application.m_servos_ax.setPosition(
                         m_ELECTROBOT_CDE_SERVOS_AX.num_servo_ax,
                         m_ELECTROBOT_CDE_SERVOS_AX.valeur_commande_ax);
         break;
         case cSERVO_AX_VITESSE :
-            Application.m_servos_ax.CommandeVitesse(
+            Application.m_servos_ax.setSpeed(
                         m_ELECTROBOT_CDE_SERVOS_AX.num_servo_ax,
                         m_ELECTROBOT_CDE_SERVOS_AX.valeur_commande_ax);
         break;
 
         case cSERVO_AX_CHANGE_ID :
-            Application.m_servos_ax.setID(
+            Application.m_servos_ax.changeID(
                         m_ELECTROBOT_CDE_SERVOS_AX.num_servo_ax,
                         m_ELECTROBOT_CDE_SERVOS_AX.valeur_commande_ax);
         break;
 
         case cSERVO_AX_LED_STATE :
-            Application.m_servos_ax.setLedState(
+            Application.m_servos_ax.setLed(
                         m_ELECTROBOT_CDE_SERVOS_AX.num_servo_ax,
                         m_ELECTROBOT_CDE_SERVOS_AX.valeur_commande_ax);
         break;
 
         case cSERVO_AX_BUTEE_MIN :
-            Application.m_servos_ax.setButeeMinPosition(
+            Application.m_servos_ax.setLimitPositionMin(
                         m_ELECTROBOT_CDE_SERVOS_AX.num_servo_ax,
                         m_ELECTROBOT_CDE_SERVOS_AX.valeur_commande_ax);
             sprintf(cbuff, "butee_min_servo_ax_%d", m_ELECTROBOT_CDE_SERVOS_AX.num_servo_ax);
@@ -557,7 +557,7 @@ void CLaBotBox::CheckReceptionTrame(void)
         break;
 
         case cSERVO_AX_BUTEE_MAX :
-            Application.m_servos_ax.setButeeMaxPosition(
+            Application.m_servos_ax.setLimitPositionMax(
                         m_ELECTROBOT_CDE_SERVOS_AX.num_servo_ax,
                         m_ELECTROBOT_CDE_SERVOS_AX.valeur_commande_ax);
             sprintf(cbuff, "butee_max_servo_ax_%d", m_ELECTROBOT_CDE_SERVOS_AX.num_servo_ax);

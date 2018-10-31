@@ -4,7 +4,9 @@
 #ifndef _CONFIG_SPECIFIQUE_COUPE 
 #define _CONFIG_SPECIFIQUE_COUPE
 
+#include "RessourcesHardware.h"
 #include "CMoteurs.h"
+#include "CCapteurs.h"
 #include "CServoMoteurSD20.h"
 
 // Affectation des sorties moteurs
@@ -46,6 +48,8 @@ typedef enum {
     SERVO_AX_TOUS = 0xFE
 } eATTRIBUTION_SERVOS_AX;
 
+//! Numéro de pin utilisée pour le signan TX_ENABLE des servos AX
+#define _STOR_AX_TX_ENABLE _Stor3
 
 #endif // _CONFIG_SPECIFIQUE_COUPE
 

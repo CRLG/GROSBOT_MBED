@@ -384,11 +384,11 @@ void IA::SCI_Servo_OCB::setPos(sc_integer idServo, sc_integer value){
  * \param value
  */
 void IA::SCI_Ax_OCB::setPos(sc_integer idServo, sc_integer value){
-    Application.m_servos_ax.CommandePosition(idServo, value);
+    Application.m_servos_ax.setPosition(idServo, value);
 }
 
 void IA::SCI_Ax_OCB::setSpd(sc_integer idServo, sc_integer spd){
-    Application.m_servos_ax.CommandeVitesse(idServo,spd);
+    Application.m_servos_ax.setSpeed(idServo,spd);
 }
 
 /*!
