@@ -1,0 +1,3 @@
+[submodule "Soft_MBED/ext/CppRobLib"]
+	path = Soft_MBED/ext/CppRobLib
+	url = https://github.com/CRLG/CppRobLib.git
