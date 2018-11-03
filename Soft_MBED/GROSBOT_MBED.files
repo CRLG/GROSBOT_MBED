@@ -24,6 +24,8 @@ Includes/MessagerieCamera.h
 Includes/MessagerieLaBotBox.h
 Includes/RessourcesHardware.h
 Includes/CLeds.h
+ext/CppRobLib/ServosAX/servoaxbase.h
+ext/CppRobLib/ServosAX/servoax_utils.h
 ModeleSCT/src-gen/IA.h
 ModeleSCT/src/StatemachineInterface.h
 ModeleSCT/src/sc_types.h
@@ -59,4 +61,6 @@ Sources/RessoucesHardware.cpp
 Sources/CLeds.cpp
 ModeleSCT/src-gen/IA.cpp
 ModeleSCT/src-gen/CPPTimerInterface.cpp
+ext/CppRobLib/ServosAX/servoaxbase.cpp
+ext/CppRobLib/ServosAX/servoax_utils.cpp
 Sources/main.cpp

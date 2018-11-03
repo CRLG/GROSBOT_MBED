@@ -18,5 +18,7 @@ GCC4MBED_DIR    := /opt/gcc4mbed
 NO_FLOAT_SCANF  := 0
 NO_FLOAT_PRINTF := 0
 VERBOSE := 1
+# Add patterns to exclude from compilation
+EXCLUDE += qservoax # exlude ext/CppRobLib/ServoAX/qservoax_utils.cpp (dependencies with Qt)
 
 include $(GCC4MBED_DIR)/build/gcc4mbed.mk
