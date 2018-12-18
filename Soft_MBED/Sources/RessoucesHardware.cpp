@@ -51,6 +51,9 @@ Timer  _Global_Timer;  // pour connaitre l'heure depuis le démarrage avec réso
 Serial _rs232_pc_tx(USBTX, USBRX);
 Serial _rs232_pc_rx(USBTX, USBRX);
 
+Serial _rs232_xbee_network_tx(USBTX, USBRX);
+Serial _rs232_xbee_network_rx(USBTX, USBRX);
+
 Serial _rs232_camera_tx(p28, p27);
 Serial _rs232_camera_rx(p28, p27);
 

@@ -110,6 +110,8 @@ void IA::enter()
 	timer->setTimer(this, (sc_eventid)(&timeEvents[0]), 15 * 1000, false);
 	Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 400);
 	Application.m_asservissement.CommandeMouvementXY_TETA(100, 20, 0);
+	Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp++;
+	Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.send();
 	stateConfVector[0] = main_region_StateA;
 	stateConfVectorPosition = 0;
 }
@@ -1158,6 +1160,8 @@ void IA::react_main_region_StateB()
 		timer->setTimer(this, (sc_eventid)(&timeEvents[0]), 15 * 1000, false);
 		Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 400);
 		Application.m_asservissement.CommandeMouvementXY_TETA(100, 20, 0);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp++;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.send();
 		stateConfVector[0] = main_region_StateA;
 		stateConfVectorPosition = 0;
 	} 

@@ -17,6 +17,7 @@
 #include "CCamera.h"
 #include "CAsservissementSulfateuse.h"
 #include "CAsservissementChariot.h"
+#include "MessengerXbeeNetwork2019.h"
 
 typedef enum {
 	MODE_AUTONOME = 0,
@@ -82,7 +83,9 @@ public :
 	//! Gestion de l'asservissement du chariot
 	CAsservissementChariot m_asservissement_chariot;
 
-	//debug
+    MessengerXbeeNetwork m_messenger_xbee_ntw;
+
+    //debug
 	float m_x_debug, m_y_debug, m_teta_debug;
 
  

@@ -24,6 +24,7 @@ void CGlobale::ModeAutonome(void)
    m_teta_debug=0;
 
    m_LaBotBox.Start();
+   m_messenger_xbee_ntw.start();
 
    m_match.Initialise();
 
@@ -101,7 +102,7 @@ void CGlobale::SequenceurModeAutonome(void)
   if (cpt20msec >= TEMPO_20msec) {
 	cpt20msec = 0;
 
-    _led1 = !_led1;
+    //_led1 = !_led1;
    // _led1 = !_led1;
 
     m_capteurs.Traitement();
@@ -118,6 +119,7 @@ void CGlobale::SequenceurModeAutonome(void)
   if (cpt50msec >= TEMPO_50msec) {
   	cpt50msec = 0;
 
+    m_messenger_xbee_ntw.execute();
     m_leds.compute();
 
   }
