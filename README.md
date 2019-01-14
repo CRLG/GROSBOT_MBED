@@ -1,7 +1,6 @@
 # GROSBOT_MBED
-Logiciel embarqué dans le MBED du robot principal de l'année 2018
-Compilation avec GCC4MBED : gcc4mbed-gcc5.0-2015-q4_mbed119
-L'installation de GCC4MBED est intégrée dans Robuntu16.04 (répertoire /opt/gcc4mbed)
+Logiciel embarqué dans le MBED du robot principal de l'année 2019
+Compilation avec arm-none-eabi-gcc intégré à Robuntu18.04
 
 Le projet peut être cloné avec la commande : 
        git clone --recursive https://github.com/CRLG/GROSBOT_MBED.git
