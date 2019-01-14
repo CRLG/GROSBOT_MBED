@@ -5,7 +5,7 @@
 # Boiler-plate
 ###############################################################################
 # Project settings
-PROJECT := HelloWorld
+PROJECT := GROSBOT_MBED
 MBED_OS_PATH := ext/mbed-os
 MBED_COMMON_ROB_PATH := ext/mbed-common-rob
 CPPROBLIB_PATH := ext/CppRobLib
