@@ -6,6 +6,7 @@
 ###############################################################################
 # Project settings
 PROJECT := GROSBOT_MBED
+COMPILER_INSTALL_PATH := /opt/gcc-arm-none-eabi-8-2018-q4-major/bin
 MBED_OS_PATH := ext/mbed-os
 MBED_COMMON_ROB_PATH := ext/mbed-common-rob
 CPPROBLIB_PATH := ext/CppRobLib
@@ -160,15 +161,14 @@ LINKER_SCRIPT ?= ../$(MBED_OS_PATH)/mbed/TARGET_LPC1768/TOOLCHAIN_GCC_ARM/LPC176
 # Objects and Paths
 ###############################################################################
 # Tools and Flags
-
-AS      = arm-none-eabi-gcc
-CC      = arm-none-eabi-gcc
-CPP     = arm-none-eabi-g++
-LD      = arm-none-eabi-gcc
-ELF2BIN = arm-none-eabi-objcopy
-OBJDUMP = arm-none-eabi-objdump
-ELFSIZE = arm-none-eabi-size
-PREPROC = arm-none-eabi-cpp -E -P -Wl,--gc-sections -Wl,--wrap,main -Wl,--wrap,_malloc_r -Wl,--wrap,_free_r -Wl,--wrap,_realloc_r -Wl,--wrap,_memalign_r -Wl,--wrap,_calloc_r -Wl,--wrap,exit -Wl,--wrap,atexit -Wl,-n -mcpu=cortex-m3 -mthumb
+AS      = $(COMPILER_INSTALL_PATH)/arm-none-eabi-gcc
+CC      = $(COMPILER_INSTALL_PATH)/arm-none-eabi-gcc
+CPP     = $(COMPILER_INSTALL_PATH)/arm-none-eabi-g++
+LD      = $(COMPILER_INSTALL_PATH)/arm-none-eabi-gcc
+ELF2BIN = $(COMPILER_INSTALL_PATH)/arm-none-eabi-objcopy
+OBJDUMP = $(COMPILER_INSTALL_PATH)/arm-none-eabi-objdump
+ELFSIZE = $(COMPILER_INSTALL_PATH)/arm-none-eabi-size
+PREPROC = $(COMPILER_INSTALL_PATH)/arm-none-eabi-cpp -E -P -Wl,--gc-sections -Wl,--wrap,main -Wl,--wrap,_malloc_r -Wl,--wrap,_free_r -Wl,--wrap,_realloc_r -Wl,--wrap,_memalign_r -Wl,--wrap,_calloc_r -Wl,--wrap,exit -Wl,--wrap,atexit -Wl,-n -mcpu=cortex-m3 -mthumb
 
 
 C_FLAGS += -std=gnu99
