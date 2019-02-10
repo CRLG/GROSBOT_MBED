@@ -54,8 +54,8 @@ Serial _rs232_pc_rx(USBTX, USBRX);
 Serial _rs232_xbee_network_tx(USBTX, USBRX);
 Serial _rs232_xbee_network_rx(USBTX, USBRX);
 
-Serial _rs232_camera_tx(p28, p27);
-Serial _rs232_camera_rx(p28, p27);
+//Serial _rs232_camera_tx(p28, p27);
+//Serial _rs232_camera_rx(p28, p27);
 
 
 // __________________________________________________ I2C

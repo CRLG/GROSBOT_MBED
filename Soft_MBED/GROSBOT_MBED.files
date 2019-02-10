@@ -153,7 +153,6 @@ ext/mbed-os/mbed_config.h
 ext/mbed-common-rob/Sources/CAsservissementChariot.cpp
 ext/mbed-common-rob/Sources/CAsservissement.cpp
 ext/mbed-common-rob/Sources/CAsservissementSulfateuse.cpp
-ext/mbed-common-rob/Sources/CCamera.cpp
 ext/mbed-common-rob/Sources/CCapteurs.cpp
 ext/mbed-common-rob/Sources/CEEPROM.cpp
 ext/mbed-common-rob/Sources/CGlobale.cpp
@@ -169,10 +168,8 @@ ext/mbed-common-rob/Sources/CRoues.cpp
 ext/mbed-common-rob/Sources/CServoMoteurAX.cpp
 ext/mbed-common-rob/Sources/CServoMoteurSD20.cpp
 ext/mbed-common-rob/Sources/CTelemetres.cpp
-ext/mbed-common-rob/Sources/CTrameCamera.cpp
 ext/mbed-common-rob/Sources/CTrameCAN.cpp
 ext/mbed-common-rob/Sources/CTrameLaBotBox.cpp
-ext/mbed-common-rob/Sources/MessagerieCamera.cpp
 ext/mbed-common-rob/Sources/MessagerieLaBotBox.cpp
 
 ModeleSCT/src/CPPTimerInterface.cpp

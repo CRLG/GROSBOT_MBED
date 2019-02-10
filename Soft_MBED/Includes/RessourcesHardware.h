@@ -43,8 +43,8 @@ extern Timer  _Global_Timer;
 
 extern Serial _rs232_pc_tx;
 extern Serial _rs232_pc_rx;
-extern Serial _rs232_camera_tx;
-extern Serial _rs232_camera_rx;
+//extern Serial _rs232_camera_tx;
+//extern Serial _rs232_camera_rx;
 extern Serial _rs232_xbee_network_tx;
 extern Serial _rs232_xbee_network_rx;
 extern I2C _i2c;

@@ -34,7 +34,6 @@ INCLUDE_PATHS += -I../$(MBED_COMMON_ROB_PATH)/Includes
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CAsservissementChariot.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CAsservissement.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CAsservissementSulfateuse.o
-OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CCamera.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CCapteurs.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CEEPROM.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CGlobale.o
@@ -50,10 +49,8 @@ OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CRoues.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CServoMoteurAX.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CServoMoteurSD20.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CTelemetres.o
-OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CTrameCamera.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CTrameCAN.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CTrameLaBotBox.o
-OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/MessagerieCamera.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/MessagerieLaBotBox.o
 
 ###############################################################################
