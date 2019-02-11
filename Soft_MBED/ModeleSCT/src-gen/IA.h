@@ -6,12 +6,12 @@
 #include "../src/StatemachineInterface.h"
 #include "../src/TimedStatemachineInterface.h"
 #include "../../ext/mbed-common-rob/Includes/CLeds.h"
-#include "../../Includes/MessengerXbeeNetwork2019.h"
 #include "../../ext/mbed-common-rob/Includes/CGlobale.h"
-#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h"
-#include "../../ext/CppRobLib/Communication/Messenger/messagebase.h"
 #include "../../ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.h"
 #include "../../ext/mbed-common-rob/Includes/CAsservissement.h"
+#include "../../ext/CppRobLib/Communication/Messenger/messagebase.h"
+#include "../../ext/mbed-common-rob/Includes/MessengerXbeeNetwork.h"
+#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h"
 
 /*! \file Header of the state machine 'IA'.
 */

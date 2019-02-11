@@ -20,7 +20,6 @@ INCLUDE_PATHS += -I../ModeleSCT/src
 INCLUDE_PATHS += -I../ModeleSCT/src-gen
 
 OBJECTS += Sources/main.o
-OBJECTS += Sources/MessengerXbeeNetwork2019.o
 OBJECTS += Sources/xbeedriver.o
 OBJECTS += Sources/RessoucesHardware.o
 OBJECTS += ModeleSCT/src/CPPTimerInterface.o
@@ -52,6 +51,7 @@ OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CTelemetres.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CTrameCAN.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CTrameLaBotBox.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/MessagerieLaBotBox.o
+OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/MessengerXbeeNetwork.o
 
 ###############################################################################
 # Objects and Paths for CppRobLib

@@ -51,12 +51,8 @@ Timer  _Global_Timer;  // pour connaitre l'heure depuis le démarrage avec réso
 Serial _rs232_pc_tx(USBTX, USBRX);
 Serial _rs232_pc_rx(USBTX, USBRX);
 
-Serial _rs232_xbee_network_tx(USBTX, USBRX);
-Serial _rs232_xbee_network_rx(USBTX, USBRX);
-
-//Serial _rs232_camera_tx(p28, p27);
-//Serial _rs232_camera_rx(p28, p27);
-
+Serial _rs232_xbee_network_tx(p13, p14);
+Serial _rs232_xbee_network_rx(p13, p14);
 
 // __________________________________________________ I2C
 I2C _i2c(p9, p10); //SDA, SCL pour les servos

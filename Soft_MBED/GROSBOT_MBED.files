@@ -171,6 +171,8 @@ ext/mbed-common-rob/Sources/CTelemetres.cpp
 ext/mbed-common-rob/Sources/CTrameCAN.cpp
 ext/mbed-common-rob/Sources/CTrameLaBotBox.cpp
 ext/mbed-common-rob/Sources/MessagerieLaBotBox.cpp
+ext/mbed-common-rob/Sources/MessengerXbeeNetwork.cpp
+
 
 ModeleSCT/src/CPPTimerInterface.cpp
 ModeleSCT/src/CPPTimerInterface.h
@@ -179,7 +181,6 @@ ModeleSCT/src-gen/IA.cpp
 ModeleSCT/src-gen/IA.h
 
 Sources/main.cpp
-Sources/MessengerXbeeNetwork2019.cpp
 Sources/RessoucesHardware.cpp
 Sources/xbeedriver.cpp
 
