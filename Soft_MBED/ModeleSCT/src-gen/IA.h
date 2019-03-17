@@ -7,19 +7,25 @@
 #include "../src/TimedStatemachineInterface.h"
 #include "../../ext/mbed-common-rob/Includes/CLeds.h"
 #include "../../ext/mbed-common-rob/Includes/CGlobale.h"
-#include "../../ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.h"
 #include "../../ext/mbed-common-rob/Includes/CAsservissement.h"
-#include "../../ext/CppRobLib/Communication/Messenger/messagebase.h"
 #include "../../ext/mbed-common-rob/Includes/MessengerXbeeNetwork.h"
+#include "../../ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.h"
 #include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h"
+#include "../../Includes/ConfigSpecifiqueCoupe.h"
 
 /*! \file Header of the state machine 'IA'.
 */
 
 
 /*! Define indices of states in the StateConfVector */
-#define SCVI_MAIN_REGION_STATEA 0
-#define SCVI_MAIN_REGION_STATEB 0
+#define SCVI_MAIN_REGION_ATTENTE_TIRETTE 0
+#define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE 0
+#define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_INIT_INIT 0
+#define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET 1
+#define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE 1
+#define SCVI_MAIN_REGION_MATCH_EN_COURS 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_ETAPE_1 0
+#define SCVI_MAIN_REGION_FIN_MATCH 0
 
 class IA : public TimedStatemachineInterface, public StatemachineInterface
 {
@@ -32,8 +38,14 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		typedef enum
 		{
 			IA_last_state,
-			main_region_StateA,
-			main_region_StateB
+			main_region_ATTENTE_TIRETTE,
+			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE,
+			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT,
+			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET,
+			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE,
+			main_region_MATCH_EN_COURS,
+			main_region_MATCH_EN_COURS__region0_ETAPE_1,
+			main_region_FIN_MATCH
 		} IAStates;
 		
 		//! Inner class for default interface scope.
@@ -104,6 +116,12 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				/*! Sets the value of the variable 'IN_Depression' that is defined in the default interface scope. */
 				void set_iN_Depression(sc_boolean value);
 				
+				/*! Gets the value of the variable 'Couleur' that is defined in the default interface scope. */
+				int32_t get_couleur() const;
+				
+				/*! Sets the value of the variable 'Couleur' that is defined in the default interface scope. */
+				void set_couleur(int32_t value);
+				
 				/*! Gets the value of the variable 'countTimeMvt' that is defined in the default interface scope. */
 				double get_countTimeMvt() const;
 				
@@ -111,10 +129,10 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				void set_countTimeMvt(double value);
 				
 				/*! Gets the value of the variable 'tempsMatch' that is defined in the default interface scope. */
-				int32_t get_tempsMatch() const;
+				double get_tempsMatch() const;
 				
 				/*! Sets the value of the variable 'tempsMatch' that is defined in the default interface scope. */
-				void set_tempsMatch(int32_t value);
+				void set_tempsMatch(double value);
 				
 				/*! Gets the value of the variable 'countTempo' that is defined in the default interface scope. */
 				int32_t get_countTempo() const;
@@ -233,29 +251,11 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				/*! Gets the value of the variable 'CODEUR_ROUE_GAUCHE' that is defined in the default interface scope. */
 				const int32_t get_cODEUR_ROUE_GAUCHE() const;
 				
-				/*! Gets the value of the variable 'ORANGE' that is defined in the default interface scope. */
-				int32_t get_oRANGE() const;
-				
-				/*! Sets the value of the variable 'ORANGE' that is defined in the default interface scope. */
-				void set_oRANGE(int32_t value);
-				
-				/*! Gets the value of the variable 'VERT' that is defined in the default interface scope. */
-				int32_t get_vERT() const;
-				
-				/*! Sets the value of the variable 'VERT' that is defined in the default interface scope. */
-				void set_vERT(int32_t value);
-				
-				/*! Gets the value of the variable 'BLEU' that is defined in the default interface scope. */
-				int32_t get_bLEU() const;
-				
-				/*! Sets the value of the variable 'BLEU' that is defined in the default interface scope. */
-				void set_bLEU(int32_t value);
+				/*! Gets the value of the variable 'VIOLET' that is defined in the default interface scope. */
+				const int32_t get_vIOLET() const;
 				
 				/*! Gets the value of the variable 'JAUNE' that is defined in the default interface scope. */
-				int32_t get_jAUNE() const;
-				
-				/*! Sets the value of the variable 'JAUNE' that is defined in the default interface scope. */
-				void set_jAUNE(int32_t value);
+				const int32_t get_jAUNE() const;
 				
 				
 			protected:
@@ -273,8 +273,9 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				int32_t IN_Couleur;
 				int32_t IN_Obstacle;
 				sc_boolean IN_Depression;
+				int32_t Couleur;
 				double countTimeMvt;
-				int32_t tempsMatch;
+				double tempsMatch;
 				int32_t countTempo;
 				int32_t countTempo2;
 				double countTime;
@@ -307,10 +308,8 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				static const int32_t CODEUR_CHARIOT;
 				static const int32_t CODEUR_ROUE_DROITE;
 				static const int32_t CODEUR_ROUE_GAUCHE;
-				int32_t ORANGE;
-				int32_t VERT;
-				int32_t BLEU;
-				int32_t JAUNE;
+				static const int32_t VIOLET;
+				static const int32_t JAUNE;
 		};
 		
 		/*! Returns an instance of the interface class 'DefaultSCI'. */
@@ -379,6 +378,12 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		/*! Sets the value of the variable 'IN_Depression' that is defined in the default interface scope. */
 		void set_iN_Depression(sc_boolean value);
 		
+		/*! Gets the value of the variable 'Couleur' that is defined in the default interface scope. */
+		int32_t get_couleur() const;
+		
+		/*! Sets the value of the variable 'Couleur' that is defined in the default interface scope. */
+		void set_couleur(int32_t value);
+		
 		/*! Gets the value of the variable 'countTimeMvt' that is defined in the default interface scope. */
 		double get_countTimeMvt() const;
 		
@@ -386,10 +391,10 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		void set_countTimeMvt(double value);
 		
 		/*! Gets the value of the variable 'tempsMatch' that is defined in the default interface scope. */
-		int32_t get_tempsMatch() const;
+		double get_tempsMatch() const;
 		
 		/*! Sets the value of the variable 'tempsMatch' that is defined in the default interface scope. */
-		void set_tempsMatch(int32_t value);
+		void set_tempsMatch(double value);
 		
 		/*! Gets the value of the variable 'countTempo' that is defined in the default interface scope. */
 		int32_t get_countTempo() const;
@@ -508,29 +513,11 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		/*! Gets the value of the variable 'CODEUR_ROUE_GAUCHE' that is defined in the default interface scope. */
 		const int32_t get_cODEUR_ROUE_GAUCHE() const;
 		
-		/*! Gets the value of the variable 'ORANGE' that is defined in the default interface scope. */
-		int32_t get_oRANGE() const;
-		
-		/*! Sets the value of the variable 'ORANGE' that is defined in the default interface scope. */
-		void set_oRANGE(int32_t value);
-		
-		/*! Gets the value of the variable 'VERT' that is defined in the default interface scope. */
-		int32_t get_vERT() const;
-		
-		/*! Sets the value of the variable 'VERT' that is defined in the default interface scope. */
-		void set_vERT(int32_t value);
-		
-		/*! Gets the value of the variable 'BLEU' that is defined in the default interface scope. */
-		int32_t get_bLEU() const;
-		
-		/*! Sets the value of the variable 'BLEU' that is defined in the default interface scope. */
-		void set_bLEU(int32_t value);
+		/*! Gets the value of the variable 'VIOLET' that is defined in the default interface scope. */
+		const int32_t get_vIOLET() const;
 		
 		/*! Gets the value of the variable 'JAUNE' that is defined in the default interface scope. */
-		int32_t get_jAUNE() const;
-		
-		/*! Sets the value of the variable 'JAUNE' that is defined in the default interface scope. */
-		void set_jAUNE(int32_t value);
+		const int32_t get_jAUNE() const;
 		
 		//! Inner class for asser interface scope.
 		class SCI_Asser
@@ -746,7 +733,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		sc_boolean isStateActive(IAStates state) const;
 		
 		//! number of time events used by the state machine.
-		static const sc_integer timeEventsCount = 2;
+		static const sc_integer timeEventsCount = 1;
 		
 		//! number of time events that can be active at once.
 		static const sc_integer parallelTimeEventsCount = 1;
@@ -759,12 +746,6 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		{
 			
 			public:
-				/*! Gets the value of the variable 'Couleur' that is defined in the internal scope. */
-				int32_t get_couleur() const;
-				
-				/*! Sets the value of the variable 'Couleur' that is defined in the internal scope. */
-				void set_couleur(int32_t value);
-				
 				/*! Gets the value of the variable 'invMouv' that is defined in the internal scope. */
 				int32_t get_invMouv() const;
 				
@@ -828,7 +809,6 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				
 			protected:
 				friend class IA;
-				int32_t Couleur;
 				int32_t invMouv;
 				double Te;
 				double PI;
@@ -842,7 +822,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		};
 		
 		//! the maximum number of orthogonal states defines the dimension of the state configuration vector.
-		static const sc_ushort maxOrthogonalStates = 1;
+		static const sc_ushort maxOrthogonalStates = 2;
 		
 		TimerInterface* timer;
 		sc_boolean timeEvents[timeEventsCount];
@@ -863,8 +843,11 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		
 		// prototypes of all internal functions
 		
-		void react_main_region_StateA();
-		void react_main_region_StateB();
+		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT();
+		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET();
+		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE();
+		void react_main_region_MATCH_EN_COURS__region0_ETAPE_1();
+		void react_main_region_FIN_MATCH();
 		void clearInEvents();
 		void clearOutEvents();
 		

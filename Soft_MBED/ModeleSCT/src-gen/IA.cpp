@@ -50,6 +50,8 @@ const int32_t IA::DefaultSCI::CODEUR_NON_DEFINI = 0;
 const int32_t IA::DefaultSCI::CODEUR_CHARIOT = 1;
 const int32_t IA::DefaultSCI::CODEUR_ROUE_DROITE = 2;
 const int32_t IA::DefaultSCI::CODEUR_ROUE_GAUCHE = 3;
+const int32_t IA::DefaultSCI::VIOLET = 0;
+const int32_t IA::DefaultSCI::JAUNE = 1;
 
 
 void IA::init()
@@ -71,6 +73,7 @@ void IA::init()
 	iface.IN_Couleur = 0;
 	iface.IN_Obstacle = 0;
 	iface.IN_Depression = false;
+	iface.Couleur = 1;
 	iface.countTimeMvt = 0;
 	iface.tempsMatch = 0;
 	iface.countTempo = 0;
@@ -80,11 +83,6 @@ void IA::init()
 	iface.y_pos_mem = 0;
 	iface.teta_pos_mem = 0;
 	iface.nb_Modules = 1;
-	iface.ORANGE = 1;
-	iface.VERT = 0;
-	iface.BLEU = 2;
-	iface.JAUNE = 3;
-	ifaceInternalSCI.Couleur = 1;
 	ifaceInternalSCI.invMouv = 1;
 	ifaceInternalSCI.Te = 0.02;
 	ifaceInternalSCI.PI = 3.14;
@@ -105,15 +103,26 @@ void IA::enter()
 	/* Default enter sequence for statechart IA */
 	/* 'default' enter sequence for region main region */
 	/* Default react sequence for initial entry  */
-	/* 'default' enter sequence for state StateA */
-	/* Entry action for state 'StateA'. */
-	timer->setTimer(this, (sc_eventid)(&timeEvents[0]), 15 * 1000, false);
-	Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 400);
-	Application.m_asservissement.CommandeMouvementXY_TETA(100, 20, 0);
-	Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp++;
-	Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.send();
-	stateConfVector[0] = main_region_StateA;
+	/* 'default' enter sequence for state ATTENTE_TIRETTE */
+	/* 'default' enter sequence for region null */
+	/* Default react sequence for initial entry  */
+	/* 'default' enter sequence for state ATTENTE_TIRETTE */
+	/* 'default' enter sequence for region INIT */
+	/* Default react sequence for initial entry  */
+	/* 'default' enter sequence for state INIT */
+	/* Entry action for state 'INIT'. */
+	Application.m_asservissement.CommandeManuelle(0, 0);
+	Application.m_leds.setPattern(PATTERN_K2000, 50);
+	stateConfVector[0] = main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT;
 	stateConfVectorPosition = 0;
+	/* 'default' enter sequence for region CHOIX_COULEUR */
+	/* Default react sequence for initial entry  */
+	/* 'default' enter sequence for state CHOIX_COULEUR_VIOLET */
+	/* Entry action for state 'CHOIX_COULEUR_VIOLET'. */
+	iface.Couleur = IA::DefaultSCI::VIOLET;
+	Application.m_leds.setPattern(PATTERN_K2000, 50);
+	stateConfVector[1] = main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET;
+	stateConfVectorPosition = 1;
 }
 
 void IA::exit()
@@ -123,22 +132,46 @@ void IA::exit()
 	/* Handle exit of all possible states (of IA.main_region) at position 0... */
 	switch(stateConfVector[ 0 ])
 	{
-		case main_region_StateA :
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT :
 		{
-			/* Default exit sequence for state StateA */
+			/* Default exit sequence for state INIT */
 			stateConfVector[0] = IA_last_state;
 			stateConfVectorPosition = 0;
-			/* Exit action for state 'StateA'. */
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_ETAPE_1 :
+		{
+			/* Default exit sequence for state ETAPE_1 */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'MATCH_EN_COURS'. */
 			timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
 			break;
 		}
-		case main_region_StateB :
+		case main_region_FIN_MATCH :
 		{
-			/* Default exit sequence for state StateB */
+			/* Default exit sequence for state FIN_MATCH */
 			stateConfVector[0] = IA_last_state;
 			stateConfVectorPosition = 0;
-			/* Exit action for state 'StateB'. */
-			timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+			break;
+		}
+		default: break;
+	}
+	/* Handle exit of all possible states (of IA.main_region) at position 1... */
+	switch(stateConfVector[ 1 ])
+	{
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET :
+		{
+			/* Default exit sequence for state CHOIX_COULEUR_VIOLET */
+			stateConfVector[1] = IA_last_state;
+			stateConfVectorPosition = 1;
+			break;
+		}
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE :
+		{
+			/* Default exit sequence for state CHOIX_COULEUR_JAUNE */
+			stateConfVector[1] = IA_last_state;
+			stateConfVectorPosition = 1;
 			break;
 		}
 		default: break;
@@ -147,7 +180,7 @@ void IA::exit()
 
 sc_boolean IA::isActive() const
 {
-	return stateConfVector[0] != IA_last_state;
+	return stateConfVector[0] != IA_last_state||stateConfVector[1] != IA_last_state;
 }
 
 /* 
@@ -168,14 +201,29 @@ void IA::runCycle()
 			
 		switch (stateConfVector[stateConfVectorPosition])
 		{
-		case main_region_StateA :
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT :
 		{
-			react_main_region_StateA();
+			react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT();
 			break;
 		}
-		case main_region_StateB :
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET :
 		{
-			react_main_region_StateB();
+			react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET();
+			break;
+		}
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE :
+		{
+			react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_ETAPE_1 :
+		{
+			react_main_region_MATCH_EN_COURS__region0_ETAPE_1();
+			break;
+		}
+		case main_region_FIN_MATCH :
+		{
+			react_main_region_FIN_MATCH();
 			break;
 		}
 		default:
@@ -193,7 +241,6 @@ void IA::clearInEvents()
 	iface.EV_ConvergenceMvt_Rapide_raised = false;
 	iface.EV_ConvergenceChariot_raised = false;
 	timeEvents[0] = false; 
-	timeEvents[1] = false; 
 }
 
 void IA::clearOutEvents()
@@ -223,11 +270,29 @@ sc_boolean IA::isStateActive(IAStates state) const
 {
 	switch (state)
 	{
-		case main_region_StateA : 
-			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_STATEA] == main_region_StateA
+		case main_region_ATTENTE_TIRETTE : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE] >= main_region_ATTENTE_TIRETTE
+				&& stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE] <= main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE);
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE] >= main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE
+				&& stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE] <= main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE);
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_INIT_INIT] == main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT
 			);
-		case main_region_StateB : 
-			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_STATEB] == main_region_StateB
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET] == main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET
+			);
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE] == main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE
+			);
+		case main_region_MATCH_EN_COURS : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS] >= main_region_MATCH_EN_COURS
+				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS] <= main_region_MATCH_EN_COURS__region0_ETAPE_1);
+		case main_region_MATCH_EN_COURS__region0_ETAPE_1 : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_ETAPE_1] == main_region_MATCH_EN_COURS__region0_ETAPE_1
+			);
+		case main_region_FIN_MATCH : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_FIN_MATCH] == main_region_FIN_MATCH
 			);
 		default: return false;
 	}
@@ -442,6 +507,26 @@ void IA::set_iN_Depression(sc_boolean value)
 	iface.IN_Depression = value;
 }
 
+int32_t IA::DefaultSCI::get_couleur() const
+{
+	return Couleur;
+}
+
+int32_t IA::get_couleur() const
+{
+	return iface.Couleur;
+}
+
+void IA::DefaultSCI::set_couleur(int32_t value)
+{
+	Couleur = value;
+}
+
+void IA::set_couleur(int32_t value)
+{
+	iface.Couleur = value;
+}
+
 double IA::DefaultSCI::get_countTimeMvt() const
 {
 	return countTimeMvt;
@@ -462,22 +547,22 @@ void IA::set_countTimeMvt(double value)
 	iface.countTimeMvt = value;
 }
 
-int32_t IA::DefaultSCI::get_tempsMatch() const
+double IA::DefaultSCI::get_tempsMatch() const
 {
 	return tempsMatch;
 }
 
-int32_t IA::get_tempsMatch() const
+double IA::get_tempsMatch() const
 {
 	return iface.tempsMatch;
 }
 
-void IA::DefaultSCI::set_tempsMatch(int32_t value)
+void IA::DefaultSCI::set_tempsMatch(double value)
 {
 	tempsMatch = value;
 }
 
-void IA::set_tempsMatch(int32_t value)
+void IA::set_tempsMatch(double value)
 {
 	iface.tempsMatch = value;
 }
@@ -872,94 +957,24 @@ const int32_t IA::get_cODEUR_ROUE_GAUCHE() const
 	return IA::DefaultSCI::CODEUR_ROUE_GAUCHE;
 }
 
-int32_t IA::DefaultSCI::get_oRANGE() const
+const int32_t IA::DefaultSCI::get_vIOLET() const
 {
-	return ORANGE;
+	return VIOLET;
 }
 
-int32_t IA::get_oRANGE() const
+const int32_t IA::get_vIOLET() const
 {
-	return iface.ORANGE;
+	return IA::DefaultSCI::VIOLET;
 }
 
-void IA::DefaultSCI::set_oRANGE(int32_t value)
-{
-	ORANGE = value;
-}
-
-void IA::set_oRANGE(int32_t value)
-{
-	iface.ORANGE = value;
-}
-
-int32_t IA::DefaultSCI::get_vERT() const
-{
-	return VERT;
-}
-
-int32_t IA::get_vERT() const
-{
-	return iface.VERT;
-}
-
-void IA::DefaultSCI::set_vERT(int32_t value)
-{
-	VERT = value;
-}
-
-void IA::set_vERT(int32_t value)
-{
-	iface.VERT = value;
-}
-
-int32_t IA::DefaultSCI::get_bLEU() const
-{
-	return BLEU;
-}
-
-int32_t IA::get_bLEU() const
-{
-	return iface.BLEU;
-}
-
-void IA::DefaultSCI::set_bLEU(int32_t value)
-{
-	BLEU = value;
-}
-
-void IA::set_bLEU(int32_t value)
-{
-	iface.BLEU = value;
-}
-
-int32_t IA::DefaultSCI::get_jAUNE() const
+const int32_t IA::DefaultSCI::get_jAUNE() const
 {
 	return JAUNE;
 }
 
-int32_t IA::get_jAUNE() const
+const int32_t IA::get_jAUNE() const
 {
-	return iface.JAUNE;
-}
-
-void IA::DefaultSCI::set_jAUNE(int32_t value)
-{
-	JAUNE = value;
-}
-
-void IA::set_jAUNE(int32_t value)
-{
-	iface.JAUNE = value;
-}
-
-int32_t IA::InternalSCI::get_couleur() const
-{
-	return Couleur;
-}
-
-void IA::InternalSCI::set_couleur(int32_t value)
-{
-	Couleur = value;
+	return IA::DefaultSCI::JAUNE;
 }
 
 int32_t IA::InternalSCI::get_invMouv() const
@@ -1123,48 +1138,137 @@ IA::SCI_Ihm* IA::getSCI_Ihm()
 
 // implementations of all internal functions
 
-/* The reactions of state StateA. */
-void IA::react_main_region_StateA()
+/* The reactions of state INIT. */
+void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT()
 {
-	/* The reactions of state StateA. */
-	if (timeEvents[0])
+	/* The reactions of state INIT. */
+	if (iface.EV_Tirette_raised)
 	{ 
-		/* Default exit sequence for state StateA */
-		stateConfVector[0] = IA_last_state;
+		/* Default exit sequence for state ATTENTE_TIRETTE */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT :
+			{
+				/* Default exit sequence for state INIT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 1... */
+		switch(stateConfVector[ 1 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET :
+			{
+				/* Default exit sequence for state CHOIX_COULEUR_VIOLET */
+				stateConfVector[1] = IA_last_state;
+				stateConfVectorPosition = 1;
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE :
+			{
+				/* Default exit sequence for state CHOIX_COULEUR_JAUNE */
+				stateConfVector[1] = IA_last_state;
+				stateConfVectorPosition = 1;
+				break;
+			}
+			default: break;
+		}
+		/* 'default' enter sequence for state MATCH_EN_COURS */
+		/* Entry action for state 'MATCH_EN_COURS'. */
+		timer->setTimer(this, (sc_eventid)(&timeEvents[0]), (DUREE_MATCH) * 1000, false);
+		Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+		/* 'default' enter sequence for region null */
+		/* Default react sequence for initial entry  */
+		/* 'default' enter sequence for state ETAPE_1 */
+		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_ETAPE_1;
 		stateConfVectorPosition = 0;
-		/* Exit action for state 'StateA'. */
-		timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
-		/* 'default' enter sequence for state StateB */
-		/* Entry action for state 'StateB'. */
-		timer->setTimer(this, (sc_eventid)(&timeEvents[1]), 15 * 1000, false);
-		Application.m_leds.setPattern(PATTERN_K2000, 50);
-		Application.m_asservissement.CommandeMouvementXY_TETA(0, 0, 0);
-		stateConfVector[0] = main_region_StateB;
-		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = 0;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = -1;
+	}
+}
+
+/* The reactions of state CHOIX_COULEUR_VIOLET. */
+void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET()
+{
+	/* The reactions of state CHOIX_COULEUR_VIOLET. */
+	if (iface.IN_Couleur == 1)
+	{ 
+		/* Default exit sequence for state CHOIX_COULEUR_VIOLET */
+		stateConfVector[1] = IA_last_state;
+		stateConfVectorPosition = 1;
+		/* 'default' enter sequence for state CHOIX_COULEUR_JAUNE */
+		/* Entry action for state 'CHOIX_COULEUR_JAUNE'. */
+		iface.Couleur = IA::DefaultSCI::JAUNE;
+		Application.m_leds.setPattern(PATTERN_CHENILLE, 50);
+		stateConfVector[1] = main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE;
+		stateConfVectorPosition = 1;
 	} 
 }
 
-/* The reactions of state StateB. */
-void IA::react_main_region_StateB()
+/* The reactions of state CHOIX_COULEUR_JAUNE. */
+void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE()
 {
-	/* The reactions of state StateB. */
-	if (timeEvents[1])
+	/* The reactions of state CHOIX_COULEUR_JAUNE. */
+	if (iface.IN_Couleur == 0)
 	{ 
-		/* Default exit sequence for state StateB */
-		stateConfVector[0] = IA_last_state;
-		stateConfVectorPosition = 0;
-		/* Exit action for state 'StateB'. */
-		timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
-		/* 'default' enter sequence for state StateA */
-		/* Entry action for state 'StateA'. */
-		timer->setTimer(this, (sc_eventid)(&timeEvents[0]), 15 * 1000, false);
-		Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 400);
-		Application.m_asservissement.CommandeMouvementXY_TETA(100, 20, 0);
-		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp++;
-		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.send();
-		stateConfVector[0] = main_region_StateA;
-		stateConfVectorPosition = 0;
+		/* Default exit sequence for state CHOIX_COULEUR_JAUNE */
+		stateConfVector[1] = IA_last_state;
+		stateConfVectorPosition = 1;
+		/* 'default' enter sequence for state CHOIX_COULEUR_VIOLET */
+		/* Entry action for state 'CHOIX_COULEUR_VIOLET'. */
+		iface.Couleur = IA::DefaultSCI::VIOLET;
+		Application.m_leds.setPattern(PATTERN_K2000, 50);
+		stateConfVector[1] = main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET;
+		stateConfVectorPosition = 1;
 	} 
+}
+
+/* The reactions of state ETAPE_1. */
+void IA::react_main_region_MATCH_EN_COURS__region0_ETAPE_1()
+{
+	/* The reactions of state ETAPE_1. */
+	if (timeEvents[0])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_ETAPE_1 :
+			{
+				/* Default exit sequence for state ETAPE_1 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+	}
+}
+
+/* The reactions of state FIN_MATCH. */
+void IA::react_main_region_FIN_MATCH()
+{
+	/* The reactions of state FIN_MATCH. */
+	Application.m_asservissement.CommandeManuelle(0, 0);
 }
 
 

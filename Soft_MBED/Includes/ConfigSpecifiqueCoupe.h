@@ -51,6 +51,9 @@ typedef enum {
 //! Numéro de pin utilisée pour le signan TX_ENABLE des servos AX
 #define _STOR_AX_TX_ENABLE _Stor3
 
+//! Durée du match
+#define DUREE_MATCH 100 // [sec]
+
 #endif // _CONFIG_SPECIFIQUE_COUPE
 
 
