@@ -52,6 +52,7 @@ OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CTrameCAN.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CTrameLaBotBox.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/MessagerieLaBotBox.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/MessengerXbeeNetwork.o
+OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/PowerSwitch.o
 
 ###############################################################################
 # Objects and Paths for CppRobLib
@@ -62,6 +63,7 @@ INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/Communication/Messenger/DatabaseXbeeNetw
 INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/Communication/Messenger/MessagesGeneric
 INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/Communication/XBEE
 INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/ServosAX
+INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/mcp23017
 
 OBJECTS += $(CPPROBLIB_PATH)/Communication/Messenger/databasebase.o
 OBJECTS += $(CPPROBLIB_PATH)/Communication/Messenger/messagebase.o
@@ -74,6 +76,7 @@ OBJECTS += $(CPPROBLIB_PATH)/Communication/Messenger/MessagesGeneric/message_tim
 OBJECTS += $(CPPROBLIB_PATH)/Communication/XBEE/xbeedriverbase.o
 OBJECTS += $(CPPROBLIB_PATH)/ServosAX/servoaxbase.o
 OBJECTS += $(CPPROBLIB_PATH)/ServosAX/servoax_utils.o
+OBJECTS += $(CPPROBLIB_PATH)/mcp23017/mcp23017base.o
 
 
 ###############################################################################

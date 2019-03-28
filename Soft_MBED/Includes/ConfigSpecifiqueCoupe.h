@@ -8,6 +8,7 @@
 #include "CMoteurs.h"
 #include "CCapteurs.h"
 #include "CServoMoteurSD20.h"
+#include "PowerSwitch.h"
 
 // Affectation des sorties moteurs
 typedef enum {
@@ -47,6 +48,12 @@ typedef enum {
 	SERVO_KMAR_BRAS,
     SERVO_AX_TOUS = 0xFE
 } eATTRIBUTION_SERVOS_AX;
+
+// affectation des sorties de la carte PowerSwitch
+typedef enum {
+    ELECTROVANNE_1 = PowerSwitch::XT1_OUTPUT,
+    ELECTROVANNE_2 = PowerSwitch::XT2_OUTPUT
+}eATTRIBUTION_POWER_SWITCH;
 
 //! Numéro de pin utilisée pour le signan TX_ENABLE des servos AX
 #define _STOR_AX_TX_ENABLE _Stor3
