@@ -30,29 +30,37 @@ typedef enum {
 
 }eATTRIBUTION_CODEURS;
 
-//! cet enumere contient les numeros d'attribution des servos SD20 pour 2014
+//! cet enumere contient les numeros d'attribution des servos SD20
 typedef enum {
-	SERVO_VENTOUSE=13,
-	SERVO_CENTREUR_G,
-	SERVO_CENTREUR_D,
-	SERVO_PINCE_D,
-	SERVO_PINCE_G,
-	SERVO_BALLE,
-	SERVO_RECOLTEURS,
-	SERVO_VOLET
+    SERVO_BRAS_ARD=14,
+    SERVO_PLATEAU_G=15,
+    SERVO_BARRIERE_AVG=16,
+    SERVO_BRAS_ARG = 18,
+    SERVO_PLATEAU_D=19,
+    SERVO_BARRIERE_AVD=20,
 } eATTRIBUTION_SERVOS_SD20;
 
-//! cet enumere contient les numeros d'attribution des servos AX pour 2014
+//! cet enumere contient les numeros d'attribution des servos AX
+// VERT = Vertical / HORIZ = Horizontal
 typedef enum {
-	SERVO_KMAR_ROTATION=0,
-	SERVO_KMAR_BRAS,
+    SERVO_VENTOUSE_ARD_VERT=0,
+    SERVO_VENTOUSE_ARG_VERT,
+    SERVO_VENTOUSE_AV_HORIZ,
+    SERVO_VENTOUSE_AV_VERT,
     SERVO_AX_TOUS = 0xFE
 } eATTRIBUTION_SERVOS_AX;
 
 // affectation des sorties de la carte PowerSwitch
+// EV = Electrovanne
+// AV = Avant / AR = Arrière
+// Pompe = Pompe à air
 typedef enum {
-    ELECTROVANNE_1 = PowerSwitch::XT1_OUTPUT,
-    ELECTROVANNE_2 = PowerSwitch::XT2_OUTPUT
+    POMPE_AV = PowerSwitch::XT1_OUTPUT,
+    // TODO: EV_AV
+    POMPE_ARG = PowerSwitch::XT5_OUTPUT,
+    POMPE_ARD = PowerSwitch::XT6_OUTPUT,
+    EV_ARG = PowerSwitch::XT7_OUTPUT,
+    EV_ARD = PowerSwitch::XT8_OUTPUT
 }eATTRIBUTION_POWER_SWITCH;
 
 //! Numéro de pin utilisée pour le signan TX_ENABLE des servos AX

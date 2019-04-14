@@ -10,7 +10,7 @@
         <regions xmi:id="_6IElwEfIEemC0pCtraHtKQ">
           <vertices xsi:type="sgraph:State" xmi:id="_8BflgEfIEemC0pCtraHtKQ" name="ATTENTE_TIRETTE" incomingTransitions="_Ua3kIEfJEemC0pCtraHtKQ">
             <regions xmi:id="_8BiBwEfIEemC0pCtraHtKQ" name="INIT">
-              <vertices xsi:type="sgraph:State" xmi:id="_Zff7oEfJEemC0pCtraHtKQ" specification="entry /&#xA;    Application.m_asservissement.CommandeManuelle(0, 0);&#xA;    Application.m_power_switch.setOutput(eATTRIBUTION_POWER_SWITCH.ELECTROVANNE_1, false);&#xA;    Application.m_leds.setPattern(tLedPattern.PATTERN_K2000, 50)&#xA;    " name="INIT" incomingTransitions="_dsv_MEfJEemC0pCtraHtKQ"/>
+              <vertices xsi:type="sgraph:State" xmi:id="_Zff7oEfJEemC0pCtraHtKQ" specification="entry /&#xA;    Application.m_asservissement.CommandeManuelle(0, 0);&#xA;    Application.m_power_switch.setOutput(eATTRIBUTION_POWER_SWITCH.EV_ARD, false);&#xA;    Application.m_leds.setPattern(tLedPattern.PATTERN_K2000, 50)&#xA;    " name="INIT" incomingTransitions="_dsv_MEfJEemC0pCtraHtKQ"/>
               <vertices xsi:type="sgraph:Entry" xmi:id="_bGMzsEfJEemC0pCtraHtKQ">
                 <outgoingTransitions xmi:id="_dsv_MEfJEemC0pCtraHtKQ" specification="" target="_Zff7oEfJEemC0pCtraHtKQ"/>
               </vertices>
@@ -32,7 +32,7 @@
           </vertices>
         </regions>
       </vertices>
-      <vertices xsi:type="sgraph:State" xmi:id="_eNZcgEd5Eem5E_rMCmFB1A" specification="entry/&#xA;  Application.m_leds.setPattern(tLedPattern.PATTERN_CLIGNO_12_34, 1000);&#xA;  Application.m_power_switch.setOutput(eATTRIBUTION_POWER_SWITCH.ELECTROVANNE_1, true)  // !! POUR ESSAI&#xA;&#xA;&#xA;oncycle /&#xA;   tempsMatch = tempsMatch + Te;&#xA;   Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = tempsMatch as int32_t&#xA;   " name="MATCH_EN_COURS" incomingTransitions="_t-Np4Ed5Eem5E_rMCmFB1A">
+      <vertices xsi:type="sgraph:State" xmi:id="_eNZcgEd5Eem5E_rMCmFB1A" specification="entry/&#xA;  Application.m_leds.setPattern(tLedPattern.PATTERN_CLIGNO_12_34, 1000);&#xA;  Application.m_power_switch.setOutput(eATTRIBUTION_POWER_SWITCH.EV_ARD, true)  // !! POUR ESSAI&#xA;&#xA;&#xA;oncycle /&#xA;   tempsMatch = tempsMatch + Te;&#xA;   Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = tempsMatch as int32_t&#xA;   " name="MATCH_EN_COURS" incomingTransitions="_t-Np4Ed5Eem5E_rMCmFB1A">
         <outgoingTransitions xmi:id="_1r9YsEd5Eem5E_rMCmFB1A" specification="after (DUREE_MATCH)s" target="_gl8oQEd5Eem5E_rMCmFB1A"/>
         <regions xmi:id="_8IycwEd6Eem5E_rMCmFB1A">
           <vertices xsi:type="sgraph:State" xmi:id="_84js0Ed6Eem5E_rMCmFB1A" name="ETAPE_1" incomingTransitions="__WegwEd6Eem5E_rMCmFB1A"/>

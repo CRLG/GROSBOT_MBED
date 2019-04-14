@@ -112,7 +112,7 @@ void IA::enter()
 	/* 'default' enter sequence for state INIT */
 	/* Entry action for state 'INIT'. */
 	Application.m_asservissement.CommandeManuelle(0, 0);
-	Application.m_power_switch.setOutput(ELECTROVANNE_1, false);
+	Application.m_power_switch.setOutput(EV_ARD, false);
 	Application.m_leds.setPattern(PATTERN_K2000, 50);
 	stateConfVector[0] = main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT;
 	stateConfVectorPosition = 0;
@@ -1182,7 +1182,7 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT()
 		/* Entry action for state 'MATCH_EN_COURS'. */
 		timer->setTimer(this, (sc_eventid)(&timeEvents[0]), (DUREE_MATCH) * 1000, false);
 		Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
-		Application.m_power_switch.setOutput(ELECTROVANNE_1, true);
+		Application.m_power_switch.setOutput(EV_ARD, true);
 		/* 'default' enter sequence for region null */
 		/* Default react sequence for initial entry  */
 		/* 'default' enter sequence for state ETAPE_1 */
