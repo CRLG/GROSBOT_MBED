@@ -14,14 +14,15 @@
 typedef enum {
    MOTEUR_ROUE_GAUCHE = MOTEUR_1,
    MOTEUR_ROUE_DROITE,  // MOTEUR_2
-   MOTEUR_CHARIOT, 	// MOTEUR_3
-   MOTEUR_MOELDAR, 	// MOTEUR_4
-   MOTEUR_NON_DEFINI_2, 	    // MOTEUR_5
-   MOTEUR_NON_DEFINI_3,    // MOTEUR_6
-   MOTEUR_ELECTROVANNE  // MOTEUR_7-> Moteur piloté en ON/OFF (sans PWM)
+   MOTEUR_NON_DEFINI_1, 	// MOTEUR_3
+   MOTEUR_NON_DEFINI_2, 	// MOTEUR_4
+   MOTEUR_NON_DEFINI_3, 	    // MOTEUR_5
+   MOTEUR_CHARIOT,    // MOTEUR_6
+   MOTEUR_NON_DEFINI_4  // MOTEUR_7-> Moteur piloté en ON/OFF (sans PWM)
 }eATTRIBUTION_MOTEURS;
 
 // Affectation des codeurs de position
+// ATTENTION : obsolète
 typedef enum {
    CODEUR_NON_DEFINI  =   CODEUR_1,
    CODEUR_CHARIOT,    // CODEUR_2
