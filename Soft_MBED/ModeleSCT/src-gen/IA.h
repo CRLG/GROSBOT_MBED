@@ -5,14 +5,16 @@
 #include "../src/sc_types.h"
 #include "../src/StatemachineInterface.h"
 #include "../src/TimedStatemachineInterface.h"
-#include "../../ext/mbed-common-rob/Includes/CAsservissement.h"
-#include "../../ext/mbed-common-rob/Includes/PowerSwitch.h"
 #include "../../Includes/ConfigSpecifiqueCoupe.h"
 #include "../../ext/mbed-common-rob/Includes/CGlobale.h"
 #include "../../ext/mbed-common-rob/Includes/CLeds.h"
-#include "../../ext/mbed-common-rob/Includes/MessengerXbeeNetwork.h"
-#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h"
+#include "../../ext/mbed-common-rob/Includes/CServoMoteurSD20.h"
 #include "../../ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.h"
+#include "../../ext/mbed-common-rob/Includes/CAsservissement.h"
+#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h"
+#include "../../ext/mbed-common-rob/Includes/PowerSwitch.h"
+#include "../../ext/mbed-common-rob/Includes/MessengerXbeeNetwork.h"
+#include "../../ext/CppRobLib/ServosAX/servoaxbase.h"
 
 /*! \file Header of the state machine 'IA'.
 */
@@ -25,7 +27,19 @@
 #define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET 1
 #define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE 1
 #define SCVI_MAIN_REGION_MATCH_EN_COURS 0
-#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_ETAPE_1 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_DETECTION_OBSTACLE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_DETECTION_OBSTACLE_R1_ARRET_ROBOT 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_DETECTION_OBSTACLE_R1_SORTIE_EVITEMENT 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_DETECTION_OBSTACLE_R1__FINAL_ 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE_R1_DEPASSE_ZONE_CHAOS 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE_R1_FACE_ZONE_CHAOS 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE_R1_STOCKAGE_DANS_ZONE_DEPART 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE_R1_PLACEMENT_DEVANT_DISTRIBUTEUR 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE_R1_VENTOUSAGE_ATOMES 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE_R1_RECUPERATION_ATOMES 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE_R1_DEVENTOUSAGE_ATOMES 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_SUPERVISOR 0
 #define SCVI_MAIN_REGION_FIN_MATCH 0
 
 class IA : public TimedStatemachineInterface, public StatemachineInterface
@@ -45,7 +59,19 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET,
 			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE,
 			main_region_MATCH_EN_COURS,
-			main_region_MATCH_EN_COURS__region0_ETAPE_1,
+			main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE,
+			main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT,
+			main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT,
+			main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_,
+			main_region_MATCH_EN_COURS__region0_NETTOYAGE,
+			main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS,
+			main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS,
+			main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART,
+			main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR,
+			main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES,
+			main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES,
+			main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES,
+			main_region_MATCH_EN_COURS__region0_SUPERVISOR,
 			main_region_FIN_MATCH
 		} IAStates;
 		
@@ -258,6 +284,9 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				/*! Gets the value of the variable 'JAUNE' that is defined in the default interface scope. */
 				const int32_t get_jAUNE() const;
 				
+				/*! Gets the value of the variable 'PI' that is defined in the default interface scope. */
+				const float get_pI() const;
+				
 				
 			protected:
 				friend class IA;
@@ -311,6 +340,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				static const int32_t CODEUR_ROUE_GAUCHE;
 				static const int32_t VIOLET;
 				static const int32_t JAUNE;
+				static const float PI;
 		};
 		
 		/*! Returns an instance of the interface class 'DefaultSCI'. */
@@ -519,6 +549,9 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		
 		/*! Gets the value of the variable 'JAUNE' that is defined in the default interface scope. */
 		const int32_t get_jAUNE() const;
+		
+		/*! Gets the value of the variable 'PI' that is defined in the default interface scope. */
+		const float get_pI() const;
 		
 		//! Inner class for asser interface scope.
 		class SCI_Asser
@@ -734,10 +767,10 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		sc_boolean isStateActive(IAStates state) const;
 		
 		//! number of time events used by the state machine.
-		static const sc_integer timeEventsCount = 1;
+		static const sc_integer timeEventsCount = 8;
 		
 		//! number of time events that can be active at once.
-		static const sc_integer parallelTimeEventsCount = 1;
+		static const sc_integer parallelTimeEventsCount = 2;
 	protected:
 		IA(const IA &rhs);
 		IA& operator=(const IA&);
@@ -758,12 +791,6 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				
 				/*! Sets the value of the variable 'Te' that is defined in the internal scope. */
 				void set_te(double value);
-				
-				/*! Gets the value of the variable 'PI' that is defined in the internal scope. */
-				double get_pI() const;
-				
-				/*! Sets the value of the variable 'PI' that is defined in the internal scope. */
-				void set_pI(double value);
 				
 				/*! Gets the value of the variable 'inhibeObstacle' that is defined in the internal scope. */
 				sc_boolean get_inhibeObstacle() const;
@@ -807,12 +834,17 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				/*! Sets the value of the variable 'nb_tentatives' that is defined in the internal scope. */
 				void set_nb_tentatives(int32_t value);
 				
+				/*! Gets the value of the variable 'etape' that is defined in the internal scope. */
+				int32_t get_etape() const;
+				
+				/*! Sets the value of the variable 'etape' that is defined in the internal scope. */
+				void set_etape(int32_t value);
+				
 				
 			protected:
 				friend class IA;
 				int32_t invMouv;
 				double Te;
-				double PI;
 				sc_boolean inhibeObstacle;
 				sc_boolean evitementEnCours;
 				double evitementTempo;
@@ -820,16 +852,20 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				sc_boolean sequence2;
 				int32_t pos_fusee;
 				int32_t nb_tentatives;
+				int32_t etape;
 		};
 		
 		//! the maximum number of orthogonal states defines the dimension of the state configuration vector.
 		static const sc_ushort maxOrthogonalStates = 2;
+		//! dimension of the state configuration vector for history states
+		static const sc_ushort maxHistoryStates = 1;
 		
 		TimerInterface* timer;
 		sc_boolean timeEvents[timeEventsCount];
 		
 		IAStates stateConfVector[maxOrthogonalStates];
 		
+		IAStates historyVector[maxHistoryStates];
 		sc_ushort stateConfVectorPosition;
 		
 		DefaultSCI iface;
@@ -844,11 +880,23 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		
 		// prototypes of all internal functions
 		
+		void shenseq_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1();
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT();
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET();
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE();
-		void react_main_region_MATCH_EN_COURS__region0_ETAPE_1();
+		void react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT();
+		void react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT();
+		void react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_();
+		void react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS();
+		void react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS();
+		void react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART();
+		void react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR();
+		void react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES();
+		void react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES();
+		void react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES();
+		void react_main_region_MATCH_EN_COURS__region0_SUPERVISOR();
 		void react_main_region_FIN_MATCH();
+		void react_main_region_MATCH_EN_COURS__region0__choice_0();
 		void clearInEvents();
 		void clearOutEvents();
 		
