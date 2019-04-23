@@ -118,6 +118,7 @@ void IA::enter()
 	/* Default react sequence for initial entry  */
 	/* 'default' enter sequence for state INIT */
 	/* Entry action for state 'INIT'. */
+	timer->setTimer(this, (sc_eventid)(&timeEvents[0]), 1 * 1000, false);
 	Application.m_asservissement.CommandeManuelle(0, 0);
 	Application.m_power_switch.setOutput(POMPE_ARG, false);
 	Application.m_leds.setPattern(PATTERN_K2000, 50);
@@ -145,6 +146,69 @@ void IA::exit()
 			/* Default exit sequence for state INIT */
 			stateConfVector[0] = IA_last_state;
 			stateConfVectorPosition = 0;
+			/* Exit action for state 'INIT'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+			break;
+		}
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUTS :
+		{
+			/* Default exit sequence for state TOBOGGANS_HAUTS */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'TOBOGGANS_HAUTS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+			break;
+		}
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_APPRENTISSAGE_ASCENSEUR :
+		{
+			/* Default exit sequence for state APPRENTISSAGE_ASCENSEUR */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'APPRENTISSAGE_ASCENSEUR'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+			break;
+		}
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_BAS :
+		{
+			/* Default exit sequence for state TOBOGGANS_BAS */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'TOBOGGANS_BAS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+			break;
+		}
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_01 :
+		{
+			/* Default exit sequence for state KMAR_RANGE_01 */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'KMAR_RANGE_01'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+			break;
+		}
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_02 :
+		{
+			/* Default exit sequence for state KMAR_RANGE_02 */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			break;
+		}
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01 :
+		{
+			/* Default exit sequence for state KMAR_SORTI_01 */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'KMAR_SORTI_01'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+			break;
+		}
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02 :
+		{
+			/* Default exit sequence for state KMAR_SORTI_02 */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'KMAR_SORTI_02'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
 			break;
 		}
 		case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
@@ -153,11 +217,11 @@ void IA::exit()
 			stateConfVector[0] = IA_last_state;
 			stateConfVectorPosition = 0;
 			/* Exit action for state 'ARRET_ROBOT'. */
-			timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
 			/* Exit action for state 'DETECTION_OBSTACLE'. */
 			Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
 			/* Exit action for state 'MATCH_EN_COURS'. */
-			timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 			break;
 		}
 		case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
@@ -168,7 +232,7 @@ void IA::exit()
 			/* Exit action for state 'DETECTION_OBSTACLE'. */
 			Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
 			/* Exit action for state 'MATCH_EN_COURS'. */
-			timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 			break;
 		}
 		case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
@@ -179,7 +243,7 @@ void IA::exit()
 			/* Exit action for state 'DETECTION_OBSTACLE'. */
 			Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
 			/* Exit action for state 'MATCH_EN_COURS'. */
-			timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 			break;
 		}
 		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
@@ -188,9 +252,9 @@ void IA::exit()
 			stateConfVector[0] = IA_last_state;
 			stateConfVectorPosition = 0;
 			/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
-			timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
 			/* Exit action for state 'MATCH_EN_COURS'. */
-			timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 			break;
 		}
 		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
@@ -199,9 +263,9 @@ void IA::exit()
 			stateConfVector[0] = IA_last_state;
 			stateConfVectorPosition = 0;
 			/* Exit action for state 'FACE_ZONE_CHAOS'. */
-			timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
 			/* Exit action for state 'MATCH_EN_COURS'. */
-			timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 			break;
 		}
 		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
@@ -210,9 +274,9 @@ void IA::exit()
 			stateConfVector[0] = IA_last_state;
 			stateConfVectorPosition = 0;
 			/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-			timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
 			/* Exit action for state 'MATCH_EN_COURS'. */
-			timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 			break;
 		}
 		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
@@ -221,9 +285,9 @@ void IA::exit()
 			stateConfVector[0] = IA_last_state;
 			stateConfVectorPosition = 0;
 			/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-			timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
 			/* Exit action for state 'MATCH_EN_COURS'. */
-			timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 			break;
 		}
 		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
@@ -232,9 +296,9 @@ void IA::exit()
 			stateConfVector[0] = IA_last_state;
 			stateConfVectorPosition = 0;
 			/* Exit action for state 'VENTOUSAGE_ATOMES'. */
-			timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
 			/* Exit action for state 'MATCH_EN_COURS'. */
-			timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 			break;
 		}
 		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
@@ -243,9 +307,9 @@ void IA::exit()
 			stateConfVector[0] = IA_last_state;
 			stateConfVectorPosition = 0;
 			/* Exit action for state 'RECUPERATION_ATOMES'. */
-			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
 			/* Exit action for state 'MATCH_EN_COURS'. */
-			timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 			break;
 		}
 		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
@@ -254,7 +318,7 @@ void IA::exit()
 			stateConfVector[0] = IA_last_state;
 			stateConfVectorPosition = 0;
 			/* Exit action for state 'MATCH_EN_COURS'. */
-			timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 			break;
 		}
 		case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
@@ -263,7 +327,7 @@ void IA::exit()
 			stateConfVector[0] = IA_last_state;
 			stateConfVectorPosition = 0;
 			/* Exit action for state 'MATCH_EN_COURS'. */
-			timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 			break;
 		}
 		case main_region_FIN_MATCH :
@@ -322,6 +386,41 @@ void IA::runCycle()
 		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT :
 		{
 			react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT();
+			break;
+		}
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUTS :
+		{
+			react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUTS();
+			break;
+		}
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_APPRENTISSAGE_ASCENSEUR :
+		{
+			react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_APPRENTISSAGE_ASCENSEUR();
+			break;
+		}
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_BAS :
+		{
+			react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_BAS();
+			break;
+		}
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_01 :
+		{
+			react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_01();
+			break;
+		}
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_02 :
+		{
+			react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_02();
+			break;
+		}
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01 :
+		{
+			react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01();
+			break;
+		}
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02 :
+		{
+			react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02();
 			break;
 		}
 		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET :
@@ -416,6 +515,13 @@ void IA::clearInEvents()
 	timeEvents[5] = false; 
 	timeEvents[6] = false; 
 	timeEvents[7] = false; 
+	timeEvents[8] = false; 
+	timeEvents[9] = false; 
+	timeEvents[10] = false; 
+	timeEvents[11] = false; 
+	timeEvents[12] = false; 
+	timeEvents[13] = false; 
+	timeEvents[14] = false; 
 }
 
 void IA::clearOutEvents()
@@ -453,6 +559,27 @@ sc_boolean IA::isStateActive(IAStates state) const
 				&& stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE] <= main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE);
 		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_INIT_INIT] == main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT
+			);
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUTS : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUTS] == main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUTS
+			);
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_APPRENTISSAGE_ASCENSEUR : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_INIT_APPRENTISSAGE_ASCENSEUR] == main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_APPRENTISSAGE_ASCENSEUR
+			);
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_BAS : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_INIT_TOBOGGANS_BAS] == main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_BAS
+			);
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_01 : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_01] == main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_01
+			);
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_02 : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_02] == main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_02
+			);
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01 : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01] == main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01
+			);
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02 : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02] == main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02
 			);
 		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET] == main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET
@@ -1370,7 +1497,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1()
 		{
 			/* 'default' enter sequence for state DEPASSE_ZONE_CHAOS */
 			/* Entry action for state 'DEPASSE_ZONE_CHAOS'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[2]), 3 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[9]), 3 * 1000, false);
 			SCI_Asser_OCB::XYTeta(114, 0, 0);
 			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS;
 			stateConfVectorPosition = 0;
@@ -1381,7 +1508,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1()
 		{
 			/* 'default' enter sequence for state FACE_ZONE_CHAOS */
 			/* Entry action for state 'FACE_ZONE_CHAOS'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[3]), 3 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), 3 * 1000, false);
 			SCI_Asser_OCB::XYTeta(114, -57, 0);
 			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS;
 			stateConfVectorPosition = 0;
@@ -1392,8 +1519,8 @@ void IA::shenseq_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1()
 		{
 			/* 'default' enter sequence for state STOCKAGE_DANS_ZONE_DEPART */
 			/* Entry action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[4]), 3 * 1000, false);
-			SCI_Asser_OCB::XYTeta(30, 0, 0);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[11]), 3 * 1000, false);
+			SCI_Asser_OCB::XYTeta(30, -57, 0);
 			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART;
 			stateConfVectorPosition = 0;
 			historyVector[0] = stateConfVector[0];
@@ -1403,8 +1530,8 @@ void IA::shenseq_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1()
 		{
 			/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
 			/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[5]), 4 * 1000, false);
-			SCI_Asser_OCB::XYTeta(78, -80, IA::DefaultSCI::PI / 2);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[12]), 4 * 1000, false);
+			SCI_Asser_OCB::XYTeta(82, -80, IA::DefaultSCI::PI / 2);
 			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR;
 			stateConfVectorPosition = 0;
 			historyVector[0] = stateConfVector[0];
@@ -1414,7 +1541,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1()
 		{
 			/* 'default' enter sequence for state VENTOUSAGE_ATOMES */
 			/* Entry action for state 'VENTOUSAGE_ATOMES'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[6]), 2 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[13]), 2 * 1000, false);
 			Application.m_power_switch.setOutput(POMPE_ARD, true);
 			Application.m_power_switch.setOutput(POMPE_ARG, true);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, 140);
@@ -1430,7 +1557,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1()
 		{
 			/* 'default' enter sequence for state RECUPERATION_ATOMES */
 			/* Entry action for state 'RECUPERATION_ATOMES'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[7]), 1 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[14]), 1 * 1000, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, 50);
 			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, 170);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, 255);
@@ -1473,6 +1600,69 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT()
 				/* Default exit sequence for state INIT */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
+				/* Exit action for state 'INIT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUTS :
+			{
+				/* Default exit sequence for state TOBOGGANS_HAUTS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'TOBOGGANS_HAUTS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_APPRENTISSAGE_ASCENSEUR :
+			{
+				/* Default exit sequence for state APPRENTISSAGE_ASCENSEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'APPRENTISSAGE_ASCENSEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_BAS :
+			{
+				/* Default exit sequence for state TOBOGGANS_BAS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'TOBOGGANS_BAS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_01 :
+			{
+				/* Default exit sequence for state KMAR_RANGE_01 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_RANGE_01'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_02 :
+			{
+				/* Default exit sequence for state KMAR_RANGE_02 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01 :
+			{
+				/* Default exit sequence for state KMAR_SORTI_01 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_SORTI_01'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02 :
+			{
+				/* Default exit sequence for state KMAR_SORTI_02 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_SORTI_02'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
 				break;
 			}
 			default: break;
@@ -1498,9 +1688,10 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT()
 		}
 		/* 'default' enter sequence for state MATCH_EN_COURS */
 		/* Entry action for state 'MATCH_EN_COURS'. */
-		timer->setTimer(this, (sc_eventid)(&timeEvents[0]), (DUREE_MATCH) * 1000, false);
+		timer->setTimer(this, (sc_eventid)(&timeEvents[7]), (DUREE_MATCH) * 1000, false);
 		Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
 		Application.m_asservissement.setPosition_XYTeta(0, 0, 0);
+		Application.m_asservissement.Ind_perfo = 0.3;
 		/* 'default' enter sequence for region null */
 		/* Default react sequence for initial entry  */
 		/* 'default' enter sequence for state SUPERVISOR */
@@ -1512,6 +1703,963 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT()
 	{
 		iface.tempsMatch = 0;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = -1;
+		if (timeEvents[0])
+		{ 
+			/* Default exit sequence for state INIT */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'INIT'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+			/* 'default' enter sequence for state TOBOGGANS_HAUTS */
+			/* Entry action for state 'TOBOGGANS_HAUTS'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[1]), 200, false);
+			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, 140);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, 512);
+			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, 110);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, 512);
+			stateConfVector[0] = main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUTS;
+			stateConfVectorPosition = 0;
+		} 
+	}
+}
+
+/* The reactions of state TOBOGGANS_HAUTS. */
+void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUTS()
+{
+	/* The reactions of state TOBOGGANS_HAUTS. */
+	if (iface.EV_Tirette_raised)
+	{ 
+		/* Default exit sequence for state ATTENTE_TIRETTE */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT :
+			{
+				/* Default exit sequence for state INIT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'INIT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUTS :
+			{
+				/* Default exit sequence for state TOBOGGANS_HAUTS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'TOBOGGANS_HAUTS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_APPRENTISSAGE_ASCENSEUR :
+			{
+				/* Default exit sequence for state APPRENTISSAGE_ASCENSEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'APPRENTISSAGE_ASCENSEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_BAS :
+			{
+				/* Default exit sequence for state TOBOGGANS_BAS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'TOBOGGANS_BAS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_01 :
+			{
+				/* Default exit sequence for state KMAR_RANGE_01 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_RANGE_01'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_02 :
+			{
+				/* Default exit sequence for state KMAR_RANGE_02 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01 :
+			{
+				/* Default exit sequence for state KMAR_SORTI_01 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_SORTI_01'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02 :
+			{
+				/* Default exit sequence for state KMAR_SORTI_02 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_SORTI_02'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+				break;
+			}
+			default: break;
+		}
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 1... */
+		switch(stateConfVector[ 1 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET :
+			{
+				/* Default exit sequence for state CHOIX_COULEUR_VIOLET */
+				stateConfVector[1] = IA_last_state;
+				stateConfVectorPosition = 1;
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE :
+			{
+				/* Default exit sequence for state CHOIX_COULEUR_JAUNE */
+				stateConfVector[1] = IA_last_state;
+				stateConfVectorPosition = 1;
+				break;
+			}
+			default: break;
+		}
+		/* 'default' enter sequence for state MATCH_EN_COURS */
+		/* Entry action for state 'MATCH_EN_COURS'. */
+		timer->setTimer(this, (sc_eventid)(&timeEvents[7]), (DUREE_MATCH) * 1000, false);
+		Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+		Application.m_asservissement.setPosition_XYTeta(0, 0, 0);
+		Application.m_asservissement.Ind_perfo = 0.3;
+		/* 'default' enter sequence for region null */
+		/* Default react sequence for initial entry  */
+		/* 'default' enter sequence for state SUPERVISOR */
+		/* Entry action for state 'SUPERVISOR'. */
+		ifaceInternalSCI.etape = 0;
+		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_SUPERVISOR;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = 0;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = -1;
+		if (timeEvents[1])
+		{ 
+			/* Default exit sequence for state TOBOGGANS_HAUTS */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'TOBOGGANS_HAUTS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+			/* 'default' enter sequence for state KMAR_SORTI_01 */
+			/* Entry action for state 'KMAR_SORTI_01'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[5]), 200, false);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
+			stateConfVector[0] = main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01;
+			stateConfVectorPosition = 0;
+		} 
+	}
+}
+
+/* The reactions of state APPRENTISSAGE_ASCENSEUR. */
+void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_APPRENTISSAGE_ASCENSEUR()
+{
+	/* The reactions of state APPRENTISSAGE_ASCENSEUR. */
+	if (iface.EV_Tirette_raised)
+	{ 
+		/* Default exit sequence for state ATTENTE_TIRETTE */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT :
+			{
+				/* Default exit sequence for state INIT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'INIT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUTS :
+			{
+				/* Default exit sequence for state TOBOGGANS_HAUTS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'TOBOGGANS_HAUTS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_APPRENTISSAGE_ASCENSEUR :
+			{
+				/* Default exit sequence for state APPRENTISSAGE_ASCENSEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'APPRENTISSAGE_ASCENSEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_BAS :
+			{
+				/* Default exit sequence for state TOBOGGANS_BAS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'TOBOGGANS_BAS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_01 :
+			{
+				/* Default exit sequence for state KMAR_RANGE_01 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_RANGE_01'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_02 :
+			{
+				/* Default exit sequence for state KMAR_RANGE_02 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01 :
+			{
+				/* Default exit sequence for state KMAR_SORTI_01 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_SORTI_01'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02 :
+			{
+				/* Default exit sequence for state KMAR_SORTI_02 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_SORTI_02'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+				break;
+			}
+			default: break;
+		}
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 1... */
+		switch(stateConfVector[ 1 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET :
+			{
+				/* Default exit sequence for state CHOIX_COULEUR_VIOLET */
+				stateConfVector[1] = IA_last_state;
+				stateConfVectorPosition = 1;
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE :
+			{
+				/* Default exit sequence for state CHOIX_COULEUR_JAUNE */
+				stateConfVector[1] = IA_last_state;
+				stateConfVectorPosition = 1;
+				break;
+			}
+			default: break;
+		}
+		/* 'default' enter sequence for state MATCH_EN_COURS */
+		/* Entry action for state 'MATCH_EN_COURS'. */
+		timer->setTimer(this, (sc_eventid)(&timeEvents[7]), (DUREE_MATCH) * 1000, false);
+		Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+		Application.m_asservissement.setPosition_XYTeta(0, 0, 0);
+		Application.m_asservissement.Ind_perfo = 0.3;
+		/* 'default' enter sequence for region null */
+		/* Default react sequence for initial entry  */
+		/* 'default' enter sequence for state SUPERVISOR */
+		/* Entry action for state 'SUPERVISOR'. */
+		ifaceInternalSCI.etape = 0;
+		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_SUPERVISOR;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = 0;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = -1;
+		if (timeEvents[2])
+		{ 
+			/* Default exit sequence for state APPRENTISSAGE_ASCENSEUR */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'APPRENTISSAGE_ASCENSEUR'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+			/* 'default' enter sequence for state TOBOGGANS_BAS */
+			/* Entry action for state 'TOBOGGANS_BAS'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[3]), 200, false);
+			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, 65);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, 170);
+			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, 210);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, 850);
+			stateConfVector[0] = main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_BAS;
+			stateConfVectorPosition = 0;
+		} 
+	}
+}
+
+/* The reactions of state TOBOGGANS_BAS. */
+void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_BAS()
+{
+	/* The reactions of state TOBOGGANS_BAS. */
+	if (iface.EV_Tirette_raised)
+	{ 
+		/* Default exit sequence for state ATTENTE_TIRETTE */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT :
+			{
+				/* Default exit sequence for state INIT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'INIT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUTS :
+			{
+				/* Default exit sequence for state TOBOGGANS_HAUTS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'TOBOGGANS_HAUTS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_APPRENTISSAGE_ASCENSEUR :
+			{
+				/* Default exit sequence for state APPRENTISSAGE_ASCENSEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'APPRENTISSAGE_ASCENSEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_BAS :
+			{
+				/* Default exit sequence for state TOBOGGANS_BAS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'TOBOGGANS_BAS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_01 :
+			{
+				/* Default exit sequence for state KMAR_RANGE_01 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_RANGE_01'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_02 :
+			{
+				/* Default exit sequence for state KMAR_RANGE_02 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01 :
+			{
+				/* Default exit sequence for state KMAR_SORTI_01 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_SORTI_01'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02 :
+			{
+				/* Default exit sequence for state KMAR_SORTI_02 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_SORTI_02'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+				break;
+			}
+			default: break;
+		}
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 1... */
+		switch(stateConfVector[ 1 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET :
+			{
+				/* Default exit sequence for state CHOIX_COULEUR_VIOLET */
+				stateConfVector[1] = IA_last_state;
+				stateConfVectorPosition = 1;
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE :
+			{
+				/* Default exit sequence for state CHOIX_COULEUR_JAUNE */
+				stateConfVector[1] = IA_last_state;
+				stateConfVectorPosition = 1;
+				break;
+			}
+			default: break;
+		}
+		/* 'default' enter sequence for state MATCH_EN_COURS */
+		/* Entry action for state 'MATCH_EN_COURS'. */
+		timer->setTimer(this, (sc_eventid)(&timeEvents[7]), (DUREE_MATCH) * 1000, false);
+		Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+		Application.m_asservissement.setPosition_XYTeta(0, 0, 0);
+		Application.m_asservissement.Ind_perfo = 0.3;
+		/* 'default' enter sequence for region null */
+		/* Default react sequence for initial entry  */
+		/* 'default' enter sequence for state SUPERVISOR */
+		/* Entry action for state 'SUPERVISOR'. */
+		ifaceInternalSCI.etape = 0;
+		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_SUPERVISOR;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = 0;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = -1;
+		if (timeEvents[3])
+		{ 
+			/* Default exit sequence for state TOBOGGANS_BAS */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'TOBOGGANS_BAS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+			/* 'default' enter sequence for state KMAR_RANGE_01 */
+			/* Entry action for state 'KMAR_RANGE_01'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[4]), 200, false);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_VERT, 200);
+			stateConfVector[0] = main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_01;
+			stateConfVectorPosition = 0;
+		} 
+	}
+}
+
+/* The reactions of state KMAR_RANGE_01. */
+void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_01()
+{
+	/* The reactions of state KMAR_RANGE_01. */
+	if (iface.EV_Tirette_raised)
+	{ 
+		/* Default exit sequence for state ATTENTE_TIRETTE */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT :
+			{
+				/* Default exit sequence for state INIT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'INIT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUTS :
+			{
+				/* Default exit sequence for state TOBOGGANS_HAUTS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'TOBOGGANS_HAUTS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_APPRENTISSAGE_ASCENSEUR :
+			{
+				/* Default exit sequence for state APPRENTISSAGE_ASCENSEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'APPRENTISSAGE_ASCENSEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_BAS :
+			{
+				/* Default exit sequence for state TOBOGGANS_BAS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'TOBOGGANS_BAS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_01 :
+			{
+				/* Default exit sequence for state KMAR_RANGE_01 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_RANGE_01'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_02 :
+			{
+				/* Default exit sequence for state KMAR_RANGE_02 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01 :
+			{
+				/* Default exit sequence for state KMAR_SORTI_01 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_SORTI_01'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02 :
+			{
+				/* Default exit sequence for state KMAR_SORTI_02 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_SORTI_02'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+				break;
+			}
+			default: break;
+		}
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 1... */
+		switch(stateConfVector[ 1 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET :
+			{
+				/* Default exit sequence for state CHOIX_COULEUR_VIOLET */
+				stateConfVector[1] = IA_last_state;
+				stateConfVectorPosition = 1;
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE :
+			{
+				/* Default exit sequence for state CHOIX_COULEUR_JAUNE */
+				stateConfVector[1] = IA_last_state;
+				stateConfVectorPosition = 1;
+				break;
+			}
+			default: break;
+		}
+		/* 'default' enter sequence for state MATCH_EN_COURS */
+		/* Entry action for state 'MATCH_EN_COURS'. */
+		timer->setTimer(this, (sc_eventid)(&timeEvents[7]), (DUREE_MATCH) * 1000, false);
+		Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+		Application.m_asservissement.setPosition_XYTeta(0, 0, 0);
+		Application.m_asservissement.Ind_perfo = 0.3;
+		/* 'default' enter sequence for region null */
+		/* Default react sequence for initial entry  */
+		/* 'default' enter sequence for state SUPERVISOR */
+		/* Entry action for state 'SUPERVISOR'. */
+		ifaceInternalSCI.etape = 0;
+		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_SUPERVISOR;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = 0;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = -1;
+		if (timeEvents[4])
+		{ 
+			/* Default exit sequence for state KMAR_RANGE_01 */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'KMAR_RANGE_01'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+			/* 'default' enter sequence for state KMAR_RANGE_02 */
+			/* Entry action for state 'KMAR_RANGE_02'. */
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 200);
+			stateConfVector[0] = main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_02;
+			stateConfVectorPosition = 0;
+		} 
+	}
+}
+
+/* The reactions of state KMAR_RANGE_02. */
+void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_02()
+{
+	/* The reactions of state KMAR_RANGE_02. */
+	if (iface.EV_Tirette_raised)
+	{ 
+		/* Default exit sequence for state ATTENTE_TIRETTE */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT :
+			{
+				/* Default exit sequence for state INIT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'INIT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUTS :
+			{
+				/* Default exit sequence for state TOBOGGANS_HAUTS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'TOBOGGANS_HAUTS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_APPRENTISSAGE_ASCENSEUR :
+			{
+				/* Default exit sequence for state APPRENTISSAGE_ASCENSEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'APPRENTISSAGE_ASCENSEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_BAS :
+			{
+				/* Default exit sequence for state TOBOGGANS_BAS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'TOBOGGANS_BAS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_01 :
+			{
+				/* Default exit sequence for state KMAR_RANGE_01 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_RANGE_01'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_02 :
+			{
+				/* Default exit sequence for state KMAR_RANGE_02 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01 :
+			{
+				/* Default exit sequence for state KMAR_SORTI_01 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_SORTI_01'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02 :
+			{
+				/* Default exit sequence for state KMAR_SORTI_02 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_SORTI_02'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+				break;
+			}
+			default: break;
+		}
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 1... */
+		switch(stateConfVector[ 1 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET :
+			{
+				/* Default exit sequence for state CHOIX_COULEUR_VIOLET */
+				stateConfVector[1] = IA_last_state;
+				stateConfVectorPosition = 1;
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE :
+			{
+				/* Default exit sequence for state CHOIX_COULEUR_JAUNE */
+				stateConfVector[1] = IA_last_state;
+				stateConfVectorPosition = 1;
+				break;
+			}
+			default: break;
+		}
+		/* 'default' enter sequence for state MATCH_EN_COURS */
+		/* Entry action for state 'MATCH_EN_COURS'. */
+		timer->setTimer(this, (sc_eventid)(&timeEvents[7]), (DUREE_MATCH) * 1000, false);
+		Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+		Application.m_asservissement.setPosition_XYTeta(0, 0, 0);
+		Application.m_asservissement.Ind_perfo = 0.3;
+		/* 'default' enter sequence for region null */
+		/* Default react sequence for initial entry  */
+		/* 'default' enter sequence for state SUPERVISOR */
+		/* Entry action for state 'SUPERVISOR'. */
+		ifaceInternalSCI.etape = 0;
+		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_SUPERVISOR;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = 0;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = -1;
+	}
+}
+
+/* The reactions of state KMAR_SORTI_01. */
+void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01()
+{
+	/* The reactions of state KMAR_SORTI_01. */
+	if (iface.EV_Tirette_raised)
+	{ 
+		/* Default exit sequence for state ATTENTE_TIRETTE */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT :
+			{
+				/* Default exit sequence for state INIT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'INIT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUTS :
+			{
+				/* Default exit sequence for state TOBOGGANS_HAUTS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'TOBOGGANS_HAUTS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_APPRENTISSAGE_ASCENSEUR :
+			{
+				/* Default exit sequence for state APPRENTISSAGE_ASCENSEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'APPRENTISSAGE_ASCENSEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_BAS :
+			{
+				/* Default exit sequence for state TOBOGGANS_BAS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'TOBOGGANS_BAS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_01 :
+			{
+				/* Default exit sequence for state KMAR_RANGE_01 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_RANGE_01'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_02 :
+			{
+				/* Default exit sequence for state KMAR_RANGE_02 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01 :
+			{
+				/* Default exit sequence for state KMAR_SORTI_01 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_SORTI_01'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02 :
+			{
+				/* Default exit sequence for state KMAR_SORTI_02 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_SORTI_02'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+				break;
+			}
+			default: break;
+		}
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 1... */
+		switch(stateConfVector[ 1 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET :
+			{
+				/* Default exit sequence for state CHOIX_COULEUR_VIOLET */
+				stateConfVector[1] = IA_last_state;
+				stateConfVectorPosition = 1;
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE :
+			{
+				/* Default exit sequence for state CHOIX_COULEUR_JAUNE */
+				stateConfVector[1] = IA_last_state;
+				stateConfVectorPosition = 1;
+				break;
+			}
+			default: break;
+		}
+		/* 'default' enter sequence for state MATCH_EN_COURS */
+		/* Entry action for state 'MATCH_EN_COURS'. */
+		timer->setTimer(this, (sc_eventid)(&timeEvents[7]), (DUREE_MATCH) * 1000, false);
+		Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+		Application.m_asservissement.setPosition_XYTeta(0, 0, 0);
+		Application.m_asservissement.Ind_perfo = 0.3;
+		/* 'default' enter sequence for region null */
+		/* Default react sequence for initial entry  */
+		/* 'default' enter sequence for state SUPERVISOR */
+		/* Entry action for state 'SUPERVISOR'. */
+		ifaceInternalSCI.etape = 0;
+		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_SUPERVISOR;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = 0;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = -1;
+		if (timeEvents[5])
+		{ 
+			/* Default exit sequence for state KMAR_SORTI_01 */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'KMAR_SORTI_01'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+			/* 'default' enter sequence for state KMAR_SORTI_02 */
+			/* Entry action for state 'KMAR_SORTI_02'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[6]), 200, false);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_VERT, 512);
+			stateConfVector[0] = main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02;
+			stateConfVectorPosition = 0;
+		} 
+	}
+}
+
+/* The reactions of state KMAR_SORTI_02. */
+void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02()
+{
+	/* The reactions of state KMAR_SORTI_02. */
+	if (iface.EV_Tirette_raised)
+	{ 
+		/* Default exit sequence for state ATTENTE_TIRETTE */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT :
+			{
+				/* Default exit sequence for state INIT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'INIT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUTS :
+			{
+				/* Default exit sequence for state TOBOGGANS_HAUTS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'TOBOGGANS_HAUTS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_APPRENTISSAGE_ASCENSEUR :
+			{
+				/* Default exit sequence for state APPRENTISSAGE_ASCENSEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'APPRENTISSAGE_ASCENSEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_BAS :
+			{
+				/* Default exit sequence for state TOBOGGANS_BAS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'TOBOGGANS_BAS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_01 :
+			{
+				/* Default exit sequence for state KMAR_RANGE_01 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_RANGE_01'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_02 :
+			{
+				/* Default exit sequence for state KMAR_RANGE_02 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01 :
+			{
+				/* Default exit sequence for state KMAR_SORTI_01 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_SORTI_01'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02 :
+			{
+				/* Default exit sequence for state KMAR_SORTI_02 */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'KMAR_SORTI_02'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+				break;
+			}
+			default: break;
+		}
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 1... */
+		switch(stateConfVector[ 1 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET :
+			{
+				/* Default exit sequence for state CHOIX_COULEUR_VIOLET */
+				stateConfVector[1] = IA_last_state;
+				stateConfVectorPosition = 1;
+				break;
+			}
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE :
+			{
+				/* Default exit sequence for state CHOIX_COULEUR_JAUNE */
+				stateConfVector[1] = IA_last_state;
+				stateConfVectorPosition = 1;
+				break;
+			}
+			default: break;
+		}
+		/* 'default' enter sequence for state MATCH_EN_COURS */
+		/* Entry action for state 'MATCH_EN_COURS'. */
+		timer->setTimer(this, (sc_eventid)(&timeEvents[7]), (DUREE_MATCH) * 1000, false);
+		Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+		Application.m_asservissement.setPosition_XYTeta(0, 0, 0);
+		Application.m_asservissement.Ind_perfo = 0.3;
+		/* 'default' enter sequence for region null */
+		/* Default react sequence for initial entry  */
+		/* 'default' enter sequence for state SUPERVISOR */
+		/* Entry action for state 'SUPERVISOR'. */
+		ifaceInternalSCI.etape = 0;
+		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_SUPERVISOR;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = 0;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = -1;
+		if (timeEvents[6])
+		{ 
+			/* Default exit sequence for state KMAR_SORTI_02 */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'KMAR_SORTI_02'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+			/* 'default' enter sequence for state APPRENTISSAGE_ASCENSEUR */
+			/* Entry action for state 'APPRENTISSAGE_ASCENSEUR'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[2]), 7 * 1000, false);
+			Application.m_asservissement_chariot.Recal_Chariot();
+			stateConfVector[0] = main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_APPRENTISSAGE_ASCENSEUR;
+			stateConfVectorPosition = 0;
+		} 
 	}
 }
 
@@ -1555,7 +2703,7 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEU
 void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT()
 {
 	/* The reactions of state ARRET_ROBOT. */
-	if (timeEvents[0])
+	if (timeEvents[7])
 	{ 
 		/* Default exit sequence for state MATCH_EN_COURS */
 		/* Default exit sequence for region null */
@@ -1568,7 +2716,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_R
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'ARRET_ROBOT'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
 				/* Exit action for state 'DETECTION_OBSTACLE'. */
 				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
 				break;
@@ -1597,7 +2745,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_R
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
@@ -1606,7 +2754,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_R
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'FACE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
@@ -1615,7 +2763,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_R
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
@@ -1624,7 +2772,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_R
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
@@ -1633,7 +2781,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_R
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
@@ -1642,7 +2790,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_R
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'RECUPERATION_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
@@ -1662,7 +2810,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_R
 			default: break;
 		}
 		/* Exit action for state 'MATCH_EN_COURS'. */
-		timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 		/* 'default' enter sequence for state FIN_MATCH */
 		/* Entry action for state 'FIN_MATCH'. */
 		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
@@ -1686,7 +2834,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_R
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'ARRET_ROBOT'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
@@ -1710,13 +2858,13 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_R
 			react_main_region_MATCH_EN_COURS__region0__choice_0();
 		}  else
 		{
-			if (timeEvents[1])
+			if (timeEvents[8])
 			{ 
 				/* Default exit sequence for state ARRET_ROBOT */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'ARRET_ROBOT'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
 				/* 'default' enter sequence for state SORTIE_EVITEMENT */
 				/* Entry action for state 'SORTIE_EVITEMENT'. */
 				ifaceInternalSCI.evitementEnCours = false;
@@ -1731,7 +2879,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_R
 void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT()
 {
 	/* The reactions of state SORTIE_EVITEMENT. */
-	if (timeEvents[0])
+	if (timeEvents[7])
 	{ 
 		/* Default exit sequence for state MATCH_EN_COURS */
 		/* Default exit sequence for region null */
@@ -1744,7 +2892,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'ARRET_ROBOT'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
 				/* Exit action for state 'DETECTION_OBSTACLE'. */
 				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
 				break;
@@ -1773,7 +2921,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
@@ -1782,7 +2930,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'FACE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
@@ -1791,7 +2939,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
@@ -1800,7 +2948,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
@@ -1809,7 +2957,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
@@ -1818,7 +2966,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'RECUPERATION_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
@@ -1838,7 +2986,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_
 			default: break;
 		}
 		/* Exit action for state 'MATCH_EN_COURS'. */
-		timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 		/* 'default' enter sequence for state FIN_MATCH */
 		/* Entry action for state 'FIN_MATCH'. */
 		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
@@ -1862,7 +3010,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'ARRET_ROBOT'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
@@ -1900,7 +3048,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_
 void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_()
 {
 	/* The reactions of state null. */
-	if (timeEvents[0])
+	if (timeEvents[7])
 	{ 
 		/* Default exit sequence for state MATCH_EN_COURS */
 		/* Default exit sequence for region null */
@@ -1913,7 +3061,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'ARRET_ROBOT'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
 				/* Exit action for state 'DETECTION_OBSTACLE'. */
 				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
 				break;
@@ -1942,7 +3090,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
@@ -1951,7 +3099,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'FACE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
@@ -1960,7 +3108,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
@@ -1969,7 +3117,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
@@ -1978,7 +3126,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
@@ -1987,7 +3135,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'RECUPERATION_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
@@ -2007,7 +3155,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_
 			default: break;
 		}
 		/* Exit action for state 'MATCH_EN_COURS'. */
-		timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 		/* 'default' enter sequence for state FIN_MATCH */
 		/* Entry action for state 'FIN_MATCH'. */
 		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
@@ -2031,7 +3179,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'ARRET_ROBOT'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
@@ -2061,7 +3209,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_
 void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS()
 {
 	/* The reactions of state DEPASSE_ZONE_CHAOS. */
-	if (timeEvents[0])
+	if (timeEvents[7])
 	{ 
 		/* Default exit sequence for state MATCH_EN_COURS */
 		/* Default exit sequence for region null */
@@ -2074,7 +3222,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHA
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'ARRET_ROBOT'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
 				/* Exit action for state 'DETECTION_OBSTACLE'. */
 				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
 				break;
@@ -2103,7 +3251,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHA
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
@@ -2112,7 +3260,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHA
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'FACE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
@@ -2121,7 +3269,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHA
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
@@ -2130,7 +3278,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHA
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
@@ -2139,7 +3287,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHA
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
@@ -2148,7 +3296,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHA
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'RECUPERATION_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
@@ -2168,7 +3316,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHA
 			default: break;
 		}
 		/* Exit action for state 'MATCH_EN_COURS'. */
-		timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 		/* 'default' enter sequence for state FIN_MATCH */
 		/* Entry action for state 'FIN_MATCH'. */
 		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
@@ -2192,7 +3340,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHA
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
@@ -2201,7 +3349,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHA
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'FACE_ZONE_CHAOS'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
@@ -2210,7 +3358,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHA
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
@@ -2219,7 +3367,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHA
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
@@ -2228,7 +3376,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHA
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'VENTOUSAGE_ATOMES'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
@@ -2237,7 +3385,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHA
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'RECUPERATION_ATOMES'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
@@ -2257,22 +3405,22 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHA
 			/* Default react sequence for initial entry  */
 			/* 'default' enter sequence for state ARRET_ROBOT */
 			/* Entry action for state 'ARRET_ROBOT'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[1]), (1) * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[8]), (1) * 1000, false);
 			Application.m_asservissement.CommandeManuelle(0, 0);
 			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT;
 			stateConfVectorPosition = 0;
 		}  else
 		{
-			if (iface.EV_ConvergenceMvt_Rapide_raised || timeEvents[2])
+			if (iface.EV_ConvergenceMvt_Rapide_raised || timeEvents[9])
 			{ 
 				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
 				/* 'default' enter sequence for state FACE_ZONE_CHAOS */
 				/* Entry action for state 'FACE_ZONE_CHAOS'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[3]), 3 * 1000, false);
+				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), 3 * 1000, false);
 				SCI_Asser_OCB::XYTeta(114, -57, 0);
 				stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS;
 				stateConfVectorPosition = 0;
@@ -2286,7 +3434,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHA
 void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS()
 {
 	/* The reactions of state FACE_ZONE_CHAOS. */
-	if (timeEvents[0])
+	if (timeEvents[7])
 	{ 
 		/* Default exit sequence for state MATCH_EN_COURS */
 		/* Default exit sequence for region null */
@@ -2299,7 +3447,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS(
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'ARRET_ROBOT'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
 				/* Exit action for state 'DETECTION_OBSTACLE'. */
 				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
 				break;
@@ -2328,7 +3476,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS(
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
@@ -2337,7 +3485,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS(
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'FACE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
@@ -2346,7 +3494,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS(
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
@@ -2355,7 +3503,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS(
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
@@ -2364,7 +3512,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS(
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
@@ -2373,7 +3521,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS(
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'RECUPERATION_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
@@ -2393,7 +3541,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS(
 			default: break;
 		}
 		/* Exit action for state 'MATCH_EN_COURS'. */
-		timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 		/* 'default' enter sequence for state FIN_MATCH */
 		/* Entry action for state 'FIN_MATCH'. */
 		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
@@ -2417,7 +3565,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS(
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
@@ -2426,7 +3574,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS(
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'FACE_ZONE_CHAOS'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
@@ -2435,7 +3583,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS(
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
@@ -2444,7 +3592,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS(
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
@@ -2453,7 +3601,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS(
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'VENTOUSAGE_ATOMES'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
@@ -2462,7 +3610,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS(
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'RECUPERATION_ATOMES'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
@@ -2482,23 +3630,23 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS(
 			/* Default react sequence for initial entry  */
 			/* 'default' enter sequence for state ARRET_ROBOT */
 			/* Entry action for state 'ARRET_ROBOT'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[1]), (1) * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[8]), (1) * 1000, false);
 			Application.m_asservissement.CommandeManuelle(0, 0);
 			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT;
 			stateConfVectorPosition = 0;
 		}  else
 		{
-			if (iface.EV_ConvergenceMvt_raised || timeEvents[3])
+			if (iface.EV_ConvergenceMvt_raised || timeEvents[10])
 			{ 
 				/* Default exit sequence for state FACE_ZONE_CHAOS */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'FACE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
 				/* 'default' enter sequence for state STOCKAGE_DANS_ZONE_DEPART */
 				/* Entry action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[4]), 3 * 1000, false);
-				SCI_Asser_OCB::XYTeta(30, 0, 0);
+				timer->setTimer(this, (sc_eventid)(&timeEvents[11]), 3 * 1000, false);
+				SCI_Asser_OCB::XYTeta(30, -57, 0);
 				stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART;
 				stateConfVectorPosition = 0;
 				historyVector[0] = stateConfVector[0];
@@ -2511,7 +3659,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS(
 void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART()
 {
 	/* The reactions of state STOCKAGE_DANS_ZONE_DEPART. */
-	if (timeEvents[0])
+	if (timeEvents[7])
 	{ 
 		/* Default exit sequence for state MATCH_EN_COURS */
 		/* Default exit sequence for region null */
@@ -2524,7 +3672,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZO
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'ARRET_ROBOT'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
 				/* Exit action for state 'DETECTION_OBSTACLE'. */
 				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
 				break;
@@ -2553,7 +3701,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZO
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
@@ -2562,7 +3710,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZO
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'FACE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
@@ -2571,7 +3719,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZO
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
@@ -2580,7 +3728,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZO
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
@@ -2589,7 +3737,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZO
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
@@ -2598,7 +3746,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZO
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'RECUPERATION_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
@@ -2618,7 +3766,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZO
 			default: break;
 		}
 		/* Exit action for state 'MATCH_EN_COURS'. */
-		timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 		/* 'default' enter sequence for state FIN_MATCH */
 		/* Entry action for state 'FIN_MATCH'. */
 		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
@@ -2642,7 +3790,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZO
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
@@ -2651,7 +3799,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZO
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'FACE_ZONE_CHAOS'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
@@ -2660,7 +3808,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZO
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
@@ -2669,7 +3817,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZO
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
@@ -2678,7 +3826,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZO
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'VENTOUSAGE_ATOMES'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
@@ -2687,7 +3835,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZO
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'RECUPERATION_ATOMES'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
@@ -2707,23 +3855,23 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZO
 			/* Default react sequence for initial entry  */
 			/* 'default' enter sequence for state ARRET_ROBOT */
 			/* Entry action for state 'ARRET_ROBOT'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[1]), (1) * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[8]), (1) * 1000, false);
 			Application.m_asservissement.CommandeManuelle(0, 0);
 			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT;
 			stateConfVectorPosition = 0;
 		}  else
 		{
-			if (iface.EV_ConvergenceMvt_raised || timeEvents[4])
+			if (iface.EV_ConvergenceMvt_raised || timeEvents[11])
 			{ 
 				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
 				/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
 				/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[5]), 4 * 1000, false);
-				SCI_Asser_OCB::XYTeta(78, -80, IA::DefaultSCI::PI / 2);
+				timer->setTimer(this, (sc_eventid)(&timeEvents[12]), 4 * 1000, false);
+				SCI_Asser_OCB::XYTeta(82, -80, IA::DefaultSCI::PI / 2);
 				stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR;
 				stateConfVectorPosition = 0;
 				historyVector[0] = stateConfVector[0];
@@ -2736,7 +3884,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZO
 void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR()
 {
 	/* The reactions of state PLACEMENT_DEVANT_DISTRIBUTEUR. */
-	if (timeEvents[0])
+	if (timeEvents[7])
 	{ 
 		/* Default exit sequence for state MATCH_EN_COURS */
 		/* Default exit sequence for region null */
@@ -2749,7 +3897,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'ARRET_ROBOT'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
 				/* Exit action for state 'DETECTION_OBSTACLE'. */
 				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
 				break;
@@ -2778,7 +3926,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
@@ -2787,7 +3935,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'FACE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
@@ -2796,7 +3944,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
@@ -2805,7 +3953,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
@@ -2814,7 +3962,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
@@ -2823,7 +3971,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'RECUPERATION_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
@@ -2843,7 +3991,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT
 			default: break;
 		}
 		/* Exit action for state 'MATCH_EN_COURS'. */
-		timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 		/* 'default' enter sequence for state FIN_MATCH */
 		/* Entry action for state 'FIN_MATCH'. */
 		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
@@ -2867,7 +4015,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
@@ -2876,7 +4024,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'FACE_ZONE_CHAOS'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
@@ -2885,7 +4033,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
@@ -2894,7 +4042,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
@@ -2903,7 +4051,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'VENTOUSAGE_ATOMES'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
@@ -2912,7 +4060,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'RECUPERATION_ATOMES'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
@@ -2932,22 +4080,22 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT
 			/* Default react sequence for initial entry  */
 			/* 'default' enter sequence for state ARRET_ROBOT */
 			/* Entry action for state 'ARRET_ROBOT'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[1]), (1) * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[8]), (1) * 1000, false);
 			Application.m_asservissement.CommandeManuelle(0, 0);
 			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT;
 			stateConfVectorPosition = 0;
 		}  else
 		{
-			if (iface.EV_ConvergenceMvt_raised || timeEvents[5])
+			if (iface.EV_ConvergenceMvt_raised || timeEvents[12])
 			{ 
 				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
 				/* 'default' enter sequence for state VENTOUSAGE_ATOMES */
 				/* Entry action for state 'VENTOUSAGE_ATOMES'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[6]), 2 * 1000, false);
+				timer->setTimer(this, (sc_eventid)(&timeEvents[13]), 2 * 1000, false);
 				Application.m_power_switch.setOutput(POMPE_ARD, true);
 				Application.m_power_switch.setOutput(POMPE_ARG, true);
 				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, 140);
@@ -2966,7 +4114,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT
 void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES()
 {
 	/* The reactions of state VENTOUSAGE_ATOMES. */
-	if (timeEvents[0])
+	if (timeEvents[7])
 	{ 
 		/* Default exit sequence for state MATCH_EN_COURS */
 		/* Default exit sequence for region null */
@@ -2979,7 +4127,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOME
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'ARRET_ROBOT'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
 				/* Exit action for state 'DETECTION_OBSTACLE'. */
 				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
 				break;
@@ -3008,7 +4156,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOME
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
@@ -3017,7 +4165,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOME
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'FACE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
@@ -3026,7 +4174,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOME
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
@@ -3035,7 +4183,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOME
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
@@ -3044,7 +4192,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOME
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
@@ -3053,7 +4201,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOME
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'RECUPERATION_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
@@ -3073,7 +4221,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOME
 			default: break;
 		}
 		/* Exit action for state 'MATCH_EN_COURS'. */
-		timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 		/* 'default' enter sequence for state FIN_MATCH */
 		/* Entry action for state 'FIN_MATCH'. */
 		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
@@ -3097,7 +4245,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOME
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
@@ -3106,7 +4254,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOME
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'FACE_ZONE_CHAOS'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
@@ -3115,7 +4263,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOME
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
@@ -3124,7 +4272,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOME
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
@@ -3133,7 +4281,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOME
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'VENTOUSAGE_ATOMES'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
@@ -3142,7 +4290,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOME
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'RECUPERATION_ATOMES'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
@@ -3162,22 +4310,22 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOME
 			/* Default react sequence for initial entry  */
 			/* 'default' enter sequence for state ARRET_ROBOT */
 			/* Entry action for state 'ARRET_ROBOT'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[1]), (1) * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[8]), (1) * 1000, false);
 			Application.m_asservissement.CommandeManuelle(0, 0);
 			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT;
 			stateConfVectorPosition = 0;
 		}  else
 		{
-			if (timeEvents[6])
+			if (timeEvents[13])
 			{ 
 				/* Default exit sequence for state VENTOUSAGE_ATOMES */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
 				/* 'default' enter sequence for state RECUPERATION_ATOMES */
 				/* Entry action for state 'RECUPERATION_ATOMES'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[7]), 1 * 1000, false);
+				timer->setTimer(this, (sc_eventid)(&timeEvents[14]), 1 * 1000, false);
 				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, 50);
 				Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, 170);
 				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, 255);
@@ -3194,7 +4342,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOME
 void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES()
 {
 	/* The reactions of state RECUPERATION_ATOMES. */
-	if (timeEvents[0])
+	if (timeEvents[7])
 	{ 
 		/* Default exit sequence for state MATCH_EN_COURS */
 		/* Default exit sequence for region null */
@@ -3207,7 +4355,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATO
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'ARRET_ROBOT'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
 				/* Exit action for state 'DETECTION_OBSTACLE'. */
 				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
 				break;
@@ -3236,7 +4384,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATO
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
@@ -3245,7 +4393,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATO
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'FACE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
@@ -3254,7 +4402,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATO
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
@@ -3263,7 +4411,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATO
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
@@ -3272,7 +4420,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATO
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
@@ -3281,7 +4429,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATO
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'RECUPERATION_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
@@ -3301,7 +4449,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATO
 			default: break;
 		}
 		/* Exit action for state 'MATCH_EN_COURS'. */
-		timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 		/* 'default' enter sequence for state FIN_MATCH */
 		/* Entry action for state 'FIN_MATCH'. */
 		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
@@ -3325,7 +4473,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATO
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
@@ -3334,7 +4482,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATO
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'FACE_ZONE_CHAOS'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
@@ -3343,7 +4491,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATO
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
@@ -3352,7 +4500,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATO
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
@@ -3361,7 +4509,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATO
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'VENTOUSAGE_ATOMES'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
@@ -3370,7 +4518,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATO
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'RECUPERATION_ATOMES'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
@@ -3390,19 +4538,19 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATO
 			/* Default react sequence for initial entry  */
 			/* 'default' enter sequence for state ARRET_ROBOT */
 			/* Entry action for state 'ARRET_ROBOT'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[1]), (1) * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[8]), (1) * 1000, false);
 			Application.m_asservissement.CommandeManuelle(0, 0);
 			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT;
 			stateConfVectorPosition = 0;
 		}  else
 		{
-			if (timeEvents[7])
+			if (timeEvents[14])
 			{ 
 				/* Default exit sequence for state RECUPERATION_ATOMES */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'RECUPERATION_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
 				/* 'default' enter sequence for state DEVENTOUSAGE_ATOMES */
 				/* Entry action for state 'DEVENTOUSAGE_ATOMES'. */
 				Application.m_power_switch.setOutput(POMPE_ARD, false);
@@ -3421,7 +4569,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATO
 void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES()
 {
 	/* The reactions of state DEVENTOUSAGE_ATOMES. */
-	if (timeEvents[0])
+	if (timeEvents[7])
 	{ 
 		/* Default exit sequence for state MATCH_EN_COURS */
 		/* Default exit sequence for region null */
@@ -3434,7 +4582,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATO
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'ARRET_ROBOT'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
 				/* Exit action for state 'DETECTION_OBSTACLE'. */
 				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
 				break;
@@ -3463,7 +4611,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATO
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
@@ -3472,7 +4620,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATO
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'FACE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
@@ -3481,7 +4629,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATO
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
@@ -3490,7 +4638,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATO
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
@@ -3499,7 +4647,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATO
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
@@ -3508,7 +4656,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATO
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'RECUPERATION_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
@@ -3528,7 +4676,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATO
 			default: break;
 		}
 		/* Exit action for state 'MATCH_EN_COURS'. */
-		timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 		/* 'default' enter sequence for state FIN_MATCH */
 		/* Entry action for state 'FIN_MATCH'. */
 		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
@@ -3552,7 +4700,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATO
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
@@ -3561,7 +4709,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATO
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'FACE_ZONE_CHAOS'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
@@ -3570,7 +4718,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATO
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
@@ -3579,7 +4727,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATO
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
@@ -3588,7 +4736,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATO
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'VENTOUSAGE_ATOMES'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
@@ -3597,7 +4745,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATO
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
 					/* Exit action for state 'RECUPERATION_ATOMES'. */
-					timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
 					break;
 				}
 				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
@@ -3617,7 +4765,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATO
 			/* Default react sequence for initial entry  */
 			/* 'default' enter sequence for state ARRET_ROBOT */
 			/* Entry action for state 'ARRET_ROBOT'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[1]), (1) * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[8]), (1) * 1000, false);
 			Application.m_asservissement.CommandeManuelle(0, 0);
 			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT;
 			stateConfVectorPosition = 0;
@@ -3629,7 +4777,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATO
 void IA::react_main_region_MATCH_EN_COURS__region0_SUPERVISOR()
 {
 	/* The reactions of state SUPERVISOR. */
-	if (timeEvents[0])
+	if (timeEvents[7])
 	{ 
 		/* Default exit sequence for state MATCH_EN_COURS */
 		/* Default exit sequence for region null */
@@ -3642,7 +4790,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_SUPERVISOR()
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'ARRET_ROBOT'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[1]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
 				/* Exit action for state 'DETECTION_OBSTACLE'. */
 				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
 				break;
@@ -3671,7 +4819,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_SUPERVISOR()
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[2]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
@@ -3680,7 +4828,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_SUPERVISOR()
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'FACE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[3]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
@@ -3689,7 +4837,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_SUPERVISOR()
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[4]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
@@ -3698,7 +4846,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_SUPERVISOR()
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[5]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
@@ -3707,7 +4855,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_SUPERVISOR()
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[6]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
@@ -3716,7 +4864,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_SUPERVISOR()
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				/* Exit action for state 'RECUPERATION_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
@@ -3736,7 +4884,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_SUPERVISOR()
 			default: break;
 		}
 		/* Exit action for state 'MATCH_EN_COURS'. */
-		timer->unsetTimer(this, (sc_eventid)(&timeEvents[0]));
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 		/* 'default' enter sequence for state FIN_MATCH */
 		/* Entry action for state 'FIN_MATCH'. */
 		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
@@ -3755,7 +4903,7 @@ void IA::react_main_region_MATCH_EN_COURS__region0_SUPERVISOR()
 		/* Default react sequence for initial entry Entry_init */
 		/* 'default' enter sequence for state DEPASSE_ZONE_CHAOS */
 		/* Entry action for state 'DEPASSE_ZONE_CHAOS'. */
-		timer->setTimer(this, (sc_eventid)(&timeEvents[2]), 3 * 1000, false);
+		timer->setTimer(this, (sc_eventid)(&timeEvents[9]), 3 * 1000, false);
 		SCI_Asser_OCB::XYTeta(114, 0, 0);
 		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS;
 		stateConfVectorPosition = 0;
