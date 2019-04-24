@@ -212,6 +212,8 @@ ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/message_robot_lego
 
 ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.cpp
 ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.h
+ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_balise_positions.cpp
+ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_balise_positions.h
 
 ext/CppRobLib/Communication/XBEE/xbeedriverbase.cpp
 ext/CppRobLib/Communication/XBEE/xbeedriverbase.h
