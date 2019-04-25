@@ -207,6 +207,8 @@ ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwor
 ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h
 ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/message_experience_status.cpp
 ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/message_experience_status.h
+ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/message_robot_lego_2019.cpp
+ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/message_robot_lego_2019.h
 
 ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.cpp
 ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.h
