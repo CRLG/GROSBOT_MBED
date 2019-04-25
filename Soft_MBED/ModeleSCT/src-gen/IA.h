@@ -6,16 +6,16 @@
 #include "../src/StatemachineInterface.h"
 #include "../src/TimedStatemachineInterface.h"
 #include "../../Includes/ConfigSpecifiqueCoupe.h"
-#include "../../ext/mbed-common-rob/Includes/CGlobale.h"
 #include "../../ext/mbed-common-rob/Includes/CLeds.h"
-#include "../../ext/mbed-common-rob/Includes/CServoMoteurSD20.h"
-#include "../../ext/mbed-common-rob/Includes/CAsservissementChariot.h"
 #include "../../ext/mbed-common-rob/Includes/PowerSwitch.h"
-#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h"
+#include "../../ext/mbed-common-rob/Includes/CGlobale.h"
 #include "../../ext/mbed-common-rob/Includes/MessengerXbeeNetwork.h"
 #include "../../ext/mbed-common-rob/Includes/CAsservissement.h"
+#include "../../ext/mbed-common-rob/Includes/CAsservissementChariot.h"
 #include "../../ext/CppRobLib/ServosAX/servoaxbase.h"
+#include "../../ext/mbed-common-rob/Includes/CServoMoteurSD20.h"
 #include "../../ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.h"
+#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h"
 
 /*! \file Header of the state machine 'IA'.
 */
@@ -47,7 +47,32 @@
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE_R1_VENTOUSAGE_ATOMES 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE_R1_RECUPERATION_ATOMES 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE_R1_DEVENTOUSAGE_ATOMES 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE_R1_GLISSADE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE_R1_ON_RANGE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE_R1_FIN_SEQUENCE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE_R1__FINAL_ 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_SUPERVISOR 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_FACE_BLEUIUM 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_DECLENCHEMENT_ACCELERATEUR_GAUCHE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PLACEMENT_DEVANT_GOLDENIUM 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PREPARATION_KMAR_POUR_GOLDENIUM 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_VENTOUSAGE_GOLDENIUM 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_RECULE_AVEC_PRECAUTION 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_MISE_GOLDENIUM_HORINZONTAL 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PREPARATION_KMAR_GAUCHE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PREPARATION_KMAR_DROITE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_DECLENCHEMENT_ACCELERATEUR_DROITE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_GOLDENIUM_DANS_ROBOT_GAUCHE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_GOLDENIUM_DANS_ROBOT_DROITE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PLACEMENT_DEVANT_BALANCE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PLUS_PROCHE_BALANCE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_ACCOSTAGE_BALANCE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_DROPAGE_GOLDENIUM 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_FIN 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1__FINAL_ 0
 #define SCVI_MAIN_REGION_FIN_MATCH 0
 
 class IA : public TimedStatemachineInterface, public StatemachineInterface
@@ -86,7 +111,32 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 			main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES,
 			main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES,
 			main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES,
+			main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE,
+			main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE,
+			main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE,
+			main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_,
 			main_region_MATCH_EN_COURS__region0_SUPERVISOR,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_,
 			main_region_FIN_MATCH
 		} IAStates;
 		
@@ -782,7 +832,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		sc_boolean isStateActive(IAStates state) const;
 		
 		//! number of time events used by the state machine.
-		static const sc_integer timeEventsCount = 15;
+		static const sc_integer timeEventsCount = 36;
 		
 		//! number of time events that can be active at once.
 		static const sc_integer parallelTimeEventsCount = 2;
@@ -873,7 +923,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		//! the maximum number of orthogonal states defines the dimension of the state configuration vector.
 		static const sc_ushort maxOrthogonalStates = 2;
 		//! dimension of the state configuration vector for history states
-		static const sc_ushort maxHistoryStates = 1;
+		static const sc_ushort maxHistoryStates = 2;
 		
 		TimerInterface* timer;
 		sc_boolean timeEvents[timeEventsCount];
@@ -896,6 +946,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		// prototypes of all internal functions
 		
 		void shenseq_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1();
+		void shenseq_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1();
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT();
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUTS();
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_APPRENTISSAGE_ASCENSEUR();
@@ -916,9 +967,36 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		void react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES();
 		void react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES();
 		void react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES();
+		void react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE();
+		void react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE();
+		void react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE();
+		void react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_();
 		void react_main_region_MATCH_EN_COURS__region0_SUPERVISOR();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_();
 		void react_main_region_FIN_MATCH();
 		void react_main_region_MATCH_EN_COURS__region0__choice_0();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__choice_0();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__choice_1();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__choice_2();
 		void clearInEvents();
 		void clearOutEvents();
 		

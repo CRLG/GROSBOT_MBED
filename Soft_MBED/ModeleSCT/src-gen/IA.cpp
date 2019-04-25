@@ -317,6 +317,52 @@ void IA::exit()
 			/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
 			stateConfVector[0] = IA_last_state;
 			stateConfVectorPosition = 0;
+			/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+			Application.m_power_switch.setOutput(EV_ARD, false);
+			Application.m_power_switch.setOutput(EV_ARG, false);
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+		{
+			/* Default exit sequence for state GLISSADE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'GLISSADE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+		{
+			/* Default exit sequence for state ON_RANGE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'ON_RANGE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+		{
+			/* Default exit sequence for state FIN_SEQUENCE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'FIN_SEQUENCE'. */
+			ifaceInternalSCI.sequence1 = false;
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+		{
+			/* Default exit sequence for final state. */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
 			/* Exit action for state 'MATCH_EN_COURS'. */
 			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
 			break;
@@ -324,6 +370,224 @@ void IA::exit()
 		case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
 		{
 			/* Default exit sequence for state SUPERVISOR */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+		{
+			/* Default exit sequence for state FACE_BLEUIUM */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'FACE_BLEUIUM'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+		{
+			/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+		{
+			/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+		{
+			/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+		{
+			/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+		{
+			/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+			Application.m_asservissement.Ind_perfo = 0.3;
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+		{
+			/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+		{
+			/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+		{
+			/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+		{
+			/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+		{
+			/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+		{
+			/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+		{
+			/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+		{
+			/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+		{
+			/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+		{
+			/* Default exit sequence for state ACCOSTAGE_BALANCE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+		{
+			/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+		{
+			/* Default exit sequence for state DROPAGE_GOLDENIUM */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+			Application.m_power_switch.setOutput(3, false);
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+		{
+			/* Default exit sequence for state FIN */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'MATCH_EN_COURS'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+		{
+			/* Default exit sequence for final state. */
 			stateConfVector[0] = IA_last_state;
 			stateConfVectorPosition = 0;
 			/* Exit action for state 'MATCH_EN_COURS'. */
@@ -483,9 +747,129 @@ void IA::runCycle()
 			react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES();
 			break;
 		}
+		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+		{
+			react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+		{
+			react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+		{
+			react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+		{
+			react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_();
+			break;
+		}
 		case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
 		{
 			react_main_region_MATCH_EN_COURS__region0_SUPERVISOR();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+		{
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+		{
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+		{
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+		{
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+		{
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+		{
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+		{
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+		{
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+		{
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+		{
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+		{
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+		{
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+		{
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+		{
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+		{
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+		{
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+		{
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+		{
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+		{
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN();
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+		{
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_();
 			break;
 		}
 		case main_region_FIN_MATCH :
@@ -522,6 +906,27 @@ void IA::clearInEvents()
 	timeEvents[12] = false; 
 	timeEvents[13] = false; 
 	timeEvents[14] = false; 
+	timeEvents[15] = false; 
+	timeEvents[16] = false; 
+	timeEvents[17] = false; 
+	timeEvents[18] = false; 
+	timeEvents[19] = false; 
+	timeEvents[20] = false; 
+	timeEvents[21] = false; 
+	timeEvents[22] = false; 
+	timeEvents[23] = false; 
+	timeEvents[24] = false; 
+	timeEvents[25] = false; 
+	timeEvents[26] = false; 
+	timeEvents[27] = false; 
+	timeEvents[28] = false; 
+	timeEvents[29] = false; 
+	timeEvents[30] = false; 
+	timeEvents[31] = false; 
+	timeEvents[32] = false; 
+	timeEvents[33] = false; 
+	timeEvents[34] = false; 
+	timeEvents[35] = false; 
 }
 
 void IA::clearOutEvents()
@@ -589,7 +994,7 @@ sc_boolean IA::isStateActive(IAStates state) const
 			);
 		case main_region_MATCH_EN_COURS : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS] >= main_region_MATCH_EN_COURS
-				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS] <= main_region_MATCH_EN_COURS__region0_SUPERVISOR);
+				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS] <= main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_);
 		case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_DETECTION_OBSTACLE] >= main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE
 				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_DETECTION_OBSTACLE] <= main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_);
@@ -604,7 +1009,7 @@ sc_boolean IA::isStateActive(IAStates state) const
 			);
 		case main_region_MATCH_EN_COURS__region0_NETTOYAGE : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE] >= main_region_MATCH_EN_COURS__region0_NETTOYAGE
-				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE] <= main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES);
+				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE] <= main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_);
 		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE_R1_DEPASSE_ZONE_CHAOS] == main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS
 			);
@@ -626,8 +1031,83 @@ sc_boolean IA::isStateActive(IAStates state) const
 		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE_R1_DEVENTOUSAGE_ATOMES] == main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES
 			);
+		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE_R1_GLISSADE] == main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE
+			);
+		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE_R1_ON_RANGE] == main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE
+			);
+		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE_R1_FIN_SEQUENCE] == main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE
+			);
+		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_NETTOYAGE_R1__FINAL_] == main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_
+			);
 		case main_region_MATCH_EN_COURS__region0_SUPERVISOR : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_SUPERVISOR] == main_region_MATCH_EN_COURS__region0_SUPERVISOR
+			);
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM] >= main_region_MATCH_EN_COURS__region0_GOLDENIUM
+				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM] <= main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_);
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_FACE_BLEUIUM] == main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM
+			);
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_DECLENCHEMENT_ACCELERATEUR_GAUCHE] == main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE
+			);
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PLACEMENT_DEVANT_GOLDENIUM] == main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM
+			);
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PREPARATION_KMAR_POUR_GOLDENIUM] == main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM
+			);
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_VENTOUSAGE_GOLDENIUM] == main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM
+			);
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_RECULE_AVEC_PRECAUTION] == main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION
+			);
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_MISE_GOLDENIUM_HORINZONTAL] == main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL
+			);
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PREPARATION_KMAR_GAUCHE] == main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE
+			);
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PREPARATION_KMAR_DROITE] == main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE
+			);
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE] == main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE
+			);
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_DECLENCHEMENT_ACCELERATEUR_DROITE] == main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE
+			);
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_GOLDENIUM_DANS_ROBOT_GAUCHE] == main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE
+			);
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_GOLDENIUM_DANS_ROBOT_DROITE] == main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE
+			);
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PLACEMENT_DEVANT_BALANCE] == main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE
+			);
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PLUS_PROCHE_BALANCE] == main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE
+			);
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_ACCOSTAGE_BALANCE] == main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE
+			);
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE] == main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE
+			);
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_DROPAGE_GOLDENIUM] == main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM
+			);
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_FIN] == main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN
+			);
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1__FINAL_] == main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_
 			);
 		case main_region_FIN_MATCH : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_FIN_MATCH] == main_region_FIN_MATCH
@@ -1531,7 +2011,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1()
 			/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
 			/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
 			timer->setTimer(this, (sc_eventid)(&timeEvents[12]), 4 * 1000, false);
-			SCI_Asser_OCB::XYTeta(82, -80, IA::DefaultSCI::PI / 2);
+			SCI_Asser_OCB::XYTeta(79, -77, IA::DefaultSCI::PI / 2);
 			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR;
 			stateConfVectorPosition = 0;
 			historyVector[0] = stateConfVector[0];
@@ -1571,13 +2051,279 @@ void IA::shenseq_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1()
 		{
 			/* 'default' enter sequence for state DEVENTOUSAGE_ATOMES */
 			/* Entry action for state 'DEVENTOUSAGE_ATOMES'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[15]), 1 * 1000, false);
 			Application.m_power_switch.setOutput(POMPE_ARD, false);
-			Application.m_power_switch.setOutput(EV_ARD, false);
+			Application.m_power_switch.setOutput(EV_ARD, true);
 			Application.m_power_switch.setOutput(POMPE_ARG, false);
-			Application.m_power_switch.setOutput(EV_ARG, false);
+			Application.m_power_switch.setOutput(EV_ARG, true);
+			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, 95);
+			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, 170);
 			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES;
 			stateConfVectorPosition = 0;
 			historyVector[0] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+		{
+			/* 'default' enter sequence for state GLISSADE */
+			/* Entry action for state 'GLISSADE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[16]), 2 * 1000, false);
+			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, 140);
+			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, 95);
+			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, 170);
+			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, 170);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE;
+			stateConfVectorPosition = 0;
+			historyVector[0] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+		{
+			/* 'default' enter sequence for state ON_RANGE */
+			/* Entry action for state 'ON_RANGE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[17]), 200, false);
+			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, 50);
+			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, 65);
+			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, 255);
+			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, 210);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE;
+			stateConfVectorPosition = 0;
+			historyVector[0] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+		{
+			/* 'default' enter sequence for state FIN_SEQUENCE */
+			/* Entry action for state 'FIN_SEQUENCE'. */
+			ifaceInternalSCI.sequence2 = true;
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE;
+			stateConfVectorPosition = 0;
+			historyVector[0] = stateConfVector[0];
+			break;
+		}
+		default: break;
+	}
+}
+
+/* shallow enterSequence with history in child r1 */
+void IA::shenseq_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1()
+{
+	/* shallow enterSequence with history in child r1 */
+	/* Handle shallow history entry of r1 */
+	switch(historyVector[ 1 ])
+	{
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+		{
+			/* 'default' enter sequence for state FACE_BLEUIUM */
+			/* Entry action for state 'FACE_BLEUIUM'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[18]), 5 * 1000, false);
+			SCI_Asser_OCB::XYTeta(152, 16, IA::DefaultSCI::PI / 2.0);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+		{
+			/* 'default' enter sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+			/* Entry action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[19]), 500, false);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_VERT, 850);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+		{
+			/* 'default' enter sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+			/* Entry action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[20]), 3 * 1000, false);
+			SCI_Asser_OCB::XYTeta(203, 12, IA::DefaultSCI::PI / 2.0);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+		{
+			/* 'default' enter sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+			/* Entry action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[21]), 1 * 1000, false);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_VERT, 512);
+			Application.m_power_switch.setOutput(POMPE_AV, true);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+		{
+			/* 'default' enter sequence for state VENTOUSAGE_GOLDENIUM */
+			/* Entry action for state 'VENTOUSAGE_GOLDENIUM'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[22]), 2 * 1000, false);
+			Application.m_asservissement.CommandeManuelle(15, 15);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+		{
+			/* 'default' enter sequence for state RECULE_AVEC_PRECAUTION */
+			/* Entry action for state 'RECULE_AVEC_PRECAUTION'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[23]), 2 * 1000, false);
+			Application.m_asservissement.Ind_perfo = 0.1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(202, 9, IA::DefaultSCI::PI / 2.0);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+		{
+			/* 'default' enter sequence for state MISE_GOLDENIUM_HORINZONTAL */
+			/* Entry action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[24]), 2 * 1000, false);
+			Application.m_asservissement_chariot.setConsigne(450);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 200);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+		{
+			/* 'default' enter sequence for state PREPARATION_KMAR_GAUCHE */
+			/* Entry action for state 'PREPARATION_KMAR_GAUCHE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[25]), 200, false);
+			Application.m_asservissement_chariot.setConsigne(300);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_VERT, 200);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+		{
+			/* 'default' enter sequence for state PREPARATION_KMAR_DROITE */
+			/* Entry action for state 'PREPARATION_KMAR_DROITE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[26]), 200, false);
+			Application.m_asservissement_chariot.setConsigne(300);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_VERT, 850);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+		{
+			/* 'default' enter sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+			/* Entry action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[27]), 50, false);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+		{
+			/* 'default' enter sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+			/* Entry action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[28]), 500, false);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_VERT, 200);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+		{
+			/* 'default' enter sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+			/* Entry action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[29]), 200, false);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_VERT, 200);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+		{
+			/* 'default' enter sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+			/* Entry action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[30]), 200, false);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_VERT, 850);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+		{
+			/* 'default' enter sequence for state PLACEMENT_DEVANT_BALANCE */
+			/* Entry action for state 'PLACEMENT_DEVANT_BALANCE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[31]), 3 * 1000, false);
+			Application.m_asservissement.CommandeMouvementXY_TETA(111, -70, -IA::DefaultSCI::PI / 2.0);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+		{
+			/* 'default' enter sequence for state PLUS_PROCHE_BALANCE */
+			/* Entry action for state 'PLUS_PROCHE_BALANCE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[32]), 3 * 1000, false);
+			Application.m_asservissement.CommandeMouvementXY_TETA(111, -70, -IA::DefaultSCI::PI / 2.0);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+		{
+			/* 'default' enter sequence for state ACCOSTAGE_BALANCE */
+			/* Entry action for state 'ACCOSTAGE_BALANCE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[33]), 2 * 1000, false);
+			Application.m_asservissement.CommandeManuelle(15, 15);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+		{
+			/* 'default' enter sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+			/* Entry action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[34]), 1 * 1000, false);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_VERT, 512);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+		{
+			/* 'default' enter sequence for state DROPAGE_GOLDENIUM */
+			/* Entry action for state 'DROPAGE_GOLDENIUM'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[35]), 200, false);
+			Application.m_power_switch.setOutput(POMPE_AV, false);
+			Application.m_power_switch.setOutput(3, true);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+		{
+			/* 'default' enter sequence for state FIN */
+			/* Entry action for state 'FIN'. */
+			ifaceInternalSCI.sequence2 = false;
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
 			break;
 		}
 		default: break;
@@ -1697,6 +2443,7 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT()
 		/* 'default' enter sequence for state SUPERVISOR */
 		/* Entry action for state 'SUPERVISOR'. */
 		ifaceInternalSCI.etape = 0;
+		ifaceInternalSCI.sequence1 = true;
 		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_SUPERVISOR;
 		stateConfVectorPosition = 0;
 	}  else
@@ -1836,6 +2583,7 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGA
 		/* 'default' enter sequence for state SUPERVISOR */
 		/* Entry action for state 'SUPERVISOR'. */
 		ifaceInternalSCI.etape = 0;
+		ifaceInternalSCI.sequence1 = true;
 		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_SUPERVISOR;
 		stateConfVectorPosition = 0;
 	}  else
@@ -1972,6 +2720,7 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_APPRENT
 		/* 'default' enter sequence for state SUPERVISOR */
 		/* Entry action for state 'SUPERVISOR'. */
 		ifaceInternalSCI.etape = 0;
+		ifaceInternalSCI.sequence1 = true;
 		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_SUPERVISOR;
 		stateConfVectorPosition = 0;
 	}  else
@@ -2111,6 +2860,7 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGA
 		/* 'default' enter sequence for state SUPERVISOR */
 		/* Entry action for state 'SUPERVISOR'. */
 		ifaceInternalSCI.etape = 0;
+		ifaceInternalSCI.sequence1 = true;
 		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_SUPERVISOR;
 		stateConfVectorPosition = 0;
 	}  else
@@ -2247,6 +2997,7 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RA
 		/* 'default' enter sequence for state SUPERVISOR */
 		/* Entry action for state 'SUPERVISOR'. */
 		ifaceInternalSCI.etape = 0;
+		ifaceInternalSCI.sequence1 = true;
 		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_SUPERVISOR;
 		stateConfVectorPosition = 0;
 	}  else
@@ -2382,6 +3133,7 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RA
 		/* 'default' enter sequence for state SUPERVISOR */
 		/* Entry action for state 'SUPERVISOR'. */
 		ifaceInternalSCI.etape = 0;
+		ifaceInternalSCI.sequence1 = true;
 		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_SUPERVISOR;
 		stateConfVectorPosition = 0;
 	}  else
@@ -2504,6 +3256,7 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SO
 		/* 'default' enter sequence for state SUPERVISOR */
 		/* Entry action for state 'SUPERVISOR'. */
 		ifaceInternalSCI.etape = 0;
+		ifaceInternalSCI.sequence1 = true;
 		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_SUPERVISOR;
 		stateConfVectorPosition = 0;
 	}  else
@@ -2640,6 +3393,7 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SO
 		/* 'default' enter sequence for state SUPERVISOR */
 		/* Entry action for state 'SUPERVISOR'. */
 		ifaceInternalSCI.etape = 0;
+		ifaceInternalSCI.sequence1 = true;
 		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_SUPERVISOR;
 		stateConfVectorPosition = 0;
 	}  else
@@ -2798,11 +3552,227 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_R
 				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
 			{
 				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				break;
@@ -2974,11 +3944,227 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_
 				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
 			{
 				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				break;
@@ -3143,11 +4329,227 @@ void IA::react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_
 				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
 			{
 				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				break;
@@ -3304,11 +4706,227 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHA
 				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
 			{
 				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				break;
@@ -3393,6 +5011,44 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHA
 					/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
+					/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+					Application.m_power_switch.setOutput(EV_ARD, false);
+					Application.m_power_switch.setOutput(EV_ARG, false);
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+				{
+					/* Default exit sequence for state GLISSADE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'GLISSADE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+				{
+					/* Default exit sequence for state ON_RANGE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'ON_RANGE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+				{
+					/* Default exit sequence for state FIN_SEQUENCE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'FIN_SEQUENCE'. */
+					ifaceInternalSCI.sequence1 = false;
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+				{
+					/* Default exit sequence for final state. */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
 					break;
 				}
 				default: break;
@@ -3411,21 +5067,142 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHA
 			stateConfVectorPosition = 0;
 		}  else
 		{
-			if (iface.EV_ConvergenceMvt_Rapide_raised || timeEvents[9])
+			if (ifaceInternalSCI.sequence2)
 			{ 
-				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
-				stateConfVector[0] = IA_last_state;
+				/* Default exit sequence for state NETTOYAGE */
+				/* Default exit sequence for region r1 */
+				/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0.NETTOYAGE.r1) at position 0... */
+				switch(stateConfVector[ 0 ])
+				{
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state FACE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FACE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+					{
+						/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+					{
+						/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state VENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+					{
+						/* Default exit sequence for state RECUPERATION_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'RECUPERATION_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+						Application.m_power_switch.setOutput(EV_ARD, false);
+						Application.m_power_switch.setOutput(EV_ARG, false);
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+					{
+						/* Default exit sequence for state GLISSADE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'GLISSADE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+					{
+						/* Default exit sequence for state ON_RANGE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'ON_RANGE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+					{
+						/* Default exit sequence for state FIN_SEQUENCE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FIN_SEQUENCE'. */
+						ifaceInternalSCI.sequence1 = false;
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+					{
+						/* Default exit sequence for final state. */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						break;
+					}
+					default: break;
+				}
+				/* 'Entry_init' enter sequence for state GOLDENIUM */
+				/* 'Entry_init' enter sequence for region r1 */
+				/* Default react sequence for initial entry Entry_init */
+				/* 'default' enter sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				/* Entry action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[27]), 50, false);
+				Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
+				stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
 				stateConfVectorPosition = 0;
-				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
-				/* 'default' enter sequence for state FACE_ZONE_CHAOS */
-				/* Entry action for state 'FACE_ZONE_CHAOS'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), 3 * 1000, false);
-				SCI_Asser_OCB::XYTeta(114, -57, 0);
-				stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS;
-				stateConfVectorPosition = 0;
-				historyVector[0] = stateConfVector[0];
-			} 
+				historyVector[1] = stateConfVector[0];
+			}  else
+			{
+				if (iface.EV_ConvergenceMvt_Rapide_raised || timeEvents[9])
+				{ 
+					/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+					/* 'default' enter sequence for state FACE_ZONE_CHAOS */
+					/* Entry action for state 'FACE_ZONE_CHAOS'. */
+					timer->setTimer(this, (sc_eventid)(&timeEvents[10]), 3 * 1000, false);
+					SCI_Asser_OCB::XYTeta(114, -57, 0);
+					stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS;
+					stateConfVectorPosition = 0;
+					historyVector[0] = stateConfVector[0];
+				} 
+			}
 		}
 	}
 }
@@ -3529,11 +5306,227 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS(
 				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
 			{
 				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				break;
@@ -3618,6 +5611,44 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS(
 					/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
+					/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+					Application.m_power_switch.setOutput(EV_ARD, false);
+					Application.m_power_switch.setOutput(EV_ARG, false);
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+				{
+					/* Default exit sequence for state GLISSADE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'GLISSADE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+				{
+					/* Default exit sequence for state ON_RANGE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'ON_RANGE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+				{
+					/* Default exit sequence for state FIN_SEQUENCE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'FIN_SEQUENCE'. */
+					ifaceInternalSCI.sequence1 = false;
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+				{
+					/* Default exit sequence for final state. */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
 					break;
 				}
 				default: break;
@@ -3636,21 +5667,142 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS(
 			stateConfVectorPosition = 0;
 		}  else
 		{
-			if (iface.EV_ConvergenceMvt_raised || timeEvents[10])
+			if (ifaceInternalSCI.sequence2)
 			{ 
-				/* Default exit sequence for state FACE_ZONE_CHAOS */
-				stateConfVector[0] = IA_last_state;
+				/* Default exit sequence for state NETTOYAGE */
+				/* Default exit sequence for region r1 */
+				/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0.NETTOYAGE.r1) at position 0... */
+				switch(stateConfVector[ 0 ])
+				{
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state FACE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FACE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+					{
+						/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+					{
+						/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state VENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+					{
+						/* Default exit sequence for state RECUPERATION_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'RECUPERATION_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+						Application.m_power_switch.setOutput(EV_ARD, false);
+						Application.m_power_switch.setOutput(EV_ARG, false);
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+					{
+						/* Default exit sequence for state GLISSADE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'GLISSADE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+					{
+						/* Default exit sequence for state ON_RANGE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'ON_RANGE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+					{
+						/* Default exit sequence for state FIN_SEQUENCE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FIN_SEQUENCE'. */
+						ifaceInternalSCI.sequence1 = false;
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+					{
+						/* Default exit sequence for final state. */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						break;
+					}
+					default: break;
+				}
+				/* 'Entry_init' enter sequence for state GOLDENIUM */
+				/* 'Entry_init' enter sequence for region r1 */
+				/* Default react sequence for initial entry Entry_init */
+				/* 'default' enter sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				/* Entry action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[27]), 50, false);
+				Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
+				stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
 				stateConfVectorPosition = 0;
-				/* Exit action for state 'FACE_ZONE_CHAOS'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
-				/* 'default' enter sequence for state STOCKAGE_DANS_ZONE_DEPART */
-				/* Entry action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[11]), 3 * 1000, false);
-				SCI_Asser_OCB::XYTeta(30, -57, 0);
-				stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART;
-				stateConfVectorPosition = 0;
-				historyVector[0] = stateConfVector[0];
-			} 
+				historyVector[1] = stateConfVector[0];
+			}  else
+			{
+				if (iface.EV_ConvergenceMvt_raised || timeEvents[10])
+				{ 
+					/* Default exit sequence for state FACE_ZONE_CHAOS */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'FACE_ZONE_CHAOS'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+					/* 'default' enter sequence for state STOCKAGE_DANS_ZONE_DEPART */
+					/* Entry action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+					timer->setTimer(this, (sc_eventid)(&timeEvents[11]), 3 * 1000, false);
+					SCI_Asser_OCB::XYTeta(30, -57, 0);
+					stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART;
+					stateConfVectorPosition = 0;
+					historyVector[0] = stateConfVector[0];
+				} 
+			}
 		}
 	}
 }
@@ -3754,11 +5906,227 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZO
 				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
 			{
 				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				break;
@@ -3843,6 +6211,44 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZO
 					/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
+					/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+					Application.m_power_switch.setOutput(EV_ARD, false);
+					Application.m_power_switch.setOutput(EV_ARG, false);
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+				{
+					/* Default exit sequence for state GLISSADE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'GLISSADE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+				{
+					/* Default exit sequence for state ON_RANGE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'ON_RANGE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+				{
+					/* Default exit sequence for state FIN_SEQUENCE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'FIN_SEQUENCE'. */
+					ifaceInternalSCI.sequence1 = false;
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+				{
+					/* Default exit sequence for final state. */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
 					break;
 				}
 				default: break;
@@ -3861,21 +6267,142 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZO
 			stateConfVectorPosition = 0;
 		}  else
 		{
-			if (iface.EV_ConvergenceMvt_raised || timeEvents[11])
+			if (ifaceInternalSCI.sequence2)
 			{ 
-				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
-				stateConfVector[0] = IA_last_state;
+				/* Default exit sequence for state NETTOYAGE */
+				/* Default exit sequence for region r1 */
+				/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0.NETTOYAGE.r1) at position 0... */
+				switch(stateConfVector[ 0 ])
+				{
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state FACE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FACE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+					{
+						/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+					{
+						/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state VENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+					{
+						/* Default exit sequence for state RECUPERATION_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'RECUPERATION_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+						Application.m_power_switch.setOutput(EV_ARD, false);
+						Application.m_power_switch.setOutput(EV_ARG, false);
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+					{
+						/* Default exit sequence for state GLISSADE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'GLISSADE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+					{
+						/* Default exit sequence for state ON_RANGE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'ON_RANGE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+					{
+						/* Default exit sequence for state FIN_SEQUENCE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FIN_SEQUENCE'. */
+						ifaceInternalSCI.sequence1 = false;
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+					{
+						/* Default exit sequence for final state. */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						break;
+					}
+					default: break;
+				}
+				/* 'Entry_init' enter sequence for state GOLDENIUM */
+				/* 'Entry_init' enter sequence for region r1 */
+				/* Default react sequence for initial entry Entry_init */
+				/* 'default' enter sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				/* Entry action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[27]), 50, false);
+				Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
+				stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
 				stateConfVectorPosition = 0;
-				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
-				/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
-				/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[12]), 4 * 1000, false);
-				SCI_Asser_OCB::XYTeta(82, -80, IA::DefaultSCI::PI / 2);
-				stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR;
-				stateConfVectorPosition = 0;
-				historyVector[0] = stateConfVector[0];
-			} 
+				historyVector[1] = stateConfVector[0];
+			}  else
+			{
+				if (iface.EV_ConvergenceMvt_raised || timeEvents[11])
+				{ 
+					/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+					/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+					/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+					timer->setTimer(this, (sc_eventid)(&timeEvents[12]), 4 * 1000, false);
+					SCI_Asser_OCB::XYTeta(79, -77, IA::DefaultSCI::PI / 2);
+					stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR;
+					stateConfVectorPosition = 0;
+					historyVector[0] = stateConfVector[0];
+				} 
+			}
 		}
 	}
 }
@@ -3979,11 +6506,227 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT
 				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
 			{
 				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				break;
@@ -4068,6 +6811,44 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT
 					/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
+					/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+					Application.m_power_switch.setOutput(EV_ARD, false);
+					Application.m_power_switch.setOutput(EV_ARG, false);
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+				{
+					/* Default exit sequence for state GLISSADE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'GLISSADE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+				{
+					/* Default exit sequence for state ON_RANGE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'ON_RANGE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+				{
+					/* Default exit sequence for state FIN_SEQUENCE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'FIN_SEQUENCE'. */
+					ifaceInternalSCI.sequence1 = false;
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+				{
+					/* Default exit sequence for final state. */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
 					break;
 				}
 				default: break;
@@ -4086,26 +6867,147 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT
 			stateConfVectorPosition = 0;
 		}  else
 		{
-			if (iface.EV_ConvergenceMvt_raised || timeEvents[12])
+			if (ifaceInternalSCI.sequence2)
 			{ 
-				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
-				stateConfVector[0] = IA_last_state;
+				/* Default exit sequence for state NETTOYAGE */
+				/* Default exit sequence for region r1 */
+				/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0.NETTOYAGE.r1) at position 0... */
+				switch(stateConfVector[ 0 ])
+				{
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state FACE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FACE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+					{
+						/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+					{
+						/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state VENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+					{
+						/* Default exit sequence for state RECUPERATION_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'RECUPERATION_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+						Application.m_power_switch.setOutput(EV_ARD, false);
+						Application.m_power_switch.setOutput(EV_ARG, false);
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+					{
+						/* Default exit sequence for state GLISSADE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'GLISSADE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+					{
+						/* Default exit sequence for state ON_RANGE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'ON_RANGE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+					{
+						/* Default exit sequence for state FIN_SEQUENCE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FIN_SEQUENCE'. */
+						ifaceInternalSCI.sequence1 = false;
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+					{
+						/* Default exit sequence for final state. */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						break;
+					}
+					default: break;
+				}
+				/* 'Entry_init' enter sequence for state GOLDENIUM */
+				/* 'Entry_init' enter sequence for region r1 */
+				/* Default react sequence for initial entry Entry_init */
+				/* 'default' enter sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				/* Entry action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[27]), 50, false);
+				Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
+				stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
 				stateConfVectorPosition = 0;
-				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
-				/* 'default' enter sequence for state VENTOUSAGE_ATOMES */
-				/* Entry action for state 'VENTOUSAGE_ATOMES'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[13]), 2 * 1000, false);
-				Application.m_power_switch.setOutput(POMPE_ARD, true);
-				Application.m_power_switch.setOutput(POMPE_ARG, true);
-				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, 140);
-				Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, 572);
-				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, 160);
-				Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, 450);
-				stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES;
-				stateConfVectorPosition = 0;
-				historyVector[0] = stateConfVector[0];
-			} 
+				historyVector[1] = stateConfVector[0];
+			}  else
+			{
+				if (iface.EV_ConvergenceMvt_raised || timeEvents[12])
+				{ 
+					/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+					/* 'default' enter sequence for state VENTOUSAGE_ATOMES */
+					/* Entry action for state 'VENTOUSAGE_ATOMES'. */
+					timer->setTimer(this, (sc_eventid)(&timeEvents[13]), 2 * 1000, false);
+					Application.m_power_switch.setOutput(POMPE_ARD, true);
+					Application.m_power_switch.setOutput(POMPE_ARG, true);
+					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, 140);
+					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, 572);
+					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, 160);
+					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, 450);
+					stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES;
+					stateConfVectorPosition = 0;
+					historyVector[0] = stateConfVector[0];
+				} 
+			}
 		}
 	}
 }
@@ -4209,11 +7111,227 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOME
 				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
 			{
 				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				break;
@@ -4298,6 +7416,44 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOME
 					/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
+					/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+					Application.m_power_switch.setOutput(EV_ARD, false);
+					Application.m_power_switch.setOutput(EV_ARG, false);
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+				{
+					/* Default exit sequence for state GLISSADE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'GLISSADE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+				{
+					/* Default exit sequence for state ON_RANGE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'ON_RANGE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+				{
+					/* Default exit sequence for state FIN_SEQUENCE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'FIN_SEQUENCE'. */
+					ifaceInternalSCI.sequence1 = false;
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+				{
+					/* Default exit sequence for final state. */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
 					break;
 				}
 				default: break;
@@ -4316,24 +7472,145 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOME
 			stateConfVectorPosition = 0;
 		}  else
 		{
-			if (timeEvents[13])
+			if (ifaceInternalSCI.sequence2)
 			{ 
-				/* Default exit sequence for state VENTOUSAGE_ATOMES */
-				stateConfVector[0] = IA_last_state;
+				/* Default exit sequence for state NETTOYAGE */
+				/* Default exit sequence for region r1 */
+				/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0.NETTOYAGE.r1) at position 0... */
+				switch(stateConfVector[ 0 ])
+				{
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state FACE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FACE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+					{
+						/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+					{
+						/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state VENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+					{
+						/* Default exit sequence for state RECUPERATION_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'RECUPERATION_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+						Application.m_power_switch.setOutput(EV_ARD, false);
+						Application.m_power_switch.setOutput(EV_ARG, false);
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+					{
+						/* Default exit sequence for state GLISSADE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'GLISSADE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+					{
+						/* Default exit sequence for state ON_RANGE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'ON_RANGE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+					{
+						/* Default exit sequence for state FIN_SEQUENCE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FIN_SEQUENCE'. */
+						ifaceInternalSCI.sequence1 = false;
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+					{
+						/* Default exit sequence for final state. */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						break;
+					}
+					default: break;
+				}
+				/* 'Entry_init' enter sequence for state GOLDENIUM */
+				/* 'Entry_init' enter sequence for region r1 */
+				/* Default react sequence for initial entry Entry_init */
+				/* 'default' enter sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				/* Entry action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[27]), 50, false);
+				Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
+				stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
 				stateConfVectorPosition = 0;
-				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
-				/* 'default' enter sequence for state RECUPERATION_ATOMES */
-				/* Entry action for state 'RECUPERATION_ATOMES'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[14]), 1 * 1000, false);
-				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, 50);
-				Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, 170);
-				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, 255);
-				Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, 850);
-				stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES;
-				stateConfVectorPosition = 0;
-				historyVector[0] = stateConfVector[0];
-			} 
+				historyVector[1] = stateConfVector[0];
+			}  else
+			{
+				if (timeEvents[13])
+				{ 
+					/* Default exit sequence for state VENTOUSAGE_ATOMES */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+					/* 'default' enter sequence for state RECUPERATION_ATOMES */
+					/* Entry action for state 'RECUPERATION_ATOMES'. */
+					timer->setTimer(this, (sc_eventid)(&timeEvents[14]), 1 * 1000, false);
+					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, 50);
+					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, 170);
+					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, 255);
+					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, 850);
+					stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES;
+					stateConfVectorPosition = 0;
+					historyVector[0] = stateConfVector[0];
+				} 
+			}
 		}
 	}
 }
@@ -4437,11 +7714,227 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATO
 				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
 			{
 				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				break;
@@ -4526,6 +8019,44 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATO
 					/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
+					/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+					Application.m_power_switch.setOutput(EV_ARD, false);
+					Application.m_power_switch.setOutput(EV_ARG, false);
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+				{
+					/* Default exit sequence for state GLISSADE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'GLISSADE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+				{
+					/* Default exit sequence for state ON_RANGE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'ON_RANGE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+				{
+					/* Default exit sequence for state FIN_SEQUENCE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'FIN_SEQUENCE'. */
+					ifaceInternalSCI.sequence1 = false;
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+				{
+					/* Default exit sequence for final state. */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
 					break;
 				}
 				default: break;
@@ -4544,23 +8075,147 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATO
 			stateConfVectorPosition = 0;
 		}  else
 		{
-			if (timeEvents[14])
+			if (ifaceInternalSCI.sequence2)
 			{ 
-				/* Default exit sequence for state RECUPERATION_ATOMES */
-				stateConfVector[0] = IA_last_state;
+				/* Default exit sequence for state NETTOYAGE */
+				/* Default exit sequence for region r1 */
+				/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0.NETTOYAGE.r1) at position 0... */
+				switch(stateConfVector[ 0 ])
+				{
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state FACE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FACE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+					{
+						/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+					{
+						/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state VENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+					{
+						/* Default exit sequence for state RECUPERATION_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'RECUPERATION_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+						Application.m_power_switch.setOutput(EV_ARD, false);
+						Application.m_power_switch.setOutput(EV_ARG, false);
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+					{
+						/* Default exit sequence for state GLISSADE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'GLISSADE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+					{
+						/* Default exit sequence for state ON_RANGE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'ON_RANGE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+					{
+						/* Default exit sequence for state FIN_SEQUENCE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FIN_SEQUENCE'. */
+						ifaceInternalSCI.sequence1 = false;
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+					{
+						/* Default exit sequence for final state. */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						break;
+					}
+					default: break;
+				}
+				/* 'Entry_init' enter sequence for state GOLDENIUM */
+				/* 'Entry_init' enter sequence for region r1 */
+				/* Default react sequence for initial entry Entry_init */
+				/* 'default' enter sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				/* Entry action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[27]), 50, false);
+				Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
+				stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
 				stateConfVectorPosition = 0;
-				/* Exit action for state 'RECUPERATION_ATOMES'. */
-				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
-				/* 'default' enter sequence for state DEVENTOUSAGE_ATOMES */
-				/* Entry action for state 'DEVENTOUSAGE_ATOMES'. */
-				Application.m_power_switch.setOutput(POMPE_ARD, false);
-				Application.m_power_switch.setOutput(EV_ARD, false);
-				Application.m_power_switch.setOutput(POMPE_ARG, false);
-				Application.m_power_switch.setOutput(EV_ARG, false);
-				stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES;
-				stateConfVectorPosition = 0;
-				historyVector[0] = stateConfVector[0];
-			} 
+				historyVector[1] = stateConfVector[0];
+			}  else
+			{
+				if (timeEvents[14])
+				{ 
+					/* Default exit sequence for state RECUPERATION_ATOMES */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'RECUPERATION_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+					/* 'default' enter sequence for state DEVENTOUSAGE_ATOMES */
+					/* Entry action for state 'DEVENTOUSAGE_ATOMES'. */
+					timer->setTimer(this, (sc_eventid)(&timeEvents[15]), 1 * 1000, false);
+					Application.m_power_switch.setOutput(POMPE_ARD, false);
+					Application.m_power_switch.setOutput(EV_ARD, true);
+					Application.m_power_switch.setOutput(POMPE_ARG, false);
+					Application.m_power_switch.setOutput(EV_ARG, true);
+					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, 95);
+					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, 170);
+					stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES;
+					stateConfVectorPosition = 0;
+					historyVector[0] = stateConfVector[0];
+				} 
+			}
 		}
 	}
 }
@@ -4664,11 +8319,227 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATO
 				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
 			{
 				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				break;
@@ -4753,6 +8624,44 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATO
 					/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
 					stateConfVector[0] = IA_last_state;
 					stateConfVectorPosition = 0;
+					/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+					Application.m_power_switch.setOutput(EV_ARD, false);
+					Application.m_power_switch.setOutput(EV_ARG, false);
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+				{
+					/* Default exit sequence for state GLISSADE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'GLISSADE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+				{
+					/* Default exit sequence for state ON_RANGE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'ON_RANGE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+				{
+					/* Default exit sequence for state FIN_SEQUENCE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'FIN_SEQUENCE'. */
+					ifaceInternalSCI.sequence1 = false;
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+				{
+					/* Default exit sequence for final state. */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
 					break;
 				}
 				default: break;
@@ -4769,7 +8678,2528 @@ void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATO
 			Application.m_asservissement.CommandeManuelle(0, 0);
 			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT;
 			stateConfVectorPosition = 0;
-		} 
+		}  else
+		{
+			if (ifaceInternalSCI.sequence2)
+			{ 
+				/* Default exit sequence for state NETTOYAGE */
+				/* Default exit sequence for region r1 */
+				/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0.NETTOYAGE.r1) at position 0... */
+				switch(stateConfVector[ 0 ])
+				{
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state FACE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FACE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+					{
+						/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+					{
+						/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state VENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+					{
+						/* Default exit sequence for state RECUPERATION_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'RECUPERATION_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+						Application.m_power_switch.setOutput(EV_ARD, false);
+						Application.m_power_switch.setOutput(EV_ARG, false);
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+					{
+						/* Default exit sequence for state GLISSADE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'GLISSADE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+					{
+						/* Default exit sequence for state ON_RANGE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'ON_RANGE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+					{
+						/* Default exit sequence for state FIN_SEQUENCE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FIN_SEQUENCE'. */
+						ifaceInternalSCI.sequence1 = false;
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+					{
+						/* Default exit sequence for final state. */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						break;
+					}
+					default: break;
+				}
+				/* 'Entry_init' enter sequence for state GOLDENIUM */
+				/* 'Entry_init' enter sequence for region r1 */
+				/* Default react sequence for initial entry Entry_init */
+				/* 'default' enter sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				/* Entry action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[27]), 50, false);
+				Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
+				stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
+				stateConfVectorPosition = 0;
+				historyVector[1] = stateConfVector[0];
+			}  else
+			{
+				if (timeEvents[15])
+				{ 
+					/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+					Application.m_power_switch.setOutput(EV_ARD, false);
+					Application.m_power_switch.setOutput(EV_ARG, false);
+					/* 'default' enter sequence for state GLISSADE */
+					/* Entry action for state 'GLISSADE'. */
+					timer->setTimer(this, (sc_eventid)(&timeEvents[16]), 2 * 1000, false);
+					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, 140);
+					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, 95);
+					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, 170);
+					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, 170);
+					stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE;
+					stateConfVectorPosition = 0;
+					historyVector[0] = stateConfVector[0];
+				} 
+			}
+		}
+	}
+}
+
+/* The reactions of state GLISSADE. */
+void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE()
+{
+	/* The reactions of state GLISSADE. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if ((iface.IN_Obstacle == 1) && (ifaceInternalSCI.inhibeObstacle == false))
+		{ 
+			/* Default exit sequence for state NETTOYAGE */
+			/* Default exit sequence for region r1 */
+			/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0.NETTOYAGE.r1) at position 0... */
+			switch(stateConfVector[ 0 ])
+			{
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+				{
+					/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+				{
+					/* Default exit sequence for state FACE_ZONE_CHAOS */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'FACE_ZONE_CHAOS'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+				{
+					/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+				{
+					/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+				{
+					/* Default exit sequence for state VENTOUSAGE_ATOMES */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+				{
+					/* Default exit sequence for state RECUPERATION_ATOMES */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'RECUPERATION_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+				{
+					/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+					Application.m_power_switch.setOutput(EV_ARD, false);
+					Application.m_power_switch.setOutput(EV_ARG, false);
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+				{
+					/* Default exit sequence for state GLISSADE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'GLISSADE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+				{
+					/* Default exit sequence for state ON_RANGE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'ON_RANGE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+				{
+					/* Default exit sequence for state FIN_SEQUENCE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'FIN_SEQUENCE'. */
+					ifaceInternalSCI.sequence1 = false;
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+				{
+					/* Default exit sequence for final state. */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					break;
+				}
+				default: break;
+			}
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			ifaceInternalSCI.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state ARRET_ROBOT */
+			/* Entry action for state 'ARRET_ROBOT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[8]), (1) * 1000, false);
+			Application.m_asservissement.CommandeManuelle(0, 0);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT;
+			stateConfVectorPosition = 0;
+		}  else
+		{
+			if (ifaceInternalSCI.sequence2)
+			{ 
+				/* Default exit sequence for state NETTOYAGE */
+				/* Default exit sequence for region r1 */
+				/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0.NETTOYAGE.r1) at position 0... */
+				switch(stateConfVector[ 0 ])
+				{
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state FACE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FACE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+					{
+						/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+					{
+						/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state VENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+					{
+						/* Default exit sequence for state RECUPERATION_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'RECUPERATION_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+						Application.m_power_switch.setOutput(EV_ARD, false);
+						Application.m_power_switch.setOutput(EV_ARG, false);
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+					{
+						/* Default exit sequence for state GLISSADE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'GLISSADE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+					{
+						/* Default exit sequence for state ON_RANGE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'ON_RANGE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+					{
+						/* Default exit sequence for state FIN_SEQUENCE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FIN_SEQUENCE'. */
+						ifaceInternalSCI.sequence1 = false;
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+					{
+						/* Default exit sequence for final state. */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						break;
+					}
+					default: break;
+				}
+				/* 'Entry_init' enter sequence for state GOLDENIUM */
+				/* 'Entry_init' enter sequence for region r1 */
+				/* Default react sequence for initial entry Entry_init */
+				/* 'default' enter sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				/* Entry action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[27]), 50, false);
+				Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
+				stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
+				stateConfVectorPosition = 0;
+				historyVector[1] = stateConfVector[0];
+			}  else
+			{
+				if (timeEvents[16])
+				{ 
+					/* Default exit sequence for state GLISSADE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'GLISSADE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+					/* 'default' enter sequence for state ON_RANGE */
+					/* Entry action for state 'ON_RANGE'. */
+					timer->setTimer(this, (sc_eventid)(&timeEvents[17]), 200, false);
+					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, 50);
+					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, 65);
+					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, 255);
+					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, 210);
+					stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE;
+					stateConfVectorPosition = 0;
+					historyVector[0] = stateConfVector[0];
+				} 
+			}
+		}
+	}
+}
+
+/* The reactions of state ON_RANGE. */
+void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE()
+{
+	/* The reactions of state ON_RANGE. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if ((iface.IN_Obstacle == 1) && (ifaceInternalSCI.inhibeObstacle == false))
+		{ 
+			/* Default exit sequence for state NETTOYAGE */
+			/* Default exit sequence for region r1 */
+			/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0.NETTOYAGE.r1) at position 0... */
+			switch(stateConfVector[ 0 ])
+			{
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+				{
+					/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+				{
+					/* Default exit sequence for state FACE_ZONE_CHAOS */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'FACE_ZONE_CHAOS'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+				{
+					/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+				{
+					/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+				{
+					/* Default exit sequence for state VENTOUSAGE_ATOMES */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+				{
+					/* Default exit sequence for state RECUPERATION_ATOMES */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'RECUPERATION_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+				{
+					/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+					Application.m_power_switch.setOutput(EV_ARD, false);
+					Application.m_power_switch.setOutput(EV_ARG, false);
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+				{
+					/* Default exit sequence for state GLISSADE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'GLISSADE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+				{
+					/* Default exit sequence for state ON_RANGE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'ON_RANGE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+				{
+					/* Default exit sequence for state FIN_SEQUENCE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'FIN_SEQUENCE'. */
+					ifaceInternalSCI.sequence1 = false;
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+				{
+					/* Default exit sequence for final state. */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					break;
+				}
+				default: break;
+			}
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			ifaceInternalSCI.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state ARRET_ROBOT */
+			/* Entry action for state 'ARRET_ROBOT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[8]), (1) * 1000, false);
+			Application.m_asservissement.CommandeManuelle(0, 0);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT;
+			stateConfVectorPosition = 0;
+		}  else
+		{
+			if (ifaceInternalSCI.sequence2)
+			{ 
+				/* Default exit sequence for state NETTOYAGE */
+				/* Default exit sequence for region r1 */
+				/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0.NETTOYAGE.r1) at position 0... */
+				switch(stateConfVector[ 0 ])
+				{
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state FACE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FACE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+					{
+						/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+					{
+						/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state VENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+					{
+						/* Default exit sequence for state RECUPERATION_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'RECUPERATION_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+						Application.m_power_switch.setOutput(EV_ARD, false);
+						Application.m_power_switch.setOutput(EV_ARG, false);
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+					{
+						/* Default exit sequence for state GLISSADE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'GLISSADE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+					{
+						/* Default exit sequence for state ON_RANGE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'ON_RANGE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+					{
+						/* Default exit sequence for state FIN_SEQUENCE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FIN_SEQUENCE'. */
+						ifaceInternalSCI.sequence1 = false;
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+					{
+						/* Default exit sequence for final state. */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						break;
+					}
+					default: break;
+				}
+				/* 'Entry_init' enter sequence for state GOLDENIUM */
+				/* 'Entry_init' enter sequence for region r1 */
+				/* Default react sequence for initial entry Entry_init */
+				/* 'default' enter sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				/* Entry action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[27]), 50, false);
+				Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
+				stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
+				stateConfVectorPosition = 0;
+				historyVector[1] = stateConfVector[0];
+			}  else
+			{
+				if (timeEvents[17])
+				{ 
+					/* Default exit sequence for state ON_RANGE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'ON_RANGE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+					/* 'default' enter sequence for state FIN_SEQUENCE */
+					/* Entry action for state 'FIN_SEQUENCE'. */
+					ifaceInternalSCI.sequence2 = true;
+					stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE;
+					stateConfVectorPosition = 0;
+					historyVector[0] = stateConfVector[0];
+				} 
+			}
+		}
+	}
+}
+
+/* The reactions of state FIN_SEQUENCE. */
+void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE()
+{
+	/* The reactions of state FIN_SEQUENCE. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if ((iface.IN_Obstacle == 1) && (ifaceInternalSCI.inhibeObstacle == false))
+		{ 
+			/* Default exit sequence for state NETTOYAGE */
+			/* Default exit sequence for region r1 */
+			/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0.NETTOYAGE.r1) at position 0... */
+			switch(stateConfVector[ 0 ])
+			{
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+				{
+					/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+				{
+					/* Default exit sequence for state FACE_ZONE_CHAOS */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'FACE_ZONE_CHAOS'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+				{
+					/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+				{
+					/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+				{
+					/* Default exit sequence for state VENTOUSAGE_ATOMES */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+				{
+					/* Default exit sequence for state RECUPERATION_ATOMES */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'RECUPERATION_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+				{
+					/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+					Application.m_power_switch.setOutput(EV_ARD, false);
+					Application.m_power_switch.setOutput(EV_ARG, false);
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+				{
+					/* Default exit sequence for state GLISSADE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'GLISSADE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+				{
+					/* Default exit sequence for state ON_RANGE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'ON_RANGE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+				{
+					/* Default exit sequence for state FIN_SEQUENCE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'FIN_SEQUENCE'. */
+					ifaceInternalSCI.sequence1 = false;
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+				{
+					/* Default exit sequence for final state. */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					break;
+				}
+				default: break;
+			}
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			ifaceInternalSCI.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state ARRET_ROBOT */
+			/* Entry action for state 'ARRET_ROBOT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[8]), (1) * 1000, false);
+			Application.m_asservissement.CommandeManuelle(0, 0);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT;
+			stateConfVectorPosition = 0;
+		}  else
+		{
+			if (ifaceInternalSCI.sequence2)
+			{ 
+				/* Default exit sequence for state NETTOYAGE */
+				/* Default exit sequence for region r1 */
+				/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0.NETTOYAGE.r1) at position 0... */
+				switch(stateConfVector[ 0 ])
+				{
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state FACE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FACE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+					{
+						/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+					{
+						/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state VENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+					{
+						/* Default exit sequence for state RECUPERATION_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'RECUPERATION_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+						Application.m_power_switch.setOutput(EV_ARD, false);
+						Application.m_power_switch.setOutput(EV_ARG, false);
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+					{
+						/* Default exit sequence for state GLISSADE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'GLISSADE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+					{
+						/* Default exit sequence for state ON_RANGE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'ON_RANGE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+					{
+						/* Default exit sequence for state FIN_SEQUENCE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FIN_SEQUENCE'. */
+						ifaceInternalSCI.sequence1 = false;
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+					{
+						/* Default exit sequence for final state. */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						break;
+					}
+					default: break;
+				}
+				/* 'Entry_init' enter sequence for state GOLDENIUM */
+				/* 'Entry_init' enter sequence for region r1 */
+				/* Default react sequence for initial entry Entry_init */
+				/* 'default' enter sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				/* Entry action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[27]), 50, false);
+				Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
+				stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
+				stateConfVectorPosition = 0;
+				historyVector[1] = stateConfVector[0];
+			}  else
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				/* Default enter sequence for state null */
+				stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_;
+				stateConfVectorPosition = 0;
+			}
+		}
+	}
+}
+
+/* The reactions of state null. */
+void IA::react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_()
+{
+	/* The reactions of state null. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if ((iface.IN_Obstacle == 1) && (ifaceInternalSCI.inhibeObstacle == false))
+		{ 
+			/* Default exit sequence for state NETTOYAGE */
+			/* Default exit sequence for region r1 */
+			/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0.NETTOYAGE.r1) at position 0... */
+			switch(stateConfVector[ 0 ])
+			{
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+				{
+					/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+				{
+					/* Default exit sequence for state FACE_ZONE_CHAOS */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'FACE_ZONE_CHAOS'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+				{
+					/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+				{
+					/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+				{
+					/* Default exit sequence for state VENTOUSAGE_ATOMES */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+				{
+					/* Default exit sequence for state RECUPERATION_ATOMES */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'RECUPERATION_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+				{
+					/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+					Application.m_power_switch.setOutput(EV_ARD, false);
+					Application.m_power_switch.setOutput(EV_ARG, false);
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+				{
+					/* Default exit sequence for state GLISSADE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'GLISSADE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+				{
+					/* Default exit sequence for state ON_RANGE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'ON_RANGE'. */
+					timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+				{
+					/* Default exit sequence for state FIN_SEQUENCE */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					/* Exit action for state 'FIN_SEQUENCE'. */
+					ifaceInternalSCI.sequence1 = false;
+					break;
+				}
+				case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+				{
+					/* Default exit sequence for final state. */
+					stateConfVector[0] = IA_last_state;
+					stateConfVectorPosition = 0;
+					break;
+				}
+				default: break;
+			}
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			ifaceInternalSCI.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state ARRET_ROBOT */
+			/* Entry action for state 'ARRET_ROBOT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[8]), (1) * 1000, false);
+			Application.m_asservissement.CommandeManuelle(0, 0);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT;
+			stateConfVectorPosition = 0;
+		}  else
+		{
+			if (ifaceInternalSCI.sequence2)
+			{ 
+				/* Default exit sequence for state NETTOYAGE */
+				/* Default exit sequence for region r1 */
+				/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0.NETTOYAGE.r1) at position 0... */
+				switch(stateConfVector[ 0 ])
+				{
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+					{
+						/* Default exit sequence for state FACE_ZONE_CHAOS */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FACE_ZONE_CHAOS'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+					{
+						/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+					{
+						/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state VENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+					{
+						/* Default exit sequence for state RECUPERATION_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'RECUPERATION_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+					{
+						/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+						Application.m_power_switch.setOutput(EV_ARD, false);
+						Application.m_power_switch.setOutput(EV_ARG, false);
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+					{
+						/* Default exit sequence for state GLISSADE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'GLISSADE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+					{
+						/* Default exit sequence for state ON_RANGE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'ON_RANGE'. */
+						timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+					{
+						/* Default exit sequence for state FIN_SEQUENCE */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						/* Exit action for state 'FIN_SEQUENCE'. */
+						ifaceInternalSCI.sequence1 = false;
+						break;
+					}
+					case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+					{
+						/* Default exit sequence for final state. */
+						stateConfVector[0] = IA_last_state;
+						stateConfVectorPosition = 0;
+						break;
+					}
+					default: break;
+				}
+				/* 'Entry_init' enter sequence for state GOLDENIUM */
+				/* 'Entry_init' enter sequence for region r1 */
+				/* Default react sequence for initial entry Entry_init */
+				/* 'default' enter sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				/* Entry action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[27]), 50, false);
+				Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
+				stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
+				stateConfVectorPosition = 0;
+				historyVector[1] = stateConfVector[0];
+			} 
+		}
 	}
 }
 
@@ -4872,11 +11302,227 @@ void IA::react_main_region_MATCH_EN_COURS__region0_SUPERVISOR()
 				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
 				break;
 			}
 			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
 			{
 				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
 				stateConfVector[0] = IA_last_state;
 				stateConfVectorPosition = 0;
 				break;
@@ -4895,19 +11541,7105 @@ void IA::react_main_region_MATCH_EN_COURS__region0_SUPERVISOR()
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		/* Default exit sequence for state SUPERVISOR */
+		if (ifaceInternalSCI.sequence1)
+		{ 
+			/* Default exit sequence for state SUPERVISOR */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* 'Entry_init' enter sequence for state NETTOYAGE */
+			/* 'Entry_init' enter sequence for region r1 */
+			/* Default react sequence for initial entry Entry_init */
+			/* 'default' enter sequence for state DEPASSE_ZONE_CHAOS */
+			/* Entry action for state 'DEPASSE_ZONE_CHAOS'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[9]), 3 * 1000, false);
+			SCI_Asser_OCB::XYTeta(114, 0, 0);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS;
+			stateConfVectorPosition = 0;
+			historyVector[0] = stateConfVector[0];
+		} 
+	}
+}
+
+/* The reactions of state FACE_BLEUIUM. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM()
+{
+	/* The reactions of state FACE_BLEUIUM. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if (iface.EV_ConvergenceMvt_raised || timeEvents[18])
+		{ 
+			/* Default exit sequence for state FACE_BLEUIUM */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'FACE_BLEUIUM'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__choice_1();
+		} 
+	}
+}
+
+/* The reactions of state DECLENCHEMENT_ACCELERATEUR_GAUCHE. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE()
+{
+	/* The reactions of state DECLENCHEMENT_ACCELERATEUR_GAUCHE. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if (timeEvents[19])
+		{ 
+			/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+			/* 'default' enter sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+			/* Entry action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[20]), 3 * 1000, false);
+			SCI_Asser_OCB::XYTeta(203, 12, IA::DefaultSCI::PI / 2.0);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+		} 
+	}
+}
+
+/* The reactions of state PLACEMENT_DEVANT_GOLDENIUM. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM()
+{
+	/* The reactions of state PLACEMENT_DEVANT_GOLDENIUM. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if (iface.EV_ConvergenceMvt_raised || timeEvents[20])
+		{ 
+			/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+			/* 'default' enter sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+			/* Entry action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[21]), 1 * 1000, false);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_VERT, 512);
+			Application.m_power_switch.setOutput(POMPE_AV, true);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+		} 
+	}
+}
+
+/* The reactions of state PREPARATION_KMAR_POUR_GOLDENIUM. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM()
+{
+	/* The reactions of state PREPARATION_KMAR_POUR_GOLDENIUM. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if (timeEvents[21])
+		{ 
+			/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+			/* 'default' enter sequence for state VENTOUSAGE_GOLDENIUM */
+			/* Entry action for state 'VENTOUSAGE_GOLDENIUM'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[22]), 2 * 1000, false);
+			Application.m_asservissement.CommandeManuelle(15, 15);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+		} 
+	}
+}
+
+/* The reactions of state VENTOUSAGE_GOLDENIUM. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM()
+{
+	/* The reactions of state VENTOUSAGE_GOLDENIUM. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if (timeEvents[22])
+		{ 
+			/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+			/* 'default' enter sequence for state RECULE_AVEC_PRECAUTION */
+			/* Entry action for state 'RECULE_AVEC_PRECAUTION'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[23]), 2 * 1000, false);
+			Application.m_asservissement.Ind_perfo = 0.1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(202, 9, IA::DefaultSCI::PI / 2.0);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+		} 
+	}
+}
+
+/* The reactions of state RECULE_AVEC_PRECAUTION. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION()
+{
+	/* The reactions of state RECULE_AVEC_PRECAUTION. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if (iface.EV_ConvergenceMvt_raised || timeEvents[23])
+		{ 
+			/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+			Application.m_asservissement.Ind_perfo = 0.3;
+			/* 'default' enter sequence for state MISE_GOLDENIUM_HORINZONTAL */
+			/* Entry action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[24]), 2 * 1000, false);
+			Application.m_asservissement_chariot.setConsigne(450);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 200);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+		} 
+	}
+}
+
+/* The reactions of state MISE_GOLDENIUM_HORINZONTAL. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL()
+{
+	/* The reactions of state MISE_GOLDENIUM_HORINZONTAL. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if (timeEvents[24])
+		{ 
+			/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__choice_2();
+		} 
+	}
+}
+
+/* The reactions of state PREPARATION_KMAR_GAUCHE. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE()
+{
+	/* The reactions of state PREPARATION_KMAR_GAUCHE. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if (timeEvents[25])
+		{ 
+			/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+			/* 'default' enter sequence for state FACE_BLEUIUM */
+			/* Entry action for state 'FACE_BLEUIUM'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[18]), 5 * 1000, false);
+			SCI_Asser_OCB::XYTeta(152, 16, IA::DefaultSCI::PI / 2.0);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+		} 
+	}
+}
+
+/* The reactions of state PREPARATION_KMAR_DROITE. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE()
+{
+	/* The reactions of state PREPARATION_KMAR_DROITE. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if (timeEvents[26])
+		{ 
+			/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+			/* 'default' enter sequence for state FACE_BLEUIUM */
+			/* Entry action for state 'FACE_BLEUIUM'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[18]), 5 * 1000, false);
+			SCI_Asser_OCB::XYTeta(152, 16, IA::DefaultSCI::PI / 2.0);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+		} 
+	}
+}
+
+/* The reactions of state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE()
+{
+	/* The reactions of state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if (timeEvents[27])
+		{ 
+			/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+			react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__choice_0();
+		} 
+	}
+}
+
+/* The reactions of state DECLENCHEMENT_ACCELERATEUR_DROITE. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE()
+{
+	/* The reactions of state DECLENCHEMENT_ACCELERATEUR_DROITE. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if (timeEvents[28])
+		{ 
+			/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+			/* 'default' enter sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+			/* Entry action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[20]), 3 * 1000, false);
+			SCI_Asser_OCB::XYTeta(203, 12, IA::DefaultSCI::PI / 2.0);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+		} 
+	}
+}
+
+/* The reactions of state GOLDENIUM_DANS_ROBOT_GAUCHE. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE()
+{
+	/* The reactions of state GOLDENIUM_DANS_ROBOT_GAUCHE. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if (timeEvents[29])
+		{ 
+			/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+			/* 'default' enter sequence for state PLACEMENT_DEVANT_BALANCE */
+			/* Entry action for state 'PLACEMENT_DEVANT_BALANCE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[31]), 3 * 1000, false);
+			Application.m_asservissement.CommandeMouvementXY_TETA(111, -70, -IA::DefaultSCI::PI / 2.0);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+		} 
+	}
+}
+
+/* The reactions of state GOLDENIUM_DANS_ROBOT_DROITE. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE()
+{
+	/* The reactions of state GOLDENIUM_DANS_ROBOT_DROITE. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if (timeEvents[30])
+		{ 
+			/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+			/* 'default' enter sequence for state PLACEMENT_DEVANT_BALANCE */
+			/* Entry action for state 'PLACEMENT_DEVANT_BALANCE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[31]), 3 * 1000, false);
+			Application.m_asservissement.CommandeMouvementXY_TETA(111, -70, -IA::DefaultSCI::PI / 2.0);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+		} 
+	}
+}
+
+/* The reactions of state PLACEMENT_DEVANT_BALANCE. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE()
+{
+	/* The reactions of state PLACEMENT_DEVANT_BALANCE. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if (iface.EV_ConvergenceMvt_raised || timeEvents[31])
+		{ 
+			/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+			/* 'default' enter sequence for state PLUS_PROCHE_BALANCE */
+			/* Entry action for state 'PLUS_PROCHE_BALANCE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[32]), 3 * 1000, false);
+			Application.m_asservissement.CommandeMouvementXY_TETA(111, -70, -IA::DefaultSCI::PI / 2.0);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+		} 
+	}
+}
+
+/* The reactions of state PLUS_PROCHE_BALANCE. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE()
+{
+	/* The reactions of state PLUS_PROCHE_BALANCE. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if (iface.EV_ConvergenceMvt_raised || timeEvents[32])
+		{ 
+			/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+			/* 'default' enter sequence for state ACCOSTAGE_BALANCE */
+			/* Entry action for state 'ACCOSTAGE_BALANCE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[33]), 2 * 1000, false);
+			Application.m_asservissement.CommandeManuelle(15, 15);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+		} 
+	}
+}
+
+/* The reactions of state ACCOSTAGE_BALANCE. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE()
+{
+	/* The reactions of state ACCOSTAGE_BALANCE. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if (timeEvents[33])
+		{ 
+			/* Default exit sequence for state ACCOSTAGE_BALANCE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+			/* 'default' enter sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+			/* Entry action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[34]), 1 * 1000, false);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_VERT, 512);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+		} 
+	}
+}
+
+/* The reactions of state POSITION_GOLDENIUM_AU_DESSUS_BALANCE. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE()
+{
+	/* The reactions of state POSITION_GOLDENIUM_AU_DESSUS_BALANCE. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if (timeEvents[34])
+		{ 
+			/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+			/* 'default' enter sequence for state DROPAGE_GOLDENIUM */
+			/* Entry action for state 'DROPAGE_GOLDENIUM'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[35]), 200, false);
+			Application.m_power_switch.setOutput(POMPE_AV, false);
+			Application.m_power_switch.setOutput(3, true);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+		} 
+	}
+}
+
+/* The reactions of state DROPAGE_GOLDENIUM. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM()
+{
+	/* The reactions of state DROPAGE_GOLDENIUM. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if (timeEvents[35])
+		{ 
+			/* Default exit sequence for state DROPAGE_GOLDENIUM */
+			stateConfVector[0] = IA_last_state;
+			stateConfVectorPosition = 0;
+			/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+			timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+			Application.m_power_switch.setOutput(3, false);
+			/* 'default' enter sequence for state FIN */
+			/* Entry action for state 'FIN'. */
+			ifaceInternalSCI.sequence2 = false;
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+		} 
+	}
+}
+
+/* The reactions of state FIN. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN()
+{
+	/* The reactions of state FIN. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		/* Default exit sequence for state FIN */
 		stateConfVector[0] = IA_last_state;
 		stateConfVectorPosition = 0;
-		/* 'Entry_init' enter sequence for state NETTOYAGE */
-		/* 'Entry_init' enter sequence for region r1 */
-		/* Default react sequence for initial entry Entry_init */
-		/* 'default' enter sequence for state DEPASSE_ZONE_CHAOS */
-		/* Entry action for state 'DEPASSE_ZONE_CHAOS'. */
-		timer->setTimer(this, (sc_eventid)(&timeEvents[9]), 3 * 1000, false);
-		SCI_Asser_OCB::XYTeta(114, 0, 0);
-		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS;
+		/* Default enter sequence for state null */
+		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_;
 		stateConfVectorPosition = 0;
-		historyVector[0] = stateConfVector[0];
+	}
+}
+
+/* The reactions of state null. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_()
+{
+	/* The reactions of state null. */
+	if (timeEvents[7])
+	{ 
+		/* Default exit sequence for state MATCH_EN_COURS */
+		/* Default exit sequence for region null */
+		/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS._region0) at position 0... */
+		switch(stateConfVector[ 0 ])
+		{
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
+			{
+				/* Default exit sequence for state ARRET_ROBOT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ARRET_ROBOT'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[8]));
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT :
+			{
+				/* Default exit sequence for state SORTIE_EVITEMENT */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DETECTION_OBSTACLE'. */
+				Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEPASSE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state DEPASSE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEPASSE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[9]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FACE_ZONE_CHAOS :
+			{
+				/* Default exit sequence for state FACE_ZONE_CHAOS */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_ZONE_CHAOS'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[10]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_STOCKAGE_DANS_ZONE_DEPART :
+			{
+				/* Default exit sequence for state STOCKAGE_DANS_ZONE_DEPART */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'STOCKAGE_DANS_ZONE_DEPART'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[11]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_PLACEMENT_DEVANT_DISTRIBUTEUR :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[12]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_VENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state VENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[13]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_RECUPERATION_ATOMES :
+			{
+				/* Default exit sequence for state RECUPERATION_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECUPERATION_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[14]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_DEVENTOUSAGE_ATOMES :
+			{
+				/* Default exit sequence for state DEVENTOUSAGE_ATOMES */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[15]));
+				Application.m_power_switch.setOutput(EV_ARD, false);
+				Application.m_power_switch.setOutput(EV_ARG, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_GLISSADE :
+			{
+				/* Default exit sequence for state GLISSADE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GLISSADE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[16]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_ON_RANGE :
+			{
+				/* Default exit sequence for state ON_RANGE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ON_RANGE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[17]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1_FIN_SEQUENCE :
+			{
+				/* Default exit sequence for state FIN_SEQUENCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FIN_SEQUENCE'. */
+				ifaceInternalSCI.sequence1 = false;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_SUPERVISOR :
+			{
+				/* Default exit sequence for state SUPERVISOR */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM :
+			{
+				/* Default exit sequence for state FACE_BLEUIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'FACE_BLEUIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[18]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[19]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[20]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_POUR_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_POUR_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state VENTOUSAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'VENTOUSAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION :
+			{
+				/* Default exit sequence for state RECULE_AVEC_PRECAUTION */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'RECULE_AVEC_PRECAUTION'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[23]));
+				Application.m_asservissement.Ind_perfo = 0.3;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL :
+			{
+				/* Default exit sequence for state MISE_GOLDENIUM_HORINZONTAL */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'MISE_GOLDENIUM_HORINZONTAL'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[24]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[25]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[26]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE :
+			{
+				/* Default exit sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[27]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE :
+			{
+				/* Default exit sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[28]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[29]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE :
+			{
+				/* Default exit sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[30]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE :
+			{
+				/* Default exit sequence for state PLACEMENT_DEVANT_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLACEMENT_DEVANT_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[31]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE :
+			{
+				/* Default exit sequence for state PLUS_PROCHE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'PLUS_PROCHE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[32]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE :
+			{
+				/* Default exit sequence for state ACCOSTAGE_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'ACCOSTAGE_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[33]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE :
+			{
+				/* Default exit sequence for state POSITION_GOLDENIUM_AU_DESSUS_BALANCE */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'POSITION_GOLDENIUM_AU_DESSUS_BALANCE'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[34]));
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM :
+			{
+				/* Default exit sequence for state DROPAGE_GOLDENIUM */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				/* Exit action for state 'DROPAGE_GOLDENIUM'. */
+				timer->unsetTimer(this, (sc_eventid)(&timeEvents[35]));
+				Application.m_power_switch.setOutput(3, false);
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN :
+			{
+				/* Default exit sequence for state FIN */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			case main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_ :
+			{
+				/* Default exit sequence for final state. */
+				stateConfVector[0] = IA_last_state;
+				stateConfVectorPosition = 0;
+				break;
+			}
+			default: break;
+		}
+		/* Exit action for state 'MATCH_EN_COURS'. */
+		timer->unsetTimer(this, (sc_eventid)(&timeEvents[7]));
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
 	}
 }
 
@@ -4922,15 +18654,118 @@ void IA::react_main_region_FIN_MATCH()
 void IA::react_main_region_MATCH_EN_COURS__region0__choice_0()
 {
 	/* The reactions of state null. */
-	/* 'Entry_history' enter sequence for state NETTOYAGE */
-	/* 'Entry_history' enter sequence for region r1 */
-	/* Default react sequence for initial entry Entry_history */
-	/* Default react sequence for shallow history entry  */
-	/* Enter the region with shallow history */
-	if (historyVector[0] != IA_last_state)
+	if (ifaceInternalSCI.sequence1)
+	{ 
+		/* 'Entry_history' enter sequence for state NETTOYAGE */
+		/* 'Entry_history' enter sequence for region r1 */
+		/* Default react sequence for initial entry Entry_history */
+		/* Default react sequence for shallow history entry  */
+		/* Enter the region with shallow history */
+		if (historyVector[0] != IA_last_state)
+		{
+			shenseq_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1();
+		} 
+	}  else
 	{
-		shenseq_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1();
-	} 
+		if (ifaceInternalSCI.sequence2)
+		{ 
+			/* 'Entry_history' enter sequence for state GOLDENIUM */
+			/* 'Entry_history' enter sequence for region r1 */
+			/* Default react sequence for initial entry Entry_history */
+			/* Default react sequence for shallow history entry  */
+			/* Enter the region with shallow history */
+			if (historyVector[1] != IA_last_state)
+			{
+				shenseq_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1();
+			} 
+		} 
+	}
+}
+
+/* The reactions of state null. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__choice_0()
+{
+	/* The reactions of state null. */
+	if (iface.Couleur == IA::DefaultSCI::JAUNE)
+	{ 
+		/* 'default' enter sequence for state PREPARATION_KMAR_GAUCHE */
+		/* Entry action for state 'PREPARATION_KMAR_GAUCHE'. */
+		timer->setTimer(this, (sc_eventid)(&timeEvents[25]), 200, false);
+		Application.m_asservissement_chariot.setConsigne(300);
+		Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_VERT, 200);
+		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE;
+		stateConfVectorPosition = 0;
+		historyVector[1] = stateConfVector[0];
+	}  else
+	{
+		if (iface.Couleur == IA::DefaultSCI::VIOLET)
+		{ 
+			/* 'default' enter sequence for state PREPARATION_KMAR_DROITE */
+			/* Entry action for state 'PREPARATION_KMAR_DROITE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[26]), 200, false);
+			Application.m_asservissement_chariot.setConsigne(300);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_VERT, 850);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+		} 
+	}
+}
+
+/* The reactions of state null. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__choice_1()
+{
+	/* The reactions of state null. */
+	if (iface.Couleur == IA::DefaultSCI::JAUNE)
+	{ 
+		/* 'default' enter sequence for state DECLENCHEMENT_ACCELERATEUR_GAUCHE */
+		/* Entry action for state 'DECLENCHEMENT_ACCELERATEUR_GAUCHE'. */
+		timer->setTimer(this, (sc_eventid)(&timeEvents[19]), 500, false);
+		Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_VERT, 850);
+		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE;
+		stateConfVectorPosition = 0;
+		historyVector[1] = stateConfVector[0];
+	}  else
+	{
+		if (iface.Couleur == IA::DefaultSCI::VIOLET)
+		{ 
+			/* 'default' enter sequence for state DECLENCHEMENT_ACCELERATEUR_DROITE */
+			/* Entry action for state 'DECLENCHEMENT_ACCELERATEUR_DROITE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[28]), 500, false);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_VERT, 200);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+		} 
+	}
+}
+
+/* The reactions of state null. */
+void IA::react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__choice_2()
+{
+	/* The reactions of state null. */
+	if (iface.Couleur == IA::DefaultSCI::JAUNE)
+	{ 
+		/* 'default' enter sequence for state GOLDENIUM_DANS_ROBOT_GAUCHE */
+		/* Entry action for state 'GOLDENIUM_DANS_ROBOT_GAUCHE'. */
+		timer->setTimer(this, (sc_eventid)(&timeEvents[29]), 200, false);
+		Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_VERT, 200);
+		stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE;
+		stateConfVectorPosition = 0;
+		historyVector[1] = stateConfVector[0];
+	}  else
+	{
+		if (iface.Couleur == IA::DefaultSCI::VIOLET)
+		{ 
+			/* 'default' enter sequence for state GOLDENIUM_DANS_ROBOT_DROITE */
+			/* Entry action for state 'GOLDENIUM_DANS_ROBOT_DROITE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[30]), 200, false);
+			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_VERT, 850);
+			stateConfVector[0] = main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+		} 
+	}
 }
 
 
