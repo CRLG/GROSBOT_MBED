@@ -57,7 +57,7 @@ typedef enum {
 // Pompe = Pompe à air
 typedef enum {
     POMPE_AV = PowerSwitch::XT1_OUTPUT,
-    // TODO: EV_AV
+    EV_AV = PowerSwitch::XT4_OUTPUT,
     POMPE_ARG = PowerSwitch::XT5_OUTPUT,
     POMPE_ARD = PowerSwitch::XT6_OUTPUT,
     EV_ARG = PowerSwitch::XT7_OUTPUT,
