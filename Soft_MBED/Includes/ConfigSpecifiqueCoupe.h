@@ -70,6 +70,8 @@ typedef enum {
 //! Durée du match
 #define DUREE_MATCH 100 // [sec]
 
+#define HOMOLO 1
+
 #endif // _CONFIG_SPECIFIQUE_COUPE
 
 

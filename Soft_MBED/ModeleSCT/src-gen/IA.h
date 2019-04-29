@@ -5,17 +5,17 @@
 #include "../src/sc_types.h"
 #include "../src/StatemachineInterface.h"
 #include "../src/TimedStatemachineInterface.h"
+#include "../../ext/mbed-common-rob/Includes/CGlobale.h"
 #include "../../Includes/ConfigSpecifiqueCoupe.h"
+#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h"
+#include "../../ext/CppRobLib/ServosAX/servoaxbase.h"
+#include "../../ext/mbed-common-rob/Includes/CAsservissement.h"
+#include "../../ext/mbed-common-rob/Includes/CServoMoteurSD20.h"
 #include "../../ext/mbed-common-rob/Includes/CLeds.h"
 #include "../../ext/mbed-common-rob/Includes/PowerSwitch.h"
-#include "../../ext/mbed-common-rob/Includes/CGlobale.h"
-#include "../../ext/mbed-common-rob/Includes/MessengerXbeeNetwork.h"
-#include "../../ext/mbed-common-rob/Includes/CAsservissement.h"
 #include "../../ext/mbed-common-rob/Includes/CAsservissementChariot.h"
-#include "../../ext/CppRobLib/ServosAX/servoaxbase.h"
-#include "../../ext/mbed-common-rob/Includes/CServoMoteurSD20.h"
+#include "../../ext/mbed-common-rob/Includes/MessengerXbeeNetwork.h"
 #include "../../ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.h"
-#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h"
 
 /*! \file Header of the state machine 'IA'.
 */
@@ -32,6 +32,7 @@
 #define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_02 0
 #define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01 0
 #define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02 0
+#define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUT 0
 #define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET 1
 #define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE 1
 #define SCVI_MAIN_REGION_MATCH_EN_COURS 0
@@ -55,24 +56,38 @@
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_FACE_BLEUIUM 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_DECLENCHEMENT_ACCELERATEUR_GAUCHE 0
-#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PLACEMENT_DEVANT_GOLDENIUM 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_DEPLACEMENT_VERS_GOLDENIUM 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PREPARATION_KMAR_POUR_GOLDENIUM 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_VENTOUSAGE_GOLDENIUM 0
-#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_RECULE_AVEC_PRECAUTION 0
-#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_MISE_GOLDENIUM_HORINZONTAL 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PREPARATION_KMAR_GAUCHE 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PREPARATION_KMAR_DROITE 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_DECLENCHEMENT_ACCELERATEUR_DROITE 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_GOLDENIUM_DANS_ROBOT_GAUCHE 0
-#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_GOLDENIUM_DANS_ROBOT_DROITE 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PLACEMENT_DEVANT_BALANCE 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PLUS_PROCHE_BALANCE 0
-#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_ACCOSTAGE_BALANCE 0
-#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_GOLDENIUM_EN_L_AIR 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_DROPAGE_GOLDENIUM 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_FIN 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1__FINAL_ 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_COPY_1_DROPAGE_GOLDENIUM 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_RECULE_AVEC_PRECAUTION 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_ARRET_MOTEURS 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_MISE_GOLDENIUM_BAS 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_RALENTISSEMENT_KMAR_01 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_RALENTISSEMENT_KMAR_02 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_POSE_GOLDENIUM 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_DECOLLAGE_GOLDENIUM_01 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_DECOLLAGE_GOLDENIUM_02 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_KMAR_SECURE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_DECOLLAGE_GOLDENIUM_03 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_COPY_1_GOLDENIUM_DANS_ROBOT_GAUCHE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_DESCEND_KMAR 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_KMAR_MONTE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_KMAR_BIEN_DROIT 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_ROTATION_VERS_GOLDENIUM 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PLACEMENT_FACE_GOLDENIUM 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_COPY_1_ACCOSTAGE_BALANCE 0
 #define SCVI_MAIN_REGION_FIN_MATCH 0
 
 class IA : public TimedStatemachineInterface, public StatemachineInterface
@@ -96,6 +111,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_02,
 			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01,
 			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02,
+			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUT,
 			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET,
 			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE,
 			main_region_MATCH_EN_COURS,
@@ -119,24 +135,38 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE,
-			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DEPLACEMENT_VERS_GOLDENIUM,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM,
-			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION,
-			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE,
-			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE,
-			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE,
-			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_EN_L_AIR,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_Copy_1_DROPAGE_GOLDENIUM,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ARRET_MOTEURS,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_BAS,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RALENTISSEMENT_KMAR_01,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RALENTISSEMENT_KMAR_02,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSE_GOLDENIUM,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECOLLAGE_GOLDENIUM_01,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECOLLAGE_GOLDENIUM_02,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_KMAR_SECURE,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECOLLAGE_GOLDENIUM_03,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_Copy_1_GOLDENIUM_DANS_ROBOT_GAUCHE,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DESCEND_KMAR,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_KMAR_MONTE,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_KMAR_BIEN_DROIT,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ROTATION_VERS_GOLDENIUM,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_FACE_GOLDENIUM,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_Copy_1_ACCOSTAGE_BALANCE,
 			main_region_FIN_MATCH
 		} IAStates;
 		
@@ -208,6 +238,24 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				/*! Sets the value of the variable 'IN_Depression' that is defined in the default interface scope. */
 				void set_iN_Depression(sc_boolean value);
 				
+				/*! Gets the value of the variable 'forceObstacle' that is defined in the default interface scope. */
+				sc_boolean get_forceObstacle() const;
+				
+				/*! Sets the value of the variable 'forceObstacle' that is defined in the default interface scope. */
+				void set_forceObstacle(sc_boolean value);
+				
+				/*! Gets the value of the variable 'US_AV' that is defined in the default interface scope. */
+				sc_boolean get_uS_AV() const;
+				
+				/*! Sets the value of the variable 'US_AV' that is defined in the default interface scope. */
+				void set_uS_AV(sc_boolean value);
+				
+				/*! Gets the value of the variable 'US_AR' that is defined in the default interface scope. */
+				sc_boolean get_uS_AR() const;
+				
+				/*! Sets the value of the variable 'US_AR' that is defined in the default interface scope. */
+				void set_uS_AR(sc_boolean value);
+				
 				/*! Gets the value of the variable 'Couleur' that is defined in the default interface scope. */
 				int32_t get_couleur() const;
 				
@@ -268,68 +316,77 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				/*! Sets the value of the variable 'nb_Modules' that is defined in the default interface scope. */
 				void set_nb_Modules(int32_t value);
 				
-				/*! Gets the value of the variable 'SERVO_VENTOUSE' that is defined in the default interface scope. */
-				const int32_t get_sERVO_VENTOUSE() const;
+				/*! Gets the value of the variable 'TOB_G_HAUT' that is defined in the default interface scope. */
+				const int32_t get_tOB_G_HAUT() const;
 				
-				/*! Gets the value of the variable 'SERVO_CENTREUR_G' that is defined in the default interface scope. */
-				const int32_t get_sERVO_CENTREUR_G() const;
+				/*! Gets the value of the variable 'TOB_G_MILIEU' that is defined in the default interface scope. */
+				const int32_t get_tOB_G_MILIEU() const;
 				
-				/*! Gets the value of the variable 'SERVO_CENTREUR_D' that is defined in the default interface scope. */
-				const int32_t get_sERVO_CENTREUR_D() const;
+				/*! Gets the value of the variable 'TOB_G_BAS' that is defined in the default interface scope. */
+				const int32_t get_tOB_G_BAS() const;
 				
-				/*! Gets the value of the variable 'SERVO_PINCE_D' that is defined in the default interface scope. */
-				const int32_t get_sERVO_PINCE_D() const;
+				/*! Gets the value of the variable 'TOB_D_HAUT' that is defined in the default interface scope. */
+				const int32_t get_tOB_D_HAUT() const;
 				
-				/*! Gets the value of the variable 'SERVO_PINCE_G' that is defined in the default interface scope. */
-				const int32_t get_sERVO_PINCE_G() const;
+				/*! Gets the value of the variable 'TOB_D_MILIEU' that is defined in the default interface scope. */
+				const int32_t get_tOB_D_MILIEU() const;
 				
-				/*! Gets the value of the variable 'SERVO_BALLE' that is defined in the default interface scope. */
-				const int32_t get_sERVO_BALLE() const;
+				/*! Gets the value of the variable 'TOB_D_BAS' that is defined in the default interface scope. */
+				const int32_t get_tOB_D_BAS() const;
 				
-				/*! Gets the value of the variable 'SERVO_RECOLTEURS' that is defined in the default interface scope. */
-				const int32_t get_sERVO_RECOLTEURS() const;
+				/*! Gets the value of the variable 'TOUSE_G_HAUT' that is defined in the default interface scope. */
+				const int32_t get_tOUSE_G_HAUT() const;
 				
-				/*! Gets the value of the variable 'SERVO_VOLET' that is defined in the default interface scope. */
-				const int32_t get_sERVO_VOLET() const;
+				/*! Gets the value of the variable 'TOUSE_G_MILIEU' that is defined in the default interface scope. */
+				const int32_t get_tOUSE_G_MILIEU() const;
 				
-				/*! Gets the value of the variable 'AX_ROTATION' that is defined in the default interface scope. */
-				const int32_t get_aX_ROTATION() const;
+				/*! Gets the value of the variable 'TOUSE_G_BAS' that is defined in the default interface scope. */
+				const int32_t get_tOUSE_G_BAS() const;
 				
-				/*! Gets the value of the variable 'AX_COULEUR' that is defined in the default interface scope. */
-				const int32_t get_aX_COULEUR() const;
+				/*! Gets the value of the variable 'TOUSE_D_HAUT' that is defined in the default interface scope. */
+				const int32_t get_tOUSE_D_HAUT() const;
 				
-				/*! Gets the value of the variable 'AX_LEVIER' that is defined in the default interface scope. */
-				const int32_t get_aX_LEVIER() const;
+				/*! Gets the value of the variable 'TOUSE_D_MILIEU' that is defined in the default interface scope. */
+				const int32_t get_tOUSE_D_MILIEU() const;
 				
-				/*! Gets the value of the variable 'KMAR_SORTI' that is defined in the default interface scope. */
-				const int32_t get_kMAR_SORTI() const;
+				/*! Gets the value of the variable 'TOUSE_D_BAS' that is defined in the default interface scope. */
+				const int32_t get_tOUSE_D_BAS() const;
 				
-				/*! Gets the value of the variable 'KMAR_RENTRE' that is defined in the default interface scope. */
-				const int32_t get_kMAR_RENTRE() const;
+				/*! Gets the value of the variable 'KMAR_G_HAUT' that is defined in the default interface scope. */
+				const int32_t get_kMAR_G_HAUT() const;
 				
-				/*! Gets the value of the variable 'KMAR_PRENDRE' that is defined in the default interface scope. */
-				const int32_t get_kMAR_PRENDRE() const;
+				/*! Gets the value of the variable 'KMAR_G_MILIEU' that is defined in the default interface scope. */
+				const int32_t get_kMAR_G_MILIEU() const;
 				
-				/*! Gets the value of the variable 'VENTOUSE_G' that is defined in the default interface scope. */
-				const int32_t get_vENTOUSE_G() const;
+				/*! Gets the value of the variable 'KMAR_G_BAS' that is defined in the default interface scope. */
+				const int32_t get_kMAR_G_BAS() const;
 				
-				/*! Gets the value of the variable 'VENTOUSE_D' that is defined in the default interface scope. */
-				const int32_t get_vENTOUSE_D() const;
+				/*! Gets the value of the variable 'KMAR_D_HAUT' that is defined in the default interface scope. */
+				const int32_t get_kMAR_D_HAUT() const;
 				
-				/*! Gets the value of the variable 'KMAR_DROIT' that is defined in the default interface scope. */
-				const int32_t get_kMAR_DROIT() const;
+				/*! Gets the value of the variable 'KMAR_D_MILIEU' that is defined in the default interface scope. */
+				const int32_t get_kMAR_D_MILIEU() const;
 				
-				/*! Gets the value of the variable 'MOTEUR_ROUE_GAUCHE' that is defined in the default interface scope. */
-				const int32_t get_mOTEUR_ROUE_GAUCHE() const;
+				/*! Gets the value of the variable 'KMAR_D_BAS' that is defined in the default interface scope. */
+				const int32_t get_kMAR_D_BAS() const;
 				
-				/*! Gets the value of the variable 'MOTEUR_ROUE_DROITE' that is defined in the default interface scope. */
-				const int32_t get_mOTEUR_ROUE_DROITE() const;
+				/*! Gets the value of the variable 'KMAR_DROITE' that is defined in the default interface scope. */
+				const int32_t get_kMAR_DROITE() const;
 				
-				/*! Gets the value of the variable 'MOTEUR_FUNNY' that is defined in the default interface scope. */
-				const int32_t get_mOTEUR_FUNNY() const;
+				/*! Gets the value of the variable 'KMAR_MILIEU' that is defined in the default interface scope. */
+				const int32_t get_kMAR_MILIEU() const;
 				
-				/*! Gets the value of the variable 'MOTEUR_MOELDAR' that is defined in the default interface scope. */
-				const int32_t get_mOTEUR_MOELDAR() const;
+				/*! Gets the value of the variable 'KMAR_GAUCHE' that is defined in the default interface scope. */
+				const int32_t get_kMAR_GAUCHE() const;
+				
+				/*! Gets the value of the variable 'KMAR_ERECTION' that is defined in the default interface scope. */
+				const int32_t get_kMAR_ERECTION() const;
+				
+				/*! Gets the value of the variable 'KMAR_MI_MOLLE' that is defined in the default interface scope. */
+				const int32_t get_kMAR_MI_MOLLE() const;
+				
+				/*! Gets the value of the variable 'KMAR_MOLLE' that is defined in the default interface scope. */
+				const int32_t get_kMAR_MOLLE() const;
 				
 				/*! Gets the value of the variable 'CODEUR_NON_DEFINI' that is defined in the default interface scope. */
 				const int32_t get_cODEUR_NON_DEFINI() const;
@@ -368,6 +425,9 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				int32_t IN_Couleur;
 				int32_t IN_Obstacle;
 				sc_boolean IN_Depression;
+				sc_boolean forceObstacle;
+				sc_boolean US_AV;
+				sc_boolean US_AR;
 				int32_t Couleur;
 				double countTimeMvt;
 				double tempsMatch;
@@ -378,27 +438,30 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				double y_pos_mem;
 				double teta_pos_mem;
 				int32_t nb_Modules;
-				static const int32_t SERVO_VENTOUSE;
-				static const int32_t SERVO_CENTREUR_G;
-				static const int32_t SERVO_CENTREUR_D;
-				static const int32_t SERVO_PINCE_D;
-				static const int32_t SERVO_PINCE_G;
-				static const int32_t SERVO_BALLE;
-				static const int32_t SERVO_RECOLTEURS;
-				static const int32_t SERVO_VOLET;
-				static const int32_t AX_ROTATION;
-				static const int32_t AX_COULEUR;
-				static const int32_t AX_LEVIER;
-				static const int32_t KMAR_SORTI;
-				static const int32_t KMAR_RENTRE;
-				static const int32_t KMAR_PRENDRE;
-				static const int32_t VENTOUSE_G;
-				static const int32_t VENTOUSE_D;
-				static const int32_t KMAR_DROIT;
-				static const int32_t MOTEUR_ROUE_GAUCHE;
-				static const int32_t MOTEUR_ROUE_DROITE;
-				static const int32_t MOTEUR_FUNNY;
-				static const int32_t MOTEUR_MOELDAR;
+				static const int32_t TOB_G_HAUT;
+				static const int32_t TOB_G_MILIEU;
+				static const int32_t TOB_G_BAS;
+				static const int32_t TOB_D_HAUT;
+				static const int32_t TOB_D_MILIEU;
+				static const int32_t TOB_D_BAS;
+				static const int32_t TOUSE_G_HAUT;
+				static const int32_t TOUSE_G_MILIEU;
+				static const int32_t TOUSE_G_BAS;
+				static const int32_t TOUSE_D_HAUT;
+				static const int32_t TOUSE_D_MILIEU;
+				static const int32_t TOUSE_D_BAS;
+				static const int32_t KMAR_G_HAUT;
+				static const int32_t KMAR_G_MILIEU;
+				static const int32_t KMAR_G_BAS;
+				static const int32_t KMAR_D_HAUT;
+				static const int32_t KMAR_D_MILIEU;
+				static const int32_t KMAR_D_BAS;
+				static const int32_t KMAR_DROITE;
+				static const int32_t KMAR_MILIEU;
+				static const int32_t KMAR_GAUCHE;
+				static const int32_t KMAR_ERECTION;
+				static const int32_t KMAR_MI_MOLLE;
+				static const int32_t KMAR_MOLLE;
 				static const int32_t CODEUR_NON_DEFINI;
 				static const int32_t CODEUR_CHARIOT;
 				static const int32_t CODEUR_ROUE_DROITE;
@@ -474,6 +537,24 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		/*! Sets the value of the variable 'IN_Depression' that is defined in the default interface scope. */
 		void set_iN_Depression(sc_boolean value);
 		
+		/*! Gets the value of the variable 'forceObstacle' that is defined in the default interface scope. */
+		sc_boolean get_forceObstacle() const;
+		
+		/*! Sets the value of the variable 'forceObstacle' that is defined in the default interface scope. */
+		void set_forceObstacle(sc_boolean value);
+		
+		/*! Gets the value of the variable 'US_AV' that is defined in the default interface scope. */
+		sc_boolean get_uS_AV() const;
+		
+		/*! Sets the value of the variable 'US_AV' that is defined in the default interface scope. */
+		void set_uS_AV(sc_boolean value);
+		
+		/*! Gets the value of the variable 'US_AR' that is defined in the default interface scope. */
+		sc_boolean get_uS_AR() const;
+		
+		/*! Sets the value of the variable 'US_AR' that is defined in the default interface scope. */
+		void set_uS_AR(sc_boolean value);
+		
 		/*! Gets the value of the variable 'Couleur' that is defined in the default interface scope. */
 		int32_t get_couleur() const;
 		
@@ -534,68 +615,77 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		/*! Sets the value of the variable 'nb_Modules' that is defined in the default interface scope. */
 		void set_nb_Modules(int32_t value);
 		
-		/*! Gets the value of the variable 'SERVO_VENTOUSE' that is defined in the default interface scope. */
-		const int32_t get_sERVO_VENTOUSE() const;
+		/*! Gets the value of the variable 'TOB_G_HAUT' that is defined in the default interface scope. */
+		const int32_t get_tOB_G_HAUT() const;
 		
-		/*! Gets the value of the variable 'SERVO_CENTREUR_G' that is defined in the default interface scope. */
-		const int32_t get_sERVO_CENTREUR_G() const;
+		/*! Gets the value of the variable 'TOB_G_MILIEU' that is defined in the default interface scope. */
+		const int32_t get_tOB_G_MILIEU() const;
 		
-		/*! Gets the value of the variable 'SERVO_CENTREUR_D' that is defined in the default interface scope. */
-		const int32_t get_sERVO_CENTREUR_D() const;
+		/*! Gets the value of the variable 'TOB_G_BAS' that is defined in the default interface scope. */
+		const int32_t get_tOB_G_BAS() const;
 		
-		/*! Gets the value of the variable 'SERVO_PINCE_D' that is defined in the default interface scope. */
-		const int32_t get_sERVO_PINCE_D() const;
+		/*! Gets the value of the variable 'TOB_D_HAUT' that is defined in the default interface scope. */
+		const int32_t get_tOB_D_HAUT() const;
 		
-		/*! Gets the value of the variable 'SERVO_PINCE_G' that is defined in the default interface scope. */
-		const int32_t get_sERVO_PINCE_G() const;
+		/*! Gets the value of the variable 'TOB_D_MILIEU' that is defined in the default interface scope. */
+		const int32_t get_tOB_D_MILIEU() const;
 		
-		/*! Gets the value of the variable 'SERVO_BALLE' that is defined in the default interface scope. */
-		const int32_t get_sERVO_BALLE() const;
+		/*! Gets the value of the variable 'TOB_D_BAS' that is defined in the default interface scope. */
+		const int32_t get_tOB_D_BAS() const;
 		
-		/*! Gets the value of the variable 'SERVO_RECOLTEURS' that is defined in the default interface scope. */
-		const int32_t get_sERVO_RECOLTEURS() const;
+		/*! Gets the value of the variable 'TOUSE_G_HAUT' that is defined in the default interface scope. */
+		const int32_t get_tOUSE_G_HAUT() const;
 		
-		/*! Gets the value of the variable 'SERVO_VOLET' that is defined in the default interface scope. */
-		const int32_t get_sERVO_VOLET() const;
+		/*! Gets the value of the variable 'TOUSE_G_MILIEU' that is defined in the default interface scope. */
+		const int32_t get_tOUSE_G_MILIEU() const;
 		
-		/*! Gets the value of the variable 'AX_ROTATION' that is defined in the default interface scope. */
-		const int32_t get_aX_ROTATION() const;
+		/*! Gets the value of the variable 'TOUSE_G_BAS' that is defined in the default interface scope. */
+		const int32_t get_tOUSE_G_BAS() const;
 		
-		/*! Gets the value of the variable 'AX_COULEUR' that is defined in the default interface scope. */
-		const int32_t get_aX_COULEUR() const;
+		/*! Gets the value of the variable 'TOUSE_D_HAUT' that is defined in the default interface scope. */
+		const int32_t get_tOUSE_D_HAUT() const;
 		
-		/*! Gets the value of the variable 'AX_LEVIER' that is defined in the default interface scope. */
-		const int32_t get_aX_LEVIER() const;
+		/*! Gets the value of the variable 'TOUSE_D_MILIEU' that is defined in the default interface scope. */
+		const int32_t get_tOUSE_D_MILIEU() const;
 		
-		/*! Gets the value of the variable 'KMAR_SORTI' that is defined in the default interface scope. */
-		const int32_t get_kMAR_SORTI() const;
+		/*! Gets the value of the variable 'TOUSE_D_BAS' that is defined in the default interface scope. */
+		const int32_t get_tOUSE_D_BAS() const;
 		
-		/*! Gets the value of the variable 'KMAR_RENTRE' that is defined in the default interface scope. */
-		const int32_t get_kMAR_RENTRE() const;
+		/*! Gets the value of the variable 'KMAR_G_HAUT' that is defined in the default interface scope. */
+		const int32_t get_kMAR_G_HAUT() const;
 		
-		/*! Gets the value of the variable 'KMAR_PRENDRE' that is defined in the default interface scope. */
-		const int32_t get_kMAR_PRENDRE() const;
+		/*! Gets the value of the variable 'KMAR_G_MILIEU' that is defined in the default interface scope. */
+		const int32_t get_kMAR_G_MILIEU() const;
 		
-		/*! Gets the value of the variable 'VENTOUSE_G' that is defined in the default interface scope. */
-		const int32_t get_vENTOUSE_G() const;
+		/*! Gets the value of the variable 'KMAR_G_BAS' that is defined in the default interface scope. */
+		const int32_t get_kMAR_G_BAS() const;
 		
-		/*! Gets the value of the variable 'VENTOUSE_D' that is defined in the default interface scope. */
-		const int32_t get_vENTOUSE_D() const;
+		/*! Gets the value of the variable 'KMAR_D_HAUT' that is defined in the default interface scope. */
+		const int32_t get_kMAR_D_HAUT() const;
 		
-		/*! Gets the value of the variable 'KMAR_DROIT' that is defined in the default interface scope. */
-		const int32_t get_kMAR_DROIT() const;
+		/*! Gets the value of the variable 'KMAR_D_MILIEU' that is defined in the default interface scope. */
+		const int32_t get_kMAR_D_MILIEU() const;
 		
-		/*! Gets the value of the variable 'MOTEUR_ROUE_GAUCHE' that is defined in the default interface scope. */
-		const int32_t get_mOTEUR_ROUE_GAUCHE() const;
+		/*! Gets the value of the variable 'KMAR_D_BAS' that is defined in the default interface scope. */
+		const int32_t get_kMAR_D_BAS() const;
 		
-		/*! Gets the value of the variable 'MOTEUR_ROUE_DROITE' that is defined in the default interface scope. */
-		const int32_t get_mOTEUR_ROUE_DROITE() const;
+		/*! Gets the value of the variable 'KMAR_DROITE' that is defined in the default interface scope. */
+		const int32_t get_kMAR_DROITE() const;
 		
-		/*! Gets the value of the variable 'MOTEUR_FUNNY' that is defined in the default interface scope. */
-		const int32_t get_mOTEUR_FUNNY() const;
+		/*! Gets the value of the variable 'KMAR_MILIEU' that is defined in the default interface scope. */
+		const int32_t get_kMAR_MILIEU() const;
 		
-		/*! Gets the value of the variable 'MOTEUR_MOELDAR' that is defined in the default interface scope. */
-		const int32_t get_mOTEUR_MOELDAR() const;
+		/*! Gets the value of the variable 'KMAR_GAUCHE' that is defined in the default interface scope. */
+		const int32_t get_kMAR_GAUCHE() const;
+		
+		/*! Gets the value of the variable 'KMAR_ERECTION' that is defined in the default interface scope. */
+		const int32_t get_kMAR_ERECTION() const;
+		
+		/*! Gets the value of the variable 'KMAR_MI_MOLLE' that is defined in the default interface scope. */
+		const int32_t get_kMAR_MI_MOLLE() const;
+		
+		/*! Gets the value of the variable 'KMAR_MOLLE' that is defined in the default interface scope. */
+		const int32_t get_kMAR_MOLLE() const;
 		
 		/*! Gets the value of the variable 'CODEUR_NON_DEFINI' that is defined in the default interface scope. */
 		const int32_t get_cODEUR_NON_DEFINI() const;
@@ -832,7 +922,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		sc_boolean isStateActive(IAStates state) const;
 		
 		//! number of time events used by the state machine.
-		static const sc_integer timeEventsCount = 36;
+		static const sc_integer timeEventsCount = 51;
 		
 		//! number of time events that can be active at once.
 		static const sc_integer parallelTimeEventsCount = 2;
@@ -955,6 +1045,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RANGE_02();
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01();
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02();
+		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUT();
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET();
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE();
 		void react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT();
@@ -974,29 +1065,43 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		void react_main_region_MATCH_EN_COURS__region0_SUPERVISOR();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE();
-		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_GOLDENIUM();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DEPLACEMENT_VERS_GOLDENIUM();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM();
-		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION();
-		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_HORINZONTAL();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE();
-		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_DROITE();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE();
-		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ACCOSTAGE_BALANCE();
-		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSITION_GOLDENIUM_AU_DESSUS_BALANCE();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_EN_L_AIR();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DROPAGE_GOLDENIUM();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FIN();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__final_();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_Copy_1_DROPAGE_GOLDENIUM();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RECULE_AVEC_PRECAUTION();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ARRET_MOTEURS();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_MISE_GOLDENIUM_BAS();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RALENTISSEMENT_KMAR_01();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_RALENTISSEMENT_KMAR_02();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_POSE_GOLDENIUM();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECOLLAGE_GOLDENIUM_01();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECOLLAGE_GOLDENIUM_02();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_KMAR_SECURE();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECOLLAGE_GOLDENIUM_03();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_Copy_1_GOLDENIUM_DANS_ROBOT_GAUCHE();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DESCEND_KMAR();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_KMAR_MONTE();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_KMAR_BIEN_DROIT();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ROTATION_VERS_GOLDENIUM();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_FACE_GOLDENIUM();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_Copy_1_ACCOSTAGE_BALANCE();
 		void react_main_region_FIN_MATCH();
+		void react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__choice_0();
 		void react_main_region_MATCH_EN_COURS__region0__choice_0();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__choice_0();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__choice_1();
-		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__choice_2();
 		void clearInEvents();
 		void clearOutEvents();
 		
