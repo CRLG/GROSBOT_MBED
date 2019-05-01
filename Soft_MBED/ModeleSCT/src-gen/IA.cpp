@@ -96,6 +96,10 @@ void IA::init()
 	iface.y_pos_mem = 0;
 	iface.teta_pos_mem = 0;
 	iface.nb_Modules = 1;
+	iface.score_grosbot = 0;
+	iface.score_minibot = 0;
+	iface.score_experience = 0;
+	iface.score_total = 0;
 	ifaceInternalSCI.invMouv = 1;
 	ifaceInternalSCI.Te = 0.02;
 	ifaceInternalSCI.inhibeObstacle = false;
@@ -1890,6 +1894,86 @@ void IA::DefaultSCI::set_nb_Modules(int32_t value)
 void IA::set_nb_Modules(int32_t value)
 {
 	iface.nb_Modules = value;
+}
+
+int32_t IA::DefaultSCI::get_score_grosbot() const
+{
+	return score_grosbot;
+}
+
+int32_t IA::get_score_grosbot() const
+{
+	return iface.score_grosbot;
+}
+
+void IA::DefaultSCI::set_score_grosbot(int32_t value)
+{
+	score_grosbot = value;
+}
+
+void IA::set_score_grosbot(int32_t value)
+{
+	iface.score_grosbot = value;
+}
+
+int32_t IA::DefaultSCI::get_score_minibot() const
+{
+	return score_minibot;
+}
+
+int32_t IA::get_score_minibot() const
+{
+	return iface.score_minibot;
+}
+
+void IA::DefaultSCI::set_score_minibot(int32_t value)
+{
+	score_minibot = value;
+}
+
+void IA::set_score_minibot(int32_t value)
+{
+	iface.score_minibot = value;
+}
+
+int32_t IA::DefaultSCI::get_score_experience() const
+{
+	return score_experience;
+}
+
+int32_t IA::get_score_experience() const
+{
+	return iface.score_experience;
+}
+
+void IA::DefaultSCI::set_score_experience(int32_t value)
+{
+	score_experience = value;
+}
+
+void IA::set_score_experience(int32_t value)
+{
+	iface.score_experience = value;
+}
+
+int32_t IA::DefaultSCI::get_score_total() const
+{
+	return score_total;
+}
+
+int32_t IA::get_score_total() const
+{
+	return iface.score_total;
+}
+
+void IA::DefaultSCI::set_score_total(int32_t value)
+{
+	score_total = value;
+}
+
+void IA::set_score_total(int32_t value)
+{
+	iface.score_total = value;
 }
 
 const int32_t IA::DefaultSCI::get_tOB_G_HAUT() const
@@ -41955,6 +42039,9 @@ void IA::react_main_region_FIN_MATCH()
 {
 	/* The reactions of state FIN_MATCH. */
 	Application.m_asservissement.CommandeManuelle(0, 0);
+	iface.score_experience = 5 + 15 + 20;
+	iface.score_minibot = Application.m_messenger_xbee_ntw.m_database.m_RobotLego2019.Nb_points_lego;
+	iface.score_total = iface.score_grosbot + iface.score_minibot + iface.score_experience;
 }
 
 /* The reactions of state null. */

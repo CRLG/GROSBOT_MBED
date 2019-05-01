@@ -5,17 +5,18 @@
 #include "../src/sc_types.h"
 #include "../src/StatemachineInterface.h"
 #include "../src/TimedStatemachineInterface.h"
-#include "../../ext/mbed-common-rob/Includes/CGlobale.h"
 #include "../../Includes/ConfigSpecifiqueCoupe.h"
-#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h"
-#include "../../ext/CppRobLib/ServosAX/servoaxbase.h"
 #include "../../ext/mbed-common-rob/Includes/CAsservissement.h"
-#include "../../ext/mbed-common-rob/Includes/CServoMoteurSD20.h"
 #include "../../ext/mbed-common-rob/Includes/CLeds.h"
-#include "../../ext/mbed-common-rob/Includes/PowerSwitch.h"
+#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/message_robot_lego_2019.h"
 #include "../../ext/mbed-common-rob/Includes/CAsservissementChariot.h"
-#include "../../ext/mbed-common-rob/Includes/MessengerXbeeNetwork.h"
+#include "../../ext/mbed-common-rob/Includes/CGlobale.h"
+#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h"
+#include "../../ext/mbed-common-rob/Includes/PowerSwitch.h"
+#include "../../ext/mbed-common-rob/Includes/CServoMoteurSD20.h"
 #include "../../ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.h"
+#include "../../ext/CppRobLib/ServosAX/servoaxbase.h"
+#include "../../ext/mbed-common-rob/Includes/MessengerXbeeNetwork.h"
 
 /*! \file Header of the state machine 'IA'.
 */
@@ -316,6 +317,30 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				/*! Sets the value of the variable 'nb_Modules' that is defined in the default interface scope. */
 				void set_nb_Modules(int32_t value);
 				
+				/*! Gets the value of the variable 'score_grosbot' that is defined in the default interface scope. */
+				int32_t get_score_grosbot() const;
+				
+				/*! Sets the value of the variable 'score_grosbot' that is defined in the default interface scope. */
+				void set_score_grosbot(int32_t value);
+				
+				/*! Gets the value of the variable 'score_minibot' that is defined in the default interface scope. */
+				int32_t get_score_minibot() const;
+				
+				/*! Sets the value of the variable 'score_minibot' that is defined in the default interface scope. */
+				void set_score_minibot(int32_t value);
+				
+				/*! Gets the value of the variable 'score_experience' that is defined in the default interface scope. */
+				int32_t get_score_experience() const;
+				
+				/*! Sets the value of the variable 'score_experience' that is defined in the default interface scope. */
+				void set_score_experience(int32_t value);
+				
+				/*! Gets the value of the variable 'score_total' that is defined in the default interface scope. */
+				int32_t get_score_total() const;
+				
+				/*! Sets the value of the variable 'score_total' that is defined in the default interface scope. */
+				void set_score_total(int32_t value);
+				
 				/*! Gets the value of the variable 'TOB_G_HAUT' that is defined in the default interface scope. */
 				const int32_t get_tOB_G_HAUT() const;
 				
@@ -438,6 +463,10 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				double y_pos_mem;
 				double teta_pos_mem;
 				int32_t nb_Modules;
+				int32_t score_grosbot;
+				int32_t score_minibot;
+				int32_t score_experience;
+				int32_t score_total;
 				static const int32_t TOB_G_HAUT;
 				static const int32_t TOB_G_MILIEU;
 				static const int32_t TOB_G_BAS;
@@ -614,6 +643,30 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		
 		/*! Sets the value of the variable 'nb_Modules' that is defined in the default interface scope. */
 		void set_nb_Modules(int32_t value);
+		
+		/*! Gets the value of the variable 'score_grosbot' that is defined in the default interface scope. */
+		int32_t get_score_grosbot() const;
+		
+		/*! Sets the value of the variable 'score_grosbot' that is defined in the default interface scope. */
+		void set_score_grosbot(int32_t value);
+		
+		/*! Gets the value of the variable 'score_minibot' that is defined in the default interface scope. */
+		int32_t get_score_minibot() const;
+		
+		/*! Sets the value of the variable 'score_minibot' that is defined in the default interface scope. */
+		void set_score_minibot(int32_t value);
+		
+		/*! Gets the value of the variable 'score_experience' that is defined in the default interface scope. */
+		int32_t get_score_experience() const;
+		
+		/*! Sets the value of the variable 'score_experience' that is defined in the default interface scope. */
+		void set_score_experience(int32_t value);
+		
+		/*! Gets the value of the variable 'score_total' that is defined in the default interface scope. */
+		int32_t get_score_total() const;
+		
+		/*! Sets the value of the variable 'score_total' that is defined in the default interface scope. */
+		void set_score_total(int32_t value);
 		
 		/*! Gets the value of the variable 'TOB_G_HAUT' that is defined in the default interface scope. */
 		const int32_t get_tOB_G_HAUT() const;
