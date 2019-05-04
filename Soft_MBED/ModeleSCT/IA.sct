@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_svMXwMZxEeiRdIDC4qhyQQ" specification="import :&#xA;   '../ext/mbed-common-rob/Includes/CGlobale.h'&#xA;   '../ext/mbed-common-rob/Includes/CLeds.h'&#xA;   '../ext/mbed-common-rob/Includes/MessengerXbeeNetwork.h'&#xA;   '../ext/mbed-common-rob/Includes/PowerSwitch.h'&#xA;   '../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h'&#xA;   '../ext/CppRobLib/Communication/Messenger/messengerinterfacebase.h'&#xA;   '../Includes/ConfigSpecifiqueCoupe.h'&#xA;&#xA;//interface avec l'environnement MBED&#xA;interface :&#xA;//evenement &#xA;in event EV_Tirette&#xA;in event EV_Obstacle&#xA;in event EV_ConvergenceMvt&#xA;in event EV_ConvergenceMvt_Rapide&#xA;in event EV_ConvergenceChariot&#xA;&#xA;&#xA;//entrees&#xA;var IN_x_pos:double&#xA;var IN_y_pos:double&#xA;var IN_teta_pos:double&#xA;var IN_vitesse:double&#xA;var IN_sens_deplacement:double&#xA;var IN_Couleur:int32_t&#xA;var IN_Obstacle:int32_t&#xA;var IN_Depression:bool&#xA;var forceObstacle:bool=false&#xA;var US_AV:bool=true&#xA;var US_AR:bool=true&#xA;&#xA;//utile pour l'environnement&#xA;var Couleur:int32_t=1&#xA;var countTimeMvt:double=0&#xA;var tempsMatch:double=0&#xA;var countTempo:int32_t=0&#xA;var countTempo2:int32_t=0&#xA;var countTime:double=0&#xA;var x_pos_mem:double=0&#xA;var y_pos_mem:double=0&#xA;var teta_pos_mem:double=0&#xA;var nb_Modules:int32_t=1&#xA;var score_grosbot:int32_t = 0&#xA;var score_minibot:int32_t = 0&#xA;var score_experience:int32_t = 0&#xA;var score_total:int32_t=0&#xA;&#xA;//position des servos&#xA;const TOB_G_HAUT:int32_t=140&#xA;const TOB_G_MILIEU:int32_t=95&#xA;const TOB_G_BAS:int32_t=65&#xA;const TOB_D_HAUT:int32_t=110&#xA;const TOB_D_MILIEU:int32_t=170&#xA;const TOB_D_BAS:int32_t=210&#xA;const TOUSE_G_HAUT:int32_t=650&#xA;const TOUSE_G_MILIEU:int32_t=512&#xA;const TOUSE_G_BAS:int32_t=170&#xA;const TOUSE_D_HAUT:int32_t=300&#xA;const TOUSE_D_MILIEU:int32_t=512&#xA;const TOUSE_D_BAS:int32_t=850&#xA;const KMAR_G_HAUT:int32_t=50&#xA;const KMAR_G_MILIEU:int32_t=140&#xA;const KMAR_G_BAS:int32_t=200&#xA;const KMAR_D_HAUT:int32_t=255&#xA;const KMAR_D_MILIEU:int32_t=170&#xA;const KMAR_D_BAS:int32_t=127&#xA;const KMAR_DROITE:int32_t=850&#xA;const KMAR_MILIEU:int32_t=512&#xA;const KMAR_GAUCHE:int32_t=200&#xA;const KMAR_ERECTION:int32_t=600&#xA;const KMAR_MI_MOLLE:int32_t=512&#xA;const KMAR_MOLLE:int32_t=200&#xA;&#xA;//nommage des codeurs&#xA;const CODEUR_NON_DEFINI:int32_t=0&#xA;const CODEUR_CHARIOT:int32_t=1&#xA;const CODEUR_ROUE_DROITE:int32_t=2&#xA;const CODEUR_ROUE_GAUCHE:int32_t=3&#xA;&#xA;//config coupe&#xA;const VIOLET:int32_t=0&#xA;const JAUNE:int32_t=1&#xA;&#xA;const PI:float=3.14f&#xA;&#xA;&#xA;//variabales internes&#xA;internal:&#xA;var invMouv:int32_t=1&#xA;var Te:double=0.02&#xA;//var PI:double=3.14&#xA;var inhibeObstacle:bool=false&#xA;&#xA;var evitementEnCours:bool=false&#xA;var evitementTempo:double=0&#xA;var sequence1:bool=false&#xA;var sequence2:bool=false&#xA;var pos_fusee:int32_t=-800&#xA;var nb_tentatives:int32_t=0&#xA;var etape:int32_t=0&#xA;&#xA;&#xA;//fonctions d'asservissement&#xA;interface asser:&#xA;operation XY(x:double,y:double):void&#xA;operation XYTeta(x:double,y:double,teta:double):void&#xA;operation Manuel(mot_gauche:double,mot_droit:double):void&#xA;operation DistanceAngle(distance:double,angle:double):void&#xA;operation Vitesse(speedDist:double,speedRot:double):void&#xA;operation setPosition(x:double,y:double,teta:double):void&#xA;operation setSportivite(idx:double):void&#xA;&#xA;//fonctions servos SD20&#xA;interface servo:&#xA;operation setPos(idServo:int32_t,value:int32_t):void&#xA;operation setPosSpd(idServo:int32_t,pos:int32_t,spd:int32_t):void&#xA;operation setRelache(idServo:int32_t, time_ms:double):void&#xA;&#xA;//fonctions AX&#xA;interface ax:&#xA;operation setPos(idServo:int32_t,value:int32_t):void&#xA;operation setPosSpd(idServo:int32_t,pos:int32_t,spd:int32_t):void&#xA;operation setSpd(idServo:int32_t, spd:int32_t):void&#xA;&#xA;//SERVO BRAS&#xA;var BRAS_OUVERT:int32_t = 55&#xA;//var readonly BRAS_FERME:int32_t=147&#xA;&#xA;//fonctions moteurs&#xA;interface moteur:&#xA;operation setPWM(idMot:int32_t,pwm:double):void&#xA;&#xA;//fonctions chariot&#xA;interface chariot:&#xA;var isReady:bool=false&#xA;var isConv:bool=false&#xA;operation init():void&#xA;operation setPos(position:int32_t):void&#xA;&#xA;//fonctions capteurs&#xA;interface capteur:&#xA;operation resetCodeur(idCodeur:int32_t,value:int32_t):void&#xA;&#xA;//fonction IHM&#xA;interface ihm:&#xA;operation setLed(idLed:int32_t,onoff:bool):void" name="IA" domainID="com.yakindu.domain.c">
+  <sgraph:Statechart xmi:id="_svMXwMZxEeiRdIDC4qhyQQ" specification="import :&#xA;   '../ext/mbed-common-rob/Includes/CGlobale.h'&#xA;   '../ext/mbed-common-rob/Includes/CLeds.h'&#xA;   '../ext/mbed-common-rob/Includes/MessengerXbeeNetwork.h'&#xA;   '../ext/mbed-common-rob/Includes/PowerSwitch.h'&#xA;   '../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h'&#xA;   '../ext/CppRobLib/Communication/Messenger/messengerinterfacebase.h'&#xA;   '../Includes/ConfigSpecifiqueCoupe.h'&#xA;&#xA;//interface avec l'environnement MBED&#xA;interface :&#xA;//evenement &#xA;in event EV_Tirette&#xA;in event EV_Obstacle&#xA;in event EV_ConvergenceMvt&#xA;in event EV_ConvergenceMvt_Rapide&#xA;in event EV_ConvergenceChariot&#xA;&#xA;&#xA;//entrees&#xA;var IN_x_pos:double&#xA;var IN_y_pos:double&#xA;var IN_teta_pos:double&#xA;var IN_vitesse:double&#xA;var IN_sens_deplacement:double&#xA;var IN_Couleur:int32_t&#xA;var IN_choixStrategie:int32_t&#xA;var IN_Obstacle:int32_t&#xA;var IN_Depression:bool&#xA;var forceObstacle:bool=false&#xA;var US_AV:bool=true&#xA;var US_AR:bool=true&#xA;&#xA;//utile pour l'environnement&#xA;var Couleur:int32_t=1&#xA;var choixStrategie:int32_t=0&#xA;var countTimeMvt:double=0&#xA;var tempsMatch:double=0&#xA;var countTempo:int32_t=0&#xA;var countTempo2:int32_t=0&#xA;var countTime:double=0&#xA;var x_pos_mem:double=0&#xA;var y_pos_mem:double=0&#xA;var teta_pos_mem:double=0&#xA;var nb_Modules:int32_t=1&#xA;var score_grosbot:int32_t = 0&#xA;var score_minibot:int32_t = 0&#xA;var score_experience:int32_t = 0&#xA;var score_total:int32_t=0&#xA;&#xA;//position des servos&#xA;const TOB_G_HAUT:int32_t=140&#xA;const TOB_G_MILIEU:int32_t=95&#xA;const TOB_G_BAS:int32_t=65&#xA;const TOB_D_HAUT:int32_t=110&#xA;const TOB_D_MILIEU:int32_t=170&#xA;const TOB_D_BAS:int32_t=210&#xA;const TOUSE_G_HAUT:int32_t=650&#xA;const TOUSE_G_MILIEU:int32_t=512&#xA;const TOUSE_G_BAS:int32_t=170&#xA;const TOUSE_D_HAUT:int32_t=300&#xA;const TOUSE_D_MILIEU:int32_t=512&#xA;const TOUSE_D_BAS:int32_t=850&#xA;const KMAR_G_HAUT:int32_t=50&#xA;const KMAR_G_MILIEU:int32_t=140&#xA;const KMAR_G_BAS:int32_t=200&#xA;const KMAR_D_HAUT:int32_t=255&#xA;const KMAR_D_MILIEU:int32_t=170&#xA;const KMAR_D_BAS:int32_t=127&#xA;const KMAR_DROITE:int32_t=850&#xA;const KMAR_MILIEU:int32_t=512&#xA;const KMAR_GAUCHE:int32_t=200&#xA;const KMAR_ERECTION:int32_t=600&#xA;const KMAR_MI_MOLLE:int32_t=512&#xA;const KMAR_MOLLE:int32_t=200&#xA;&#xA;//nommage des codeurs&#xA;const CODEUR_NON_DEFINI:int32_t=0&#xA;const CODEUR_CHARIOT:int32_t=1&#xA;const CODEUR_ROUE_DROITE:int32_t=2&#xA;const CODEUR_ROUE_GAUCHE:int32_t=3&#xA;&#xA;//config coupe&#xA;const VIOLET:int32_t=0&#xA;const JAUNE:int32_t=1&#xA;&#xA;const PI:float=3.14f&#xA;&#xA;&#xA;//variabales internes&#xA;internal:&#xA;var invMouv:int32_t=1&#xA;var Te:double=0.02&#xA;//var PI:double=3.14&#xA;var inhibeObstacle:bool=false&#xA;&#xA;var evitementEnCours:bool=false&#xA;var evitementTempo:double=0&#xA;var sequence1:bool=false&#xA;var sequence2:bool=false&#xA;var pos_fusee:int32_t=-800&#xA;var nb_tentatives:int32_t=0&#xA;var etape:int32_t=0&#xA;&#xA;&#xA;//fonctions d'asservissement&#xA;interface asser:&#xA;operation XY(x:double,y:double):void&#xA;operation XYTeta(x:double,y:double,teta:double):void&#xA;operation Manuel(mot_gauche:double,mot_droit:double):void&#xA;operation DistanceAngle(distance:double,angle:double):void&#xA;operation Vitesse(speedDist:double,speedRot:double):void&#xA;operation setPosition(x:double,y:double,teta:double):void&#xA;operation setSportivite(idx:double):void&#xA;&#xA;//fonctions servos SD20&#xA;interface servo:&#xA;operation setPos(idServo:int32_t,value:int32_t):void&#xA;operation setPosSpd(idServo:int32_t,pos:int32_t,spd:int32_t):void&#xA;operation setRelache(idServo:int32_t, time_ms:double):void&#xA;&#xA;//fonctions AX&#xA;interface ax:&#xA;operation setPos(idServo:int32_t,value:int32_t):void&#xA;operation setPosSpd(idServo:int32_t,pos:int32_t,spd:int32_t):void&#xA;operation setSpd(idServo:int32_t, spd:int32_t):void&#xA;&#xA;//SERVO BRAS&#xA;var BRAS_OUVERT:int32_t = 55&#xA;//var readonly BRAS_FERME:int32_t=147&#xA;&#xA;//fonctions moteurs&#xA;interface moteur:&#xA;operation setPWM(idMot:int32_t,pwm:double):void&#xA;&#xA;//fonctions chariot&#xA;interface chariot:&#xA;var isReady:bool=false&#xA;var isConv:bool=false&#xA;operation init():void&#xA;operation setPos(position:int32_t):void&#xA;&#xA;//fonctions capteurs&#xA;interface capteur:&#xA;operation resetCodeur(idCodeur:int32_t,value:int32_t):void&#xA;&#xA;//fonction IHM&#xA;interface ihm:&#xA;operation setLed(idLed:int32_t,onoff:bool):void" name="IA" domainID="com.yakindu.domain.c">
     <regions xmi:id="_svU6o8ZxEeiRdIDC4qhyQQ" name="main region">
       <vertices xsi:type="sgraph:Entry" xmi:id="_svfSscZxEeiRdIDC4qhyQQ">
         <outgoingTransitions xmi:id="_svt8MMZxEeiRdIDC4qhyQQ" target="_CnJSMEd5Eem5E_rMCmFB1A"/>
@@ -48,6 +48,12 @@
               </vertices>
               <vertices xsi:type="sgraph:Entry" xmi:id="_-adykEfJEemC0pCtraHtKQ">
                 <outgoingTransitions xmi:id="__xhsIEfJEemC0pCtraHtKQ" specification="" target="_5m9AQEfJEemC0pCtraHtKQ"/>
+              </vertices>
+            </regions>
+            <regions xmi:id="_8Vdzl26aEemKyfj1CerplA" name="CHOIX_STRATEGIE">
+              <vertices xsi:type="sgraph:State" xmi:id="_EWIeYG6bEemKyfj1CerplA" specification="oncycle/&#xA;   choixStrategie = IN_choixStrategie" name="CHOIX_NUM_STRATEGIE" incomingTransitions="_KLK_IG6bEemKyfj1CerplA"/>
+              <vertices xsi:type="sgraph:Entry" xmi:id="_JCZZMG6bEemKyfj1CerplA">
+                <outgoingTransitions xmi:id="_KLK_IG6bEemKyfj1CerplA" specification="" target="_EWIeYG6bEemKyfj1CerplA"/>
               </vertices>
             </regions>
           </vertices>
@@ -620,11 +626,51 @@
               <styles xsi:type="notation:ShapeStyle" xmi:id="_8Btn8UfIEemC0pCtraHtKQ" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
               <layoutConstraint xsi:type="notation:Bounds" xmi:id="_8Btn8kfIEemC0pCtraHtKQ"/>
             </children>
+            <children xmi:id="_8WP2sG6aEemKyfj1CerplA" type="Region" element="_8Vdzl26aEemKyfj1CerplA">
+              <children xsi:type="notation:DecorationNode" xmi:id="_8WWkYG6aEemKyfj1CerplA" type="RegionName">
+                <styles xsi:type="notation:ShapeStyle" xmi:id="_8WWkYW6aEemKyfj1CerplA"/>
+                <layoutConstraint xsi:type="notation:Location" xmi:id="_8WXLcG6aEemKyfj1CerplA"/>
+              </children>
+              <children xsi:type="notation:Shape" xmi:id="_8WZnsG6aEemKyfj1CerplA" type="RegionCompartment" fontName="Verdana" lineColor="4210752">
+                <children xmi:id="_EWcAYG6bEemKyfj1CerplA" type="State" element="_EWIeYG6bEemKyfj1CerplA">
+                  <children xsi:type="notation:DecorationNode" xmi:id="_EWhf8G6bEemKyfj1CerplA" type="StateName">
+                    <styles xsi:type="notation:ShapeStyle" xmi:id="_EWiHAG6bEemKyfj1CerplA"/>
+                    <layoutConstraint xsi:type="notation:Location" xmi:id="_EWiHAW6bEemKyfj1CerplA"/>
+                  </children>
+                  <children xsi:type="notation:Compartment" xmi:id="_EWiuEG6bEemKyfj1CerplA" type="StateTextCompartment">
+                    <children xsi:type="notation:Shape" xmi:id="_EWiuEW6bEemKyfj1CerplA" type="StateTextCompartmentExpression" fontName="Verdana" lineColor="4210752">
+                      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_EWiuEm6bEemKyfj1CerplA"/>
+                    </children>
+                  </children>
+                  <children xsi:type="notation:Compartment" xmi:id="_EW89wG6bEemKyfj1CerplA" type="StateFigureCompartment"/>
+                  <styles xsi:type="notation:ShapeStyle" xmi:id="_EWcncG6bEemKyfj1CerplA" fontName="Verdana" fillColor="15981773" lineColor="12632256"/>
+                  <styles xsi:type="notation:FontStyle" xmi:id="_EWcncW6bEemKyfj1CerplA"/>
+                  <styles xsi:type="notation:BooleanValueStyle" xmi:id="_EW9k0G6bEemKyfj1CerplA" name="isHorizontal" booleanValue="true"/>
+                  <layoutConstraint xsi:type="notation:Bounds" xmi:id="_EWcncm6bEemKyfj1CerplA" x="188" y="-10" width="286"/>
+                </children>
+                <children xmi:id="_JCv-gG6bEemKyfj1CerplA" type="Entry" element="_JCZZMG6bEemKyfj1CerplA">
+                  <children xmi:id="_JC1eEG6bEemKyfj1CerplA" type="BorderItemLabelContainer">
+                    <children xsi:type="notation:DecorationNode" xmi:id="_JC3TQG6bEemKyfj1CerplA" type="BorderItemLabel">
+                      <styles xsi:type="notation:ShapeStyle" xmi:id="_JC3TQW6bEemKyfj1CerplA"/>
+                      <layoutConstraint xsi:type="notation:Location" xmi:id="_JC3TQm6bEemKyfj1CerplA"/>
+                    </children>
+                    <styles xsi:type="notation:ShapeStyle" xmi:id="_JC1eEW6bEemKyfj1CerplA" fontName="Verdana" lineColor="4210752"/>
+                    <layoutConstraint xsi:type="notation:Bounds" xmi:id="_JC1eEm6bEemKyfj1CerplA"/>
+                  </children>
+                  <styles xsi:type="notation:ShapeStyle" xmi:id="_JCv-gW6bEemKyfj1CerplA" fontName="Verdana" fillColor="0" lineColor="16777215"/>
+                  <styles xsi:type="notation:NamedStyle" xmi:id="_JCwlkG6bEemKyfj1CerplA" name="allowColors"/>
+                  <layoutConstraint xsi:type="notation:Bounds" xmi:id="_JCwlkW6bEemKyfj1CerplA" x="129" y="15"/>
+                </children>
+                <layoutConstraint xsi:type="notation:Bounds" xmi:id="_8WZnsW6aEemKyfj1CerplA"/>
+              </children>
+              <styles xsi:type="notation:ShapeStyle" xmi:id="_8WP2sW6aEemKyfj1CerplA" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
+              <layoutConstraint xsi:type="notation:Bounds" xmi:id="_8WP2sm6aEemKyfj1CerplA"/>
+            </children>
           </children>
           <styles xsi:type="notation:ShapeStyle" xmi:id="_8BlsIUfIEemC0pCtraHtKQ" fontName="Verdana" fillColor="15981773" lineColor="12632256"/>
           <styles xsi:type="notation:FontStyle" xmi:id="_8BlsIkfIEemC0pCtraHtKQ"/>
           <styles xsi:type="notation:BooleanValueStyle" xmi:id="_8BnhUUfIEemC0pCtraHtKQ" name="isHorizontal"/>
-          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_8BlsI0fIEemC0pCtraHtKQ" x="63" width="1655" height="1031"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_8BlsI0fIEemC0pCtraHtKQ" x="61" width="1660" height="1074"/>
         </children>
         <children xmi:id="_T8LdAEfJEemC0pCtraHtKQ" type="Entry" element="_T8JAwEfJEemC0pCtraHtKQ">
           <children xmi:id="_T8MEEEfJEemC0pCtraHtKQ" type="BorderItemLabelContainer">
@@ -637,12 +683,12 @@
           </children>
           <styles xsi:type="notation:ShapeStyle" xmi:id="_T8LdAUfJEemC0pCtraHtKQ" fontName="Verdana" fillColor="0" lineColor="16777215"/>
           <styles xsi:type="notation:NamedStyle" xmi:id="_T8LdAkfJEemC0pCtraHtKQ" name="allowColors"/>
-          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_T8LdA0fJEemC0pCtraHtKQ" x="13" y="12" width="15" height="15"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_T8LdA0fJEemC0pCtraHtKQ" x="13" y="16" width="15" height="15"/>
         </children>
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_6IJeREfIEemC0pCtraHtKQ"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="_6II3MUfIEemC0pCtraHtKQ" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_6II3MkfIEemC0pCtraHtKQ" x="35" y="107" width="1740" height="1071"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_6II3MkfIEemC0pCtraHtKQ" x="32" y="104" width="1744" height="1114"/>
     </children>
     <styles xsi:type="notation:BooleanValueStyle" xmi:id="_ZRMBMUd5Eem5E_rMCmFB1A" name="inlineDefinitionSection"/>
     <styles xsi:type="notation:DiagramStyle" xmi:id="_ZRMBMkd5Eem5E_rMCmFB1A"/>
@@ -788,6 +834,17 @@
       <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_nmVMkmi8EemTL4p_yziLFw" points="[0, 0, -8, -122]$[11, 69, 3, -53]"/>
       <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_nmdvcGi8EemTL4p_yziLFw" id="(0.638372878448359,1.0)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_bBy4gGi9EemTL4p_yziLFw" id="(0.5,0.5)"/>
+    </edges>
+    <edges xmi:id="_KLUJEG6bEemKyfj1CerplA" type="Transition" element="_KLK_IG6bEemKyfj1CerplA" source="_JCv-gG6bEemKyfj1CerplA" target="_EWcAYG6bEemKyfj1CerplA">
+      <children xsi:type="notation:DecorationNode" xmi:id="_KLZBkG6bEemKyfj1CerplA" type="TransitionExpression">
+        <styles xsi:type="notation:ShapeStyle" xmi:id="_KLZBkW6bEemKyfj1CerplA"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_KLZBkm6bEemKyfj1CerplA" x="10"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_KLUJEW6bEemKyfj1CerplA" routing="Rectilinear" lineColor="4210752"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_KLYagG6bEemKyfj1CerplA" fontName="Verdana"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_KLUJEm6bEemKyfj1CerplA" points="[-2, -1, -65, 18]$[44, -1, -19, 18]"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_KLquYG6bEemKyfj1CerplA" id="(1.0,0.3333333333333333)"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_KLquYW6bEemKyfj1CerplA" id="(0.0696415897799858,0.1886792452830189)"/>
     </edges>
   </notation:Diagram>
   <notation:Diagram xmi:id="_pYPkUUd5Eem5E_rMCmFB1A" type="org.yakindu.sct.ui.editor.editor.StatechartDiagramEditor" element="_eNZcgEd5Eem5E_rMCmFB1A" measurementUnit="Pixel">

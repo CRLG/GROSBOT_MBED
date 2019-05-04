@@ -5,18 +5,18 @@
 #include "../src/sc_types.h"
 #include "../src/StatemachineInterface.h"
 #include "../src/TimedStatemachineInterface.h"
+#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h"
+#include "../../ext/mbed-common-rob/Includes/CGlobale.h"
 #include "../../Includes/ConfigSpecifiqueCoupe.h"
+#include "../../ext/mbed-common-rob/Includes/CAsservissementChariot.h"
 #include "../../ext/mbed-common-rob/Includes/CAsservissement.h"
 #include "../../ext/mbed-common-rob/Includes/CLeds.h"
-#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/message_robot_lego_2019.h"
-#include "../../ext/mbed-common-rob/Includes/CAsservissementChariot.h"
-#include "../../ext/mbed-common-rob/Includes/CGlobale.h"
-#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h"
-#include "../../ext/mbed-common-rob/Includes/PowerSwitch.h"
 #include "../../ext/mbed-common-rob/Includes/CServoMoteurSD20.h"
-#include "../../ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.h"
+#include "../../ext/mbed-common-rob/Includes/PowerSwitch.h"
+#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/message_robot_lego_2019.h"
 #include "../../ext/CppRobLib/ServosAX/servoaxbase.h"
 #include "../../ext/mbed-common-rob/Includes/MessengerXbeeNetwork.h"
+#include "../../ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.h"
 
 /*! \file Header of the state machine 'IA'.
 */
@@ -36,6 +36,7 @@
 #define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUT 0
 #define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET 1
 #define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE 1
+#define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE 2
 #define SCVI_MAIN_REGION_MATCH_EN_COURS 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_DETECTION_OBSTACLE 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_DETECTION_OBSTACLE_R1_ARRET_ROBOT 0
@@ -115,6 +116,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUT,
 			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET,
 			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE,
+			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE,
 			main_region_MATCH_EN_COURS,
 			main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE,
 			main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT,
@@ -227,6 +229,12 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				/*! Sets the value of the variable 'IN_Couleur' that is defined in the default interface scope. */
 				void set_iN_Couleur(int32_t value);
 				
+				/*! Gets the value of the variable 'IN_choixStrategie' that is defined in the default interface scope. */
+				int32_t get_iN_choixStrategie() const;
+				
+				/*! Sets the value of the variable 'IN_choixStrategie' that is defined in the default interface scope. */
+				void set_iN_choixStrategie(int32_t value);
+				
 				/*! Gets the value of the variable 'IN_Obstacle' that is defined in the default interface scope. */
 				int32_t get_iN_Obstacle() const;
 				
@@ -262,6 +270,12 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				
 				/*! Sets the value of the variable 'Couleur' that is defined in the default interface scope. */
 				void set_couleur(int32_t value);
+				
+				/*! Gets the value of the variable 'choixStrategie' that is defined in the default interface scope. */
+				int32_t get_choixStrategie() const;
+				
+				/*! Sets the value of the variable 'choixStrategie' that is defined in the default interface scope. */
+				void set_choixStrategie(int32_t value);
 				
 				/*! Gets the value of the variable 'countTimeMvt' that is defined in the default interface scope. */
 				double get_countTimeMvt() const;
@@ -448,12 +462,14 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				double IN_vitesse;
 				double IN_sens_deplacement;
 				int32_t IN_Couleur;
+				int32_t IN_choixStrategie;
 				int32_t IN_Obstacle;
 				sc_boolean IN_Depression;
 				sc_boolean forceObstacle;
 				sc_boolean US_AV;
 				sc_boolean US_AR;
 				int32_t Couleur;
+				int32_t choixStrategie;
 				double countTimeMvt;
 				double tempsMatch;
 				int32_t countTempo;
@@ -554,6 +570,12 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		/*! Sets the value of the variable 'IN_Couleur' that is defined in the default interface scope. */
 		void set_iN_Couleur(int32_t value);
 		
+		/*! Gets the value of the variable 'IN_choixStrategie' that is defined in the default interface scope. */
+		int32_t get_iN_choixStrategie() const;
+		
+		/*! Sets the value of the variable 'IN_choixStrategie' that is defined in the default interface scope. */
+		void set_iN_choixStrategie(int32_t value);
+		
 		/*! Gets the value of the variable 'IN_Obstacle' that is defined in the default interface scope. */
 		int32_t get_iN_Obstacle() const;
 		
@@ -589,6 +611,12 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		
 		/*! Sets the value of the variable 'Couleur' that is defined in the default interface scope. */
 		void set_couleur(int32_t value);
+		
+		/*! Gets the value of the variable 'choixStrategie' that is defined in the default interface scope. */
+		int32_t get_choixStrategie() const;
+		
+		/*! Sets the value of the variable 'choixStrategie' that is defined in the default interface scope. */
+		void set_choixStrategie(int32_t value);
 		
 		/*! Gets the value of the variable 'countTimeMvt' that is defined in the default interface scope. */
 		double get_countTimeMvt() const;
@@ -1064,7 +1092,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		};
 		
 		//! the maximum number of orthogonal states defines the dimension of the state configuration vector.
-		static const sc_ushort maxOrthogonalStates = 2;
+		static const sc_ushort maxOrthogonalStates = 3;
 		//! dimension of the state configuration vector for history states
 		static const sc_ushort maxHistoryStates = 2;
 		
@@ -1101,6 +1129,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUT();
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET();
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE();
+		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE();
 		void react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT();
 		void react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT();
 		void react_main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1__final_();

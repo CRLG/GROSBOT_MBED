@@ -81,12 +81,14 @@ void IA::init()
 	iface.IN_vitesse = 0.0;
 	iface.IN_sens_deplacement = 0.0;
 	iface.IN_Couleur = 0;
+	iface.IN_choixStrategie = 0;
 	iface.IN_Obstacle = 0;
 	iface.IN_Depression = false;
 	iface.forceObstacle = false;
 	iface.US_AV = true;
 	iface.US_AR = true;
 	iface.Couleur = 1;
+	iface.choixStrategie = 0;
 	iface.countTimeMvt = 0;
 	iface.tempsMatch = 0;
 	iface.countTempo = 0;
@@ -143,6 +145,11 @@ void IA::enter()
 	ifaceInternalSCI.invMouv = -1;
 	stateConfVector[1] = main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET;
 	stateConfVectorPosition = 1;
+	/* 'default' enter sequence for region CHOIX_STRATEGIE */
+	/* Default react sequence for initial entry  */
+	/* 'default' enter sequence for state CHOIX_NUM_STRATEGIE */
+	stateConfVector[2] = main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE;
+	stateConfVectorPosition = 2;
 }
 
 void IA::exit()
@@ -798,11 +805,23 @@ void IA::exit()
 		}
 		default: break;
 	}
+	/* Handle exit of all possible states (of IA.main_region) at position 2... */
+	switch(stateConfVector[ 2 ])
+	{
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE :
+		{
+			/* Default exit sequence for state CHOIX_NUM_STRATEGIE */
+			stateConfVector[2] = IA_last_state;
+			stateConfVectorPosition = 2;
+			break;
+		}
+		default: break;
+	}
 }
 
 sc_boolean IA::isActive() const
 {
-	return stateConfVector[0] != IA_last_state||stateConfVector[1] != IA_last_state;
+	return stateConfVector[0] != IA_last_state||stateConfVector[1] != IA_last_state||stateConfVector[2] != IA_last_state;
 }
 
 /* 
@@ -876,6 +895,11 @@ void IA::runCycle()
 		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE :
 		{
 			react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE();
+			break;
+		}
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE :
+		{
+			react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE();
 			break;
 		}
 		case main_region_MATCH_EN_COURS__region0_DETECTION_OBSTACLE_r1_ARRET_ROBOT :
@@ -1224,10 +1248,10 @@ sc_boolean IA::isStateActive(IAStates state) const
 	{
 		case main_region_ATTENTE_TIRETTE : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE] >= main_region_ATTENTE_TIRETTE
-				&& stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE] <= main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE);
+				&& stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE] <= main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE);
 		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE] >= main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE
-				&& stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE] <= main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE);
+				&& stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE] <= main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE);
 		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_INIT_INIT] == main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT
 			);
@@ -1260,6 +1284,9 @@ sc_boolean IA::isStateActive(IAStates state) const
 			);
 		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE] == main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE
+			);
+		case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE] == main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE
 			);
 		case main_region_MATCH_EN_COURS : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS] >= main_region_MATCH_EN_COURS
@@ -1596,6 +1623,26 @@ void IA::set_iN_Couleur(int32_t value)
 	iface.IN_Couleur = value;
 }
 
+int32_t IA::DefaultSCI::get_iN_choixStrategie() const
+{
+	return IN_choixStrategie;
+}
+
+int32_t IA::get_iN_choixStrategie() const
+{
+	return iface.IN_choixStrategie;
+}
+
+void IA::DefaultSCI::set_iN_choixStrategie(int32_t value)
+{
+	IN_choixStrategie = value;
+}
+
+void IA::set_iN_choixStrategie(int32_t value)
+{
+	iface.IN_choixStrategie = value;
+}
+
 int32_t IA::DefaultSCI::get_iN_Obstacle() const
 {
 	return IN_Obstacle;
@@ -1714,6 +1761,26 @@ void IA::DefaultSCI::set_couleur(int32_t value)
 void IA::set_couleur(int32_t value)
 {
 	iface.Couleur = value;
+}
+
+int32_t IA::DefaultSCI::get_choixStrategie() const
+{
+	return choixStrategie;
+}
+
+int32_t IA::get_choixStrategie() const
+{
+	return iface.choixStrategie;
+}
+
+void IA::DefaultSCI::set_choixStrategie(int32_t value)
+{
+	choixStrategie = value;
+}
+
+void IA::set_choixStrategie(int32_t value)
+{
+	iface.choixStrategie = value;
 }
 
 double IA::DefaultSCI::get_countTimeMvt() const
@@ -3095,6 +3162,18 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT()
 			}
 			default: break;
 		}
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 2... */
+		switch(stateConfVector[ 2 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE :
+			{
+				/* Default exit sequence for state CHOIX_NUM_STRATEGIE */
+				stateConfVector[2] = IA_last_state;
+				stateConfVectorPosition = 2;
+				break;
+			}
+			default: break;
+		}
 		/* 'default' enter sequence for state MATCH_EN_COURS */
 		/* Entry action for state 'MATCH_EN_COURS'. */
 		timer->setTimer(this, (sc_eventid)(&timeEvents[8]), (DUREE_MATCH) * 1000, false);
@@ -3246,6 +3325,18 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGA
 			}
 			default: break;
 		}
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 2... */
+		switch(stateConfVector[ 2 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE :
+			{
+				/* Default exit sequence for state CHOIX_NUM_STRATEGIE */
+				stateConfVector[2] = IA_last_state;
+				stateConfVectorPosition = 2;
+				break;
+			}
+			default: break;
+		}
 		/* 'default' enter sequence for state MATCH_EN_COURS */
 		/* Entry action for state 'MATCH_EN_COURS'. */
 		timer->setTimer(this, (sc_eventid)(&timeEvents[8]), (DUREE_MATCH) * 1000, false);
@@ -3390,6 +3481,18 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_APPRENT
 				/* Default exit sequence for state CHOIX_COULEUR_JAUNE */
 				stateConfVector[1] = IA_last_state;
 				stateConfVectorPosition = 1;
+				break;
+			}
+			default: break;
+		}
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 2... */
+		switch(stateConfVector[ 2 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE :
+			{
+				/* Default exit sequence for state CHOIX_NUM_STRATEGIE */
+				stateConfVector[2] = IA_last_state;
+				stateConfVectorPosition = 2;
 				break;
 			}
 			default: break;
@@ -3545,6 +3648,18 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGA
 			}
 			default: break;
 		}
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 2... */
+		switch(stateConfVector[ 2 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE :
+			{
+				/* Default exit sequence for state CHOIX_NUM_STRATEGIE */
+				stateConfVector[2] = IA_last_state;
+				stateConfVectorPosition = 2;
+				break;
+			}
+			default: break;
+		}
 		/* 'default' enter sequence for state MATCH_EN_COURS */
 		/* Entry action for state 'MATCH_EN_COURS'. */
 		timer->setTimer(this, (sc_eventid)(&timeEvents[8]), (DUREE_MATCH) * 1000, false);
@@ -3689,6 +3804,18 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RA
 				/* Default exit sequence for state CHOIX_COULEUR_JAUNE */
 				stateConfVector[1] = IA_last_state;
 				stateConfVectorPosition = 1;
+				break;
+			}
+			default: break;
+		}
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 2... */
+		switch(stateConfVector[ 2 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE :
+			{
+				/* Default exit sequence for state CHOIX_NUM_STRATEGIE */
+				stateConfVector[2] = IA_last_state;
+				stateConfVectorPosition = 2;
 				break;
 			}
 			default: break;
@@ -3841,6 +3968,18 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RA
 			}
 			default: break;
 		}
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 2... */
+		switch(stateConfVector[ 2 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE :
+			{
+				/* Default exit sequence for state CHOIX_NUM_STRATEGIE */
+				stateConfVector[2] = IA_last_state;
+				stateConfVectorPosition = 2;
+				break;
+			}
+			default: break;
+		}
 		/* 'default' enter sequence for state MATCH_EN_COURS */
 		/* Entry action for state 'MATCH_EN_COURS'. */
 		timer->setTimer(this, (sc_eventid)(&timeEvents[8]), (DUREE_MATCH) * 1000, false);
@@ -3985,6 +4124,18 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SO
 				/* Default exit sequence for state CHOIX_COULEUR_JAUNE */
 				stateConfVector[1] = IA_last_state;
 				stateConfVectorPosition = 1;
+				break;
+			}
+			default: break;
+		}
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 2... */
+		switch(stateConfVector[ 2 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE :
+			{
+				/* Default exit sequence for state CHOIX_NUM_STRATEGIE */
+				stateConfVector[2] = IA_last_state;
+				stateConfVectorPosition = 2;
 				break;
 			}
 			default: break;
@@ -4137,6 +4288,18 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SO
 			}
 			default: break;
 		}
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 2... */
+		switch(stateConfVector[ 2 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE :
+			{
+				/* Default exit sequence for state CHOIX_NUM_STRATEGIE */
+				stateConfVector[2] = IA_last_state;
+				stateConfVectorPosition = 2;
+				break;
+			}
+			default: break;
+		}
 		/* 'default' enter sequence for state MATCH_EN_COURS */
 		/* Entry action for state 'MATCH_EN_COURS'. */
 		timer->setTimer(this, (sc_eventid)(&timeEvents[8]), (DUREE_MATCH) * 1000, false);
@@ -4285,6 +4448,18 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGA
 			}
 			default: break;
 		}
+		/* Handle exit of all possible states (of IA.main_region.ATTENTE_TIRETTE._region0) at position 2... */
+		switch(stateConfVector[ 2 ])
+		{
+			case main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE :
+			{
+				/* Default exit sequence for state CHOIX_NUM_STRATEGIE */
+				stateConfVector[2] = IA_last_state;
+				stateConfVectorPosition = 2;
+				break;
+			}
+			default: break;
+		}
 		/* 'default' enter sequence for state MATCH_EN_COURS */
 		/* Entry action for state 'MATCH_EN_COURS'. */
 		timer->setTimer(this, (sc_eventid)(&timeEvents[8]), (DUREE_MATCH) * 1000, false);
@@ -4344,6 +4519,13 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEU
 		stateConfVector[1] = main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET;
 		stateConfVectorPosition = 1;
 	} 
+}
+
+/* The reactions of state CHOIX_NUM_STRATEGIE. */
+void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE()
+{
+	/* The reactions of state CHOIX_NUM_STRATEGIE. */
+	iface.choixStrategie = iface.IN_choixStrategie;
 }
 
 /* The reactions of state ARRET_ROBOT. */
