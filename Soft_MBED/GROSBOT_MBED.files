@@ -192,6 +192,8 @@ Includes/xbeedriver.h
 
 ext/CppRobLib/Communication/Messenger/databasebase.cpp
 ext/CppRobLib/Communication/Messenger/databasebase.h
+ext/CppRobLib/Communication/Messenger/nodebase.cpp
+ext/CppRobLib/Communication/Messenger/nodebase.h
 ext/CppRobLib/Communication/Messenger/messagebase.cpp
 ext/CppRobLib/Communication/Messenger/messagebase.h
 ext/CppRobLib/Communication/Messenger/messengerdef.h
@@ -209,9 +211,16 @@ ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/message_experience
 ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/message_experience_status.h
 ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/message_robot_lego_2019.cpp
 ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/message_robot_lego_2019.h
+ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/node_grosbot.h
+ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/node_legobot.h
+ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/node_experience.h
+ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/node_balise.h
+ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/node_diag_tool.h
 
 ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.cpp
 ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.h
+ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_robotlego_status.cpp
+ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_robotlego_status.h
 ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_balise_positions.cpp
 ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_balise_positions.h
 
