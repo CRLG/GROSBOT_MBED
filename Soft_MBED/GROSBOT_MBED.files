@@ -223,6 +223,8 @@ ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_robotlego_status.c
 ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_robotlego_status.h
 ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_balise_positions.cpp
 ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_balise_positions.h
+ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_free_string.cpp
+ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_free_string.h
 
 ext/CppRobLib/Communication/XBEE/xbeedriverbase.cpp
 ext/CppRobLib/Communication/XBEE/xbeedriverbase.h

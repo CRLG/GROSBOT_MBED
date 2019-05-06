@@ -77,6 +77,7 @@ OBJECTS += $(CPPROBLIB_PATH)/Communication/Messenger/DatabaseXbeeNetwork2019/mes
 OBJECTS += $(CPPROBLIB_PATH)/Communication/Messenger/MessagesGeneric/message_timestamp_match.o
 OBJECTS += $(CPPROBLIB_PATH)/Communication/Messenger/MessagesGeneric/message_robotlego_status.o
 OBJECTS += $(CPPROBLIB_PATH)/Communication/Messenger/MessagesGeneric/message_balise_positions.o
+OBJECTS += $(CPPROBLIB_PATH)/Communication/Messenger/MessagesGeneric/message_free_string.o
 OBJECTS += $(CPPROBLIB_PATH)/Communication/XBEE/xbeedriverbase.o
 OBJECTS += $(CPPROBLIB_PATH)/ServosAX/servoaxbase.o
 OBJECTS += $(CPPROBLIB_PATH)/ServosAX/servoax_utils.o
