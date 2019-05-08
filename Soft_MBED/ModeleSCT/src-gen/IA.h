@@ -5,18 +5,17 @@
 #include "../src/sc_types.h"
 #include "../src/StatemachineInterface.h"
 #include "../src/TimedStatemachineInterface.h"
-#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h"
-#include "../../ext/mbed-common-rob/Includes/CGlobale.h"
 #include "../../Includes/ConfigSpecifiqueCoupe.h"
-#include "../../ext/mbed-common-rob/Includes/CAsservissementChariot.h"
 #include "../../ext/mbed-common-rob/Includes/CAsservissement.h"
-#include "../../ext/mbed-common-rob/Includes/CLeds.h"
-#include "../../ext/mbed-common-rob/Includes/CServoMoteurSD20.h"
-#include "../../ext/mbed-common-rob/Includes/PowerSwitch.h"
-#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/message_robot_lego_2019.h"
-#include "../../ext/CppRobLib/ServosAX/servoaxbase.h"
-#include "../../ext/mbed-common-rob/Includes/MessengerXbeeNetwork.h"
+#include "../../ext/mbed-common-rob/Includes/CGlobale.h"
 #include "../../ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.h"
+#include "../../ext/mbed-common-rob/Includes/CLeds.h"
+#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h"
+#include "../../ext/CppRobLib/ServosAX/servoaxbase.h"
+#include "../../ext/mbed-common-rob/Includes/PowerSwitch.h"
+#include "../../ext/mbed-common-rob/Includes/CAsservissementChariot.h"
+#include "../../ext/mbed-common-rob/Includes/MessengerXbeeNetwork.h"
+#include "../../ext/mbed-common-rob/Includes/CServoMoteurSD20.h"
 
 /*! \file Header of the state machine 'IA'.
 */
@@ -34,6 +33,7 @@
 #define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01 0
 #define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02 0
 #define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUT 0
+#define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_INIT_COPY_1_TOBOGGANS_BAS 0
 #define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET 1
 #define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE 1
 #define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE 2
@@ -57,14 +57,14 @@
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_SUPERVISOR 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_FACE_BLEUIUM 0
-#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_DECLENCHEMENT_ACCELERATEUR_GAUCHE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PREPA_POUSSETTE_GAUCHE 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_DEPLACEMENT_VERS_GOLDENIUM 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PREPARATION_KMAR_POUR_GOLDENIUM 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_VENTOUSAGE_GOLDENIUM 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PREPARATION_KMAR_GAUCHE 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PREPARATION_KMAR_DROITE 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE 0
-#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_DECLENCHEMENT_ACCELERATEUR_DROITE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PREPA_POUSSETTE_DROITE 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_GOLDENIUM_DANS_ROBOT_GAUCHE 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PLACEMENT_DEVANT_BALANCE 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PLUS_PROCHE_BALANCE 0
@@ -90,6 +90,11 @@
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_ROTATION_VERS_GOLDENIUM 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_PLACEMENT_FACE_GOLDENIUM 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_COPY_1_ACCOSTAGE_BALANCE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_DECLENCHEMENT_ACCELERATEUR 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_COPY_1_FACE_BLEUIUM 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_COPY_1_DECLENCHEMENT_ACCELERATEUR 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_COPY_1_ROTATION_VERS_GOLDENIUM 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS__REGION0_GOLDENIUM_R1_COPY_1_PREPA_POUSSETTE_GAUCHE 0
 #define SCVI_MAIN_REGION_FIN_MATCH 0
 
 class IA : public TimedStatemachineInterface, public StatemachineInterface
@@ -114,6 +119,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01,
 			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02,
 			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUT,
+			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_Copy_1_TOBOGGANS_BAS,
 			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET,
 			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE,
 			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE,
@@ -137,14 +143,14 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 			main_region_MATCH_EN_COURS__region0_SUPERVISOR,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM,
-			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPA_POUSSETTE_GAUCHE,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DEPLACEMENT_VERS_GOLDENIUM,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE,
-			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPA_POUSSETTE_DROITE,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE,
@@ -170,6 +176,11 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ROTATION_VERS_GOLDENIUM,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_FACE_GOLDENIUM,
 			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_Copy_1_ACCOSTAGE_BALANCE,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_Copy_1_FACE_BLEUIUM,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_Copy_1_DECLENCHEMENT_ACCELERATEUR,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_Copy_1_ROTATION_VERS_GOLDENIUM,
+			main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_Copy_1_PREPA_POUSSETTE_GAUCHE,
 			main_region_FIN_MATCH
 		} IAStates;
 		
@@ -427,6 +438,18 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				/*! Gets the value of the variable 'KMAR_MOLLE' that is defined in the default interface scope. */
 				const int32_t get_kMAR_MOLLE() const;
 				
+				/*! Gets the value of the variable 'PARE_CHOC_BAS' that is defined in the default interface scope. */
+				const int32_t get_pARE_CHOC_BAS() const;
+				
+				/*! Gets the value of the variable 'PARE_CHOC_HAUT' that is defined in the default interface scope. */
+				const int32_t get_pARE_CHOC_HAUT() const;
+				
+				/*! Gets the value of the variable 'CHUCK_FERME' that is defined in the default interface scope. */
+				const int32_t get_cHUCK_FERME() const;
+				
+				/*! Gets the value of the variable 'CHUCK_OUVERT' that is defined in the default interface scope. */
+				const int32_t get_cHUCK_OUVERT() const;
+				
 				/*! Gets the value of the variable 'CODEUR_NON_DEFINI' that is defined in the default interface scope. */
 				const int32_t get_cODEUR_NON_DEFINI() const;
 				
@@ -507,6 +530,10 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				static const int32_t KMAR_ERECTION;
 				static const int32_t KMAR_MI_MOLLE;
 				static const int32_t KMAR_MOLLE;
+				static const int32_t PARE_CHOC_BAS;
+				static const int32_t PARE_CHOC_HAUT;
+				static const int32_t CHUCK_FERME;
+				static const int32_t CHUCK_OUVERT;
 				static const int32_t CODEUR_NON_DEFINI;
 				static const int32_t CODEUR_CHARIOT;
 				static const int32_t CODEUR_ROUE_DROITE;
@@ -768,6 +795,18 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		/*! Gets the value of the variable 'KMAR_MOLLE' that is defined in the default interface scope. */
 		const int32_t get_kMAR_MOLLE() const;
 		
+		/*! Gets the value of the variable 'PARE_CHOC_BAS' that is defined in the default interface scope. */
+		const int32_t get_pARE_CHOC_BAS() const;
+		
+		/*! Gets the value of the variable 'PARE_CHOC_HAUT' that is defined in the default interface scope. */
+		const int32_t get_pARE_CHOC_HAUT() const;
+		
+		/*! Gets the value of the variable 'CHUCK_FERME' that is defined in the default interface scope. */
+		const int32_t get_cHUCK_FERME() const;
+		
+		/*! Gets the value of the variable 'CHUCK_OUVERT' that is defined in the default interface scope. */
+		const int32_t get_cHUCK_OUVERT() const;
+		
 		/*! Gets the value of the variable 'CODEUR_NON_DEFINI' that is defined in the default interface scope. */
 		const int32_t get_cODEUR_NON_DEFINI() const;
 		
@@ -1003,7 +1042,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		sc_boolean isStateActive(IAStates state) const;
 		
 		//! number of time events used by the state machine.
-		static const sc_integer timeEventsCount = 51;
+		static const sc_integer timeEventsCount = 57;
 		
 		//! number of time events that can be active at once.
 		static const sc_integer parallelTimeEventsCount = 2;
@@ -1127,6 +1166,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_01();
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SORTI_02();
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGANS_HAUT();
+		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_Copy_1_TOBOGGANS_BAS();
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET();
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE();
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE();
@@ -1146,14 +1186,14 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		void react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__final_();
 		void react_main_region_MATCH_EN_COURS__region0_SUPERVISOR();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_FACE_BLEUIUM();
-		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_GAUCHE();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPA_POUSSETTE_GAUCHE();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DEPLACEMENT_VERS_GOLDENIUM();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_POUR_GOLDENIUM();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_VENTOUSAGE_GOLDENIUM();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_DROITE();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE();
-		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR_DROITE();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PREPA_POUSSETTE_DROITE();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_GOLDENIUM_DANS_ROBOT_GAUCHE();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_DEVANT_BALANCE();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLUS_PROCHE_BALANCE();
@@ -1179,11 +1219,15 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_ROTATION_VERS_GOLDENIUM();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_PLACEMENT_FACE_GOLDENIUM();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_Copy_1_ACCOSTAGE_BALANCE();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_DECLENCHEMENT_ACCELERATEUR();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_Copy_1_FACE_BLEUIUM();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_Copy_1_DECLENCHEMENT_ACCELERATEUR();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_Copy_1_ROTATION_VERS_GOLDENIUM();
+		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1_Copy_1_PREPA_POUSSETTE_GAUCHE();
 		void react_main_region_FIN_MATCH();
 		void react_main_region_MATCH_EN_COURS__region0_NETTOYAGE_r1__choice_0();
 		void react_main_region_MATCH_EN_COURS__region0__choice_0();
 		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__choice_0();
-		void react_main_region_MATCH_EN_COURS__region0_GOLDENIUM_r1__choice_1();
 		void clearInEvents();
 		void clearOutEvents();
 		
