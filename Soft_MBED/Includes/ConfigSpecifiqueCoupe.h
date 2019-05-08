@@ -33,6 +33,7 @@ typedef enum {
 
 //! cet enumere contient les numeros d'attribution des servos SD20
 typedef enum {
+    SERVO_PARE_CHOC=13,
     SERVO_BRAS_ARD=14,
     SERVO_PLATEAU_G=15,
     SERVO_BARRIERE_AVG=16,
@@ -48,6 +49,7 @@ typedef enum {
     SERVO_VENTOUSE_ARG_VERT,
     SERVO_VENTOUSE_AV_HORIZ,
     SERVO_VENTOUSE_AV_VERT,
+    SERVO_CHUCK_NORRIS,
     SERVO_AX_TOUS = 0xFE
 } eATTRIBUTION_SERVOS_AX;
 
