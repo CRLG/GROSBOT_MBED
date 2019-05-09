@@ -10,6 +10,18 @@
 #include "CServoMoteurSD20.h"
 #include "PowerSwitch.h"
 
+// Affectation des numéros de stratégie
+typedef enum {
+   HOMOLO1 = 0,
+   HOMOLO2,
+   STRATEGIE_01,
+   STRATEGIE_02,
+   STRATEGIE_03,
+   STRATEGIE_04,
+   STRATEGIE_05,
+   STRATEGIE_06
+}eATTRIBUTION_STRATEGIES;
+
 // Affectation des sorties moteurs
 typedef enum {
    MOTEUR_ROUE_GAUCHE = MOTEUR_1,
