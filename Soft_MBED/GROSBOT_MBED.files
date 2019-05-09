@@ -219,6 +219,8 @@ ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/node_diag_tool.h
 
 ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.cpp
 ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.h
+ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_grosbot_position.cpp
+ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_grosbot_position.h
 ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_robotlego_status.cpp
 ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_robotlego_status.h
 ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_balise_positions.cpp
