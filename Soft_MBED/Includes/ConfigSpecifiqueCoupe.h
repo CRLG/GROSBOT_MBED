@@ -72,6 +72,12 @@ typedef enum {
 //! Durée du match
 #define DUREE_MATCH 100 // [sec]
 
+//! Seuils de détections d'obstacle pour chaque capteur
+#define SEUILS_DETECTION_OBSTACLE_AVD 35.0f // [cm]
+#define SEUILS_DETECTION_OBSTACLE_AVG 35.0f // [cm]
+#define SEUILS_DETECTION_OBSTACLE_ARD 35.0f // [cm]
+#define SEUILS_DETECTION_OBSTACLE_ARG 35.0f // [cm]
+
 #define HOMOLO 1
 
 #endif // _CONFIG_SPECIFIQUE_COUPE
