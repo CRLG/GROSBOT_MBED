@@ -12,7 +12,8 @@
 
 // Affectation des numéros de stratégie
 typedef enum {
-   HOMOLO1 = 0,
+   STRATEGIE_PAR_DEFAUT= 0,
+   HOMOLO1,
    HOMOLO2,
    STRATEGIE_01,
    STRATEGIE_02,
