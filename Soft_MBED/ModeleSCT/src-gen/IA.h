@@ -5,18 +5,18 @@
 #include "../src/sc_types.h"
 #include "../src/StatemachineInterface.h"
 #include "../src/TimedStatemachineInterface.h"
-#include "../../Includes/ConfigSpecifiqueCoupe.h"
-#include "../../ext/mbed-common-rob/Includes/CAsservissementChariot.h"
-#include "../../ext/mbed-common-rob/Includes/CLeds.h"
 #include "../../ext/mbed-common-rob/Includes/CAsservissement.h"
-#include "../../ext/mbed-common-rob/Includes/PowerSwitch.h"
+#include "../../Includes/ConfigSpecifiqueCoupe.h"
 #include "../../ext/mbed-common-rob/Includes/CGlobale.h"
+#include "../../ext/mbed-common-rob/Includes/CLeds.h"
 #include "../../ext/CppRobLib/ServosAX/servoaxbase.h"
-#include "../../ext/mbed-common-rob/Includes/CServoMoteurSD20.h"
 #include "../../ext/mbed-common-rob/Includes/MessengerXbeeNetwork.h"
-#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h"
-#include "../../ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.h"
 #include "../../ext/mbed-common-rob/Includes/CMatch.h"
+#include "../../ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.h"
+#include "../../ext/mbed-common-rob/Includes/PowerSwitch.h"
+#include "../../ext/mbed-common-rob/Includes/CServoMoteurSD20.h"
+#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h"
+#include "../../ext/mbed-common-rob/Includes/CAsservissementChariot.h"
 
 /*! \file Header of the state machine 'IA'.
 */
@@ -40,9 +40,28 @@
 #define SCVI_MAIN_REGION_ATTENTE_TIRETTE__REGION0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE 2
 #define SCVI_MAIN_REGION_MATCH_EN_COURS 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE 0
-#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_ARRET_ROBOT 0
-#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_SORTIE_EVITEMENT 0
-#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1__FINAL_ 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR_R1_EVITEMENT_INIT 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR_R1_SORTIE_EVITEMENT 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR_R1_EVITEMENT_ATTENTE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR_R1_STRATEGIE_EVITEMENT 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR_R1_STRATEGIE_EVITEMENT_R1_EVITEMENT_ELOIGNEMENT 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR_R1_STRATEGIE_EVITEMENT_R1_EVITEMENT_ROTATION 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR_R1_STRATEGIE_EVITEMENT_R1_EVITEMENT_EVACUE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR_R1_STRATEGIE_EVITEMENT_R1_FIN_STRATEGIE_EVITEMENT 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR_R1_STRATEGIE_EVITEMENT_R1_DEBUT_STRATEGIE_EVITEMENT 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR_R1_STRATEGIE_EVITEMENT_R1_EVITEMENT_AVD 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR_R1_STRATEGIE_EVITEMENT_R1_EVITEMENT_AVG 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR_R1_STRATEGIE_EVITEMENT_R1_EVITEMENT_SYNCHRO 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR_R1_STRATEGIE_EVITEMENT_R1_EVITEMENT_AVD_AVG 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR_R1_STRATEGIE_EVITEMENT_R1_EVITEMENT_ARD 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR_R1_STRATEGIE_EVITEMENT_R1_EVITEMENT_ARG 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR_R1_STRATEGIE_EVITEMENT_R1_EVITEMENT_ARD_ARG 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR_R1_STRATEGIE_EVITEMENT_R1_EVITEMENT_DEFAULT 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR_R1_STRATEGIE_EVITEMENT_R1_EVITEMENT_REDRESSE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR_R1_STRATEGIE_EVITEMENT_R1_EVITEMENT_EVACUE_2 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR_R1_STRATEGIE_EVITEMENT_R1_EVITEMENT_RETENTATIVE 0
+#define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_R1_EVITEMMENT_OBSTACLE_CONTENEUR_R1_EVITEMENT_BUG_YAKINDU_CHOICE 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_DEPASSE_ZONE_CHAOS 0
 #define SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_FACE_ZONE_CHAOS 0
@@ -140,9 +159,28 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 			main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE,
 			main_region_MATCH_EN_COURS,
 			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE,
-			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_ARRET_ROBOT,
-			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT,
-			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1__final_,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_SORTIE_EVITEMENT,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_ATTENTE,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_ELOIGNEMENT,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_ROTATION,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_EVACUE,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_FIN_STRATEGIE_EVITEMENT,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_DEBUT_STRATEGIE_EVITEMENT,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_AVD,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_AVG,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_SYNCHRO,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_AVD_AVG,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_ARD,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_ARG,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_ARD_ARG,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_DEFAULT,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_REDRESSE,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_EVACUE_2,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_RETENTATIVE,
+			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_BUG_YAKINDU_CHOICE,
 			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE,
 			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_DEPASSE_ZONE_CHAOS,
 			main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_FACE_ZONE_CHAOS,
@@ -395,6 +433,108 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				/*! Sets the value of the variable 'score_total' that is defined in the default interface scope. */
 				void set_score_total(int32_t value);
 				
+				/*! Gets the value of the variable 'evitementEnCours' that is defined in the default interface scope. */
+				sc_boolean get_evitementEnCours() const;
+				
+				/*! Sets the value of the variable 'evitementEnCours' that is defined in the default interface scope. */
+				void set_evitementEnCours(sc_boolean value);
+				
+				/*! Gets the value of the variable 'inhibeObstacle' that is defined in the default interface scope. */
+				sc_boolean get_inhibeObstacle() const;
+				
+				/*! Sets the value of the variable 'inhibeObstacle' that is defined in the default interface scope. */
+				void set_inhibeObstacle(sc_boolean value);
+				
+				/*! Gets the value of the variable 'evit_memo_cde_min' that is defined in the default interface scope. */
+				int32_t get_evit_memo_cde_min() const;
+				
+				/*! Sets the value of the variable 'evit_memo_cde_min' that is defined in the default interface scope. */
+				void set_evit_memo_cde_min(int32_t value);
+				
+				/*! Gets the value of the variable 'evit_memo_cde_max' that is defined in the default interface scope. */
+				int32_t get_evit_memo_cde_max() const;
+				
+				/*! Sets the value of the variable 'evit_memo_cde_max' that is defined in the default interface scope. */
+				void set_evit_memo_cde_max(int32_t value);
+				
+				/*! Gets the value of the variable 'evit_memo_idx_sportiv' that is defined in the default interface scope. */
+				double get_evit_memo_idx_sportiv() const;
+				
+				/*! Sets the value of the variable 'evit_memo_idx_sportiv' that is defined in the default interface scope. */
+				void set_evit_memo_idx_sportiv(double value);
+				
+				/*! Gets the value of the variable 'evit_memo_vitesse_avance' that is defined in the default interface scope. */
+				double get_evit_memo_vitesse_avance() const;
+				
+				/*! Sets the value of the variable 'evit_memo_vitesse_avance' that is defined in the default interface scope. */
+				void set_evit_memo_vitesse_avance(double value);
+				
+				/*! Gets the value of the variable 'evit_memo_vitesse_angle' that is defined in the default interface scope. */
+				double get_evit_memo_vitesse_angle() const;
+				
+				/*! Sets the value of the variable 'evit_memo_vitesse_angle' that is defined in the default interface scope. */
+				void set_evit_memo_vitesse_angle(double value);
+				
+				/*! Gets the value of the variable 'evit_memo_force_obstacle' that is defined in the default interface scope. */
+				sc_boolean get_evit_memo_force_obstacle() const;
+				
+				/*! Sets the value of the variable 'evit_memo_force_obstacle' that is defined in the default interface scope. */
+				void set_evit_memo_force_obstacle(sc_boolean value);
+				
+				/*! Gets the value of the variable 'evit_sens_avant_detection' that is defined in the default interface scope. */
+				double get_evit_sens_avant_detection() const;
+				
+				/*! Sets the value of the variable 'evit_sens_avant_detection' that is defined in the default interface scope. */
+				void set_evit_sens_avant_detection(double value);
+				
+				/*! Gets the value of the variable 'evit_nombre_tentatives' that is defined in the default interface scope. */
+				int32_t get_evit_nombre_tentatives() const;
+				
+				/*! Sets the value of the variable 'evit_nombre_tentatives' that is defined in the default interface scope. */
+				void set_evit_nombre_tentatives(int32_t value);
+				
+				/*! Gets the value of the variable 'evit_detection_obstacle_bitfield' that is defined in the default interface scope. */
+				int32_t get_evit_detection_obstacle_bitfield() const;
+				
+				/*! Sets the value of the variable 'evit_detection_obstacle_bitfield' that is defined in the default interface scope. */
+				void set_evit_detection_obstacle_bitfield(int32_t value);
+				
+				/*! Gets the value of the variable 'evit_strategie_evitement_en_cours' that is defined in the default interface scope. */
+				sc_boolean get_evit_strategie_evitement_en_cours() const;
+				
+				/*! Sets the value of the variable 'evit_strategie_evitement_en_cours' that is defined in the default interface scope. */
+				void set_evit_strategie_evitement_en_cours(sc_boolean value);
+				
+				/*! Gets the value of the variable 'evit_sgn_dist_eloigne' that is defined in the default interface scope. */
+				int32_t get_evit_sgn_dist_eloigne() const;
+				
+				/*! Sets the value of the variable 'evit_sgn_dist_eloigne' that is defined in the default interface scope. */
+				void set_evit_sgn_dist_eloigne(int32_t value);
+				
+				/*! Gets the value of the variable 'evit_sgn_angle_pivote' that is defined in the default interface scope. */
+				int32_t get_evit_sgn_angle_pivote() const;
+				
+				/*! Sets the value of the variable 'evit_sgn_angle_pivote' that is defined in the default interface scope. */
+				void set_evit_sgn_angle_pivote(int32_t value);
+				
+				/*! Gets the value of the variable 'evit_sgn_dist_evacue' that is defined in the default interface scope. */
+				int32_t get_evit_sgn_dist_evacue() const;
+				
+				/*! Sets the value of the variable 'evit_sgn_dist_evacue' that is defined in the default interface scope. */
+				void set_evit_sgn_dist_evacue(int32_t value);
+				
+				/*! Gets the value of the variable 'evit_toggle_signe' that is defined in the default interface scope. */
+				int32_t get_evit_toggle_signe() const;
+				
+				/*! Sets the value of the variable 'evit_toggle_signe' that is defined in the default interface scope. */
+				void set_evit_toggle_signe(int32_t value);
+				
+				/*! Gets the value of the variable 'evit_debug_etape' that is defined in the default interface scope. */
+				int32_t get_evit_debug_etape() const;
+				
+				/*! Sets the value of the variable 'evit_debug_etape' that is defined in the default interface scope. */
+				void set_evit_debug_etape(int32_t value);
+				
 				/*! Gets the value of the variable 'TOB_G_HAUT' that is defined in the default interface scope. */
 				const int32_t get_tOB_G_HAUT() const;
 				
@@ -535,6 +675,23 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				int32_t score_minibot;
 				int32_t score_experience;
 				int32_t score_total;
+				sc_boolean evitementEnCours;
+				sc_boolean inhibeObstacle;
+				int32_t evit_memo_cde_min;
+				int32_t evit_memo_cde_max;
+				double evit_memo_idx_sportiv;
+				double evit_memo_vitesse_avance;
+				double evit_memo_vitesse_angle;
+				sc_boolean evit_memo_force_obstacle;
+				double evit_sens_avant_detection;
+				int32_t evit_nombre_tentatives;
+				int32_t evit_detection_obstacle_bitfield;
+				sc_boolean evit_strategie_evitement_en_cours;
+				int32_t evit_sgn_dist_eloigne;
+				int32_t evit_sgn_angle_pivote;
+				int32_t evit_sgn_dist_evacue;
+				int32_t evit_toggle_signe;
+				int32_t evit_debug_etape;
 				static const int32_t TOB_G_HAUT;
 				static const int32_t TOB_G_MILIEU;
 				static const int32_t TOB_G_BAS;
@@ -751,6 +908,108 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		
 		/*! Sets the value of the variable 'score_total' that is defined in the default interface scope. */
 		void set_score_total(int32_t value);
+		
+		/*! Gets the value of the variable 'evitementEnCours' that is defined in the default interface scope. */
+		sc_boolean get_evitementEnCours() const;
+		
+		/*! Sets the value of the variable 'evitementEnCours' that is defined in the default interface scope. */
+		void set_evitementEnCours(sc_boolean value);
+		
+		/*! Gets the value of the variable 'inhibeObstacle' that is defined in the default interface scope. */
+		sc_boolean get_inhibeObstacle() const;
+		
+		/*! Sets the value of the variable 'inhibeObstacle' that is defined in the default interface scope. */
+		void set_inhibeObstacle(sc_boolean value);
+		
+		/*! Gets the value of the variable 'evit_memo_cde_min' that is defined in the default interface scope. */
+		int32_t get_evit_memo_cde_min() const;
+		
+		/*! Sets the value of the variable 'evit_memo_cde_min' that is defined in the default interface scope. */
+		void set_evit_memo_cde_min(int32_t value);
+		
+		/*! Gets the value of the variable 'evit_memo_cde_max' that is defined in the default interface scope. */
+		int32_t get_evit_memo_cde_max() const;
+		
+		/*! Sets the value of the variable 'evit_memo_cde_max' that is defined in the default interface scope. */
+		void set_evit_memo_cde_max(int32_t value);
+		
+		/*! Gets the value of the variable 'evit_memo_idx_sportiv' that is defined in the default interface scope. */
+		double get_evit_memo_idx_sportiv() const;
+		
+		/*! Sets the value of the variable 'evit_memo_idx_sportiv' that is defined in the default interface scope. */
+		void set_evit_memo_idx_sportiv(double value);
+		
+		/*! Gets the value of the variable 'evit_memo_vitesse_avance' that is defined in the default interface scope. */
+		double get_evit_memo_vitesse_avance() const;
+		
+		/*! Sets the value of the variable 'evit_memo_vitesse_avance' that is defined in the default interface scope. */
+		void set_evit_memo_vitesse_avance(double value);
+		
+		/*! Gets the value of the variable 'evit_memo_vitesse_angle' that is defined in the default interface scope. */
+		double get_evit_memo_vitesse_angle() const;
+		
+		/*! Sets the value of the variable 'evit_memo_vitesse_angle' that is defined in the default interface scope. */
+		void set_evit_memo_vitesse_angle(double value);
+		
+		/*! Gets the value of the variable 'evit_memo_force_obstacle' that is defined in the default interface scope. */
+		sc_boolean get_evit_memo_force_obstacle() const;
+		
+		/*! Sets the value of the variable 'evit_memo_force_obstacle' that is defined in the default interface scope. */
+		void set_evit_memo_force_obstacle(sc_boolean value);
+		
+		/*! Gets the value of the variable 'evit_sens_avant_detection' that is defined in the default interface scope. */
+		double get_evit_sens_avant_detection() const;
+		
+		/*! Sets the value of the variable 'evit_sens_avant_detection' that is defined in the default interface scope. */
+		void set_evit_sens_avant_detection(double value);
+		
+		/*! Gets the value of the variable 'evit_nombre_tentatives' that is defined in the default interface scope. */
+		int32_t get_evit_nombre_tentatives() const;
+		
+		/*! Sets the value of the variable 'evit_nombre_tentatives' that is defined in the default interface scope. */
+		void set_evit_nombre_tentatives(int32_t value);
+		
+		/*! Gets the value of the variable 'evit_detection_obstacle_bitfield' that is defined in the default interface scope. */
+		int32_t get_evit_detection_obstacle_bitfield() const;
+		
+		/*! Sets the value of the variable 'evit_detection_obstacle_bitfield' that is defined in the default interface scope. */
+		void set_evit_detection_obstacle_bitfield(int32_t value);
+		
+		/*! Gets the value of the variable 'evit_strategie_evitement_en_cours' that is defined in the default interface scope. */
+		sc_boolean get_evit_strategie_evitement_en_cours() const;
+		
+		/*! Sets the value of the variable 'evit_strategie_evitement_en_cours' that is defined in the default interface scope. */
+		void set_evit_strategie_evitement_en_cours(sc_boolean value);
+		
+		/*! Gets the value of the variable 'evit_sgn_dist_eloigne' that is defined in the default interface scope. */
+		int32_t get_evit_sgn_dist_eloigne() const;
+		
+		/*! Sets the value of the variable 'evit_sgn_dist_eloigne' that is defined in the default interface scope. */
+		void set_evit_sgn_dist_eloigne(int32_t value);
+		
+		/*! Gets the value of the variable 'evit_sgn_angle_pivote' that is defined in the default interface scope. */
+		int32_t get_evit_sgn_angle_pivote() const;
+		
+		/*! Sets the value of the variable 'evit_sgn_angle_pivote' that is defined in the default interface scope. */
+		void set_evit_sgn_angle_pivote(int32_t value);
+		
+		/*! Gets the value of the variable 'evit_sgn_dist_evacue' that is defined in the default interface scope. */
+		int32_t get_evit_sgn_dist_evacue() const;
+		
+		/*! Sets the value of the variable 'evit_sgn_dist_evacue' that is defined in the default interface scope. */
+		void set_evit_sgn_dist_evacue(int32_t value);
+		
+		/*! Gets the value of the variable 'evit_toggle_signe' that is defined in the default interface scope. */
+		int32_t get_evit_toggle_signe() const;
+		
+		/*! Sets the value of the variable 'evit_toggle_signe' that is defined in the default interface scope. */
+		void set_evit_toggle_signe(int32_t value);
+		
+		/*! Gets the value of the variable 'evit_debug_etape' that is defined in the default interface scope. */
+		int32_t get_evit_debug_etape() const;
+		
+		/*! Sets the value of the variable 'evit_debug_etape' that is defined in the default interface scope. */
+		void set_evit_debug_etape(int32_t value);
 		
 		/*! Gets the value of the variable 'TOB_G_HAUT' that is defined in the default interface scope. */
 		const int32_t get_tOB_G_HAUT() const;
@@ -1071,7 +1330,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		sc_boolean isStateActive(IAStates state) const;
 		
 		//! number of time events used by the state machine.
-		static const sc_integer timeEventsCount = 57;
+		static const sc_integer timeEventsCount = 64;
 		
 		//! number of time events that can be active at once.
 		static const sc_integer parallelTimeEventsCount = 2;
@@ -1095,18 +1354,6 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				
 				/*! Sets the value of the variable 'Te' that is defined in the internal scope. */
 				void set_te(double value);
-				
-				/*! Gets the value of the variable 'inhibeObstacle' that is defined in the internal scope. */
-				sc_boolean get_inhibeObstacle() const;
-				
-				/*! Sets the value of the variable 'inhibeObstacle' that is defined in the internal scope. */
-				void set_inhibeObstacle(sc_boolean value);
-				
-				/*! Gets the value of the variable 'evitementEnCours' that is defined in the internal scope. */
-				sc_boolean get_evitementEnCours() const;
-				
-				/*! Sets the value of the variable 'evitementEnCours' that is defined in the internal scope. */
-				void set_evitementEnCours(sc_boolean value);
 				
 				/*! Gets the value of the variable 'sequence0' that is defined in the internal scope. */
 				sc_boolean get_sequence0() const;
@@ -1173,8 +1420,6 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				friend class IA;
 				int32_t invMouv;
 				double Te;
-				sc_boolean inhibeObstacle;
-				sc_boolean evitementEnCours;
 				sc_boolean sequence0;
 				sc_boolean sequence1;
 				sc_boolean sequence2;
@@ -1228,9 +1473,26 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_VIOLET();
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_COULEUR_CHOIX_COULEUR_JAUNE();
 		void react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_CHOIX_STRATEGIE_CHOIX_NUM_STRATEGIE();
-		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_ARRET_ROBOT();
-		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_SORTIE_EVITEMENT();
-		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1__final_();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_SORTIE_EVITEMENT();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_ATTENTE();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_ELOIGNEMENT();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_ROTATION();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_EVACUE();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_FIN_STRATEGIE_EVITEMENT();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_DEBUT_STRATEGIE_EVITEMENT();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_AVD();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_AVG();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_SYNCHRO();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_AVD_AVG();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_ARD();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_ARG();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_ARD_ARG();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_DEFAULT();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_REDRESSE();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_EVACUE_2();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1_EVITEMENT_RETENTATIVE();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_BUG_YAKINDU_CHOICE();
 		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_DEPASSE_ZONE_CHAOS();
 		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_FACE_ZONE_CHAOS();
 		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_STOCKAGE_DANS_ZONE_DEPART();
@@ -1294,6 +1556,9 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATEGY_TACHE_CHOIX_STRATEGIE_STRATEGIE1();
 		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATEGY_TACHE_CHOIX_STRATEGIE_STRATEGIE_PAR_DEFAUT();
 		void react_main_region_FIN_MATCH();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1__choice_0();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_STRATEGIE_EVITEMENT_r1__choice_0();
+		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1__choice_1();
 		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH__choice_0();
 		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_r1__choice_0();
 		void react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_0();
