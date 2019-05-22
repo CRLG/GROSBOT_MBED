@@ -16,13 +16,14 @@ GeneratorModel for yakindu::cpp {
 		feature FunctionInlining {
 			inlineReactions = true
 			inlineEntryActions = true
-			inlineExitActions = true
+			inlineExitActions = false
 			inlineEnterSequences = true
-			inlineExitSequences = true
+			inlineExitSequences = false
 			inlineChoices = true
 			inlineEnterRegion = true
-			inlineExitRegion = true
+			inlineExitRegion = false
 			inlineEntries = true
 		}
+
 	}
 }
