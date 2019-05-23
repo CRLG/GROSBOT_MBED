@@ -23,6 +23,12 @@ typedef enum {
    STRATEGIE_06
 }eATTRIBUTION_STRATEGIES;
 
+// Affectation des numéros de stratégie d'évitement d'obstacle
+typedef enum {
+    EVITEMENT_NEUTRE= 0,
+    EVITEMENT_NORMAL
+}eATTRIBUTION_STRATEGIES_EVITEMENT;
+
 // Affectation des sorties moteurs
 typedef enum {
    MOTEUR_ROUE_GAUCHE = MOTEUR_1,

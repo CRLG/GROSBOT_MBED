@@ -125,6 +125,7 @@ void IA::init()
 	iface.evit_sgn_dist_evacue = 1;
 	iface.evit_toggle_signe = 1;
 	iface.evit_debug_etape = 0;
+	iface.evit_choix_strategie = 0;
 	ifaceInternalSCI.invMouv = 1;
 	ifaceInternalSCI.Te = 0.02;
 	ifaceInternalSCI.sequence0 = true;
@@ -2200,6 +2201,26 @@ void IA::set_evit_debug_etape(int32_t value)
 	iface.evit_debug_etape = value;
 }
 
+int32_t IA::DefaultSCI::get_evit_choix_strategie() const
+{
+	return evit_choix_strategie;
+}
+
+int32_t IA::get_evit_choix_strategie() const
+{
+	return iface.evit_choix_strategie;
+}
+
+void IA::DefaultSCI::set_evit_choix_strategie(int32_t value)
+{
+	evit_choix_strategie = value;
+}
+
+void IA::set_evit_choix_strategie(int32_t value)
+{
+	iface.evit_choix_strategie = value;
+}
+
 const int32_t IA::DefaultSCI::get_tOB_G_HAUT() const
 {
 	return TOB_G_HAUT;
@@ -2826,6 +2847,7 @@ void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE()
 {
 	/* Exit action for state 'DETECTION_OBSTACLE'. */
 	Application.m_leds.setPattern(PATTERN_CLIGNO_12_34, 1000);
+	iface.evit_debug_etape = 0;
 }
 
 /* Exit action for state 'EVITEMENT_INIT'. */
@@ -15020,7 +15042,7 @@ void IA::react_main_region_FIN_MATCH()
 void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1__choice_0()
 {
 	/* The reactions of state null. */
-	if (iface.evit_detection_obstacle_bitfield == 0)
+	if ((iface.evit_choix_strategie == 0) || (iface.evit_detection_obstacle_bitfield == 0))
 	{ 
 		/* 'default' enter sequence for state SORTIE_EVITEMENT */
 		/* Entry action for state 'SORTIE_EVITEMENT'. */
@@ -15031,7 +15053,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r
 		Application.m_asservissement.setIndiceSportivite(((float) iface.evit_memo_idx_sportiv));
 		Application.m_asservissement.CommandeVitesseMouvement(((float) iface.evit_memo_vitesse_avance), ((float) iface.evit_memo_vitesse_angle));
 		iface.forceObstacle = iface.evit_memo_force_obstacle;
-		iface.evit_debug_etape = 0;
+		iface.evit_debug_etape = 99;
 		stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_SORTIE_EVITEMENT;
 		stateConfVectorPosition = 0;
 	}  else
@@ -15147,7 +15169,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r
 		Application.m_asservissement.setIndiceSportivite(((float) iface.evit_memo_idx_sportiv));
 		Application.m_asservissement.CommandeVitesseMouvement(((float) iface.evit_memo_vitesse_avance), ((float) iface.evit_memo_vitesse_angle));
 		iface.forceObstacle = iface.evit_memo_force_obstacle;
-		iface.evit_debug_etape = 0;
+		iface.evit_debug_etape = 99;
 		stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_SORTIE_EVITEMENT;
 		stateConfVectorPosition = 0;
 	}  else
