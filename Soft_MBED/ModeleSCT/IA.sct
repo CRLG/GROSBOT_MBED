@@ -323,13 +323,13 @@
               <vertices xsi:type="sgraph:State" xmi:id="_FH4dgGmPEemoI821HggD1Q" specification="entry/&#xA;Application.m_asservissement.CommandeManuelle(15,15)&#xA;exit/&#xA;Application.m_asservissement.CommandeManuelle(0,0)" name="Copy_1_ACCOSTAGE_BALANCE" incomingTransitions="_RVx9wGmPEemoI821HggD1Q">
                 <outgoingTransitions xmi:id="_IyKW4GmPEemoI821HggD1Q" specification="after 2 s" target="_BBMngGbHEem395DmW-sNyQ"/>
               </vertices>
-              <vertices xsi:type="sgraph:State" xmi:id="_WKFIQHGoEemR1tECdZOTXg" specification="entry/&#xA;asser.DistanceAngle(-15,PI)" name="DECLENCHEMENT_ACCELERATEUR_JAUNE" incomingTransitions="_TfRs4WZNEem5p63CUEnKBQ">
+              <vertices xsi:type="sgraph:State" xmi:id="_WKFIQHGoEemR1tECdZOTXg" specification="entry/&#xA;asser.DistanceAngle(-17,PI)" name="DECLENCHEMENT_ACCELERATEUR_JAUNE" incomingTransitions="_TfRs4WZNEem5p63CUEnKBQ">
                 <outgoingTransitions xmi:id="_b2gfkHGoEemR1tECdZOTXg" specification="EV_ConvergenceMvt, after 2s" target="_Etle_IDMEempPa0aIRFKAQ"/>
               </vertices>
               <vertices xsi:type="sgraph:State" xmi:id="_GugVoHGpEemR1tECdZOTXg" specification="entry/&#xA;Application.m_asservissement.Ind_perfo=0.1f;&#xA;Application.m_asservissement.cde_max=20;&#xA;Application.m_asservissement.cde_min=-20;&#xA; asser.XYTeta(142,-10*invMouv,0)" name="Copy_1_FACE_BLEUIUM" incomingTransitions="_r0RFQGZOEem5p63CUEnKBQ">
                 <outgoingTransitions xmi:id="_JDFx8HGqEemR1tECdZOTXg" specification="EV_ConvergenceMvt, after 10 s" target="_kHCSIH_cEem0_51BO5PFJA"/>
               </vertices>
-              <vertices xsi:type="sgraph:State" xmi:id="_aWxgQHGqEemR1tECdZOTXg" specification="entry/&#xA;asser.DistanceAngle(14,0)" name="DECLENCHEMENT_ACCELERATEUR_VIOLET" incomingTransitions="_l6cq0GZREemL6pt3SJEr-g">
+              <vertices xsi:type="sgraph:State" xmi:id="_aWxgQHGqEemR1tECdZOTXg" specification="entry/&#xA;asser.DistanceAngle(16,0)" name="DECLENCHEMENT_ACCELERATEUR_VIOLET" incomingTransitions="_l6cq0GZREemL6pt3SJEr-g">
                 <outgoingTransitions xmi:id="_4Zu9kHGqEemR1tECdZOTXg" specification="EV_ConvergenceMvt, after 2s" target="_IJdI4IDMEempPa0aIRFKAQ"/>
               </vertices>
               <vertices xsi:type="sgraph:State" xmi:id="_r4WgoHGqEemR1tECdZOTXg" specification="entry/&#xA;score_grosbot+=20;&#xA;forceObstacle=true" name="ROTATION_VERS_GOLDENIUM_VIOLET" incomingTransitions="_XBqXUH_cEem0_51BO5PFJA">

@@ -4744,7 +4744,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDEN
 			/* 'default' enter sequence for state DECLENCHEMENT_ACCELERATEUR_JAUNE */
 			/* Entry action for state 'DECLENCHEMENT_ACCELERATEUR_JAUNE'. */
 			timer->setTimer(this, (sc_eventid)(&timeEvents[55]), 2 * 1000, false);
-			SCI_Asser_OCB::DistanceAngle(-15, IA::DefaultSCI::PI);
+			SCI_Asser_OCB::DistanceAngle(-17, IA::DefaultSCI::PI);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_DECLENCHEMENT_ACCELERATEUR_JAUNE;
 			stateConfVectorPosition = 0;
 			historyVector[1] = stateConfVector[0];
@@ -4769,7 +4769,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDEN
 			/* 'default' enter sequence for state DECLENCHEMENT_ACCELERATEUR_VIOLET */
 			/* Entry action for state 'DECLENCHEMENT_ACCELERATEUR_VIOLET'. */
 			timer->setTimer(this, (sc_eventid)(&timeEvents[57]), 2 * 1000, false);
-			SCI_Asser_OCB::DistanceAngle(14, 0);
+			SCI_Asser_OCB::DistanceAngle(16, 0);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_DECLENCHEMENT_ACCELERATEUR_VIOLET;
 			stateConfVectorPosition = 0;
 			historyVector[1] = stateConfVector[0];
@@ -12507,7 +12507,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIU
 					/* 'default' enter sequence for state DECLENCHEMENT_ACCELERATEUR_JAUNE */
 					/* Entry action for state 'DECLENCHEMENT_ACCELERATEUR_JAUNE'. */
 					timer->setTimer(this, (sc_eventid)(&timeEvents[55]), 2 * 1000, false);
-					SCI_Asser_OCB::DistanceAngle(-15, IA::DefaultSCI::PI);
+					SCI_Asser_OCB::DistanceAngle(-17, IA::DefaultSCI::PI);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_DECLENCHEMENT_ACCELERATEUR_JAUNE;
 					stateConfVectorPosition = 0;
 					historyVector[1] = stateConfVector[0];
@@ -13077,7 +13077,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIU
 					/* 'default' enter sequence for state DECLENCHEMENT_ACCELERATEUR_VIOLET */
 					/* Entry action for state 'DECLENCHEMENT_ACCELERATEUR_VIOLET'. */
 					timer->setTimer(this, (sc_eventid)(&timeEvents[57]), 2 * 1000, false);
-					SCI_Asser_OCB::DistanceAngle(14, 0);
+					SCI_Asser_OCB::DistanceAngle(16, 0);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_DECLENCHEMENT_ACCELERATEUR_VIOLET;
 					stateConfVectorPosition = 0;
 					historyVector[1] = stateConfVector[0];
