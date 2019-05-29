@@ -402,9 +402,9 @@ void IA::runCycle()
 			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_PARE_CHOC();
 			break;
 		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_Copy_1_GLISSSADE :
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_MAINTIEN_KMAR_AR :
 		{
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_Copy_1_GLISSSADE();
+			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_MAINTIEN_KMAR_AR();
 			break;
 		}
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_FACE_BLEUIUM :
@@ -680,6 +680,11 @@ void IA::runCycle()
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_05 :
 		{
 			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_05();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_06 :
+		{
+			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_06();
 			break;
 		}
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATEGY_TACHE_CHOIX_STRATEGIE_HOMOLO1 :
@@ -1017,6 +1022,16 @@ void IA::runCycle()
 			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE();
 			break;
 		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR :
+		{
+			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO__final_ :
+		{
+			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO__final_();
+			break;
+		}
 		case main_region_FIN_MATCH :
 		{
 			react_main_region_FIN_MATCH();
@@ -1237,7 +1252,7 @@ sc_boolean IA::isStateActive(IAStates state) const
 			);
 		case main_region_MATCH_EN_COURS : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS] >= main_region_MATCH_EN_COURS
-				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS] <= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE);
+				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS] <= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO__final_);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE] >= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE
 				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE] <= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_BUG_YAKINDU_CHOICE);
@@ -1309,7 +1324,7 @@ sc_boolean IA::isStateActive(IAStates state) const
 			);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE] >= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE
-				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE] <= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_Copy_1_GLISSSADE);
+				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE] <= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_MAINTIEN_KMAR_AR);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_DEPASSE_ZONE_CHAOS : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_DEPASSE_ZONE_CHAOS] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_DEPASSE_ZONE_CHAOS
 			);
@@ -1328,8 +1343,8 @@ sc_boolean IA::isStateActive(IAStates state) const
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_PARE_CHOC : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_PARE_CHOC] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_PARE_CHOC
 			);
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_Copy_1_GLISSSADE : 
-			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_COPY_1_GLISSSADE] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_Copy_1_GLISSSADE
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_MAINTIEN_KMAR_AR : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_MAINTIEN_KMAR_AR] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_MAINTIEN_KMAR_AR
 			);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM] >= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM
@@ -1480,7 +1495,7 @@ sc_boolean IA::isStateActive(IAStates state) const
 			);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR] >= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR
-				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR] <= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_05);
+				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR] <= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_06);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_01 : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_01] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_01
 			);
@@ -1501,6 +1516,9 @@ sc_boolean IA::isStateActive(IAStates state) const
 			);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_05 : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_05] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_05
+			);
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_06 : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_06] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_06
 			);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATEGY : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATEGY] >= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATEGY
@@ -1714,6 +1732,15 @@ sc_boolean IA::isStateActive(IAStates state) const
 			);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_COPY_2_GLISSSADE] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE
+			);
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO] >= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO
+				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO] <= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO__final_);
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR
+			);
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO__final_ : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO__FINAL_] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO__final_
 			);
 		case main_region_FIN_MATCH : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_FIN_MATCH] == main_region_FIN_MATCH
@@ -3399,10 +3426,10 @@ void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAG
 	timer->unsetTimer(this, (sc_eventid)(&timeEvents[21]));
 }
 
-/* Exit action for state 'Copy_1_GLISSSADE'. */
-void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_Copy_1_GLISSSADE()
+/* Exit action for state 'MAINTIEN_KMAR_AR'. */
+void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_MAINTIEN_KMAR_AR()
 {
-	/* Exit action for state 'Copy_1_GLISSSADE'. */
+	/* Exit action for state 'MAINTIEN_KMAR_AR'. */
 	timer->unsetTimer(this, (sc_eventid)(&timeEvents[22]));
 }
 
@@ -4184,6 +4211,13 @@ void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	timer->unsetTimer(this, (sc_eventid)(&timeEvents[124]));
 }
 
+/* Exit action for state 'SE_METTRE_EN_LIEU_SUR'. */
+void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR()
+{
+	/* Exit action for state 'SE_METTRE_EN_LIEU_SUR'. */
+	ifaceInternalSCI.sequence6 = false;
+}
+
 /* shallow enterSequence with history in child TACHE_NETTOYAGE */
 void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE()
 {
@@ -4206,7 +4240,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOY
 		{
 			/* 'default' enter sequence for state FACE_ZONE_CHAOS */
 			/* Entry action for state 'FACE_ZONE_CHAOS'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[19]), 3 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[19]), 5 * 1000, false);
 			SCI_Asser_OCB::XYTeta(114, -57 * ifaceInternalSCI.invMouv, 0);
 			Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_FACE_ZONE_CHAOS;
@@ -4246,14 +4280,14 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOY
 			historyVector[0] = stateConfVector[0];
 			break;
 		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_Copy_1_GLISSSADE :
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_MAINTIEN_KMAR_AR :
 		{
-			/* 'default' enter sequence for state Copy_1_GLISSSADE */
-			/* Entry action for state 'Copy_1_GLISSSADE'. */
+			/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
+			/* Entry action for state 'MAINTIEN_KMAR_AR'. */
 			timer->setTimer(this, (sc_eventid)(&timeEvents[22]), 40, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
-			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_Copy_1_GLISSSADE;
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_MAINTIEN_KMAR_AR;
 			stateConfVectorPosition = 0;
 			historyVector[0] = stateConfVector[0];
 			break;
@@ -4835,7 +4869,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 			/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
 			/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
 			timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 4 * 1000, false);
-			SCI_Asser_OCB::XYTeta(79, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
+			SCI_Asser_OCB::XYTeta(92, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR;
 			stateConfVectorPosition = 0;
 			historyVector[2] = stateConfVector[0];
@@ -5533,6 +5567,28 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 	}
 }
 
+/* shallow enterSequence with history in child STRATEGIE_FIN_HOMOLO */
+void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO()
+{
+	/* shallow enterSequence with history in child STRATEGIE_FIN_HOMOLO */
+	/* Handle shallow history entry of STRATEGIE_FIN_HOMOLO */
+	switch(historyVector[ 5 ])
+	{
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR :
+		{
+			/* 'default' enter sequence for state SE_METTRE_EN_LIEU_SUR */
+			/* Entry action for state 'SE_METTRE_EN_LIEU_SUR'. */
+			iface.score_grosbot += 0;
+			Application.m_asservissement.CommandeMouvementXY_TETA(110, -57 * ifaceInternalSCI.invMouv, 0);
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR;
+			stateConfVectorPosition = 0;
+			historyVector[5] = stateConfVector[0];
+			break;
+		}
+		default: break;
+	}
+}
+
 /* Default exit sequence for state ATTENTE_TIRETTE */
 void IA::exseq_main_region_ATTENTE_TIRETTE()
 {
@@ -5905,13 +5961,13 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAG
 	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_PARE_CHOC();
 }
 
-/* Default exit sequence for state Copy_1_GLISSSADE */
-void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_Copy_1_GLISSSADE()
+/* Default exit sequence for state MAINTIEN_KMAR_AR */
+void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_MAINTIEN_KMAR_AR()
 {
-	/* Default exit sequence for state Copy_1_GLISSSADE */
+	/* Default exit sequence for state MAINTIEN_KMAR_AR */
 	stateConfVector[0] = IA_last_state;
 	stateConfVectorPosition = 0;
-	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_Copy_1_GLISSSADE();
+	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_MAINTIEN_KMAR_AR();
 }
 
 /* Default exit sequence for state SEQUENCE_02_GOLDENIUM */
@@ -6411,6 +6467,14 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_05()
 {
 	/* Default exit sequence for state SEQUENCE_05 */
+	stateConfVector[0] = IA_last_state;
+	stateConfVectorPosition = 0;
+}
+
+/* Default exit sequence for state SEQUENCE_06 */
+void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_06()
+{
+	/* Default exit sequence for state SEQUENCE_06 */
 	stateConfVector[0] = IA_last_state;
 	stateConfVectorPosition = 0;
 }
@@ -7042,6 +7106,30 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE();
 }
 
+/* Default exit sequence for state SEQUENCE_06_FIN_HOMOLO */
+void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO()
+{
+	/* Default exit sequence for state SEQUENCE_06_FIN_HOMOLO */
+	exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO();
+}
+
+/* Default exit sequence for state SE_METTRE_EN_LIEU_SUR */
+void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR()
+{
+	/* Default exit sequence for state SE_METTRE_EN_LIEU_SUR */
+	stateConfVector[0] = IA_last_state;
+	stateConfVectorPosition = 0;
+	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR();
+}
+
+/* Default exit sequence for final state. */
+void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO__final_()
+{
+	/* Default exit sequence for final state. */
+	stateConfVector[0] = IA_last_state;
+	stateConfVectorPosition = 0;
+}
+
 /* Default exit sequence for state FIN_MATCH */
 void IA::exseq_main_region_FIN_MATCH()
 {
@@ -7299,9 +7387,9 @@ void IA::exseq_main_region()
 			exact_main_region_MATCH_EN_COURS();
 			break;
 		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_Copy_1_GLISSSADE :
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_MAINTIEN_KMAR_AR :
 		{
-			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_Copy_1_GLISSSADE();
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_MAINTIEN_KMAR_AR();
 			exact_main_region_MATCH_EN_COURS();
 			break;
 		}
@@ -7632,6 +7720,12 @@ void IA::exseq_main_region()
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_05 :
 		{
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_05();
+			exact_main_region_MATCH_EN_COURS();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_06 :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_06();
 			exact_main_region_MATCH_EN_COURS();
 			break;
 		}
@@ -8034,6 +8128,18 @@ void IA::exseq_main_region()
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE :
 		{
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE();
+			exact_main_region_MATCH_EN_COURS();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR();
+			exact_main_region_MATCH_EN_COURS();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO__final_ :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO__final_();
 			exact_main_region_MATCH_EN_COURS();
 			break;
 		}
@@ -8428,9 +8534,9 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH()
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_PARE_CHOC();
 			break;
 		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_Copy_1_GLISSSADE :
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_MAINTIEN_KMAR_AR :
 		{
-			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_Copy_1_GLISSSADE();
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_MAINTIEN_KMAR_AR();
 			break;
 		}
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_FACE_BLEUIUM :
@@ -8706,6 +8812,11 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH()
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_05 :
 		{
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_05();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_06 :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_06();
 			break;
 		}
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATEGY_TACHE_CHOIX_STRATEGIE_HOMOLO1 :
@@ -9041,6 +9152,16 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH()
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE :
 		{
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO__final_ :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO__final_();
 			break;
 		}
 		default: break;
@@ -9429,9 +9550,9 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAG
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_PARE_CHOC();
 			break;
 		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_Copy_1_GLISSSADE :
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_MAINTIEN_KMAR_AR :
 		{
-			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_Copy_1_GLISSSADE();
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_MAINTIEN_KMAR_AR();
 			break;
 		}
 		default: break;
@@ -9729,6 +9850,11 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_05 :
 		{
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_05();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_06 :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_06();
 			break;
 		}
 		default: break;
@@ -10108,6 +10234,27 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE :
 		{
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE();
+			break;
+		}
+		default: break;
+	}
+}
+
+/* Default exit sequence for region STRATEGIE_FIN_HOMOLO */
+void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO()
+{
+	/* Default exit sequence for region STRATEGIE_FIN_HOMOLO */
+	/* Handle exit of all possible states (of IA.main_region.MATCH_EN_COURS.DEROULEMENT_MATCH.SEQUENCE_06_FIN_HOMOLO.STRATEGIE_FIN_HOMOLO) at position 0... */
+	switch(stateConfVector[ 0 ])
+	{
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO__final_ :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO__final_();
 			break;
 		}
 		default: break;
@@ -11567,12 +11714,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAG
 				if (iface.EV_ConvergenceMvt_raised || timeEvents[18])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_DEPASSE_ZONE_CHAOS();
-					/* 'default' enter sequence for state Copy_1_GLISSSADE */
-					/* Entry action for state 'Copy_1_GLISSSADE'. */
+					/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
+					/* Entry action for state 'MAINTIEN_KMAR_AR'. */
 					timer->setTimer(this, (sc_eventid)(&timeEvents[22]), 40, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
-					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_Copy_1_GLISSSADE;
+					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_MAINTIEN_KMAR_AR;
 					stateConfVectorPosition = 0;
 					historyVector[0] = stateConfVector[0];
 				} 
@@ -11965,10 +12112,10 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAG
 	}
 }
 
-/* The reactions of state Copy_1_GLISSSADE. */
-void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_Copy_1_GLISSSADE()
+/* The reactions of state MAINTIEN_KMAR_AR. */
+void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_MAINTIEN_KMAR_AR()
 {
-	/* The reactions of state Copy_1_GLISSSADE. */
+	/* The reactions of state MAINTIEN_KMAR_AR. */
 	if (timeEvents[9])
 	{ 
 		exseq_main_region_MATCH_EN_COURS();
@@ -12032,10 +12179,10 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAG
 			{
 				if (timeEvents[22])
 				{ 
-					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_Copy_1_GLISSSADE();
+					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_MAINTIEN_KMAR_AR();
 					/* 'default' enter sequence for state FACE_ZONE_CHAOS */
 					/* Entry action for state 'FACE_ZONE_CHAOS'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[19]), 3 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[19]), 5 * 1000, false);
 					SCI_Asser_OCB::XYTeta(114, -57 * ifaceInternalSCI.invMouv, 0);
 					Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_FACE_ZONE_CHAOS;
@@ -15982,7 +16129,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
 				/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
 				timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 4 * 1000, false);
-				SCI_Asser_OCB::XYTeta(79, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
+				SCI_Asser_OCB::XYTeta(92, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
 				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR;
 				stateConfVectorPosition = 0;
 				historyVector[2] = stateConfVector[0];
@@ -16034,10 +16181,26 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							historyVector[3] = stateConfVector[0];
 						}  else
 						{
-							exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_01();
-							/* Default enter sequence for state null */
-							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__final_;
-							stateConfVectorPosition = 0;
+							if (ifaceInternalSCI.sequence6)
+							{ 
+								exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR();
+								/* 'Entry_init' enter sequence for state SEQUENCE_06_FIN_HOMOLO */
+								/* 'Entry_init' enter sequence for region STRATEGIE_FIN_HOMOLO */
+								/* Default react sequence for initial entry Entry_init */
+								/* 'default' enter sequence for state SE_METTRE_EN_LIEU_SUR */
+								/* Entry action for state 'SE_METTRE_EN_LIEU_SUR'. */
+								iface.score_grosbot += 0;
+								Application.m_asservissement.CommandeMouvementXY_TETA(110, -57 * ifaceInternalSCI.invMouv, 0);
+								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR;
+								stateConfVectorPosition = 0;
+								historyVector[5] = stateConfVector[0];
+							}  else
+							{
+								exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_01();
+								/* Default enter sequence for state null */
+								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__final_;
+								stateConfVectorPosition = 0;
+							}
 						}
 					}
 				}
@@ -16093,7 +16256,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
 				/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
 				timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 4 * 1000, false);
-				SCI_Asser_OCB::XYTeta(79, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
+				SCI_Asser_OCB::XYTeta(92, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
 				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR;
 				stateConfVectorPosition = 0;
 				historyVector[2] = stateConfVector[0];
@@ -16145,10 +16308,26 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							historyVector[3] = stateConfVector[0];
 						}  else
 						{
-							exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_02();
-							/* Default enter sequence for state null */
-							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__final_;
-							stateConfVectorPosition = 0;
+							if (ifaceInternalSCI.sequence6)
+							{ 
+								exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR();
+								/* 'Entry_init' enter sequence for state SEQUENCE_06_FIN_HOMOLO */
+								/* 'Entry_init' enter sequence for region STRATEGIE_FIN_HOMOLO */
+								/* Default react sequence for initial entry Entry_init */
+								/* 'default' enter sequence for state SE_METTRE_EN_LIEU_SUR */
+								/* Entry action for state 'SE_METTRE_EN_LIEU_SUR'. */
+								iface.score_grosbot += 0;
+								Application.m_asservissement.CommandeMouvementXY_TETA(110, -57 * ifaceInternalSCI.invMouv, 0);
+								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR;
+								stateConfVectorPosition = 0;
+								historyVector[5] = stateConfVector[0];
+							}  else
+							{
+								exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_02();
+								/* Default enter sequence for state null */
+								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__final_;
+								stateConfVectorPosition = 0;
+							}
 						}
 					}
 				}
@@ -16204,7 +16383,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
 				/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
 				timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 4 * 1000, false);
-				SCI_Asser_OCB::XYTeta(79, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
+				SCI_Asser_OCB::XYTeta(92, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
 				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR;
 				stateConfVectorPosition = 0;
 				historyVector[2] = stateConfVector[0];
@@ -16254,7 +16433,23 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME;
 							stateConfVectorPosition = 0;
 							historyVector[3] = stateConfVector[0];
-						} 
+						}  else
+						{
+							if (ifaceInternalSCI.sequence6)
+							{ 
+								exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR();
+								/* 'Entry_init' enter sequence for state SEQUENCE_06_FIN_HOMOLO */
+								/* 'Entry_init' enter sequence for region STRATEGIE_FIN_HOMOLO */
+								/* Default react sequence for initial entry Entry_init */
+								/* 'default' enter sequence for state SE_METTRE_EN_LIEU_SUR */
+								/* Entry action for state 'SE_METTRE_EN_LIEU_SUR'. */
+								iface.score_grosbot += 0;
+								Application.m_asservissement.CommandeMouvementXY_TETA(110, -57 * ifaceInternalSCI.invMouv, 0);
+								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR;
+								stateConfVectorPosition = 0;
+								historyVector[5] = stateConfVector[0];
+							} 
+						}
 					}
 				}
 			}
@@ -16309,7 +16504,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
 				/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
 				timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 4 * 1000, false);
-				SCI_Asser_OCB::XYTeta(79, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
+				SCI_Asser_OCB::XYTeta(92, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
 				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR;
 				stateConfVectorPosition = 0;
 				historyVector[2] = stateConfVector[0];
@@ -16361,10 +16556,26 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							historyVector[3] = stateConfVector[0];
 						}  else
 						{
-							exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_03();
-							/* Default enter sequence for state null */
-							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__final_;
-							stateConfVectorPosition = 0;
+							if (ifaceInternalSCI.sequence6)
+							{ 
+								exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR();
+								/* 'Entry_init' enter sequence for state SEQUENCE_06_FIN_HOMOLO */
+								/* 'Entry_init' enter sequence for region STRATEGIE_FIN_HOMOLO */
+								/* Default react sequence for initial entry Entry_init */
+								/* 'default' enter sequence for state SE_METTRE_EN_LIEU_SUR */
+								/* Entry action for state 'SE_METTRE_EN_LIEU_SUR'. */
+								iface.score_grosbot += 0;
+								Application.m_asservissement.CommandeMouvementXY_TETA(110, -57 * ifaceInternalSCI.invMouv, 0);
+								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR;
+								stateConfVectorPosition = 0;
+								historyVector[5] = stateConfVector[0];
+							}  else
+							{
+								exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_03();
+								/* Default enter sequence for state null */
+								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__final_;
+								stateConfVectorPosition = 0;
+							}
 						}
 					}
 				}
@@ -16420,7 +16631,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
 				/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
 				timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 4 * 1000, false);
-				SCI_Asser_OCB::XYTeta(79, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
+				SCI_Asser_OCB::XYTeta(92, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
 				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR;
 				stateConfVectorPosition = 0;
 				historyVector[2] = stateConfVector[0];
@@ -16470,7 +16681,23 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME;
 							stateConfVectorPosition = 0;
 							historyVector[3] = stateConfVector[0];
-						} 
+						}  else
+						{
+							if (ifaceInternalSCI.sequence6)
+							{ 
+								exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR();
+								/* 'Entry_init' enter sequence for state SEQUENCE_06_FIN_HOMOLO */
+								/* 'Entry_init' enter sequence for region STRATEGIE_FIN_HOMOLO */
+								/* Default react sequence for initial entry Entry_init */
+								/* 'default' enter sequence for state SE_METTRE_EN_LIEU_SUR */
+								/* Entry action for state 'SE_METTRE_EN_LIEU_SUR'. */
+								iface.score_grosbot += 0;
+								Application.m_asservissement.CommandeMouvementXY_TETA(110, -57 * ifaceInternalSCI.invMouv, 0);
+								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR;
+								stateConfVectorPosition = 0;
+								historyVector[5] = stateConfVector[0];
+							} 
+						}
 					}
 				}
 			}
@@ -16525,7 +16752,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
 				/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
 				timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 4 * 1000, false);
-				SCI_Asser_OCB::XYTeta(79, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
+				SCI_Asser_OCB::XYTeta(92, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
 				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR;
 				stateConfVectorPosition = 0;
 				historyVector[2] = stateConfVector[0];
@@ -16577,10 +16804,26 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							historyVector[3] = stateConfVector[0];
 						}  else
 						{
-							exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_04();
-							/* Default enter sequence for state null */
-							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__final_;
-							stateConfVectorPosition = 0;
+							if (ifaceInternalSCI.sequence6)
+							{ 
+								exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR();
+								/* 'Entry_init' enter sequence for state SEQUENCE_06_FIN_HOMOLO */
+								/* 'Entry_init' enter sequence for region STRATEGIE_FIN_HOMOLO */
+								/* Default react sequence for initial entry Entry_init */
+								/* 'default' enter sequence for state SE_METTRE_EN_LIEU_SUR */
+								/* Entry action for state 'SE_METTRE_EN_LIEU_SUR'. */
+								iface.score_grosbot += 0;
+								Application.m_asservissement.CommandeMouvementXY_TETA(110, -57 * ifaceInternalSCI.invMouv, 0);
+								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR;
+								stateConfVectorPosition = 0;
+								historyVector[5] = stateConfVector[0];
+							}  else
+							{
+								exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_04();
+								/* Default enter sequence for state null */
+								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__final_;
+								stateConfVectorPosition = 0;
+							}
 						}
 					}
 				}
@@ -16636,7 +16879,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
 				/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
 				timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 4 * 1000, false);
-				SCI_Asser_OCB::XYTeta(79, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
+				SCI_Asser_OCB::XYTeta(92, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
 				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR;
 				stateConfVectorPosition = 0;
 				historyVector[2] = stateConfVector[0];
@@ -16688,10 +16931,153 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							historyVector[3] = stateConfVector[0];
 						}  else
 						{
-							exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_05();
-							/* Default enter sequence for state null */
-							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__final_;
+							if (ifaceInternalSCI.sequence6)
+							{ 
+								exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR();
+								/* 'Entry_init' enter sequence for state SEQUENCE_06_FIN_HOMOLO */
+								/* 'Entry_init' enter sequence for region STRATEGIE_FIN_HOMOLO */
+								/* Default react sequence for initial entry Entry_init */
+								/* 'default' enter sequence for state SE_METTRE_EN_LIEU_SUR */
+								/* Entry action for state 'SE_METTRE_EN_LIEU_SUR'. */
+								iface.score_grosbot += 0;
+								Application.m_asservissement.CommandeMouvementXY_TETA(110, -57 * ifaceInternalSCI.invMouv, 0);
+								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR;
+								stateConfVectorPosition = 0;
+								historyVector[5] = stateConfVector[0];
+							}  else
+							{
+								exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_05();
+								/* Default enter sequence for state null */
+								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__final_;
+								stateConfVectorPosition = 0;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* The reactions of state SEQUENCE_06. */
+void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_06()
+{
+	/* The reactions of state SEQUENCE_06. */
+	if (timeEvents[9])
+	{ 
+		exseq_main_region_MATCH_EN_COURS();
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		Application.m_power_switch.setOutput(EV_AV, false);
+		Application.m_power_switch.setOutput(EV_ARD, false);
+		Application.m_power_switch.setOutput(EV_ARG, false);
+		Application.m_power_switch.setOutput(POMPE_ARD, false);
+		Application.m_power_switch.setOutput(POMPE_ARG, false);
+		Application.m_power_switch.setOutput(POMPE_AV, false);
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if (ifaceInternalSCI.sequence1)
+		{ 
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR();
+			/* 'Entry_init' enter sequence for state SEQUENCE_01_NETTOYAGE */
+			/* 'Entry_init' enter sequence for region TACHE_NETTOYAGE */
+			/* Default react sequence for initial entry Entry_init */
+			/* 'default' enter sequence for state PARE_CHOC */
+			/* Entry action for state 'PARE_CHOC'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[21]), 500, false);
+			Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_PARE_CHOC;
+			stateConfVectorPosition = 0;
+			historyVector[0] = stateConfVector[0];
+		}  else
+		{
+			if (ifaceInternalSCI.sequence3)
+			{ 
+				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR();
+				/* 'Entry_init' enter sequence for state SEQUENCE_03_DISTRIBUTEUR */
+				/* 'Entry_init' enter sequence for region TACHE_DISTRIBUTEUR */
+				/* Default react sequence for initial entry Entry_init */
+				/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+				/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 4 * 1000, false);
+				SCI_Asser_OCB::XYTeta(92, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
+				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR;
+				stateConfVectorPosition = 0;
+				historyVector[2] = stateConfVector[0];
+			}  else
+			{
+				if (ifaceInternalSCI.sequence2)
+				{ 
+					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR();
+					/* 'Entry_init' enter sequence for state SEQUENCE_02_GOLDENIUM */
+					/* 'Entry_init' enter sequence for region TACHE_GOLDENIUM */
+					/* Default react sequence for initial entry Entry_init */
+					/* 'default' enter sequence for state PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE */
+					/* Entry action for state 'PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE'. */
+					timer->setTimer(this, (sc_eventid)(&timeEvents[30]), 50, false);
+					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
+					Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_HAUT);
+					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
+					stateConfVectorPosition = 0;
+					historyVector[1] = stateConfVector[0];
+				}  else
+				{
+					if (ifaceInternalSCI.sequence4)
+					{ 
+						exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR();
+						/* 'Entry_init' enter sequence for state SEQUENCE_04_ATOME_DEPART */
+						/* 'Entry_init' enter sequence for region TACHE_RAMASSAGE_ATOME_DEPART */
+						/* Default react sequence for initial entry Entry_init */
+						/* 'default' enter sequence for state DESCENTE PARECHOC */
+						/* Entry action for state 'DESCENTE PARECHOC'. */
+						timer->setTimer(this, (sc_eventid)(&timeEvents[107]), 1 * 1000, false);
+						Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
+						stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC;
+						stateConfVectorPosition = 0;
+						historyVector[4] = stateConfVector[0];
+					}  else
+					{
+						if (ifaceInternalSCI.sequence5)
+						{ 
+							exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR();
+							/* 'Entry_init' enter sequence for state SEQUENCE_05_RAMASSAGE_ZONE_CHAOS */
+							/* 'Entry_init' enter sequence for region TACHE_RAMASSAGE_ZONE_CHAOS */
+							/* Default react sequence for initial entry Entry_init */
+							/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
+							/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
+							timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 2 * 1000, false);
+							SCI_Asser_OCB::XYTeta(39.5, -57 * ifaceInternalSCI.invMouv, 0);
+							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME;
 							stateConfVectorPosition = 0;
+							historyVector[3] = stateConfVector[0];
+						}  else
+						{
+							if (ifaceInternalSCI.sequence6)
+							{ 
+								exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR();
+								/* 'Entry_init' enter sequence for state SEQUENCE_06_FIN_HOMOLO */
+								/* 'Entry_init' enter sequence for region STRATEGIE_FIN_HOMOLO */
+								/* Default react sequence for initial entry Entry_init */
+								/* 'default' enter sequence for state SE_METTRE_EN_LIEU_SUR */
+								/* Entry action for state 'SE_METTRE_EN_LIEU_SUR'. */
+								iface.score_grosbot += 0;
+								Application.m_asservissement.CommandeMouvementXY_TETA(110, -57 * ifaceInternalSCI.invMouv, 0);
+								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR;
+								stateConfVectorPosition = 0;
+								historyVector[5] = stateConfVector[0];
+							}  else
+							{
+								exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_06();
+								/* Default enter sequence for state null */
+								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__final_;
+								stateConfVectorPosition = 0;
+							}
 						}
 					}
 				}
@@ -21894,6 +22280,148 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	}
 }
 
+/* The reactions of state SE_METTRE_EN_LIEU_SUR. */
+void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR()
+{
+	/* The reactions of state SE_METTRE_EN_LIEU_SUR. */
+	if (timeEvents[9])
+	{ 
+		exseq_main_region_MATCH_EN_COURS();
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		Application.m_power_switch.setOutput(EV_AV, false);
+		Application.m_power_switch.setOutput(EV_ARD, false);
+		Application.m_power_switch.setOutput(EV_ARG, false);
+		Application.m_power_switch.setOutput(POMPE_ARD, false);
+		Application.m_power_switch.setOutput(POMPE_ARG, false);
+		Application.m_power_switch.setOutput(POMPE_AV, false);
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if (ifaceInternalSCI.sequence6 == false)
+		{ 
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO();
+			/* 'default' enter sequence for state SUPERVISEUR */
+			/* Entry action for state 'SUPERVISEUR'. */
+			ifaceInternalSCI.idx_strategy += 1;
+			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* Default react sequence for initial entry  */
+			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+		}  else
+		{
+			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			{ 
+				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO();
+				/* 'default' enter sequence for state DETECTION_OBSTACLE */
+				/* Entry action for state 'DETECTION_OBSTACLE'. */
+				iface.evitementEnCours = true;
+				Application.m_leds.setPattern(PATTERN_K2000, 1000);
+				/* 'default' enter sequence for region r1 */
+				/* Default react sequence for initial entry  */
+				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+				/* 'default' enter sequence for region r1 */
+				/* Default react sequence for initial entry  */
+				/* 'default' enter sequence for state EVITEMENT_INIT */
+				/* Entry action for state 'EVITEMENT_INIT'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+				iface.evit_memo_force_obstacle = iface.forceObstacle;
+				iface.forceObstacle = true;
+				iface.evit_debug_etape = 0;
+				iface.evit_nombre_tentatives = 0;
+				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+				stateConfVectorPosition = 0;
+			}  else
+			{
+				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR();
+				/* Default enter sequence for state null */
+				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO__final_;
+				stateConfVectorPosition = 0;
+			}
+		}
+	}
+}
+
+/* The reactions of state null. */
+void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO__final_()
+{
+	/* The reactions of state null. */
+	if (timeEvents[9])
+	{ 
+		exseq_main_region_MATCH_EN_COURS();
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		Application.m_power_switch.setOutput(EV_AV, false);
+		Application.m_power_switch.setOutput(EV_ARD, false);
+		Application.m_power_switch.setOutput(EV_ARG, false);
+		Application.m_power_switch.setOutput(POMPE_ARD, false);
+		Application.m_power_switch.setOutput(POMPE_ARG, false);
+		Application.m_power_switch.setOutput(POMPE_AV, false);
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if (ifaceInternalSCI.sequence6 == false)
+		{ 
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO();
+			/* 'default' enter sequence for state SUPERVISEUR */
+			/* Entry action for state 'SUPERVISEUR'. */
+			ifaceInternalSCI.idx_strategy += 1;
+			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* Default react sequence for initial entry  */
+			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+		}  else
+		{
+			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			{ 
+				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO();
+				/* 'default' enter sequence for state DETECTION_OBSTACLE */
+				/* Entry action for state 'DETECTION_OBSTACLE'. */
+				iface.evitementEnCours = true;
+				Application.m_leds.setPattern(PATTERN_K2000, 1000);
+				/* 'default' enter sequence for region r1 */
+				/* Default react sequence for initial entry  */
+				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+				/* 'default' enter sequence for region r1 */
+				/* Default react sequence for initial entry  */
+				/* 'default' enter sequence for state EVITEMENT_INIT */
+				/* Entry action for state 'EVITEMENT_INIT'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+				iface.evit_memo_force_obstacle = iface.forceObstacle;
+				iface.forceObstacle = true;
+				iface.evit_debug_etape = 0;
+				iface.evit_nombre_tentatives = 0;
+				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+				stateConfVectorPosition = 0;
+			} 
+		}
+	}
+}
+
 /* The reactions of state FIN_MATCH. */
 void IA::react_main_region_FIN_MATCH()
 {
@@ -22117,7 +22645,21 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH__choice_0()
 						{
 							shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS();
 						} 
-					} 
+					}  else
+					{
+						if (ifaceInternalSCI.sequence6)
+						{ 
+							/* 'Entry_history' enter sequence for state SEQUENCE_06_FIN_HOMOLO */
+							/* 'Entry_history' enter sequence for region STRATEGIE_FIN_HOMOLO */
+							/* Default react sequence for initial entry Entry_history */
+							/* Default react sequence for shallow history entry  */
+							/* Enter the region with shallow history */
+							if (historyVector[5] != IA_last_state)
+							{
+								shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO();
+							} 
+						} 
+					}
 				}
 			}
 		}
@@ -22231,11 +22773,21 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 						stateConfVectorPosition = 0;
 					}  else
 					{
-						/* 'default' enter sequence for state AUCUNE_SEQUENCE */
-						/* Entry action for state 'AUCUNE_SEQUENCE'. */
-						Application.m_asservissement.CommandeManuelle(0, 0);
-						stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_AUCUNE_SEQUENCE;
-						stateConfVectorPosition = 0;
+						if (Application.m_match.strategie[ifaceInternalSCI.idx_strategy] == 6)
+						{ 
+							/* 'default' enter sequence for state SEQUENCE_06 */
+							/* Entry action for state 'SEQUENCE_06'. */
+							ifaceInternalSCI.sequence6 = true;
+							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_06;
+							stateConfVectorPosition = 0;
+						}  else
+						{
+							/* 'default' enter sequence for state AUCUNE_SEQUENCE */
+							/* Entry action for state 'AUCUNE_SEQUENCE'. */
+							Application.m_asservissement.CommandeManuelle(0, 0);
+							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_AUCUNE_SEQUENCE;
+							stateConfVectorPosition = 0;
+						}
 					}
 				}
 			}
@@ -22268,7 +22820,9 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATE
 	{ 
 		/* 'default' enter sequence for state HOMOLO1 */
 		/* Entry action for state 'HOMOLO1'. */
-		Application.m_match.strategie[0] = 1;
+		Application.m_match.strategie[0] = 4;
+		Application.m_match.strategie[1] = 1;
+		Application.m_match.strategie[2] = 6;
 		stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATEGY_TACHE_CHOIX_STRATEGIE_HOMOLO1;
 		stateConfVectorPosition = 0;
 	}  else
@@ -22277,7 +22831,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATE
 		{ 
 			/* 'default' enter sequence for state HOMOLO2 */
 			/* Entry action for state 'HOMOLO2'. */
-			Application.m_match.strategie[4] = 3;
+			Application.m_match.strategie[0] = 3;
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATEGY_TACHE_CHOIX_STRATEGIE_HOMOLO2;
 			stateConfVectorPosition = 0;
 		}  else
