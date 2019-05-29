@@ -837,6 +837,11 @@ void IA::runCycle()
 			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_RANGEMENT_BRAS();
 			break;
 		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR :
+		{
+			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR();
+			break;
+		}
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME :
 		{
 			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME();
@@ -1022,6 +1027,11 @@ void IA::runCycle()
 			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE();
 			break;
 		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS :
+		{
+			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS();
+			break;
+		}
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR :
 		{
 			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR();
@@ -1176,6 +1186,8 @@ void IA::clearInEvents()
 	timeEvents[122] = false; 
 	timeEvents[123] = false; 
 	timeEvents[124] = false; 
+	timeEvents[125] = false; 
+	timeEvents[126] = false; 
 }
 
 void IA::clearOutEvents()
@@ -1540,7 +1552,7 @@ sc_boolean IA::isStateActive(IAStates state) const
 			);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR] >= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR
-				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR] <= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_RANGEMENT_BRAS);
+				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR] <= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR
 			);
@@ -1616,6 +1628,9 @@ sc_boolean IA::isStateActive(IAStates state) const
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_RANGEMENT_BRAS : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_RANGEMENT_BRAS] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_RANGEMENT_BRAS
 			);
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR
+			);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS] >= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS
 				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS] <= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_PLATEAUX_BAS);
@@ -1663,7 +1678,7 @@ sc_boolean IA::isStateActive(IAStates state) const
 			);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART] >= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART
-				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART] <= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE);
+				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART] <= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPASSE_ZONE_CHAOS_RAMASSE_DEPART : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPASSE_ZONE_CHAOS_RAMASSE_DEPART] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPASSE_ZONE_CHAOS_RAMASSE_DEPART
 			);
@@ -1732,6 +1747,9 @@ sc_boolean IA::isStateActive(IAStates state) const
 			);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_COPY_2_GLISSSADE] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE
+			);
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_COPY_1_POSITIONS_PLATEAUX_BAS] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS
 			);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO] >= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO
@@ -3966,11 +3984,18 @@ void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	timer->unsetTimer(this, (sc_eventid)(&timeEvents[91]));
 }
 
+/* Exit action for state 'MAINTIEN_KMAR_AR'. */
+void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR()
+{
+	/* Exit action for state 'MAINTIEN_KMAR_AR'. */
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[92]));
+}
+
 /* Exit action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME()
 {
 	/* Exit action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[92]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[93]));
 }
 
 /* Exit action for state 'FIN_SEQUENCE'. */
@@ -3984,84 +4009,84 @@ void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_GLISSSADE()
 {
 	/* Exit action for state 'GLISSSADE'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[93]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[94]));
 }
 
 /* Exit action for state 'ACTIVATION_POMPE'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_ACTIVATION_POMPE()
 {
 	/* Exit action for state 'ACTIVATION_POMPE'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[94]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[95]));
 }
 
 /* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEVENTOUSAGE_ATOMES()
 {
 	/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[95]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[96]));
 }
 
 /* Exit action for state 'VITESSE_VENTOUSE_01'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_VITESSE_VENTOUSE_01()
 {
 	/* Exit action for state 'VITESSE_VENTOUSE_01'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[96]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[97]));
 }
 
 /* Exit action for state 'VITESSE_VENTOUSE_02'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_VITESSE_VENTOUSE_02()
 {
 	/* Exit action for state 'VITESSE_VENTOUSE_02'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[97]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[98]));
 }
 
 /* Exit action for state 'PIVOTEMENT_ATOME_01'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_PIVOTEMENT_ATOME_01()
 {
 	/* Exit action for state 'PIVOTEMENT_ATOME_01'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[98]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[99]));
 }
 
 /* Exit action for state 'PIVOTEMENT_ATOME_02'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_PIVOTEMENT_ATOME_02()
 {
 	/* Exit action for state 'PIVOTEMENT_ATOME_02'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[99]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[100]));
 }
 
 /* Exit action for state 'POSITIONS_BRAS_HAUT_01'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_BRAS_HAUT_01()
 {
 	/* Exit action for state 'POSITIONS_BRAS_HAUT_01'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[100]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[101]));
 }
 
 /* Exit action for state 'POSITIONS_BRAS_HAUT_02'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_BRAS_HAUT_02()
 {
 	/* Exit action for state 'POSITIONS_BRAS_HAUT_02'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[101]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[102]));
 }
 
 /* Exit action for state 'SECU_ELETROVANNES'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_SECU_ELETROVANNES()
 {
 	/* Exit action for state 'SECU_ELETROVANNES'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[102]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[103]));
 }
 
 /* Exit action for state 'POSITIONS_PLATEAUX_BAS'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_PLATEAUX_BAS()
 {
 	/* Exit action for state 'POSITIONS_PLATEAUX_BAS'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[103]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[104]));
 }
 
 /* Exit action for state 'DEPASSE_ZONE_CHAOS_RAMASSE_DEPART'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPASSE_ZONE_CHAOS_RAMASSE_DEPART()
 {
 	/* Exit action for state 'DEPASSE_ZONE_CHAOS_RAMASSE_DEPART'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[104]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[105]));
 }
 
 /* Exit action for state 'FIN_SEQUENCE'. */
@@ -4075,140 +4100,147 @@ void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPLACEMENT_RAMASSAGE_ATOME()
 {
 	/* Exit action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[105]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[106]));
 }
 
 /* Exit action for state 'PRISE_ATOME'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PRISE_ATOME()
 {
 	/* Exit action for state 'PRISE_ATOME'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[106]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[107]));
 }
 
 /* Exit action for state 'DESCENTE PARECHOC'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC()
 {
 	/* Exit action for state 'DESCENTE PARECHOC'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[107]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[108]));
 }
 
 /* Exit action for state 'GLISSSADE'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE()
 {
 	/* Exit action for state 'GLISSSADE'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[108]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[109]));
 }
 
 /* Exit action for state 'ACTIVATION_POMPE'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_ACTIVATION_POMPE()
 {
 	/* Exit action for state 'ACTIVATION_POMPE'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[109]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[110]));
 }
 
 /* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEVENTOUSAGE_ATOMES()
 {
 	/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[110]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[111]));
 }
 
 /* Exit action for state 'VITESSE_VENTOUSE_01'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_VITESSE_VENTOUSE_01()
 {
 	/* Exit action for state 'VITESSE_VENTOUSE_01'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[111]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[112]));
 }
 
 /* Exit action for state 'VITESSE_VENTOUSE_02'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_VITESSE_VENTOUSE_02()
 {
 	/* Exit action for state 'VITESSE_VENTOUSE_02'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[112]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[113]));
 }
 
 /* Exit action for state 'PIVOTEMENT_ATOME_01'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PIVOTEMENT_ATOME_01()
 {
 	/* Exit action for state 'PIVOTEMENT_ATOME_01'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[113]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[114]));
 }
 
 /* Exit action for state 'PIVOTEMENT_ATOME_02'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PIVOTEMENT_ATOME_02()
 {
 	/* Exit action for state 'PIVOTEMENT_ATOME_02'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[114]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[115]));
 }
 
 /* Exit action for state 'POSITIONS_PLATEAUX_MILIEU'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_PLATEAUX_MILIEU()
 {
 	/* Exit action for state 'POSITIONS_PLATEAUX_MILIEU'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[115]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[116]));
 }
 
 /* Exit action for state 'POSITIONS_BRAS_HAUT_01'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_BRAS_HAUT_01()
 {
 	/* Exit action for state 'POSITIONS_BRAS_HAUT_01'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[116]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[117]));
 }
 
 /* Exit action for state 'POSITIONS_BRAS_HAUT_02'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_BRAS_HAUT_02()
 {
 	/* Exit action for state 'POSITIONS_BRAS_HAUT_02'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[117]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[118]));
 }
 
 /* Exit action for state 'SECU_ELETROVANNES'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_SECU_ELETROVANNES()
 {
 	/* Exit action for state 'SECU_ELETROVANNES'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[118]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[119]));
 }
 
 /* Exit action for state 'POSITIONS_PLATEAUX_BAS'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_PLATEAUX_BAS()
 {
 	/* Exit action for state 'POSITIONS_PLATEAUX_BAS'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[119]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[120]));
 }
 
 /* Exit action for state 'Copy_1_POSITIONS_PLATEAUX_MILIEU'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_MILIEU()
 {
 	/* Exit action for state 'Copy_1_POSITIONS_PLATEAUX_MILIEU'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[120]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[121]));
 }
 
 /* Exit action for state 'Copy_1_GLISSSADE'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE()
 {
 	/* Exit action for state 'Copy_1_GLISSSADE'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[121]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[122]));
 }
 
 /* Exit action for state 'Copy_1_PRISE_ATOME'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_PRISE_ATOME()
 {
 	/* Exit action for state 'Copy_1_PRISE_ATOME'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[122]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[123]));
 }
 
 /* Exit action for state 'Copy_2_PRISE_ATOME'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_PRISE_ATOME()
 {
 	/* Exit action for state 'Copy_2_PRISE_ATOME'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[123]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[124]));
 }
 
 /* Exit action for state 'Copy_2_GLISSSADE'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE()
 {
 	/* Exit action for state 'Copy_2_GLISSSADE'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[124]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[125]));
+}
+
+/* Exit action for state 'Copy_1_POSITIONS_PLATEAUX_BAS'. */
+void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS()
+{
+	/* Exit action for state 'Copy_1_POSITIONS_PLATEAUX_BAS'. */
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[126]));
 }
 
 /* Exit action for state 'SE_METTRE_EN_LIEU_SUR'. */
@@ -5141,6 +5173,18 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 			historyVector[2] = stateConfVector[0];
 			break;
 		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR :
+		{
+			/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
+			/* Entry action for state 'MAINTIEN_KMAR_AR'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 40, false);
+			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
+			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR;
+			stateConfVectorPosition = 0;
+			historyVector[2] = stateConfVector[0];
+			break;
+		}
 		default: break;
 	}
 }
@@ -5156,7 +5200,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 			/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 2 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 2 * 1000, false);
 			SCI_Asser_OCB::XYTeta(39.5, -57 * ifaceInternalSCI.invMouv, 0);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME;
 			stateConfVectorPosition = 0;
@@ -5175,7 +5219,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state GLISSSADE */
 			/* Entry action for state 'GLISSSADE'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 2 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[94]), 2 * 1000, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, 140);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, 95);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, 170);
@@ -5189,7 +5233,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state ACTIVATION_POMPE */
 			/* Entry action for state 'ACTIVATION_POMPE'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[94]), 200, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[95]), 200, false);
 			Application.m_power_switch.setOutput(POMPE_ARD, true);
 			Application.m_power_switch.setOutput(POMPE_ARG, true);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_ACTIVATION_POMPE;
@@ -5201,7 +5245,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state DEVENTOUSAGE_ATOMES */
 			/* Entry action for state 'DEVENTOUSAGE_ATOMES'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[95]), 1 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[96]), 1 * 1000, false);
 			Application.m_power_switch.setOutput(POMPE_ARD, false);
 			Application.m_power_switch.setOutput(EV_ARD, true);
 			Application.m_power_switch.setOutput(POMPE_ARG, false);
@@ -5215,7 +5259,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state VITESSE_VENTOUSE_01 */
 			/* Entry action for state 'VITESSE_VENTOUSE_01'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[96]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[97]), 40, false);
 			Application.m_servos_ax.setSpeed(SERVO_VENTOUSE_ARG_VERT, 200);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_VITESSE_VENTOUSE_01;
 			stateConfVectorPosition = 0;
@@ -5226,7 +5270,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state VITESSE_VENTOUSE_02 */
 			/* Entry action for state 'VITESSE_VENTOUSE_02'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[97]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[98]), 40, false);
 			Application.m_servos_ax.setSpeed(SERVO_VENTOUSE_ARD_VERT, 200);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_VITESSE_VENTOUSE_02;
 			stateConfVectorPosition = 0;
@@ -5237,7 +5281,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state PIVOTEMENT_ATOME_01 */
 			/* Entry action for state 'PIVOTEMENT_ATOME_01'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[98]), 2 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[99]), 2 * 1000, false);
 			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, IA::DefaultSCI::TOUSE_G_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_PIVOTEMENT_ATOME_01;
 			stateConfVectorPosition = 0;
@@ -5248,7 +5292,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state PIVOTEMENT_ATOME_02 */
 			/* Entry action for state 'PIVOTEMENT_ATOME_02'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[99]), 500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[100]), 500, false);
 			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, IA::DefaultSCI::TOUSE_D_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_PIVOTEMENT_ATOME_02;
 			stateConfVectorPosition = 0;
@@ -5259,7 +5303,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state POSITIONS_BRAS_HAUT_01 */
 			/* Entry action for state 'POSITIONS_BRAS_HAUT_01'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[100]), 1500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[101]), 1500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_BRAS_HAUT_01;
 			stateConfVectorPosition = 0;
@@ -5270,7 +5314,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state POSITIONS_BRAS_HAUT_02 */
 			/* Entry action for state 'POSITIONS_BRAS_HAUT_02'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[101]), 1500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[102]), 1500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_BRAS_HAUT_02;
 			stateConfVectorPosition = 0;
@@ -5281,7 +5325,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state SECU_ELETROVANNES */
 			/* Entry action for state 'SECU_ELETROVANNES'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[102]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[103]), 40, false);
 			Application.m_power_switch.setOutput(EV_ARD, false);
 			Application.m_power_switch.setOutput(EV_ARG, false);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_SECU_ELETROVANNES;
@@ -5293,7 +5337,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state POSITIONS_PLATEAUX_BAS */
 			/* Entry action for state 'POSITIONS_PLATEAUX_BAS'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[103]), 200, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[104]), 200, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_PLATEAUX_BAS;
@@ -5316,7 +5360,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state DEPASSE_ZONE_CHAOS_RAMASSE_DEPART */
 			/* Entry action for state 'DEPASSE_ZONE_CHAOS_RAMASSE_DEPART'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[104]), 4 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[105]), 4 * 1000, false);
 			SCI_Asser_OCB::XYTeta(123.5, 0, IA::DefaultSCI::PI);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPASSE_ZONE_CHAOS_RAMASSE_DEPART;
 			stateConfVectorPosition = 0;
@@ -5335,7 +5379,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 			/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[105]), 2 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[106]), 2 * 1000, false);
 			SCI_Asser_OCB::XYTeta(114, 0, IA::DefaultSCI::PI);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPLACEMENT_RAMASSAGE_ATOME;
 			stateConfVectorPosition = 0;
@@ -5346,7 +5390,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state PRISE_ATOME */
 			/* Entry action for state 'PRISE_ATOME'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[106]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[107]), 40, false);
 			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, IA::DefaultSCI::TOUSE_G_MILIEU);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PRISE_ATOME;
 			stateConfVectorPosition = 0;
@@ -5357,7 +5401,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state DESCENTE PARECHOC */
 			/* Entry action for state 'DESCENTE PARECHOC'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[107]), 1 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 1 * 1000, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC;
 			stateConfVectorPosition = 0;
@@ -5368,7 +5412,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state GLISSSADE */
 			/* Entry action for state 'GLISSSADE'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[109]), 500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, 140);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, 170);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE;
@@ -5380,7 +5424,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state ACTIVATION_POMPE */
 			/* Entry action for state 'ACTIVATION_POMPE'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[109]), 1 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[110]), 1 * 1000, false);
 			Application.m_power_switch.setOutput(POMPE_ARD, true);
 			Application.m_power_switch.setOutput(POMPE_ARG, true);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_ACTIVATION_POMPE;
@@ -5392,7 +5436,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state DEVENTOUSAGE_ATOMES */
 			/* Entry action for state 'DEVENTOUSAGE_ATOMES'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[110]), 500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[111]), 500, false);
 			Application.m_power_switch.setOutput(POMPE_ARD, false);
 			Application.m_power_switch.setOutput(EV_ARD, true);
 			Application.m_power_switch.setOutput(POMPE_ARG, false);
@@ -5406,7 +5450,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state VITESSE_VENTOUSE_01 */
 			/* Entry action for state 'VITESSE_VENTOUSE_01'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[111]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[112]), 40, false);
 			Application.m_servos_ax.setSpeed(SERVO_VENTOUSE_ARG_VERT, 200);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_VITESSE_VENTOUSE_01;
 			stateConfVectorPosition = 0;
@@ -5417,7 +5461,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state VITESSE_VENTOUSE_02 */
 			/* Entry action for state 'VITESSE_VENTOUSE_02'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[112]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[113]), 40, false);
 			Application.m_servos_ax.setSpeed(SERVO_VENTOUSE_ARD_VERT, 200);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_VITESSE_VENTOUSE_02;
 			stateConfVectorPosition = 0;
@@ -5428,7 +5472,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state PIVOTEMENT_ATOME_01 */
 			/* Entry action for state 'PIVOTEMENT_ATOME_01'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[113]), 2 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[114]), 2 * 1000, false);
 			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, IA::DefaultSCI::TOUSE_G_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PIVOTEMENT_ATOME_01;
 			stateConfVectorPosition = 0;
@@ -5439,7 +5483,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state PIVOTEMENT_ATOME_02 */
 			/* Entry action for state 'PIVOTEMENT_ATOME_02'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[114]), 2 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[115]), 2 * 1000, false);
 			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, IA::DefaultSCI::TOUSE_D_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PIVOTEMENT_ATOME_02;
 			stateConfVectorPosition = 0;
@@ -5450,7 +5494,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state POSITIONS_PLATEAUX_MILIEU */
 			/* Entry action for state 'POSITIONS_PLATEAUX_MILIEU'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[115]), 500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[116]), 500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_MILIEU);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_MILIEU);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_PLATEAUX_MILIEU;
@@ -5462,7 +5506,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state POSITIONS_BRAS_HAUT_01 */
 			/* Entry action for state 'POSITIONS_BRAS_HAUT_01'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[116]), 1500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[117]), 1500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_BRAS_HAUT_01;
 			stateConfVectorPosition = 0;
@@ -5473,7 +5517,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state POSITIONS_BRAS_HAUT_02 */
 			/* Entry action for state 'POSITIONS_BRAS_HAUT_02'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[117]), 1500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[118]), 1500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_BRAS_HAUT_02;
 			stateConfVectorPosition = 0;
@@ -5484,7 +5528,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state SECU_ELETROVANNES */
 			/* Entry action for state 'SECU_ELETROVANNES'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[118]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[119]), 40, false);
 			Application.m_power_switch.setOutput(EV_ARD, false);
 			Application.m_power_switch.setOutput(EV_ARG, false);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_SECU_ELETROVANNES;
@@ -5496,7 +5540,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state POSITIONS_PLATEAUX_BAS */
 			/* Entry action for state 'POSITIONS_PLATEAUX_BAS'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[119]), 200, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[120]), 200, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_PLATEAUX_BAS;
@@ -5508,7 +5552,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state Copy_1_POSITIONS_PLATEAUX_MILIEU */
 			/* Entry action for state 'Copy_1_POSITIONS_PLATEAUX_MILIEU'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[120]), 500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[121]), 500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_MILIEU;
@@ -5520,7 +5564,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state Copy_1_GLISSSADE */
 			/* Entry action for state 'Copy_1_GLISSSADE'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[121]), 500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[122]), 500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE;
@@ -5532,7 +5576,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state Copy_1_PRISE_ATOME */
 			/* Entry action for state 'Copy_1_PRISE_ATOME'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[122]), 1 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[123]), 1 * 1000, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_BAS);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_PRISE_ATOME;
@@ -5544,7 +5588,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state Copy_2_PRISE_ATOME */
 			/* Entry action for state 'Copy_2_PRISE_ATOME'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[123]), 500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[124]), 500, false);
 			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, IA::DefaultSCI::TOUSE_D_MILIEU);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_PRISE_ATOME;
 			stateConfVectorPosition = 0;
@@ -5555,10 +5599,22 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state Copy_2_GLISSSADE */
 			/* Entry action for state 'Copy_2_GLISSSADE'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[124]), 1 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[125]), 1 * 1000, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_HAUT);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_HAUT);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE;
+			stateConfVectorPosition = 0;
+			historyVector[4] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS :
+		{
+			/* 'default' enter sequence for state Copy_1_POSITIONS_PLATEAUX_BAS */
+			/* Entry action for state 'Copy_1_POSITIONS_PLATEAUX_BAS'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[126]), 500, false);
+			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
+			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS;
 			stateConfVectorPosition = 0;
 			historyVector[4] = stateConfVector[0];
 			break;
@@ -6761,6 +6817,15 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_RANGEMENT_BRAS();
 }
 
+/* Default exit sequence for state MAINTIEN_KMAR_AR */
+void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR()
+{
+	/* Default exit sequence for state MAINTIEN_KMAR_AR */
+	stateConfVector[0] = IA_last_state;
+	stateConfVectorPosition = 0;
+	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR();
+}
+
 /* Default exit sequence for state SEQUENCE_05_RAMASSAGE_ZONE_CHAOS */
 void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS()
 {
@@ -7104,6 +7169,15 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	stateConfVector[0] = IA_last_state;
 	stateConfVectorPosition = 0;
 	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE();
+}
+
+/* Default exit sequence for state Copy_1_POSITIONS_PLATEAUX_BAS */
+void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS()
+{
+	/* Default exit sequence for state Copy_1_POSITIONS_PLATEAUX_BAS */
+	stateConfVector[0] = IA_last_state;
+	stateConfVectorPosition = 0;
+	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS();
 }
 
 /* Default exit sequence for state SEQUENCE_06_FIN_HOMOLO */
@@ -7909,6 +7983,12 @@ void IA::exseq_main_region()
 			exact_main_region_MATCH_EN_COURS();
 			break;
 		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR();
+			exact_main_region_MATCH_EN_COURS();
+			break;
+		}
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME :
 		{
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME();
@@ -8128,6 +8208,12 @@ void IA::exseq_main_region()
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE :
 		{
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE();
+			exact_main_region_MATCH_EN_COURS();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS();
 			exact_main_region_MATCH_EN_COURS();
 			break;
 		}
@@ -8969,6 +9055,11 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH()
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_RANGEMENT_BRAS();
 			break;
 		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR();
+			break;
+		}
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME :
 		{
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME();
@@ -9152,6 +9243,11 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH()
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE :
 		{
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS();
 			break;
 		}
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR :
@@ -10029,6 +10125,11 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_RANGEMENT_BRAS();
 			break;
 		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR();
+			break;
+		}
 		default: break;
 	}
 }
@@ -10234,6 +10335,11 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE :
 		{
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS();
 			break;
 		}
 		default: break;
@@ -16126,11 +16232,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* 'Entry_init' enter sequence for state SEQUENCE_03_DISTRIBUTEUR */
 				/* 'Entry_init' enter sequence for region TACHE_DISTRIBUTEUR */
 				/* Default react sequence for initial entry Entry_init */
-				/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
-				/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 4 * 1000, false);
-				SCI_Asser_OCB::XYTeta(92, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR;
+				/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
+				/* Entry action for state 'MAINTIEN_KMAR_AR'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 40, false);
+				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
+				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
+				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR;
 				stateConfVectorPosition = 0;
 				historyVector[2] = stateConfVector[0];
 			}  else
@@ -16159,7 +16266,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 						/* Default react sequence for initial entry Entry_init */
 						/* 'default' enter sequence for state DESCENTE PARECHOC */
 						/* Entry action for state 'DESCENTE PARECHOC'. */
-						timer->setTimer(this, (sc_eventid)(&timeEvents[107]), 1 * 1000, false);
+						timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 1 * 1000, false);
 						Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 						stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC;
 						stateConfVectorPosition = 0;
@@ -16174,7 +16281,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							/* Default react sequence for initial entry Entry_init */
 							/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 							/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-							timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 2 * 1000, false);
+							timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 2 * 1000, false);
 							SCI_Asser_OCB::XYTeta(39.5, -57 * ifaceInternalSCI.invMouv, 0);
 							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME;
 							stateConfVectorPosition = 0;
@@ -16253,11 +16360,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* 'Entry_init' enter sequence for state SEQUENCE_03_DISTRIBUTEUR */
 				/* 'Entry_init' enter sequence for region TACHE_DISTRIBUTEUR */
 				/* Default react sequence for initial entry Entry_init */
-				/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
-				/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 4 * 1000, false);
-				SCI_Asser_OCB::XYTeta(92, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR;
+				/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
+				/* Entry action for state 'MAINTIEN_KMAR_AR'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 40, false);
+				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
+				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
+				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR;
 				stateConfVectorPosition = 0;
 				historyVector[2] = stateConfVector[0];
 			}  else
@@ -16286,7 +16394,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 						/* Default react sequence for initial entry Entry_init */
 						/* 'default' enter sequence for state DESCENTE PARECHOC */
 						/* Entry action for state 'DESCENTE PARECHOC'. */
-						timer->setTimer(this, (sc_eventid)(&timeEvents[107]), 1 * 1000, false);
+						timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 1 * 1000, false);
 						Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 						stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC;
 						stateConfVectorPosition = 0;
@@ -16301,7 +16409,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							/* Default react sequence for initial entry Entry_init */
 							/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 							/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-							timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 2 * 1000, false);
+							timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 2 * 1000, false);
 							SCI_Asser_OCB::XYTeta(39.5, -57 * ifaceInternalSCI.invMouv, 0);
 							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME;
 							stateConfVectorPosition = 0;
@@ -16380,11 +16488,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* 'Entry_init' enter sequence for state SEQUENCE_03_DISTRIBUTEUR */
 				/* 'Entry_init' enter sequence for region TACHE_DISTRIBUTEUR */
 				/* Default react sequence for initial entry Entry_init */
-				/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
-				/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 4 * 1000, false);
-				SCI_Asser_OCB::XYTeta(92, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR;
+				/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
+				/* Entry action for state 'MAINTIEN_KMAR_AR'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 40, false);
+				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
+				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
+				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR;
 				stateConfVectorPosition = 0;
 				historyVector[2] = stateConfVector[0];
 			}  else
@@ -16413,7 +16522,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 						/* Default react sequence for initial entry Entry_init */
 						/* 'default' enter sequence for state DESCENTE PARECHOC */
 						/* Entry action for state 'DESCENTE PARECHOC'. */
-						timer->setTimer(this, (sc_eventid)(&timeEvents[107]), 1 * 1000, false);
+						timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 1 * 1000, false);
 						Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 						stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC;
 						stateConfVectorPosition = 0;
@@ -16428,7 +16537,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							/* Default react sequence for initial entry Entry_init */
 							/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 							/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-							timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 2 * 1000, false);
+							timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 2 * 1000, false);
 							SCI_Asser_OCB::XYTeta(39.5, -57 * ifaceInternalSCI.invMouv, 0);
 							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME;
 							stateConfVectorPosition = 0;
@@ -16501,11 +16610,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* 'Entry_init' enter sequence for state SEQUENCE_03_DISTRIBUTEUR */
 				/* 'Entry_init' enter sequence for region TACHE_DISTRIBUTEUR */
 				/* Default react sequence for initial entry Entry_init */
-				/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
-				/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 4 * 1000, false);
-				SCI_Asser_OCB::XYTeta(92, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR;
+				/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
+				/* Entry action for state 'MAINTIEN_KMAR_AR'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 40, false);
+				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
+				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
+				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR;
 				stateConfVectorPosition = 0;
 				historyVector[2] = stateConfVector[0];
 			}  else
@@ -16534,7 +16644,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 						/* Default react sequence for initial entry Entry_init */
 						/* 'default' enter sequence for state DESCENTE PARECHOC */
 						/* Entry action for state 'DESCENTE PARECHOC'. */
-						timer->setTimer(this, (sc_eventid)(&timeEvents[107]), 1 * 1000, false);
+						timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 1 * 1000, false);
 						Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 						stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC;
 						stateConfVectorPosition = 0;
@@ -16549,7 +16659,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							/* Default react sequence for initial entry Entry_init */
 							/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 							/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-							timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 2 * 1000, false);
+							timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 2 * 1000, false);
 							SCI_Asser_OCB::XYTeta(39.5, -57 * ifaceInternalSCI.invMouv, 0);
 							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME;
 							stateConfVectorPosition = 0;
@@ -16628,11 +16738,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* 'Entry_init' enter sequence for state SEQUENCE_03_DISTRIBUTEUR */
 				/* 'Entry_init' enter sequence for region TACHE_DISTRIBUTEUR */
 				/* Default react sequence for initial entry Entry_init */
-				/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
-				/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 4 * 1000, false);
-				SCI_Asser_OCB::XYTeta(92, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR;
+				/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
+				/* Entry action for state 'MAINTIEN_KMAR_AR'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 40, false);
+				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
+				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
+				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR;
 				stateConfVectorPosition = 0;
 				historyVector[2] = stateConfVector[0];
 			}  else
@@ -16661,7 +16772,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 						/* Default react sequence for initial entry Entry_init */
 						/* 'default' enter sequence for state DESCENTE PARECHOC */
 						/* Entry action for state 'DESCENTE PARECHOC'. */
-						timer->setTimer(this, (sc_eventid)(&timeEvents[107]), 1 * 1000, false);
+						timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 1 * 1000, false);
 						Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 						stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC;
 						stateConfVectorPosition = 0;
@@ -16676,7 +16787,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							/* Default react sequence for initial entry Entry_init */
 							/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 							/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-							timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 2 * 1000, false);
+							timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 2 * 1000, false);
 							SCI_Asser_OCB::XYTeta(39.5, -57 * ifaceInternalSCI.invMouv, 0);
 							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME;
 							stateConfVectorPosition = 0;
@@ -16749,11 +16860,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* 'Entry_init' enter sequence for state SEQUENCE_03_DISTRIBUTEUR */
 				/* 'Entry_init' enter sequence for region TACHE_DISTRIBUTEUR */
 				/* Default react sequence for initial entry Entry_init */
-				/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
-				/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 4 * 1000, false);
-				SCI_Asser_OCB::XYTeta(92, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR;
+				/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
+				/* Entry action for state 'MAINTIEN_KMAR_AR'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 40, false);
+				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
+				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
+				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR;
 				stateConfVectorPosition = 0;
 				historyVector[2] = stateConfVector[0];
 			}  else
@@ -16782,7 +16894,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 						/* Default react sequence for initial entry Entry_init */
 						/* 'default' enter sequence for state DESCENTE PARECHOC */
 						/* Entry action for state 'DESCENTE PARECHOC'. */
-						timer->setTimer(this, (sc_eventid)(&timeEvents[107]), 1 * 1000, false);
+						timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 1 * 1000, false);
 						Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 						stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC;
 						stateConfVectorPosition = 0;
@@ -16797,7 +16909,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							/* Default react sequence for initial entry Entry_init */
 							/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 							/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-							timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 2 * 1000, false);
+							timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 2 * 1000, false);
 							SCI_Asser_OCB::XYTeta(39.5, -57 * ifaceInternalSCI.invMouv, 0);
 							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME;
 							stateConfVectorPosition = 0;
@@ -16876,11 +16988,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* 'Entry_init' enter sequence for state SEQUENCE_03_DISTRIBUTEUR */
 				/* 'Entry_init' enter sequence for region TACHE_DISTRIBUTEUR */
 				/* Default react sequence for initial entry Entry_init */
-				/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
-				/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 4 * 1000, false);
-				SCI_Asser_OCB::XYTeta(92, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR;
+				/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
+				/* Entry action for state 'MAINTIEN_KMAR_AR'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 40, false);
+				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
+				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
+				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR;
 				stateConfVectorPosition = 0;
 				historyVector[2] = stateConfVector[0];
 			}  else
@@ -16909,7 +17022,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 						/* Default react sequence for initial entry Entry_init */
 						/* 'default' enter sequence for state DESCENTE PARECHOC */
 						/* Entry action for state 'DESCENTE PARECHOC'. */
-						timer->setTimer(this, (sc_eventid)(&timeEvents[107]), 1 * 1000, false);
+						timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 1 * 1000, false);
 						Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 						stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC;
 						stateConfVectorPosition = 0;
@@ -16924,7 +17037,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							/* Default react sequence for initial entry Entry_init */
 							/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 							/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-							timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 2 * 1000, false);
+							timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 2 * 1000, false);
 							SCI_Asser_OCB::XYTeta(39.5, -57 * ifaceInternalSCI.invMouv, 0);
 							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME;
 							stateConfVectorPosition = 0;
@@ -17003,11 +17116,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* 'Entry_init' enter sequence for state SEQUENCE_03_DISTRIBUTEUR */
 				/* 'Entry_init' enter sequence for region TACHE_DISTRIBUTEUR */
 				/* Default react sequence for initial entry Entry_init */
-				/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
-				/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 4 * 1000, false);
-				SCI_Asser_OCB::XYTeta(92, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR;
+				/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
+				/* Entry action for state 'MAINTIEN_KMAR_AR'. */
+				timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 40, false);
+				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
+				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
+				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR;
 				stateConfVectorPosition = 0;
 				historyVector[2] = stateConfVector[0];
 			}  else
@@ -17036,7 +17150,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 						/* Default react sequence for initial entry Entry_init */
 						/* 'default' enter sequence for state DESCENTE PARECHOC */
 						/* Entry action for state 'DESCENTE PARECHOC'. */
-						timer->setTimer(this, (sc_eventid)(&timeEvents[107]), 1 * 1000, false);
+						timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 1 * 1000, false);
 						Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 						stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC;
 						stateConfVectorPosition = 0;
@@ -17051,7 +17165,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							/* Default react sequence for initial entry Entry_init */
 							/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 							/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-							timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 2 * 1000, false);
+							timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 2 * 1000, false);
 							SCI_Asser_OCB::XYTeta(39.5, -57 * ifaceInternalSCI.invMouv, 0);
 							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME;
 							stateConfVectorPosition = 0;
@@ -17313,46 +17427,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (iface.EV_ConvergenceMvt_raised || timeEvents[69])
@@ -17395,46 +17509,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (timeEvents[70])
@@ -17477,46 +17591,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_FIN_SEQUENCE();
@@ -17551,46 +17665,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			} 
 		}
 	}
@@ -17619,46 +17733,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (timeEvents[71])
@@ -17701,46 +17815,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (timeEvents[72])
@@ -17782,46 +17896,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (timeEvents[73])
@@ -17863,46 +17977,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (timeEvents[74])
@@ -17945,46 +18059,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (timeEvents[75])
@@ -18027,46 +18141,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (timeEvents[76])
@@ -18108,46 +18222,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (timeEvents[77])
@@ -18189,46 +18303,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (iface.EV_ConvergenceMvt_raised || timeEvents[78])
@@ -18270,46 +18384,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (timeEvents[79])
@@ -18351,46 +18465,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (timeEvents[80])
@@ -18432,46 +18546,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (timeEvents[81])
@@ -18513,46 +18627,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (timeEvents[82])
@@ -18594,46 +18708,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (timeEvents[83])
@@ -18678,46 +18792,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (timeEvents[84])
@@ -18759,46 +18873,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (timeEvents[85])
@@ -18841,46 +18955,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (timeEvents[86])
@@ -18923,46 +19037,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (timeEvents[87])
@@ -19005,46 +19119,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (timeEvents[88])
@@ -19087,46 +19201,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (timeEvents[89])
@@ -19169,46 +19283,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (timeEvents[90])
@@ -19251,46 +19365,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence3 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence3 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				if (timeEvents[91])
@@ -19300,6 +19414,87 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 					/* Entry action for state 'FIN_SEQUENCE'. */
 					iface.score_grosbot += 0;
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_FIN_SEQUENCE;
+					stateConfVectorPosition = 0;
+					historyVector[2] = stateConfVector[0];
+				} 
+			}
+		}
+	}
+}
+
+/* The reactions of state MAINTIEN_KMAR_AR. */
+void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR()
+{
+	/* The reactions of state MAINTIEN_KMAR_AR. */
+	if (timeEvents[9])
+	{ 
+		exseq_main_region_MATCH_EN_COURS();
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		Application.m_power_switch.setOutput(EV_AV, false);
+		Application.m_power_switch.setOutput(EV_ARD, false);
+		Application.m_power_switch.setOutput(EV_ARG, false);
+		Application.m_power_switch.setOutput(POMPE_ARD, false);
+		Application.m_power_switch.setOutput(POMPE_ARG, false);
+		Application.m_power_switch.setOutput(POMPE_AV, false);
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+		{ 
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
+		}  else
+		{
+			if (ifaceInternalSCI.sequence3 == false)
+			{ 
+				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR();
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+				/* Default react sequence for initial entry  */
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			}  else
+			{
+				if (timeEvents[92])
+				{ 
+					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR();
+					/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
+					/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
+					timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 4 * 1000, false);
+					SCI_Asser_OCB::XYTeta(92, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
+					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR;
 					stateConfVectorPosition = 0;
 					historyVector[2] = stateConfVector[0];
 				} 
@@ -19331,54 +19526,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence5 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence5 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (iface.EV_ConvergenceMvt_raised || timeEvents[92])
+				if (iface.EV_ConvergenceMvt_raised || timeEvents[93])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME();
 					/* 'default' enter sequence for state ACTIVATION_POMPE */
 					/* Entry action for state 'ACTIVATION_POMPE'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[94]), 200, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[95]), 200, false);
 					Application.m_power_switch.setOutput(POMPE_ARD, true);
 					Application.m_power_switch.setOutput(POMPE_ARG, true);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_ACTIVATION_POMPE;
@@ -19413,46 +19608,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence5 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence5 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_FIN_SEQUENCE();
@@ -19487,46 +19682,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence5 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence5 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			} 
 		}
 	}
@@ -19555,54 +19750,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence5 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence5 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[93])
+				if (timeEvents[94])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_GLISSSADE();
 					/* 'default' enter sequence for state POSITIONS_PLATEAUX_BAS */
 					/* Entry action for state 'POSITIONS_PLATEAUX_BAS'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[103]), 200, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[104]), 200, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_PLATEAUX_BAS;
@@ -19637,54 +19832,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence5 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence5 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[94])
+				if (timeEvents[95])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_ACTIVATION_POMPE();
 					/* 'default' enter sequence for state VITESSE_VENTOUSE_01 */
 					/* Entry action for state 'VITESSE_VENTOUSE_01'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[96]), 40, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[97]), 40, false);
 					Application.m_servos_ax.setSpeed(SERVO_VENTOUSE_ARG_VERT, 200);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_VITESSE_VENTOUSE_01;
 					stateConfVectorPosition = 0;
@@ -19718,54 +19913,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence5 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence5 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[95])
+				if (timeEvents[96])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEVENTOUSAGE_ATOMES();
 					/* 'default' enter sequence for state SECU_ELETROVANNES */
 					/* Entry action for state 'SECU_ELETROVANNES'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[102]), 40, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[103]), 40, false);
 					Application.m_power_switch.setOutput(EV_ARD, false);
 					Application.m_power_switch.setOutput(EV_ARG, false);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_SECU_ELETROVANNES;
@@ -19800,54 +19995,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence5 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence5 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[96])
+				if (timeEvents[97])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_VITESSE_VENTOUSE_01();
 					/* 'default' enter sequence for state VITESSE_VENTOUSE_02 */
 					/* Entry action for state 'VITESSE_VENTOUSE_02'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[97]), 40, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[98]), 40, false);
 					Application.m_servos_ax.setSpeed(SERVO_VENTOUSE_ARD_VERT, 200);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_VITESSE_VENTOUSE_02;
 					stateConfVectorPosition = 0;
@@ -19881,54 +20076,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence5 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence5 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[97])
+				if (timeEvents[98])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_VITESSE_VENTOUSE_02();
 					/* 'default' enter sequence for state POSITIONS_BRAS_HAUT_01 */
 					/* Entry action for state 'POSITIONS_BRAS_HAUT_01'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[100]), 1500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[101]), 1500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_BRAS_HAUT_01;
 					stateConfVectorPosition = 0;
@@ -19962,54 +20157,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence5 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence5 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[98])
+				if (timeEvents[99])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_PIVOTEMENT_ATOME_01();
 					/* 'default' enter sequence for state PIVOTEMENT_ATOME_02 */
 					/* Entry action for state 'PIVOTEMENT_ATOME_02'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[99]), 500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[100]), 500, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, IA::DefaultSCI::TOUSE_D_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_PIVOTEMENT_ATOME_02;
 					stateConfVectorPosition = 0;
@@ -20043,54 +20238,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence5 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence5 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[99])
+				if (timeEvents[100])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_PIVOTEMENT_ATOME_02();
 					/* 'default' enter sequence for state DEVENTOUSAGE_ATOMES */
 					/* Entry action for state 'DEVENTOUSAGE_ATOMES'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[95]), 1 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[96]), 1 * 1000, false);
 					Application.m_power_switch.setOutput(POMPE_ARD, false);
 					Application.m_power_switch.setOutput(EV_ARD, true);
 					Application.m_power_switch.setOutput(POMPE_ARG, false);
@@ -20127,54 +20322,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence5 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence5 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[100])
+				if (timeEvents[101])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_BRAS_HAUT_01();
 					/* 'default' enter sequence for state POSITIONS_BRAS_HAUT_02 */
 					/* Entry action for state 'POSITIONS_BRAS_HAUT_02'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[101]), 1500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[102]), 1500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_BRAS_HAUT_02;
 					stateConfVectorPosition = 0;
@@ -20208,54 +20403,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence5 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence5 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[101])
+				if (timeEvents[102])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_BRAS_HAUT_02();
 					/* 'default' enter sequence for state PIVOTEMENT_ATOME_01 */
 					/* Entry action for state 'PIVOTEMENT_ATOME_01'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[98]), 2 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[99]), 2 * 1000, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, IA::DefaultSCI::TOUSE_G_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_PIVOTEMENT_ATOME_01;
 					stateConfVectorPosition = 0;
@@ -20289,54 +20484,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence5 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence5 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[102])
+				if (timeEvents[103])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_SECU_ELETROVANNES();
 					/* 'default' enter sequence for state GLISSSADE */
 					/* Entry action for state 'GLISSSADE'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 2 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[94]), 2 * 1000, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, 140);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, 95);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, 170);
@@ -20373,49 +20568,49 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence5 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence5 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[103])
+				if (timeEvents[104])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_PLATEAUX_BAS();
 					/* 'default' enter sequence for state FIN_SEQUENCE */
@@ -20451,54 +20646,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (iface.EV_ConvergenceMvt_raised || timeEvents[104])
+				if (iface.EV_ConvergenceMvt_raised || timeEvents[105])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPASSE_ZONE_CHAOS_RAMASSE_DEPART();
 					/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 					/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[105]), 2 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[106]), 2 * 1000, false);
 					SCI_Asser_OCB::XYTeta(114, 0, IA::DefaultSCI::PI);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPLACEMENT_RAMASSAGE_ATOME;
 					stateConfVectorPosition = 0;
@@ -20532,46 +20727,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_FIN_SEQUENCE();
@@ -20606,46 +20801,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			} 
 		}
 	}
@@ -20674,54 +20869,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (iface.EV_ConvergenceMvt_raised || timeEvents[105])
+				if (iface.EV_ConvergenceMvt_raised || timeEvents[106])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPLACEMENT_RAMASSAGE_ATOME();
 					/* 'default' enter sequence for state ACTIVATION_POMPE */
 					/* Entry action for state 'ACTIVATION_POMPE'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[109]), 1 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[110]), 1 * 1000, false);
 					Application.m_power_switch.setOutput(POMPE_ARD, true);
 					Application.m_power_switch.setOutput(POMPE_ARG, true);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_ACTIVATION_POMPE;
@@ -20756,54 +20951,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[106])
+				if (timeEvents[107])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PRISE_ATOME();
 					/* 'default' enter sequence for state Copy_2_PRISE_ATOME */
 					/* Entry action for state 'Copy_2_PRISE_ATOME'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[123]), 500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[124]), 500, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, IA::DefaultSCI::TOUSE_D_MILIEU);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_PRISE_ATOME;
 					stateConfVectorPosition = 0;
@@ -20837,54 +21032,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[107])
+				if (timeEvents[108])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC();
 					/* 'default' enter sequence for state DEPASSE_ZONE_CHAOS_RAMASSE_DEPART */
 					/* Entry action for state 'DEPASSE_ZONE_CHAOS_RAMASSE_DEPART'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[104]), 4 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[105]), 4 * 1000, false);
 					SCI_Asser_OCB::XYTeta(123.5, 0, IA::DefaultSCI::PI);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPASSE_ZONE_CHAOS_RAMASSE_DEPART;
 					stateConfVectorPosition = 0;
@@ -20918,54 +21113,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[108])
+				if (timeEvents[109])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE();
 					/* 'default' enter sequence for state Copy_2_GLISSSADE */
 					/* Entry action for state 'Copy_2_GLISSSADE'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[124]), 1 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[125]), 1 * 1000, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_HAUT);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_HAUT);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE;
@@ -21000,54 +21195,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[109])
+				if (timeEvents[110])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_ACTIVATION_POMPE();
 					/* 'default' enter sequence for state Copy_1_POSITIONS_PLATEAUX_MILIEU */
 					/* Entry action for state 'Copy_1_POSITIONS_PLATEAUX_MILIEU'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[120]), 500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[121]), 500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_MILIEU;
@@ -21082,54 +21277,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[110])
+				if (timeEvents[111])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEVENTOUSAGE_ATOMES();
 					/* 'default' enter sequence for state SECU_ELETROVANNES */
 					/* Entry action for state 'SECU_ELETROVANNES'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[118]), 40, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[119]), 40, false);
 					Application.m_power_switch.setOutput(EV_ARD, false);
 					Application.m_power_switch.setOutput(EV_ARG, false);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_SECU_ELETROVANNES;
@@ -21164,54 +21359,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[111])
+				if (timeEvents[112])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_VITESSE_VENTOUSE_01();
 					/* 'default' enter sequence for state VITESSE_VENTOUSE_02 */
 					/* Entry action for state 'VITESSE_VENTOUSE_02'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[112]), 40, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[113]), 40, false);
 					Application.m_servos_ax.setSpeed(SERVO_VENTOUSE_ARD_VERT, 200);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_VITESSE_VENTOUSE_02;
 					stateConfVectorPosition = 0;
@@ -21245,54 +21440,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[112])
+				if (timeEvents[113])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_VITESSE_VENTOUSE_02();
 					/* 'default' enter sequence for state POSITIONS_BRAS_HAUT_01 */
 					/* Entry action for state 'POSITIONS_BRAS_HAUT_01'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[116]), 1500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[117]), 1500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_BRAS_HAUT_01;
 					stateConfVectorPosition = 0;
@@ -21326,54 +21521,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[113])
+				if (timeEvents[114])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PIVOTEMENT_ATOME_01();
 					/* 'default' enter sequence for state PIVOTEMENT_ATOME_02 */
 					/* Entry action for state 'PIVOTEMENT_ATOME_02'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[114]), 2 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[115]), 2 * 1000, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, IA::DefaultSCI::TOUSE_D_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PIVOTEMENT_ATOME_02;
 					stateConfVectorPosition = 0;
@@ -21407,54 +21602,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[114])
+				if (timeEvents[115])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PIVOTEMENT_ATOME_02();
 					/* 'default' enter sequence for state POSITIONS_PLATEAUX_MILIEU */
 					/* Entry action for state 'POSITIONS_PLATEAUX_MILIEU'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[115]), 500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[116]), 500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_MILIEU);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_MILIEU);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_PLATEAUX_MILIEU;
@@ -21489,54 +21684,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[115])
+				if (timeEvents[116])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_PLATEAUX_MILIEU();
 					/* 'default' enter sequence for state DEVENTOUSAGE_ATOMES */
 					/* Entry action for state 'DEVENTOUSAGE_ATOMES'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[110]), 500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[111]), 500, false);
 					Application.m_power_switch.setOutput(POMPE_ARD, false);
 					Application.m_power_switch.setOutput(EV_ARD, true);
 					Application.m_power_switch.setOutput(POMPE_ARG, false);
@@ -21573,54 +21768,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[116])
+				if (timeEvents[117])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_BRAS_HAUT_01();
 					/* 'default' enter sequence for state POSITIONS_BRAS_HAUT_02 */
 					/* Entry action for state 'POSITIONS_BRAS_HAUT_02'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[117]), 1500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[118]), 1500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_BRAS_HAUT_02;
 					stateConfVectorPosition = 0;
@@ -21654,54 +21849,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[117])
+				if (timeEvents[118])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_BRAS_HAUT_02();
 					/* 'default' enter sequence for state PIVOTEMENT_ATOME_01 */
 					/* Entry action for state 'PIVOTEMENT_ATOME_01'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[113]), 2 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[114]), 2 * 1000, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, IA::DefaultSCI::TOUSE_G_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PIVOTEMENT_ATOME_01;
 					stateConfVectorPosition = 0;
@@ -21735,57 +21930,57 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[118])
+				if (timeEvents[119])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_SECU_ELETROVANNES();
-					/* 'default' enter sequence for state GLISSSADE */
-					/* Entry action for state 'GLISSSADE'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 500, false);
-					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, 140);
-					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, 170);
-					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE;
+					/* 'default' enter sequence for state Copy_1_POSITIONS_PLATEAUX_BAS */
+					/* Entry action for state 'Copy_1_POSITIONS_PLATEAUX_BAS'. */
+					timer->setTimer(this, (sc_eventid)(&timeEvents[126]), 500, false);
+					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
+					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
+					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS;
 					stateConfVectorPosition = 0;
 					historyVector[4] = stateConfVector[0];
 				} 
@@ -21817,54 +22012,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[119])
+				if (timeEvents[120])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_PLATEAUX_BAS();
 					/* 'default' enter sequence for state Copy_1_GLISSSADE */
 					/* Entry action for state 'Copy_1_GLISSSADE'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[121]), 500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[122]), 500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE;
@@ -21899,54 +22094,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[120])
+				if (timeEvents[121])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_MILIEU();
 					/* 'default' enter sequence for state PRISE_ATOME */
 					/* Entry action for state 'PRISE_ATOME'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[106]), 40, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[107]), 40, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, IA::DefaultSCI::TOUSE_G_MILIEU);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PRISE_ATOME;
 					stateConfVectorPosition = 0;
@@ -21980,49 +22175,49 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[121])
+				if (timeEvents[122])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE();
 					/* 'default' enter sequence for state FIN_SEQUENCE */
@@ -22058,54 +22253,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[122])
+				if (timeEvents[123])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_PRISE_ATOME();
 					/* 'default' enter sequence for state VITESSE_VENTOUSE_01 */
 					/* Entry action for state 'VITESSE_VENTOUSE_01'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[111]), 40, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[112]), 40, false);
 					Application.m_servos_ax.setSpeed(SERVO_VENTOUSE_ARG_VERT, 200);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_VITESSE_VENTOUSE_01;
 					stateConfVectorPosition = 0;
@@ -22139,54 +22334,54 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[123])
+				if (timeEvents[124])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_PRISE_ATOME();
 					/* 'default' enter sequence for state Copy_1_PRISE_ATOME */
 					/* Entry action for state 'Copy_1_PRISE_ATOME'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[122]), 1 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[123]), 1 * 1000, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_BAS);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_PRISE_ATOME;
@@ -22221,57 +22416,139 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence4 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence4 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[124])
+				if (timeEvents[125])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE();
 					/* 'default' enter sequence for state POSITIONS_PLATEAUX_BAS */
 					/* Entry action for state 'POSITIONS_PLATEAUX_BAS'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[119]), 200, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[120]), 200, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_PLATEAUX_BAS;
+					stateConfVectorPosition = 0;
+					historyVector[4] = stateConfVector[0];
+				} 
+			}
+		}
+	}
+}
+
+/* The reactions of state Copy_1_POSITIONS_PLATEAUX_BAS. */
+void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS()
+{
+	/* The reactions of state Copy_1_POSITIONS_PLATEAUX_BAS. */
+	if (timeEvents[9])
+	{ 
+		exseq_main_region_MATCH_EN_COURS();
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		Application.m_power_switch.setOutput(EV_AV, false);
+		Application.m_power_switch.setOutput(EV_ARD, false);
+		Application.m_power_switch.setOutput(EV_ARG, false);
+		Application.m_power_switch.setOutput(POMPE_ARD, false);
+		Application.m_power_switch.setOutput(POMPE_ARG, false);
+		Application.m_power_switch.setOutput(POMPE_AV, false);
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+		{ 
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
+		}  else
+		{
+			if (ifaceInternalSCI.sequence4 == false)
+			{ 
+				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+				/* Default react sequence for initial entry  */
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			}  else
+			{
+				if (timeEvents[126])
+				{ 
+					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS();
+					/* 'default' enter sequence for state GLISSSADE */
+					/* Entry action for state 'GLISSSADE'. */
+					timer->setTimer(this, (sc_eventid)(&timeEvents[109]), 500, false);
+					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, 140);
+					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, 170);
+					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE;
 					stateConfVectorPosition = 0;
 					historyVector[4] = stateConfVector[0];
 				} 
@@ -22303,46 +22580,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMO
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence6 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence6 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR();
@@ -22377,46 +22654,46 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMO
 	{
 		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
 		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if (ifaceInternalSCI.sequence6 == false)
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
 		{ 
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO();
-			/* 'default' enter sequence for state SUPERVISEUR */
-			/* Entry action for state 'SUPERVISEUR'. */
-			ifaceInternalSCI.idx_strategy += 1;
-			/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
 			/* Default react sequence for initial entry  */
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
 		}  else
 		{
-			if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+			if (ifaceInternalSCI.sequence6 == false)
 			{ 
 				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO();
-				/* 'default' enter sequence for state DETECTION_OBSTACLE */
-				/* Entry action for state 'DETECTION_OBSTACLE'. */
-				iface.evitementEnCours = true;
-				Application.m_leds.setPattern(PATTERN_K2000, 1000);
-				/* 'default' enter sequence for region r1 */
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
 				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-				/* 'default' enter sequence for region r1 */
-				/* Default react sequence for initial entry  */
-				/* 'default' enter sequence for state EVITEMENT_INIT */
-				/* Entry action for state 'EVITEMENT_INIT'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-				iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-				iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-				iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-				iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-				iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-				iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-				iface.evit_memo_force_obstacle = iface.forceObstacle;
-				iface.forceObstacle = true;
-				iface.evit_debug_etape = 0;
-				iface.evit_nombre_tentatives = 0;
-				iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-				Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-				stateConfVectorPosition = 0;
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			} 
 		}
 	}
@@ -22831,7 +23108,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATE
 		{ 
 			/* 'default' enter sequence for state HOMOLO2 */
 			/* Entry action for state 'HOMOLO2'. */
-			Application.m_match.strategie[0] = 3;
+			Application.m_match.strategie[0] = 1;
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATEGY_TACHE_CHOIX_STRATEGIE_HOMOLO2;
 			stateConfVectorPosition = 0;
 		}  else
