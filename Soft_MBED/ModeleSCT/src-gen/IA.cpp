@@ -23477,9 +23477,8 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATE
 			{
 				/* 'default' enter sequence for state STRATEGIE_PAR_DEFAUT */
 				/* Entry action for state 'STRATEGIE_PAR_DEFAUT'. */
-				Application.m_match.strategie[0] = 4;
-				Application.m_match.strategie[1] = 1;
-				Application.m_match.strategie[2] = 2;
+				Application.m_match.strategie[0] = 1;
+				Application.m_match.strategie[1] = 2;
 				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATEGY_TACHE_CHOIX_STRATEGIE_STRATEGIE_PAR_DEFAUT;
 				stateConfVectorPosition = 0;
 			}

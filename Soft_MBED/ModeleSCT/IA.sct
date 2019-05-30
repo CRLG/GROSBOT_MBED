@@ -451,7 +451,7 @@
               <vertices xsi:type="sgraph:State" xmi:id="_HW8ezXHiEemf0-O9Lxtfjw" specification="entry/&#xA;Application.m_match.strategie[0]=4;&#xA;Application.m_match.strategie[1]=1;&#xA;Application.m_match.strategie[2]=5;&#xA;Application.m_match.strategie[3]=2;&#xA;Application.m_match.strategie[4]=3&#xA;&#xA;exit/&#xA;sequence0=false" name="STRATEGIE1" incomingTransitions="_HW6pl3HiEemf0-O9Lxtfjw">
                 <outgoingTransitions xmi:id="_HW9F2XHiEemf0-O9Lxtfjw" specification="oncycle" target="_HW8ezHHiEemf0-O9Lxtfjw"/>
               </vertices>
-              <vertices xsi:type="sgraph:State" xmi:id="_a1dyEHKUEemEB575A612vg" specification="entry/&#xA;Application.m_match.strategie[0]=4;&#xA;Application.m_match.strategie[1]=1;&#xA;Application.m_match.strategie[2]=2&#xA;&#xA;exit/&#xA;sequence0=false" name="STRATEGIE_PAR_DEFAUT" incomingTransitions="_ekMtoHKUEemEB575A612vg">
+              <vertices xsi:type="sgraph:State" xmi:id="_a1dyEHKUEemEB575A612vg" specification="entry/&#xA;Application.m_match.strategie[0]=1;&#xA;Application.m_match.strategie[1]=2&#xA;&#xA;exit/&#xA;sequence0=false" name="STRATEGIE_PAR_DEFAUT" incomingTransitions="_ekMtoHKUEemEB575A612vg">
                 <outgoingTransitions xmi:id="_k0OhQHKUEemEB575A612vg" specification="oncycle" target="_HW8ezHHiEemf0-O9Lxtfjw"/>
               </vertices>
             </regions>
