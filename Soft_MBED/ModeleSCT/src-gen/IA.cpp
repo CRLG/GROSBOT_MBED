@@ -648,6 +648,26 @@ void IA::runCycle()
 			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_1_DECLENCHEMENT_ACCELERATEUR_VIOLET();
 			break;
 		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE :
+		{
+			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE :
+		{
+			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET :
+		{
+			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET :
+		{
+			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET();
+			break;
+		}
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_01 :
 		{
 			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_01();
@@ -943,11 +963,6 @@ void IA::runCycle()
 			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC();
 			break;
 		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE :
-		{
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE();
-			break;
-		}
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_ACTIVATION_POMPE :
 		{
 			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_ACTIVATION_POMPE();
@@ -1008,9 +1023,9 @@ void IA::runCycle()
 			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_MILIEU();
 			break;
 		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE :
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE :
 		{
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE();
+			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE();
 			break;
 		}
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_PRISE_ATOME :
@@ -1021,16 +1036,6 @@ void IA::runCycle()
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_PRISE_ATOME :
 		{
 			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_PRISE_ATOME();
-			break;
-		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE :
-		{
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE();
-			break;
-		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS :
-		{
-			react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS();
 			break;
 		}
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR :
@@ -1195,6 +1200,7 @@ void IA::clearInEvents()
 	timeEvents[125] = false; 
 	timeEvents[126] = false; 
 	timeEvents[127] = false; 
+	timeEvents[128] = false; 
 }
 
 void IA::clearOutEvents()
@@ -1367,7 +1373,7 @@ sc_boolean IA::isStateActive(IAStates state) const
 			);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM] >= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM
-				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM] <= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_1_DECLENCHEMENT_ACCELERATEUR_VIOLET);
+				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM] <= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_FACE_BLEUIUM : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_FACE_BLEUIUM] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_FACE_BLEUIUM
 			);
@@ -1511,6 +1517,18 @@ sc_boolean IA::isStateActive(IAStates state) const
 			);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_1_DECLENCHEMENT_ACCELERATEUR_VIOLET : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_COPY_1_DECLENCHEMENT_ACCELERATEUR_VIOLET] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_1_DECLENCHEMENT_ACCELERATEUR_VIOLET
+			);
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_COPY_2_DECLENCHEMENT_ACCELERATEUR_JAUNE] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE
+			);
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_COPY_3_DECLENCHEMENT_ACCELERATEUR_JAUNE] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE
+			);
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_COPY_2_DECLENCHEMENT_ACCELERATEUR_VIOLET] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET
+			);
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_COPY_3_DECLENCHEMENT_ACCELERATEUR_VIOLET] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET
 			);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR] >= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR
@@ -1685,7 +1703,7 @@ sc_boolean IA::isStateActive(IAStates state) const
 			);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART] >= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART
-				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART] <= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS);
+				&& stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART] <= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_PRISE_ATOME);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPASSE_ZONE_CHAOS_RAMASSE_DEPART : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPASSE_ZONE_CHAOS_RAMASSE_DEPART] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPASSE_ZONE_CHAOS_RAMASSE_DEPART
 			);
@@ -1703,9 +1721,6 @@ sc_boolean IA::isStateActive(IAStates state) const
 			);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC
-			);
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE : 
-			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE
 			);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_ACTIVATION_POMPE : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_ACTIVATION_POMPE] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_ACTIVATION_POMPE
@@ -1743,20 +1758,14 @@ sc_boolean IA::isStateActive(IAStates state) const
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_MILIEU : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_COPY_1_POSITIONS_PLATEAUX_MILIEU] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_MILIEU
 			);
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE : 
-			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_COPY_1_GLISSSADE] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE : 
+			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE
 			);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_PRISE_ATOME : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_COPY_1_PRISE_ATOME] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_PRISE_ATOME
 			);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_PRISE_ATOME : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_COPY_2_PRISE_ATOME] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_PRISE_ATOME
-			);
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE : 
-			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_COPY_2_GLISSSADE] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE
-			);
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS : 
-			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_COPY_1_POSITIONS_PLATEAUX_BAS] == main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS
 			);
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO : 
 			return (sc_boolean) (stateConfVector[SCVI_MAIN_REGION_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO] >= main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO
@@ -3817,6 +3826,34 @@ void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIU
 	timer->unsetTimer(this, (sc_eventid)(&timeEvents[68]));
 }
 
+/* Exit action for state 'Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE'. */
+void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE()
+{
+	/* Exit action for state 'Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE'. */
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[69]));
+}
+
+/* Exit action for state 'Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE'. */
+void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE()
+{
+	/* Exit action for state 'Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE'. */
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[70]));
+}
+
+/* Exit action for state 'Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET'. */
+void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET()
+{
+	/* Exit action for state 'Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET'. */
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[71]));
+}
+
+/* Exit action for state 'Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET'. */
+void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET()
+{
+	/* Exit action for state 'Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET'. */
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[72]));
+}
+
 /* Exit action for state 'HOMOLO1'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATEGY_TACHE_CHOIX_STRATEGIE_HOMOLO1()
 {
@@ -3849,14 +3886,14 @@ void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATE
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR()
 {
 	/* Exit action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[69]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[73]));
 }
 
 /* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_DEVENTOUSAGE_ATOMES()
 {
 	/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[70]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[74]));
 }
 
 /* Exit action for state 'FIN_SEQUENCE'. */
@@ -3870,49 +3907,49 @@ void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_INIT_POSITIONS_PLATEAUX_BAS()
 {
 	/* Exit action for state 'INIT_POSITIONS_PLATEAUX_BAS'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[71]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[75]));
 }
 
 /* Exit action for state 'INIT_POSITIONS_BRAS_HAUT'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_INIT_POSITIONS_BRAS_HAUT()
 {
 	/* Exit action for state 'INIT_POSITIONS_BRAS_HAUT'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[72]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[76]));
 }
 
 /* Exit action for state 'INIT_POSITIONS_VENTOUSES_HAUT_01'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_INIT_POSITIONS_VENTOUSES_HAUT_01()
 {
 	/* Exit action for state 'INIT_POSITIONS_VENTOUSES_HAUT_01'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[73]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[77]));
 }
 
 /* Exit action for state 'INIT_POSITIONS_VENTOUSES_HAUT_02'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_INIT_POSITIONS_VENTOUSES_HAUT_02()
 {
 	/* Exit action for state 'INIT_POSITIONS_VENTOUSES_HAUT_02'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[74]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[78]));
 }
 
 /* Exit action for state 'MISE_EN_ROUTE_POMPES'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MISE_EN_ROUTE_POMPES()
 {
 	/* Exit action for state 'MISE_EN_ROUTE_POMPES'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[75]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[79]));
 }
 
 /* Exit action for state 'ABAISSEMENT_BRAS'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_ABAISSEMENT_BRAS()
 {
 	/* Exit action for state 'ABAISSEMENT_BRAS'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[76]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[80]));
 }
 
 /* Exit action for state 'VENTOUSAGE'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_VENTOUSAGE()
 {
 	/* Exit action for state 'VENTOUSAGE'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[77]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[81]));
 	Application.m_asservissement.CommandeManuelle(0, 0);
 }
 
@@ -3920,112 +3957,112 @@ void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_RETIRER_ATOMES()
 {
 	/* Exit action for state 'RETIRER_ATOMES'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[78]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[82]));
 }
 
 /* Exit action for state 'VITESSE_VENTOUSE_01'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_VITESSE_VENTOUSE_01()
 {
 	/* Exit action for state 'VITESSE_VENTOUSE_01'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[79]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[83]));
 }
 
 /* Exit action for state 'VITESSE_VENTOUSE_02'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_VITESSE_VENTOUSE_02()
 {
 	/* Exit action for state 'VITESSE_VENTOUSE_02'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[80]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[84]));
 }
 
 /* Exit action for state 'PIVOTEMENT_ATOME_01'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PIVOTEMENT_ATOME_01()
 {
 	/* Exit action for state 'PIVOTEMENT_ATOME_01'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[81]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[85]));
 }
 
 /* Exit action for state 'PIVOTEMENT_ATOME_02'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PIVOTEMENT_ATOME_02()
 {
 	/* Exit action for state 'PIVOTEMENT_ATOME_02'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[82]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[86]));
 }
 
 /* Exit action for state 'POSITIONS_PLATEAUX_MILIEU'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_POSITIONS_PLATEAUX_MILIEU()
 {
 	/* Exit action for state 'POSITIONS_PLATEAUX_MILIEU'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[83]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[87]));
 }
 
 /* Exit action for state 'POSITIONS_BRAS_HAUT_01'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_POSITIONS_BRAS_HAUT_01()
 {
 	/* Exit action for state 'POSITIONS_BRAS_HAUT_01'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[84]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[88]));
 }
 
 /* Exit action for state 'POSITIONS_BRAS_HAUT_02'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_POSITIONS_BRAS_HAUT_02()
 {
 	/* Exit action for state 'POSITIONS_BRAS_HAUT_02'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[85]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[89]));
 }
 
 /* Exit action for state 'SECU_ELETROVANNES'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_SECU_ELETROVANNES()
 {
 	/* Exit action for state 'SECU_ELETROVANNES'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[86]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[90]));
 }
 
 /* Exit action for state 'POSITIONS_PLATEAUX_BAS'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_POSITIONS_PLATEAUX_BAS()
 {
 	/* Exit action for state 'POSITIONS_PLATEAUX_BAS'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[87]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[91]));
 }
 
 /* Exit action for state 'DEGAGEMENT_BRAS'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_DEGAGEMENT_BRAS()
 {
 	/* Exit action for state 'DEGAGEMENT_BRAS'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[88]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[92]));
 }
 
 /* Exit action for state 'POSITIONS_PLATEAUX_HAUT'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_POSITIONS_PLATEAUX_HAUT()
 {
 	/* Exit action for state 'POSITIONS_PLATEAUX_HAUT'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[89]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[93]));
 }
 
 /* Exit action for state 'STOCKAGE_HORIZONTAL_ATOMES'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_STOCKAGE_HORIZONTAL_ATOMES()
 {
 	/* Exit action for state 'STOCKAGE_HORIZONTAL_ATOMES'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[90]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[94]));
 }
 
 /* Exit action for state 'RANGEMENT_BRAS'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_RANGEMENT_BRAS()
 {
 	/* Exit action for state 'RANGEMENT_BRAS'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[91]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[95]));
 }
 
 /* Exit action for state 'MAINTIEN_KMAR_AR'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR()
 {
 	/* Exit action for state 'MAINTIEN_KMAR_AR'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[92]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[96]));
 }
 
 /* Exit action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME()
 {
 	/* Exit action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[93]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[97]));
 }
 
 /* Exit action for state 'FIN_SEQUENCE'. */
@@ -4039,84 +4076,84 @@ void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_GLISSSADE()
 {
 	/* Exit action for state 'GLISSSADE'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[94]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[98]));
 }
 
 /* Exit action for state 'ACTIVATION_POMPE'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_ACTIVATION_POMPE()
 {
 	/* Exit action for state 'ACTIVATION_POMPE'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[95]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[99]));
 }
 
 /* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEVENTOUSAGE_ATOMES()
 {
 	/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[96]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[100]));
 }
 
 /* Exit action for state 'VITESSE_VENTOUSE_01'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_VITESSE_VENTOUSE_01()
 {
 	/* Exit action for state 'VITESSE_VENTOUSE_01'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[97]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[101]));
 }
 
 /* Exit action for state 'VITESSE_VENTOUSE_02'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_VITESSE_VENTOUSE_02()
 {
 	/* Exit action for state 'VITESSE_VENTOUSE_02'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[98]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[102]));
 }
 
 /* Exit action for state 'PIVOTEMENT_ATOME_01'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_PIVOTEMENT_ATOME_01()
 {
 	/* Exit action for state 'PIVOTEMENT_ATOME_01'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[99]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[103]));
 }
 
 /* Exit action for state 'PIVOTEMENT_ATOME_02'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_PIVOTEMENT_ATOME_02()
 {
 	/* Exit action for state 'PIVOTEMENT_ATOME_02'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[100]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[104]));
 }
 
 /* Exit action for state 'POSITIONS_BRAS_HAUT_01'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_BRAS_HAUT_01()
 {
 	/* Exit action for state 'POSITIONS_BRAS_HAUT_01'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[101]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[105]));
 }
 
 /* Exit action for state 'POSITIONS_BRAS_HAUT_02'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_BRAS_HAUT_02()
 {
 	/* Exit action for state 'POSITIONS_BRAS_HAUT_02'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[102]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[106]));
 }
 
 /* Exit action for state 'SECU_ELETROVANNES'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_SECU_ELETROVANNES()
 {
 	/* Exit action for state 'SECU_ELETROVANNES'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[103]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[107]));
 }
 
 /* Exit action for state 'POSITIONS_PLATEAUX_BAS'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_PLATEAUX_BAS()
 {
 	/* Exit action for state 'POSITIONS_PLATEAUX_BAS'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[104]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[108]));
 }
 
 /* Exit action for state 'DEPASSE_ZONE_CHAOS_RAMASSE_DEPART'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPASSE_ZONE_CHAOS_RAMASSE_DEPART()
 {
 	/* Exit action for state 'DEPASSE_ZONE_CHAOS_RAMASSE_DEPART'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[105]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[109]));
 }
 
 /* Exit action for state 'FIN_SEQUENCE'. */
@@ -4130,147 +4167,126 @@ void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPLACEMENT_RAMASSAGE_ATOME()
 {
 	/* Exit action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[106]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[110]));
 }
 
 /* Exit action for state 'PRISE_ATOME'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PRISE_ATOME()
 {
 	/* Exit action for state 'PRISE_ATOME'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[107]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[111]));
 }
 
 /* Exit action for state 'DESCENTE PARECHOC'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC()
 {
 	/* Exit action for state 'DESCENTE PARECHOC'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[108]));
-}
-
-/* Exit action for state 'GLISSSADE'. */
-void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE()
-{
-	/* Exit action for state 'GLISSSADE'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[109]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[112]));
 }
 
 /* Exit action for state 'ACTIVATION_POMPE'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_ACTIVATION_POMPE()
 {
 	/* Exit action for state 'ACTIVATION_POMPE'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[110]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[113]));
 }
 
 /* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEVENTOUSAGE_ATOMES()
 {
 	/* Exit action for state 'DEVENTOUSAGE_ATOMES'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[111]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[114]));
 }
 
 /* Exit action for state 'VITESSE_VENTOUSE_01'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_VITESSE_VENTOUSE_01()
 {
 	/* Exit action for state 'VITESSE_VENTOUSE_01'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[112]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[115]));
 }
 
 /* Exit action for state 'VITESSE_VENTOUSE_02'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_VITESSE_VENTOUSE_02()
 {
 	/* Exit action for state 'VITESSE_VENTOUSE_02'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[113]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[116]));
 }
 
 /* Exit action for state 'PIVOTEMENT_ATOME_01'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PIVOTEMENT_ATOME_01()
 {
 	/* Exit action for state 'PIVOTEMENT_ATOME_01'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[114]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[117]));
 }
 
 /* Exit action for state 'PIVOTEMENT_ATOME_02'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PIVOTEMENT_ATOME_02()
 {
 	/* Exit action for state 'PIVOTEMENT_ATOME_02'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[115]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[118]));
 }
 
 /* Exit action for state 'POSITIONS_PLATEAUX_MILIEU'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_PLATEAUX_MILIEU()
 {
 	/* Exit action for state 'POSITIONS_PLATEAUX_MILIEU'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[116]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[119]));
 }
 
 /* Exit action for state 'POSITIONS_BRAS_HAUT_01'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_BRAS_HAUT_01()
 {
 	/* Exit action for state 'POSITIONS_BRAS_HAUT_01'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[117]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[120]));
 }
 
 /* Exit action for state 'POSITIONS_BRAS_HAUT_02'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_BRAS_HAUT_02()
 {
 	/* Exit action for state 'POSITIONS_BRAS_HAUT_02'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[118]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[121]));
 }
 
 /* Exit action for state 'SECU_ELETROVANNES'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_SECU_ELETROVANNES()
 {
 	/* Exit action for state 'SECU_ELETROVANNES'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[119]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[122]));
 }
 
 /* Exit action for state 'POSITIONS_PLATEAUX_BAS'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_PLATEAUX_BAS()
 {
 	/* Exit action for state 'POSITIONS_PLATEAUX_BAS'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[120]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[123]));
 }
 
 /* Exit action for state 'Copy_1_POSITIONS_PLATEAUX_MILIEU'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_MILIEU()
 {
 	/* Exit action for state 'Copy_1_POSITIONS_PLATEAUX_MILIEU'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[121]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[124]));
 }
 
-/* Exit action for state 'Copy_1_GLISSSADE'. */
-void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE()
+/* Exit action for state 'GLISSSADE'. */
+void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE()
 {
-	/* Exit action for state 'Copy_1_GLISSSADE'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[122]));
+	/* Exit action for state 'GLISSSADE'. */
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[125]));
 }
 
 /* Exit action for state 'Copy_1_PRISE_ATOME'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_PRISE_ATOME()
 {
 	/* Exit action for state 'Copy_1_PRISE_ATOME'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[123]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[126]));
 }
 
 /* Exit action for state 'Copy_2_PRISE_ATOME'. */
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_PRISE_ATOME()
 {
 	/* Exit action for state 'Copy_2_PRISE_ATOME'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[124]));
-}
-
-/* Exit action for state 'Copy_2_GLISSSADE'. */
-void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE()
-{
-	/* Exit action for state 'Copy_2_GLISSSADE'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[125]));
-}
-
-/* Exit action for state 'Copy_1_POSITIONS_PLATEAUX_BAS'. */
-void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS()
-{
-	/* Exit action for state 'Copy_1_POSITIONS_PLATEAUX_BAS'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[126]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[127]));
 }
 
 /* Exit action for state 'SE_METTRE_EN_LIEU_SUR'. */
@@ -4284,7 +4300,7 @@ void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMO
 void IA::exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_MAINTIEN_KMAR_AR()
 {
 	/* Exit action for state 'MAINTIEN_KMAR_AR'. */
-	timer->unsetTimer(this, (sc_eventid)(&timeEvents[127]));
+	timer->unsetTimer(this, (sc_eventid)(&timeEvents[128]));
 }
 
 /* shallow enterSequence with history in child TACHE_NETTOYAGE */
@@ -4931,6 +4947,50 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDEN
 			historyVector[1] = stateConfVector[0];
 			break;
 		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE :
+		{
+			/* 'default' enter sequence for state Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE */
+			/* Entry action for state 'Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 2 * 1000, false);
+			SCI_Asser_OCB::DistanceAngle(15, IA::DefaultSCI::PI);
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE :
+		{
+			/* 'default' enter sequence for state Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE */
+			/* Entry action for state 'Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[70]), 2 * 1000, false);
+			SCI_Asser_OCB::DistanceAngle(-19, IA::DefaultSCI::PI);
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET :
+		{
+			/* 'default' enter sequence for state Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET */
+			/* Entry action for state 'Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[71]), 2 * 1000, false);
+			SCI_Asser_OCB::DistanceAngle(19, 0);
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET :
+		{
+			/* 'default' enter sequence for state Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET */
+			/* Entry action for state 'Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[72]), 2 * 1000, false);
+			SCI_Asser_OCB::DistanceAngle(-14, 0);
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET;
+			stateConfVectorPosition = 0;
+			historyVector[1] = stateConfVector[0];
+			break;
+		}
 		default: break;
 	}
 }
@@ -4946,7 +5006,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
 			/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 4 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[73]), 4 * 1000, false);
 			SCI_Asser_OCB::XYTeta(92, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR;
 			stateConfVectorPosition = 0;
@@ -4957,7 +5017,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state DEVENTOUSAGE_ATOMES */
 			/* Entry action for state 'DEVENTOUSAGE_ATOMES'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[70]), 1 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[74]), 1 * 1000, false);
 			Application.m_power_switch.setOutput(POMPE_ARD, false);
 			Application.m_power_switch.setOutput(EV_ARD, true);
 			Application.m_power_switch.setOutput(POMPE_ARG, false);
@@ -4981,7 +5041,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state INIT_POSITIONS_PLATEAUX_BAS */
 			/* Entry action for state 'INIT_POSITIONS_PLATEAUX_BAS'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[71]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[75]), 40, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_INIT_POSITIONS_PLATEAUX_BAS;
@@ -4993,7 +5053,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state INIT_POSITIONS_BRAS_HAUT */
 			/* Entry action for state 'INIT_POSITIONS_BRAS_HAUT'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[72]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[76]), 40, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_INIT_POSITIONS_BRAS_HAUT;
@@ -5005,7 +5065,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state INIT_POSITIONS_VENTOUSES_HAUT_01 */
 			/* Entry action for state 'INIT_POSITIONS_VENTOUSES_HAUT_01'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[73]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[77]), 40, false);
 			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, IA::DefaultSCI::TOUSE_G_HAUT);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_INIT_POSITIONS_VENTOUSES_HAUT_01;
 			stateConfVectorPosition = 0;
@@ -5016,7 +5076,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state INIT_POSITIONS_VENTOUSES_HAUT_02 */
 			/* Entry action for state 'INIT_POSITIONS_VENTOUSES_HAUT_02'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[74]), 100, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[78]), 100, false);
 			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, IA::DefaultSCI::TOUSE_D_HAUT);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_INIT_POSITIONS_VENTOUSES_HAUT_02;
 			stateConfVectorPosition = 0;
@@ -5027,7 +5087,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state MISE_EN_ROUTE_POMPES */
 			/* Entry action for state 'MISE_EN_ROUTE_POMPES'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[75]), 1 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[79]), 1 * 1000, false);
 			Application.m_power_switch.setOutput(POMPE_ARD, true);
 			Application.m_power_switch.setOutput(POMPE_ARG, true);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MISE_EN_ROUTE_POMPES;
@@ -5039,7 +5099,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state ABAISSEMENT_BRAS */
 			/* Entry action for state 'ABAISSEMENT_BRAS'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[76]), 500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[80]), 500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_MILIEU);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_MILIEU);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_ABAISSEMENT_BRAS;
@@ -5051,7 +5111,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state VENTOUSAGE */
 			/* Entry action for state 'VENTOUSAGE'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[77]), 1500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[81]), 1500, false);
 			Application.m_asservissement.CommandeManuelle(-15, -15);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_VENTOUSAGE;
 			stateConfVectorPosition = 0;
@@ -5062,7 +5122,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state RETIRER_ATOMES */
 			/* Entry action for state 'RETIRER_ATOMES'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[78]), 2 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[82]), 2 * 1000, false);
 			Application.m_asservissement.CommandeMouvementDistanceAngle(6, ifaceInternalSCI.invMouv * IA::DefaultSCI::PI / 2);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_RETIRER_ATOMES;
 			stateConfVectorPosition = 0;
@@ -5073,7 +5133,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state VITESSE_VENTOUSE_01 */
 			/* Entry action for state 'VITESSE_VENTOUSE_01'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[79]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[83]), 40, false);
 			Application.m_servos_ax.setSpeed(SERVO_VENTOUSE_ARG_VERT, 200);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_VITESSE_VENTOUSE_01;
 			stateConfVectorPosition = 0;
@@ -5084,7 +5144,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state VITESSE_VENTOUSE_02 */
 			/* Entry action for state 'VITESSE_VENTOUSE_02'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[80]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[84]), 40, false);
 			Application.m_servos_ax.setSpeed(SERVO_VENTOUSE_ARD_VERT, 200);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_VITESSE_VENTOUSE_02;
 			stateConfVectorPosition = 0;
@@ -5095,7 +5155,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state PIVOTEMENT_ATOME_01 */
 			/* Entry action for state 'PIVOTEMENT_ATOME_01'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[81]), 2 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[85]), 2 * 1000, false);
 			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, IA::DefaultSCI::TOUSE_G_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PIVOTEMENT_ATOME_01;
 			stateConfVectorPosition = 0;
@@ -5106,7 +5166,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state PIVOTEMENT_ATOME_02 */
 			/* Entry action for state 'PIVOTEMENT_ATOME_02'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[82]), 2 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[86]), 2 * 1000, false);
 			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, IA::DefaultSCI::TOUSE_D_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PIVOTEMENT_ATOME_02;
 			stateConfVectorPosition = 0;
@@ -5117,7 +5177,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state POSITIONS_PLATEAUX_MILIEU */
 			/* Entry action for state 'POSITIONS_PLATEAUX_MILIEU'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[83]), 500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[87]), 500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_MILIEU);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_MILIEU);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_POSITIONS_PLATEAUX_MILIEU;
@@ -5129,7 +5189,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state POSITIONS_BRAS_HAUT_01 */
 			/* Entry action for state 'POSITIONS_BRAS_HAUT_01'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[84]), 1500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[88]), 1500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_POSITIONS_BRAS_HAUT_01;
 			stateConfVectorPosition = 0;
@@ -5140,7 +5200,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state POSITIONS_BRAS_HAUT_02 */
 			/* Entry action for state 'POSITIONS_BRAS_HAUT_02'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[85]), 1500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[89]), 1500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_POSITIONS_BRAS_HAUT_02;
 			stateConfVectorPosition = 0;
@@ -5151,7 +5211,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state SECU_ELETROVANNES */
 			/* Entry action for state 'SECU_ELETROVANNES'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[86]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[90]), 40, false);
 			Application.m_power_switch.setOutput(EV_ARD, false);
 			Application.m_power_switch.setOutput(EV_ARG, false);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_SECU_ELETROVANNES;
@@ -5163,7 +5223,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state POSITIONS_PLATEAUX_BAS */
 			/* Entry action for state 'POSITIONS_PLATEAUX_BAS'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[87]), 500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[91]), 500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_POSITIONS_PLATEAUX_BAS;
@@ -5175,7 +5235,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state DEGAGEMENT_BRAS */
 			/* Entry action for state 'DEGAGEMENT_BRAS'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[88]), 500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_MILIEU);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_MILIEU);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_DEGAGEMENT_BRAS;
@@ -5187,7 +5247,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state POSITIONS_PLATEAUX_HAUT */
 			/* Entry action for state 'POSITIONS_PLATEAUX_HAUT'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[89]), 1 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 1 * 1000, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_HAUT);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_HAUT);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_POSITIONS_PLATEAUX_HAUT;
@@ -5199,7 +5259,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state STOCKAGE_HORIZONTAL_ATOMES */
 			/* Entry action for state 'STOCKAGE_HORIZONTAL_ATOMES'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[90]), 500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[94]), 500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_STOCKAGE_HORIZONTAL_ATOMES;
@@ -5211,7 +5271,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state RANGEMENT_BRAS */
 			/* Entry action for state 'RANGEMENT_BRAS'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[91]), 500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[95]), 500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_RANGEMENT_BRAS;
@@ -5223,7 +5283,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRI
 		{
 			/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
 			/* Entry action for state 'MAINTIEN_KMAR_AR'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[96]), 40, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR;
@@ -5246,7 +5306,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 			/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 2 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[97]), 2 * 1000, false);
 			SCI_Asser_OCB::XYTeta(39.5, -57 * ifaceInternalSCI.invMouv, 0);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME;
 			stateConfVectorPosition = 0;
@@ -5265,7 +5325,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state GLISSSADE */
 			/* Entry action for state 'GLISSSADE'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[94]), 2 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[98]), 2 * 1000, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, 140);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, 95);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, 170);
@@ -5279,7 +5339,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state ACTIVATION_POMPE */
 			/* Entry action for state 'ACTIVATION_POMPE'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[95]), 200, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[99]), 200, false);
 			Application.m_power_switch.setOutput(POMPE_ARD, true);
 			Application.m_power_switch.setOutput(POMPE_ARG, true);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_ACTIVATION_POMPE;
@@ -5291,7 +5351,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state DEVENTOUSAGE_ATOMES */
 			/* Entry action for state 'DEVENTOUSAGE_ATOMES'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[96]), 1 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[100]), 1 * 1000, false);
 			Application.m_power_switch.setOutput(POMPE_ARD, false);
 			Application.m_power_switch.setOutput(EV_ARD, true);
 			Application.m_power_switch.setOutput(POMPE_ARG, false);
@@ -5305,7 +5365,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state VITESSE_VENTOUSE_01 */
 			/* Entry action for state 'VITESSE_VENTOUSE_01'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[97]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[101]), 40, false);
 			Application.m_servos_ax.setSpeed(SERVO_VENTOUSE_ARG_VERT, 200);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_VITESSE_VENTOUSE_01;
 			stateConfVectorPosition = 0;
@@ -5316,7 +5376,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state VITESSE_VENTOUSE_02 */
 			/* Entry action for state 'VITESSE_VENTOUSE_02'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[98]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[102]), 40, false);
 			Application.m_servos_ax.setSpeed(SERVO_VENTOUSE_ARD_VERT, 200);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_VITESSE_VENTOUSE_02;
 			stateConfVectorPosition = 0;
@@ -5327,7 +5387,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state PIVOTEMENT_ATOME_01 */
 			/* Entry action for state 'PIVOTEMENT_ATOME_01'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[99]), 2 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[103]), 2 * 1000, false);
 			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, IA::DefaultSCI::TOUSE_G_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_PIVOTEMENT_ATOME_01;
 			stateConfVectorPosition = 0;
@@ -5338,7 +5398,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state PIVOTEMENT_ATOME_02 */
 			/* Entry action for state 'PIVOTEMENT_ATOME_02'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[100]), 500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[104]), 500, false);
 			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, IA::DefaultSCI::TOUSE_D_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_PIVOTEMENT_ATOME_02;
 			stateConfVectorPosition = 0;
@@ -5349,7 +5409,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state POSITIONS_BRAS_HAUT_01 */
 			/* Entry action for state 'POSITIONS_BRAS_HAUT_01'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[101]), 1500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[105]), 1500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_BRAS_HAUT_01;
 			stateConfVectorPosition = 0;
@@ -5360,7 +5420,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state POSITIONS_BRAS_HAUT_02 */
 			/* Entry action for state 'POSITIONS_BRAS_HAUT_02'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[102]), 1500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[106]), 1500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_BRAS_HAUT_02;
 			stateConfVectorPosition = 0;
@@ -5371,7 +5431,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state SECU_ELETROVANNES */
 			/* Entry action for state 'SECU_ELETROVANNES'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[103]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[107]), 40, false);
 			Application.m_power_switch.setOutput(EV_ARD, false);
 			Application.m_power_switch.setOutput(EV_ARG, false);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_SECU_ELETROVANNES;
@@ -5383,7 +5443,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASS
 		{
 			/* 'default' enter sequence for state POSITIONS_PLATEAUX_BAS */
 			/* Entry action for state 'POSITIONS_PLATEAUX_BAS'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[104]), 200, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 200, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_PLATEAUX_BAS;
@@ -5406,7 +5466,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state DEPASSE_ZONE_CHAOS_RAMASSE_DEPART */
 			/* Entry action for state 'DEPASSE_ZONE_CHAOS_RAMASSE_DEPART'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[105]), 4 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[109]), 4 * 1000, false);
 			SCI_Asser_OCB::XYTeta(123.5, 0, IA::DefaultSCI::PI);
 			iface.evit_choix_strategie = ((int32_t) EVITEMENT_NORMAL);
 			iface.evit_nombre_max_tentatives = 1;
@@ -5427,7 +5487,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 			/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[106]), 2 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[110]), 2 * 1000, false);
 			SCI_Asser_OCB::XYTeta(114, 0, IA::DefaultSCI::PI);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPLACEMENT_RAMASSAGE_ATOME;
 			stateConfVectorPosition = 0;
@@ -5438,7 +5498,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state PRISE_ATOME */
 			/* Entry action for state 'PRISE_ATOME'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[107]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[111]), 40, false);
 			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, IA::DefaultSCI::TOUSE_G_MILIEU);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PRISE_ATOME;
 			stateConfVectorPosition = 0;
@@ -5449,19 +5509,9 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state DESCENTE PARECHOC */
 			/* Entry action for state 'DESCENTE PARECHOC'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 1 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[112]), 1 * 1000, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC;
-			stateConfVectorPosition = 0;
-			historyVector[4] = stateConfVector[0];
-			break;
-		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE :
-		{
-			/* 'default' enter sequence for state GLISSSADE */
-			/* Entry action for state 'GLISSSADE'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[109]), 500, false);
-			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE;
 			stateConfVectorPosition = 0;
 			historyVector[4] = stateConfVector[0];
 			break;
@@ -5470,7 +5520,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state ACTIVATION_POMPE */
 			/* Entry action for state 'ACTIVATION_POMPE'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[110]), 1 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[113]), 1 * 1000, false);
 			Application.m_power_switch.setOutput(POMPE_ARD, true);
 			Application.m_power_switch.setOutput(POMPE_ARG, true);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_ACTIVATION_POMPE;
@@ -5482,7 +5532,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state DEVENTOUSAGE_ATOMES */
 			/* Entry action for state 'DEVENTOUSAGE_ATOMES'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[111]), 500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[114]), 500, false);
 			Application.m_power_switch.setOutput(POMPE_ARD, false);
 			Application.m_power_switch.setOutput(EV_ARD, true);
 			Application.m_power_switch.setOutput(POMPE_ARG, false);
@@ -5496,7 +5546,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state VITESSE_VENTOUSE_01 */
 			/* Entry action for state 'VITESSE_VENTOUSE_01'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[112]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[115]), 40, false);
 			Application.m_servos_ax.setSpeed(SERVO_VENTOUSE_ARG_VERT, 200);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_VITESSE_VENTOUSE_01;
 			stateConfVectorPosition = 0;
@@ -5507,7 +5557,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state VITESSE_VENTOUSE_02 */
 			/* Entry action for state 'VITESSE_VENTOUSE_02'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[113]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[116]), 40, false);
 			Application.m_servos_ax.setSpeed(SERVO_VENTOUSE_ARD_VERT, 200);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_VITESSE_VENTOUSE_02;
 			stateConfVectorPosition = 0;
@@ -5518,7 +5568,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state PIVOTEMENT_ATOME_01 */
 			/* Entry action for state 'PIVOTEMENT_ATOME_01'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[114]), 2 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[117]), 2 * 1000, false);
 			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, IA::DefaultSCI::TOUSE_G_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PIVOTEMENT_ATOME_01;
 			stateConfVectorPosition = 0;
@@ -5529,7 +5579,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state PIVOTEMENT_ATOME_02 */
 			/* Entry action for state 'PIVOTEMENT_ATOME_02'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[115]), 1 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[118]), 1 * 1000, false);
 			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, IA::DefaultSCI::TOUSE_D_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PIVOTEMENT_ATOME_02;
 			stateConfVectorPosition = 0;
@@ -5540,7 +5590,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state POSITIONS_PLATEAUX_MILIEU */
 			/* Entry action for state 'POSITIONS_PLATEAUX_MILIEU'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[116]), 500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[119]), 500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_PLATEAUX_MILIEU;
@@ -5552,7 +5602,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state POSITIONS_BRAS_HAUT_01 */
 			/* Entry action for state 'POSITIONS_BRAS_HAUT_01'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[117]), 1500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[120]), 1500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_BRAS_HAUT_01;
 			stateConfVectorPosition = 0;
@@ -5563,7 +5613,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state POSITIONS_BRAS_HAUT_02 */
 			/* Entry action for state 'POSITIONS_BRAS_HAUT_02'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[118]), 1500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[121]), 1500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_BRAS_HAUT_02;
 			stateConfVectorPosition = 0;
@@ -5574,7 +5624,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state SECU_ELETROVANNES */
 			/* Entry action for state 'SECU_ELETROVANNES'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[119]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[122]), 500, false);
 			Application.m_power_switch.setOutput(EV_ARD, false);
 			Application.m_power_switch.setOutput(EV_ARG, false);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_SECU_ELETROVANNES;
@@ -5586,7 +5636,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state POSITIONS_PLATEAUX_BAS */
 			/* Entry action for state 'POSITIONS_PLATEAUX_BAS'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[120]), 200, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[123]), 200, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_PLATEAUX_BAS;
@@ -5598,7 +5648,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state Copy_1_POSITIONS_PLATEAUX_MILIEU */
 			/* Entry action for state 'Copy_1_POSITIONS_PLATEAUX_MILIEU'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[121]), 500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[124]), 500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_MILIEU;
@@ -5606,14 +5656,14 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 			historyVector[4] = stateConfVector[0];
 			break;
 		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE :
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE :
 		{
-			/* 'default' enter sequence for state Copy_1_GLISSSADE */
-			/* Entry action for state 'Copy_1_GLISSSADE'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[122]), 500, false);
+			/* 'default' enter sequence for state GLISSSADE */
+			/* Entry action for state 'GLISSSADE'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[125]), 500, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
-			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE;
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE;
 			stateConfVectorPosition = 0;
 			historyVector[4] = stateConfVector[0];
 			break;
@@ -5622,7 +5672,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state Copy_1_PRISE_ATOME */
 			/* Entry action for state 'Copy_1_PRISE_ATOME'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[123]), 1 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[126]), 1 * 1000, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_BAS);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_PRISE_ATOME;
@@ -5634,31 +5684,9 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state Copy_2_PRISE_ATOME */
 			/* Entry action for state 'Copy_2_PRISE_ATOME'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[124]), 500, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[127]), 500, false);
 			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, IA::DefaultSCI::TOUSE_D_MILIEU);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_PRISE_ATOME;
-			stateConfVectorPosition = 0;
-			historyVector[4] = stateConfVector[0];
-			break;
-		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE :
-		{
-			/* 'default' enter sequence for state Copy_2_GLISSSADE */
-			/* Entry action for state 'Copy_2_GLISSSADE'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[125]), 1 * 1000, false);
-			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE;
-			stateConfVectorPosition = 0;
-			historyVector[4] = stateConfVector[0];
-			break;
-		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS :
-		{
-			/* 'default' enter sequence for state Copy_1_POSITIONS_PLATEAUX_BAS */
-			/* Entry action for state 'Copy_1_POSITIONS_PLATEAUX_BAS'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[126]), 500, false);
-			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
-			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
-			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS;
 			stateConfVectorPosition = 0;
 			historyVector[4] = stateConfVector[0];
 			break;
@@ -5690,7 +5718,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HO
 		{
 			/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
 			/* Entry action for state 'MAINTIEN_KMAR_AR'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[127]), 40, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[128]), 40, false);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_MAINTIEN_KMAR_AR;
@@ -6521,6 +6549,42 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIU
 	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_1_DECLENCHEMENT_ACCELERATEUR_VIOLET();
 }
 
+/* Default exit sequence for state Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE */
+void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE()
+{
+	/* Default exit sequence for state Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE */
+	stateConfVector[0] = IA_last_state;
+	stateConfVectorPosition = 0;
+	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE();
+}
+
+/* Default exit sequence for state Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE */
+void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE()
+{
+	/* Default exit sequence for state Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE */
+	stateConfVector[0] = IA_last_state;
+	stateConfVectorPosition = 0;
+	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE();
+}
+
+/* Default exit sequence for state Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET */
+void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET()
+{
+	/* Default exit sequence for state Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET */
+	stateConfVector[0] = IA_last_state;
+	stateConfVectorPosition = 0;
+	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET();
+}
+
+/* Default exit sequence for state Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET */
+void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET()
+{
+	/* Default exit sequence for state Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET */
+	stateConfVector[0] = IA_last_state;
+	stateConfVectorPosition = 0;
+	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET();
+}
+
 /* Default exit sequence for state SUPERVISEUR */
 void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR()
 {
@@ -7075,15 +7139,6 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC();
 }
 
-/* Default exit sequence for state GLISSSADE */
-void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE()
-{
-	/* Default exit sequence for state GLISSSADE */
-	stateConfVector[0] = IA_last_state;
-	stateConfVectorPosition = 0;
-	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE();
-}
-
 /* Default exit sequence for state ACTIVATION_POMPE */
 void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_ACTIVATION_POMPE()
 {
@@ -7192,13 +7247,13 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_MILIEU();
 }
 
-/* Default exit sequence for state Copy_1_GLISSSADE */
-void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE()
+/* Default exit sequence for state GLISSSADE */
+void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE()
 {
-	/* Default exit sequence for state Copy_1_GLISSSADE */
+	/* Default exit sequence for state GLISSSADE */
 	stateConfVector[0] = IA_last_state;
 	stateConfVectorPosition = 0;
-	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE();
+	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE();
 }
 
 /* Default exit sequence for state Copy_1_PRISE_ATOME */
@@ -7217,24 +7272,6 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	stateConfVector[0] = IA_last_state;
 	stateConfVectorPosition = 0;
 	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_PRISE_ATOME();
-}
-
-/* Default exit sequence for state Copy_2_GLISSSADE */
-void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE()
-{
-	/* Default exit sequence for state Copy_2_GLISSSADE */
-	stateConfVector[0] = IA_last_state;
-	stateConfVectorPosition = 0;
-	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE();
-}
-
-/* Default exit sequence for state Copy_1_POSITIONS_PLATEAUX_BAS */
-void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS()
-{
-	/* Default exit sequence for state Copy_1_POSITIONS_PLATEAUX_BAS */
-	stateConfVector[0] = IA_last_state;
-	stateConfVectorPosition = 0;
-	exact_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS();
 }
 
 /* Default exit sequence for state SEQUENCE_06_FIN_HOMOLO */
@@ -7821,6 +7858,30 @@ void IA::exseq_main_region()
 			exact_main_region_MATCH_EN_COURS();
 			break;
 		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE();
+			exact_main_region_MATCH_EN_COURS();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE();
+			exact_main_region_MATCH_EN_COURS();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET();
+			exact_main_region_MATCH_EN_COURS();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET();
+			exact_main_region_MATCH_EN_COURS();
+			break;
+		}
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_01 :
 		{
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_01();
@@ -8175,12 +8236,6 @@ void IA::exseq_main_region()
 			exact_main_region_MATCH_EN_COURS();
 			break;
 		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE :
-		{
-			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE();
-			exact_main_region_MATCH_EN_COURS();
-			break;
-		}
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_ACTIVATION_POMPE :
 		{
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_ACTIVATION_POMPE();
@@ -8253,9 +8308,9 @@ void IA::exseq_main_region()
 			exact_main_region_MATCH_EN_COURS();
 			break;
 		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE :
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE :
 		{
-			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE();
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE();
 			exact_main_region_MATCH_EN_COURS();
 			break;
 		}
@@ -8268,18 +8323,6 @@ void IA::exseq_main_region()
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_PRISE_ATOME :
 		{
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_PRISE_ATOME();
-			exact_main_region_MATCH_EN_COURS();
-			break;
-		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE :
-		{
-			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE();
-			exact_main_region_MATCH_EN_COURS();
-			break;
-		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS :
-		{
-			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS();
 			exact_main_region_MATCH_EN_COURS();
 			break;
 		}
@@ -8937,6 +8980,26 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH()
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_1_DECLENCHEMENT_ACCELERATEUR_VIOLET();
 			break;
 		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET();
+			break;
+		}
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_01 :
 		{
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR_SEQUENCE_01();
@@ -9232,11 +9295,6 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH()
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC();
 			break;
 		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE :
-		{
-			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE();
-			break;
-		}
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_ACTIVATION_POMPE :
 		{
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_ACTIVATION_POMPE();
@@ -9297,9 +9355,9 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH()
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_MILIEU();
 			break;
 		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE :
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE :
 		{
-			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE();
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE();
 			break;
 		}
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_PRISE_ATOME :
@@ -9310,16 +9368,6 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH()
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_PRISE_ATOME :
 		{
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_PRISE_ATOME();
-			break;
-		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE :
-		{
-			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE();
-			break;
-		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS :
-		{
-			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS();
 			break;
 		}
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_SE_METTRE_EN_LIEU_SUR :
@@ -9979,6 +10027,26 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIU
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_1_DECLENCHEMENT_ACCELERATEUR_VIOLET();
 			break;
 		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET();
+			break;
+		}
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET :
+		{
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET();
+			break;
+		}
 		default: break;
 	}
 }
@@ -10329,11 +10397,6 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC();
 			break;
 		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE :
-		{
-			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE();
-			break;
-		}
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_ACTIVATION_POMPE :
 		{
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_ACTIVATION_POMPE();
@@ -10394,9 +10457,9 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_MILIEU();
 			break;
 		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE :
+		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE :
 		{
-			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE();
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE();
 			break;
 		}
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_PRISE_ATOME :
@@ -10407,16 +10470,6 @@ void IA::exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_PRISE_ATOME :
 		{
 			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_PRISE_ATOME();
-			break;
-		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE :
-		{
-			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE();
-			break;
-		}
-		case main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS :
-		{
-			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS();
 			break;
 		}
 		default: break;
@@ -15225,11 +15278,11 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIU
 				if (iface.EV_ConvergenceMvt_raised || timeEvents[55])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_DECLENCHEMENT_ACCELERATEUR_JAUNE();
-					/* 'default' enter sequence for state Copy_1_DECLENCHEMENT_ACCELERATEUR_JAUNE */
-					/* Entry action for state 'Copy_1_DECLENCHEMENT_ACCELERATEUR_JAUNE'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[67]), 2 * 1000, false);
+					/* 'default' enter sequence for state Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE */
+					/* Entry action for state 'Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE'. */
+					timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 2 * 1000, false);
 					SCI_Asser_OCB::DistanceAngle(15, IA::DefaultSCI::PI);
-					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_1_DECLENCHEMENT_ACCELERATEUR_JAUNE;
+					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE;
 					stateConfVectorPosition = 0;
 					historyVector[1] = stateConfVector[0];
 				} 
@@ -16285,6 +16338,330 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIU
 				if (iface.EV_ConvergenceMvt_raised || timeEvents[68])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_1_DECLENCHEMENT_ACCELERATEUR_VIOLET();
+					/* 'default' enter sequence for state Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET */
+					/* Entry action for state 'Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET'. */
+					timer->setTimer(this, (sc_eventid)(&timeEvents[71]), 2 * 1000, false);
+					SCI_Asser_OCB::DistanceAngle(19, 0);
+					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET;
+					stateConfVectorPosition = 0;
+					historyVector[1] = stateConfVector[0];
+				} 
+			}
+		}
+	}
+}
+
+/* The reactions of state Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE. */
+void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE()
+{
+	/* The reactions of state Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE. */
+	if (timeEvents[9])
+	{ 
+		exseq_main_region_MATCH_EN_COURS();
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		Application.m_power_switch.setOutput(EV_AV, false);
+		Application.m_power_switch.setOutput(EV_ARD, false);
+		Application.m_power_switch.setOutput(EV_ARG, false);
+		Application.m_power_switch.setOutput(POMPE_ARD, false);
+		Application.m_power_switch.setOutput(POMPE_ARG, false);
+		Application.m_power_switch.setOutput(POMPE_AV, false);
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+		{ 
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM();
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
+		}  else
+		{
+			if (ifaceInternalSCI.sequence2 == false)
+			{ 
+				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM();
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+				/* Default react sequence for initial entry  */
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			}  else
+			{
+				if (iface.EV_ConvergenceMvt_raised || timeEvents[69])
+				{ 
+					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_JAUNE();
+					/* 'default' enter sequence for state Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE */
+					/* Entry action for state 'Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE'. */
+					timer->setTimer(this, (sc_eventid)(&timeEvents[70]), 2 * 1000, false);
+					SCI_Asser_OCB::DistanceAngle(-19, IA::DefaultSCI::PI);
+					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE;
+					stateConfVectorPosition = 0;
+					historyVector[1] = stateConfVector[0];
+				} 
+			}
+		}
+	}
+}
+
+/* The reactions of state Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE. */
+void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE()
+{
+	/* The reactions of state Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE. */
+	if (timeEvents[9])
+	{ 
+		exseq_main_region_MATCH_EN_COURS();
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		Application.m_power_switch.setOutput(EV_AV, false);
+		Application.m_power_switch.setOutput(EV_ARD, false);
+		Application.m_power_switch.setOutput(EV_ARG, false);
+		Application.m_power_switch.setOutput(POMPE_ARD, false);
+		Application.m_power_switch.setOutput(POMPE_ARG, false);
+		Application.m_power_switch.setOutput(POMPE_AV, false);
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+		{ 
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM();
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
+		}  else
+		{
+			if (ifaceInternalSCI.sequence2 == false)
+			{ 
+				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM();
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+				/* Default react sequence for initial entry  */
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			}  else
+			{
+				if (iface.EV_ConvergenceMvt_raised || timeEvents[70])
+				{ 
+					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_JAUNE();
+					/* 'default' enter sequence for state Copy_1_DECLENCHEMENT_ACCELERATEUR_JAUNE */
+					/* Entry action for state 'Copy_1_DECLENCHEMENT_ACCELERATEUR_JAUNE'. */
+					timer->setTimer(this, (sc_eventid)(&timeEvents[67]), 2 * 1000, false);
+					SCI_Asser_OCB::DistanceAngle(15, IA::DefaultSCI::PI);
+					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_1_DECLENCHEMENT_ACCELERATEUR_JAUNE;
+					stateConfVectorPosition = 0;
+					historyVector[1] = stateConfVector[0];
+				} 
+			}
+		}
+	}
+}
+
+/* The reactions of state Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET. */
+void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET()
+{
+	/* The reactions of state Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET. */
+	if (timeEvents[9])
+	{ 
+		exseq_main_region_MATCH_EN_COURS();
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		Application.m_power_switch.setOutput(EV_AV, false);
+		Application.m_power_switch.setOutput(EV_ARD, false);
+		Application.m_power_switch.setOutput(EV_ARG, false);
+		Application.m_power_switch.setOutput(POMPE_ARD, false);
+		Application.m_power_switch.setOutput(POMPE_ARG, false);
+		Application.m_power_switch.setOutput(POMPE_AV, false);
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+		{ 
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM();
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
+		}  else
+		{
+			if (ifaceInternalSCI.sequence2 == false)
+			{ 
+				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM();
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+				/* Default react sequence for initial entry  */
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			}  else
+			{
+				if (iface.EV_ConvergenceMvt_raised || timeEvents[71])
+				{ 
+					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_DECLENCHEMENT_ACCELERATEUR_VIOLET();
+					/* 'default' enter sequence for state Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET */
+					/* Entry action for state 'Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET'. */
+					timer->setTimer(this, (sc_eventid)(&timeEvents[72]), 2 * 1000, false);
+					SCI_Asser_OCB::DistanceAngle(-14, 0);
+					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET;
+					stateConfVectorPosition = 0;
+					historyVector[1] = stateConfVector[0];
+				} 
+			}
+		}
+	}
+}
+
+/* The reactions of state Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET. */
+void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET()
+{
+	/* The reactions of state Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET. */
+	if (timeEvents[9])
+	{ 
+		exseq_main_region_MATCH_EN_COURS();
+		/* 'default' enter sequence for state FIN_MATCH */
+		/* Entry action for state 'FIN_MATCH'. */
+		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
+		Application.m_power_switch.setOutput(EV_AV, false);
+		Application.m_power_switch.setOutput(EV_ARD, false);
+		Application.m_power_switch.setOutput(EV_ARG, false);
+		Application.m_power_switch.setOutput(POMPE_ARD, false);
+		Application.m_power_switch.setOutput(POMPE_ARG, false);
+		Application.m_power_switch.setOutput(POMPE_AV, false);
+		stateConfVector[0] = main_region_FIN_MATCH;
+		stateConfVectorPosition = 0;
+	}  else
+	{
+		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
+		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
+		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
+		{ 
+			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM();
+			/* 'default' enter sequence for state DETECTION_OBSTACLE */
+			/* Entry action for state 'DETECTION_OBSTACLE'. */
+			iface.evitementEnCours = true;
+			Application.m_leds.setPattern(PATTERN_K2000, 1000);
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
+			/* 'default' enter sequence for region r1 */
+			/* Default react sequence for initial entry  */
+			/* 'default' enter sequence for state EVITEMENT_INIT */
+			/* Entry action for state 'EVITEMENT_INIT'. */
+			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
+			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
+			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
+			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
+			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
+			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
+			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
+			iface.evit_memo_force_obstacle = iface.forceObstacle;
+			iface.forceObstacle = true;
+			iface.evit_debug_etape = 0;
+			iface.evit_nombre_tentatives = 0;
+			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
+			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
+			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
+			stateConfVectorPosition = 0;
+		}  else
+		{
+			if (ifaceInternalSCI.sequence2 == false)
+			{ 
+				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM();
+				/* 'default' enter sequence for state SUPERVISEUR */
+				/* Entry action for state 'SUPERVISEUR'. */
+				ifaceInternalSCI.idx_strategy += 1;
+				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
+				/* Default react sequence for initial entry  */
+				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
+			}  else
+			{
+				if (iface.EV_ConvergenceMvt_raised || timeEvents[72])
+				{ 
+					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_DECLENCHEMENT_ACCELERATEUR_VIOLET();
 					/* 'default' enter sequence for state FIN_POUSSETTE_VIOLET */
 					/* Entry action for state 'FIN_POUSSETTE_VIOLET'. */
 					timer->setTimer(this, (sc_eventid)(&timeEvents[64]), 500, false);
@@ -16344,7 +16721,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* Default react sequence for initial entry Entry_init */
 				/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
 				/* Entry action for state 'MAINTIEN_KMAR_AR'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 40, false);
+				timer->setTimer(this, (sc_eventid)(&timeEvents[96]), 40, false);
 				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR;
@@ -16378,7 +16755,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 						/* Default react sequence for initial entry Entry_init */
 						/* 'default' enter sequence for state DESCENTE PARECHOC */
 						/* Entry action for state 'DESCENTE PARECHOC'. */
-						timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 1 * 1000, false);
+						timer->setTimer(this, (sc_eventid)(&timeEvents[112]), 1 * 1000, false);
 						Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 						stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC;
 						stateConfVectorPosition = 0;
@@ -16393,7 +16770,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							/* Default react sequence for initial entry Entry_init */
 							/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 							/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-							timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 2 * 1000, false);
+							timer->setTimer(this, (sc_eventid)(&timeEvents[97]), 2 * 1000, false);
 							SCI_Asser_OCB::XYTeta(39.5, -57 * ifaceInternalSCI.invMouv, 0);
 							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME;
 							stateConfVectorPosition = 0;
@@ -16408,7 +16785,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 								/* Default react sequence for initial entry Entry_init */
 								/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
 								/* Entry action for state 'MAINTIEN_KMAR_AR'. */
-								timer->setTimer(this, (sc_eventid)(&timeEvents[127]), 40, false);
+								timer->setTimer(this, (sc_eventid)(&timeEvents[128]), 40, false);
 								Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 								Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_MAINTIEN_KMAR_AR;
@@ -16475,7 +16852,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* Default react sequence for initial entry Entry_init */
 				/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
 				/* Entry action for state 'MAINTIEN_KMAR_AR'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 40, false);
+				timer->setTimer(this, (sc_eventid)(&timeEvents[96]), 40, false);
 				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR;
@@ -16509,7 +16886,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 						/* Default react sequence for initial entry Entry_init */
 						/* 'default' enter sequence for state DESCENTE PARECHOC */
 						/* Entry action for state 'DESCENTE PARECHOC'. */
-						timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 1 * 1000, false);
+						timer->setTimer(this, (sc_eventid)(&timeEvents[112]), 1 * 1000, false);
 						Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 						stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC;
 						stateConfVectorPosition = 0;
@@ -16524,7 +16901,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							/* Default react sequence for initial entry Entry_init */
 							/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 							/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-							timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 2 * 1000, false);
+							timer->setTimer(this, (sc_eventid)(&timeEvents[97]), 2 * 1000, false);
 							SCI_Asser_OCB::XYTeta(39.5, -57 * ifaceInternalSCI.invMouv, 0);
 							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME;
 							stateConfVectorPosition = 0;
@@ -16539,7 +16916,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 								/* Default react sequence for initial entry Entry_init */
 								/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
 								/* Entry action for state 'MAINTIEN_KMAR_AR'. */
-								timer->setTimer(this, (sc_eventid)(&timeEvents[127]), 40, false);
+								timer->setTimer(this, (sc_eventid)(&timeEvents[128]), 40, false);
 								Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 								Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_MAINTIEN_KMAR_AR;
@@ -16606,7 +16983,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* Default react sequence for initial entry Entry_init */
 				/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
 				/* Entry action for state 'MAINTIEN_KMAR_AR'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 40, false);
+				timer->setTimer(this, (sc_eventid)(&timeEvents[96]), 40, false);
 				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR;
@@ -16640,7 +17017,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 						/* Default react sequence for initial entry Entry_init */
 						/* 'default' enter sequence for state DESCENTE PARECHOC */
 						/* Entry action for state 'DESCENTE PARECHOC'. */
-						timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 1 * 1000, false);
+						timer->setTimer(this, (sc_eventid)(&timeEvents[112]), 1 * 1000, false);
 						Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 						stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC;
 						stateConfVectorPosition = 0;
@@ -16655,7 +17032,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							/* Default react sequence for initial entry Entry_init */
 							/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 							/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-							timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 2 * 1000, false);
+							timer->setTimer(this, (sc_eventid)(&timeEvents[97]), 2 * 1000, false);
 							SCI_Asser_OCB::XYTeta(39.5, -57 * ifaceInternalSCI.invMouv, 0);
 							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME;
 							stateConfVectorPosition = 0;
@@ -16670,7 +17047,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 								/* Default react sequence for initial entry Entry_init */
 								/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
 								/* Entry action for state 'MAINTIEN_KMAR_AR'. */
-								timer->setTimer(this, (sc_eventid)(&timeEvents[127]), 40, false);
+								timer->setTimer(this, (sc_eventid)(&timeEvents[128]), 40, false);
 								Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 								Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_MAINTIEN_KMAR_AR;
@@ -16731,7 +17108,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* Default react sequence for initial entry Entry_init */
 				/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
 				/* Entry action for state 'MAINTIEN_KMAR_AR'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 40, false);
+				timer->setTimer(this, (sc_eventid)(&timeEvents[96]), 40, false);
 				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR;
@@ -16765,7 +17142,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 						/* Default react sequence for initial entry Entry_init */
 						/* 'default' enter sequence for state DESCENTE PARECHOC */
 						/* Entry action for state 'DESCENTE PARECHOC'. */
-						timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 1 * 1000, false);
+						timer->setTimer(this, (sc_eventid)(&timeEvents[112]), 1 * 1000, false);
 						Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 						stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC;
 						stateConfVectorPosition = 0;
@@ -16780,7 +17157,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							/* Default react sequence for initial entry Entry_init */
 							/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 							/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-							timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 2 * 1000, false);
+							timer->setTimer(this, (sc_eventid)(&timeEvents[97]), 2 * 1000, false);
 							SCI_Asser_OCB::XYTeta(39.5, -57 * ifaceInternalSCI.invMouv, 0);
 							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME;
 							stateConfVectorPosition = 0;
@@ -16795,7 +17172,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 								/* Default react sequence for initial entry Entry_init */
 								/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
 								/* Entry action for state 'MAINTIEN_KMAR_AR'. */
-								timer->setTimer(this, (sc_eventid)(&timeEvents[127]), 40, false);
+								timer->setTimer(this, (sc_eventid)(&timeEvents[128]), 40, false);
 								Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 								Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_MAINTIEN_KMAR_AR;
@@ -16862,7 +17239,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* Default react sequence for initial entry Entry_init */
 				/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
 				/* Entry action for state 'MAINTIEN_KMAR_AR'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 40, false);
+				timer->setTimer(this, (sc_eventid)(&timeEvents[96]), 40, false);
 				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR;
@@ -16896,7 +17273,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 						/* Default react sequence for initial entry Entry_init */
 						/* 'default' enter sequence for state DESCENTE PARECHOC */
 						/* Entry action for state 'DESCENTE PARECHOC'. */
-						timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 1 * 1000, false);
+						timer->setTimer(this, (sc_eventid)(&timeEvents[112]), 1 * 1000, false);
 						Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 						stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC;
 						stateConfVectorPosition = 0;
@@ -16911,7 +17288,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							/* Default react sequence for initial entry Entry_init */
 							/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 							/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-							timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 2 * 1000, false);
+							timer->setTimer(this, (sc_eventid)(&timeEvents[97]), 2 * 1000, false);
 							SCI_Asser_OCB::XYTeta(39.5, -57 * ifaceInternalSCI.invMouv, 0);
 							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME;
 							stateConfVectorPosition = 0;
@@ -16926,7 +17303,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 								/* Default react sequence for initial entry Entry_init */
 								/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
 								/* Entry action for state 'MAINTIEN_KMAR_AR'. */
-								timer->setTimer(this, (sc_eventid)(&timeEvents[127]), 40, false);
+								timer->setTimer(this, (sc_eventid)(&timeEvents[128]), 40, false);
 								Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 								Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_MAINTIEN_KMAR_AR;
@@ -16987,7 +17364,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* Default react sequence for initial entry Entry_init */
 				/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
 				/* Entry action for state 'MAINTIEN_KMAR_AR'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 40, false);
+				timer->setTimer(this, (sc_eventid)(&timeEvents[96]), 40, false);
 				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR;
@@ -17021,7 +17398,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 						/* Default react sequence for initial entry Entry_init */
 						/* 'default' enter sequence for state DESCENTE PARECHOC */
 						/* Entry action for state 'DESCENTE PARECHOC'. */
-						timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 1 * 1000, false);
+						timer->setTimer(this, (sc_eventid)(&timeEvents[112]), 1 * 1000, false);
 						Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 						stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC;
 						stateConfVectorPosition = 0;
@@ -17036,7 +17413,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							/* Default react sequence for initial entry Entry_init */
 							/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 							/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-							timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 2 * 1000, false);
+							timer->setTimer(this, (sc_eventid)(&timeEvents[97]), 2 * 1000, false);
 							SCI_Asser_OCB::XYTeta(39.5, -57 * ifaceInternalSCI.invMouv, 0);
 							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME;
 							stateConfVectorPosition = 0;
@@ -17051,7 +17428,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 								/* Default react sequence for initial entry Entry_init */
 								/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
 								/* Entry action for state 'MAINTIEN_KMAR_AR'. */
-								timer->setTimer(this, (sc_eventid)(&timeEvents[127]), 40, false);
+								timer->setTimer(this, (sc_eventid)(&timeEvents[128]), 40, false);
 								Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 								Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_MAINTIEN_KMAR_AR;
@@ -17118,7 +17495,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* Default react sequence for initial entry Entry_init */
 				/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
 				/* Entry action for state 'MAINTIEN_KMAR_AR'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 40, false);
+				timer->setTimer(this, (sc_eventid)(&timeEvents[96]), 40, false);
 				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR;
@@ -17152,7 +17529,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 						/* Default react sequence for initial entry Entry_init */
 						/* 'default' enter sequence for state DESCENTE PARECHOC */
 						/* Entry action for state 'DESCENTE PARECHOC'. */
-						timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 1 * 1000, false);
+						timer->setTimer(this, (sc_eventid)(&timeEvents[112]), 1 * 1000, false);
 						Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 						stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC;
 						stateConfVectorPosition = 0;
@@ -17167,7 +17544,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							/* Default react sequence for initial entry Entry_init */
 							/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 							/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-							timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 2 * 1000, false);
+							timer->setTimer(this, (sc_eventid)(&timeEvents[97]), 2 * 1000, false);
 							SCI_Asser_OCB::XYTeta(39.5, -57 * ifaceInternalSCI.invMouv, 0);
 							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME;
 							stateConfVectorPosition = 0;
@@ -17182,7 +17559,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 								/* Default react sequence for initial entry Entry_init */
 								/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
 								/* Entry action for state 'MAINTIEN_KMAR_AR'. */
-								timer->setTimer(this, (sc_eventid)(&timeEvents[127]), 40, false);
+								timer->setTimer(this, (sc_eventid)(&timeEvents[128]), 40, false);
 								Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 								Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_MAINTIEN_KMAR_AR;
@@ -17249,7 +17626,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 				/* Default react sequence for initial entry Entry_init */
 				/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
 				/* Entry action for state 'MAINTIEN_KMAR_AR'. */
-				timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 40, false);
+				timer->setTimer(this, (sc_eventid)(&timeEvents[96]), 40, false);
 				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 				Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR;
@@ -17283,7 +17660,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 						/* Default react sequence for initial entry Entry_init */
 						/* 'default' enter sequence for state DESCENTE PARECHOC */
 						/* Entry action for state 'DESCENTE PARECHOC'. */
-						timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 1 * 1000, false);
+						timer->setTimer(this, (sc_eventid)(&timeEvents[112]), 1 * 1000, false);
 						Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 						stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC;
 						stateConfVectorPosition = 0;
@@ -17298,7 +17675,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 							/* Default react sequence for initial entry Entry_init */
 							/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 							/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-							timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 2 * 1000, false);
+							timer->setTimer(this, (sc_eventid)(&timeEvents[97]), 2 * 1000, false);
 							SCI_Asser_OCB::XYTeta(39.5, -57 * ifaceInternalSCI.invMouv, 0);
 							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME;
 							stateConfVectorPosition = 0;
@@ -17313,7 +17690,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 								/* Default react sequence for initial entry Entry_init */
 								/* 'default' enter sequence for state MAINTIEN_KMAR_AR */
 								/* Entry action for state 'MAINTIEN_KMAR_AR'. */
-								timer->setTimer(this, (sc_eventid)(&timeEvents[127]), 40, false);
+								timer->setTimer(this, (sc_eventid)(&timeEvents[128]), 40, false);
 								Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 								Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 								stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_MAINTIEN_KMAR_AR;
@@ -17603,12 +17980,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (iface.EV_ConvergenceMvt_raised || timeEvents[69])
+				if (iface.EV_ConvergenceMvt_raised || timeEvents[73])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR();
 					/* 'default' enter sequence for state INIT_POSITIONS_PLATEAUX_BAS */
 					/* Entry action for state 'INIT_POSITIONS_PLATEAUX_BAS'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[71]), 40, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[75]), 40, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_INIT_POSITIONS_PLATEAUX_BAS;
@@ -17685,12 +18062,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[70])
+				if (timeEvents[74])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_DEVENTOUSAGE_ATOMES();
 					/* 'default' enter sequence for state SECU_ELETROVANNES */
 					/* Entry action for state 'SECU_ELETROVANNES'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[86]), 40, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[90]), 40, false);
 					Application.m_power_switch.setOutput(EV_ARD, false);
 					Application.m_power_switch.setOutput(EV_ARG, false);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_SECU_ELETROVANNES;
@@ -17909,12 +18286,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[71])
+				if (timeEvents[75])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_INIT_POSITIONS_PLATEAUX_BAS();
 					/* 'default' enter sequence for state INIT_POSITIONS_BRAS_HAUT */
 					/* Entry action for state 'INIT_POSITIONS_BRAS_HAUT'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[72]), 40, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[76]), 40, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_INIT_POSITIONS_BRAS_HAUT;
@@ -17991,12 +18368,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[72])
+				if (timeEvents[76])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_INIT_POSITIONS_BRAS_HAUT();
 					/* 'default' enter sequence for state INIT_POSITIONS_VENTOUSES_HAUT_01 */
 					/* Entry action for state 'INIT_POSITIONS_VENTOUSES_HAUT_01'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[73]), 40, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[77]), 40, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, IA::DefaultSCI::TOUSE_G_HAUT);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_INIT_POSITIONS_VENTOUSES_HAUT_01;
 					stateConfVectorPosition = 0;
@@ -18072,12 +18449,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[73])
+				if (timeEvents[77])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_INIT_POSITIONS_VENTOUSES_HAUT_01();
 					/* 'default' enter sequence for state INIT_POSITIONS_VENTOUSES_HAUT_02 */
 					/* Entry action for state 'INIT_POSITIONS_VENTOUSES_HAUT_02'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[74]), 100, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[78]), 100, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, IA::DefaultSCI::TOUSE_D_HAUT);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_INIT_POSITIONS_VENTOUSES_HAUT_02;
 					stateConfVectorPosition = 0;
@@ -18153,12 +18530,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[74])
+				if (timeEvents[78])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_INIT_POSITIONS_VENTOUSES_HAUT_02();
 					/* 'default' enter sequence for state MISE_EN_ROUTE_POMPES */
 					/* Entry action for state 'MISE_EN_ROUTE_POMPES'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[75]), 1 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[79]), 1 * 1000, false);
 					Application.m_power_switch.setOutput(POMPE_ARD, true);
 					Application.m_power_switch.setOutput(POMPE_ARG, true);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MISE_EN_ROUTE_POMPES;
@@ -18235,12 +18612,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[75])
+				if (timeEvents[79])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MISE_EN_ROUTE_POMPES();
 					/* 'default' enter sequence for state ABAISSEMENT_BRAS */
 					/* Entry action for state 'ABAISSEMENT_BRAS'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[76]), 500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[80]), 500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_MILIEU);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_MILIEU);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_ABAISSEMENT_BRAS;
@@ -18317,12 +18694,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[76])
+				if (timeEvents[80])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_ABAISSEMENT_BRAS();
 					/* 'default' enter sequence for state VENTOUSAGE */
 					/* Entry action for state 'VENTOUSAGE'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[77]), 1500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[81]), 1500, false);
 					Application.m_asservissement.CommandeManuelle(-15, -15);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_VENTOUSAGE;
 					stateConfVectorPosition = 0;
@@ -18398,12 +18775,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[77])
+				if (timeEvents[81])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_VENTOUSAGE();
 					/* 'default' enter sequence for state RETIRER_ATOMES */
 					/* Entry action for state 'RETIRER_ATOMES'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[78]), 2 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[82]), 2 * 1000, false);
 					Application.m_asservissement.CommandeMouvementDistanceAngle(6, ifaceInternalSCI.invMouv * IA::DefaultSCI::PI / 2);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_RETIRER_ATOMES;
 					stateConfVectorPosition = 0;
@@ -18479,12 +18856,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (iface.EV_ConvergenceMvt_raised || timeEvents[78])
+				if (iface.EV_ConvergenceMvt_raised || timeEvents[82])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_RETIRER_ATOMES();
 					/* 'default' enter sequence for state VITESSE_VENTOUSE_01 */
 					/* Entry action for state 'VITESSE_VENTOUSE_01'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[79]), 40, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[83]), 40, false);
 					Application.m_servos_ax.setSpeed(SERVO_VENTOUSE_ARG_VERT, 200);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_VITESSE_VENTOUSE_01;
 					stateConfVectorPosition = 0;
@@ -18560,12 +18937,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[79])
+				if (timeEvents[83])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_VITESSE_VENTOUSE_01();
 					/* 'default' enter sequence for state VITESSE_VENTOUSE_02 */
 					/* Entry action for state 'VITESSE_VENTOUSE_02'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[80]), 40, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[84]), 40, false);
 					Application.m_servos_ax.setSpeed(SERVO_VENTOUSE_ARD_VERT, 200);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_VITESSE_VENTOUSE_02;
 					stateConfVectorPosition = 0;
@@ -18641,12 +19018,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[80])
+				if (timeEvents[84])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_VITESSE_VENTOUSE_02();
 					/* 'default' enter sequence for state PIVOTEMENT_ATOME_01 */
 					/* Entry action for state 'PIVOTEMENT_ATOME_01'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[81]), 2 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[85]), 2 * 1000, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, IA::DefaultSCI::TOUSE_G_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PIVOTEMENT_ATOME_01;
 					stateConfVectorPosition = 0;
@@ -18722,12 +19099,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[81])
+				if (timeEvents[85])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PIVOTEMENT_ATOME_01();
 					/* 'default' enter sequence for state PIVOTEMENT_ATOME_02 */
 					/* Entry action for state 'PIVOTEMENT_ATOME_02'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[82]), 2 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[86]), 2 * 1000, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, IA::DefaultSCI::TOUSE_D_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PIVOTEMENT_ATOME_02;
 					stateConfVectorPosition = 0;
@@ -18803,12 +19180,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[82])
+				if (timeEvents[86])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PIVOTEMENT_ATOME_02();
 					/* 'default' enter sequence for state POSITIONS_BRAS_HAUT_01 */
 					/* Entry action for state 'POSITIONS_BRAS_HAUT_01'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[84]), 1500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[88]), 1500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_POSITIONS_BRAS_HAUT_01;
 					stateConfVectorPosition = 0;
@@ -18884,12 +19261,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[83])
+				if (timeEvents[87])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_POSITIONS_PLATEAUX_MILIEU();
 					/* 'default' enter sequence for state DEVENTOUSAGE_ATOMES */
 					/* Entry action for state 'DEVENTOUSAGE_ATOMES'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[70]), 1 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[74]), 1 * 1000, false);
 					Application.m_power_switch.setOutput(POMPE_ARD, false);
 					Application.m_power_switch.setOutput(EV_ARD, true);
 					Application.m_power_switch.setOutput(POMPE_ARG, false);
@@ -18968,12 +19345,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[84])
+				if (timeEvents[88])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_POSITIONS_BRAS_HAUT_01();
 					/* 'default' enter sequence for state POSITIONS_BRAS_HAUT_02 */
 					/* Entry action for state 'POSITIONS_BRAS_HAUT_02'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[85]), 1500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[89]), 1500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_POSITIONS_BRAS_HAUT_02;
 					stateConfVectorPosition = 0;
@@ -19049,12 +19426,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[85])
+				if (timeEvents[89])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_POSITIONS_BRAS_HAUT_02();
 					/* 'default' enter sequence for state POSITIONS_PLATEAUX_MILIEU */
 					/* Entry action for state 'POSITIONS_PLATEAUX_MILIEU'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[83]), 500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[87]), 500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_MILIEU);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_MILIEU);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_POSITIONS_PLATEAUX_MILIEU;
@@ -19131,12 +19508,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[86])
+				if (timeEvents[90])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_SECU_ELETROVANNES();
 					/* 'default' enter sequence for state POSITIONS_PLATEAUX_BAS */
 					/* Entry action for state 'POSITIONS_PLATEAUX_BAS'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[87]), 500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[91]), 500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_POSITIONS_PLATEAUX_BAS;
@@ -19213,12 +19590,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[87])
+				if (timeEvents[91])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_POSITIONS_PLATEAUX_BAS();
 					/* 'default' enter sequence for state DEGAGEMENT_BRAS */
 					/* Entry action for state 'DEGAGEMENT_BRAS'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[88]), 500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[92]), 500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_MILIEU);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_MILIEU);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_DEGAGEMENT_BRAS;
@@ -19295,12 +19672,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[88])
+				if (timeEvents[92])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_DEGAGEMENT_BRAS();
 					/* 'default' enter sequence for state POSITIONS_PLATEAUX_HAUT */
 					/* Entry action for state 'POSITIONS_PLATEAUX_HAUT'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[89]), 1 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[93]), 1 * 1000, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_HAUT);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_HAUT);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_POSITIONS_PLATEAUX_HAUT;
@@ -19377,12 +19754,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[89])
+				if (timeEvents[93])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_POSITIONS_PLATEAUX_HAUT();
 					/* 'default' enter sequence for state STOCKAGE_HORIZONTAL_ATOMES */
 					/* Entry action for state 'STOCKAGE_HORIZONTAL_ATOMES'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[90]), 500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[94]), 500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_STOCKAGE_HORIZONTAL_ATOMES;
@@ -19459,12 +19836,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[90])
+				if (timeEvents[94])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_STOCKAGE_HORIZONTAL_ATOMES();
 					/* 'default' enter sequence for state RANGEMENT_BRAS */
 					/* Entry action for state 'RANGEMENT_BRAS'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[91]), 500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[95]), 500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_RANGEMENT_BRAS;
@@ -19541,7 +19918,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[91])
+				if (timeEvents[95])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_RANGEMENT_BRAS();
 					/* 'default' enter sequence for state FIN_SEQUENCE */
@@ -19621,12 +19998,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBU
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[92])
+				if (timeEvents[96])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_MAINTIEN_KMAR_AR();
 					/* 'default' enter sequence for state PLACEMENT_DEVANT_DISTRIBUTEUR */
 					/* Entry action for state 'PLACEMENT_DEVANT_DISTRIBUTEUR'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[69]), 4 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[73]), 4 * 1000, false);
 					SCI_Asser_OCB::XYTeta(92, -77 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI / 2 * ifaceInternalSCI.invMouv);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_03_DISTRIBUTEUR_TACHE_DISTRIBUTEUR_PLACEMENT_DEVANT_DISTRIBUTEUR;
 					stateConfVectorPosition = 0;
@@ -19702,12 +20079,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (iface.EV_ConvergenceMvt_raised || timeEvents[93])
+				if (iface.EV_ConvergenceMvt_raised || timeEvents[97])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEPLACEMENT_RAMASSAGE_ATOME();
 					/* 'default' enter sequence for state ACTIVATION_POMPE */
 					/* Entry action for state 'ACTIVATION_POMPE'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[95]), 200, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[99]), 200, false);
 					Application.m_power_switch.setOutput(POMPE_ARD, true);
 					Application.m_power_switch.setOutput(POMPE_ARG, true);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_ACTIVATION_POMPE;
@@ -19926,12 +20303,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[94])
+				if (timeEvents[98])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_GLISSSADE();
 					/* 'default' enter sequence for state POSITIONS_PLATEAUX_BAS */
 					/* Entry action for state 'POSITIONS_PLATEAUX_BAS'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[104]), 200, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[108]), 200, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_PLATEAUX_BAS;
@@ -20008,12 +20385,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[95])
+				if (timeEvents[99])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_ACTIVATION_POMPE();
 					/* 'default' enter sequence for state VITESSE_VENTOUSE_01 */
 					/* Entry action for state 'VITESSE_VENTOUSE_01'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[97]), 40, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[101]), 40, false);
 					Application.m_servos_ax.setSpeed(SERVO_VENTOUSE_ARG_VERT, 200);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_VITESSE_VENTOUSE_01;
 					stateConfVectorPosition = 0;
@@ -20089,12 +20466,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[96])
+				if (timeEvents[100])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_DEVENTOUSAGE_ATOMES();
 					/* 'default' enter sequence for state SECU_ELETROVANNES */
 					/* Entry action for state 'SECU_ELETROVANNES'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[103]), 40, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[107]), 40, false);
 					Application.m_power_switch.setOutput(EV_ARD, false);
 					Application.m_power_switch.setOutput(EV_ARG, false);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_SECU_ELETROVANNES;
@@ -20171,12 +20548,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[97])
+				if (timeEvents[101])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_VITESSE_VENTOUSE_01();
 					/* 'default' enter sequence for state VITESSE_VENTOUSE_02 */
 					/* Entry action for state 'VITESSE_VENTOUSE_02'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[98]), 40, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[102]), 40, false);
 					Application.m_servos_ax.setSpeed(SERVO_VENTOUSE_ARD_VERT, 200);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_VITESSE_VENTOUSE_02;
 					stateConfVectorPosition = 0;
@@ -20252,12 +20629,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[98])
+				if (timeEvents[102])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_VITESSE_VENTOUSE_02();
 					/* 'default' enter sequence for state POSITIONS_BRAS_HAUT_01 */
 					/* Entry action for state 'POSITIONS_BRAS_HAUT_01'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[101]), 1500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[105]), 1500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_BRAS_HAUT_01;
 					stateConfVectorPosition = 0;
@@ -20333,12 +20710,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[99])
+				if (timeEvents[103])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_PIVOTEMENT_ATOME_01();
 					/* 'default' enter sequence for state PIVOTEMENT_ATOME_02 */
 					/* Entry action for state 'PIVOTEMENT_ATOME_02'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[100]), 500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[104]), 500, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, IA::DefaultSCI::TOUSE_D_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_PIVOTEMENT_ATOME_02;
 					stateConfVectorPosition = 0;
@@ -20414,12 +20791,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[100])
+				if (timeEvents[104])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_PIVOTEMENT_ATOME_02();
 					/* 'default' enter sequence for state DEVENTOUSAGE_ATOMES */
 					/* Entry action for state 'DEVENTOUSAGE_ATOMES'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[96]), 1 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[100]), 1 * 1000, false);
 					Application.m_power_switch.setOutput(POMPE_ARD, false);
 					Application.m_power_switch.setOutput(EV_ARD, true);
 					Application.m_power_switch.setOutput(POMPE_ARG, false);
@@ -20498,12 +20875,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[101])
+				if (timeEvents[105])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_BRAS_HAUT_01();
 					/* 'default' enter sequence for state POSITIONS_BRAS_HAUT_02 */
 					/* Entry action for state 'POSITIONS_BRAS_HAUT_02'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[102]), 1500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[106]), 1500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_BRAS_HAUT_02;
 					stateConfVectorPosition = 0;
@@ -20579,12 +20956,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[102])
+				if (timeEvents[106])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_BRAS_HAUT_02();
 					/* 'default' enter sequence for state PIVOTEMENT_ATOME_01 */
 					/* Entry action for state 'PIVOTEMENT_ATOME_01'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[99]), 2 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[103]), 2 * 1000, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, IA::DefaultSCI::TOUSE_G_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_PIVOTEMENT_ATOME_01;
 					stateConfVectorPosition = 0;
@@ -20660,12 +21037,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[103])
+				if (timeEvents[107])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_SECU_ELETROVANNES();
 					/* 'default' enter sequence for state GLISSSADE */
 					/* Entry action for state 'GLISSSADE'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[94]), 2 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[98]), 2 * 1000, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, 140);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, 95);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, 170);
@@ -20744,7 +21121,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAG
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[104])
+				if (timeEvents[108])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_05_RAMASSAGE_ZONE_CHAOS_TACHE_RAMASSAGE_ZONE_CHAOS_POSITIONS_PLATEAUX_BAS();
 					/* 'default' enter sequence for state FIN_SEQUENCE */
@@ -20822,12 +21199,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (iface.EV_ConvergenceMvt_raised || timeEvents[105])
+				if (iface.EV_ConvergenceMvt_raised || timeEvents[109])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPASSE_ZONE_CHAOS_RAMASSE_DEPART();
 					/* 'default' enter sequence for state DEPLACEMENT_RAMASSAGE_ATOME */
 					/* Entry action for state 'DEPLACEMENT_RAMASSAGE_ATOME'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[106]), 2 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[110]), 2 * 1000, false);
 					SCI_Asser_OCB::XYTeta(114, 0, IA::DefaultSCI::PI);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPLACEMENT_RAMASSAGE_ATOME;
 					stateConfVectorPosition = 0;
@@ -21045,12 +21422,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (iface.EV_ConvergenceMvt_raised || timeEvents[106])
+				if (iface.EV_ConvergenceMvt_raised || timeEvents[110])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPLACEMENT_RAMASSAGE_ATOME();
 					/* 'default' enter sequence for state ACTIVATION_POMPE */
 					/* Entry action for state 'ACTIVATION_POMPE'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[110]), 1 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[113]), 1 * 1000, false);
 					Application.m_power_switch.setOutput(POMPE_ARD, true);
 					Application.m_power_switch.setOutput(POMPE_ARG, true);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_ACTIVATION_POMPE;
@@ -21127,12 +21504,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[107])
+				if (timeEvents[111])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PRISE_ATOME();
 					/* 'default' enter sequence for state Copy_2_PRISE_ATOME */
 					/* Entry action for state 'Copy_2_PRISE_ATOME'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[124]), 500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[127]), 500, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, IA::DefaultSCI::TOUSE_D_MILIEU);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_PRISE_ATOME;
 					stateConfVectorPosition = 0;
@@ -21208,96 +21585,16 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[108])
+				if (timeEvents[112])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DESCENTE_PARECHOC();
 					/* 'default' enter sequence for state DEPASSE_ZONE_CHAOS_RAMASSE_DEPART */
 					/* Entry action for state 'DEPASSE_ZONE_CHAOS_RAMASSE_DEPART'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[105]), 4 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[109]), 4 * 1000, false);
 					SCI_Asser_OCB::XYTeta(123.5, 0, IA::DefaultSCI::PI);
 					iface.evit_choix_strategie = ((int32_t) EVITEMENT_NORMAL);
 					iface.evit_nombre_max_tentatives = 1;
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPASSE_ZONE_CHAOS_RAMASSE_DEPART;
-					stateConfVectorPosition = 0;
-					historyVector[4] = stateConfVector[0];
-				} 
-			}
-		}
-	}
-}
-
-/* The reactions of state GLISSSADE. */
-void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE()
-{
-	/* The reactions of state GLISSSADE. */
-	if (timeEvents[9])
-	{ 
-		exseq_main_region_MATCH_EN_COURS();
-		/* 'default' enter sequence for state FIN_MATCH */
-		/* Entry action for state 'FIN_MATCH'. */
-		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
-		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
-		Application.m_power_switch.setOutput(EV_AV, false);
-		Application.m_power_switch.setOutput(EV_ARD, false);
-		Application.m_power_switch.setOutput(EV_ARG, false);
-		Application.m_power_switch.setOutput(POMPE_ARD, false);
-		Application.m_power_switch.setOutput(POMPE_ARG, false);
-		Application.m_power_switch.setOutput(POMPE_AV, false);
-		stateConfVector[0] = main_region_FIN_MATCH;
-		stateConfVectorPosition = 0;
-	}  else
-	{
-		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
-		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
-		{ 
-			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state DETECTION_OBSTACLE */
-			/* Entry action for state 'DETECTION_OBSTACLE'. */
-			iface.evitementEnCours = true;
-			Application.m_leds.setPattern(PATTERN_K2000, 1000);
-			/* 'default' enter sequence for region r1 */
-			/* Default react sequence for initial entry  */
-			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-			/* 'default' enter sequence for region r1 */
-			/* Default react sequence for initial entry  */
-			/* 'default' enter sequence for state EVITEMENT_INIT */
-			/* Entry action for state 'EVITEMENT_INIT'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-			iface.evit_memo_force_obstacle = iface.forceObstacle;
-			iface.forceObstacle = true;
-			iface.evit_debug_etape = 0;
-			iface.evit_nombre_tentatives = 0;
-			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-			stateConfVectorPosition = 0;
-		}  else
-		{
-			if (ifaceInternalSCI.sequence4 == false)
-			{ 
-				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state SUPERVISEUR */
-				/* Entry action for state 'SUPERVISEUR'. */
-				ifaceInternalSCI.idx_strategy += 1;
-				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
-				/* Default react sequence for initial entry  */
-				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
-			}  else
-			{
-				if (timeEvents[109])
-				{ 
-					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE();
-					/* 'default' enter sequence for state Copy_2_GLISSSADE */
-					/* Entry action for state 'Copy_2_GLISSSADE'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[125]), 1 * 1000, false);
-					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE;
 					stateConfVectorPosition = 0;
 					historyVector[4] = stateConfVector[0];
 				} 
@@ -21371,12 +21668,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[110])
+				if (timeEvents[113])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_ACTIVATION_POMPE();
 					/* 'default' enter sequence for state Copy_1_POSITIONS_PLATEAUX_MILIEU */
 					/* Entry action for state 'Copy_1_POSITIONS_PLATEAUX_MILIEU'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[121]), 500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[124]), 500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_MILIEU;
@@ -21453,12 +21750,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[111])
+				if (timeEvents[114])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEVENTOUSAGE_ATOMES();
 					/* 'default' enter sequence for state SECU_ELETROVANNES */
 					/* Entry action for state 'SECU_ELETROVANNES'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[119]), 40, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[122]), 500, false);
 					Application.m_power_switch.setOutput(EV_ARD, false);
 					Application.m_power_switch.setOutput(EV_ARG, false);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_SECU_ELETROVANNES;
@@ -21535,12 +21832,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[112])
+				if (timeEvents[115])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_VITESSE_VENTOUSE_01();
 					/* 'default' enter sequence for state VITESSE_VENTOUSE_02 */
 					/* Entry action for state 'VITESSE_VENTOUSE_02'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[113]), 40, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[116]), 40, false);
 					Application.m_servos_ax.setSpeed(SERVO_VENTOUSE_ARD_VERT, 200);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_VITESSE_VENTOUSE_02;
 					stateConfVectorPosition = 0;
@@ -21616,12 +21913,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[113])
+				if (timeEvents[116])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_VITESSE_VENTOUSE_02();
 					/* 'default' enter sequence for state POSITIONS_BRAS_HAUT_01 */
 					/* Entry action for state 'POSITIONS_BRAS_HAUT_01'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[117]), 1500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[120]), 1500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_BRAS_HAUT_01;
 					stateConfVectorPosition = 0;
@@ -21697,12 +21994,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[114])
+				if (timeEvents[117])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PIVOTEMENT_ATOME_01();
 					/* 'default' enter sequence for state PIVOTEMENT_ATOME_02 */
 					/* Entry action for state 'PIVOTEMENT_ATOME_02'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[115]), 1 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[118]), 1 * 1000, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, IA::DefaultSCI::TOUSE_D_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PIVOTEMENT_ATOME_02;
 					stateConfVectorPosition = 0;
@@ -21778,12 +22075,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[115])
+				if (timeEvents[118])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PIVOTEMENT_ATOME_02();
 					/* 'default' enter sequence for state POSITIONS_PLATEAUX_MILIEU */
 					/* Entry action for state 'POSITIONS_PLATEAUX_MILIEU'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[116]), 500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[119]), 500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_PLATEAUX_MILIEU;
@@ -21860,12 +22157,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[116])
+				if (timeEvents[119])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_PLATEAUX_MILIEU();
 					/* 'default' enter sequence for state DEVENTOUSAGE_ATOMES */
 					/* Entry action for state 'DEVENTOUSAGE_ATOMES'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[111]), 500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[114]), 500, false);
 					Application.m_power_switch.setOutput(POMPE_ARD, false);
 					Application.m_power_switch.setOutput(EV_ARD, true);
 					Application.m_power_switch.setOutput(POMPE_ARG, false);
@@ -21944,12 +22241,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[117])
+				if (timeEvents[120])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_BRAS_HAUT_01();
 					/* 'default' enter sequence for state POSITIONS_BRAS_HAUT_02 */
 					/* Entry action for state 'POSITIONS_BRAS_HAUT_02'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[118]), 1500, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[121]), 1500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_BRAS_HAUT_02;
 					stateConfVectorPosition = 0;
@@ -22025,12 +22322,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[118])
+				if (timeEvents[121])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_BRAS_HAUT_02();
 					/* 'default' enter sequence for state PIVOTEMENT_ATOME_01 */
 					/* Entry action for state 'PIVOTEMENT_ATOME_01'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[114]), 2 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[117]), 2 * 1000, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, IA::DefaultSCI::TOUSE_G_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PIVOTEMENT_ATOME_01;
 					stateConfVectorPosition = 0;
@@ -22106,15 +22403,15 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[119])
+				if (timeEvents[122])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_SECU_ELETROVANNES();
-					/* 'default' enter sequence for state Copy_1_POSITIONS_PLATEAUX_BAS */
-					/* Entry action for state 'Copy_1_POSITIONS_PLATEAUX_BAS'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[126]), 500, false);
+					/* 'default' enter sequence for state POSITIONS_PLATEAUX_BAS */
+					/* Entry action for state 'POSITIONS_PLATEAUX_BAS'. */
+					timer->setTimer(this, (sc_eventid)(&timeEvents[123]), 200, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
-					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS;
+					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_PLATEAUX_BAS;
 					stateConfVectorPosition = 0;
 					historyVector[4] = stateConfVector[0];
 				} 
@@ -22188,15 +22485,15 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[120])
+				if (timeEvents[123])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_PLATEAUX_BAS();
-					/* 'default' enter sequence for state Copy_1_GLISSSADE */
-					/* Entry action for state 'Copy_1_GLISSSADE'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[122]), 500, false);
+					/* 'default' enter sequence for state GLISSSADE */
+					/* Entry action for state 'GLISSSADE'. */
+					timer->setTimer(this, (sc_eventid)(&timeEvents[125]), 500, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_HAUT);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_HAUT);
-					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE;
+					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE;
 					stateConfVectorPosition = 0;
 					historyVector[4] = stateConfVector[0];
 				} 
@@ -22270,12 +22567,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[121])
+				if (timeEvents[124])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_MILIEU();
 					/* 'default' enter sequence for state PRISE_ATOME */
 					/* Entry action for state 'PRISE_ATOME'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[107]), 40, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[111]), 40, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARG_VERT, IA::DefaultSCI::TOUSE_G_MILIEU);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PRISE_ATOME;
 					stateConfVectorPosition = 0;
@@ -22286,10 +22583,10 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 	}
 }
 
-/* The reactions of state Copy_1_GLISSSADE. */
-void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE()
+/* The reactions of state GLISSSADE. */
+void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE()
 {
-	/* The reactions of state Copy_1_GLISSSADE. */
+	/* The reactions of state GLISSSADE. */
 	if (timeEvents[9])
 	{ 
 		exseq_main_region_MATCH_EN_COURS();
@@ -22351,9 +22648,9 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[122])
+				if (timeEvents[125])
 				{ 
-					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_GLISSSADE();
+					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE();
 					/* 'default' enter sequence for state FIN_SEQUENCE */
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_FIN_SEQUENCE;
 					stateConfVectorPosition = 0;
@@ -22429,12 +22726,12 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[123])
+				if (timeEvents[126])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_PRISE_ATOME();
 					/* 'default' enter sequence for state VITESSE_VENTOUSE_01 */
 					/* Entry action for state 'VITESSE_VENTOUSE_01'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[112]), 40, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[115]), 40, false);
 					Application.m_servos_ax.setSpeed(SERVO_VENTOUSE_ARG_VERT, 200);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_VITESSE_VENTOUSE_01;
 					stateConfVectorPosition = 0;
@@ -22510,177 +22807,15 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[124])
+				if (timeEvents[127])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_PRISE_ATOME();
 					/* 'default' enter sequence for state Copy_1_PRISE_ATOME */
 					/* Entry action for state 'Copy_1_PRISE_ATOME'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[123]), 1 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[126]), 1 * 1000, false);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, IA::DefaultSCI::KMAR_D_BAS);
 					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, IA::DefaultSCI::KMAR_G_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_PRISE_ATOME;
-					stateConfVectorPosition = 0;
-					historyVector[4] = stateConfVector[0];
-				} 
-			}
-		}
-	}
-}
-
-/* The reactions of state Copy_2_GLISSSADE. */
-void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE()
-{
-	/* The reactions of state Copy_2_GLISSSADE. */
-	if (timeEvents[9])
-	{ 
-		exseq_main_region_MATCH_EN_COURS();
-		/* 'default' enter sequence for state FIN_MATCH */
-		/* Entry action for state 'FIN_MATCH'. */
-		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
-		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
-		Application.m_power_switch.setOutput(EV_AV, false);
-		Application.m_power_switch.setOutput(EV_ARD, false);
-		Application.m_power_switch.setOutput(EV_ARG, false);
-		Application.m_power_switch.setOutput(POMPE_ARD, false);
-		Application.m_power_switch.setOutput(POMPE_ARG, false);
-		Application.m_power_switch.setOutput(POMPE_AV, false);
-		stateConfVector[0] = main_region_FIN_MATCH;
-		stateConfVectorPosition = 0;
-	}  else
-	{
-		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
-		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
-		{ 
-			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state DETECTION_OBSTACLE */
-			/* Entry action for state 'DETECTION_OBSTACLE'. */
-			iface.evitementEnCours = true;
-			Application.m_leds.setPattern(PATTERN_K2000, 1000);
-			/* 'default' enter sequence for region r1 */
-			/* Default react sequence for initial entry  */
-			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-			/* 'default' enter sequence for region r1 */
-			/* Default react sequence for initial entry  */
-			/* 'default' enter sequence for state EVITEMENT_INIT */
-			/* Entry action for state 'EVITEMENT_INIT'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-			iface.evit_memo_force_obstacle = iface.forceObstacle;
-			iface.forceObstacle = true;
-			iface.evit_debug_etape = 0;
-			iface.evit_nombre_tentatives = 0;
-			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-			stateConfVectorPosition = 0;
-		}  else
-		{
-			if (ifaceInternalSCI.sequence4 == false)
-			{ 
-				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state SUPERVISEUR */
-				/* Entry action for state 'SUPERVISEUR'. */
-				ifaceInternalSCI.idx_strategy += 1;
-				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
-				/* Default react sequence for initial entry  */
-				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
-			}  else
-			{
-				if (timeEvents[125])
-				{ 
-					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE();
-					/* 'default' enter sequence for state POSITIONS_PLATEAUX_BAS */
-					/* Entry action for state 'POSITIONS_PLATEAUX_BAS'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[120]), 200, false);
-					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
-					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
-					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_PLATEAUX_BAS;
-					stateConfVectorPosition = 0;
-					historyVector[4] = stateConfVector[0];
-				} 
-			}
-		}
-	}
-}
-
-/* The reactions of state Copy_1_POSITIONS_PLATEAUX_BAS. */
-void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS()
-{
-	/* The reactions of state Copy_1_POSITIONS_PLATEAUX_BAS. */
-	if (timeEvents[9])
-	{ 
-		exseq_main_region_MATCH_EN_COURS();
-		/* 'default' enter sequence for state FIN_MATCH */
-		/* Entry action for state 'FIN_MATCH'. */
-		Application.m_leds.setPattern(PATTERN_CLIGNO_1234, 400);
-		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = 9999;
-		Application.m_power_switch.setOutput(EV_AV, false);
-		Application.m_power_switch.setOutput(EV_ARD, false);
-		Application.m_power_switch.setOutput(EV_ARG, false);
-		Application.m_power_switch.setOutput(POMPE_ARD, false);
-		Application.m_power_switch.setOutput(POMPE_ARG, false);
-		Application.m_power_switch.setOutput(POMPE_AV, false);
-		stateConfVector[0] = main_region_FIN_MATCH;
-		stateConfVectorPosition = 0;
-	}  else
-	{
-		iface.tempsMatch = iface.tempsMatch + ifaceInternalSCI.Te;
-		Application.m_messenger_xbee_ntw.m_database.m_TimestampMatch.Timestamp = ((int32_t) iface.tempsMatch);
-		if ((iface.IN_Obstacle == 1) && (iface.inhibeObstacle == false))
-		{ 
-			exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-			/* 'default' enter sequence for state DETECTION_OBSTACLE */
-			/* Entry action for state 'DETECTION_OBSTACLE'. */
-			iface.evitementEnCours = true;
-			Application.m_leds.setPattern(PATTERN_K2000, 1000);
-			/* 'default' enter sequence for region r1 */
-			/* Default react sequence for initial entry  */
-			/* 'default' enter sequence for state EVITEMMENT_OBSTACLE_CONTENEUR */
-			/* 'default' enter sequence for region r1 */
-			/* Default react sequence for initial entry  */
-			/* 'default' enter sequence for state EVITEMENT_INIT */
-			/* Entry action for state 'EVITEMENT_INIT'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[10]), (1) * 1000, false);
-			iface.evit_memo_cde_min = Application.m_asservissement.cde_min;
-			iface.evit_memo_cde_max = Application.m_asservissement.cde_max;
-			iface.evit_memo_idx_sportiv = Application.m_asservissement.Ind_perfo;
-			iface.evit_memo_vitesse_avance = Application.m_asservissement.vitesse_avance_max;
-			iface.evit_memo_vitesse_angle = Application.m_asservissement.vitesse_rotation_max;
-			iface.evit_sens_avant_detection = iface.IN_sens_deplacement;
-			iface.evit_memo_force_obstacle = iface.forceObstacle;
-			iface.forceObstacle = true;
-			iface.evit_debug_etape = 0;
-			iface.evit_nombre_tentatives = 0;
-			iface.evit_toggle_signe = iface.evit_toggle_signe * -1;
-			Application.m_asservissement.CommandeMouvementXY_TETA(((float) iface.IN_x_pos), ((float) iface.IN_y_pos), ((float) iface.IN_teta_pos));
-			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1_EVITEMENT_INIT;
-			stateConfVectorPosition = 0;
-		}  else
-		{
-			if (ifaceInternalSCI.sequence4 == false)
-			{ 
-				exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART();
-				/* 'default' enter sequence for state SUPERVISEUR */
-				/* Entry action for state 'SUPERVISEUR'. */
-				ifaceInternalSCI.idx_strategy += 1;
-				/* 'default' enter sequence for region TACHE_SUPERVISEUR */
-				/* Default react sequence for initial entry  */
-				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
-			}  else
-			{
-				if (timeEvents[126])
-				{ 
-					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_1_POSITIONS_PLATEAUX_BAS();
-					/* 'default' enter sequence for state GLISSSADE */
-					/* Entry action for state 'GLISSSADE'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[109]), 500, false);
-					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE;
 					stateConfVectorPosition = 0;
 					historyVector[4] = stateConfVector[0];
 				} 
@@ -22896,7 +23031,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMO
 				react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SUPERVISEUR__choice_1();
 			}  else
 			{
-				if (timeEvents[127])
+				if (timeEvents[128])
 				{ 
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_06_FIN_HOMOLO_STRATEGIE_FIN_HOMOLO_MAINTIEN_KMAR_AR();
 					/* 'default' enter sequence for state SE_METTRE_EN_LIEU_SUR */
