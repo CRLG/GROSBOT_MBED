@@ -4773,7 +4773,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDEN
 			/* 'default' enter sequence for state DECLENCHEMENT_ACCELERATEUR_JAUNE */
 			/* Entry action for state 'DECLENCHEMENT_ACCELERATEUR_JAUNE'. */
 			timer->setTimer(this, (sc_eventid)(&timeEvents[55]), 2 * 1000, false);
-			SCI_Asser_OCB::DistanceAngle(-17, IA::DefaultSCI::PI);
+			SCI_Asser_OCB::DistanceAngle(-19, IA::DefaultSCI::PI);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_DECLENCHEMENT_ACCELERATEUR_JAUNE;
 			stateConfVectorPosition = 0;
 			historyVector[1] = stateConfVector[0];
@@ -4798,7 +4798,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDEN
 			/* 'default' enter sequence for state DECLENCHEMENT_ACCELERATEUR_VIOLET */
 			/* Entry action for state 'DECLENCHEMENT_ACCELERATEUR_VIOLET'. */
 			timer->setTimer(this, (sc_eventid)(&timeEvents[57]), 2 * 1000, false);
-			SCI_Asser_OCB::DistanceAngle(16, 0);
+			SCI_Asser_OCB::DistanceAngle(19, 0);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_DECLENCHEMENT_ACCELERATEUR_VIOLET;
 			stateConfVectorPosition = 0;
 			historyVector[1] = stateConfVector[0];
@@ -5461,8 +5461,6 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 			/* 'default' enter sequence for state GLISSSADE */
 			/* Entry action for state 'GLISSSADE'. */
 			timer->setTimer(this, (sc_eventid)(&timeEvents[109]), 500, false);
-			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, 140);
-			Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, 170);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE;
 			stateConfVectorPosition = 0;
 			historyVector[4] = stateConfVector[0];
@@ -5531,7 +5529,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 		{
 			/* 'default' enter sequence for state PIVOTEMENT_ATOME_02 */
 			/* Entry action for state 'PIVOTEMENT_ATOME_02'. */
-			timer->setTimer(this, (sc_eventid)(&timeEvents[115]), 2 * 1000, false);
+			timer->setTimer(this, (sc_eventid)(&timeEvents[115]), 1 * 1000, false);
 			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, IA::DefaultSCI::TOUSE_D_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PIVOTEMENT_ATOME_02;
 			stateConfVectorPosition = 0;
@@ -5543,8 +5541,8 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 			/* 'default' enter sequence for state POSITIONS_PLATEAUX_MILIEU */
 			/* Entry action for state 'POSITIONS_PLATEAUX_MILIEU'. */
 			timer->setTimer(this, (sc_eventid)(&timeEvents[116]), 500, false);
-			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_MILIEU);
-			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_MILIEU);
+			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
+			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_PLATEAUX_MILIEU;
 			stateConfVectorPosition = 0;
 			historyVector[4] = stateConfVector[0];
@@ -5648,8 +5646,6 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 			/* 'default' enter sequence for state Copy_2_GLISSSADE */
 			/* Entry action for state 'Copy_2_GLISSSADE'. */
 			timer->setTimer(this, (sc_eventid)(&timeEvents[125]), 1 * 1000, false);
-			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_HAUT);
-			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_HAUT);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE;
 			stateConfVectorPosition = 0;
 			historyVector[4] = stateConfVector[0];
@@ -12562,7 +12558,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIU
 					/* 'default' enter sequence for state DECLENCHEMENT_ACCELERATEUR_JAUNE */
 					/* Entry action for state 'DECLENCHEMENT_ACCELERATEUR_JAUNE'. */
 					timer->setTimer(this, (sc_eventid)(&timeEvents[55]), 2 * 1000, false);
-					SCI_Asser_OCB::DistanceAngle(-17, IA::DefaultSCI::PI);
+					SCI_Asser_OCB::DistanceAngle(-19, IA::DefaultSCI::PI);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_DECLENCHEMENT_ACCELERATEUR_JAUNE;
 					stateConfVectorPosition = 0;
 					historyVector[1] = stateConfVector[0];
@@ -13132,7 +13128,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIU
 					/* 'default' enter sequence for state DECLENCHEMENT_ACCELERATEUR_VIOLET */
 					/* Entry action for state 'DECLENCHEMENT_ACCELERATEUR_VIOLET'. */
 					timer->setTimer(this, (sc_eventid)(&timeEvents[57]), 2 * 1000, false);
-					SCI_Asser_OCB::DistanceAngle(16, 0);
+					SCI_Asser_OCB::DistanceAngle(19, 0);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_DECLENCHEMENT_ACCELERATEUR_VIOLET;
 					stateConfVectorPosition = 0;
 					historyVector[1] = stateConfVector[0];
@@ -21301,8 +21297,6 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 					/* 'default' enter sequence for state Copy_2_GLISSSADE */
 					/* Entry action for state 'Copy_2_GLISSSADE'. */
 					timer->setTimer(this, (sc_eventid)(&timeEvents[125]), 1 * 1000, false);
-					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_HAUT);
-					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_HAUT);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_Copy_2_GLISSSADE;
 					stateConfVectorPosition = 0;
 					historyVector[4] = stateConfVector[0];
@@ -21708,7 +21702,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 					exseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PIVOTEMENT_ATOME_01();
 					/* 'default' enter sequence for state PIVOTEMENT_ATOME_02 */
 					/* Entry action for state 'PIVOTEMENT_ATOME_02'. */
-					timer->setTimer(this, (sc_eventid)(&timeEvents[115]), 2 * 1000, false);
+					timer->setTimer(this, (sc_eventid)(&timeEvents[115]), 1 * 1000, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_ARD_VERT, IA::DefaultSCI::TOUSE_D_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_PIVOTEMENT_ATOME_02;
 					stateConfVectorPosition = 0;
@@ -21790,8 +21784,8 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 					/* 'default' enter sequence for state POSITIONS_PLATEAUX_MILIEU */
 					/* Entry action for state 'POSITIONS_PLATEAUX_MILIEU'. */
 					timer->setTimer(this, (sc_eventid)(&timeEvents[116]), 500, false);
-					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_MILIEU);
-					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_MILIEU);
+					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_BAS);
+					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_POSITIONS_PLATEAUX_MILIEU;
 					stateConfVectorPosition = 0;
 					historyVector[4] = stateConfVector[0];
@@ -22686,8 +22680,6 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 					/* 'default' enter sequence for state GLISSSADE */
 					/* Entry action for state 'GLISSSADE'. */
 					timer->setTimer(this, (sc_eventid)(&timeEvents[109]), 500, false);
-					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARG, 140);
-					Application.m_servos_sd20.CommandePosition(SERVO_BRAS_ARD, 170);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_GLISSSADE;
 					stateConfVectorPosition = 0;
 					historyVector[4] = stateConfVector[0];
