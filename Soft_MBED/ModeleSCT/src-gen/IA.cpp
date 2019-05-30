@@ -4300,6 +4300,8 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOY
 			/* Entry action for state 'DEPASSE_ZONE_CHAOS'. */
 			timer->setTimer(this, (sc_eventid)(&timeEvents[18]), 3 * 1000, false);
 			SCI_Asser_OCB::XYTeta(114, 0, IA::DefaultSCI::PI);
+			iface.evit_choix_strategie = ((int32_t) EVITEMENT_NORMAL);
+			iface.evit_nombre_max_tentatives = 1;
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_DEPASSE_ZONE_CHAOS;
 			stateConfVectorPosition = 0;
 			historyVector[0] = stateConfVector[0];
@@ -4311,6 +4313,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOY
 			/* Entry action for state 'FACE_ZONE_CHAOS'. */
 			timer->setTimer(this, (sc_eventid)(&timeEvents[19]), 5 * 1000, false);
 			SCI_Asser_OCB::XYTeta(114, -57 * ifaceInternalSCI.invMouv, 0);
+			iface.evit_nombre_max_tentatives = 2;
 			Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_FACE_ZONE_CHAOS;
 			stateConfVectorPosition = 0;
@@ -4404,6 +4407,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDEN
 			timer->setTimer(this, (sc_eventid)(&timeEvents[25]), 6 * 1000, false);
 			iface.forceObstacle = true;
 			SCI_Asser_OCB::XY(209, 12 * ifaceInternalSCI.invMouv);
+			iface.evit_choix_strategie = ((int32_t) EVITEMENT_NEUTRE);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_DEPLACEMENT_VERS_GOLDENIUM;
 			stateConfVectorPosition = 0;
 			historyVector[1] = stateConfVector[0];
@@ -4463,6 +4467,8 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDEN
 			timer->setTimer(this, (sc_eventid)(&timeEvents[30]), 50, false);
 			Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
 			Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_HAUT);
+			iface.evit_choix_strategie = ((int32_t) EVITEMENT_NORMAL);
+			iface.evit_nombre_max_tentatives = 2;
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
 			stateConfVectorPosition = 0;
 			historyVector[1] = stateConfVector[0];
@@ -4500,6 +4506,8 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDEN
 			iface.inhibeObstacle = false;
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_HAUT);
 			Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_HAUT);
+			iface.evit_choix_strategie = ((int32_t) EVITEMENT_NORMAL);
+			iface.evit_nombre_max_tentatives = 1;
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_PLACEMENT_DEVANT_BALANCE;
 			stateConfVectorPosition = 0;
 			historyVector[1] = stateConfVector[0];
@@ -4826,6 +4834,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDEN
 			timer->setTimer(this, (sc_eventid)(&timeEvents[60]), 3 * 1000, false);
 			Application.m_asservissement.CommandeMouvementXY_TETA(111, -70 * ifaceInternalSCI.invMouv, (-IA::DefaultSCI::PI / 2.0) * ifaceInternalSCI.invMouv);
 			iface.inhibeObstacle = true;
+			iface.evit_choix_strategie = ((int32_t) EVITEMENT_NEUTRE);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_RAPPROCHEMENT_DEVANT_BALANCE;
 			stateConfVectorPosition = 0;
 			historyVector[1] = stateConfVector[0];
@@ -5399,6 +5408,8 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_
 			/* Entry action for state 'DEPASSE_ZONE_CHAOS_RAMASSE_DEPART'. */
 			timer->setTimer(this, (sc_eventid)(&timeEvents[105]), 4 * 1000, false);
 			SCI_Asser_OCB::XYTeta(123.5, 0, IA::DefaultSCI::PI);
+			iface.evit_choix_strategie = ((int32_t) EVITEMENT_NORMAL);
+			iface.evit_nombre_max_tentatives = 1;
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPASSE_ZONE_CHAOS_RAMASSE_DEPART;
 			stateConfVectorPosition = 0;
 			historyVector[4] = stateConfVector[0];
@@ -12304,6 +12315,8 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAG
 					/* Entry action for state 'DEPASSE_ZONE_CHAOS'. */
 					timer->setTimer(this, (sc_eventid)(&timeEvents[18]), 3 * 1000, false);
 					SCI_Asser_OCB::XYTeta(114, 0, IA::DefaultSCI::PI);
+					iface.evit_choix_strategie = ((int32_t) EVITEMENT_NORMAL);
+					iface.evit_nombre_max_tentatives = 1;
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_DEPASSE_ZONE_CHAOS;
 					stateConfVectorPosition = 0;
 					historyVector[0] = stateConfVector[0];
@@ -12385,6 +12398,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAG
 					/* Entry action for state 'FACE_ZONE_CHAOS'. */
 					timer->setTimer(this, (sc_eventid)(&timeEvents[19]), 5 * 1000, false);
 					SCI_Asser_OCB::XYTeta(114, -57 * ifaceInternalSCI.invMouv, 0);
+					iface.evit_nombre_max_tentatives = 2;
 					Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_BAS);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_01_NETTOYAGE_TACHE_NETTOYAGE_FACE_ZONE_CHAOS;
 					stateConfVectorPosition = 0;
@@ -13282,6 +13296,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIU
 					timer->setTimer(this, (sc_eventid)(&timeEvents[60]), 3 * 1000, false);
 					Application.m_asservissement.CommandeMouvementXY_TETA(111, -70 * ifaceInternalSCI.invMouv, (-IA::DefaultSCI::PI / 2.0) * ifaceInternalSCI.invMouv);
 					iface.inhibeObstacle = true;
+					iface.evit_choix_strategie = ((int32_t) EVITEMENT_NEUTRE);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_RAPPROCHEMENT_DEVANT_BALANCE;
 					stateConfVectorPosition = 0;
 					historyVector[1] = stateConfVector[0];
@@ -14482,6 +14497,8 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIU
 					iface.inhibeObstacle = false;
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_G, IA::DefaultSCI::TOB_G_HAUT);
 					Application.m_servos_sd20.CommandePosition(SERVO_PLATEAU_D, IA::DefaultSCI::TOB_D_HAUT);
+					iface.evit_choix_strategie = ((int32_t) EVITEMENT_NORMAL);
+					iface.evit_nombre_max_tentatives = 1;
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_PLACEMENT_DEVANT_BALANCE;
 					stateConfVectorPosition = 0;
 					historyVector[1] = stateConfVector[0];
@@ -14970,6 +14987,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIU
 					timer->setTimer(this, (sc_eventid)(&timeEvents[25]), 6 * 1000, false);
 					iface.forceObstacle = true;
 					SCI_Asser_OCB::XY(209, 12 * ifaceInternalSCI.invMouv);
+					iface.evit_choix_strategie = ((int32_t) EVITEMENT_NEUTRE);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_DEPLACEMENT_VERS_GOLDENIUM;
 					stateConfVectorPosition = 0;
 					historyVector[1] = stateConfVector[0];
@@ -15460,6 +15478,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIU
 					timer->setTimer(this, (sc_eventid)(&timeEvents[25]), 6 * 1000, false);
 					iface.forceObstacle = true;
 					SCI_Asser_OCB::XY(209, 12 * ifaceInternalSCI.invMouv);
+					iface.evit_choix_strategie = ((int32_t) EVITEMENT_NEUTRE);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_DEPLACEMENT_VERS_GOLDENIUM;
 					stateConfVectorPosition = 0;
 					historyVector[1] = stateConfVector[0];
@@ -16348,6 +16367,8 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 					timer->setTimer(this, (sc_eventid)(&timeEvents[30]), 50, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
 					Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_HAUT);
+					iface.evit_choix_strategie = ((int32_t) EVITEMENT_NORMAL);
+					iface.evit_nombre_max_tentatives = 2;
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
 					stateConfVectorPosition = 0;
 					historyVector[1] = stateConfVector[0];
@@ -16477,6 +16498,8 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 					timer->setTimer(this, (sc_eventid)(&timeEvents[30]), 50, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
 					Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_HAUT);
+					iface.evit_choix_strategie = ((int32_t) EVITEMENT_NORMAL);
+					iface.evit_nombre_max_tentatives = 2;
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
 					stateConfVectorPosition = 0;
 					historyVector[1] = stateConfVector[0];
@@ -16606,6 +16629,8 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 					timer->setTimer(this, (sc_eventid)(&timeEvents[30]), 50, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
 					Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_HAUT);
+					iface.evit_choix_strategie = ((int32_t) EVITEMENT_NORMAL);
+					iface.evit_nombre_max_tentatives = 2;
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
 					stateConfVectorPosition = 0;
 					historyVector[1] = stateConfVector[0];
@@ -16729,6 +16754,8 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 					timer->setTimer(this, (sc_eventid)(&timeEvents[30]), 50, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
 					Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_HAUT);
+					iface.evit_choix_strategie = ((int32_t) EVITEMENT_NORMAL);
+					iface.evit_nombre_max_tentatives = 2;
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
 					stateConfVectorPosition = 0;
 					historyVector[1] = stateConfVector[0];
@@ -16858,6 +16885,8 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 					timer->setTimer(this, (sc_eventid)(&timeEvents[30]), 50, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
 					Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_HAUT);
+					iface.evit_choix_strategie = ((int32_t) EVITEMENT_NORMAL);
+					iface.evit_nombre_max_tentatives = 2;
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
 					stateConfVectorPosition = 0;
 					historyVector[1] = stateConfVector[0];
@@ -16981,6 +17010,8 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 					timer->setTimer(this, (sc_eventid)(&timeEvents[30]), 50, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
 					Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_HAUT);
+					iface.evit_choix_strategie = ((int32_t) EVITEMENT_NORMAL);
+					iface.evit_nombre_max_tentatives = 2;
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
 					stateConfVectorPosition = 0;
 					historyVector[1] = stateConfVector[0];
@@ -17110,6 +17141,8 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 					timer->setTimer(this, (sc_eventid)(&timeEvents[30]), 50, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
 					Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_HAUT);
+					iface.evit_choix_strategie = ((int32_t) EVITEMENT_NORMAL);
+					iface.evit_nombre_max_tentatives = 2;
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
 					stateConfVectorPosition = 0;
 					historyVector[1] = stateConfVector[0];
@@ -17239,6 +17272,8 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SUPERVISEUR_TACHE_SU
 					timer->setTimer(this, (sc_eventid)(&timeEvents[30]), 50, false);
 					Application.m_servos_ax.setPosition(SERVO_VENTOUSE_AV_HORIZ, 512);
 					Application.m_servos_sd20.CommandePosition(SERVO_PARE_CHOC, IA::DefaultSCI::PARE_CHOC_HAUT);
+					iface.evit_choix_strategie = ((int32_t) EVITEMENT_NORMAL);
+					iface.evit_nombre_max_tentatives = 2;
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_PREPARATION_KMAR_GAUCHE_VENTOUSE_DROITE;
 					stateConfVectorPosition = 0;
 					historyVector[1] = stateConfVector[0];
@@ -21184,6 +21219,8 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DE
 					/* Entry action for state 'DEPASSE_ZONE_CHAOS_RAMASSE_DEPART'. */
 					timer->setTimer(this, (sc_eventid)(&timeEvents[105]), 4 * 1000, false);
 					SCI_Asser_OCB::XYTeta(123.5, 0, IA::DefaultSCI::PI);
+					iface.evit_choix_strategie = ((int32_t) EVITEMENT_NORMAL);
+					iface.evit_nombre_max_tentatives = 1;
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_04_ATOME_DEPART_TACHE_RAMASSAGE_ATOME_DEPART_DEPASSE_ZONE_CHAOS_RAMASSE_DEPART;
 					stateConfVectorPosition = 0;
 					historyVector[4] = stateConfVector[0];
@@ -23313,8 +23350,9 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATE
 			{
 				/* 'default' enter sequence for state STRATEGIE_PAR_DEFAUT */
 				/* Entry action for state 'STRATEGIE_PAR_DEFAUT'. */
-				Application.m_match.strategie[0] = 1;
-				Application.m_match.strategie[1] = 2;
+				Application.m_match.strategie[0] = 4;
+				Application.m_match.strategie[1] = 1;
+				Application.m_match.strategie[2] = 2;
 				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATEGY_TACHE_CHOIX_STRATEGIE_STRATEGIE_PAR_DEFAUT;
 				stateConfVectorPosition = 0;
 			}
