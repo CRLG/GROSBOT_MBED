@@ -341,7 +341,7 @@
               <vertices xsi:type="sgraph:State" xmi:id="_lv41oH80EemPN--nLg8hyQ" specification="entry/&#xA;Application.m_asservissement.CommandeMouvementXY_TETA(111,-70*invMouv,(-PI/2.0f)*invMouv);&#xA;inhibeObstacle=true;&#xA;evit_choix_strategie = eATTRIBUTION_STRATEGIES_EVITEMENT.EVITEMENT_NEUTRE as int32_t&#xA;&#xA;exit/&#xA;inhibeObstacle=false" name="RAPPROCHEMENT_DEVANT_BALANCE" incomingTransitions="_biJzIGbGEem395DmW-sNyQ">
                 <outgoingTransitions xmi:id="_8A6nsH80EemPN--nLg8hyQ" specification="EV_ConvergenceMvt, after 3s" target="_zAhM8Gk1Eemi2cIemKp2Kw"/>
               </vertices>
-              <vertices xsi:type="sgraph:State" xmi:id="_z1-qgH_MEem0_51BO5PFJA" specification="entry/&#xA;inhibeObstacle=true;&#xA;asser.XYTeta(142,21*invMouv,PI)&#xA;exit/&#xA;inhibeObstacle=false" name="Copy_2_FACE_BLEUIUM" incomingTransitions="_TfOCfmZNEem5p63CUEnKBQ">
+              <vertices xsi:type="sgraph:State" xmi:id="_z1-qgH_MEem0_51BO5PFJA" specification="entry/&#xA;inhibeObstacle=true;&#xA;asser.XYTeta(142,23*invMouv,PI)&#xA;exit/&#xA;inhibeObstacle=false" name="Copy_2_FACE_BLEUIUM" incomingTransitions="_TfOCfmZNEem5p63CUEnKBQ">
                 <outgoingTransitions xmi:id="_KIZjsH_NEem0_51BO5PFJA" specification="EV_ConvergenceMvt, after 5 s" target="_TfQesWZNEem5p63CUEnKBQ"/>
               </vertices>
               <vertices xsi:type="sgraph:State" xmi:id="_la0qsH_bEem0_51BO5PFJA" specification="entry/&#xA;Application.m_servos_ax.setPosition(eATTRIBUTION_SERVOS_AX.SERVO_VENTOUSE_AV_VERT,400)" name="KMAR_LEGEREMENT_A_GAUCHE" incomingTransitions="_zRzooH_bEem0_51BO5PFJA">
@@ -357,7 +357,7 @@
               <vertices xsi:type="sgraph:State" xmi:id="_SgR20H_cEem0_51BO5PFJA" specification="entry/&#xA;Application.m_servos_ax.setPosition(eATTRIBUTION_SERVOS_AX.SERVO_CHUCK_NORRIS,CHUCK_FERME)" name="FIN_POUSSETTE_VIOLET" incomingTransitions="__Nj04IKMEemiZMAo6ppVfw">
                 <outgoingTransitions xmi:id="_XBqXUH_cEem0_51BO5PFJA" specification="after 500ms" target="_r4WgoHGqEemR1tECdZOTXg"/>
               </vertices>
-              <vertices xsi:type="sgraph:State" xmi:id="_kHCSIH_cEem0_51BO5PFJA" specification="entry/&#xA;inhibeObstacle=true;&#xA;asser.XYTeta(142,21*invMouv,0)&#xA;exit/&#xA;inhibeObstacle=false" name="Copy_3_FACE_BLEUIUM" incomingTransitions="_JDFx8HGqEemR1tECdZOTXg">
+              <vertices xsi:type="sgraph:State" xmi:id="_kHCSIH_cEem0_51BO5PFJA" specification="entry/&#xA;inhibeObstacle=true;&#xA;asser.XYTeta(142,23*invMouv,0)&#xA;exit/&#xA;inhibeObstacle=false" name="Copy_3_FACE_BLEUIUM" incomingTransitions="_JDFx8HGqEemR1tECdZOTXg">
                 <outgoingTransitions xmi:id="_tY44AH_cEem0_51BO5PFJA" specification="EV_ConvergenceMvt, after 5 s" target="_Wlt8gGZREemL6pt3SJEr-g"/>
               </vertices>
               <vertices xsi:type="sgraph:State" xmi:id="_yRz1IH_kEem0_51BO5PFJA" specification="entry/&#xA;inhibeObstacle=true;&#xA;forceObstacle=false" name="ATTENTE" incomingTransitions="_TfUJEGZNEem5p63CUEnKBQ">

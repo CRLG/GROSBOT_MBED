@@ -4862,7 +4862,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDEN
 			/* Entry action for state 'Copy_2_FACE_BLEUIUM'. */
 			timer->setTimer(this, (sc_eventid)(&timeEvents[61]), 5 * 1000, false);
 			iface.inhibeObstacle = true;
-			SCI_Asser_OCB::XYTeta(142, 21 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI);
+			SCI_Asser_OCB::XYTeta(142, 23 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_FACE_BLEUIUM;
 			stateConfVectorPosition = 0;
 			historyVector[1] = stateConfVector[0];
@@ -4907,7 +4907,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDEN
 			/* Entry action for state 'Copy_3_FACE_BLEUIUM'. */
 			timer->setTimer(this, (sc_eventid)(&timeEvents[65]), 5 * 1000, false);
 			iface.inhibeObstacle = true;
-			SCI_Asser_OCB::XYTeta(142, 21 * ifaceInternalSCI.invMouv, 0);
+			SCI_Asser_OCB::XYTeta(142, 23 * ifaceInternalSCI.invMouv, 0);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_FACE_BLEUIUM;
 			stateConfVectorPosition = 0;
 			historyVector[1] = stateConfVector[0];
@@ -12530,7 +12530,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIU
 					/* Entry action for state 'Copy_2_FACE_BLEUIUM'. */
 					timer->setTimer(this, (sc_eventid)(&timeEvents[61]), 5 * 1000, false);
 					iface.inhibeObstacle = true;
-					SCI_Asser_OCB::XYTeta(142, 21 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI);
+					SCI_Asser_OCB::XYTeta(142, 23 * ifaceInternalSCI.invMouv, IA::DefaultSCI::PI);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_2_FACE_BLEUIUM;
 					stateConfVectorPosition = 0;
 					historyVector[1] = stateConfVector[0];
@@ -15363,7 +15363,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIU
 					/* Entry action for state 'Copy_3_FACE_BLEUIUM'. */
 					timer->setTimer(this, (sc_eventid)(&timeEvents[65]), 5 * 1000, false);
 					iface.inhibeObstacle = true;
-					SCI_Asser_OCB::XYTeta(142, 21 * ifaceInternalSCI.invMouv, 0);
+					SCI_Asser_OCB::XYTeta(142, 23 * ifaceInternalSCI.invMouv, 0);
 					stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_GOLDENIUM_TACHE_GOLDENIUM_Copy_3_FACE_BLEUIUM;
 					stateConfVectorPosition = 0;
 					historyVector[1] = stateConfVector[0];
