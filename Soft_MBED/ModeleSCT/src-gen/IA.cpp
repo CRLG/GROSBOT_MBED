@@ -118,6 +118,7 @@ void IA::init()
 	iface.evit_memo_force_obstacle = false;
 	iface.evit_sens_avant_detection = 0.0;
 	iface.evit_nombre_tentatives = 0;
+	iface.evit_nombre_max_tentatives = 0;
 	iface.evit_detection_obstacle_bitfield = 0;
 	iface.evit_strategie_evitement_en_cours = false;
 	iface.evit_sgn_dist_eloigne = 1;
@@ -2563,6 +2564,26 @@ void IA::DefaultSCI::set_evit_nombre_tentatives(int32_t value)
 void IA::set_evit_nombre_tentatives(int32_t value)
 {
 	iface.evit_nombre_tentatives = value;
+}
+
+int32_t IA::DefaultSCI::get_evit_nombre_max_tentatives() const
+{
+	return evit_nombre_max_tentatives;
+}
+
+int32_t IA::get_evit_nombre_max_tentatives() const
+{
+	return iface.evit_nombre_max_tentatives;
+}
+
+void IA::DefaultSCI::set_evit_nombre_max_tentatives(int32_t value)
+{
+	evit_nombre_max_tentatives = value;
+}
+
+void IA::set_evit_nombre_max_tentatives(int32_t value)
+{
+	iface.evit_nombre_max_tentatives = value;
 }
 
 int32_t IA::DefaultSCI::get_evit_detection_obstacle_bitfield() const
@@ -10438,6 +10459,8 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_INIT()
 		Application.m_asservissement.cde_min = -20;
 		Application.m_servos_sd20.setDureeAvantRelache(SERVO_PLATEAU_G, 100000);
 		Application.m_servos_sd20.setDureeAvantRelache(SERVO_PLATEAU_D, 100000);
+		iface.evit_choix_strategie = ((int32_t) EVITEMENT_NEUTRE);
+		iface.evit_nombre_max_tentatives = 5;
 		/* 'default' enter sequence for region DEROULEMENT_MATCH */
 		/* Default react sequence for initial entry  */
 		/* 'default' enter sequence for state ETABLISSEMENT_STRATEGY */
@@ -10481,6 +10504,8 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGA
 		Application.m_asservissement.cde_min = -20;
 		Application.m_servos_sd20.setDureeAvantRelache(SERVO_PLATEAU_G, 100000);
 		Application.m_servos_sd20.setDureeAvantRelache(SERVO_PLATEAU_D, 100000);
+		iface.evit_choix_strategie = ((int32_t) EVITEMENT_NEUTRE);
+		iface.evit_nombre_max_tentatives = 5;
 		/* 'default' enter sequence for region DEROULEMENT_MATCH */
 		/* Default react sequence for initial entry  */
 		/* 'default' enter sequence for state ETABLISSEMENT_STRATEGY */
@@ -10522,6 +10547,8 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_APPRENT
 		Application.m_asservissement.cde_min = -20;
 		Application.m_servos_sd20.setDureeAvantRelache(SERVO_PLATEAU_G, 100000);
 		Application.m_servos_sd20.setDureeAvantRelache(SERVO_PLATEAU_D, 100000);
+		iface.evit_choix_strategie = ((int32_t) EVITEMENT_NEUTRE);
+		iface.evit_nombre_max_tentatives = 5;
 		/* 'default' enter sequence for region DEROULEMENT_MATCH */
 		/* Default react sequence for initial entry  */
 		/* 'default' enter sequence for state ETABLISSEMENT_STRATEGY */
@@ -10563,6 +10590,8 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGA
 		Application.m_asservissement.cde_min = -20;
 		Application.m_servos_sd20.setDureeAvantRelache(SERVO_PLATEAU_G, 100000);
 		Application.m_servos_sd20.setDureeAvantRelache(SERVO_PLATEAU_D, 100000);
+		iface.evit_choix_strategie = ((int32_t) EVITEMENT_NEUTRE);
+		iface.evit_nombre_max_tentatives = 5;
 		/* 'default' enter sequence for region DEROULEMENT_MATCH */
 		/* Default react sequence for initial entry  */
 		/* 'default' enter sequence for state ETABLISSEMENT_STRATEGY */
@@ -10604,6 +10633,8 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RA
 		Application.m_asservissement.cde_min = -20;
 		Application.m_servos_sd20.setDureeAvantRelache(SERVO_PLATEAU_G, 100000);
 		Application.m_servos_sd20.setDureeAvantRelache(SERVO_PLATEAU_D, 100000);
+		iface.evit_choix_strategie = ((int32_t) EVITEMENT_NEUTRE);
+		iface.evit_nombre_max_tentatives = 5;
 		/* 'default' enter sequence for region DEROULEMENT_MATCH */
 		/* Default react sequence for initial entry  */
 		/* 'default' enter sequence for state ETABLISSEMENT_STRATEGY */
@@ -10644,6 +10675,8 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_RA
 		Application.m_asservissement.cde_min = -20;
 		Application.m_servos_sd20.setDureeAvantRelache(SERVO_PLATEAU_G, 100000);
 		Application.m_servos_sd20.setDureeAvantRelache(SERVO_PLATEAU_D, 100000);
+		iface.evit_choix_strategie = ((int32_t) EVITEMENT_NEUTRE);
+		iface.evit_nombre_max_tentatives = 5;
 		/* 'default' enter sequence for region DEROULEMENT_MATCH */
 		/* Default react sequence for initial entry  */
 		/* 'default' enter sequence for state ETABLISSEMENT_STRATEGY */
@@ -10685,6 +10718,8 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SO
 		Application.m_asservissement.cde_min = -20;
 		Application.m_servos_sd20.setDureeAvantRelache(SERVO_PLATEAU_G, 100000);
 		Application.m_servos_sd20.setDureeAvantRelache(SERVO_PLATEAU_D, 100000);
+		iface.evit_choix_strategie = ((int32_t) EVITEMENT_NEUTRE);
+		iface.evit_nombre_max_tentatives = 5;
 		/* 'default' enter sequence for region DEROULEMENT_MATCH */
 		/* Default react sequence for initial entry  */
 		/* 'default' enter sequence for state ETABLISSEMENT_STRATEGY */
@@ -10725,6 +10760,8 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_KMAR_SO
 		Application.m_asservissement.cde_min = -20;
 		Application.m_servos_sd20.setDureeAvantRelache(SERVO_PLATEAU_G, 100000);
 		Application.m_servos_sd20.setDureeAvantRelache(SERVO_PLATEAU_D, 100000);
+		iface.evit_choix_strategie = ((int32_t) EVITEMENT_NEUTRE);
+		iface.evit_nombre_max_tentatives = 5;
 		/* 'default' enter sequence for region DEROULEMENT_MATCH */
 		/* Default react sequence for initial entry  */
 		/* 'default' enter sequence for state ETABLISSEMENT_STRATEGY */
@@ -10765,6 +10802,8 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_TOBOGGA
 		Application.m_asservissement.cde_min = -20;
 		Application.m_servos_sd20.setDureeAvantRelache(SERVO_PLATEAU_G, 100000);
 		Application.m_servos_sd20.setDureeAvantRelache(SERVO_PLATEAU_D, 100000);
+		iface.evit_choix_strategie = ((int32_t) EVITEMENT_NEUTRE);
+		iface.evit_nombre_max_tentatives = 5;
 		/* 'default' enter sequence for region DEROULEMENT_MATCH */
 		/* Default react sequence for initial entry  */
 		/* 'default' enter sequence for state ETABLISSEMENT_STRATEGY */
@@ -10795,6 +10834,8 @@ void IA::react_main_region_ATTENTE_TIRETTE__region0_ATTENTE_TIRETTE_INIT_Copy_1_
 		Application.m_asservissement.cde_min = -20;
 		Application.m_servos_sd20.setDureeAvantRelache(SERVO_PLATEAU_G, 100000);
 		Application.m_servos_sd20.setDureeAvantRelache(SERVO_PLATEAU_D, 100000);
+		iface.evit_choix_strategie = ((int32_t) EVITEMENT_NEUTRE);
+		iface.evit_nombre_max_tentatives = 5;
 		/* 'default' enter sequence for region DEROULEMENT_MATCH */
 		/* Default react sequence for initial entry  */
 		/* 'default' enter sequence for state ETABLISSEMENT_STRATEGY */
@@ -22973,7 +23014,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r
 void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_DETECTION_OBSTACLE_r1_EVITEMMENT_OBSTACLE_CONTENEUR_r1__choice_1()
 {
 	/* The reactions of state null. */
-	if (iface.evit_nombre_tentatives >= 1)
+	if (iface.evit_nombre_tentatives >= iface.evit_nombre_max_tentatives)
 	{ 
 		/* 'default' enter sequence for state SORTIE_EVITEMENT */
 		/* Entry action for state 'SORTIE_EVITEMENT'. */
