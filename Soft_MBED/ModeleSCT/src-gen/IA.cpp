@@ -5866,7 +5866,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_LIBERE
 			/* Entry action for state 'PREPARE_ASCENSEUR_1'. */
 			timer->setTimer(this, (sc_eventid)(&timeEvents[47]), 2 * 1000, false);
 			ifaceInternalSCI.counterAtome += 1;
-			Application.m_asservissement_chariot.setConsigne(200);
+			Application.m_asservissement_chariot.setConsigne(400);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_LIBERE_GOLDENIUM_TACHE_GOLDENIUM_PREPARE_ASCENSEUR_1;
 			stateConfVectorPosition = 0;
 			historyVector[1] = stateConfVector[0];
@@ -5980,7 +5980,7 @@ void IA::shenseq_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_LIBERE
 			/* Entry action for state 'Copy_1_PREPARE_ASCENSEUR_1'. */
 			timer->setTimer(this, (sc_eventid)(&timeEvents[57]), 2 * 1000, false);
 			ifaceInternalSCI.counterAtome += 1;
-			Application.m_asservissement_chariot.setConsigne(200);
+			Application.m_asservissement_chariot.setConsigne(400);
 			stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_LIBERE_GOLDENIUM_TACHE_GOLDENIUM_Copy_1_PREPARE_ASCENSEUR_1;
 			stateConfVectorPosition = 0;
 			historyVector[1] = stateConfVector[0];
@@ -21822,7 +21822,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_LIBERE_G
 						/* Entry action for state 'PREPARE_ASCENSEUR_1'. */
 						timer->setTimer(this, (sc_eventid)(&timeEvents[47]), 2 * 1000, false);
 						ifaceInternalSCI.counterAtome += 1;
-						Application.m_asservissement_chariot.setConsigne(200);
+						Application.m_asservissement_chariot.setConsigne(400);
 						stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_LIBERE_GOLDENIUM_TACHE_GOLDENIUM_PREPARE_ASCENSEUR_1;
 						stateConfVectorPosition = 0;
 						historyVector[1] = stateConfVector[0];
@@ -21835,7 +21835,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_LIBERE_G
 							/* Entry action for state 'Copy_1_PREPARE_ASCENSEUR_1'. */
 							timer->setTimer(this, (sc_eventid)(&timeEvents[57]), 2 * 1000, false);
 							ifaceInternalSCI.counterAtome += 1;
-							Application.m_asservissement_chariot.setConsigne(200);
+							Application.m_asservissement_chariot.setConsigne(400);
 							stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_LIBERE_GOLDENIUM_TACHE_GOLDENIUM_Copy_1_PREPARE_ASCENSEUR_1;
 							stateConfVectorPosition = 0;
 							historyVector[1] = stateConfVector[0];
@@ -22801,7 +22801,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_LIBERE_G
 						/* Entry action for state 'PREPARE_ASCENSEUR_1'. */
 						timer->setTimer(this, (sc_eventid)(&timeEvents[47]), 2 * 1000, false);
 						ifaceInternalSCI.counterAtome += 1;
-						Application.m_asservissement_chariot.setConsigne(200);
+						Application.m_asservissement_chariot.setConsigne(400);
 						stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_SEQUENCE_02_LIBERE_GOLDENIUM_TACHE_GOLDENIUM_PREPARE_ASCENSEUR_1;
 						stateConfVectorPosition = 0;
 						historyVector[1] = stateConfVector[0];
@@ -40280,7 +40280,7 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATE
 				Application.m_match.strategie[0] = 1;
 				Application.m_match.strategie[1] = 2;
 				Application.m_match.strategie[2] = 3;
-				Application.m_match.strategie[3] = 6;
+				Application.m_match.strategie[3] = 7;
 				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATEGY_TACHE_CHOIX_STRATEGIE_STRATEGIE1;
 				stateConfVectorPosition = 0;
 			}  else
@@ -40288,7 +40288,9 @@ void IA::react_main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATE
 				/* 'default' enter sequence for state STRATEGIE_PAR_DEFAUT */
 				/* Entry action for state 'STRATEGIE_PAR_DEFAUT'. */
 				Application.m_match.strategie[0] = 1;
-				Application.m_match.strategie[1] = 2;
+				Application.m_match.strategie[1] = 3;
+				Application.m_match.strategie[2] = 2;
+				Application.m_match.strategie[3] = 7;
 				stateConfVector[0] = main_region_MATCH_EN_COURS_DEROULEMENT_MATCH_ETABLISSEMENT_STRATEGY_TACHE_CHOIX_STRATEGIE_STRATEGIE_PAR_DEFAUT;
 				stateConfVectorPosition = 0;
 			}

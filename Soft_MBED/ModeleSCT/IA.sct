@@ -300,7 +300,7 @@
               <vertices xsi:type="sgraph:State" xmi:id="_XvvAyYNqEemiXMYlPMfCLg" specification="entry/&#xA;sequence2=false" name="FIN_SEQUENCE_2" incomingTransitions="_KE9S64NqEemiXMYlPMfCLg">
                 <outgoingTransitions xmi:id="_kworQINqEemiXMYlPMfCLg" specification="oncycle" target="_JxUlIINqEemiXMYlPMfCLg"/>
               </vertices>
-              <vertices xsi:type="sgraph:State" xmi:id="_JeFgEINqEemiXMYlPMfCLg" specification="entry/&#xD;&#xA;counterAtome+=1;&#xD;&#xA;Application.m_asservissement_chariot.setConsigne(200)" name="PREPARE_ASCENSEUR_1" incomingTransitions="_J-qdkoNqEemiXMYlPMfCLg _KSZSCINqEemiXMYlPMfCLg">
+              <vertices xsi:type="sgraph:State" xmi:id="_JeFgEINqEemiXMYlPMfCLg" specification="entry/&#xD;&#xA;counterAtome+=1;&#xD;&#xA;Application.m_asservissement_chariot.setConsigne(400)" name="PREPARE_ASCENSEUR_1" incomingTransitions="_J-qdkoNqEemiXMYlPMfCLg _KSZSCINqEemiXMYlPMfCLg">
                 <outgoingTransitions xmi:id="_JeGHOoNqEemiXMYlPMfCLg" specification="EV_ConvergenceChariot,after 2 s" target="_JgEdEINqEemiXMYlPMfCLg"/>
               </vertices>
               <vertices xsi:type="sgraph:State" xmi:id="_JgEdEINqEemiXMYlPMfCLg" specification="entry/&#xD;&#xA;Application.m_servos_ax.setPosition(eATTRIBUTION_SERVOS_AX.SERVO_VENTOUSE_AV_VERT,150)" name="PREPARE_ASCENSEUR_2" incomingTransitions="_JeGHOoNqEemiXMYlPMfCLg">
@@ -331,7 +331,7 @@
                 <outgoingTransitions xmi:id="_JvYrh4NqEemiXMYlPMfCLg" specification="EV_ConvergenceMvt, after 5 s" target="_KQemUINqEemiXMYlPMfCLg"/>
               </vertices>
               <vertices xsi:type="sgraph:FinalState" xmi:id="_JxUlIINqEemiXMYlPMfCLg" incomingTransitions="_kworQINqEemiXMYlPMfCLg"/>
-              <vertices xsi:type="sgraph:State" xmi:id="_JxVzQINqEemiXMYlPMfCLg" specification="entry/&#xD;&#xA;counterAtome+=1;&#xD;&#xA;Application.m_asservissement_chariot.setConsigne(200)" name="Copy_1_PREPARE_ASCENSEUR_1" incomingTransitions="_J-qdmYNqEemiXMYlPMfCLg">
+              <vertices xsi:type="sgraph:State" xmi:id="_JxVzQINqEemiXMYlPMfCLg" specification="entry/&#xD;&#xA;counterAtome+=1;&#xD;&#xA;Application.m_asservissement_chariot.setConsigne(400)" name="Copy_1_PREPARE_ASCENSEUR_1" incomingTransitions="_J-qdmYNqEemiXMYlPMfCLg">
                 <outgoingTransitions xmi:id="_JxWaboNqEemiXMYlPMfCLg" specification="EV_ConvergenceChariot,after 2 s" target="_JzK_QINqEemiXMYlPMfCLg"/>
               </vertices>
               <vertices xsi:type="sgraph:State" xmi:id="_JzK_QINqEemiXMYlPMfCLg" specification="entry/&#xD;&#xA;Application.m_servos_ax.setPosition(eATTRIBUTION_SERVOS_AX.SERVO_VENTOUSE_AV_VERT,850)" name="Copy_1_PREPARE_ASCENSEUR_2" incomingTransitions="_JxWaboNqEemiXMYlPMfCLg">
@@ -471,10 +471,10 @@
                 <outgoingTransitions xmi:id="_HW8eyXHiEemf0-O9Lxtfjw" specification="oncycle" target="_Whz8gIKjEemz6YkwKgkyOA"/>
               </vertices>
               <vertices xsi:type="sgraph:FinalState" xmi:id="_HW8ezHHiEemf0-O9Lxtfjw" incomingTransitions="_fqCFQIKjEemz6YkwKgkyOA"/>
-              <vertices xsi:type="sgraph:State" xmi:id="_HW8ezXHiEemf0-O9Lxtfjw" specification="entry/&#xA;Application.m_match.strategie[0]=1;&#xA;Application.m_match.strategie[1]=2;&#xA;Application.m_match.strategie[2]=3;&#xA;Application.m_match.strategie[3]=6&#xA;&#xA;exit/&#xA;sequence0=false" name="STRATEGIE1" incomingTransitions="_HW6pl3HiEemf0-O9Lxtfjw">
+              <vertices xsi:type="sgraph:State" xmi:id="_HW8ezXHiEemf0-O9Lxtfjw" specification="entry/&#xA;Application.m_match.strategie[0]=1;&#xA;Application.m_match.strategie[1]=2;&#xA;Application.m_match.strategie[2]=3;&#xA;Application.m_match.strategie[3]=7&#xA;&#xA;exit/&#xA;sequence0=false" name="STRATEGIE1" incomingTransitions="_HW6pl3HiEemf0-O9Lxtfjw">
                 <outgoingTransitions xmi:id="_HW9F2XHiEemf0-O9Lxtfjw" specification="oncycle" target="_Whz8gIKjEemz6YkwKgkyOA"/>
               </vertices>
-              <vertices xsi:type="sgraph:State" xmi:id="_a1dyEHKUEemEB575A612vg" specification="entry/&#xA;Application.m_match.strategie[0]=1;&#xA;Application.m_match.strategie[1]=2&#xA;&#xA;exit/&#xA;sequence0=false" name="STRATEGIE_PAR_DEFAUT" incomingTransitions="_ekMtoHKUEemEB575A612vg">
+              <vertices xsi:type="sgraph:State" xmi:id="_a1dyEHKUEemEB575A612vg" specification="entry/&#xA;Application.m_match.strategie[0]=1;&#xA;Application.m_match.strategie[1]=3;&#xA;Application.m_match.strategie[2]=2;&#xA;Application.m_match.strategie[3]=7&#xA;&#xA;exit/&#xA;sequence0=false" name="STRATEGIE_PAR_DEFAUT" incomingTransitions="_ekMtoHKUEemEB575A612vg">
                 <outgoingTransitions xmi:id="_k0OhQHKUEemEB575A612vg" specification="oncycle" target="_Whz8gIKjEemz6YkwKgkyOA"/>
               </vertices>
               <vertices xsi:type="sgraph:State" xmi:id="_Whz8gIKjEemz6YkwKgkyOA" specification="// Contourne le bug de Yakindu &#xA;// Sur les blocs choix à plusieurs entrées" name="EVITEMENT_BUG_YAKINDU_CHOICE" incomingTransitions="_HW7QsXHiEemf0-O9Lxtfjw _HW8eyXHiEemf0-O9Lxtfjw _HW9F2XHiEemf0-O9Lxtfjw _k0OhQHKUEemEB575A612vg">
