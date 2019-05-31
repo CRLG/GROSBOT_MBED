@@ -6,17 +6,17 @@
 #include "../src/StatemachineInterface.h"
 #include "../src/TimedStatemachineInterface.h"
 #include "../../Includes/ConfigSpecifiqueCoupe.h"
-#include "../../ext/mbed-common-rob/Includes/PowerSwitch.h"
 #include "../../ext/mbed-common-rob/Includes/CGlobale.h"
-#include "../../ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.h"
-#include "../../ext/mbed-common-rob/Includes/CAsservissementChariot.h"
-#include "../../ext/mbed-common-rob/Includes/CServoMoteurSD20.h"
-#include "../../ext/CppRobLib/ServosAX/servoaxbase.h"
-#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h"
+#include "../../ext/mbed-common-rob/Includes/CMatch.h"
 #include "../../ext/mbed-common-rob/Includes/CAsservissement.h"
 #include "../../ext/mbed-common-rob/Includes/CLeds.h"
-#include "../../ext/mbed-common-rob/Includes/CMatch.h"
+#include "../../ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h"
+#include "../../ext/mbed-common-rob/Includes/CServoMoteurSD20.h"
+#include "../../ext/mbed-common-rob/Includes/CAsservissementChariot.h"
 #include "../../ext/mbed-common-rob/Includes/MessengerXbeeNetwork.h"
+#include "../../ext/CppRobLib/ServosAX/servoaxbase.h"
+#include "../../ext/CppRobLib/Communication/Messenger/MessagesGeneric/message_timestamp_match.h"
+#include "../../ext/mbed-common-rob/Includes/PowerSwitch.h"
 
 /*! \file Header of the state machine 'IA'.
 */
@@ -913,6 +913,12 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				/*! Sets the value of the variable 'evit_choix_strategie' that is defined in the default interface scope. */
 				void set_evit_choix_strategie(int32_t value);
 				
+				/*! Gets the value of the variable 'evit_seuil_detection_obstacle' that is defined in the default interface scope. */
+				int32_t get_evit_seuil_detection_obstacle() const;
+				
+				/*! Sets the value of the variable 'evit_seuil_detection_obstacle' that is defined in the default interface scope. */
+				void set_evit_seuil_detection_obstacle(int32_t value);
+				
 				/*! Gets the value of the variable 'TOB_G_HAUT' that is defined in the default interface scope. */
 				const int32_t get_tOB_G_HAUT() const;
 				
@@ -1078,6 +1084,7 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 				int32_t evit_toggle_signe;
 				int32_t evit_debug_etape;
 				int32_t evit_choix_strategie;
+				int32_t evit_seuil_detection_obstacle;
 				static const int32_t TOB_G_HAUT;
 				static const int32_t TOB_G_MILIEU;
 				static const int32_t TOB_G_BAS;
@@ -1410,6 +1417,12 @@ class IA : public TimedStatemachineInterface, public StatemachineInterface
 		
 		/*! Sets the value of the variable 'evit_choix_strategie' that is defined in the default interface scope. */
 		void set_evit_choix_strategie(int32_t value);
+		
+		/*! Gets the value of the variable 'evit_seuil_detection_obstacle' that is defined in the default interface scope. */
+		int32_t get_evit_seuil_detection_obstacle() const;
+		
+		/*! Sets the value of the variable 'evit_seuil_detection_obstacle' that is defined in the default interface scope. */
+		void set_evit_seuil_detection_obstacle(int32_t value);
 		
 		/*! Gets the value of the variable 'TOB_G_HAUT' that is defined in the default interface scope. */
 		const int32_t get_tOB_G_HAUT() const;
