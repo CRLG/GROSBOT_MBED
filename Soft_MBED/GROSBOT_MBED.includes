@@ -15,6 +15,7 @@ ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019
 ext/CppRobLib/Communication/Messenger/MessagesGeneric
 ext/CppRobLib/Communication/XBEE
 ext/CppRobLib/mcp23017
+ext/CppRobLib/PowerElectrobot
 Includes
 ModeleSCT/src
 ModeleSCT/src-gen

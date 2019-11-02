@@ -1,5 +1,3 @@
-ext/mbed-common-rob/Includes/PowerSwitch.h
-ext/mbed-common-rob/Sources/PowerSwitch.cpp
 ext/mbed-os/mbed/TARGET_LPC1768/RTE_Components.h
 ext/mbed-os/mbed/TARGET_LPC1768/TARGET_NXP/TARGET_LPC176X/PeripheralNames.h
 ext/mbed-os/mbed/TARGET_LPC1768/TARGET_NXP/TARGET_LPC176X/PortNames.h
@@ -174,7 +172,10 @@ ext/mbed-common-rob/Sources/CTrameCAN.cpp
 ext/mbed-common-rob/Sources/CTrameLaBotBox.cpp
 ext/mbed-common-rob/Sources/MessagerieLaBotBox.cpp
 ext/mbed-common-rob/Sources/MessengerXbeeNetwork.cpp
-
+ext/mbed-common-rob/Includes/PowerSwitch.h
+ext/mbed-common-rob/Sources/PowerSwitch.cpp
+ext/mbed-common-rob/Includes/PowerElectrobot.h
+ext/mbed-common-rob/Sources/PowerElectrobot.cpp
 
 ModeleSCT/src/CPPTimerInterface.cpp
 ModeleSCT/src/CPPTimerInterface.h
@@ -203,7 +204,8 @@ ext/CppRobLib/Communication/Messenger/transporterbase.cpp
 ext/CppRobLib/Communication/Messenger/transporterbase.h
 ext/CppRobLib/Communication/Messenger/transportergeneric.cpp
 ext/CppRobLib/Communication/Messenger/transportergeneric.h
-
+ext/CppRobLib/PowerElectrobot/dspicpowerelectrobotbase.cpp
+ext/CppRobLib/PowerElectrobot/dspicpowerelectrobotbase.h
 
 ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.cpp
 ext/CppRobLib/Communication/Messenger/DatabaseXbeeNetwork2019/databasexbeenetwork2019.h
