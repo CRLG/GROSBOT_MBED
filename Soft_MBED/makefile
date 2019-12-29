@@ -16,19 +16,32 @@ OBJDIR := BUILD
 # Objects and Paths specific for project
 INCLUDE_PATHS += -I../.
 INCLUDE_PATHS += -I../Includes
-INCLUDE_PATHS += -I../ModeleSCT/src
-INCLUDE_PATHS += -I../ModeleSCT/src-gen
+INCLUDE_PATHS += -I../Modelia
 
 OBJECTS += Sources/main.o
 OBJECTS += Sources/xbeedriver.o
 OBJECTS += Sources/RessoucesHardware.o
-OBJECTS += ModeleSCT/src/CPPTimerInterface.o
-OBJECTS += ModeleSCT/src-gen/IA.o
+
+OBJECTS += Modelia/ia.o
+OBJECTS += Modelia/sm_inputsinterface.o
+OBJECTS += Modelia/sm_outputsinterface.o
+OBJECTS += Modelia/sm_datasinterface.o         
+OBJECTS += Modelia/sm_autotest.o               
+OBJECTS += Modelia/sm_sequenceur.o
+OBJECTS += Modelia/sm_activerphare.o           
+OBJECTS += Modelia/sm_arriverabonport.o        
+OBJECTS += Modelia/sm_recup2boueeszonedepart.o
+OBJECTS += Modelia/sm_recup4boueeschemin.o
+OBJECTS += Modelia/sm_deployerpavillon.o       
+OBJECTS += Modelia/sm_recupboueesdistributeur.o
+OBJECTS += Modelia/sm_deposerboueesdansport.o  
+OBJECTS += Modelia/sm_detecternordsud.o        
 
 ###############################################################################
 # Objects and Paths for mbed-common
 INCLUDE_PATHS += -I../$(MBED_COMMON_ROB_PATH)
 INCLUDE_PATHS += -I../$(MBED_COMMON_ROB_PATH)/Includes
+INCLUDE_PATHS += -I../$(MBED_COMMON_ROB_PATH)/Modelia
 
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CAsservissementChariot.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CAsservissement.o
@@ -54,6 +67,11 @@ OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/MessagerieLaBotBox.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/MessengerXbeeNetwork.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/PowerSwitch.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/PowerElectrobot.o
+OBJECTS += $(MBED_COMMON_ROB_PATH)/Modelia/iabase.o
+OBJECTS += $(MBED_COMMON_ROB_PATH)/Modelia/sm_statemachinebase.o
+OBJECTS += $(MBED_COMMON_ROB_PATH)/Modelia/sm_evitement.o
+OBJECTS += $(MBED_COMMON_ROB_PATH)/Modelia/sm_main.o
+OBJECTS += $(MBED_COMMON_ROB_PATH)/Modelia/sm_debuginterface.o         
 
 ###############################################################################
 # Objects and Paths for CppRobLib
@@ -86,7 +104,6 @@ OBJECTS += $(CPPROBLIB_PATH)/ServosAX/servoaxbase.o
 OBJECTS += $(CPPROBLIB_PATH)/ServosAX/servoax_utils.o
 OBJECTS += $(CPPROBLIB_PATH)/mcp23017/mcp23017base.o
 OBJECTS += $(CPPROBLIB_PATH)/PowerElectrobot/dspicpowerelectrobotbase.o
-
 
 ###############################################################################
 #  DO NOT MODIFY FROM HERE
