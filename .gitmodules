@@ -7,3 +7,6 @@
 [submodule "Soft_MBED/ext/mbed-os"]
 	path = Soft_MBED/ext/mbed-os
 	url = https://github.com/CRLG/mbed-os.git
+[submodule "Simulia"]
+	path = Simulia
+	url = https://github.com/CRLG/LABOTBOX

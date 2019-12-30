@@ -4,7 +4,6 @@
 #ifndef _CONFIG_SPECIFIQUE_COUPE 
 #define _CONFIG_SPECIFIQUE_COUPE
 
-#include "RessourcesHardware.h"
 #include "CMoteurs.h"
 #include "CCapteurs.h"
 #include "CServoMoteurSD20.h"
@@ -84,9 +83,6 @@ typedef enum {
     EV_ARG = PowerSwitch::XT7_OUTPUT,
     EV_ARD = PowerSwitch::XT8_OUTPUT
 }eATTRIBUTION_POWER_SWITCH;
-
-//! Numéro de pin utilisée pour le signan TX_ENABLE des servos AX
-#define _STOR_AX_TX_ENABLE _Stor3
 
 //! Durée du match
 #define DUREE_MATCH 100 // [sec]
