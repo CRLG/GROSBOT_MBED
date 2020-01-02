@@ -9,25 +9,36 @@ public:
 
     void init();
 
+    float TE_Modele;
+
     int Tirette;
+
+    // En provenance de l'écran
+    unsigned int dde_couleur_equipe;
+    unsigned int couleur_equipe;
+    unsigned int dde_test_actionneurs;
+    unsigned int dde_choix_strategie;
+
+    // Détection d'obstacles
     bool obstacle_AVD;
     bool obstacle_AVG;
     bool obstacle_ARD;
     bool obstacle_ARG;
     bool obstacleDetecte;
-    bool Convergence;
-    float TE_Modele;
+    float Telemetre_AVD;
+    float Telemetre_AVG;
+    float Telemetre_ARD;
+    float Telemetre_ARG;
 
-    unsigned int dde_couleur_equipe=1;
-    unsigned int couleur_equipe;
-    unsigned int dde_test_actionneurs = 0;
-    unsigned int dde_choix_strategie = 0;
-
-
-    // Evitement
+    // Evitement d'obstacles
     unsigned char evit_choix_strategie;
 
-
+    // Sortie de l'asservissement
+    float X_robot;
+    float Y_robot;
+    float angle_robot;
+    bool Convergence;
+    bool Convergence_rapide;
 };
 
 #endif // SM_INPUTSINTERFACE_H

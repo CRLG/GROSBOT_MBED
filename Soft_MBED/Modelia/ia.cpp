@@ -17,8 +17,6 @@ IA::IA()
 // ________________________________________________
 void IA::step()
 {
-    m_inputs_interface.obstacleDetecte = m_inputs_interface.obstacle_ARG || m_inputs_interface.obstacle_ARD || m_inputs_interface.obstacle_AVG || m_inputs_interface.obstacle_AVD;
-
     stepAllStateMachines();
 }
 

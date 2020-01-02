@@ -84,6 +84,7 @@ INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/Communication/XBEE
 INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/ServosAX
 INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/mcp23017
 INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/PowerElectrobot
+INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/common-rob
 
 OBJECTS += $(CPPROBLIB_PATH)/Communication/Messenger/databasebase.o
 OBJECTS += $(CPPROBLIB_PATH)/Communication/Messenger/messagebase.o
@@ -104,6 +105,7 @@ OBJECTS += $(CPPROBLIB_PATH)/ServosAX/servoaxbase.o
 OBJECTS += $(CPPROBLIB_PATH)/ServosAX/servoax_utils.o
 OBJECTS += $(CPPROBLIB_PATH)/mcp23017/mcp23017base.o
 OBJECTS += $(CPPROBLIB_PATH)/PowerElectrobot/dspicpowerelectrobotbase.o
+OBJECTS += $(CPPROBLIB_PATH)/common-rob/CRouesBase.o
 
 ###############################################################################
 #  DO NOT MODIFY FROM HERE

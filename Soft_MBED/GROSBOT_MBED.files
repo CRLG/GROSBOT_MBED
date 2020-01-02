@@ -270,6 +270,8 @@ ext/CppRobLib/Communication/XBEE/xbeedriverbase.h
 ext/CppRobLib/mcp23017/mcp23017base.h
 ext/CppRobLib/mcp23017/mcp23017base.cpp
 
+ext/CppRobLib/common-rob/CRouesBase.cpp
+ext/CppRobLib/common-rob/CRouesBase.h
 
 ext/CppRobLib/ServosAX/servoaxbase.cpp
 ext/CppRobLib/ServosAX/servoaxbase.h

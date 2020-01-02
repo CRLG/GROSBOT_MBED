@@ -17,6 +17,7 @@ ext/CppRobLib/Communication/Messenger/MessagesGeneric
 ext/CppRobLib/Communication/XBEE
 ext/CppRobLib/mcp23017
 ext/CppRobLib/PowerElectrobot
+ext/CppRobLib/common-rob
 Includes
 Modelia
 
