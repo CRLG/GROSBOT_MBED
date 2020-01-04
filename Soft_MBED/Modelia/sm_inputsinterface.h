@@ -37,8 +37,15 @@ public:
     float X_robot;
     float Y_robot;
     float angle_robot;
+
     bool Convergence;
+    bool Convergence_old;
+    bool FrontM_Convergence;
     bool Convergence_rapide;
+    bool Convergence_rapide_old;
+    bool FrontM_Convergence_rapide;
+
+
 };
 
 #endif // SM_INPUTSINTERFACE_H
