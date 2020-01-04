@@ -21,6 +21,7 @@ INCLUDE_PATHS += -I../Modelia
 OBJECTS += Sources/main.o
 OBJECTS += Sources/xbeedriver.o
 OBJECTS += Sources/RessoucesHardware.o
+OBJECTS += Sources/CAsservissement.o
 
 OBJECTS += Modelia/ia.o
 OBJECTS += Modelia/sm_inputsinterface.o
@@ -44,7 +45,6 @@ INCLUDE_PATHS += -I../$(MBED_COMMON_ROB_PATH)/Includes
 INCLUDE_PATHS += -I../$(MBED_COMMON_ROB_PATH)/Modelia
 
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CAsservissementChariot.o
-OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CAsservissement.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CAsservissementSulfateuse.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CCapteurs.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CEEPROM.o
@@ -106,6 +106,7 @@ OBJECTS += $(CPPROBLIB_PATH)/ServosAX/servoax_utils.o
 OBJECTS += $(CPPROBLIB_PATH)/mcp23017/mcp23017base.o
 OBJECTS += $(CPPROBLIB_PATH)/PowerElectrobot/dspicpowerelectrobotbase.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CRouesBase.o
+OBJECTS += $(CPPROBLIB_PATH)/common-rob/CAsservissementBase.o
 
 ###############################################################################
 #  DO NOT MODIFY FROM HERE

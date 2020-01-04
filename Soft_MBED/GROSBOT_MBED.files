@@ -190,10 +190,12 @@ ext/mbed-common-rob/Modelia/sm_main.h
 Sources/main.cpp
 Sources/RessoucesHardware.cpp
 Sources/xbeedriver.cpp
+Sources/CAsservissement.cpp
 
 Includes/ConfigSpecifiqueCoupe.h
 Includes/RessourcesHardware.h
 Includes/xbeedriver.h
+Includes/CAsservissement.h
 
 Modelia/ia.cpp
 Modelia/sm_inputsinterface.cpp
@@ -272,6 +274,8 @@ ext/CppRobLib/mcp23017/mcp23017base.cpp
 
 ext/CppRobLib/common-rob/CRouesBase.cpp
 ext/CppRobLib/common-rob/CRouesBase.h
+ext/CppRobLib/common-rob/CAsservissementBase.cpp
+ext/CppRobLib/common-rob/CAsservissementBase.h
 
 ext/CppRobLib/ServosAX/servoaxbase.cpp
 ext/CppRobLib/ServosAX/servoaxbase.h
