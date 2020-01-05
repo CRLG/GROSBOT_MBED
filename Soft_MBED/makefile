@@ -107,6 +107,7 @@ OBJECTS += $(CPPROBLIB_PATH)/mcp23017/mcp23017base.o
 OBJECTS += $(CPPROBLIB_PATH)/PowerElectrobot/dspicpowerelectrobotbase.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CRouesBase.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CAsservissementBase.o
+OBJECTS += $(CPPROBLIB_PATH)/common-rob/CServoMoteurSD20Base.o
 
 ###############################################################################
 #  DO NOT MODIFY FROM HERE

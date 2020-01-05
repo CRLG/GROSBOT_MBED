@@ -35,6 +35,10 @@ void SM_RecupBoueesDistributeur::step()
             Application.m_servos_ax.setPosition(1, 100);
             Application.m_servos_ax.setPositionSpeed(1, 100, 10);
             Application.m_servos_ax.setSpeed(2, 10);
+
+            Application.m_servos_sd20.CommandePosition(2, 100);
+            Application.m_servos_sd20.CommandePositionVitesse(2, 100, 4);
+            Application.m_servos_sd20.CommandeVitesse(2, 3);
         }
 
         //gotoStateAfter(STATE_2, 3000);
@@ -47,6 +51,7 @@ void SM_RecupBoueesDistributeur::step()
     case STATE_2:
         if (onEntry()) {
             Application.m_servos_ax.setPosition(1, 0);
+            Application.m_servos_sd20.CommandePosition(3, 123);
             Application.m_asservissement.CommandeMouvementXY_TETA(0., 0.f, 0);
         }
 

@@ -276,6 +276,8 @@ ext/CppRobLib/common-rob/CRouesBase.cpp
 ext/CppRobLib/common-rob/CRouesBase.h
 ext/CppRobLib/common-rob/CAsservissementBase.cpp
 ext/CppRobLib/common-rob/CAsservissementBase.h
+ext/CppRobLib/common-rob/CServoMoteurSD20Base.cpp
+ext/CppRobLib/common-rob/CServoMoteurSD20Base.h
 
 ext/CppRobLib/ServosAX/servoaxbase.cpp
 ext/CppRobLib/ServosAX/servoaxbase.h
