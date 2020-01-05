@@ -1,5 +1,5 @@
 /*! \file CAsservissement.h
-	\brief Classe qui contient l'asservissement vitesse/position du robot
+    \brief Classe qui contient l'asservissement vitesse/position du robot
 */
 
 #ifndef _ASSERVISSEMENT_H_
@@ -13,10 +13,10 @@ class CAsservissement : public CAsservissementBase
 {
 public :
     //! Constructeur
-	CAsservissement();
+    CAsservissement();
 
     //! Initilise tous les paramètres et valeurs
-	void Init(void);	
+    void Init(void);
 };
 
 
