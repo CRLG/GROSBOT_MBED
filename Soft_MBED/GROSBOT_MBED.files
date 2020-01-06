@@ -160,7 +160,7 @@ ext/mbed-common-rob/Sources/CGlobale_ModeAutonome.cpp
 ext/mbed-common-rob/Sources/CGlobale_ModePiloteLaBotBox.cpp
 ext/mbed-common-rob/Sources/CGlobale_ModePiloteTerminal.cpp
 ext/mbed-common-rob/Sources/CLaBotBox.cpp
-ext/mbed-common-rob/Sources/CLeds.cpp
+ext/mbed-common-rob/Sources/CLed.cpp
 ext/mbed-common-rob/Sources/CMatch.cpp
 ext/mbed-common-rob/Sources/CMoteurs.cpp
 ext/mbed-common-rob/Sources/ConfigFile.cpp
@@ -278,6 +278,10 @@ ext/CppRobLib/common-rob/CAsservissementBase.cpp
 ext/CppRobLib/common-rob/CAsservissementBase.h
 ext/CppRobLib/common-rob/CServoMoteurSD20Base.cpp
 ext/CppRobLib/common-rob/CServoMoteurSD20Base.h
+ext/CppRobLib/common-rob/CLeds.cpp
+ext/CppRobLib/common-rob/CLeds.h
+ext/CppRobLib/common-rob/CLedBase.cpp
+ext/CppRobLib/common-rob/CLedBase.h
 
 ext/CppRobLib/ServosAX/servoaxbase.cpp
 ext/CppRobLib/ServosAX/servoaxbase.h
