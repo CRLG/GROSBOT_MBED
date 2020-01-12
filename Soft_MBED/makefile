@@ -19,7 +19,6 @@ INCLUDE_PATHS += -I../Includes
 INCLUDE_PATHS += -I../Modelia
 
 OBJECTS += Sources/main.o
-OBJECTS += Sources/xbeedriver.o
 OBJECTS += Sources/RessoucesHardware.o
 OBJECTS += Sources/CAsservissement.o
 
@@ -65,6 +64,7 @@ OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CTrameCAN.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CTrameLaBotBox.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/MessagerieLaBotBox.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/MessengerXbeeNetwork.o
+OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/xbeedriver.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/PowerSwitch.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/PowerElectrobot.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Modelia/iabase.o

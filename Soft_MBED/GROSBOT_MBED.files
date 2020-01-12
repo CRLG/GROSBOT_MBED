@@ -176,6 +176,8 @@ ext/mbed-common-rob/Includes/PowerSwitch.h
 ext/mbed-common-rob/Sources/PowerSwitch.cpp
 ext/mbed-common-rob/Includes/PowerElectrobot.h
 ext/mbed-common-rob/Sources/PowerElectrobot.cpp
+ext/mbed-common-rob/Sources/xbeedriver.cpp
+ext/mbed-common-rob/Includes/xbeedriver.h
 ext/mbed-common-rob/Modelia/sm_statemachinebase.h
 ext/mbed-common-rob/Modelia/sm_statemachinebase.cpp
 ext/mbed-common-rob/Modelia/iabase.cpp
@@ -189,12 +191,10 @@ ext/mbed-common-rob/Modelia/sm_main.h
 
 Sources/main.cpp
 Sources/RessoucesHardware.cpp
-Sources/xbeedriver.cpp
 Sources/CAsservissement.cpp
 
 Includes/ConfigSpecifiqueCoupe.h
 Includes/RessourcesHardware.h
-Includes/xbeedriver.h
 Includes/CAsservissement.h
 
 Modelia/ia.cpp
