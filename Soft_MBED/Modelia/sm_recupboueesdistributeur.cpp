@@ -16,7 +16,11 @@ const char* SM_RecupBoueesDistributeur::stateToName(unsigned short state)
 {
     switch(state)
     {
-    //case ALLER_VERS_PHARE :         return "ALLER_VERS_PHARE";
+        case STATE_1 :         return "STATE_1";
+        case STATE_2 :         return "STATE_2";
+        case STATE_3 :         return "STATE_3";
+        case STATE_4 :         return "STATE_4";
+        case FIN_MISSION :     return "FIN_MISSION";
     }
     return "UNKNOWN_STATE";
 }
@@ -41,9 +45,12 @@ void SM_RecupBoueesDistributeur::step()
             Application.m_servos_sd20.CommandeVitesse(2, 3);
 
             Application.m_leds.setPattern(PATTERN_K2000, 50, INFINITE);
+
+            strcpy(Application.m_messenger_xbee_ntw.m_database.m_FreeString.str, "Hello");
+            Application.m_messenger_xbee_ntw.m_database.m_FreeString.send();
         }
 
-        //gotoStateAfter(STATE_2, 3000);
+        //gotoStateAfter(STATE_2, 3000);  // Exemple de transition possible
         gotoStateIfConvergence(STATE_2);
         //gotoStateIfTrue(STATE_2, !Application.m_servos_ax.isMoving(1));
 
@@ -59,7 +66,7 @@ void SM_RecupBoueesDistributeur::step()
             Application.m_leds.setPattern(PATTERN_CLIGNO_14_23);
         }
 
-        gotoStateIfConvergence(STATE_3);
+        gotoStateIfConvergenceRapide(STATE_3);
         //gotoStateAfter(STATE_3, 2300);
 
         if (onExit()) { }
