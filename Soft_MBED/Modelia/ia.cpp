@@ -23,6 +23,9 @@ void IA::step()
     m_inputs_interface.FrontM_Convergence_rapide = m_inputs_interface.Convergence_rapide && !m_inputs_interface.Convergence_rapide_old;
     m_inputs_interface.Convergence_rapide_old = m_inputs_interface.Convergence_rapide;
 
+    m_inputs_interface.FrontM_ConvergenceRack = m_inputs_interface.ConvergenceRack && !m_inputs_interface.ConvergenceRack_old;
+    m_inputs_interface.ConvergenceRack_old = m_inputs_interface.ConvergenceRack;
+
     stepAllStateMachines();
 }
 

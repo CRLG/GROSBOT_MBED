@@ -1,3 +1,4 @@
+makefile
 ext/mbed-os/mbed/TARGET_LPC1768/RTE_Components.h
 ext/mbed-os/mbed/TARGET_LPC1768/TARGET_NXP/TARGET_LPC176X/PeripheralNames.h
 ext/mbed-os/mbed/TARGET_LPC1768/TARGET_NXP/TARGET_LPC176X/PortNames.h
@@ -150,7 +151,6 @@ ext/mbed-os/mbed/platform/wait_api.h
 ext/mbed-os/mbed_config.h
 
 
-ext/mbed-common-rob/Sources/CAsservissementChariot.cpp
 ext/mbed-common-rob/Sources/CAsservissement.cpp
 ext/mbed-common-rob/Sources/CAsservissementSulfateuse.cpp
 ext/mbed-common-rob/Sources/CCapteurs.cpp
@@ -192,10 +192,12 @@ ext/mbed-common-rob/Modelia/sm_main.h
 Sources/main.cpp
 Sources/RessoucesHardware.cpp
 Sources/CAsservissement.cpp
+Sources/CAsservissementChariot.cpp
 
 Includes/ConfigSpecifiqueCoupe.h
 Includes/RessourcesHardware.h
 Includes/CAsservissement.h
+Includes/CAsservissementChariot.h
 
 Modelia/ia.cpp
 Modelia/sm_inputsinterface.cpp

@@ -44,6 +44,9 @@ public:
     bool Convergence_rapide;
     bool Convergence_rapide_old;
     bool FrontM_Convergence_rapide;
+    bool ConvergenceRack;
+    bool ConvergenceRack_old;
+    bool FrontM_ConvergenceRack;
 
 
 };
