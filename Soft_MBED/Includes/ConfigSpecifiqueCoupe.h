@@ -84,6 +84,15 @@ typedef enum {
     EV_ARD = PowerSwitch::XT8_OUTPUT
 }eATTRIBUTION_POWER_SWITCH;
 
+
+// Affectation des numéros de télémètres SRF08
+#define INDEX_TELEMETRE_AVG 2
+#define INDEX_TELEMETRE_AVD 0
+#define INDEX_TELEMETRE_ARG 3
+#define INDEX_TELEMETRE_ARD 1
+
+
+
 //! Durée du match
 #define DUREE_MATCH 100 // [sec]
 

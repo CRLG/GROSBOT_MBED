@@ -167,7 +167,6 @@ ext/mbed-common-rob/Sources/ConfigFile.cpp
 ext/mbed-common-rob/Sources/CRoues.cpp
 ext/mbed-common-rob/Sources/CServoMoteurAX.cpp
 ext/mbed-common-rob/Sources/CServoMoteurSD20.cpp
-ext/mbed-common-rob/Sources/CTelemetres.cpp
 ext/mbed-common-rob/Sources/CTrameCAN.cpp
 ext/mbed-common-rob/Sources/CTrameLaBotBox.cpp
 ext/mbed-common-rob/Sources/MessagerieLaBotBox.cpp
@@ -193,11 +192,13 @@ Sources/main.cpp
 Sources/RessoucesHardware.cpp
 Sources/CAsservissement.cpp
 Sources/CAsservissementChariot.cpp
+Sources/CTelemetres.cpp
 
 Includes/ConfigSpecifiqueCoupe.h
 Includes/RessourcesHardware.h
 Includes/CAsservissement.h
 Includes/CAsservissementChariot.h
+Includes/CTelemetres.h
 
 Modelia/ia.cpp
 Modelia/sm_inputsinterface.cpp
@@ -284,6 +285,8 @@ ext/CppRobLib/common-rob/CLeds.cpp
 ext/CppRobLib/common-rob/CLeds.h
 ext/CppRobLib/common-rob/CLedBase.cpp
 ext/CppRobLib/common-rob/CLedBase.h
+ext/CppRobLib/common-rob/CTelemetresBase.cpp
+ext/CppRobLib/common-rob/CTelemetresBase.h
 
 ext/CppRobLib/ServosAX/servoaxbase.cpp
 ext/CppRobLib/ServosAX/servoaxbase.h

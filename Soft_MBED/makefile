@@ -22,6 +22,7 @@ OBJECTS += Sources/main.o
 OBJECTS += Sources/RessoucesHardware.o
 OBJECTS += Sources/CAsservissement.o
 OBJECTS += Sources/CAsservissementChariot.o
+OBJECTS += Sources/CTelemetres.o
 
 OBJECTS += Modelia/ia.o
 OBJECTS += Modelia/sm_inputsinterface.o
@@ -59,7 +60,6 @@ OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/ConfigFile.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CRoues.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CServoMoteurAX.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CServoMoteurSD20.o
-OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CTelemetres.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CTrameCAN.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CTrameLaBotBox.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/MessagerieLaBotBox.o
@@ -111,6 +111,7 @@ OBJECTS += $(CPPROBLIB_PATH)/common-rob/CAsservissementChariotBase.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CServoMoteurSD20Base.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CLedBase.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CLeds.o
+OBJECTS += $(CPPROBLIB_PATH)/common-rob/CTelemetresBase.o
 
 
 ###############################################################################
