@@ -177,16 +177,6 @@ ext/mbed-common-rob/Includes/PowerElectrobot.h
 ext/mbed-common-rob/Sources/PowerElectrobot.cpp
 ext/mbed-common-rob/Sources/xbeedriver.cpp
 ext/mbed-common-rob/Includes/xbeedriver.h
-ext/mbed-common-rob/Modelia/sm_statemachinebase.h
-ext/mbed-common-rob/Modelia/sm_statemachinebase.cpp
-ext/mbed-common-rob/Modelia/iabase.cpp
-ext/mbed-common-rob/Modelia/iabase.h
-ext/mbed-common-rob/Modelia/sm_evitement.cpp
-ext/mbed-common-rob/Modelia/sm_evitement.h
-ext/mbed-common-rob/Modelia/sm_debuginterface.cpp
-ext/mbed-common-rob/Modelia/sm_debuginterface.h
-ext/mbed-common-rob/Modelia/sm_main.cpp
-ext/mbed-common-rob/Modelia/sm_main.h
 
 Sources/main.cpp
 Sources/RessoucesHardware.cpp
@@ -289,6 +279,17 @@ ext/CppRobLib/common-rob/CTelemetresBase.cpp
 ext/CppRobLib/common-rob/CTelemetresBase.h
 ext/CppRobLib/common-rob/CDetectionObstaclesBase.cpp
 ext/CppRobLib/common-rob/CDetectionObstaclesBase.h
+
+ext/CppRobLib/common-rob/Modelia/sm_statemachinebase.h
+ext/CppRobLib/common-rob/Modelia/sm_statemachinebase.cpp
+ext/CppRobLib/common-rob/Modelia/iabase.cpp
+ext/CppRobLib/common-rob/Modelia/iabase.h
+ext/CppRobLib/common-rob/Modelia/sm_evitement.cpp
+ext/CppRobLib/common-rob/Modelia/sm_evitement.h
+ext/CppRobLib/common-rob/Modelia/sm_debuginterface.cpp
+ext/CppRobLib/common-rob/Modelia/sm_debuginterface.h
+ext/CppRobLib/common-rob/Modelia/sm_main.cpp
+ext/CppRobLib/common-rob/Modelia/sm_main.h
 
 ext/CppRobLib/ServosAX/servoaxbase.cpp
 ext/CppRobLib/ServosAX/servoaxbase.h

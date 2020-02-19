@@ -67,11 +67,6 @@ OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/MessengerXbeeNetwork.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/xbeedriver.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/PowerSwitch.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/PowerElectrobot.o
-OBJECTS += $(MBED_COMMON_ROB_PATH)/Modelia/iabase.o
-OBJECTS += $(MBED_COMMON_ROB_PATH)/Modelia/sm_statemachinebase.o
-OBJECTS += $(MBED_COMMON_ROB_PATH)/Modelia/sm_evitement.o
-OBJECTS += $(MBED_COMMON_ROB_PATH)/Modelia/sm_main.o
-OBJECTS += $(MBED_COMMON_ROB_PATH)/Modelia/sm_debuginterface.o         
 
 ###############################################################################
 # Objects and Paths for CppRobLib
@@ -85,6 +80,7 @@ INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/ServosAX
 INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/mcp23017
 INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/PowerElectrobot
 INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/common-rob
+INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/common-rob/Modelia
 
 OBJECTS += $(CPPROBLIB_PATH)/Communication/Messenger/databasebase.o
 OBJECTS += $(CPPROBLIB_PATH)/Communication/Messenger/messagebase.o
@@ -113,6 +109,11 @@ OBJECTS += $(CPPROBLIB_PATH)/common-rob/CLedBase.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CLeds.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CTelemetresBase.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CDetectionObstaclesBase.o
+OBJECTS += $(CPPROBLIB_PATH)/common-rob/Modelia/iabase.o
+OBJECTS += $(CPPROBLIB_PATH)/common-rob/Modelia/sm_statemachinebase.o
+OBJECTS += $(CPPROBLIB_PATH)/common-rob/Modelia/sm_evitement.o
+OBJECTS += $(CPPROBLIB_PATH)/common-rob/Modelia/sm_main.o
+OBJECTS += $(CPPROBLIB_PATH)/common-rob/Modelia/sm_debuginterface.o
 
 
 ###############################################################################
