@@ -287,6 +287,8 @@ ext/CppRobLib/common-rob/CLedBase.cpp
 ext/CppRobLib/common-rob/CLedBase.h
 ext/CppRobLib/common-rob/CTelemetresBase.cpp
 ext/CppRobLib/common-rob/CTelemetresBase.h
+ext/CppRobLib/common-rob/CDetectionObstaclesBase.cpp
+ext/CppRobLib/common-rob/CDetectionObstaclesBase.h
 
 ext/CppRobLib/ServosAX/servoaxbase.cpp
 ext/CppRobLib/ServosAX/servoaxbase.h

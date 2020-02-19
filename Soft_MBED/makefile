@@ -112,6 +112,7 @@ OBJECTS += $(CPPROBLIB_PATH)/common-rob/CServoMoteurSD20Base.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CLedBase.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CLeds.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CTelemetresBase.o
+OBJECTS += $(CPPROBLIB_PATH)/common-rob/CDetectionObstaclesBase.o
 
 
 ###############################################################################
