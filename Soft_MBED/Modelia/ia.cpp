@@ -1,3 +1,10 @@
+// ________________________________________________
+// !! ATTENTION !!
+// Ce code est commun aux projets du robot réel et simulation
+// Il ne doit pas y avoir de code spécifique MBED
+//  ou d'appel à une classe non gérée par une couche d'abstraction
+//  au risque de ne plus pouvoir tourner sur en simulation
+
 #include "ia.h"
 #include "CGlobale.h"
 #include "ConfigSpecifiqueCoupe.h"
@@ -28,8 +35,7 @@ void IA::init()
             m_sm_liste[i]->init(this);
         }
     }
-
-    setStrategie(STRATEGIE_PAR_DEFAUT);
+    m_sm_main.start();
 }
 
 // ________________________________________________
@@ -43,10 +49,16 @@ void IA::init()
 //   - m_sm_arriver_a_bon_port;
 // Pour interdire l'exécution d'une mission :
 //   - m_sm_xxx.setEnabled(false);
-void IA::setStrategie(int strategie)
+void IA::setStrategie(unsigned char strategie)
 {
     int ordre = 0;
     switch (strategie) {
+    // ________________________ Attention : c'est juste un exemple pour montrer comment ça s'utilise
+    case STRATEGIE_TEST_01:
+        m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
+        Application.m_modelia.m_sm_recup_bouees_distributeur.setPrioriteExecution(ordre++);
+        Application.m_modelia.m_sm_my_strategy.setPrioriteExecution(ordre++);
+        break;
     // ________________________ Attention : c'est juste un exemple pour montrer comment ça s'utilise
     case STRATEGIE_HOMOLO1:
         m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
@@ -78,16 +90,11 @@ void IA::setStrategie(int strategie)
         m_sm_arriver_a_bon_port.setPrioriteExecution(ordre++);
         break;
     }
+    m_datas_interface.ChoixStrategie = strategie;
 }
 
 
 // ________________________________________________
-// !! ATTENTION !!
-// Ce code est commun aux projets du robot réel et simulation
-// Il ne doit pas y avoir de code spécifique MBED
-//  ou d'appel à une classe non gérée par une couche d'abstraction
-//  au risque de ne plus pouvoir tourner sur en simulation
-
 // TODO : à voir sur le long terme si la couche de recopie des donées
 // externes dans m_inputs_interface.xxxx est toujours nécessaire
 // ou si le modèle ne peut pas utiliser directement Application.m_xxxxx.yyyy

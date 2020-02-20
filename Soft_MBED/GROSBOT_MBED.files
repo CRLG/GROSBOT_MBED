@@ -161,7 +161,6 @@ ext/mbed-common-rob/Sources/CGlobale_ModePiloteLaBotBox.cpp
 ext/mbed-common-rob/Sources/CGlobale_ModePiloteTerminal.cpp
 ext/mbed-common-rob/Sources/CLaBotBox.cpp
 ext/mbed-common-rob/Sources/CLed.cpp
-ext/mbed-common-rob/Sources/CMatch.cpp
 ext/mbed-common-rob/Sources/CMoteurs.cpp
 ext/mbed-common-rob/Sources/ConfigFile.cpp
 ext/mbed-common-rob/Sources/CRoues.cpp
@@ -184,7 +183,6 @@ ext/mbed-common-rob/Includes/CEEPROM.h
 ext/mbed-common-rob/Includes/CGlobale.h
 ext/mbed-common-rob/Includes/CLaBotBox.h
 ext/mbed-common-rob/Includes/CLed.h
-ext/mbed-common-rob/Includes/CMatch.h
 ext/mbed-common-rob/Includes/CMoteurs.h
 ext/mbed-common-rob/Includes/ConfigFile.h
 ext/mbed-common-rob/Includes/CRoues.h

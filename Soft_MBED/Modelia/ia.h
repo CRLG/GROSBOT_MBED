@@ -32,7 +32,7 @@ public:
     void step();
     void init();
 
-    void setStrategie(int strategie);
+    void setStrategie(unsigned char strategie);
 };
 
 #endif // IA_H

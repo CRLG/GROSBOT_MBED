@@ -15,12 +15,13 @@ public:
 
     int CouleurEquipe;
     float TempsMatch;
+    unsigned char ChoixStrategie;
 
     int choix_algo_next_mission;
 
     // Evitement
     bool evitementEnCours;
-    bool inhibeObstacle;
+    bool evit_inhibe_obstacle;
     unsigned long evit_memo_cde_min;
     unsigned long  evit_memo_cde_max;
     double evit_memo_idx_sportiv;

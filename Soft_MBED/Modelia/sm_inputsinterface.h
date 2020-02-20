@@ -17,7 +17,7 @@ public:
     unsigned int dde_couleur_equipe;
     unsigned int couleur_equipe;
     unsigned int dde_test_actionneurs;
-    unsigned int dde_choix_strategie;
+    //unsigned int dde_choix_strategie;
 
     // Détection d'obstacles
     bool obstacle_AVD;

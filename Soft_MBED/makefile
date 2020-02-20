@@ -55,7 +55,6 @@ OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CGlobale_ModePiloteLaBotBox.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CGlobale_ModePiloteTerminal.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CLaBotBox.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CLed.o
-OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CMatch.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CMoteurs.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/ConfigFile.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CRoues.o
