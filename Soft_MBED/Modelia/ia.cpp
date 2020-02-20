@@ -16,6 +16,15 @@ IA::IA()
 }
 
 // ________________________________________________
+// !! ATTENTION !!
+// Ce code est commun aux projets du robot réel et simulation
+// Il ne doit pas y avoir de code spécifique MBED
+//  ou d'appel à une classe non gérée par une couche d'abstraction
+//  au risque de ne plus pouvoir tourner sur en simulation
+
+// TODO : à voir sur le long terme si la couche de recopie des donées
+// externes dans m_inputs_interface.xxxx est toujours nécessaire
+// ou si le modèle ne peut pas utiliser directement Application.m_xxxxx.yyyy
 void IA::step()
 {
     m_inputs_interface.Telemetre_AVG       = Application.m_telemetres.getDistanceAVG();
@@ -43,6 +52,7 @@ void IA::step()
     m_inputs_interface.Y_robot             = Application.m_asservissement.Y_robot;
     m_inputs_interface.angle_robot         = Application.m_asservissement.angle_robot;
 
+    // Mise en forme de données pour le modèle
     m_inputs_interface.FrontM_Convergence = m_inputs_interface.Convergence && !m_inputs_interface.Convergence_old;
     m_inputs_interface.Convergence_old = m_inputs_interface.Convergence;
 
