@@ -15,13 +15,13 @@ void CAsservissementChariot::Init()
 // ___________________________________________________
 bool CAsservissementChariot::isButeeBasse()
 {
-    return (Application.m_electrobot.m_b_Etor4==false);
+    return Application.m_capteurs.getAscenseurButeeBasse();
 }
 
 // ___________________________________________________
 bool CAsservissementChariot::isButeeHaute()
 {
-    return (Application.m_electrobot.m_b_Etor2==false);
+    return Application.m_capteurs.getAscenseurButeeHaute();
 }
 
 // ___________________________________________________

@@ -153,7 +153,6 @@ ext/mbed-os/mbed_config.h
 
 ext/mbed-common-rob/Sources/CAsservissement.cpp
 ext/mbed-common-rob/Sources/CAsservissementSulfateuse.cpp
-ext/mbed-common-rob/Sources/CCapteurs.cpp
 ext/mbed-common-rob/Sources/CElectrobot.cpp
 ext/mbed-common-rob/Sources/CEEPROM.cpp
 ext/mbed-common-rob/Sources/CGlobale.cpp
@@ -180,7 +179,6 @@ ext/mbed-common-rob/Includes/xbeedriver.h
 ext/mbed-common-rob/Includes/CElectrobot.h
 ext/mbed-common-rob/Includes/CAsservissementSulfateuse.h
 ext/mbed-common-rob/Includes/CCamera.h
-ext/mbed-common-rob/Includes/CCapteurs.h
 ext/mbed-common-rob/Includes/CdsPIC.h
 ext/mbed-common-rob/Includes/CEEPROM.h
 ext/mbed-common-rob/Includes/CGlobale.h
@@ -207,12 +205,14 @@ Sources/RessoucesHardware.cpp
 Sources/CAsservissement.cpp
 Sources/CAsservissementChariot.cpp
 Sources/CTelemetres.cpp
+Sources/CCapteurs.cpp
 
 Includes/ConfigSpecifiqueCoupe.h
 Includes/RessourcesHardware.h
 Includes/CAsservissement.h
 Includes/CAsservissementChariot.h
 Includes/CTelemetres.h
+Includes/CCapteurs.h
 
 Modelia/ia.cpp
 Modelia/sm_inputsinterface.cpp
@@ -293,6 +293,8 @@ ext/CppRobLib/common-rob/CRouesBase.cpp
 ext/CppRobLib/common-rob/CRouesBase.h
 ext/CppRobLib/common-rob/CAsservissementBase.cpp
 ext/CppRobLib/common-rob/CAsservissementBase.h
+ext/CppRobLib/common-rob/CAsservissementChariotBase.cpp
+ext/CppRobLib/common-rob/CAsservissementChariotBase.h
 ext/CppRobLib/common-rob/CServoMoteurSD20Base.cpp
 ext/CppRobLib/common-rob/CServoMoteurSD20Base.h
 ext/CppRobLib/common-rob/CLeds.cpp
@@ -303,6 +305,8 @@ ext/CppRobLib/common-rob/CTelemetresBase.cpp
 ext/CppRobLib/common-rob/CTelemetresBase.h
 ext/CppRobLib/common-rob/CDetectionObstaclesBase.cpp
 ext/CppRobLib/common-rob/CDetectionObstaclesBase.h
+ext/CppRobLib/common-rob/CCapteursBase.cpp
+ext/CppRobLib/common-rob/CCapteursBase.h
 
 ext/CppRobLib/common-rob/Modelia/sm_statemachinebase.h
 ext/CppRobLib/common-rob/Modelia/sm_statemachinebase.cpp

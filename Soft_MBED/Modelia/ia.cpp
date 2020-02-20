@@ -27,6 +27,8 @@ IA::IA()
 // ou si le modèle ne peut pas utiliser directement Application.m_xxxxx.yyyy
 void IA::step()
 {
+    m_inputs_interface.Tirette             = Application.m_capteurs.getTirette();
+
     m_inputs_interface.Telemetre_AVG       = Application.m_telemetres.getDistanceAVG();
     m_inputs_interface.Telemetre_AVD       = Application.m_telemetres.getDistanceAVD();
     m_inputs_interface.Telemetre_ARG       = Application.m_telemetres.getDistanceARG();

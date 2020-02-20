@@ -23,6 +23,7 @@ OBJECTS += Sources/RessoucesHardware.o
 OBJECTS += Sources/CAsservissement.o
 OBJECTS += Sources/CAsservissementChariot.o
 OBJECTS += Sources/CTelemetres.o
+OBJECTS += Sources/CCapteurs.o
 
 OBJECTS += Modelia/ia.o
 OBJECTS += Modelia/sm_inputsinterface.o
@@ -109,6 +110,7 @@ OBJECTS += $(CPPROBLIB_PATH)/common-rob/CLedBase.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CLeds.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CTelemetresBase.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CDetectionObstaclesBase.o
+OBJECTS += $(CPPROBLIB_PATH)/common-rob/CCapteursBase.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/Modelia/iabase.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/Modelia/sm_statemachinebase.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/Modelia/sm_evitement.o
