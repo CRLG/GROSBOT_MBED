@@ -1,5 +1,6 @@
 #include "ia.h"
 #include "CGlobale.h"
+#include "ConfigSpecifiqueCoupe.h"
 
 IA::IA()
     : IABase()
@@ -14,6 +15,71 @@ IA::IA()
     m_sm_liste[m_state_machine_count++] = &m_sm_recup_4_bouees_chemin;
     m_sm_liste[m_state_machine_count++] = &m_sm_arriver_a_bon_port;
 }
+
+// ________________________________________________
+void IA::init()
+{
+    m_inputs_interface.TE_Modele = PERIODE_APPEL_MODELIA;
+    m_datas_interface.init();
+    m_inputs_interface.init();
+    m_outputs_interface.init();
+    for (int i=0; i<m_state_machine_count; i++) {
+        if (m_sm_liste[i]) {
+            m_sm_liste[i]->init(this);
+        }
+    }
+
+    setStrategie(STRATEGIE_PAR_DEFAUT);
+}
+
+// ________________________________________________
+// Définit l'ordre d'exécution des "main missions"
+// Cette année, pour ce robot, les mains missions sont :
+//   - m_sm_activer_phare;
+//   - m_sm_deposer_bouees_dans_port;
+//   - m_sm_recup_2_bouees_zone_depart;
+//   - m_sm_recup_4_bouees_chemin;
+//   - m_sm_recup_bouees_distributeur;
+//   - m_sm_arriver_a_bon_port;
+// Pour interdire l'exécution d'une mission :
+//   - m_sm_xxx.setEnabled(false);
+void IA::setStrategie(int strategie)
+{
+    int ordre = 0;
+    switch (strategie) {
+    // ________________________ Attention : c'est juste un exemple pour montrer comment ça s'utilise
+    case STRATEGIE_HOMOLO1:
+        m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
+        m_sm_recup_2_bouees_zone_depart.setPrioriteExecution(ordre++);
+        m_sm_activer_phare.setPrioriteExecution(ordre++);  // Pour l'essai
+        break;
+    // ________________________ Attention : c'est juste un exemple pour montrer comment ça s'utilise
+    case STRATEGIE_HOMOLO2:
+        m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
+        m_sm_recup_2_bouees_zone_depart.setPrioriteExecution(ordre++);
+        m_sm_activer_phare.setEnabled(false);  // celle là, on ne veut surtout pas qu'elle s'exécute dans cette stratégie
+        break;
+    // ________________________ Attention : c'est juste un exemple pour montrer comment ça s'utilise
+    case STRATEGIE_01:
+        m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_SCORE_MAX;
+        m_sm_activer_phare.setEnabled(false);  // celle là, on ne veut surtout pas qu'elle s'exécute dans cette stratégie
+        break;
+    // ________________________
+    // TODO : configurer les autres stratégies
+
+    // ________________________  A VERIFIER
+    default:
+        m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
+        m_sm_recup_2_bouees_zone_depart.setPrioriteExecution(ordre++);
+        m_sm_activer_phare.setPrioriteExecution(ordre++);
+        m_sm_recup_4_bouees_chemin.setPrioriteExecution(ordre++);
+        m_sm_recup_bouees_distributeur.setPrioriteExecution(ordre++);
+        m_sm_deposer_bouees_dans_port.setPrioriteExecution(ordre++);
+        m_sm_arriver_a_bon_port.setPrioriteExecution(ordre++);
+        break;
+    }
+}
+
 
 // ________________________________________________
 // !! ATTENTION !!
@@ -68,15 +134,4 @@ void IA::step()
 }
 
 
-// ________________________________________________
-void IA::initAllStateMachines()
-{
-    m_datas_interface.init();
-    m_inputs_interface.init();
-    m_outputs_interface.init();
-    for (int i=0; i<m_state_machine_count; i++) {
-        if (m_sm_liste[i]) {
-            m_sm_liste[i]->init(this);
-        }
-    }
-}
+

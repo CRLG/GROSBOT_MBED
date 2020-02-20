@@ -30,7 +30,9 @@ public:
     SM_ArriverABonPort          m_sm_arriver_a_bon_port;
 
     void step();
-    void initAllStateMachines();
+    void init();
+
+    void setStrategie(int strategie);
 };
 
 #endif // IA_H

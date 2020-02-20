@@ -16,6 +16,8 @@ public:
     int CouleurEquipe;
     float TempsMatch;
 
+    int choix_algo_next_mission;
+
     // Evitement
     bool evitementEnCours;
     bool inhibeObstacle;

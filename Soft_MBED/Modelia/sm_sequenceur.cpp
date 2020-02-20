@@ -26,7 +26,7 @@ const char* SM_Sequenceur::stateToName(unsigned short state)
 // _____________________________________
 void SM_Sequenceur::step()
 {
-    IA::tAlgoNextPertinentMission algo_next_mission = IA::ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
+    IA::tAlgoNextPertinentMission algo_next_mission = (IA::tAlgoNextPertinentMission)internals()->choix_algo_next_mission;
 
     // Activation du déploiement du pavillon à la 95ème seconde du match
     if (!m_ia->m_sm_deployer_pavillon.isActive() && (internals()->TempsMatch >= 95.0f) && (!m_ia->m_sm_deployer_pavillon.isSucces())) {
