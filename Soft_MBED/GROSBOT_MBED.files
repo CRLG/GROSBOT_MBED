@@ -154,6 +154,7 @@ ext/mbed-os/mbed_config.h
 ext/mbed-common-rob/Sources/CAsservissement.cpp
 ext/mbed-common-rob/Sources/CAsservissementSulfateuse.cpp
 ext/mbed-common-rob/Sources/CCapteurs.cpp
+ext/mbed-common-rob/Sources/CElectrobot.cpp
 ext/mbed-common-rob/Sources/CEEPROM.cpp
 ext/mbed-common-rob/Sources/CGlobale.cpp
 ext/mbed-common-rob/Sources/CGlobale_ModeAutonome.cpp
@@ -176,7 +177,7 @@ ext/mbed-common-rob/Sources/PowerElectrobot.cpp
 ext/mbed-common-rob/Sources/xbeedriver.cpp
 
 ext/mbed-common-rob/Includes/xbeedriver.h
-ext/mbed-common-rob/Includes/CCapteurs.h
+ext/mbed-common-rob/Includes/CElectrobot.h
 ext/mbed-common-rob/Includes/CAsservissementSulfateuse.h
 ext/mbed-common-rob/Includes/CCamera.h
 ext/mbed-common-rob/Includes/CCapteurs.h

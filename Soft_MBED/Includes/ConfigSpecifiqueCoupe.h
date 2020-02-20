@@ -5,7 +5,7 @@
 #define _CONFIG_SPECIFIQUE_COUPE
 
 #include "CMoteurs.h"
-#include "CCapteurs.h"
+#include "CElectrobot.h"
 #include "CServoMoteurSD20.h"
 #include "PowerSwitch.h"
 

@@ -15,25 +15,25 @@ void CAsservissementChariot::Init()
 // ___________________________________________________
 bool CAsservissementChariot::isButeeBasse()
 {
-    return (Application.m_capteurs.m_b_Etor4==false);
+    return (Application.m_electrobot.m_b_Etor4==false);
 }
 
 // ___________________________________________________
 bool CAsservissementChariot::isButeeHaute()
 {
-    return (Application.m_capteurs.m_b_Etor2==false);
+    return (Application.m_electrobot.m_b_Etor2==false);
 }
 
 // ___________________________________________________
 int CAsservissementChariot::getPositionCodeur()
 {
-    return (Application.m_capteurs.m_CumulCodeurPosition3);
+    return (Application.m_electrobot.m_CumulCodeurPosition3);
 }
 
 // ___________________________________________________
 void CAsservissementChariot::resetPositionCodeur(int pos)
 {
-    Application.m_capteurs.RAZ_PositionCodeur(CODEUR_3, pos);
+    Application.m_electrobot.RAZ_PositionCodeur(CODEUR_3, pos);
 }
 
 

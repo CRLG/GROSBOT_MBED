@@ -46,7 +46,7 @@ INCLUDE_PATHS += -I../$(MBED_COMMON_ROB_PATH)/Includes
 INCLUDE_PATHS += -I../$(MBED_COMMON_ROB_PATH)/Modelia
 
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CAsservissementSulfateuse.o
-OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CCapteurs.o
+OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CElectrobot.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CEEPROM.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CGlobale.o
 OBJECTS += $(MBED_COMMON_ROB_PATH)/Sources/CGlobale_ModeAutonome.o
