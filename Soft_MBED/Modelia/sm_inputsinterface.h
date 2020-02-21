@@ -30,9 +30,6 @@ public:
     float Telemetre_ARD;
     float Telemetre_ARG;
 
-    // Evitement d'obstacles
-    unsigned char evit_choix_strategie;
-
     // Sortie de l'asservissement
     float X_robot;
     float Y_robot;

@@ -9,37 +9,43 @@ public:
         EQUIPE_COULEUR_2,
     }tCouleurEquipe;
 
+    typedef enum {
+        STRATEGIE_EVITEMENT_ATTENDRE = 0,
+        STRATEGIE_EVITEMENT_CONTOURNER
+    }tChoixStrategieEvitement;
+
     SM_DatasInterface();
 
     void init();
 
     int CouleurEquipe;
     float TempsMatch;
-    unsigned char ChoixStrategie;
+    unsigned char ChoixStrategieMatch;
 
     int choix_algo_next_mission;
 
-    // Evitement
+    // Stratégie d'évitement d'obstacles
     bool evitementEnCours;
     bool evit_inhibe_obstacle;
+    bool evit_force_obstacle;
     unsigned long evit_memo_cde_min;
     unsigned long  evit_memo_cde_max;
-    double evit_memo_idx_sportiv;
-    double evit_memo_vitesse_avance;
-    double evit_memo_vitesse_angle;
-    double evit_memo_force_obstacle;
-    double evit_sens_avant_detection;
-    unsigned long evit_nombre_tentatives;
-    unsigned long evit_nombre_max_tentatives;
-    unsigned long evit_detection_obstacle_bitfield;
+    float evit_memo_idx_sportiv;
+    float evit_memo_vitesse_avance;
+    float evit_memo_vitesse_angle;
+    bool evit_memo_force_obstacle;
+    float evit_sens_avant_detection;
+    unsigned char evit_nombre_tentatives;
+    unsigned char evit_nombre_max_tentatives;
+    unsigned short evit_detection_obstacle_bitfield;
     bool evit_strategie_evitement_en_cours;
-    unsigned long evit_sgn_dist_eloigne;
-    unsigned long evit_sgn_angle_pivote;
-    unsigned long evit_sgn_dist_evacue;
-    unsigned long evit_toggle_signe;
+    signed char evit_sgn_dist_eloigne;
+    signed char evit_sgn_angle_pivote;
+    signed char evit_sgn_dist_evacue;
+    signed char evit_toggle_signe;
     unsigned long evit_debug_etape;
-    unsigned long evit_choix_strategie;
-    unsigned long evit_seuil_detection_obstacle;
+    unsigned char evit_choix_strategie;
+    unsigned short evit_seuil_detection_obstacle;
     unsigned char evit_comportement_retour_evitement;
 };
 

@@ -30,12 +30,6 @@ typedef enum {
     STRATEGIE_TEST_07
 }eATTRIBUTION_STRATEGIES;
 
-// Affectation des numéros de stratégie d'évitement d'obstacle
-typedef enum {
-    EVITEMENT_NEUTRE= 0,
-    EVITEMENT_NORMAL
-}eATTRIBUTION_STRATEGIES_EVITEMENT;
-
 // Affectation des sorties moteurs
 typedef enum {
    MOTEUR_ROUE_GAUCHE = MOTEUR_1,
@@ -105,6 +99,14 @@ typedef enum {
 
 //! Durée du match
 #define DUREE_MATCH 100 // [sec]
+
+// Consignes "tout doux" pour l'asserviseement
+// utilisé dans la stratégie d'évitement et propre au robot
+// TODO : peut être qu'il serait mieux de faire une méthode
+// dans la classe Asservissement getCdeMinToutDoux() et getCdeMaxToutDoux()
+// à ré-implémenter pour chaque robot en fonction de moteurs
+#define CDE_MIN_TOUT_DOUX (-10)
+#define CDE_MAX_TOUT_DOUX (10)
 
 #define HOMOLO 1
 

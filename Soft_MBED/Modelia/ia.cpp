@@ -90,7 +90,7 @@ void IA::setStrategie(unsigned char strategie)
         m_sm_arriver_a_bon_port.setPrioriteExecution(ordre++);
         break;
     }
-    m_datas_interface.ChoixStrategie = strategie;
+    m_datas_interface.ChoixStrategieMatch = strategie;
 }
 
 
