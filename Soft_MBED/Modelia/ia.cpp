@@ -102,10 +102,47 @@ void IA::step()
 {
     m_inputs_interface.Tirette             = Application.m_capteurs.getTirette();
 
+    m_inputs_interface.Convergence         = Application.m_asservissement.convergence_conf;
+    m_inputs_interface.Convergence_rapide  = Application.m_asservissement.convergence_rapide;
+    m_inputs_interface.ConvergenceRack     = Application.m_asservissement_chariot.isConverged();
+    m_inputs_interface.X_robot             = Application.m_asservissement.X_robot;
+    m_inputs_interface.Y_robot             = Application.m_asservissement.Y_robot;
+    m_inputs_interface.angle_robot         = Application.m_asservissement.angle_robot;
+
+    // Coordonnées du robot dans le repère absolue terrain (pour que ce soit valable pour les 2 couleurs d'équipe)
+    if (m_datas_interface.couleur_equipe == SM_DatasInterface::EQUIPE_COULEUR_1) {
+        m_inputs_interface.X_robot_terrain     = X_ROBOT_TERRAIN_INIT + Application.m_asservissement.X_robot;
+        m_inputs_interface.Y_robot_terrain     = Y_ROBOT_TERRAIN_INIT + Application.m_asservissement.Y_robot;
+        //m_inputs_interface.angle_robot_terrain = Application.m_asservissement.angle_robot;
+    }
+    else {
+        m_inputs_interface.X_robot_terrain     = X_ROBOT_TERRAIN_INIT - Application.m_asservissement.X_robot;
+        m_inputs_interface.Y_robot_terrain     = Y_ROBOT_TERRAIN_INIT - Application.m_asservissement.Y_robot;
+        //m_inputs_interface.angle_robot_terrain =  ...TODO si besoin
+    }
+
+    // Télémètres et obstacles
     m_inputs_interface.Telemetre_AVG       = Application.m_telemetres.getDistanceAVG();
     m_inputs_interface.Telemetre_AVD       = Application.m_telemetres.getDistanceAVD();
     m_inputs_interface.Telemetre_ARG       = Application.m_telemetres.getDistanceARG();
     m_inputs_interface.Telemetre_ARD       = Application.m_telemetres.getDistanceARD();
+
+    //    inhibition forcée de la détection d'obstacle
+    if (m_datas_interface.evit_inhibe_obstacle) {
+        Application.m_detection_obstacles.inhibeDetection(true);
+    }
+    //    Tient compte de la position du robot sur le terrain pour inhiber les obstacles
+    //      -> Trop proche des bordures -> inhibe la détection
+    //      TODO : il faudrait faire mieux et prendre en compte l'angle du robot
+    //        pour inhiber soit les capteurs AV soit les capteurs AR si l'obstacle est détecté en dehors du terrain
+    else if (m_datas_interface.evit_force_obstacle == false) {
+        bool proximite_bordure_X = (m_inputs_interface.X_robot_terrain < 35) || (m_inputs_interface.X_robot_terrain > 265);
+        bool proximite_bordure_Y = (m_inputs_interface.Y_robot_terrain < 35) || (m_inputs_interface.Y_robot_terrain > 165);
+        Application.m_detection_obstacles.inhibeDetection(proximite_bordure_X || proximite_bordure_Y);
+    }
+    else {
+        Application.m_detection_obstacles.inhibeDetection(false);
+    }
 
     m_inputs_interface.obstacle_AVG        = Application.m_detection_obstacles.isObstacleAVG();
     m_inputs_interface.obstacle_AVD        = Application.m_detection_obstacles.isObstacleAVD();
@@ -119,13 +156,6 @@ void IA::step()
             (m_inputs_interface.obstacle_ARD << 2) |
             (m_inputs_interface.obstacle_AVG << 1) |
             (m_inputs_interface.obstacle_AVD << 0);
-
-    m_inputs_interface.Convergence         = Application.m_asservissement.convergence_conf;
-    m_inputs_interface.Convergence_rapide  = Application.m_asservissement.convergence_rapide;
-    m_inputs_interface.ConvergenceRack     = Application.m_asservissement_chariot.isConverged();
-    m_inputs_interface.X_robot             = Application.m_asservissement.X_robot;
-    m_inputs_interface.Y_robot             = Application.m_asservissement.Y_robot;
-    m_inputs_interface.angle_robot         = Application.m_asservissement.angle_robot;
 
     // Mise en forme de données pour le modèle
     m_inputs_interface.FrontM_Convergence = m_inputs_interface.Convergence && !m_inputs_interface.Convergence_old;

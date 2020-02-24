@@ -18,7 +18,7 @@ public:
 
     void init();
 
-    int CouleurEquipe;
+    int couleur_equipe;
     float TempsMatch;
     unsigned char ChoixStrategieMatch;
 
@@ -34,6 +34,7 @@ public:
     float evit_memo_vitesse_avance;
     float evit_memo_vitesse_angle;
     bool evit_memo_force_obstacle;
+    int evit_memo_choix_strategie;
     float evit_sens_avant_detection;
     unsigned char evit_nombre_tentatives;
     unsigned char evit_nombre_max_tentatives;

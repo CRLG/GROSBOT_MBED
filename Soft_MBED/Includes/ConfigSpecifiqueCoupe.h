@@ -9,6 +9,10 @@
 #include "CServoMoteurSD20.h"
 #include "PowerSwitch.h"
 
+// Couleur de l'équipe
+#define EQUIPE_BLEU     SM_DatasInterface::EQUIPE_COULEUR_1
+#define EQUIPE_JAUNE    SM_DatasInterface::EQUIPE_COULEUR_2
+
 // Affectation des numéros de stratégie
 typedef enum {
     STRATEGIE_PAR_DEFAUT= 0,
@@ -107,6 +111,11 @@ typedef enum {
 // à ré-implémenter pour chaque robot en fonction de moteurs
 #define CDE_MIN_TOUT_DOUX (-10)
 #define CDE_MAX_TOUT_DOUX (10)
+
+// Position d'init du robot dans le repère absolue terrain
+#define X_ROBOT_TERRAIN_INIT        (5)
+#define Y_ROBOT_TERRAIN_INIT        (123)
+#define ANGLE_ROBOT_TERRAIN_INIT    (0)
 
 #define HOMOLO 1
 

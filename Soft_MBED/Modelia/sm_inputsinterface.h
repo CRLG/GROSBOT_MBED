@@ -15,7 +15,6 @@ public:
 
     // En provenance de l'écran
     unsigned int dde_couleur_equipe;
-    unsigned int couleur_equipe;
     unsigned int dde_test_actionneurs;
     //unsigned int dde_choix_strategie;
 
@@ -34,6 +33,10 @@ public:
     float X_robot;
     float Y_robot;
     float angle_robot;
+
+    float X_robot_terrain;  // Coordonnées absolue dans le repère terrain
+    float Y_robot_terrain;
+    float angle_robot_terrain;
 
     bool Convergence;
     bool Convergence_old;
