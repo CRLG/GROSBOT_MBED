@@ -112,12 +112,14 @@ void IA::step()
     if (m_datas_interface.couleur_equipe == SM_DatasInterface::EQUIPE_COULEUR_1) {
         m_inputs_interface.X_robot_terrain     = X_ROBOT_TERRAIN_INIT + Application.m_asservissement.X_robot;
         m_inputs_interface.Y_robot_terrain     = Y_ROBOT_TERRAIN_INIT + Application.m_asservissement.Y_robot;
-        //m_inputs_interface.angle_robot_terrain = Application.m_asservissement.angle_robot;
+        m_inputs_interface.angle_robot_terrain = Application.m_asservissement.angle_robot;
     }
     else {
         m_inputs_interface.X_robot_terrain     = X_ROBOT_TERRAIN_INIT - Application.m_asservissement.X_robot;
         m_inputs_interface.Y_robot_terrain     = Y_ROBOT_TERRAIN_INIT - Application.m_asservissement.Y_robot;
-        //m_inputs_interface.angle_robot_terrain =  ...TODO si besoin
+        m_inputs_interface.angle_robot_terrain = Application.m_asservissement.angle_robot - 3.14;
+        if (m_inputs_interface.angle_robot_terrain > 3.14)   m_inputs_interface.angle_robot_terrain = m_inputs_interface.angle_robot_terrain - 6.28;
+        if (m_inputs_interface.angle_robot_terrain <= -3.14) m_inputs_interface.angle_robot_terrain = m_inputs_interface.angle_robot_terrain + 6.28;
     }
 
     // Télémètres et obstacles
