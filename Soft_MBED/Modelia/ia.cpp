@@ -57,7 +57,6 @@ void IA::setStrategie(unsigned char strategie)
     case STRATEGIE_TEST_01:
         m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
         Application.m_modelia.m_sm_recup_bouees_distributeur.setPrioriteExecution(ordre++);
-        Application.m_modelia.m_sm_my_strategy.setPrioriteExecution(ordre++);
         break;
     // ________________________ Attention : c'est juste un exemple pour montrer comment ça s'utilise
     case STRATEGIE_HOMOLO1:
