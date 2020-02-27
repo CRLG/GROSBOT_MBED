@@ -15,7 +15,7 @@ void SM_DatasInterface::init()
     // Stratégie d'évitement d'obstacles
     evitementEnCours                    = false;
     evit_inhibe_obstacle                = false;
-    evit_force_obstacle                 = true;
+    evit_force_obstacle                 = false;
     evit_nombre_tentatives              = 0;
     evit_nombre_max_tentatives          = 5;
     evit_detection_obstacle_bitfield    = 0;
