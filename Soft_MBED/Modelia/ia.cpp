@@ -52,6 +52,7 @@ void IA::init()
 void IA::setStrategie(unsigned char strategie)
 {
     int ordre = 0;
+    resetAllSMPriority();
     switch (strategie) {
     // ________________________ Attention : c'est juste un exemple pour montrer comment ça s'utilise
     case STRATEGIE_TEST_01:
