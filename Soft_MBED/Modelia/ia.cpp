@@ -138,55 +138,55 @@ void IA::step()
     //      -> Trop proche des bordures -> inhibe la détection
     //      Inhibe soit les capteurs AV soit les capteurs AR en fonction de l'angle robot et de la proximité bordure si l'obstacle est détecté en dehors du terrain
     else if (m_datas_interface.evit_force_obstacle == false) {
-        bool proximite_bordure_Xdroite = m_inputs_interface.X_robot_terrain > 265;
-        bool proximite_bordure_Xgauche = m_inputs_interface.X_robot_terrain < 35;
-        bool proximite_bordure_Ybasse = m_inputs_interface.Y_robot_terrain < 35;
-        bool proximite_bordure_Yhaute = m_inputs_interface.Y_robot_terrain > 165;
-        bool inhibe_detection_AV = false;
-        bool inhibe_detection_AR = false;
+        m_datas_interface.proximite_bordure_Xdroite = m_inputs_interface.X_robot_terrain > X_MAX_INTERDIT_DETECTION;
+        m_datas_interface.proximite_bordure_Xgauche = m_inputs_interface.X_robot_terrain < X_MIN_INTERDIT_DETECTION;
+        m_datas_interface.proximite_bordure_Ybasse = m_inputs_interface.Y_robot_terrain < Y_MIN_INTERDIT_DETECTION;
+        m_datas_interface.proximite_bordure_Yhaute = m_inputs_interface.Y_robot_terrain > Y_MAX_INTERDIT_DETECTION;
+        m_datas_interface.inhibe_detection_AV = false;
+        m_datas_interface.inhibe_detection_AR = false;
 
-        if (proximite_bordure_Ybasse) {
-            if ( (m_inputs_interface.angle_robot_terrain > -3.14) && (m_inputs_interface.angle_robot_terrain < 0) ) {
-               inhibe_detection_AV = true;
+        if (m_datas_interface.proximite_bordure_Ybasse) {
+            if ( (m_inputs_interface.angle_robot_terrain >= -3.14) && (m_inputs_interface.angle_robot_terrain <= 0) ) {
+               m_datas_interface.inhibe_detection_AV = true;
             }
-            if ( (m_inputs_interface.angle_robot_terrain > 0.) && (m_inputs_interface.angle_robot_terrain < 3.14) ) {
-               inhibe_detection_AR = true;
-            }
-        }
-        if (proximite_bordure_Yhaute) {
-            if ( (m_inputs_interface.angle_robot_terrain > -3.14) && (m_inputs_interface.angle_robot_terrain < 0) ) {
-               inhibe_detection_AR = true;
-            }
-            if ( (m_inputs_interface.angle_robot_terrain > 0.) && (m_inputs_interface.angle_robot_terrain < 3.14) ) {
-               inhibe_detection_AV = true;
+            if ( (m_inputs_interface.angle_robot_terrain >= 0.) && (m_inputs_interface.angle_robot_terrain <= 3.14) ) {
+               m_datas_interface.inhibe_detection_AR = true;
             }
         }
-        if (proximite_bordure_Xgauche) {
-            if (    ((m_inputs_interface.angle_robot_terrain > 1.57) && (m_inputs_interface.angle_robot_terrain < 3.14) )
-                 || ((m_inputs_interface.angle_robot_terrain < -1.57) && (m_inputs_interface.angle_robot_terrain > -3.14))
-               ) {
-               inhibe_detection_AV = true;
+        if (m_datas_interface.proximite_bordure_Yhaute) {
+            if ( (m_inputs_interface.angle_robot_terrain >= -3.14) && (m_inputs_interface.angle_robot_terrain <= 0) ) {
+               m_datas_interface.inhibe_detection_AR = true;
             }
-            if (    ((m_inputs_interface.angle_robot_terrain > 0) && (m_inputs_interface.angle_robot_terrain < 1.57) )
-                 || ((m_inputs_interface.angle_robot_terrain > -1.57) && (m_inputs_interface.angle_robot_terrain < 0.))
-               ) {
-               inhibe_detection_AR = true;
+            if ( (m_inputs_interface.angle_robot_terrain >= 0.) && (m_inputs_interface.angle_robot_terrain <= 3.14) ) {
+               m_datas_interface.inhibe_detection_AV = true;
             }
         }
-        if (proximite_bordure_Xdroite) {
-            if (    ((m_inputs_interface.angle_robot_terrain > 1.57) && (m_inputs_interface.angle_robot_terrain < 3.14) )
-                 || ((m_inputs_interface.angle_robot_terrain < -1.57) && (m_inputs_interface.angle_robot_terrain > -3.14))
+        if (m_datas_interface.proximite_bordure_Xgauche) {
+            if (    ((m_inputs_interface.angle_robot_terrain >= 1.57) && (m_inputs_interface.angle_robot_terrain <= 3.14) )
+                 || ((m_inputs_interface.angle_robot_terrain <= -1.57) && (m_inputs_interface.angle_robot_terrain >= -3.14))
                ) {
-               inhibe_detection_AR = true;
+               m_datas_interface.inhibe_detection_AV = true;
             }
-            if (    ((m_inputs_interface.angle_robot_terrain > 0) && (m_inputs_interface.angle_robot_terrain < 1.57) )
-                 || ((m_inputs_interface.angle_robot_terrain > -1.57) && (m_inputs_interface.angle_robot_terrain < 0.))
+            if (    ((m_inputs_interface.angle_robot_terrain >= 0) && (m_inputs_interface.angle_robot_terrain <= 1.57) )
+                 || ((m_inputs_interface.angle_robot_terrain >= -1.57) && (m_inputs_interface.angle_robot_terrain <= 0.))
                ) {
-               inhibe_detection_AV = true;
+               m_datas_interface.inhibe_detection_AR = true;
             }
         }
-        Application.m_detection_obstacles.inhibeDetectionAV(inhibe_detection_AV);
-        Application.m_detection_obstacles.inhibeDetectionAR(inhibe_detection_AR);
+        if (m_datas_interface.proximite_bordure_Xdroite) {
+            if (    ((m_inputs_interface.angle_robot_terrain >= 1.57) && (m_inputs_interface.angle_robot_terrain <= 3.14) )
+                 || ((m_inputs_interface.angle_robot_terrain <= -1.57) && (m_inputs_interface.angle_robot_terrain >= -3.14))
+               ) {
+               m_datas_interface.inhibe_detection_AR = true;
+            }
+            if (    ((m_inputs_interface.angle_robot_terrain >= 0) && (m_inputs_interface.angle_robot_terrain <= 1.57) )
+                 || ((m_inputs_interface.angle_robot_terrain >= -1.57) && (m_inputs_interface.angle_robot_terrain <= 0.))
+               ) {
+               m_datas_interface.inhibe_detection_AV = true;
+            }
+        }
+        Application.m_detection_obstacles.inhibeDetectionAV(m_datas_interface.inhibe_detection_AV);
+        Application.m_detection_obstacles.inhibeDetectionAR(m_datas_interface.inhibe_detection_AR);
     }
     else {
         Application.m_detection_obstacles.inhibeDetection(false);

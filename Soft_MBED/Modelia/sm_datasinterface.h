@@ -48,6 +48,14 @@ public:
     unsigned char evit_choix_strategie;
     unsigned short evit_seuil_detection_obstacle;
     unsigned char evit_comportement_retour_evitement;
+
+    // Pour l'inhibition de détection des obstacles
+    bool proximite_bordure_Xdroite;
+    bool proximite_bordure_Xgauche;
+    bool proximite_bordure_Ybasse;
+    bool proximite_bordure_Yhaute;
+    bool inhibe_detection_AV;
+    bool inhibe_detection_AR;
 };
 
 #endif // SM_DATASINTERFACE_H
