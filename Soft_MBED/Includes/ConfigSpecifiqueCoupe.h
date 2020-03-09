@@ -113,9 +113,13 @@ typedef enum {
 #define CDE_MAX_TOUT_DOUX (10)
 
 // Position d'init du robot dans le repère absolue terrain
-#define X_ROBOT_TERRAIN_INIT        (18)
-#define Y_ROBOT_TERRAIN_INIT        (129)
-#define ANGLE_ROBOT_TERRAIN_INIT    (0)
+#define X_ROBOT_TERRAIN_INIT_COULEUR_1        (18)
+#define Y_ROBOT_TERRAIN_INIT_COULEUR_1        (129)
+#define ANGLE_ROBOT_TERRAIN_INIT_COULEUR_1    (0)
+
+#define X_ROBOT_TERRAIN_INIT_COULEUR_2        (282)
+#define Y_ROBOT_TERRAIN_INIT_COULEUR_2        (129)
+#define ANGLE_ROBOT_TERRAIN_INIT_COULEUR_2    (3.14f)
 
 // Coordonnées dans le repère absolue terrain
 // à partir desquelles il faut interdire la détection d'obstacle

@@ -111,14 +111,14 @@ void IA::step()
 
     // Coordonnées du robot dans le repère absolue terrain (pour que ce soit valable pour les 2 couleurs d'équipe)
     if (m_datas_interface.couleur_equipe == SM_DatasInterface::EQUIPE_COULEUR_1) {
-        m_inputs_interface.X_robot_terrain     = X_ROBOT_TERRAIN_INIT + Application.m_asservissement.X_robot;
-        m_inputs_interface.Y_robot_terrain     = Y_ROBOT_TERRAIN_INIT + Application.m_asservissement.Y_robot;
-        m_inputs_interface.angle_robot_terrain = Application.m_asservissement.angle_robot;
+        m_inputs_interface.X_robot_terrain     = X_ROBOT_TERRAIN_INIT_COULEUR_1 + Application.m_asservissement.X_robot;
+        m_inputs_interface.Y_robot_terrain     = Y_ROBOT_TERRAIN_INIT_COULEUR_1 + Application.m_asservissement.Y_robot;
+        m_inputs_interface.angle_robot_terrain = Application.m_asservissement.angle_robot - ANGLE_ROBOT_TERRAIN_INIT_COULEUR_1;
     }
     else {
-        m_inputs_interface.X_robot_terrain     = X_ROBOT_TERRAIN_INIT - Application.m_asservissement.X_robot;
-        m_inputs_interface.Y_robot_terrain     = Y_ROBOT_TERRAIN_INIT - Application.m_asservissement.Y_robot;
-        m_inputs_interface.angle_robot_terrain = Application.m_asservissement.angle_robot - 3.14;
+        m_inputs_interface.X_robot_terrain     = X_ROBOT_TERRAIN_INIT_COULEUR_2 - Application.m_asservissement.X_robot;
+        m_inputs_interface.Y_robot_terrain     = Y_ROBOT_TERRAIN_INIT_COULEUR_2 - Application.m_asservissement.Y_robot;
+        m_inputs_interface.angle_robot_terrain = Application.m_asservissement.angle_robot - ANGLE_ROBOT_TERRAIN_INIT_COULEUR_2;
         // Ramène l'angle entre [-Pi;Pi]
         if (m_inputs_interface.angle_robot_terrain > 3.14)   m_inputs_interface.angle_robot_terrain = m_inputs_interface.angle_robot_terrain - 6.28;
         if (m_inputs_interface.angle_robot_terrain <= -3.14) m_inputs_interface.angle_robot_terrain = m_inputs_interface.angle_robot_terrain + 6.28;
