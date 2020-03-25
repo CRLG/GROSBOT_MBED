@@ -11,6 +11,7 @@ void SM_DatasInterface::init()
 {
     ChoixStrategieMatch                 = 255; // = non défini
     TempsMatch                          = -1;
+    inverse_consignes_XYTeta            = false;
 
     // Stratégie d'évitement d'obstacles
     evitementEnCours                    = false;

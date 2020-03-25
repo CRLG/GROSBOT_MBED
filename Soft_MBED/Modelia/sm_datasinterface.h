@@ -19,6 +19,7 @@ public:
     void init();
 
     int couleur_equipe;
+    bool inverse_consignes_XYTeta;          // Inverse les commandes  XYTeta de mouvements envoyés à l'asserv en fonction de la couleur de l'équipe
     float TempsMatch;
     unsigned char ChoixStrategieMatch;
 
