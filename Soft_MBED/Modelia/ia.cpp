@@ -63,6 +63,7 @@ void IA::setStrategie(unsigned char strategie)
     case STRATEGIE_HOMOLO1:
         m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
         m_sm_recup_2_bouees_zone_depart.setPrioriteExecution(ordre++);
+        m_sm_recup_bouees_distributeur.setPrioriteExecution(ordre++);
         m_sm_activer_phare.setPrioriteExecution(ordre++);  // Pour l'essai
         break;
     // ________________________ Attention : c'est juste un exemple pour montrer comment ça s'utilise
