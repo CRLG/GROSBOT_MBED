@@ -4,7 +4,6 @@
 SM_Recup2BoueesZoneDepart::SM_Recup2BoueesZoneDepart()
 {
     m_main_mission_type = true;
-    m_max_score = 20;  // TODO : à vérifier
 }
 
 const char* SM_Recup2BoueesZoneDepart::getName()

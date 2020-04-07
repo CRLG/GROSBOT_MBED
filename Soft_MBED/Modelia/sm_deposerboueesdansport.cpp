@@ -3,7 +3,6 @@
 SM_DeposerBoueesDansPort::SM_DeposerBoueesDansPort()
 {
     m_main_mission_type = true;
-    m_max_score = 2;  // TODO : à vérifier
 }
 
 const char* SM_DeposerBoueesDansPort::getName()

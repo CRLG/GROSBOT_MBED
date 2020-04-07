@@ -35,6 +35,7 @@ void IA::init()
             m_sm_liste[i]->init(this);
         }
     }
+    setMaxScores();
     m_sm_main.start();
 }
 
@@ -94,6 +95,18 @@ void IA::setStrategie(unsigned char strategie)
     m_datas_interface.ChoixStrategieMatch = strategie;
 }
 
+// ________________________________________________
+void IA::setMaxScores()
+{
+    // TODO : valeurs des scores max fixées au pif.
+    // Mettre les vraies valeurs
+    m_sm_recup_2_bouees_zone_depart.setScoreMax(10);
+    m_sm_activer_phare.setScoreMax(11);
+    m_sm_recup_4_bouees_chemin.setScoreMax(12);
+    m_sm_recup_bouees_distributeur.setScoreMax(13);
+    m_sm_deposer_bouees_dans_port.setScoreMax(14);
+    m_sm_arriver_a_bon_port.setScoreMax(15);
+}
 
 // ________________________________________________
 // TODO : à voir sur le long terme si la couche de recopie des donées

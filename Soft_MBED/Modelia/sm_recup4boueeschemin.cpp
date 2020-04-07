@@ -3,7 +3,6 @@
 SM_Recup4BoueesChemin::SM_Recup4BoueesChemin()
 {
     m_main_mission_type = true;
-    m_max_score = 2;  // TODO : à vérifier
 }
 
 const char* SM_Recup4BoueesChemin::getName()

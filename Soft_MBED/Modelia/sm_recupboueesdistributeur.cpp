@@ -4,7 +4,6 @@
 SM_RecupBoueesDistributeur::SM_RecupBoueesDistributeur()
 {
     m_main_mission_type = true;
-    m_max_score = 0;
 }
 
 const char* SM_RecupBoueesDistributeur::getName()

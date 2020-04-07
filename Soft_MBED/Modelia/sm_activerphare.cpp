@@ -4,7 +4,6 @@
 SM_ActiverPhare::SM_ActiverPhare()
 {
     m_main_mission_type = true;
-    m_max_score = 8;  // TODO : à vérifier
 }
 
 const char* SM_ActiverPhare::getName()

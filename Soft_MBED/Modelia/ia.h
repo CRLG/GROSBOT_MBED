@@ -33,6 +33,7 @@ public:
     void init();
 
     void setStrategie(unsigned char strategie);
+    void setMaxScores();
 };
 
 #endif // IA_H
