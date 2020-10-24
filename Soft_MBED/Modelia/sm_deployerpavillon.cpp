@@ -1,5 +1,5 @@
 /**
- * Generated 10_04_2020 at 20_27
+ * Generated 24_10_2020 at 18_14
  */
 
 #include "sm_deployerpavillon.h"
@@ -22,7 +22,6 @@ const char* SM_DeployerPavillon::stateToName(unsigned short state)
 	{
 		case STATE_1 :		return "STATE_1";
 		case STATE_2 :		return "STATE_2";
-		case STATE_3 :		return "STATE_3";
 		case FIN_MISSION :	return "FIN_MISSION";
 	}
 	return "UNKNOWN_STATE";
@@ -37,28 +36,19 @@ void SM_DeployerPavillon::step()
 	// ___________________________
 	case STATE_1 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY_TETA(0,-90,0);/**/
+			Application.m_servos_sd20.CommandePosition(20,185);/*20*/
 		}
 
-			gotoStateIfConvergence(STATE_2,5000);
+			gotoStateAfter(STATE_2,2000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_2 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY_TETA(50,-90,1.57);/**/
+			Application.m_servos_sd20.CommandePosition(20,185);/*20*/
 		}
 
-			gotoStateIfConvergence(STATE_3,5000);
-		if (onExit()) {  }
-		break;
-	// ___________________________
-	case STATE_3 :
-		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY_TETA(23,-61,-3.14);/**/
-		}
-
-			gotoStateIfConvergence(FIN_MISSION,5000);
+			gotoStateAfter(FIN_MISSION, 4000);
 		if (onExit()) {  }
 		break;
 

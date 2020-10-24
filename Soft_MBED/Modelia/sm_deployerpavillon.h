@@ -1,5 +1,5 @@
 /**
- * Generated 10_04_2020 at 20_27
+ * Generated 24_10_2020 at 18_14
  */
 
 #ifndef SM_DEPLOYERPAVILLON_H
@@ -32,7 +32,6 @@ public:
 	STATE_14,
 	STATE_15,
 	STATE_16,
-	STATE_17,
 	FIN_MISSION
 	}tState;
 };

@@ -1,5 +1,5 @@
 /**
- * Generated 08_04_2020 at 11_38
+ * Generated 24_10_2020 at 16_01
  */
 
 #ifndef SM_RECUP2BOUEESZONEDEPART_H
@@ -38,6 +38,13 @@ public:
 	STATE_20,
 	STATE_21,
 	STATE_22,
+	STATE_23,
+	STATE_24,
+	STATE_25,
+	STATE_26,
+	STATE_27,
+	STATE_28,
+	STATE_29,
 	FIN_MISSION
 	}tState;
 };

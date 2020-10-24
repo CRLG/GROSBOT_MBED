@@ -13,7 +13,7 @@ const float CAsservissementBase::VOIE_ROBOT = 31.6867261f;
 // Cartos spécifique au robo
 const float CAsservissementBase::ini_conv_erreur_dist_vitesse_cur_x[NBRE_POINTS_CARTO_ERREUR] = {-40, -20, -10, -4, -2, -1, 0, 1, 2, 4, 10, 20, 40};							// [cm]
 const float CAsservissementBase::ini_conv_erreur_dist_vitesse_1_cur[NBRE_POINTS_CARTO_ERREUR] = {-50, -35, -20, -8, -2, -1, 0, 1, 2, 8, 20, 35, 50};						// [cm/s] Carto perfo 0% environ 30cm/s2
-const float CAsservissementBase::ini_conv_erreur_dist_vitesse_2_cur[NBRE_POINTS_CARTO_ERREUR] = {-130, -100, -55, -25, -8, -4, 0, 4, 8, 25, 55, 100, 130};
+const float CAsservissementBase::ini_conv_erreur_dist_vitesse_2_cur[NBRE_POINTS_CARTO_ERREUR] = {-130, -100, -50, -16, -4, -2, 0, 2, 4, 16, 50, 100, 130};
 
 const float CAsservissementBase::ini_conv_erreur_angle_vitesse_cur_x[NBRE_POINTS_CARTO_ERREUR] = {-1.6, -0.8, -0.4, -0.2, -0.1, -0.05, 0, 0.05, 0.1, 0.2, 0.4, 0.8, 1.6};	// [rad]
 const float CAsservissementBase::ini_conv_erreur_angle_vitesse_1_cur[NBRE_POINTS_CARTO_ERREUR] = {-4, -2.8, -2, -1.4, -1, -0.5, 0, 0.5, 1, 1.4, 2, 2.8, 4};					// [rad/s] Carto perfo 0% environ 5rad/s2
@@ -48,18 +48,18 @@ void CAsservissement::Init(void)
  // initialisation des paramètres de l'asservissement
  cde_max = 100;				// %	Commande maximum normalisée pour saturer la régulation
  cde_min = -100 ;			// %	Commande minimum normalisée pour saturer la régulation
- kp_distance =  1.6;//1.7;		// 		Gain proportionnel pour la régulation en distance
- ki_distance =  2.5;//3.0;		// 		Gain intégral pour la régulation en distance
- kp_angle =  20;			// 		Gain proportionnel pour la régulation en angle
- ki_angle =  10;			// 		Gain intégral pour la régulation en angle
+ kp_distance =  1.2;//1.7;		// 		Gain proportionnel pour la régulation en distance
+ ki_distance =  1.0;//3.0;		// 		Gain intégral pour la régulation en distance
+ kp_angle =  7.0;			// 		Gain proportionnel pour la régulation en angle
+ ki_angle =  5.0;			// 		Gain intégral pour la régulation en angle
  k_angle = 0.5;				//		Coeff de filtrage pour le terme dérivé
  seuil_conv_distance =  1;	// cm	Erreur en dessous de laquelle on considère que le robot est en position sur la distance
  seuil_conv_angle =  0.02;	// rad	Erreur en dessous de laquelle on considère que le robot est en position sur l'angle
  compteur_max = 3;			// 		Nombre de coups d'horloge (N*te) avant de confirmer que le robot est en position
 
  // Initialisation des zones mortes
- zone_morte_D = 12;
- zone_morte_G = 12;
+ zone_morte_D = 0;
+ zone_morte_G = 0;
 
  cde_offset_min_D = zone_morte_D;
  cde_offset_min_G = zone_morte_G;
@@ -80,7 +80,7 @@ void CAsservissement::Init(void)
 
  vitesse_avance_max = 80;				//	[cm/s]
  vitesse_rotation_max = 3;				//	[rad/s]
- Ind_perfo = 0.7;
+ Ind_perfo = 0.5;
 
  // Initialisation des valeurs par défauts des tableaux
  for (i=0; i<NBRE_POINTS_CARTO_ERREUR; i++) {
