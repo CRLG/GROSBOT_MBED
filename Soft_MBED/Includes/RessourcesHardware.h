@@ -18,6 +18,7 @@ extern DigitalIn _Etor2;
 extern DigitalIn _Etor4;
 extern DigitalIn _Etor5;
 extern DigitalIn _Etor6;
+//extern InterruptIn _Etor6;
 extern DigitalIn _Etor_CanRx;
 extern DigitalIn _Etor_CanTx;
 
@@ -39,6 +40,7 @@ extern PwmOut _Mot2_PWM;
 extern PwmOut _Moeldar_PWM;
 extern Ticker periodicTick;
 extern Timer  _Global_Timer;
+//extern Timer _Timer_PWM_In;
 
 
 extern Serial _rs232_pc_tx;

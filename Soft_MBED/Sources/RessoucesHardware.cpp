@@ -17,6 +17,7 @@ DigitalIn  	_Etor2(p6);
 DigitalIn  	_Etor4(p8);
 DigitalIn  	_Etor5(p11);
 DigitalIn  	_Etor6(p12);
+//InterruptIn _Etor6(p12);
 DigitalIn  	_Etor_CanRx(p30);	// pins du CAN utilisée en entrée TOR lorsque
 DigitalIn  	_Etor_CanTx(p29);	//  l'application n'a pas besoin du bus CAN
 
@@ -45,6 +46,7 @@ PwmOut _Mot2_PWM (p24);
 // __________________________________________________ TIMERS
 Ticker periodicTick;
 Timer  _Global_Timer;  // pour connaitre l'heure depuis le démarrage avec résolution usec (attention : débordement au bout de 30minutes)
+//Timer _Timer_PWM_In;
 
 
 // __________________________________________________ RS232
