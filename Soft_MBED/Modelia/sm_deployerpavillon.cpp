@@ -48,7 +48,7 @@ void SM_DeployerPavillon::step()
 			Application.m_servos_sd20.CommandePosition(20,185);/*20*/
 		}
 
-			gotoStateAfter(FIN_MISSION, 4000);
+            gotoStateAfter(FIN_MISSION, 1000);
 		if (onExit()) {  }
 		break;
 

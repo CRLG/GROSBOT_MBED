@@ -1,5 +1,5 @@
 /**
- * Generated 08_04_2020 at 11_37
+ * Generated 27_10_2020 at 22_21
  */
 
 #ifndef SM_ACTIVERPHARE_H
@@ -33,8 +33,9 @@ public:
 	STATE_15,
 	STATE_16,
 	STATE_17,
-	ACTIVER_PHARE,
-	VERIFIER_PHARE,
+	STATE_18,
+	STATE_19,
+	STATE_20,
 	FIN_MISSION
 	}tState;
 };

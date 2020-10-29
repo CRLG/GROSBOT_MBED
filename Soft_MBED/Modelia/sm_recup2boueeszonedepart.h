@@ -1,5 +1,5 @@
 /**
- * Generated 24_10_2020 at 16_01
+ * Generated 27_10_2020 at 19_25
  */
 
 #ifndef SM_RECUP2BOUEESZONEDEPART_H
@@ -45,6 +45,7 @@ public:
 	STATE_27,
 	STATE_28,
 	STATE_29,
+	STATE_30,
 	FIN_MISSION
 	}tState;
 };

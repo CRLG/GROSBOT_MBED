@@ -77,18 +77,20 @@ void IA::setStrategie(unsigned char strategie)
     // ________________________ Attention : c'est juste un exemple pour montrer comment ça s'utilise
     case STRATEGIE_HOMOLO1:
         m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
+        //m_datas_interface.evit_inhibe_obstacle=true;
         m_datas_interface.evit_choix_strategie= SM_DatasInterface::STRATEGIE_EVITEMENT_ATTENDRE;
+        Application.m_detection_obstacles.setSeuilDetectionObstacle(12);
         m_datas_interface.evit_nombre_max_tentatives=1;
         m_sm_recup_2_bouees_zone_depart.setPrioriteExecution(ordre++);
-        //m_datas_interface.evit_inhibe_obstacle=true;
-        m_sm_activer_phare.setEnabled(false);
+        m_sm_activer_phare.setPrioriteExecution(ordre++);
+        m_sm_deployer_pavillon.setEnabled(false);
+
+        m_sm_recup_bouees_distributeur.setEnabled(false);
         m_sm_arriver_a_bon_port.setEnabled(false);
         m_sm_autotest.setEnabled(false);
-        m_sm_deployer_pavillon.setEnabled(false);
         m_sm_deposer_bouees_dans_port.setEnabled(false);
         m_sm_detecter_nord_sud.setEnabled(false);
         m_sm_recup_4_bouees_chemin.setEnabled(false);
-        m_sm_recup_bouees_distributeur.setEnabled(false);
 
         //m_sm_recup_bouees_distributeur.setPrioriteExecution(ordre++);
         //m_sm_activer_phare.setPrioriteExecution(ordre++);  // Pour l'essai
@@ -130,12 +132,13 @@ void IA::setMaxScores()
 {
     // TODO : valeurs des scores max fixées au pif.
     // Mettre les vraies valeurs
-    m_sm_recup_2_bouees_zone_depart.setScoreMax(10);
-    m_sm_activer_phare.setScoreMax(11);
-    m_sm_recup_4_bouees_chemin.setScoreMax(12);
+    m_sm_recup_2_bouees_zone_depart.setScoreMax(6);
+    m_sm_deployer_pavillon.setScoreMax(10);
+    m_sm_activer_phare.setScoreMax(15);
+    /*m_sm_recup_4_bouees_chemin.setScoreMax(12);
     m_sm_recup_bouees_distributeur.setScoreMax(13);
     m_sm_deposer_bouees_dans_port.setScoreMax(14);
-    m_sm_arriver_a_bon_port.setScoreMax(15);
+    m_sm_arriver_a_bon_port.setScoreMax(15);*/
 }
 
 // ________________________________________________

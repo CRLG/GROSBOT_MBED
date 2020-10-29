@@ -1,5 +1,5 @@
 /**
- * Generated 24_10_2020 at 16_01
+ * Generated 27_10_2020 at 19_25
  */
 
 #include "sm_recup2boueeszonedepart.h"
@@ -35,6 +35,7 @@ const char* SM_Recup2BoueesZoneDepart::stateToName(unsigned short state)
 		case STATE_13 :		return "STATE_13";
 		case STATE_14 :		return "STATE_14";
 		case STATE_15 :		return "STATE_15";
+		case STATE_16 :		return "STATE_16";
 		case FIN_MISSION :	return "FIN_MISSION";
 	}
 	return "UNKNOWN_STATE";
@@ -49,8 +50,7 @@ void SM_Recup2BoueesZoneDepart::step()
 	// ___________________________
 	case STATE_1 :
 		if (onEntry()) {
-            Application.m_asservissement.CommandeVitesseMouvement(40.,3.);
-			Application.m_asservissement.CommandeMouvementXY_TETA(65,-5,3.14);/**/
+			Application.m_asservissement.CommandeMouvementXY_TETA(65,-4,3.14);/**/
 		}
 
 			gotoStateIfConvergence(STATE_2,5000);
@@ -59,7 +59,7 @@ void SM_Recup2BoueesZoneDepart::step()
 	// ___________________________
 	case STATE_2 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY_TETA(85,-5,3.14);/**/
+			Application.m_asservissement.CommandeMouvementXY_TETA(85,-4,3.14);/**/
 		}
 
 			gotoStateIfConvergence(STATE_3,5000);
@@ -95,7 +95,7 @@ void SM_Recup2BoueesZoneDepart::step()
 	// ___________________________
 	case STATE_6 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY_TETA(80,18,-1.57);/**/
+			Application.m_asservissement.CommandeMouvementXY_TETA(80,16,-1.57);/**/
 		}
 
 			gotoStateIfConvergence(STATE_7,5000);
@@ -113,7 +113,7 @@ void SM_Recup2BoueesZoneDepart::step()
 	// ___________________________
 	case STATE_8 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY_TETA(58,30,-1);/**/
+			Application.m_asservissement.CommandeMouvementXY_TETA(63,16,-1.57);/**/
 		}
 
 			gotoStateIfConvergence(STATE_9,5000);
@@ -125,13 +125,13 @@ void SM_Recup2BoueesZoneDepart::step()
 			Application.m_servos_sd20.CommandePosition(19,25);/*lever arceau*/
 		}
 
-			gotoStateAfter(STATE_10,200);
+			gotoStateAfter(STATE_10,1000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_10 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY_TETA(58,46,-1);/**/
+			Application.m_asservissement.CommandeMouvementXY_TETA(63,46,-1.57);/**/
 		}
 
 			gotoStateIfConvergence(STATE_11,5000);
@@ -149,7 +149,7 @@ void SM_Recup2BoueesZoneDepart::step()
 	// ___________________________
 	case STATE_12 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY_TETA(39,42,0.86);/**/
+			Application.m_asservissement.CommandeMouvementXY_TETA(48,36,-2.54);/**/
 		}
 
 			gotoStateIfConvergence(STATE_13,5000);
@@ -158,7 +158,7 @@ void SM_Recup2BoueesZoneDepart::step()
 	// ___________________________
 	case STATE_13 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY(12,12);/**/
+			Application.m_asservissement.CommandeMouvementXY_TETA(12,13,-2.54);/**/
 		}
 
 			gotoStateIfConvergence(STATE_14,5000);
@@ -167,16 +167,25 @@ void SM_Recup2BoueesZoneDepart::step()
 	// ___________________________
 	case STATE_14 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(19,25);/*lever arceau*/
+			Application.m_asservissement.CommandeMouvementXY_TETA(10,28,1.57);/**/
 		}
 
-			gotoStateAfter(STATE_15,200);
+			gotoStateIfConvergence(STATE_15,5000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_15 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY_TETA(31,31,0);/**/
+			Application.m_servos_sd20.CommandePosition(19,25);/*lever arceau*/
+		}
+
+			gotoStateAfter(STATE_16,1000);
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_16 :
+		if (onEntry()) {
+			Application.m_asservissement.CommandeMouvementXY_TETA(10,43,1.57);/**/
 		}
 
 			gotoStateIfConvergence(FIN_MISSION,5000);

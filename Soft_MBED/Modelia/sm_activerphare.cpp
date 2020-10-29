@@ -1,5 +1,5 @@
 /**
- * Generated 08_04_2020 at 11_37
+ * Generated 27_10_2020 at 22_21
  */
 
 #include "sm_activerphare.h"
@@ -21,8 +21,11 @@ const char* SM_ActiverPhare::stateToName(unsigned short state)
 	switch(state)
 	{
 		case STATE_1 :		return "STATE_1";
-		case ACTIVER_PHARE :		return "ACTIVER_PHARE";
-		case VERIFIER_PHARE :		return "VERIFIER_PHARE";
+		case STATE_2 :		return "STATE_2";
+		case STATE_3 :		return "STATE_3";
+		case STATE_4 :		return "STATE_4";
+		case STATE_5 :		return "STATE_5";
+		case STATE_6 :		return "STATE_6";
 		case FIN_MISSION :	return "FIN_MISSION";
 	}
 	return "UNKNOWN_STATE";
@@ -37,25 +40,55 @@ void SM_ActiverPhare::step()
 	// ___________________________
 	case STATE_1 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY_TETA(10,45,-1.57);/**/
+			Application.m_asservissement.CommandeMouvementXY_TETA(10,43,1.57);/**/
 		}
 
-			gotoStateIfConvergence(ACTIVER_PHARE,5000);
+			gotoStateIfConvergence(STATE_2,5000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
-	case ACTIVER_PHARE :
+	case STATE_2 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY_TETA(10,53,-1.57);/**/
+			Application.m_servos_sd20.CommandePosition(14,30);/*servo rentre*/
+			Application.m_moteurs.CommandeVitesse(1,7);/**/
+			Application.m_moteurs.CommandeVitesse(2,7);/**/
 		}
 
-			gotoStateIfConvergence(VERIFIER_PHARE,5000);
+			gotoStateAfter(STATE_3,2000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
-	case VERIFIER_PHARE :
+	case STATE_3 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY_TETA(10,45,-1.57);/**/
+			Application.m_moteurs.CommandeVitesse(1,0);/*stop*/
+			Application.m_moteurs.CommandeVitesse(2,0);/*stop*/
+		}
+
+			gotoStateAfter(STATE_4,500);
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_4 :
+		if (onEntry()) {
+			Application.m_servos_sd20.CommandePosition(14,125);/*enclenchement*/
+		}
+
+			gotoStateAfter(STATE_5,1000);
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_5 :
+		if (onEntry()) {
+			Application.m_servos_sd20.CommandePosition(14,30);/*servo rentre*/
+		}
+
+			gotoStateAfter(STATE_6,500);
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_6 :
+		if (onEntry()) {
+			Application.m_asservissement.CommandeMouvementDistanceAngle(-15,0);/*retrait*/
 		}
 
 			gotoStateIfConvergence(FIN_MISSION,5000);
