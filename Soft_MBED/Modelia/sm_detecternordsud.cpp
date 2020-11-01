@@ -1,73 +1,76 @@
+/**
+ * Generated 01_11_2020 at 00_26
+ */
+
 #include "sm_detecternordsud.h"
+#include "CGlobale.h"
 
 SM_DetecterNordSud::SM_DetecterNordSud()
 {
-
+	m_main_mission_type = true;
+	m_max_score = 0;
 }
 
 const char* SM_DetecterNordSud::getName()
 {
-    return "SM_DetecterNordSud";
+	return "SM_DetecterNordSud";
 }
 
 const char* SM_DetecterNordSud::stateToName(unsigned short state)
 {
-    switch(state)
-    {
-    //case ALLER_VERS_PHARE :         return "ALLER_VERS_PHARE";
-    }
-    return "UNKNOWN_STATE";
+	switch(state)
+	{
+		case STATE_1 :		return "STATE_1";
+		case STATE_2 :		return "STATE_2";
+		case STATE_3 :		return "STATE_3";
+		case FIN_MISSION :	return "FIN_MISSION";
+	}
+	return "UNKNOWN_STATE";
 }
 
 // _____________________________________
 void SM_DetecterNordSud::step()
 {
-    switch (m_state)
-    {
-    // ___________________________
-    case STATE_1:
-        if (onEntry()) {
-        }
+	switch (m_state)
+	{
 
-        gotoStateAfter(STATE_2, 2000);
+	// ___________________________
+	case STATE_1 :
+		if (onEntry()) {
+			Application.m_asservissement.CommandeMouvementXY_TETA(70,20,1.57);/**/
+		}
 
-        if (onExit()) { }
-        break;
-    // ___________________________
-    case STATE_2:
-        if (onEntry()) {
-        }
+			gotoStateIfConvergence(STATE_2,5000);
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_2 :
+		if (onEntry()) {
+			
+			Application.m_modelia.m_datas_interface.m_gen_value_03=1;
 
-        gotoStateAfter(STATE_3, 1300);
+		}
 
-        if (onExit()) { }
-        break;
-    // ___________________________
-    case STATE_3:
-        if (onEntry()) {
-        }
+			gotoStateAfter(STATE_3,1500);
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_3 :
+		if (onEntry()) {
+			
+			Application.m_modelia.m_datas_interface.m_gen_value_03=0;
 
-        gotoStateAfter(STATE_4, 2200);
+		}
 
-        if (onExit()) { }
-        break;
+			gotoStateAfter(FIN_MISSION,500);
+		if (onExit()) {  }
+		break;
 
-    // ___________________________
-    case STATE_4:
-        if (onEntry()) {
-        }
-
-        gotoStateAfter(FIN_MISSION, 1000);
-
-        if (onExit()) { }
-
-        break;
-
-    // ___________________________
-    case FIN_MISSION :
-        m_succes = true;
-        m_score = m_max_score;
-        stop();
-        break;
-    }
+	// ___________________________
+	case FIN_MISSION :
+		m_succes = true;
+		m_score = m_max_score;
+		stop();
+		break;
+	}
 }
