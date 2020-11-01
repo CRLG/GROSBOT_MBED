@@ -57,6 +57,13 @@ public:
     bool proximite_bordure_Yhaute;
     bool inhibe_detection_AV;
     bool inhibe_detection_AR;
+
+    //pour la messagerie générique (utilisé par la caméra entre autre)
+    short m_gen_value_01;
+    short m_gen_value_02;
+    unsigned char m_gen_value_03;
+    unsigned char m_gen_value_04;
+    unsigned m_gen_code_cmd;
 };
 
 #endif // SM_DATASINTERFACE_H
