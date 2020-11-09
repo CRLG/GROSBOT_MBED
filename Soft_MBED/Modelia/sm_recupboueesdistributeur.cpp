@@ -1,5 +1,5 @@
 /**
- * Generated 28_10_2020 at 02_40
+ * Generated 10_11_2020 at 00_35
  */
 
 #include "sm_recupboueesdistributeur.h"
@@ -46,6 +46,7 @@ const char* SM_RecupBoueesDistributeur::stateToName(unsigned short state)
 		case STATE_24 :		return "STATE_24";
 		case STATE_25 :		return "STATE_25";
 		case STATE_26 :		return "STATE_26";
+		case STATE_27 :		return "STATE_27";
 		case FIN_MISSION :	return "FIN_MISSION";
 	}
 	return "UNKNOWN_STATE";
@@ -60,52 +61,52 @@ void SM_RecupBoueesDistributeur::step()
 	// ___________________________
 	case STATE_1 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY_TETA(70,45,1.57);/**/
+			Application.m_asservissement_chariot.setConsigne(600);/*rack haut*/
 		}
 
-			gotoStateIfConvergence(STATE_2,5000);
+			gotoStateIfConvergenceRack(STATE_2,2000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_2 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(13,25);/*Servo 1 range*/
+			Application.m_asservissement.CommandeMouvementXY_TETA(70,45,1.57);/*face au distributeur*/
 		}
 
-			gotoStateAfter(STATE_3,150);
+			gotoStateIfConvergence(STATE_3,5000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_3 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(14,25);/*Servo 2 range*/
+			Application.m_servos_sd20.CommandePosition(13,220);/*ouverture pince 1*/
 		}
 
-			gotoStateAfter(STATE_4,150);
+			gotoStateAfter(STATE_4,300);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_4 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(15,240);/*Servo 3 range*/
+			Application.m_servos_sd20.CommandePosition(14,215);/*ouverture pince 2*/
 		}
 
-			gotoStateAfter(STATE_5,150);
+			gotoStateAfter(STATE_5,300);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_5 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(16,50);/*Servo 4 range*/
+			Application.m_servos_sd20.CommandePosition(15,50);/*ouverture pince 3*/
 		}
 
-			gotoStateAfter(STATE_6,150);
+			gotoStateAfter(STATE_6,300);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_6 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(17,60);/*Servo 5 range*/
+			Application.m_servos_sd20.CommandePosition(16,230);/*ouverture pince 4*/
 		}
 
 			gotoStateAfter(STATE_7,300);
@@ -114,52 +115,52 @@ void SM_RecupBoueesDistributeur::step()
 	// ___________________________
 	case STATE_7 :
 		if (onEntry()) {
-			Application.m_asservissement_chariot.setConsigne(600);/*Ascenseur en haut*/
+			Application.m_servos_sd20.CommandePosition(17,230);/*ouverture pince 5*/
 		}
 
-			gotoStateIfConvergenceRack(STATE_8,2000);
+			gotoStateAfter(STATE_8,1000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_8 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(13,220);/*Servo 1 sorti*/
+			Application.m_asservissement.CommandeManuelle(8,7);/**/
 		}
 
-			gotoStateAfter(STATE_9,150);
+			gotoStateAfter(STATE_9,2000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_9 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(14,215);/*Servo 2 sorti*/
+			Application.m_asservissement.CommandeManuelle(0,0);/**/
 		}
 
-			gotoStateAfter(STATE_10,150);
+			gotoStateAfter(STATE_10,200);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_10 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(15,50);/*Servo 3 sorti*/
+			Application.m_asservissement_chariot.setConsigne(-100);/*rack bas*/
 		}
 
-			gotoStateAfter(STATE_11,150);
+			gotoStateIfConvergenceRack(STATE_11,3000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_11 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(16,230);/*Servo 4 sorti*/
+			Application.m_servos_sd20.CommandePosition(13,25);/*fermeture toutes pinces (pince 1)*/
 		}
 
-			gotoStateAfter(STATE_12,150);
+			gotoStateAfter(STATE_12,300);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_12 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(17,230);/*Servo 5 sorti*/
+			Application.m_servos_sd20.CommandePosition(14,25);/*fermeture toutes pinces (pince 2)*/
 		}
 
 			gotoStateAfter(STATE_13,300);
@@ -168,70 +169,70 @@ void SM_RecupBoueesDistributeur::step()
 	// ___________________________
 	case STATE_13 :
 		if (onEntry()) {
-			Application.m_asservissement_chariot.setConsigne(-100);/*Ascenseur en bas*/
+			Application.m_servos_sd20.CommandePosition(15,240);/*fermeture toutes pinces (pince 3)*/
 		}
 
-			gotoStateIfConvergenceRack(STATE_14,2000);
+			gotoStateAfter(STATE_14,300);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_14 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(13,25);/*prise gobelet 1*/
+			Application.m_servos_sd20.CommandePosition(16,50);/*fermeture toutes pinces (pince 4)*/
 		}
 
-			gotoStateAfter(STATE_15,150);
+			gotoStateAfter(STATE_15,300);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_15 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(14,25);/*prise gobelet 2*/
+			Application.m_servos_sd20.CommandePosition(17,60);/*fermeture toutes pinces (pince 5)*/
 		}
 
-			gotoStateAfter(STATE_16,150);
+			gotoStateAfter(STATE_16,1500);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_16 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(15,240);/*prise gobelet 3*/
+			Application.m_asservissement_chariot.setConsigne(600);/*rack haut*/
 		}
 
-			gotoStateAfter(STATE_17,150);
+			gotoStateIfConvergenceRack(STATE_17,2000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_17 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(16,50);/*prise gobelet 4*/
+			Application.m_asservissement.CommandeMouvementDistanceAngle(-15,1.57);/*eloignement bordure*/
 		}
 
-			gotoStateAfter(STATE_18,150);
+			gotoStateIfConvergence(STATE_18,2000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_18 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(17,60);/*prise gobelet 5*/
+			Application.m_asservissement_chariot.setConsigne(200);/*rack milieu*/
 		}
 
-			gotoStateAfter(STATE_19,150);
+			gotoStateIfConvergenceRack(STATE_19,2000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_19 :
 		if (onEntry()) {
-			Application.m_asservissement_chariot.setConsigne(600);/*Ascenseur en haut*/
+			Application.m_asservissement.CommandeMouvementXY_TETA(13,40,-1.57);/**/
 		}
 
-			gotoStateIfConvergenceRack(STATE_20,3000);
+			gotoStateIfConvergence(STATE_20,5000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_20 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementDistanceAngle(-15,1.57);/**/
+			Application.m_asservissement.CommandeMouvementXY_TETA(13,36,-1.57);/**/
 		}
 
 			gotoStateIfConvergence(STATE_21,5000);
@@ -240,55 +241,64 @@ void SM_RecupBoueesDistributeur::step()
 	// ___________________________
 	case STATE_21 :
 		if (onEntry()) {
-			Application.m_asservissement_chariot.setConsigne(200);/**/
+			Application.m_asservissement_chariot.setConsigne(0);/*rack moyen*/
 		}
 
-			gotoStateAfter(STATE_22,4000);
+			gotoStateIfConvergenceRack(STATE_22,2000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_22 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(13,200);/*13*/
+			Application.m_servos_sd20.CommandePosition(13,90);/*ouverture toutes pinces (pince 1)*/
 		}
 
-			gotoStateAfter(STATE_23,150);
+			gotoStateAfter(STATE_23,300);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_23 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(14,200);/*14*/
+			Application.m_servos_sd20.CommandePosition(14,90);/*ouverture toutes pinces (pince 2)*/
 		}
 
-			gotoStateAfter(STATE_24,150);
+			gotoStateAfter(STATE_24,300);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_24 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(16,200);/*16*/
+			Application.m_servos_sd20.CommandePosition(16,110);/*ouverture toutes pinces (pince 4)*/
 		}
 
-			gotoStateAfter(STATE_25,150);
+			gotoStateAfter(STATE_25,300);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_25 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(17,200);/*17*/
+			Application.m_servos_sd20.CommandePosition(17,110);/*ouverture toutes pinces (pince 5)*/
 		}
 
-			gotoStateAfter(STATE_26,300);
+			gotoStateAfter(STATE_26,1500);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_26 :
 		if (onEntry()) {
-			Application.m_asservissement_chariot.setConsigne(600);/**/
+			Application.m_asservissement_chariot.setConsigne(600);/*rack haut pour liberer gobelets*/
 		}
 
-			gotoStateAfter(FIN_MISSION,4000);
+			gotoStateIfConvergenceRack(STATE_27,5000);
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_27 :
+		if (onEntry()) {
+			Application.m_asservissement.CommandeMouvementDistanceAngle(-10,1.57);/*reculer en dehors zone depose*/
+		}
+
+			gotoStateIfConvergence(FIN_MISSION,5000);
 		if (onExit()) {  }
 		break;
 

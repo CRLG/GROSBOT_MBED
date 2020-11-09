@@ -50,8 +50,9 @@ void SM_ActiverPhare::step()
 	case STATE_2 :
 		if (onEntry()) {
 			Application.m_servos_sd20.CommandePosition(14,30);/*servo rentre*/
-			Application.m_moteurs.CommandeVitesse(1,7);/**/
-			Application.m_moteurs.CommandeVitesse(2,7);/**/
+            Application.m_asservissement.CommandeManuelle(7,7);
+            /*Application.m_moteurs.CommandeVitesse(1,7);
+            Application.m_moteurs.CommandeVitesse(2,7);*/
 		}
 
 			gotoStateAfter(STATE_3,2000);
@@ -60,8 +61,9 @@ void SM_ActiverPhare::step()
 	// ___________________________
 	case STATE_3 :
 		if (onEntry()) {
-			Application.m_moteurs.CommandeVitesse(1,0);/*stop*/
-			Application.m_moteurs.CommandeVitesse(2,0);/*stop*/
+            Application.m_asservissement.CommandeManuelle(0,0);
+            //Application.m_moteurs.CommandeVitesse(1,0);/*stop*/
+            //Application.m_moteurs.CommandeVitesse(2,0);/*stop*/
 		}
 
 			gotoStateAfter(STATE_4,500);

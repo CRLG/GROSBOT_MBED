@@ -1,5 +1,5 @@
 /**
- * Generated 28_10_2020 at 02_40
+ * Generated 10_11_2020 at 00_35
  */
 
 #ifndef SM_RECUPBOUEESDISTRIBUTEUR_H
@@ -56,6 +56,7 @@ public:
 	STATE_38,
 	STATE_39,
 	STATE_40,
+	STATE_41,
 	FIN_MISSION
 	}tState;
 };
