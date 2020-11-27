@@ -47,7 +47,7 @@ void SM_DetecterNordSud::step()
 	case STATE_2 :
 		if (onEntry()) {
 			
-			Application.m_modelia.m_datas_interface.m_gen_value_03=1;
+            Application.m_modelia.m_datas_interface.m_tx_value_03=1;
 
 		}
 
@@ -58,7 +58,7 @@ void SM_DetecterNordSud::step()
 	case STATE_3 :
 		if (onEntry()) {
 			
-			Application.m_modelia.m_datas_interface.m_gen_value_03=0;
+            Application.m_modelia.m_datas_interface.m_tx_value_03=0;
 
 		}
 

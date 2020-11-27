@@ -31,9 +31,15 @@ void SM_DatasInterface::init()
     evit_comportement_retour_evitement  = SM_Sequenceur::RETOUR_EVIT_REPRENDS_MISSION_INTERROMPUE;
 
     //init de la messagerie générique
-    m_gen_value_01=0;
-    m_gen_value_02=0;
-    m_gen_value_03=0;
-    m_gen_value_04=0;
-    m_gen_code_cmd=1;
+    m_tx_value_01=0;
+    m_tx_value_02=0;
+    m_tx_value_03=0;
+    m_tx_value_04=0;
+    m_tx_code_cmd=1;
+
+    m_rx_value_01=0;
+    m_rx_value_02=0;
+    m_rx_value_03=0;
+    m_rx_value_04=0;
+    m_rx_code_cmd=1;
 }

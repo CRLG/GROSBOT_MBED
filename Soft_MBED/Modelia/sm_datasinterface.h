@@ -59,11 +59,17 @@ public:
     bool inhibe_detection_AR;
 
     //pour la messagerie générique (utilisé par la caméra entre autre)
-    short m_gen_value_01;
-    short m_gen_value_02;
-    unsigned char m_gen_value_03;
-    unsigned char m_gen_value_04;
-    unsigned m_gen_code_cmd;
+    short m_tx_value_01;
+    short m_tx_value_02;
+    unsigned char m_tx_value_03;
+    unsigned char m_tx_value_04;
+    unsigned m_tx_code_cmd;
+
+    short m_rx_value_01;
+    short m_rx_value_02;
+    unsigned char m_rx_value_03;
+    unsigned char m_rx_value_04;
+    unsigned m_rx_code_cmd;
 };
 
 #endif // SM_DATASINTERFACE_H

@@ -66,6 +66,22 @@ typedef enum {
     SERVO_BARRIERE_AVD=20,
 } eATTRIBUTION_SERVOS_SD20;
 
+//! cet enumere contient les numeros d'attribution des servos SD20
+typedef enum {
+	SD20_PINCE_01_OUV=220,
+	SD20_PINCE_01_CLOS=25,
+	SD20_PINCE_02_OUV=215,
+	SD20_PINCE_02_CLOS=25,
+	SD20_PINCE_03_OUV=50,
+	SD20_PINCE_03_CLOS=240,
+	SD20_PINCE_04_OUV=230,
+	SD20_PINCE_04_CLOS=50,
+	SD20_PINCE_05_OUV=230,
+	SD20_PINCE_05_CLOS=60,
+	SD20_DRAPEAU_LEVE=185,
+	SD20_DRAPEAU_BAISSE=30,
+} eVALUES_SERVOS_SD20;
+
 //! cet enumere contient les numeros d'attribution des servos AX
 // VERT = Vertical / HORIZ = Horizontal
 typedef enum {
@@ -76,6 +92,12 @@ typedef enum {
     SERVO_CHUCK_NORRIS,
     SERVO_AX_TOUS = 0xFE
 } eATTRIBUTION_SERVOS_AX;
+
+//! cet enumere contient les numeros d'attribution des servos SD20
+typedef enum {
+    AX_TOTO=13,
+    AX_TATA=250,
+} eVALUES_SERVOS_AX;
 
 // affectation des sorties de la carte PowerSwitch
 // EV = Electrovanne
@@ -90,6 +112,22 @@ typedef enum {
     EV_ARD = PowerSwitch::XT8_OUTPUT
 }eATTRIBUTION_POWER_SWITCH;
 
+
+//code des demandes MBED vers LABOTBOX (trame générique)
+typedef enum {
+    DMDE_DEFAULT = 0,
+    DMDE_DISTANCE_BALISE = 1,
+    DMDE_VIDEO_NORD_SUD = 2,
+    DMDE_VIDEO_CODE_COULEUR = 3
+}eVALUES_DMDE_GEN;
+
+//code des commandes/traitements LABOTBOX vers MBED (trame générique)
+typedef enum {
+    CMDE_DEFAULT = 0,
+    CMDE_DISTANCE_BALISE = 1, // c'est un traitement: reco des balises aruco et distance par rapport au robot
+    CMDE_VIDEO_NORD_SUD = 2, // SPECIFIQUE 2020/2021 - c'est un traitement: reco du nord-sud
+    CMDE_VIDEO_CODE_COULEUR = 3 // SPECIFIQUE 2020/2021 - c'est un traitement : reco d'une série de couleur (pour les gobelets)
+}eVALUES_CMDE_GEN;
 
 // Affectation des numéros de télémètres SRF08
 #define INDEX_TELEMETRE_AVG 2

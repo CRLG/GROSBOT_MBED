@@ -36,6 +36,10 @@ void IA::init()
         }
     }
     setMaxScores();
+    //Valeur par défaut au démarrage de la cmde de la trame générique
+    //utile par exemple si on veut faire de la reconnaissance vidéo pendant l'installation du robot
+    //avant le début du match
+    m_datas_interface.m_tx_code_cmd=DMDE_DISTANCE_BALISE;
     m_sm_main.start();
 }
 
@@ -149,6 +153,20 @@ void IA::setMaxScores()
 void IA::step()
 {
     m_inputs_interface.Tirette             = Application.m_capteurs.getTirette();
+
+    //commandes ou traitements venant de LABOTBOX via la trame générique
+    switch(m_datas_interface.m_rx_code_cmd)
+    {
+        case CMDE_DISTANCE_BALISE:
+            m_inputs_interface.m_distance_balise1=m_datas_interface.m_rx_value_01;
+            m_inputs_interface.m_distance_balise2=m_datas_interface.m_rx_value_02;
+            break;
+        case CMDE_VIDEO_NORD_SUD:
+            m_inputs_interface.m_nord=m_datas_interface.m_rx_value_03;
+            m_inputs_interface.m_sud=m_datas_interface.m_rx_value_04;
+            break;
+        default: break;
+    }
 
     m_inputs_interface.Convergence         = Application.m_asservissement.convergence_conf;
     m_inputs_interface.Convergence_rapide  = Application.m_asservissement.convergence_rapide;
