@@ -19,6 +19,7 @@ ext/CppRobLib/mcp23017
 ext/CppRobLib/PowerElectrobot
 ext/CppRobLib/common-rob
 ext/CppRobLib/common-rob/Modelia
+ext/CppRobLib/ServosAX
 Includes
 Modelia
 
