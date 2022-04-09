@@ -17,6 +17,7 @@ OBJDIR := BUILD
 INCLUDE_PATHS += -I../.
 INCLUDE_PATHS += -I../Includes
 INCLUDE_PATHS += -I../Modelia
+INCLUDE_PATHS += -I../Kmar
 
 OBJECTS += Sources/main.o
 OBJECTS += Sources/RessoucesHardware.o
@@ -39,6 +40,10 @@ OBJECTS += Modelia/sm_deployerpavillon.o
 OBJECTS += Modelia/sm_recupboueesdistributeur.o
 OBJECTS += Modelia/sm_deposerboueesdansport.o  
 OBJECTS += Modelia/sm_detecternordsud.o        
+
+OBJECTS += Kmar/CKmar.o
+OBJECTS += Kmar/CKmar_INIT.o
+OBJECTS += Kmar/CKmar_RAMASSE.o
 
 ###############################################################################
 # Objects and Paths for mbed-common
@@ -108,6 +113,7 @@ OBJECTS += $(CPPROBLIB_PATH)/common-rob/CServoMoteurSD20Base.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CLedBase.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CLeds.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CTelemetresBase.o
+OBJECTS += $(CPPROBLIB_PATH)/common-rob/CKmarBase.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CDetectionObstaclesBase.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CCapteursBase.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/Modelia/iabase.o
