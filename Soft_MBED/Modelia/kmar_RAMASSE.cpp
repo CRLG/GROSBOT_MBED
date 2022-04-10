@@ -25,7 +25,7 @@ void CKmarMouvement_RAMASSE::step()
             m_kmar->setAxisPosition(CKmar::AXIS_4, 320);
         }
         else {
-            if (!m_kmar->isMoving()) gotoNextState();
+            if (!m_kmar->isMoveInProgress()) gotoNextState();
         }
 
         if (onExit()) {  }
@@ -39,7 +39,7 @@ void CKmarMouvement_RAMASSE::step()
             m_kmar->setAxisPosition(CKmar::AXIS_4, 731);
         }
         else {
-            if (!m_kmar->isMoving()) gotoNextState();
+            if (!m_kmar->isMoveInProgress()) gotoNextState();
         }
 
         if (onExit()) {  }
@@ -53,7 +53,7 @@ void CKmarMouvement_RAMASSE::step()
             m_kmar->setAxisPosition(CKmar::AXIS_4, 427);
         }
         else {
-            if (!m_kmar->isMoving()) gotoNextState();
+            if (!m_kmar->isMoveInProgress()) gotoNextState();
         }
         if (onExit()) {  }
         break;
@@ -73,7 +73,7 @@ void CKmarMouvement_RAMASSE::step()
             m_kmar->setAxisPosition(CKmar::AXIS_4, 512);
         }
         else {
-            if (!m_kmar->isMoving()) gotoNextState();
+            if (!m_kmar->isMoveInProgress()) gotoNextState();
         }
 
         if (onExit()) {  }

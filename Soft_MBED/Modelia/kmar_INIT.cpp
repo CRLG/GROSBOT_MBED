@@ -48,7 +48,7 @@ void CKmarMouvement_INIT::step()
             m_kmar->setAxisPosition(CKmar::AXIS_3, 400, default_speed*3);
         }
         else {
-            gotoStateIfTrue(m_state+1, !m_kmar->isMoving());
+            gotoStateIfTrue(m_state+1, !m_kmar->isMoveInProgress());
         }
         //gotoStateAfter(m_state+1, 3000);
 
@@ -60,7 +60,7 @@ void CKmarMouvement_INIT::step()
             m_kmar->setAxisPosition(CKmar::AXIS_4, 400);
         }
         else {
-            gotoStateIfTrue(m_state+1, !m_kmar->isMoving()); // Tous les servos sont en position
+            gotoStateIfTrue(m_state+1, !m_kmar->isMoveInProgress()); // Tous les servos sont en position
         }
         //gotoStateAfter(m_state+1, 3000);
 
@@ -116,7 +116,7 @@ void CKmarMouvement_INIT::step()
             m_kmar->setAxisPosition(CKmar::AXIS_4, 512);
         }
         else {
-            gotoStateIfTrue(m_state+1, !m_kmar->isMoving());
+            gotoStateIfTrue(m_state+1, !m_kmar->isMoveInProgress());
         }
         //gotoStateAfter(m_state+1, 3000);
 
@@ -136,7 +136,7 @@ void CKmarMouvement_INIT::step()
             m_kmar->setAxisPosition(CKmar::AXIS_1, 512, 60);
         }
         else {
-            gotoStateIfTrue(m_state+1, !m_kmar->isMoving());
+            gotoStateIfTrue(m_state+1, !m_kmar->isMoveInProgress());
         }
         //gotoStateAfter(m_state+1, 3000);
 

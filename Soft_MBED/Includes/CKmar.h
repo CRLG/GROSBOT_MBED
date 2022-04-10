@@ -22,7 +22,7 @@ public:
     /*virtual*/void start(int mouvement);
 
     typedef enum {
-        MOUVEMENT_INIT = 0,
+        MOUVEMENT_INIT = (NO_MOUVEMENT + 1),
         MOUVEMENT_RAMASSE
     }tMouvements;
 

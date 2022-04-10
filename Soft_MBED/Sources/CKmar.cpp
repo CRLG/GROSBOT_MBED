@@ -33,7 +33,10 @@ void CKmar::start(int mouvement)
         break;
 
     }
-    if (m_mouvement_en_cours) m_mouvement_en_cours->start();
+    if (m_mouvement_en_cours) {
+        m_num_mouvement_en_cours = mouvement;
+        m_mouvement_en_cours->start();
+    }
 }
 
 // __________________________________________________
