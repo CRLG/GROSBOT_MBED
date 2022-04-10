@@ -1,4 +1,4 @@
-#include "CKmar_INIT.h"
+#include "kmar_INIT.h"
 #include "CKmar.h"
 
 // ===========================================================

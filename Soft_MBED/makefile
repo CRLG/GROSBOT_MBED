@@ -25,6 +25,7 @@ OBJECTS += Sources/CAsservissement.o
 OBJECTS += Sources/CAsservissementChariot.o
 OBJECTS += Sources/CTelemetres.o
 OBJECTS += Sources/CCapteurs.o
+OBJECTS += Sources/CKmar.o
 
 OBJECTS += Modelia/ia.o
 OBJECTS += Modelia/sm_inputsinterface.o
@@ -40,10 +41,8 @@ OBJECTS += Modelia/sm_deployerpavillon.o
 OBJECTS += Modelia/sm_recupboueesdistributeur.o
 OBJECTS += Modelia/sm_deposerboueesdansport.o  
 OBJECTS += Modelia/sm_detecternordsud.o        
-
-OBJECTS += Kmar/CKmar.o
-OBJECTS += Kmar/CKmar_INIT.o
-OBJECTS += Kmar/CKmar_RAMASSE.o
+OBJECTS += Modelia/kmar_INIT.o
+OBJECTS += Modelia/kmar_RAMASSE.o
 
 ###############################################################################
 # Objects and Paths for mbed-common

@@ -243,13 +243,13 @@ Modelia/sm_deployerpavillon.h
 Modelia/sm_recupboueesdistributeur.h
 Modelia/sm_deposerboueesdansport.h
 Modelia/sm_detecternordsud.h
+Modelia/kmar_INIT.cpp
+Modelia/kmar_INIT.h
+Modelia/kmar_RAMASSE.cpp
+Modelia/kmar_RAMASSE.h
 
-Kmar/CKmar.cpp
-Kmar/CKmar.h
-Kmar/CKmar_INIT.cpp
-Kmar/CKmar_INIT.h
-Kmar/CKmar_RAMASSE.cpp
-Kmar/CKmar_RAMASSE.h
+Sources/CKmar.cpp
+Includes/CKmar.h
 
 ext/CppRobLib/Communication/Messenger/databasebase.cpp
 ext/CppRobLib/Communication/Messenger/databasebase.h

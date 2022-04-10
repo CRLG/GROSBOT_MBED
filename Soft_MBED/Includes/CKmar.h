@@ -2,8 +2,8 @@
 #define CKMAR_H
 
 #include "CKmarBase.h"
-#include "CKmar_INIT.h"
-#include "CKmar_RAMASSE.h"
+#include "kmar_INIT.h"
+#include "kmar_RAMASSE.h"
 
 class CKmar : public CKmarBase
 {
