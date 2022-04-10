@@ -264,6 +264,8 @@ ext/CppRobLib/Communication/Messenger/transporterbase.cpp
 ext/CppRobLib/Communication/Messenger/transporterbase.h
 ext/CppRobLib/Communication/Messenger/transportergeneric.cpp
 ext/CppRobLib/Communication/Messenger/transportergeneric.h
+ext/CppRobLib/Communication/DataEncoderDecoder/data_encoder_decoder.cpp
+ext/CppRobLib/Communication/DataEncoderDecoder/data_encoder_decoder.h
 ext/CppRobLib/PowerElectrobot/dspicpowerelectrobotbase.cpp
 ext/CppRobLib/PowerElectrobot/dspicpowerelectrobotbase.h
 
