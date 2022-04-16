@@ -73,7 +73,7 @@ void CKmarMouvement_RAMASSE::step()
             m_kmar->setAxisPosition(CKmar::AXIS_4, 512);
         }
         else {
-            if (!m_kmar->isMoveInProgress()) gotoNextState();
+            if (!m_kmar->isMoveInProgress()) gotoFinish();
         }
 
         if (onExit()) {  }
