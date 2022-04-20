@@ -21,6 +21,10 @@ public:
     /*virtual*/void delay_ms(int delay);
     /*virtual*/void start(int mouvement);
 
+    /*virtual*/void catchObject();
+    /*virtual*/void releaseObject();
+    /*virtual*/bool isObjectCatched();
+
     typedef enum {
         MOUVEMENT_INIT = (NO_MOUVEMENT + 1),
         MOUVEMENT_RAMASSE

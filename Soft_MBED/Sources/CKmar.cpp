@@ -1,5 +1,6 @@
 #include "CKmar.h"
 #include "CGlobale.h"
+#include "ConfigSpecifiqueCoupe.h"
 
 CKmar::CKmar() :
     m_mouvement_init(this),
@@ -102,4 +103,25 @@ int CKmar::getTime()
 void CKmar::delay_ms(int delay)
 {
     // TODO
+}
+
+// __________________________________________________
+void CKmar::catchObject()
+{
+    // TODO : voir quels actionneurs activer/désactiver pour prendre l'objet
+    Application.m_power_electrobot.setOutput((PowerElectrobot::tSwitchOutput)POMPE_AV, true);
+}
+
+// __________________________________________________
+void CKmar::releaseObject()
+{
+    // TODO : voir quels actionneurs activer/désactiver pour relâcher l'objet
+    Application.m_power_electrobot.setOutput((PowerElectrobot::tSwitchOutput)POMPE_AV, false);
+}
+
+// __________________________________________________
+bool CKmar::isObjectCatched()
+{
+    // TODO : faire le lien avec le capteur de pression
+    return false; // bouchon pour renvoyer quelque chose
 }
