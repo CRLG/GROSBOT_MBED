@@ -18,6 +18,7 @@ void SM_OutputsInterface::stopAll()
     Application.m_asservissement.CommandeManuelle(0, 0);
     Application.m_asservissement_chariot.Stop_Chariot();
     Application.m_power_electrobot.setAllOutputs(0);
+    Application.m_kmar.stop();
 }
 
 // Ces méthodes permettent de simplifier l'écriture des machines d'état
