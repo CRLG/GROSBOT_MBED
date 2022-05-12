@@ -1,26 +1,26 @@
-#include "sm_recup4boueeschemin.h"
+#include "sm_recupechantillonzonedepart.h"
 
-SM_Recup4BoueesChemin::SM_Recup4BoueesChemin()
+SM_RecupEchantillonZoneDepart::SM_RecupEchantillonZoneDepart()
 {
     m_main_mission_type = true;
 }
 
-const char* SM_Recup4BoueesChemin::getName()
+const char* SM_RecupEchantillonZoneDepart::getName()
 {
-    return "SM_Recup4BoueesChemin";
+    return "SM_RecupEchantillonZoneDepart";
 }
 
-const char* SM_Recup4BoueesChemin::stateToName(unsigned short state)
+const char* SM_RecupEchantillonZoneDepart::stateToName(unsigned short state)
 {
     switch(state)
     {
-    //case ALLER_VERS_PHARE :         return "ALLER_VERS_PHARE";
+    //case XXX :         return "XXX";
     }
     return "UNKNOWN_STATE";
 }
 
-// _____________________________________
-void SM_Recup4BoueesChemin::step()
+
+void SM_RecupEchantillonZoneDepart::step()
 {
     switch (m_state)
     {

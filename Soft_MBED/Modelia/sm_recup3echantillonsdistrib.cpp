@@ -1,26 +1,26 @@
-#include "sm_arriverabonport.h"
+#include "sm_recup3echantillonsdistrib.h"
 
-SM_ArriverABonPort::SM_ArriverABonPort()
+SM_Recup3EchantillonsDistrib::SM_Recup3EchantillonsDistrib()
 {
     m_main_mission_type = true;
 }
 
-const char* SM_ArriverABonPort::getName()
+const char* SM_Recup3EchantillonsDistrib::getName()
 {
-    return "SM_ArriverABonPort";
+    return "SM_Recup3EchantillonsDistrib";
 }
 
-const char* SM_ArriverABonPort::stateToName(unsigned short state)
+const char* SM_Recup3EchantillonsDistrib::stateToName(unsigned short state)
 {
     switch(state)
     {
-    //case ALLER_VERS_PHARE :         return "ALLER_VERS_PHARE";
+    //case XXX :         return "XXX";
     }
     return "UNKNOWN_STATE";
 }
 
 
-void SM_ArriverABonPort::step()
+void SM_Recup3EchantillonsDistrib::step()
 {
     switch (m_state)
     {

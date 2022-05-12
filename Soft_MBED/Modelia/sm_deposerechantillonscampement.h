@@ -1,12 +1,12 @@
-#ifndef SM_ARRIVERABONPORT_H
-#define SM_ARRIVERABONPORT_H
+#ifndef SM_DEPOSER_ECHANTILLONS_CAMPEMENT_H
+#define SM_DEPOSER_ECHANTILLONS_CAMPEMENT_H
 
 #include "sm_statemachinebase.h"
 
-class SM_ArriverABonPort : public SM_StateMachineBase
+class SM_DeposerEchantillonsCampement : public SM_StateMachineBase
 {
 public:
-    SM_ArriverABonPort();
+    SM_DeposerEchantillonsCampement();
 
     void step();
     const char* getName();
@@ -32,4 +32,4 @@ public:
     }tState;
 };
 
-#endif // SM_ARRIVERABONPORT_H
+#endif // SM_DEPOSER_ECHANTILLONS_CAMPEMENT_H

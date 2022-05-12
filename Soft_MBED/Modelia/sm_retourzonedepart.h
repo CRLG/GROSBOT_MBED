@@ -1,12 +1,12 @@
-#ifndef SM_RECUP4BOUEESCHEMIN_H
-#define SM_RECUP4BOUEESCHEMIN_H
+#ifndef SM_RETOUR_ZONE_DEPART_H
+#define SM_RETOUR_ZONE_DEPART_H
 
 #include "sm_statemachinebase.h"
 
-class SM_Recup4BoueesChemin : public SM_StateMachineBase
+class SM_RetourZoneDepart : public SM_StateMachineBase
 {
 public:
-    SM_Recup4BoueesChemin();
+    SM_RetourZoneDepart();
 
     void step();
     const char* getName();
@@ -32,4 +32,4 @@ public:
     }tState;
 };
 
-#endif // SM_RECUP4BOUEESCHEMIN_H
+#endif // SM_RETOUR_ZONE_DEPART_H

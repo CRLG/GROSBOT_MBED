@@ -1,12 +1,12 @@
-#ifndef SM_DEPOSERBOUEESDANSPORT_H
-#define SM_DEPOSERBOUEESDANSPORT_H
+#ifndef SM_RECUP_ECHANTILLON_ZONE_DEPART_H
+#define SM_RECUP_ECHANTILLON_ZONE_DEPART_H
 
 #include "sm_statemachinebase.h"
 
-class SM_DeposerBoueesDansPort : public SM_StateMachineBase
+class SM_RecupEchantillonZoneDepart : public SM_StateMachineBase
 {
 public:
-    SM_DeposerBoueesDansPort();
+    SM_RecupEchantillonZoneDepart();
 
     void step();
     const char* getName();
@@ -32,4 +32,4 @@ public:
     }tState;
 };
 
-#endif // SM_DEPOSERBOUEESDANSPORT_H
+#endif // SM_RECUP_ECHANTILLON_ZONE_DEPART_H

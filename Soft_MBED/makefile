@@ -33,14 +33,15 @@ OBJECTS += Modelia/sm_outputsinterface.o
 OBJECTS += Modelia/sm_datasinterface.o         
 OBJECTS += Modelia/sm_autotest.o               
 OBJECTS += Modelia/sm_sequenceur.o
-OBJECTS += Modelia/sm_activerphare.o           
-OBJECTS += Modelia/sm_arriverabonport.o        
-OBJECTS += Modelia/sm_recup2boueeszonedepart.o
-OBJECTS += Modelia/sm_recup4boueeschemin.o
-OBJECTS += Modelia/sm_deployerpavillon.o       
-OBJECTS += Modelia/sm_recupboueesdistributeur.o
-OBJECTS += Modelia/sm_deposerboueesdansport.o  
-OBJECTS += Modelia/sm_detecternordsud.o        
+
+OBJECTS += Modelia/sm_recupechantillonzonedepart.o
+OBJECTS += Modelia/sm_recupstatuette.o
+OBJECTS += Modelia/sm_recup3echantillonsdistrib.o
+OBJECTS += Modelia/sm_deposerstatuetteactivervitrine.o
+OBJECTS += Modelia/sm_deposerechantillonsgalerieexpo.o
+OBJECTS += Modelia/sm_retourzonedepart.o
+OBJECTS += Modelia/sm_deposerechantillonscampement.o
+
 OBJECTS += Modelia/kmar_INIT.o
 OBJECTS += Modelia/kmar_RAMASSE.o
 

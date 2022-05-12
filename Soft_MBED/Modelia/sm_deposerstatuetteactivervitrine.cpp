@@ -1,33 +1,27 @@
-#include "sm_deposerboueesdansport.h"
+#include "sm_deposerstatuetteactivervitrine.h"
 
-SM_DeposerBoueesDansPort::SM_DeposerBoueesDansPort()
+SM_DeposerStatuetteActiverVitrine::SM_DeposerStatuetteActiverVitrine()
 {
     m_main_mission_type = true;
 }
 
-const char* SM_DeposerBoueesDansPort::getName()
+const char* SM_DeposerStatuetteActiverVitrine::getName()
 {
-    return "SM_DeposerBoueesDansPort";
+    return "SM_DeposerStatuetteActiverVitrine";
 }
 
-const char* SM_DeposerBoueesDansPort::stateToName(unsigned short state)
+const char* SM_DeposerStatuetteActiverVitrine::stateToName(unsigned short state)
 {
     switch(state)
     {
-    //case ALLER_VERS_PHARE :         return "ALLER_VERS_PHARE";
+    //case XXX :         return "XXX";
     }
     return "UNKNOWN_STATE";
 }
 
 
-// _____________________________________
-void SM_DeposerBoueesDansPort::step()
+void SM_DeposerStatuetteActiverVitrine::step()
 {
-    // Cette SM ne devrait jamais être succès
-    // car il y aura potentiellement toujours des bouées à récupérer
-    // Si la SM est lancée alors qu'il n'y a pas de verre dans le robot,
-    // elle rend la main et pourra être rappelée plus tard
-
     switch (m_state)
     {
     // ___________________________

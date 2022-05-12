@@ -29,9 +29,11 @@ void SM_Sequenceur::step()
     IA::tAlgoNextPertinentMission algo_next_mission = (IA::tAlgoNextPertinentMission)internals()->choix_algo_next_mission;
 
     // Activation du déploiement du pavillon à la 95ème seconde du match
+    /*
     if (!m_ia->m_sm_deployer_pavillon.isActive() && (internals()->TempsMatch >= 96.0f) && (!m_ia->m_sm_deployer_pavillon.isSucces())) {
         m_ia->m_sm_deployer_pavillon.start();
     }
+    */
 
     // Activation de la reconnaissance de la zone Nord/Sud dès la 25ème seconde du match
     /*if (!m_ia->m_sm_detecter_nord_sud.isActive() && (internals()->TempsMatch >= 25.0f) && (!m_ia->m_sm_detecter_nord_sud.isSucces())) {
