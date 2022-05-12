@@ -44,25 +44,16 @@ void IA::init()
 
 // ________________________________________________
 // Définit l'ordre d'exécution des "main missions"
-// Pour interdire l'exécution d'une mission :
-//   - m_sm_xxx.setEnabled(false);
+// sm_xxxx.setPrioriteExecution(ordre++);
+//      Active la mission xxx
+//      Lui fixe une priorité d'exécution (0 étant la priorité la plus haute)
 void IA::setStrategie(unsigned char strategie)
 {
     int ordre = 0;
     resetAllSMPriority();
+    disableAllSM(); // Désactive toutes les SM par défaut (elles seront activées une par une avec la priorité associée en fonction de la stratégie)
     switch (strategie) {
-    //
-    case STRATEGIE_PAR_DEFAUT:
-        m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
-        m_sm_recup_echantillon_zone_depart.setPrioriteExecution(ordre++);
-        m_sm_deposer_echantillons_campement.setPrioriteExecution(ordre++);
-        break;
-    // ________________________ Attention : c'est juste un exemple pour montrer comment ça s'utilise
-    case STRATEGIE_TEST_01:
-        m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
-        //Application.m_modelia.m_sm_recup_bouees_distributeur.setPrioriteExecution(ordre++);
-        break;
-    // ________________________ Attention : c'est juste un exemple pour montrer comment ça s'utilise
+    // ________________________
     case STRATEGIE_HOMOLO1:
         m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
         //m_datas_interface.evit_inhibe_obstacle=true;
@@ -74,23 +65,24 @@ void IA::setStrategie(unsigned char strategie)
         m_sm_deposer_echantillons_campement.setPrioriteExecution(ordre++);
 
         break;
-    // ________________________ Attention : c'est juste un exemple pour montrer comment ça s'utilise
+    // ________________________
     case STRATEGIE_HOMOLO2:
         m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
 
-        m_sm_recup_echantillon_zone_depart.setPrioriteExecution(ordre++);
+        m_sm_recup_statuette.setPrioriteExecution(ordre++);
+        m_sm_deposer_statuette_activer_vitrine.setPrioriteExecution(ordre++);
 
         break;
-    // ________________________ Attention : c'est juste un exemple pour montrer comment ça s'utilise
-    case STRATEGIE_01:
-        m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_SCORE_MAX;
-        //m_sm_activer_phare.setEnabled(false);  // celle là, on ne veut surtout pas qu'elle s'exécute dans cette stratégie
-        break;
-    // ________________________
-    // TODO : configurer les autres stratégies
-
     // ________________________  A VERIFIER
+    case STRATEGIE_PAR_DEFAUT:
     default:
+        m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
+        m_sm_recup_echantillon_zone_depart.setPrioriteExecution(ordre++);
+        m_sm_recup_statuette.setPrioriteExecution(ordre++);
+        m_sm_recup_3_echantillons_distrib.setPrioriteExecution(ordre++);
+        m_sm_deposer_statuette_activer_vitrine.setPrioriteExecution(ordre++);
+        m_sm_deposer_echantillons_galerie_expo.setPrioriteExecution(ordre++);
+        m_sm_retour_zone_depart.setPrioriteExecution(ordre++);
         m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
         break;
     }
