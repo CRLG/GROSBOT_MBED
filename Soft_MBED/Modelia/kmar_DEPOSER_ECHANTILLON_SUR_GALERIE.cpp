@@ -1,8 +1,8 @@
-#include "kmar_INIT.h"
+#include "kmar_DEPOSER_ECHANTILLON_SUR_GALERIE.h"
 #include "kmar.h"
 
 // ===========================================================
-void CKmarMouvement_INIT::step()
+void CKmarMouvement_DEPOSER_ECHANTILLON_SUR_GALERIE::step()
 {
     const int default_speed = 250;
 
@@ -62,5 +62,3 @@ void CKmarMouvement_INIT::step()
         break;
     }
 }
-
-

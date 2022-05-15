@@ -1,8 +1,8 @@
-#include "kmar_INIT.h"
+#include "kmar_PRENDRE_ECHANTILLON_AU_SOL.h"
 #include "kmar.h"
 
 // ===========================================================
-void CKmarMouvement_INIT::step()
+void CKmarMouvement_PRENDRE_ECHANTILLON_AU_SOL::step()
 {
     const int default_speed = 250;
 
@@ -62,5 +62,3 @@ void CKmarMouvement_INIT::step()
         break;
     }
 }
-
-

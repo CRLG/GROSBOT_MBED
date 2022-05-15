@@ -4,7 +4,12 @@
 
 CKmar::CKmar() :
     m_mouvement_init(this),
-    m_mouvement_ramasse(this)
+    m_mouvement_apprentissage_chariot(this),
+    m_mouvement_prise_statette(this),
+    m_mouvement_poser_statuette_sur_vitrine(this),
+    m_mouvement_prendre_echantillon_au_sol(this),
+    m_mouvement_deposer_echantillon_sur_galerie(this),
+    m_mouvement_ranger_statuette_dans_robot(this)
 {
     // En dur pour les essais
     m_servo_ax_id[0] = SERVO_AX_KMAR_AXIS_1;
@@ -26,8 +31,28 @@ void CKmar::start(int mouvement)
     case MOUVEMENT_INIT :
         m_mouvement_en_cours = &m_mouvement_init;
         break;
-    case MOUVEMENT_RAMASSE :
-        m_mouvement_en_cours = &m_mouvement_ramasse;
+    case MOUVEMENT_APPRENTISSAGE_CHARIOT :
+        m_mouvement_en_cours = &m_mouvement_apprentissage_chariot;
+        break;
+
+    case MOUVEMENT_PRISE_STATUETTE :
+        m_mouvement_en_cours = &m_mouvement_prise_statette;
+        break;
+
+    case MOUVEMENT_POSER_STATUETTE_SUR_VITRINE :
+        m_mouvement_en_cours = &m_mouvement_poser_statuette_sur_vitrine;
+        break;
+
+    case MOUVEMENT_PRENDRE_ECHANTILLON_AU_SOL :
+        m_mouvement_en_cours = &m_mouvement_prendre_echantillon_au_sol;
+        break;
+
+    case MOUVEMENT_DEPOSER_ECHANTILLON_SUR_GALERIE :
+        m_mouvement_en_cours = &m_mouvement_deposer_echantillon_sur_galerie;
+        break;
+
+    case MOUVEMENT_RANGER_STATUETTE_DANS_ROBOT :
+        m_mouvement_en_cours = &m_mouvement_ranger_statuette_dans_robot;
         break;
 
     default :
@@ -117,8 +142,8 @@ void CKmar::catchObject()
 void CKmar::releaseObject()
 {
     // TODO : voir quels actionneurs activer/désactiver pour relâcher l'objet
-    Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)POMPE, true);
-    Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)ELECTROVANNE, true);
+    Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)POMPE, false);
+    Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)ELECTROVANNE, false);
 }
 
 // __________________________________________________

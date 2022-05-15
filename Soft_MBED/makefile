@@ -42,7 +42,12 @@ OBJECTS += Modelia/sm_deposerechantillonscampement.o
 
 OBJECTS += Modelia/kmar.o
 OBJECTS += Modelia/kmar_INIT.o
-OBJECTS += Modelia/kmar_RAMASSE.o
+OBJECTS += Modelia/kmar_APPRENTISSAGE_CHARIOT.o
+OBJECTS += Modelia/kmar_DEPOSER_ECHANTILLON_SUR_GALERIE.o
+OBJECTS += Modelia/kmar_POSER_STATUETTE_SUR_VITRINE.o
+OBJECTS += Modelia/kmar_PRENDRE_ECHANTILLON_AU_SOL.o
+OBJECTS += Modelia/kmar_PRISE_STATUETTE.o
+OBJECTS += Modelia/kmar_RANGER_STATUETTE_DANS_ROBOT.o
 
 ###############################################################################
 # Objects and Paths for mbed-common

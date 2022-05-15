@@ -246,8 +246,19 @@ Modelia/kmar.cpp
 Modelia/kmar.h
 Modelia/kmar_INIT.cpp
 Modelia/kmar_INIT.h
-Modelia/kmar_RAMASSE.cpp
-Modelia/kmar_RAMASSE.h
+Modelia/kmar_APPRENTISSAGE_CHARIOT.h
+Modelia/kmar_APPRENTISSAGE_CHARIOT.cpp
+Modelia/kmar_DEPOSER_ECHANTILLON_SUR_GALERIE.cpp
+Modelia/kmar_DEPOSER_ECHANTILLON_SUR_GALERIE.h
+Modelia/kmar_POSER_STATUETTE_SUR_VITRINE.cpp
+Modelia/kmar_POSER_STATUETTE_SUR_VITRINE.h
+Modelia/kmar_PRENDRE_ECHANTILLON_AU_SOL.cpp
+Modelia/kmar_PRENDRE_ECHANTILLON_AU_SOL.h
+Modelia/kmar_PRISE_STATUETTE.cpp
+Modelia/kmar_PRISE_STATUETTE.h
+Modelia/kmar_RANGER_STATUETTE_DANS_ROBOT.cpp
+Modelia/kmar_RANGER_STATUETTE_DANS_ROBOT.h
+
 
 ext/CppRobLib/Communication/Messenger/databasebase.cpp
 ext/CppRobLib/Communication/Messenger/databasebase.h

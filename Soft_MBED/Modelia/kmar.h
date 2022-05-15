@@ -3,7 +3,12 @@
 
 #include "CKmarBase.h"
 #include "kmar_INIT.h"
-#include "kmar_RAMASSE.h"
+#include "kmar_APPRENTISSAGE_CHARIOT.h"
+#include "kmar_PRENDRE_ECHANTILLON_AU_SOL.h"
+#include "kmar_DEPOSER_ECHANTILLON_SUR_GALERIE.h"
+#include "kmar_PRISE_STATUETTE.h"
+#include "kmar_POSER_STATUETTE_SUR_VITRINE.h"
+#include "kmar_RANGER_STATUETTE_DANS_ROBOT.h"
 
 class CKmar : public CKmarBase
 {
@@ -27,7 +32,12 @@ public:
 
     typedef enum {
         MOUVEMENT_INIT = (NO_MOUVEMENT + 1),
-        MOUVEMENT_RAMASSE
+        MOUVEMENT_APPRENTISSAGE_CHARIOT,
+        MOUVEMENT_PRISE_STATUETTE,
+        MOUVEMENT_POSER_STATUETTE_SUR_VITRINE,
+        MOUVEMENT_PRENDRE_ECHANTILLON_AU_SOL,
+        MOUVEMENT_DEPOSER_ECHANTILLON_SUR_GALERIE,
+        MOUVEMENT_RANGER_STATUETTE_DANS_ROBOT,
     }tMouvements;
 
     //! ATTENTION : Dans les fonctions, le numéro d'axe commence à "0"
@@ -44,8 +54,13 @@ public:
     unsigned char m_servo_ax_id[AXIS_NUMBER];
     unsigned int m_servo_default_speed[AXIS_NUMBER];
 
-    CKmarMouvement_INIT         m_mouvement_init;
-    CKmarMouvement_RAMASSE      m_mouvement_ramasse;
+    CKmarMouvement_INIT                             m_mouvement_init;
+    CKmarMouvement_APPRENTISSAGE_CHARIOT            m_mouvement_apprentissage_chariot;
+    CKmarMouvement_PRISE_STATUETTE                  m_mouvement_prise_statette;
+    CKmarMouvement_POSER_STATUETTE_SUR_VITRINE      m_mouvement_poser_statuette_sur_vitrine;
+    CKmarMouvement_PRENDRE_ECHANTILLON_AU_SOL       m_mouvement_prendre_echantillon_au_sol;
+    CKmarMouvement_DEPOSER_ECHANTILLON_SUR_GALERIE  m_mouvement_deposer_echantillon_sur_galerie;
+    CKmarMouvement_RANGER_STATUETTE_DANS_ROBOT      m_mouvement_ranger_statuette_dans_robot;
 };
 
 #endif // CKMAR_H

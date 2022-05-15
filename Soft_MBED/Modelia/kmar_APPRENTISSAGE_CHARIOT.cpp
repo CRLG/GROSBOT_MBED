@@ -1,8 +1,9 @@
-#include "kmar_INIT.h"
+#include "kmar_APPRENTISSAGE_CHARIOT.h"
 #include "kmar.h"
 
+
 // ===========================================================
-void CKmarMouvement_INIT::step()
+void CKmarMouvement_APPRENTISSAGE_CHARIOT::step()
 {
     const int default_speed = 250;
 
@@ -18,7 +19,8 @@ void CKmarMouvement_INIT::step()
             m_kmar->setAxisSpeed(CKmar::AXIS_3, default_speed);
             m_kmar->setAxisSpeed(CKmar::AXIS_4, default_speed);
 
-            m_kmar->setAxisPosition(CKmar::AXIS_2, 800);
+            m_kmar->setAxisPosition(CKmar::AXIS_1, 670);
+            m_kmar->catchObject();
         }
         else {
             if (!m_kmar->isMoveInProgress()) gotoNextState();
@@ -29,7 +31,7 @@ void CKmarMouvement_INIT::step()
 
     case 1 :
         if (onEntry()) {
-            m_kmar->setAxisPosition(CKmar::AXIS_1, 530);
+            m_kmar->setAxisPosition(CKmar::AXIS_2, 670);
         }
         else {
             if (!m_kmar->isMoveInProgress()) gotoNextState();
@@ -40,7 +42,7 @@ void CKmarMouvement_INIT::step()
 
     case 2 :
         if (onEntry()) {
-            m_kmar->setAxisPosition(CKmar::AXIS_3, 835);
+            m_kmar->setAxisPosition(CKmar::AXIS_3, 520);
         }
         else {
             if (!m_kmar->isMoveInProgress()) gotoNextState();
@@ -54,7 +56,9 @@ void CKmarMouvement_INIT::step()
         else {
             if (!m_kmar->isMoveInProgress()) gotoFinish();
         }
-        if (onExit()) {  }
+        if (onExit()) {
+            m_kmar->releaseObject();
+        }
         break;
 
     case MOVEMENT_FINISHED :
@@ -62,5 +66,4 @@ void CKmarMouvement_INIT::step()
         break;
     }
 }
-
 
