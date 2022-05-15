@@ -57,46 +57,32 @@ typedef enum {
 
 //! cet enumere contient les numeros d'attribution des servos SD20
 typedef enum {
-    SERVO_PARE_CHOC=13,
-    SERVO_BRAS_ARD=14,
-    SERVO_PLATEAU_G=15,
-    SERVO_BARRIERE_AVG=16,
-    SERVO_BRAS_ARG = 18,
-    SERVO_PLATEAU_D=19,
-    SERVO_BARRIERE_AVD=20,
+    SERVO_ELEVATEUR         = 13,
+    SERVO_PINCE             = 14,
 } eATTRIBUTION_SERVOS_SD20;
 
 //! cet enumere contient les numeros d'attribution des servos SD20
-typedef enum {
-	SD20_PINCE_01_OUV=220,
-	SD20_PINCE_01_CLOS=25,
-	SD20_PINCE_02_OUV=215,
-	SD20_PINCE_02_CLOS=25,
-	SD20_PINCE_03_OUV=50,
-	SD20_PINCE_03_CLOS=240,
-	SD20_PINCE_04_OUV=230,
-	SD20_PINCE_04_CLOS=50,
-	SD20_PINCE_05_OUV=230,
-	SD20_PINCE_05_CLOS=60,
-	SD20_DRAPEAU_LEVE=185,
-	SD20_DRAPEAU_BAISSE=30,
-} eVALUES_SERVOS_SD20;
+enum {
+    SD20_ELEVATEUR_HAUT                 = 65,
+    SD20_ELEVATEUR_ECHANTILLONS_CALES   = 150,
+    SD20_ELEVATEUR_BAS                  = 230
+};
+enum {
+  SD20_PINCE_OUVERTE        = 5,
+  SD20_PINCE_FERMEE         = 255
+};
 
-//! cet enumere contient les numeros d'attribution des servos AX
-// VERT = Vertical / HORIZ = Horizontal
+//! cet enumere contient les numeros d'attribution des servos AX (ID)
 typedef enum {
-    SERVO_VENTOUSE_ARD_VERT=0,
-    SERVO_VENTOUSE_ARG_VERT,
-    SERVO_VENTOUSE_AV_HORIZ,
-    SERVO_VENTOUSE_AV_VERT,
-    SERVO_CHUCK_NORRIS,
+    SERVO_AX_KMAR_AXIS_1 = 1,
+    SERVO_AX_KMAR_AXIS_2 = 2,
+    SERVO_AX_KMAR_AXIS_3 = 3,
+    SERVO_AX_KMAR_AXIS_4 = 4,
     SERVO_AX_TOUS = 0xFE
 } eATTRIBUTION_SERVOS_AX;
 
-//! cet enumere contient les numeros d'attribution des servos SD20
+//! cet enumere contient les numeros d'attribution des servos AX
 typedef enum {
-    AX_TOTO=13,
-    AX_TATA=250,
 } eVALUES_SERVOS_AX;
 
 // affectation des sorties de la carte PowerSwitch
@@ -104,14 +90,9 @@ typedef enum {
 // AV = Avant / AR = Arrière
 // Pompe = Pompe à air
 typedef enum {
-    POMPE_AV = PowerSwitch::XT1_OUTPUT,
-    EV_AV = PowerSwitch::XT4_OUTPUT,
-    POMPE_ARG = PowerSwitch::XT5_OUTPUT,
-    POMPE_ARD = PowerSwitch::XT6_OUTPUT,
-    EV_ARG = PowerSwitch::XT7_OUTPUT,
-    EV_ARD = PowerSwitch::XT8_OUTPUT
+    ELECTROVANNE            = PowerSwitch::XT7_OUTPUT,
+    POMPE                   = PowerSwitch::XT8_OUTPUT
 }eATTRIBUTION_POWER_SWITCH;
-
 
 //code des demandes MBED vers LABOTBOX (trame générique)
 typedef enum {

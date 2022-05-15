@@ -7,10 +7,10 @@ CKmar::CKmar() :
     m_mouvement_ramasse(this)
 {
     // En dur pour les essais
-    m_servo_ax_id[0] = 1;
-    m_servo_ax_id[1] = 2;
-    m_servo_ax_id[2] = 3;
-    m_servo_ax_id[3] = 4;
+    m_servo_ax_id[0] = SERVO_AX_KMAR_AXIS_1;
+    m_servo_ax_id[1] = SERVO_AX_KMAR_AXIS_2;
+    m_servo_ax_id[2] = SERVO_AX_KMAR_AXIS_3;
+    m_servo_ax_id[3] = SERVO_AX_KMAR_AXIS_4;
 
     m_servo_default_speed[0] = 80;
     m_servo_default_speed[1] = 80;
@@ -109,14 +109,16 @@ void CKmar::delay_ms(int delay)
 void CKmar::catchObject()
 {
     // TODO : voir quels actionneurs activer/désactiver pour prendre l'objet
-    Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)POMPE_AV, true);
+    Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)POMPE, true);
+    Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)ELECTROVANNE, true);
 }
 
 // __________________________________________________
 void CKmar::releaseObject()
 {
     // TODO : voir quels actionneurs activer/désactiver pour relâcher l'objet
-    Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)POMPE_AV, false);
+    Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)POMPE, true);
+    Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)ELECTROVANNE, true);
 }
 
 // __________________________________________________
