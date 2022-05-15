@@ -1,4 +1,4 @@
-#include "CKmar.h"
+#include "kmar.h"
 #include "CGlobale.h"
 #include "ConfigSpecifiqueCoupe.h"
 
@@ -96,7 +96,7 @@ void CKmar::disarm(int axis)
 // __________________________________________________
 int CKmar::getTime()
 {
-    return _Global_Timer.read_ms();
+    return 0; //_Global_Timer.read_ms();
 }
 
 // __________________________________________________
@@ -109,14 +109,14 @@ void CKmar::delay_ms(int delay)
 void CKmar::catchObject()
 {
     // TODO : voir quels actionneurs activer/désactiver pour prendre l'objet
-    Application.m_power_electrobot.setOutput((PowerElectrobot::tSwitchOutput)POMPE_AV, true);
+    Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)POMPE_AV, true);
 }
 
 // __________________________________________________
 void CKmar::releaseObject()
 {
     // TODO : voir quels actionneurs activer/désactiver pour relâcher l'objet
-    Application.m_power_electrobot.setOutput((PowerElectrobot::tSwitchOutput)POMPE_AV, false);
+    Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)POMPE_AV, false);
 }
 
 // __________________________________________________

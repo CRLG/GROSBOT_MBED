@@ -173,7 +173,6 @@ ext/mbed-common-rob/Sources/MessengerXbeeNetwork.cpp
 ext/mbed-common-rob/Sources/PowerSwitch.cpp
 ext/mbed-common-rob/Sources/PowerElectrobot.cpp
 ext/mbed-common-rob/Sources/xbeedriver.cpp
-ext/mbed-common-rob/Sources/CKmar.cpp
 
 ext/mbed-common-rob/Includes/xbeedriver.h
 ext/mbed-common-rob/Includes/CElectrobot.h
@@ -198,7 +197,6 @@ ext/mbed-common-rob/Includes/MessengerXbeeNetwork.h
 ext/mbed-common-rob/Includes/PowerElectrobot.h
 ext/mbed-common-rob/Includes/PowerSwitch.h
 ext/mbed-common-rob/Includes/xbeedriver.h
-ext/mbed-common-rob/Includes/CKmar.h
 
 Sources/main.cpp
 Sources/RessoucesHardware.cpp
@@ -244,13 +242,12 @@ Modelia/sm_deposerechantillonsgalerieexpo.h
 Modelia/sm_retourzonedepart.h
 Modelia/sm_deposerechantillonscampement.h
 
+Modelia/kmar.cpp
+Modelia/kmar.h
 Modelia/kmar_INIT.cpp
 Modelia/kmar_INIT.h
 Modelia/kmar_RAMASSE.cpp
 Modelia/kmar_RAMASSE.h
-
-Sources/CKmar.cpp
-Includes/CKmar.h
 
 ext/CppRobLib/Communication/Messenger/databasebase.cpp
 ext/CppRobLib/Communication/Messenger/databasebase.h
@@ -319,7 +316,6 @@ ext/CppRobLib/common-rob/CCapteursBase.cpp
 ext/CppRobLib/common-rob/CCapteursBase.h
 ext/CppRobLib/common-rob/CKmarBase.cpp
 ext/CppRobLib/common-rob/CKmarBase.h
-
 
 ext/CppRobLib/common-rob/Modelia/sm_statemachinebase.h
 ext/CppRobLib/common-rob/Modelia/sm_statemachinebase.cpp

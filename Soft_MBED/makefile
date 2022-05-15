@@ -17,7 +17,6 @@ OBJDIR := BUILD
 INCLUDE_PATHS += -I../.
 INCLUDE_PATHS += -I../Includes
 INCLUDE_PATHS += -I../Modelia
-INCLUDE_PATHS += -I../Kmar
 
 OBJECTS += Sources/main.o
 OBJECTS += Sources/RessoucesHardware.o
@@ -25,7 +24,6 @@ OBJECTS += Sources/CAsservissement.o
 OBJECTS += Sources/CAsservissementChariot.o
 OBJECTS += Sources/CTelemetres.o
 OBJECTS += Sources/CCapteurs.o
-OBJECTS += Sources/CKmar.o
 
 OBJECTS += Modelia/ia.o
 OBJECTS += Modelia/sm_inputsinterface.o
@@ -42,6 +40,7 @@ OBJECTS += Modelia/sm_deposerechantillonsgalerieexpo.o
 OBJECTS += Modelia/sm_retourzonedepart.o
 OBJECTS += Modelia/sm_deposerechantillonscampement.o
 
+OBJECTS += Modelia/kmar.o
 OBJECTS += Modelia/kmar_INIT.o
 OBJECTS += Modelia/kmar_RAMASSE.o
 

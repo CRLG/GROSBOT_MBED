@@ -1,5 +1,5 @@
 #include "kmar_INIT.h"
-#include "CKmar.h"
+#include "kmar.h"
 
 // ===========================================================
 void CKmarMouvement_INIT::step()
