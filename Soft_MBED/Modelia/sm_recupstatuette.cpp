@@ -71,7 +71,7 @@ void SM_RecupStatuette::step()
 			Application.m_kmar.catchObject();/*prendre un objet avec le bras robotise*/
 		}
 
-			gotoStateIfObjetPris(STATE_5,2000);
+            gotoStateAfter(STATE_5,4000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
