@@ -129,6 +129,7 @@ void IA::step()
     m_inputs_interface.X_robot             = Application.m_asservissement.X_robot;
     m_inputs_interface.Y_robot             = Application.m_asservissement.Y_robot;
     m_inputs_interface.angle_robot         = Application.m_asservissement.angle_robot;
+    m_inputs_interface.ConvergenceKmar     = Application.m_kmar.isFinished();
 
     // Coordonnées du robot dans le repère absolue terrain (pour que ce soit valable pour les 2 couleurs d'équipe)
     if (m_datas_interface.couleur_equipe == SM_DatasInterface::EQUIPE_COULEUR_1) {

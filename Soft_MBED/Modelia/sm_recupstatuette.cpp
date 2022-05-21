@@ -60,8 +60,12 @@ void SM_RecupStatuette::step()
 		if (onEntry()) {
 			Application.m_kmar.start(2);/*mouvement index 3*/
 		}
-
-			gotoStateAfter(STATE_4,2500);
+        gotoStateAfter(STATE_4,2500);
+        /* On peut utiliser au choix :
+        gotoStateIfTrue(STATE_4, Application.m_kmar.isFinished(), 4000);
+        ou
+        gotoStateIfConvergenceKmar(STATE_4, 4000);
+          */
 		if (onExit()) {  }
 		break;
 	// ___________________________

@@ -47,6 +47,8 @@ public:
     bool ConvergenceRack_old;
     bool FrontM_ConvergenceRack;
 
+    bool ConvergenceKmar;
+
     //en provenance de la rasp
     float m_distance_balise1;
     float m_distance_balise2;
