@@ -30,16 +30,6 @@ public:
     /*virtual*/void releaseObject();
     /*virtual*/bool isObjectCatched();
 
-    typedef enum {
-        MOUVEMENT_INIT = (NO_MOUVEMENT + 1),
-        MOUVEMENT_APPRENTISSAGE_CHARIOT,
-        MOUVEMENT_PRISE_STATUETTE,
-        MOUVEMENT_POSER_STATUETTE_SUR_VITRINE,
-        MOUVEMENT_PRENDRE_ECHANTILLON_AU_SOL,
-        MOUVEMENT_DEPOSER_ECHANTILLON_SUR_GALERIE,
-        MOUVEMENT_RANGER_STATUETTE_DANS_ROBOT,
-    }tMouvements;
-
     //! ATTENTION : Dans les fonctions, le numéro d'axe commence à "0"
     //! Ex : isMoving(0) interroge le 1er axe du Kmar (équivaut à isMoving(AXIS_1))
     typedef enum {

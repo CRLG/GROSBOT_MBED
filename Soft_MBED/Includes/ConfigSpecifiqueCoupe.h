@@ -8,6 +8,7 @@
 #include "CElectrobot.h"
 #include "CServoMoteurSD20.h"
 #include "PowerSwitch.h"
+#include "kmar.h"
 
 // Couleur de l'équipe
 #define EQUIPE_BLEU     SM_DatasInterface::EQUIPE_COULEUR_1
@@ -108,6 +109,16 @@ typedef enum {
     CMDE_VIDEO_NORD_SUD = 2, // SPECIFIQUE 2020/2021 - c'est un traitement: reco du nord-sud
     CMDE_VIDEO_CODE_COULEUR = 3 // SPECIFIQUE 2020/2021 - c'est un traitement : reco d'une série de couleur (pour les gobelets)
 }eVALUES_CMDE_GEN;
+
+typedef enum {
+    MOUVEMENT_INIT = (CKmar::NO_MOUVEMENT + 1),
+    MOUVEMENT_APPRENTISSAGE_CHARIOT,
+    MOUVEMENT_PRISE_STATUETTE,
+    MOUVEMENT_POSER_STATUETTE_SUR_VITRINE,
+    MOUVEMENT_PRENDRE_ECHANTILLON_AU_SOL,
+    MOUVEMENT_DEPOSER_ECHANTILLON_SUR_GALERIE,
+    MOUVEMENT_RANGER_STATUETTE_DANS_ROBOT,
+}eKMAR_MOUVEMENTS;
 
 // Affectation des numéros de télémètres SRF08
 #define INDEX_TELEMETRE_AVG 2
