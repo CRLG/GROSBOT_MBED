@@ -29,24 +29,25 @@ void SM_Autotest::step()
     // ___________________________________
     case STATE_1 :
         if (onEntry()) {
-            //Application.m_asservissement.CommandeManuelle(10.1, 20);
-            Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)ELECTROVANNE, 1);
+            //on sort le kmar
+            Application.m_kmar.start(2);
         }
-        gotoStateAfter(m_state+1, 800);
+        //gotoStateIfConvergenceArm(m_state+1,4000);
+        gotoStateAfter(m_state+1,3000);
         if (onExit()) {
-            //if (Application.m_power_electrobot.getGlobalCurrent() > 0.3) qDebug() << "ELECTROVANNE1 is OK" << Application.m_power_electrobot.getGlobalCurrent();
-            //else qDebug() << "ELECTROVANNE1 is KO";
-            Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)ELECTROVANNE, 0);
         }
         break;
     // ___________________________________
     case STATE_2 :
         if (onEntry()) {
-            Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)POMPE, 1);
+            //on initialise les butées du rack
+            Application.m_asservissement_chariot.Recal_Chariot();
         }
-        gotoStateAfter(SM_STATE_END, 800);
+        //gotoStateAfter(SM_STATE_END, 800);
+        gotoStateIfConvergenceRack(SM_STATE_END,4000);
         if (onExit()) {
-            Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)POMPE, 0);
+            //on range le kmar
+            Application.m_kmar.start(1);
         }
         break;
 
