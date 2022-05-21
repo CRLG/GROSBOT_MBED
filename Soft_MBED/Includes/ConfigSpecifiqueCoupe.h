@@ -58,19 +58,18 @@ typedef enum {
 //! cet enumere contient les numeros d'attribution des servos SD20
 typedef enum {
     SERVO_ELEVATEUR         = 13,
-    SERVO_PINCE             = 14,
+    SERVO_PINCE             = 14
 } eATTRIBUTION_SERVOS_SD20;
 
 //! cet enumere contient les numeros d'attribution des servos SD20
-enum {
-    SD20_ELEVATEUR_HAUT                 = 65,
-    SD20_ELEVATEUR_ECHANTILLONS_CALES   = 150,
-    SD20_ELEVATEUR_BAS                  = 230
-};
-enum {
-  SD20_PINCE_OUVERTE        = 5,
-  SD20_PINCE_FERMEE         = 255
-};
+typedef enum {
+	SD20_ELEVATEUR_HAUT                 = 65,
+	SD20_ELEVATEUR_ECHANTILLONS_CALES   = 150,
+	SD20_ELEVATEUR_BAS                  = 230,
+	SD20_PINCE_OUVERTE        = 5,
+	SD20_PINCE_FERMEE         = 255
+} eVALUES_SERVOS_SD20;
+
 
 //! cet enumere contient les numeros d'attribution des servos AX (ID)
 typedef enum {
