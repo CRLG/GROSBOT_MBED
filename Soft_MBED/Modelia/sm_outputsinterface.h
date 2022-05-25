@@ -12,6 +12,7 @@ public:
     // Asservissement
     void CommandeMouvementXY_sym(float x, float y);                     // Consignes vers l'asserv tenant compte de la couleur
     void CommandeMouvementXY_TETA_sym(float x, float y, float teta);    // de l'équipe pour inverser les mouvements
+    void setPosition_XYTeta_sym(float x, float y, float teta);
 
     // LED
 

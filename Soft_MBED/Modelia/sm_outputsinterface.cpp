@@ -37,3 +37,11 @@ void SM_OutputsInterface::CommandeMouvementXY_TETA_sym(float x, float y, float t
     if (Application.m_modelia.m_datas_interface.inverse_consignes_XYTeta) inv = -1;
     Application.m_asservissement.CommandeMouvementXY_TETA(x, y*inv, teta*inv);
 }
+
+void SM_OutputsInterface::setPosition_XYTeta_sym(float x, float y, float teta)
+{
+    int inv = 1;
+    if (Application.m_modelia.m_datas_interface.inverse_consignes_XYTeta) inv = -1;
+    Application.m_asservissement.setPosition_XYTeta(x, y*inv, teta*inv);
+}
+
