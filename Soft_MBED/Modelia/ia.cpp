@@ -61,29 +61,43 @@ void IA::setStrategie(unsigned char strategie)
         Application.m_detection_obstacles.setSeuilDetectionObstacle(12);
         m_datas_interface.evit_nombre_max_tentatives=1;
 
-        m_sm_recup_echantillon_zone_depart.setPrioriteExecution(ordre++);
+        m_sm_recup_echantillon_zone_depart.setEnabled(false);
+        m_sm_recup_statuette.setEnabled(false);
+        m_sm_recup_3_echantillons_distrib.setEnabled(false);
+        m_sm_deposer_statuette_activer_vitrine.setEnabled(false);
+        m_sm_deposer_echantillons_galerie_expo.setEnabled(false);
         m_sm_deposer_echantillons_campement.setPrioriteExecution(ordre++);
+        m_sm_retour_zone_depart.setPrioriteExecution(ordre++);
 
         break;
     // ________________________
     case STRATEGIE_HOMOLO2:
         m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
+        m_datas_interface.evit_choix_strategie= SM_DatasInterface::STRATEGIE_EVITEMENT_ATTENDRE;
+        Application.m_detection_obstacles.setSeuilDetectionObstacle(12);
 
+        m_sm_recup_echantillon_zone_depart.setEnabled(false);
         m_sm_recup_statuette.setPrioriteExecution(ordre++);
+        m_sm_recup_3_echantillons_distrib.setEnabled(false);
         m_sm_deposer_statuette_activer_vitrine.setPrioriteExecution(ordre++);
+        m_sm_deposer_echantillons_galerie_expo.setEnabled(false);
+        m_sm_deposer_echantillons_campement.setEnabled(false);
+        m_sm_retour_zone_depart.setEnabled(false);
 
         break;
     // ________________________  A VERIFIER
     case STRATEGIE_PAR_DEFAUT:
     default:
         m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
-        m_sm_recup_echantillon_zone_depart.setPrioriteExecution(ordre++);
-        m_sm_recup_statuette.setPrioriteExecution(ordre++);
-        m_sm_recup_3_echantillons_distrib.setPrioriteExecution(ordre++);
-        m_sm_deposer_statuette_activer_vitrine.setPrioriteExecution(ordre++);
-        m_sm_deposer_echantillons_galerie_expo.setPrioriteExecution(ordre++);
+        m_datas_interface.evit_choix_strategie= SM_DatasInterface::STRATEGIE_EVITEMENT_ATTENDRE;
+        Application.m_detection_obstacles.setSeuilDetectionObstacle(12);
+        m_sm_recup_echantillon_zone_depart.setEnabled(false);
+        m_sm_recup_statuette.setEnabled(false);
+        m_sm_recup_3_echantillons_distrib.setEnabled(false);
+        m_sm_deposer_statuette_activer_vitrine.setEnabled(false);
+        m_sm_deposer_echantillons_galerie_expo.setEnabled(false);
+        m_sm_deposer_echantillons_campement.setPrioriteExecution(ordre++);
         m_sm_retour_zone_depart.setPrioriteExecution(ordre++);
-        m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
         break;
     }
     m_datas_interface.ChoixStrategieMatch = strategie;
@@ -94,11 +108,13 @@ void IA::setMaxScores()
 {
     // TODO : valeurs des scores max fixées au pif.
     // Mettre les vraies valeurs
-    m_sm_recup_echantillon_zone_depart.setScoreMax(3);
-    /*m_sm_recup_4_bouees_chemin.setScoreMax(12);
-    m_sm_recup_bouees_distributeur.setScoreMax(13);
-    m_sm_deposer_bouees_dans_port.setScoreMax(14);
-    m_sm_arriver_a_bon_port.setScoreMax(15);*/
+    m_sm_recup_echantillon_zone_depart.setScoreMax(5);
+    m_sm_recup_statuette.setScoreMax(5);
+    m_sm_recup_3_echantillons_distrib.setScoreMax(5);
+    m_sm_deposer_statuette_activer_vitrine.setScoreMax(5);
+    m_sm_deposer_echantillons_galerie_expo.setScoreMax(5);
+    m_sm_deposer_echantillons_campement.setScoreMax(5);
+    m_sm_retour_zone_depart.setScoreMax(5);
 }
 
 // ________________________________________________
