@@ -139,21 +139,21 @@ void SM_RecupStatuette::step()
 	// ___________________________
 	case STATE_11 :
 		if (onEntry()) {
-			Application.m_kmar.start(0);/*mouvement MOUVEMENT_POSER_STATUETTE_SUR_VITRINE*/
+            Application.m_kmar.start(MOUVEMENT_APPRENTISSAGE_CHARIOT);/*mouvement MOUVEMENT_POSER_STATUETTE_SUR_VITRINE*/
 		}
 
 			gotoStateIfConvergenceKmar(STATE_12,1000);
-		if (onExit()) {  }
+        if (onExit()) {
+            Application.m_kmar.releaseObject();  // Relarche l'objet
+        }
 		break;
 	// ___________________________
 	case STATE_12 :
 		if (onEntry()) {
-			
 			Application.m_messenger_xbee_ntw.m_database.m_CommandeExperience.ExperienceCmd = Message_COMMANDE_EXPERIENCE::EXPERIENCE_CMD_START;
-
 		}
 
-			gotoStateAfter(STATE_13,50);
+            gotoStateAfter(STATE_13,1000);  // Cette tempo permet aussi d'être certain que la pression est dégagée et que l'objet est libéré
 		if (onExit()) {  }
 		break;
 	// ___________________________
@@ -163,7 +163,9 @@ void SM_RecupStatuette::step()
 		}
 
 			gotoStateIfConvergence(FIN_MISSION,5000);
-		if (onExit()) {  }
+        if (onExit()) {
+            Application.m_kmar.start(MOUVEMENT_INIT);  // Range le bras pour finir
+        }
 		break;
 
 	// ___________________________
