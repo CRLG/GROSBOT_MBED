@@ -6,8 +6,8 @@
 #include "CGlobale.h"
 
 // Constantes spécifiques au robot
-const float CAsservissementBase::DISTANCE_PAR_PAS_CODEUR_G = 0.00325568f;
-const float CAsservissementBase::DISTANCE_PAR_PAS_CODEUR_D = 0.00325568f;
+const float CAsservissementBase::DISTANCE_PAR_PAS_CODEUR_G = 0.00330905f;
+const float CAsservissementBase::DISTANCE_PAR_PAS_CODEUR_D = 0.00330905f;
 const float CAsservissementBase::VOIE_ROBOT = 31.6867261f;
 
 // Cartos spécifique au robo
@@ -53,8 +53,8 @@ void CAsservissement::Init(void)
  kp_angle =  7.0;			// 		Gain proportionnel pour la régulation en angle
  ki_angle =  5.0;			// 		Gain intégral pour la régulation en angle
  k_angle = 0.5;				//		Coeff de filtrage pour le terme dérivé
- seuil_conv_distance =  1;	// cm	Erreur en dessous de laquelle on considère que le robot est en position sur la distance
- seuil_conv_angle =  0.02;	// rad	Erreur en dessous de laquelle on considère que le robot est en position sur l'angle
+ seuil_conv_distance =  0.5;	// cm	Erreur en dessous de laquelle on considère que le robot est en position sur la distance
+ seuil_conv_angle =  0.01;	// rad	Erreur en dessous de laquelle on considère que le robot est en position sur l'angle
  compteur_max = 3;			// 		Nombre de coups d'horloge (N*te) avant de confirmer que le robot est en position
 
  // Initialisation des zones mortes
