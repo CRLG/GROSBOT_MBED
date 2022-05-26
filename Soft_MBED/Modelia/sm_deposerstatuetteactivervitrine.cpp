@@ -1,4 +1,5 @@
 #include "sm_deposerstatuetteactivervitrine.h"
+#include "CGlobale.h"
 
 SM_DeposerStatuetteActiverVitrine::SM_DeposerStatuetteActiverVitrine()
 {
@@ -65,6 +66,7 @@ void SM_DeposerStatuetteActiverVitrine::step()
 
     // ___________________________
     case FIN_MISSION :
+        Application.m_messenger_xbee_ntw.m_database.m_CommandeExperience.ExperienceCmd = Message_COMMANDE_EXPERIENCE::EXPERIENCE_CMD_START;
         m_succes = true;
         m_score = m_max_score;
         stop();
