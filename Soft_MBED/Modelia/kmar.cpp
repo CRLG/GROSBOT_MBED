@@ -150,5 +150,5 @@ void CKmar::releaseObject()
 bool CKmar::isObjectCatched()
 {
     // TODO : faire le lien avec le capteur de pression
-    return false; // bouchon pour renvoyer quelque chose
+    return Application.m_electrobot.m_b_Eana2>0.3f;
 }
