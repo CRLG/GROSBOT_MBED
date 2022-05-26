@@ -104,12 +104,7 @@ void IA::setStrategie(unsigned char strategie)
         m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
         m_datas_interface.evit_choix_strategie= SM_DatasInterface::STRATEGIE_EVITEMENT_ATTENDRE;
         Application.m_detection_obstacles.setSeuilDetectionObstacle(12);
-        m_sm_recup_echantillon_zone_depart.setEnabled(false);
-        m_sm_recup_statuette.setEnabled(false);
-        m_sm_recup_3_echantillons_distrib.setEnabled(false);
-        m_sm_deposer_statuette_activer_vitrine.setEnabled(false);
-        m_sm_deposer_echantillons_galerie_expo.setEnabled(false);
-        m_sm_deposer_echantillons_campement.setPrioriteExecution(ordre++);
+        m_sm_recup_statuette.setPrioriteExecution(ordre++);
         m_sm_retour_zone_depart.setPrioriteExecution(ordre++);
         break;
     }
