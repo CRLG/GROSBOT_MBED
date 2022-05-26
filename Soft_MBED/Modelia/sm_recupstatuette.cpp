@@ -87,8 +87,9 @@ void SM_RecupStatuette::step()
 			/*Ne rien mettre ici (cf doc Modélia)*/
 			Application.m_kmar.start(3);/*mouvement MOUVEMENT_PRISE_STATUETTE*/
 		}
-
-			gotoStateIfConvergenceKmar(STATE_6,2000);
+        else {
+            gotoStateIfConvergenceKmar(STATE_6,4000);
+        }
 		if (onExit()) {  /*Ne rien mettre ici  (cf doc Modélia)*/  }
 		break;
 	// ___________________________
@@ -162,13 +163,23 @@ void SM_RecupStatuette::step()
 			outputs()->CommandeMouvementXY_TETA_sym(1,66,1.57);/**/
 		}
 
-			gotoStateIfConvergence(FIN_MISSION,5000);
+            gotoStateIfConvergence(STATE_14,5000);
         if (onExit()) {
             Application.m_kmar.start(MOUVEMENT_INIT);  // Range le bras pour finir
         }
 		break;
 
-	// ___________________________
+        // ___________________________
+        case STATE_14 :
+            if (onEntry()) {
+            }
+
+            gotoStateAfter(FIN_MISSION, 40000);
+            if (onExit()) {
+            }
+            break;
+
+    // ___________________________
 	case FIN_MISSION :
 		m_succes = true;
 		m_score = m_max_score;

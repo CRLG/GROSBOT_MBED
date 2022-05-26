@@ -9,6 +9,7 @@
 #include "kmar_PRISE_STATUETTE.h"
 #include "kmar_POSER_STATUETTE_SUR_VITRINE.h"
 #include "kmar_RANGER_STATUETTE_DANS_ROBOT.h"
+#include "kmar_LEVER_STATUETTE_AVANT_DEPLACEMENT.h"
 
 class CKmar : public CKmarBase
 {
@@ -51,6 +52,7 @@ public:
     CKmarMouvement_PRENDRE_ECHANTILLON_AU_SOL       m_mouvement_prendre_echantillon_au_sol;
     CKmarMouvement_DEPOSER_ECHANTILLON_SUR_GALERIE  m_mouvement_deposer_echantillon_sur_galerie;
     CKmarMouvement_RANGER_STATUETTE_DANS_ROBOT      m_mouvement_ranger_statuette_dans_robot;
+    CKmarMouvement_LEVER_STATUETTE_AVANT_DEPLACEMENT m_mouvement_lever_statuette_avant_deplacement;
 };
 
 #endif // CKMAR_H

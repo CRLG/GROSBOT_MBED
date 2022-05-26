@@ -1,8 +1,8 @@
-#include "kmar_PRISE_STATUETTE.h"
+#include "kmar_LEVER_STATUETTE_AVANT_DEPLACEMENT.h"
 #include "kmar.h"
 
 // ===========================================================
-void CKmarMouvement_PRISE_STATUETTE::step()
+void CKmarMouvement_LEVER_STATUETTE_AVANT_DEPLACEMENT::step()
 {
     const int default_speed = 250;
     int target_pos;
@@ -27,7 +27,7 @@ void CKmarMouvement_PRISE_STATUETTE::step()
         break;
 
     case 1 :
-        target_pos = 637;
+        target_pos = 700;
         if (onEntry()) {
             m_kmar->setAxisPosition(CKmar::AXIS_2, target_pos);
         }

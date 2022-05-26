@@ -48,6 +48,7 @@ OBJECTS += Modelia/kmar_POSER_STATUETTE_SUR_VITRINE.o
 OBJECTS += Modelia/kmar_PRENDRE_ECHANTILLON_AU_SOL.o
 OBJECTS += Modelia/kmar_PRISE_STATUETTE.o
 OBJECTS += Modelia/kmar_RANGER_STATUETTE_DANS_ROBOT.o
+OBJECTS += Modelia/kmar_LEVER_STATUETTE_AVANT_DEPLACEMENT.o
 
 ###############################################################################
 # Objects and Paths for mbed-common

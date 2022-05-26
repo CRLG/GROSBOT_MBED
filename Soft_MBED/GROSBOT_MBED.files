@@ -258,7 +258,8 @@ Modelia/kmar_PRISE_STATUETTE.cpp
 Modelia/kmar_PRISE_STATUETTE.h
 Modelia/kmar_RANGER_STATUETTE_DANS_ROBOT.cpp
 Modelia/kmar_RANGER_STATUETTE_DANS_ROBOT.h
-
+Modelia/kmar_LEVER_STATUETTE_AVANT_DEPLACEMENT.cpp
+Modelia/kmar_LEVER_STATUETTE_AVANT_DEPLACEMENT.h
 
 ext/CppRobLib/Communication/Messenger/databasebase.cpp
 ext/CppRobLib/Communication/Messenger/databasebase.h

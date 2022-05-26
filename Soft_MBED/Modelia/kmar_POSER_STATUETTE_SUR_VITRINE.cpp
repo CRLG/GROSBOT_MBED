@@ -5,6 +5,7 @@
 void CKmarMouvement_POSER_STATUETTE_SUR_VITRINE::step()
 {
     const int default_speed = 250;
+    int target_pos;
 
     if (!m_kmar) return;
     if (isFinished()) return;
@@ -12,44 +13,40 @@ void CKmarMouvement_POSER_STATUETTE_SUR_VITRINE::step()
     switch(m_state)
     {
     case MOVEMENT_START :
+        target_pos = 694;
         if (onEntry()) {
             m_kmar->setAxisSpeed(CKmar::AXIS_1, default_speed);
             m_kmar->setAxisSpeed(CKmar::AXIS_2, default_speed);
             m_kmar->setAxisSpeed(CKmar::AXIS_3, default_speed);
             m_kmar->setAxisSpeed(CKmar::AXIS_4, default_speed);
 
-            m_kmar->setAxisPosition(CKmar::AXIS_2, 800);
+            m_kmar->setAxisPosition(CKmar::AXIS_1, target_pos);
         }
-        else {
-            if (!m_kmar->isMoveInProgress()) gotoNextState();
-        }
-
+        gotoStateIfNear(m_state+1, CKmar::AXIS_1, target_pos, 50, 1000);
         if (onExit()) {  }
         break;
 
     case 1 :
+        target_pos = 700;
         if (onEntry()) {
-            m_kmar->setAxisPosition(CKmar::AXIS_1, 530);
+            m_kmar->setAxisPosition(CKmar::AXIS_2, target_pos);
         }
-        else {
-            if (!m_kmar->isMoveInProgress()) gotoNextState();
-        }
-
+        gotoStateIfNear(m_state+1, CKmar::AXIS_2, target_pos, 50, 1000);
         if (onExit()) {  }
         break;
 
     case 2 :
+        target_pos = 571;
         if (onEntry()) {
-            m_kmar->setAxisPosition(CKmar::AXIS_3, 835);
+            m_kmar->setAxisPosition(CKmar::AXIS_3, target_pos);
         }
-        else {
-            if (!m_kmar->isMoveInProgress()) gotoNextState();
-        }
+        gotoStateIfNear(m_state+1, CKmar::AXIS_3, target_pos, 50, 1000);
         if (onExit()) {  }
         break;
     case 3 :
+        target_pos = 210;
         if (onEntry()) {
-            m_kmar->setAxisPosition(CKmar::AXIS_4, 480);
+            m_kmar->setAxisPosition(CKmar::AXIS_4, target_pos);
         }
         else {
             if (!m_kmar->isMoveInProgress()) gotoFinish();

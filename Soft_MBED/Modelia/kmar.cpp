@@ -9,7 +9,8 @@ CKmar::CKmar() :
     m_mouvement_poser_statuette_sur_vitrine(this),
     m_mouvement_prendre_echantillon_au_sol(this),
     m_mouvement_deposer_echantillon_sur_galerie(this),
-    m_mouvement_ranger_statuette_dans_robot(this)
+    m_mouvement_ranger_statuette_dans_robot(this),
+    m_mouvement_lever_statuette_avant_deplacement(this)
 {
     // En dur pour les essais
     m_servo_ax_id[0] = SERVO_AX_KMAR_AXIS_1;
@@ -55,9 +56,11 @@ void CKmar::start(int mouvement)
         m_mouvement_en_cours = &m_mouvement_ranger_statuette_dans_robot;
         break;
 
+    case MOUVEMENT_LEVER_STATUETTE_AVANT_DEPLACEMENT :
+        m_mouvement_en_cours = &m_mouvement_lever_statuette_avant_deplacement;
+
     default :
         break;
-
     }
     if (m_mouvement_en_cours) {
         m_num_mouvement_en_cours = mouvement;
