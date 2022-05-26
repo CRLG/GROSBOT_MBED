@@ -31,3 +31,9 @@ bool CCapteurs::getAscenseurButeeBasse()
 {
     return (Application.m_electrobot.m_b_Etor4==false);
 }
+
+// ____________________________________________
+float CCapteurs::getCapteurPressionKmar()
+{
+    return Application.m_electrobot.m_b_Eana2;
+}

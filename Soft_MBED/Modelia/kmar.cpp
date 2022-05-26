@@ -152,6 +152,5 @@ void CKmar::releaseObject()
 // __________________________________________________
 bool CKmar::isObjectCatched()
 {
-    // TODO : faire le lien avec le capteur de pression
-    return Application.m_electrobot.m_b_Eana2>0.3f;
+    return Application.m_capteurs.getCapteurPressionKmar()>0.3f;
 }
