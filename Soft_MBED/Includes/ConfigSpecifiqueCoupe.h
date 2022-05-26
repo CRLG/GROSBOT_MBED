@@ -158,7 +158,7 @@ typedef enum {
 #define X_MAX_INTERDIT_DETECTION    (265)
 #define X_MIN_INTERDIT_DETECTION    (35)
 #define Y_MIN_INTERDIT_DETECTION    (35)
-#define Y_MAX_INTERDIT_DETECTION    (165)
+#define Y_MAX_INTERDIT_DETECTION    (157) //8cm en moins que 2021
 
 #define HOMOLO 1
 
