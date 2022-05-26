@@ -135,7 +135,7 @@ void CKmar::catchObject()
 {
     // TODO : voir quels actionneurs activer/désactiver pour prendre l'objet
     Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)POMPE, true);
-    Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)ELECTROVANNE, true);
+    Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)ELECTROVANNE, false);
 }
 
 // __________________________________________________
