@@ -46,7 +46,7 @@ void IA::init()
 void IA::match_started()
 {
     Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)DECO_LED_CRLG, true);
-    Application.m_asservissement.setPosition_XYTeta(0, 0, 0);
+    m_outputs_interface.setPosition_XYTeta_sym(0, 0, -1.57);
 }
 
 // ________________________________________________
