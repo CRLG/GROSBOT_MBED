@@ -30,22 +30,28 @@ void SM_Autotest::step()
     case STATE_1 :
         if (onEntry()) {
             //on sort le kmar
-            Application.m_kmar.start(2);
+            Application.m_kmar.start(MOUVEMENT_APPRENTISSAGE_CHARIOT);
         }
-        gotoStateIfConvergenceKmar(m_state+1, 2500);
+        gotoStateIfConvergenceKmar(m_state+1, 4000);
         if (onExit()) {
         }
         break;
     // ___________________________________
     case STATE_2 :
+        if (onEntry()) { }
+        gotoStateAfter(m_state+1, 2000);
+        if (onExit()) { }
+        break;
+        // ___________________________________
+    case STATE_3 :
         if (onEntry()) {
             //on initialise les butées du rack
             Application.m_asservissement_chariot.Recal_Chariot();
         }
-        gotoStateIfConvergenceRack(SM_STATE_END,4000);
+        gotoStateIfConvergenceRack(SM_STATE_END, 4000);
         if (onExit()) {
             //on range le kmar
-            Application.m_kmar.start(1);
+            Application.m_kmar.start(MOUVEMENT_INIT);
         }
         break;
 
