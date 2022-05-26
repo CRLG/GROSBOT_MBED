@@ -11,8 +11,8 @@
 #include "kmar.h"
 
 // Couleur de l'équipe
-#define EQUIPE_BLEU     SM_DatasInterface::EQUIPE_COULEUR_1
-#define EQUIPE_JAUNE    SM_DatasInterface::EQUIPE_COULEUR_2
+#define EQUIPE_BLEU     SM_DatasInterface::EQUIPE_COULEUR_2
+#define EQUIPE_JAUNE    SM_DatasInterface::EQUIPE_COULEUR_1
 
 // Affectation des numéros de stratégie
 typedef enum {
