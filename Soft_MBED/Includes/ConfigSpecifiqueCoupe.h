@@ -91,7 +91,8 @@ typedef enum {
 // Pompe = Pompe à air
 typedef enum {
     ELECTROVANNE            = PowerSwitch::XT7_OUTPUT,
-    POMPE                   = PowerSwitch::XT8_OUTPUT
+    POMPE                   = PowerSwitch::XT8_OUTPUT,
+    DECO_LED_CRLG           = PowerSwitch::XT6_OUTPUT,
 }eATTRIBUTION_POWER_SWITCH;
 
 //code des demandes MBED vers LABOTBOX (trame générique)

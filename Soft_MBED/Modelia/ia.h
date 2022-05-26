@@ -31,6 +31,8 @@ public:
 
     void step();
     void init();
+    void match_started();
+    void match_finished();
 
     void setStrategie(unsigned char strategie);
     void setMaxScores();

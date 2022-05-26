@@ -43,6 +43,19 @@ void IA::init()
 }
 
 // ________________________________________________
+void IA::match_started()
+{
+    Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)DECO_LED_CRLG, true);
+    Application.m_asservissement.setPosition_XYTeta(0, 0, 0);
+}
+
+// ________________________________________________
+void IA::match_finished()
+{
+    Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)DECO_LED_CRLG, false);
+}
+
+// ________________________________________________
 // Définit l'ordre d'exécution des "main missions"
 // sm_xxxx.setPrioriteExecution(ordre++);
 //      Active la mission xxx
