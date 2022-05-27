@@ -142,7 +142,7 @@ void SM_RecupStatuette::step()
 	// ___________________________
 	case STATE_11 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY_TETA(1,35,1.57);/**/
+			outputs()->CommandeMouvementXY_TETA_sym(1,35,1.57);/**/
 			
 			internals()->evit_inhibe_obstacle=false;
 
@@ -154,7 +154,7 @@ void SM_RecupStatuette::step()
 	// ___________________________
 	case STATE_12 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY_TETA(1,73,1.57);/**/
+			outputs()->CommandeMouvementXY_TETA_sym(1,73,1.57);/**/
 		}
 
 			gotoStateIfConvergence(STATE_13,4000);
