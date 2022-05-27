@@ -105,6 +105,8 @@ void IA::setStrategie(unsigned char strategie)
         m_datas_interface.evit_choix_strategie= SM_DatasInterface::STRATEGIE_EVITEMENT_ATTENDRE;
         Application.m_detection_obstacles.setSeuilDetectionObstacle(12);
         m_sm_recup_statuette.setPrioriteExecution(ordre++);
+        m_sm_recup_3_echantillons_distrib.setPrioriteExecution(ordre++);
+        m_sm_deposer_statuette_activer_vitrine.setPrioriteExecution(ordre++);
         m_sm_retour_zone_depart.setPrioriteExecution(ordre++);
         break;
     }

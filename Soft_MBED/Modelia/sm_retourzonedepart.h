@@ -1,5 +1,5 @@
 /**
- * Generated 27_05_2022 at 04_18
+ * Generated 28_05_2022 at 00_19
  */
 
 #ifndef SM_RETOURZONEDEPART_H
@@ -32,6 +32,9 @@ public:
 	STATE_14,
 	STATE_15,
 	STATE_16,
+	STATE_17,
+	STATE_18,
+	STATE_19,
 	FIN_MISSION
 	}tState;
 };
