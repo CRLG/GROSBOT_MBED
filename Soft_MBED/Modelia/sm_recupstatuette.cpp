@@ -1,5 +1,5 @@
 /**
- * Generated 27_05_2022 at 01_34
+ * Generated 27_05_2022 at 03_32
  */
 
 #include "sm_recupstatuette.h"
@@ -37,6 +37,7 @@ const char* SM_RecupStatuette::stateToName(unsigned short state)
 		case STATE_15 :		return "STATE_15";
 		case STATE_16 :		return "STATE_16";
 		case STATE_17 :		return "STATE_17";
+		case STATE_18 :		return "STATE_18";
 		case FIN_MISSION :	return "FIN_MISSION";
 	}
 	return "UNKNOWN_STATE";
@@ -53,9 +54,8 @@ void SM_RecupStatuette::step()
 		if (onEntry()) {
 			outputs()->CommandeMouvementXY_TETA_sym(25,-62,-2.3);/*face a abris*/
 		}
-        else {
+
 			gotoStateIfConvergence(STATE_2,4000);
-        }
 		if (onExit()) {  }
 		break;
 	// ___________________________
@@ -63,9 +63,8 @@ void SM_RecupStatuette::step()
 		if (onEntry()) {
 			Application.m_kmar.start(3);/*prise statuette*/
 		}
-        else {
+
 			gotoStateIfConvergenceKmar(STATE_3,4000);
-        }
 		if (onExit()) {  }
 		break;
 	// ___________________________
@@ -119,7 +118,7 @@ void SM_RecupStatuette::step()
 			Application.m_asservissement_chariot.setConsigne(0);/**/
 		}
 
-            gotoStateIfTrue(STATE_9,Application.m_kmar.isObjectCatched(),4000);
+			gotoStateIfTrue(STATE_9,Application.m_kmar.isObjectCatched(),4000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
@@ -127,15 +126,14 @@ void SM_RecupStatuette::step()
 		if (onEntry()) {
 			Application.m_kmar.start(8);/*lever statuette*/
 		}
-        else {
+
 			gotoStateIfConvergenceKmar(STATE_10,4000);
-        }
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_10 :
 		if (onEntry()) {
-			outputs()->CommandeMouvementXY_TETA_sym(29,-56,-2.27);/*eloigne de abris*/
+			outputs()->CommandeMouvementXY_TETA_sym(29,-56,-2.3);/*eloigne de abris*/
 		}
 
 			gotoStateIfConvergence(STATE_11,4000);
@@ -144,7 +142,10 @@ void SM_RecupStatuette::step()
 	// ___________________________
 	case STATE_11 :
 		if (onEntry()) {
-			outputs()->CommandeMouvementXY_TETA_sym(1,68,1.57);/*face vitrine*/
+			Application.m_asservissement.CommandeMouvementXY_TETA(1,35,1.57);/**/
+			
+			internals()->evit_inhibe_obstacle=false;
+
 		}
 
 			gotoStateIfConvergence(STATE_12,4000);
@@ -153,57 +154,67 @@ void SM_RecupStatuette::step()
 	// ___________________________
 	case STATE_12 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeManuelle(8,8);/*on finit en manuel*/
+			Application.m_asservissement.CommandeMouvementXY_TETA(1,73,1.57);/**/
 		}
 
-			gotoStateAfter(STATE_13,1500);
+			gotoStateIfConvergence(STATE_13,4000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_13 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeManuelle(0,0);/**/
+			Application.m_asservissement.CommandeManuelle(8,8);/*on finit en manuel*/
 		}
 
-			gotoStateAfter(STATE_14,200);
+			gotoStateAfter(STATE_14,1500);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_14 :
 		if (onEntry()) {
-			Application.m_kmar.start(4);/*liberer statuette*/
+			Application.m_asservissement.CommandeManuelle(0,0);/**/
 		}
-        else {
-			gotoStateIfConvergenceKmar(STATE_15,4000);
-        }
+
+			gotoStateAfter(STATE_15,200);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_15 :
 		if (onEntry()) {
-			Application.m_kmar.releaseObject();/*relacher un objet par le bras robotise*/
+			Application.m_kmar.start(4);/*liberer statuette*/
 		}
 
-			gotoStateAfter(STATE_16,500);
+			gotoStateIfConvergenceKmar(STATE_16,4000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_16 :
 		if (onEntry()) {
-			outputs()->CommandeMouvementXY_TETA_sym(1,64,1.57);/*eloigne de vitrine*/
+			Application.m_kmar.releaseObject();/*relacher un objet par le bras robotise*/
 		}
 
-			gotoStateIfConvergence(STATE_17,4000);
+			gotoStateAfter(STATE_17,500);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_17 :
 		if (onEntry()) {
-			Application.m_kmar.start(1);/*kmar init*/
+			outputs()->CommandeMouvementXY_TETA_sym(1,64,1.57);/*eloigne de vitrine*/
 		}
-        else {
+
+			gotoStateIfConvergence(STATE_18,4000);
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_18 :
+		if (onEntry()) {
+			Application.m_kmar.start(1);/*kmar init*/
+			
+			internals()->evit_inhibe_obstacle=false;
+
+		}
+
 			gotoStateIfConvergenceKmar(FIN_MISSION,4000);
-        }
 		if (onExit()) {  }
 		break;
 

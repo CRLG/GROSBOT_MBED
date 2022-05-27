@@ -1,5 +1,5 @@
 /**
- * Generated 27_05_2022 at 01_34
+ * Generated 27_05_2022 at 03_32
  */
 
 #ifndef SM_RECUPSTATUETTE_H
@@ -47,6 +47,7 @@ public:
 	STATE_29,
 	STATE_30,
 	STATE_31,
+	STATE_32,
 	FIN_MISSION
 	}tState;
 };
