@@ -1,5 +1,5 @@
 /**
- * Generated 27_05_2022 at 03_32
+ * Generated 27_05_2022 at 04_01
  */
 
 #include "sm_recupstatuette.h"
@@ -142,7 +142,7 @@ void SM_RecupStatuette::step()
 	// ___________________________
 	case STATE_11 :
 		if (onEntry()) {
-			outputs()->CommandeMouvementXY_TETA_sym(1,35,1.57);/**/
+			outputs()->CommandeMouvementXY_TETA_sym(3,35,1.57);/**/
 			
 			internals()->evit_inhibe_obstacle=false;
 
@@ -193,12 +193,15 @@ void SM_RecupStatuette::step()
 			Application.m_kmar.releaseObject();/*relacher un objet par le bras robotise*/
 		}
 
-			gotoStateAfter(STATE_17,500);
+			gotoStateAfter(STATE_17,1500);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_17 :
 		if (onEntry()) {
+			
+			Application.m_messenger_xbee_ntw.m_database.m_CommandeExperience.ExperienceCmd = Message_COMMANDE_EXPERIENCE::EXPERIENCE_CMD_START;
+
 			outputs()->CommandeMouvementXY_TETA_sym(1,64,1.57);/*eloigne de vitrine*/
 		}
 

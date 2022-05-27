@@ -1,5 +1,5 @@
 /**
- * Generated 27_05_2022 at 03_32
+ * Generated 27_05_2022 at 04_01
  */
 
 #ifndef SM_RECUPSTATUETTE_H
