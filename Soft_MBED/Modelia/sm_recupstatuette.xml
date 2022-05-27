@@ -1,0 +1,42 @@
+<!DOCTYPE sequence_xml>
+<sequence name="RecupStatuette">
+ <ligne id="XYTheta" prototype="false" type="Asser" state="" value="25,-62,-2.3" symetrie="true" comments="face a abris"/>
+ <ligne id="convAsserv" prototype="false" type="Event" state="" value="4000" symetrie="false" comments=""/>
+ <ligne id="MVT" prototype="false" type="ARM" state="" value="3" symetrie="false" comments="prise statuette"/>
+ <ligne id="convArm" prototype="false" type="Event" state="" value="4000" symetrie="false" comments=""/>
+ <ligne id="CATCH" prototype="false" type="ARM" state="" value="0" symetrie="false" comments="prendre un objet avec le bras robotise"/>
+ <ligne id="0" prototype="false" type="Wait" state="" value="200" symetrie="false" comments=""/>
+ <ligne id="Rack" prototype="false" type="Asser" state="" value="550" symetrie="false" comments=""/>
+ <ligne id="convRack" prototype="false" type="Event" state="" value="4000" symetrie="false" comments=""/>
+ <ligne id="XYTheta" prototype="false" type="Asser" state="" value="12,-75,-2.3" symetrie="true" comments="tres proche abris"/>
+ <ligne id="convAsserv" prototype="false" type="Event" state="" value="4000" symetrie="false" comments=""/>
+ <ligne id="Manuel" prototype="false" type="Asser" state="" value="8,8" symetrie="false" comments="on finit en manuel"/>
+ <ligne id="0" prototype="false" type="Wait" state="" value="1500" symetrie="false" comments=""/>
+ <ligne id="Manuel" prototype="false" type="Asser" state="" value="0,0" symetrie="false" comments=""/>
+ <ligne id="0" prototype="false" type="Wait" state="" value="200" symetrie="false" comments=""/>
+ <ligne id="Rack" prototype="false" type="Asser" state="" value="0" symetrie="false" comments=""/>
+ <ligne id="objetPris" prototype="false" type="Event" state="" value="4000" symetrie="false" comments="on a la statuette"/>
+ <ligne id="MVT" prototype="false" type="ARM" state="" value="8" symetrie="false" comments="lever statuette"/>
+ <ligne id="convArm" prototype="false" type="Event" state="" value="4000" symetrie="false" comments=""/>
+ <ligne id="XYTheta" prototype="false" type="Asser" state="" value="29,-56,-2.3" symetrie="true" comments="eloigne de abris"/>
+ <ligne id="convAsserv" prototype="false" type="Event" state="" value="4000" symetrie="false" comments=""/>
+ <ligne id="XYTheta" prototype="false" type="Asser" state="" value="3,35,1.57" symetrie="true" comments=""/>
+ <ligne id="0" prototype="false" type="FreeAction" state="" value="internals()->evit_inhibe_obstacle=false;" symetrie="false" comments=""/>
+ <ligne id="convAsserv" prototype="false" type="Event" state="" value="4000" symetrie="false" comments=""/>
+ <ligne id="XYTheta" prototype="false" type="Asser" state="" value="1,73,1.57" symetrie="true" comments=""/>
+ <ligne id="convAsserv" prototype="false" type="Event" state="" value="4000" symetrie="false" comments=""/>
+ <ligne id="Manuel" prototype="false" type="Asser" state="" value="8,8" symetrie="false" comments="on finit en manuel"/>
+ <ligne id="0" prototype="false" type="Wait" state="" value="1500" symetrie="false" comments=""/>
+ <ligne id="Manuel" prototype="false" type="Asser" state="" value="0,0" symetrie="false" comments=""/>
+ <ligne id="0" prototype="false" type="Wait" state="" value="200" symetrie="false" comments=""/>
+ <ligne id="MVT" prototype="false" type="ARM" state="" value="4" symetrie="false" comments="liberer statuette"/>
+ <ligne id="convArm" prototype="false" type="Event" state="" value="4000" symetrie="false" comments=""/>
+ <ligne id="RELEASE" prototype="false" type="ARM" state="" value="0" symetrie="false" comments="relacher un objet par le bras robotise"/>
+ <ligne id="0" prototype="false" type="Wait" state="" value="1500" symetrie="false" comments=""/>
+ <ligne id="0" prototype="false" type="FreeAction" state="" value="Application.m_messenger_xbee_ntw.m_database.m_CommandeExperience.ExperienceCmd = Message_COMMANDE_EXPERIENCE::EXPERIENCE_CMD_START;" symetrie="false" comments=""/>
+ <ligne id="XYTheta" prototype="false" type="Asser" state="" value="1,64,1.57" symetrie="true" comments="eloigne de vitrine"/>
+ <ligne id="convAsserv" prototype="false" type="Event" state="" value="4000" symetrie="false" comments=""/>
+ <ligne id="MVT" prototype="false" type="ARM" state="" value="1" symetrie="false" comments="kmar init"/>
+ <ligne id="0" prototype="false" type="FreeAction" state="" value="internals()->evit_inhibe_obstacle=false;" symetrie="false" comments=""/>
+ <ligne id="convArm" prototype="false" type="Event" state="" value="4000" symetrie="false" comments=""/>
+</sequence>
