@@ -1,5 +1,5 @@
 /**
- * Generated 26_05_2022 at 08_27
+ * Generated 27_05_2022 at 01_34
  */
 
 #include "sm_recupstatuette.h"
@@ -21,10 +21,10 @@ const char* SM_RecupStatuette::stateToName(unsigned short state)
 	switch(state)
 	{
 		case STATE_1 :		return "STATE_1";
-		case NODE_0 :		return "NODE_0";
-		case JAUNE :		return "JAUNE";
-		case BLEU :		return "BLEU";
-		case NODE_1 :		return "NODE_1";
+		case STATE_2 :		return "STATE_2";
+		case STATE_3 :		return "STATE_3";
+		case STATE_4 :		return "STATE_4";
+		case STATE_5 :		return "STATE_5";
 		case STATE_6 :		return "STATE_6";
 		case STATE_7 :		return "STATE_7";
 		case STATE_8 :		return "STATE_8";
@@ -33,6 +33,10 @@ const char* SM_RecupStatuette::stateToName(unsigned short state)
 		case STATE_11 :		return "STATE_11";
 		case STATE_12 :		return "STATE_12";
 		case STATE_13 :		return "STATE_13";
+		case STATE_14 :		return "STATE_14";
+		case STATE_15 :		return "STATE_15";
+		case STATE_16 :		return "STATE_16";
+		case STATE_17 :		return "STATE_17";
 		case FIN_MISSION :	return "FIN_MISSION";
 	}
 	return "UNKNOWN_STATE";
@@ -47,139 +51,163 @@ void SM_RecupStatuette::step()
 	// ___________________________
 	case STATE_1 :
 		if (onEntry()) {
-			outputs()->CommandeMouvementXY_TETA_sym(32,-55,-2.3);/**/
-		}
-
-			gotoStateIfConvergence(NODE_0,5000);
-		if (onExit()) {  /*Un seul lien vers un noeud: Ne rien mettre ici  (cf doc Modélia)*/  }
-		break;
-	// ___________________________
-	case NODE_0 :
-		if (onEntry()) {
-			/*Ne rien mettre ici (cf doc Modélia)*/
-		}
-
-            gotoStateIfTrue(BLEU,internals()->couleur_equipe==EQUIPE_BLEU);
-            gotoStateIfTrue(JAUNE,internals()->couleur_equipe==EQUIPE_JAUNE);
-		if (onExit()) {  /* Mettre ici le code du onExit de létat STATE_1 car un seul lien avant le noeud (cf doc Modélia)*/  }
-		break;
-	// ___________________________
-	case JAUNE :
-		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY_TETA(22,-77,-2.3);/**/
-		}
-
-			gotoStateIfConvergence(NODE_1,5000);
-		if (onExit()) {  }
-		break;
-	// ___________________________
-	case BLEU :
-		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY_TETA(10,63,2.3);/**/
-		}
-
-			gotoStateIfConvergence(NODE_1,5000);
-		if (onExit()) {  }
-		break;
-	// ___________________________
-	case NODE_1 :
-		if (onEntry()) {
-			/*Ne rien mettre ici (cf doc Modélia)*/
-			Application.m_kmar.start(3);/*mouvement MOUVEMENT_PRISE_STATUETTE*/
+			outputs()->CommandeMouvementXY_TETA_sym(25,-62,-2.3);/*face a abris*/
 		}
         else {
-            gotoStateIfConvergenceKmar(STATE_6,4000);
+			gotoStateIfConvergence(STATE_2,4000);
         }
-		if (onExit()) {  /*Ne rien mettre ici  (cf doc Modélia)*/  }
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_2 :
+		if (onEntry()) {
+			Application.m_kmar.start(3);/*prise statuette*/
+		}
+        else {
+			gotoStateIfConvergenceKmar(STATE_3,4000);
+        }
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_3 :
+		if (onEntry()) {
+			Application.m_kmar.catchObject();/*prendre un objet avec le bras robotise*/
+		}
+
+			gotoStateAfter(STATE_4,200);
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_4 :
+		if (onEntry()) {
+			Application.m_asservissement_chariot.setConsigne(550);/**/
+		}
+
+			gotoStateIfConvergenceRack(STATE_5,4000);
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_5 :
+		if (onEntry()) {
+			outputs()->CommandeMouvementXY_TETA_sym(12,-75,-2.3);/*tres proche abris*/
+		}
+
+			gotoStateIfConvergence(STATE_6,4000);
+		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_6 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeManuelle(5,5);/**/
+			Application.m_asservissement.CommandeManuelle(8,8);/*on finit en manuel*/
 		}
 
-			gotoStateAfter(STATE_7,1000);
+			gotoStateAfter(STATE_7,1500);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_7 :
 		if (onEntry()) {
-			outputs()->CommandeMouvementXY_TETA_sym(22,-77,-2.3);/**/
+			Application.m_asservissement.CommandeManuelle(0,0);/**/
 		}
 
-			gotoStateIfConvergence(STATE_8,5000);
+			gotoStateAfter(STATE_8,200);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_8 :
 		if (onEntry()) {
-			outputs()->CommandeMouvementXY_TETA_sym(18,41,2.3);/**/
+			Application.m_asservissement_chariot.setConsigne(0);/**/
 		}
 
-			gotoStateIfConvergence(STATE_9,5000);
+            gotoStateIfTrue(STATE_9,Application.m_kmar.isObjectCatched(),4000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_9 :
 		if (onEntry()) {
-			outputs()->CommandeMouvementXY_TETA_sym(1,66,1.57);/**/
+			Application.m_kmar.start(8);/*lever statuette*/
 		}
-
-			gotoStateIfConvergence(STATE_10,5000);
+        else {
+			gotoStateIfConvergenceKmar(STATE_10,4000);
+        }
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_10 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeManuelle(5,5);/**/
+			outputs()->CommandeMouvementXY_TETA_sym(29,-56,-2.27);/*eloigne de abris*/
 		}
 
-			gotoStateAfter(STATE_11,250);
+			gotoStateIfConvergence(STATE_11,4000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_11 :
 		if (onEntry()) {
-            Application.m_kmar.start(MOUVEMENT_APPRENTISSAGE_CHARIOT);/*mouvement MOUVEMENT_POSER_STATUETTE_SUR_VITRINE*/
+			outputs()->CommandeMouvementXY_TETA_sym(1,68,1.57);/*face vitrine*/
 		}
 
-			gotoStateIfConvergenceKmar(STATE_12,1000);
-        if (onExit()) {
-            Application.m_kmar.releaseObject();  // Relarche l'objet
-        }
+			gotoStateIfConvergence(STATE_12,4000);
+		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_12 :
 		if (onEntry()) {
-			Application.m_messenger_xbee_ntw.m_database.m_CommandeExperience.ExperienceCmd = Message_COMMANDE_EXPERIENCE::EXPERIENCE_CMD_START;
+			Application.m_asservissement.CommandeManuelle(8,8);/*on finit en manuel*/
 		}
 
-            gotoStateAfter(STATE_13,1000);  // Cette tempo permet aussi d'être certain que la pression est dégagée et que l'objet est libéré
+			gotoStateAfter(STATE_13,1500);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_13 :
 		if (onEntry()) {
-			outputs()->CommandeMouvementXY_TETA_sym(1,66,1.57);/**/
+			Application.m_asservissement.CommandeManuelle(0,0);/**/
 		}
 
-            gotoStateIfConvergence(STATE_14,5000);
-        if (onExit()) {
-            Application.m_kmar.start(MOUVEMENT_INIT);  // Range le bras pour finir
+			gotoStateAfter(STATE_14,200);
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_14 :
+		if (onEntry()) {
+			Application.m_kmar.start(4);/*liberer statuette*/
+		}
+        else {
+			gotoStateIfConvergenceKmar(STATE_15,4000);
         }
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_15 :
+		if (onEntry()) {
+			Application.m_kmar.releaseObject();/*relacher un objet par le bras robotise*/
+		}
+
+			gotoStateAfter(STATE_16,500);
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_16 :
+		if (onEntry()) {
+			outputs()->CommandeMouvementXY_TETA_sym(1,64,1.57);/*eloigne de vitrine*/
+		}
+
+			gotoStateIfConvergence(STATE_17,4000);
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_17 :
+		if (onEntry()) {
+			Application.m_kmar.start(1);/*kmar init*/
+		}
+        else {
+			gotoStateIfConvergenceKmar(FIN_MISSION,4000);
+        }
+		if (onExit()) {  }
 		break;
 
-        // ___________________________
-        case STATE_14 :
-            if (onEntry()) {
-            }
-
-            gotoStateAfter(FIN_MISSION, 40000);
-            if (onExit()) {
-            }
-            break;
-
-    // ___________________________
+	// ___________________________
 	case FIN_MISSION :
 		m_succes = true;
 		m_score = m_max_score;
