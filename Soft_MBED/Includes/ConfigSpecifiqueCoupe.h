@@ -64,7 +64,7 @@ typedef enum {
 
 //! cet enumere contient les numeros d'attribution des servos SD20
 typedef enum {
-    SD20_ELEVATEUR_HAUT                 = 110,
+    SD20_ELEVATEUR_HAUT                 = 95,
 	SD20_ELEVATEUR_ECHANTILLONS_CALES   = 150,
 	SD20_ELEVATEUR_BAS                  = 230,
 	SD20_PINCE_OUVERTE        = 5,

@@ -1,5 +1,5 @@
 /**
- * Generated 28_05_2022 at 00_19
+ * Generated 28_05_2022 at 01_21
  */
 
 #include "sm_retourzonedepart.h"
@@ -48,7 +48,7 @@ void SM_RetourZoneDepart::step()
 	// ___________________________
 	case STATE_2 :
 		if (onEntry()) {
-			outputs()->CommandeMouvementXY_sym(0,37);/**/
+			outputs()->CommandeMouvementXY_sym(5,37);/**/
 		}
 
 			gotoStateIfConvergence(STATE_3,5000);

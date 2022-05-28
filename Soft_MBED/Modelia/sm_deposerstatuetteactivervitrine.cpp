@@ -1,5 +1,5 @@
 /**
- * Generated 28_05_2022 at 00_18
+ * Generated 28_05_2022 at 01_26
  */
 
 #include "sm_deposerstatuetteactivervitrine.h"
@@ -44,7 +44,7 @@ void SM_DeposerStatuetteActiverVitrine::step()
 		if (onEntry()) {
 			outputs()->CommandeMouvementXY_TETA_sym(3,35,1.57);/**/
 			
-			internals()->evit_inhibe_obstacle=false;
+			internals()->evit_inhibe_obstacle=true;
 
 		}
 

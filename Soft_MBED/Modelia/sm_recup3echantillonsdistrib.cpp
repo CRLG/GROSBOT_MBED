@@ -1,5 +1,5 @@
 /**
- * Generated 28_05_2022 at 00_17
+ * Generated 28_05_2022 at 01_23
  */
 
 #include "sm_recup3echantillonsdistrib.h"
@@ -43,7 +43,7 @@ void SM_Recup3EchantillonsDistrib::step()
 	// ___________________________
 	case STATE_1 :
 		if (onEntry()) {
-			outputs()->CommandeMouvementXY_TETA_sym(10,-38,0);/*face distri*/
+			outputs()->CommandeMouvementXY_TETA_sym(10,-36,0);/*face distri*/
 		}
 
 			gotoStateIfConvergence(STATE_2,3000);
@@ -70,7 +70,7 @@ void SM_Recup3EchantillonsDistrib::step()
 	// ___________________________
 	case STATE_4 :
 		if (onEntry()) {
-			outputs()->CommandeMouvementXY_sym(0,-38);/*proche distri*/
+			outputs()->CommandeMouvementXY_sym(0,-36);/*proche distri*/
 		}
 
 			gotoStateIfConvergence(STATE_5,3000);
@@ -115,7 +115,7 @@ void SM_Recup3EchantillonsDistrib::step()
 	// ___________________________
 	case STATE_9 :
 		if (onEntry()) {
-			outputs()->CommandeMouvementXY_TETA_sym(13,-38,1.57);/*on  ecarte le robot*/
+			outputs()->CommandeMouvementXY_TETA_sym(13,-36,1.57);/*on  ecarte le robot*/
 		}
 
 			gotoStateIfConvergence(FIN_MISSION,5000);

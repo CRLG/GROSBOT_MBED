@@ -1,5 +1,5 @@
 /**
- * Generated 28_05_2022 at 00_18
+ * Generated 28_05_2022 at 01_26
  */
 
 #ifndef SM_DEPOSERSTATUETTEACTIVERVITRINE_H
