@@ -32,14 +32,14 @@ void SM_Autotest::step()
             //on sort le kmar
             Application.m_kmar.start(MOUVEMENT_APPRENTISSAGE_CHARIOT);
         }
-        gotoStateIfConvergenceKmar(m_state+1, 4000);
+        gotoStateIfConvergenceKmar(m_state+1, 1000);
         if (onExit()) {
         }
         break;
     // ___________________________________
     case STATE_2 :
         if (onEntry()) { }
-        gotoStateAfter(m_state+1, 2000);
+        gotoStateAfter(m_state+1, 1000);
         if (onExit()) { }
         break;
         // ___________________________________
@@ -48,7 +48,7 @@ void SM_Autotest::step()
             //on initialise les butées du rack
             Application.m_asservissement_chariot.Recal_Chariot();
         }
-        gotoStateIfConvergenceRack(SM_STATE_END, 4000);
+        gotoStateIfConvergenceRack(SM_STATE_END, 1000);
         if (onExit()) {
             //on range le kmar
             Application.m_kmar.start(MOUVEMENT_INIT);

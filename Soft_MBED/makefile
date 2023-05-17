@@ -32,13 +32,11 @@ OBJECTS += Modelia/sm_datasinterface.o
 OBJECTS += Modelia/sm_autotest.o               
 OBJECTS += Modelia/sm_sequenceur.o
 
-OBJECTS += Modelia/sm_recupechantillonzonedepart.o
-OBJECTS += Modelia/sm_recupstatuette.o
-OBJECTS += Modelia/sm_recup3echantillonsdistrib.o
-OBJECTS += Modelia/sm_deposerstatuetteactivervitrine.o
-OBJECTS += Modelia/sm_deposerechantillonsgalerieexpo.o
+OBJECTS += Modelia/sm_chasseneige.o
+OBJECTS += Modelia/sm_lancercerises.o
+OBJECTS += Modelia/sm_fairegateaux.o
+OBJECTS += Modelia/sm_recherchegateaux.o
 OBJECTS += Modelia/sm_retourzonedepart.o
-OBJECTS += Modelia/sm_deposerechantillonscampement.o
 
 OBJECTS += Modelia/kmar.o
 OBJECTS += Modelia/kmar_INIT.o

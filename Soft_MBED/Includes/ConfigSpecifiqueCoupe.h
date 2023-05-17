@@ -144,22 +144,22 @@ typedef enum {
 #define CDE_MAX_TOUT_DOUX (10)
 
 // Position d'init du robot dans le repère absolue terrain
-#define X_ROBOT_TERRAIN_INIT_COULEUR_1        (23)
-#define Y_ROBOT_TERRAIN_INIT_COULEUR_1        (112)
-#define ANGLE_ROBOT_TERRAIN_INIT_COULEUR_1    (-1.57f)
+#define X_ROBOT_TERRAIN_INIT_COULEUR_1        (12)
+#define Y_ROBOT_TERRAIN_INIT_COULEUR_1        (177)
+#define ANGLE_ROBOT_TERRAIN_INIT_COULEUR_1    (0.0f)
 
-#define X_ROBOT_TERRAIN_INIT_COULEUR_2        (277)
-#define Y_ROBOT_TERRAIN_INIT_COULEUR_2        (112)
-#define ANGLE_ROBOT_TERRAIN_INIT_COULEUR_2    (-1.57f)
+#define X_ROBOT_TERRAIN_INIT_COULEUR_2        (12)
+#define Y_ROBOT_TERRAIN_INIT_COULEUR_2        (23)
+#define ANGLE_ROBOT_TERRAIN_INIT_COULEUR_2    (0.0f)
 
 // Coordonnées dans le repère absolue terrain
 // à partir desquelles il faut interdire la détection d'obstacle
 // pour éviter les fausses détections hors du terrain
 // Valeurs en [cm]
-#define X_MAX_INTERDIT_DETECTION    (265)
-#define X_MIN_INTERDIT_DETECTION    (35)
-#define Y_MIN_INTERDIT_DETECTION    (35)
-#define Y_MAX_INTERDIT_DETECTION    (157) //8cm en moins que 2021
+#define X_MAX_INTERDIT_DETECTION    (280)
+#define X_MIN_INTERDIT_DETECTION    (20)
+#define Y_MIN_INTERDIT_DETECTION    (10)
+#define Y_MAX_INTERDIT_DETECTION    (190)
 
 #define HOMOLO 1
 

@@ -36,49 +36,13 @@ void SM_RetourZoneDepart::step()
 	switch (m_state)
 	{
 
-	// ___________________________
-	case STATE_1 :
+
+    case STATE_1 :
 		if (onEntry()) {
-			outputs()->CommandeMouvementXY_TETA_sym(52,37,0);/**/
+            outputs()->CommandeMouvementXY_sym(0,0);/**/
 		}
 
-			gotoStateIfConvergence(STATE_2,4000);
-		if (onExit()) {  }
-		break;
-	// ___________________________
-	case STATE_2 :
-		if (onEntry()) {
-			outputs()->CommandeMouvementXY_sym(5,37);/**/
-		}
-
-			gotoStateIfConvergence(STATE_3,5000);
-		if (onExit()) {  }
-		break;
-	// ___________________________
-	case STATE_3 :
-		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(13,230);/*13 value=SD20_ELEVATEUR_BAS*/
-		}
-
-			gotoStateAfter(STATE_4,1000);
-		if (onExit()) {  }
-		break;
-	// ___________________________
-	case STATE_4 :
-		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(14,5);/*14 value=SD20_PINCE_OUVERTE*/
-		}
-
-			gotoStateAfter(STATE_5,1000);
-		if (onExit()) {  }
-		break;
-	// ___________________________
-	case STATE_5 :
-		if (onEntry()) {
-			outputs()->CommandeMouvementXY_sym(19,37);/**/
-		}
-
-			gotoStateIfConvergence(FIN_MISSION,4000);
+            gotoStateIfConvergence(FIN_MISSION,20000);
 		if (onExit()) {  }
 		break;
 

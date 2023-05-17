@@ -3,14 +3,12 @@
 
 #include "iabase.h"
 #include "sm_autotest.h"
-#include "sm_recupechantillonzonedepart.h"
-#include "sm_recupstatuette.h"
-#include "sm_recup3echantillonsdistrib.h"
-#include "sm_deposerstatuetteactivervitrine.h"
-#include "sm_deposerechantillonsgalerieexpo.h"
-#include "sm_retourzonedepart.h"
-#include "sm_deposerechantillonscampement.h"
 
+#include "sm_retourzonedepart.h"
+#include "sm_chasseneige.h"
+#include "sm_lancercerises.h"
+#include "sm_fairegateaux.h"
+#include "sm_recherchegateaux.h"
 #include "sm_debuginterface.h"
 
 
@@ -20,14 +18,13 @@ public:
     IA();
 
     // States machines
-    SM_Autotest                         m_sm_autotest;
-    SM_RecupEchantillonZoneDepart       m_sm_recup_echantillon_zone_depart;
-    SM_RecupStatuette                   m_sm_recup_statuette;
-    SM_Recup3EchantillonsDistrib        m_sm_recup_3_echantillons_distrib;
-    SM_DeposerStatuetteActiverVitrine   m_sm_deposer_statuette_activer_vitrine;
-    SM_DeposerEchantillonsGalerieExpo   m_sm_deposer_echantillons_galerie_expo;
-    SM_RetourZoneDepart                 m_sm_retour_zone_depart;
-    SM_DeposerEchantillonsCampement     m_sm_deposer_echantillons_campement;
+    SM_Autotest             m_sm_autotest;
+    SM_ChasseNeige          m_sm_chasse_neige;
+    SM_LancerCerises        m_sm_lancer_cerises;
+    SM_FaireGateaux         m_sm_faire_gateaux;
+    SM_RechercheGateaux     m_sm_recherche_gateaux;
+    SM_RetourZoneDepart     m_sm_retour_zone_depart;
+
 
     void step();
     void init();

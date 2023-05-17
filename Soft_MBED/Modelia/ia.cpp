@@ -13,13 +13,12 @@ IA::IA()
     : IABase()
 {
     m_sm_liste[m_state_machine_count++] = &m_sm_autotest;
-    m_sm_liste[m_state_machine_count++] = &m_sm_recup_echantillon_zone_depart;
-    m_sm_liste[m_state_machine_count++] = &m_sm_recup_statuette;
-    m_sm_liste[m_state_machine_count++] = &m_sm_recup_3_echantillons_distrib;
-    m_sm_liste[m_state_machine_count++] = &m_sm_deposer_statuette_activer_vitrine;
-    m_sm_liste[m_state_machine_count++] = &m_sm_deposer_echantillons_galerie_expo;
+    m_sm_liste[m_state_machine_count++] = &m_sm_chasse_neige;
+    m_sm_liste[m_state_machine_count++] = &m_sm_lancer_cerises;
+    m_sm_liste[m_state_machine_count++] = &m_sm_faire_gateaux;
+    m_sm_liste[m_state_machine_count++] = &m_sm_recherche_gateaux;
     m_sm_liste[m_state_machine_count++] = &m_sm_retour_zone_depart;
-    m_sm_liste[m_state_machine_count++] = &m_sm_deposer_echantillons_campement;
+
 }
 
 // ________________________________________________
@@ -46,7 +45,7 @@ void IA::init()
 void IA::match_started()
 {
     Application.m_power_electrobot.setOutput((dsPicPowerElectrobotBase::tSwitchOutput)DECO_LED_CRLG, true);
-    m_outputs_interface.setPosition_XYTeta_sym(0, 0, -1.57);
+    m_outputs_interface.setPosition_XYTeta_sym(0, 0, 0);
 }
 
 // ________________________________________________
@@ -71,15 +70,13 @@ void IA::setStrategie(unsigned char strategie)
         m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
         //m_datas_interface.evit_inhibe_obstacle=true;
         m_datas_interface.evit_choix_strategie= SM_DatasInterface::STRATEGIE_EVITEMENT_ATTENDRE;
-        Application.m_detection_obstacles.setSeuilDetectionObstacle(12);
+        Application.m_detection_obstacles.setSeuilDetectionObstacle(20);
         m_datas_interface.evit_nombre_max_tentatives=1;
 
-        m_sm_recup_echantillon_zone_depart.setEnabled(false);
-        m_sm_recup_statuette.setEnabled(false);
-        m_sm_recup_3_echantillons_distrib.setEnabled(false);
-        m_sm_deposer_statuette_activer_vitrine.setEnabled(false);
-        m_sm_deposer_echantillons_galerie_expo.setEnabled(false);
-        m_sm_deposer_echantillons_campement.setPrioriteExecution(ordre++);
+        m_sm_lancer_cerises.setEnabled(false);
+        m_sm_faire_gateaux.setEnabled(false);
+        m_sm_recherche_gateaux.setEnabled(false);
+        m_sm_chasse_neige.setPrioriteExecution(ordre++);
         m_sm_retour_zone_depart.setPrioriteExecution(ordre++);
 
         break;
@@ -87,15 +84,14 @@ void IA::setStrategie(unsigned char strategie)
     case STRATEGIE_HOMOLO2:
         m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
         m_datas_interface.evit_choix_strategie= SM_DatasInterface::STRATEGIE_EVITEMENT_ATTENDRE;
-        Application.m_detection_obstacles.setSeuilDetectionObstacle(12);
+        Application.m_detection_obstacles.setSeuilDetectionObstacle(20);
+        m_datas_interface.evit_nombre_max_tentatives=1;
 
-        m_sm_recup_echantillon_zone_depart.setEnabled(false);
-        m_sm_recup_statuette.setPrioriteExecution(ordre++);
-        m_sm_recup_3_echantillons_distrib.setEnabled(false);
-        m_sm_deposer_statuette_activer_vitrine.setPrioriteExecution(ordre++);
-        m_sm_deposer_echantillons_galerie_expo.setEnabled(false);
-        m_sm_deposer_echantillons_campement.setEnabled(false);
-        m_sm_retour_zone_depart.setEnabled(false);
+        m_sm_lancer_cerises.setEnabled(false);
+        m_sm_faire_gateaux.setEnabled(false);
+        m_sm_recherche_gateaux.setEnabled(false);
+        m_sm_chasse_neige.setPrioriteExecution(ordre++);
+        m_sm_retour_zone_depart.setPrioriteExecution(ordre++);
 
         break;
     // ________________________  A VERIFIER
@@ -103,10 +99,13 @@ void IA::setStrategie(unsigned char strategie)
     default:
         m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
         m_datas_interface.evit_choix_strategie= SM_DatasInterface::STRATEGIE_EVITEMENT_ATTENDRE;
-        Application.m_detection_obstacles.setSeuilDetectionObstacle(12);
-        m_sm_recup_statuette.setPrioriteExecution(ordre++);
-        m_sm_recup_3_echantillons_distrib.setPrioriteExecution(ordre++);
-        m_sm_deposer_statuette_activer_vitrine.setPrioriteExecution(ordre++);
+        Application.m_detection_obstacles.setSeuilDetectionObstacle(20);
+        m_datas_interface.evit_nombre_max_tentatives=1;
+
+        m_sm_lancer_cerises.setEnabled(false);
+        m_sm_faire_gateaux.setEnabled(false);
+        m_sm_recherche_gateaux.setEnabled(false);
+        m_sm_chasse_neige.setPrioriteExecution(ordre++);
         m_sm_retour_zone_depart.setPrioriteExecution(ordre++);
         break;
     }
@@ -118,12 +117,10 @@ void IA::setMaxScores()
 {
     // TODO : valeurs des scores max fixées au pif.
     // Mettre les vraies valeurs
-    m_sm_recup_echantillon_zone_depart.setScoreMax(5);
-    m_sm_recup_statuette.setScoreMax(5);
-    m_sm_recup_3_echantillons_distrib.setScoreMax(5);
-    m_sm_deposer_statuette_activer_vitrine.setScoreMax(5);
-    m_sm_deposer_echantillons_galerie_expo.setScoreMax(5);
-    m_sm_deposer_echantillons_campement.setScoreMax(5);
+    m_sm_lancer_cerises.setScoreMax(5);
+    m_sm_faire_gateaux.setScoreMax(5);
+    m_sm_recherche_gateaux.setScoreMax(5);
+    m_sm_chasse_neige.setScoreMax(5);
     m_sm_retour_zone_depart.setScoreMax(5);
 }
 
