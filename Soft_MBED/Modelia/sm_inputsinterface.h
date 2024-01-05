@@ -1,6 +1,7 @@
 #ifndef SM_INPUTSINTERFACE_H
 #define SM_INPUTSINTERFACE_H
 
+#include "Lidar_utils.h"
 
 class SM_InputsInterface
 {
@@ -28,6 +29,10 @@ public:
     float Telemetre_ARD;
     float Telemetre_ARG;
 
+    // Lidar
+    unsigned char m_lidar_status;
+    LidarUtils::tLidarObstacles m_lidar_obstacles;
+
     // Sortie de l'asservissement
     float X_robot;
     float Y_robot;
@@ -54,8 +59,6 @@ public:
     float m_distance_balise2;
     int m_nord;
     int m_sud;
-
-
 };
 
 #endif // SM_INPUTSINTERFACE_H

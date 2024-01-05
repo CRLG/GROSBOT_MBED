@@ -88,6 +88,7 @@ INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/Communication/DataEncoderDecoder
 INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/ServosAX
 INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/mcp23017
 INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/PowerElectrobot
+INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/Lidar
 INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/common-rob
 INCLUDE_PATHS += -I../$(CPPROBLIB_PATH)/common-rob/Modelia
 
@@ -111,6 +112,7 @@ OBJECTS += $(CPPROBLIB_PATH)/Communication/XBEE/xbeedriverbase.o
 OBJECTS += $(CPPROBLIB_PATH)/ServosAX/servoaxbase.o
 OBJECTS += $(CPPROBLIB_PATH)/ServosAX/servoax_utils.o
 OBJECTS += $(CPPROBLIB_PATH)/mcp23017/mcp23017base.o
+OBJECTS += $(CPPROBLIB_PATH)/Lidar/Lidar_utils.o
 OBJECTS += $(CPPROBLIB_PATH)/PowerElectrobot/dspicpowerelectrobotbase.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CRouesBase.o
 OBJECTS += $(CPPROBLIB_PATH)/common-rob/CAsservissementBase.o

@@ -343,3 +343,6 @@ ext/CppRobLib/ServosAX/servoaxbase.h
 ext/CppRobLib/ServosAX/servoax_utils.cpp
 ext/CppRobLib/ServosAX/servoax_utils.h
 
+ext/CppRobLib/Lidar/Lidar_utils.h
+ext/CppRobLib/Lidar/Lidar_utils.cpp
+

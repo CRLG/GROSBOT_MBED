@@ -15,4 +15,6 @@ void SM_InputsInterface::init()
     m_distance_balise2=250.;
     m_nord=0;
     m_sud=0;
+
+    m_lidar_status = LidarUtils::LIDAR_DISCONNECTED;
 }
