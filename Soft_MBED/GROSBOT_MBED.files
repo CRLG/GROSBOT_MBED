@@ -219,12 +219,6 @@ Modelia/sm_datasinterface.cpp
 Modelia/sm_sequenceur.cpp
 Modelia/sm_autotest.cpp
 
-Modelia/sm_chasseneige.cpp
-Modelia/sm_lancercerises.cpp
-Modelia/sm_fairegateaux.cpp
-Modelia/sm_recherchegateaux.cpp
-Modelia/sm_retourzonedepart.cpp
-
 Modelia/ia.h
 Modelia/sm_inputsinterface.h
 Modelia/sm_outputsinterface.h
@@ -233,9 +227,6 @@ Modelia/sm_sequenceur.h
 Modelia/sm_autotest.h
 
 Modelia/sm_chasseneige.h
-Modelia/sm_lancercerises.h
-Modelia/sm_fairegateaux.h
-Modelia/sm_recherchegateaux.h
 Modelia/sm_retourzonedepart.h
 
 Modelia/kmar.cpp

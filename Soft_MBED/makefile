@@ -33,9 +33,6 @@ OBJECTS += Modelia/sm_autotest.o
 OBJECTS += Modelia/sm_sequenceur.o
 
 OBJECTS += Modelia/sm_chasseneige.o
-OBJECTS += Modelia/sm_lancercerises.o
-OBJECTS += Modelia/sm_fairegateaux.o
-OBJECTS += Modelia/sm_recherchegateaux.o
 OBJECTS += Modelia/sm_retourzonedepart.o
 
 OBJECTS += Modelia/kmar.o

@@ -14,9 +14,7 @@ IA::IA()
 {
     m_sm_liste[m_state_machine_count++] = &m_sm_autotest;
     m_sm_liste[m_state_machine_count++] = &m_sm_chasse_neige;
-    m_sm_liste[m_state_machine_count++] = &m_sm_lancer_cerises;
-    m_sm_liste[m_state_machine_count++] = &m_sm_faire_gateaux;
-    m_sm_liste[m_state_machine_count++] = &m_sm_recherche_gateaux;
+    m_sm_liste[m_state_machine_count++] = &m_sm_prendre_plantes_pres_zone_depart;
     m_sm_liste[m_state_machine_count++] = &m_sm_retour_zone_depart;
 
 }
@@ -73,9 +71,7 @@ void IA::setStrategie(unsigned char strategie)
         Application.m_detection_obstacles.setSeuilDetectionObstacle(20);
         m_datas_interface.evit_nombre_max_tentatives=1;
 
-        m_sm_lancer_cerises.setEnabled(false);
-        m_sm_faire_gateaux.setEnabled(false);
-        m_sm_recherche_gateaux.setEnabled(false);
+        m_sm_prendre_plantes_pres_zone_depart.setEnabled(false);
         m_sm_chasse_neige.setPrioriteExecution(ordre++);
         m_sm_retour_zone_depart.setPrioriteExecution(ordre++);
 
@@ -87,9 +83,7 @@ void IA::setStrategie(unsigned char strategie)
         Application.m_detection_obstacles.setSeuilDetectionObstacle(20);
         m_datas_interface.evit_nombre_max_tentatives=1;
 
-        m_sm_lancer_cerises.setEnabled(false);
-        m_sm_faire_gateaux.setEnabled(false);
-        m_sm_recherche_gateaux.setEnabled(false);
+        m_sm_prendre_plantes_pres_zone_depart.setEnabled(false);
         m_sm_chasse_neige.setPrioriteExecution(ordre++);
         m_sm_retour_zone_depart.setPrioriteExecution(ordre++);
 
@@ -102,9 +96,7 @@ void IA::setStrategie(unsigned char strategie)
         Application.m_detection_obstacles.setSeuilDetectionObstacle(20);
         m_datas_interface.evit_nombre_max_tentatives=1;
 
-        m_sm_lancer_cerises.setEnabled(false);
-        m_sm_faire_gateaux.setEnabled(false);
-        m_sm_recherche_gateaux.setEnabled(false);
+        m_sm_prendre_plantes_pres_zone_depart.setEnabled(false);
         m_sm_chasse_neige.setPrioriteExecution(ordre++);
         m_sm_retour_zone_depart.setPrioriteExecution(ordre++);
         break;
@@ -117,9 +109,7 @@ void IA::setMaxScores()
 {
     // TODO : valeurs des scores max fixées au pif.
     // Mettre les vraies valeurs
-    m_sm_lancer_cerises.setScoreMax(5);
-    m_sm_faire_gateaux.setScoreMax(5);
-    m_sm_recherche_gateaux.setScoreMax(5);
+    m_sm_prendre_plantes_pres_zone_depart.setScoreMax(5);
     m_sm_chasse_neige.setScoreMax(5);
     m_sm_retour_zone_depart.setScoreMax(5);
 }
