@@ -15,8 +15,11 @@ IA::IA()
     m_sm_liste[m_state_machine_count++] = &m_sm_autotest;
     m_sm_liste[m_state_machine_count++] = &m_sm_chasse_neige;
     m_sm_liste[m_state_machine_count++] = &m_sm_prendre_plantes_pres_zone_depart;
+    m_sm_liste[m_state_machine_count++] = &m_sm_prendre_pots_pres_zone_depart;
+    m_sm_liste[m_state_machine_count++] = &m_sm_ramener_pot_zone_pami;
+    m_sm_liste[m_state_machine_count++] = &m_sm_tourner_panneaux_solaires;
+    m_sm_liste[m_state_machine_count++] = &m_sauvegarde_plantes;
     m_sm_liste[m_state_machine_count++] = &m_sm_retour_zone_depart;
-
 }
 
 // ________________________________________________
@@ -72,6 +75,11 @@ void IA::setStrategie(unsigned char strategie)
         m_datas_interface.evit_nombre_max_tentatives=1;
 
         m_sm_prendre_plantes_pres_zone_depart.setEnabled(false);
+        m_sm_prendre_pots_pres_zone_depart.setEnabled(false);
+        m_sm_ramener_pot_zone_pami.setEnabled(false);
+        m_sm_tourner_panneaux_solaires.setEnabled(false);
+        m_sauvegarde_plantes.setEnabled(false);
+
         m_sm_chasse_neige.setPrioriteExecution(ordre++);
         m_sm_retour_zone_depart.setPrioriteExecution(ordre++);
 
@@ -84,6 +92,11 @@ void IA::setStrategie(unsigned char strategie)
         m_datas_interface.evit_nombre_max_tentatives=1;
 
         m_sm_prendre_plantes_pres_zone_depart.setEnabled(false);
+        m_sm_prendre_pots_pres_zone_depart.setEnabled(false);
+        m_sm_ramener_pot_zone_pami.setEnabled(false);
+        m_sm_tourner_panneaux_solaires.setEnabled(false);
+        m_sauvegarde_plantes.setEnabled(false);
+
         m_sm_chasse_neige.setPrioriteExecution(ordre++);
         m_sm_retour_zone_depart.setPrioriteExecution(ordre++);
 
@@ -97,6 +110,11 @@ void IA::setStrategie(unsigned char strategie)
         m_datas_interface.evit_nombre_max_tentatives=1;
 
         m_sm_prendre_plantes_pres_zone_depart.setEnabled(false);
+        m_sm_prendre_pots_pres_zone_depart.setEnabled(false);
+        m_sm_ramener_pot_zone_pami.setEnabled(false);
+        m_sm_tourner_panneaux_solaires.setEnabled(false);
+        m_sauvegarde_plantes.setEnabled(false);
+
         m_sm_chasse_neige.setPrioriteExecution(ordre++);
         m_sm_retour_zone_depart.setPrioriteExecution(ordre++);
         break;
@@ -110,6 +128,10 @@ void IA::setMaxScores()
     // TODO : valeurs des scores max fixées au pif.
     // Mettre les vraies valeurs
     m_sm_prendre_plantes_pres_zone_depart.setScoreMax(5);
+    m_sm_prendre_pots_pres_zone_depart.setScoreMax(5);
+    m_sm_ramener_pot_zone_pami.setScoreMax(5);
+    m_sm_tourner_panneaux_solaires.setScoreMax(5);
+    m_sauvegarde_plantes.setScoreMax(5);
     m_sm_chasse_neige.setScoreMax(5);
     m_sm_retour_zone_depart.setScoreMax(5);
 }

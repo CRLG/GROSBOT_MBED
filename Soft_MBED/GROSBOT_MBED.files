@@ -226,8 +226,21 @@ Modelia/sm_datasinterface.h
 Modelia/sm_sequenceur.h
 Modelia/sm_autotest.h
 
+Modelia/sm_chasseneige.cpp
+Modelia/sm_retourzonedepart.cpp
+Modelia/sm_prendreplantespreszonedepart.cpp
+Modelia/sm_prendrepotspreszonedepart.cpp
+Modelia/sm_ramenerpotzonepami.cpp
+Modelia/sm_tournerpanneauxsolaires.cpp
+Modelia/sm_sauvegardeplantes.cpp
+
 Modelia/sm_chasseneige.h
 Modelia/sm_retourzonedepart.h
+Modelia/sm_prendreplantespreszonedepart.h
+Modelia/sm_prendrepotspreszonedepart.h
+Modelia/sm_ramenerpotzonepami.h
+Modelia/sm_tournerpanneauxsolaires.h
+Modelia/sm_sauvegardeplantes.h
 
 Modelia/kmar.cpp
 Modelia/kmar.h

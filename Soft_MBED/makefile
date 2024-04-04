@@ -34,6 +34,11 @@ OBJECTS += Modelia/sm_sequenceur.o
 
 OBJECTS += Modelia/sm_chasseneige.o
 OBJECTS += Modelia/sm_retourzonedepart.o
+OBJECTS += Modelia/sm_prendreplantespreszonedepart.o
+OBJECTS += Modelia/sm_prendrepotspreszonedepart.o
+OBJECTS += Modelia/sm_ramenerpotzonepami.o
+OBJECTS += Modelia/sm_tournerpanneauxsolaires.o
+OBJECTS += Modelia/sm_sauvegardeplantes.o
 
 OBJECTS += Modelia/kmar.o
 OBJECTS += Modelia/kmar_INIT.o
