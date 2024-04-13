@@ -8,6 +8,7 @@
 #include "ia.h"
 #include "CGlobale.h"
 #include "ConfigSpecifiqueCoupe.h"
+#include "math.h"
 
 IA::IA()
     : IABase()
@@ -186,82 +187,154 @@ void IA::step()
     m_inputs_interface.Telemetre_AVD       = Application.m_telemetres.getDistanceAVD();
     m_inputs_interface.Telemetre_ARG       = Application.m_telemetres.getDistanceARG();
     m_inputs_interface.Telemetre_ARD       = Application.m_telemetres.getDistanceARD();
+	
+	//ajouter un watchdog sur l'état du LIDAR pour assurer le backup sur les capteurs US afin d'avoir toujours
+	//une solution d'évitement, idéalement l'intégrité des données est vérifiée au niveau raspbberry
+	if(Application.m_modelia.m_inputs_interface.m_lidar_status==LidarUtils::LIDAR_OK)
+	{
+		//TODO:
+		//vérifier le rafraichissement des données
+		//vérifier l'intégrité des données
+	}
+	
+	//Traitements Lidar pour évitement
+	if(Application.m_modelia.m_inputs_interface.m_lidar_status==LidarUtils::LIDAR_OK)
+	{
+		//récupération de données utiles pour l'évitement
+		m_inputs_interface.obstacleDetecte=false;
+        bool isOutOfField=false;
+		float X_detected=0.;
+		float Y_detected=0.;
+        float _teta=0.;
+		for(int i=0;i<(LidarUtils::NBRE_MAX_OBSTACLES);i++)
+		{
+            signed short _Phi=CDetectionObstaclesBase::modulo_pi(M_PI*m_inputs_interface.m_lidar_obstacles[i].angle/180);	// [degres signe / -180;+180]
 
-    //    inhibition forcée de la détection d'obstacle
-    if (m_datas_interface.evit_inhibe_obstacle) {
-        Application.m_detection_obstacles.inhibeDetection(true);
-    }
-    //    Tient compte de la position du robot sur le terrain pour inhiber les obstacles
-    //      -> Trop proche des bordures -> inhibe la détection
-    //      Inhibe soit les capteurs AV soit les capteurs AR en fonction de l'angle robot et de la proximité bordure si l'obstacle est détecté en dehors du terrain
-    else if (m_datas_interface.evit_force_obstacle == false) {
-        m_datas_interface.proximite_bordure_Xdroite = m_inputs_interface.X_robot_terrain > X_MAX_INTERDIT_DETECTION;
-        m_datas_interface.proximite_bordure_Xgauche = m_inputs_interface.X_robot_terrain < X_MIN_INTERDIT_DETECTION;
-        m_datas_interface.proximite_bordure_Ybasse = m_inputs_interface.Y_robot_terrain < Y_MIN_INTERDIT_DETECTION;
-        m_datas_interface.proximite_bordure_Yhaute = m_inputs_interface.Y_robot_terrain > Y_MAX_INTERDIT_DETECTION;
-        m_datas_interface.inhibe_detection_AV = false;
-        m_datas_interface.inhibe_detection_AR = false;
 
-        if (m_datas_interface.proximite_bordure_Ybasse) {
-            if ( (m_inputs_interface.angle_robot_terrain >= -3.14) && (m_inputs_interface.angle_robot_terrain <= 0) ) {
-               m_datas_interface.inhibe_detection_AV = true;
-            }
-            if ( (m_inputs_interface.angle_robot_terrain >= 0.) && (m_inputs_interface.angle_robot_terrain <= 3.14) ) {
-               m_datas_interface.inhibe_detection_AR = true;
-            }
-        }
-        if (m_datas_interface.proximite_bordure_Yhaute) {
-            if ( (m_inputs_interface.angle_robot_terrain >= -3.14) && (m_inputs_interface.angle_robot_terrain <= 0) ) {
-               m_datas_interface.inhibe_detection_AR = true;
-            }
-            if ( (m_inputs_interface.angle_robot_terrain >= 0.) && (m_inputs_interface.angle_robot_terrain <= 3.14) ) {
-               m_datas_interface.inhibe_detection_AV = true;
-            }
-        }
-        if (m_datas_interface.proximite_bordure_Xgauche) {
-            if (    ((m_inputs_interface.angle_robot_terrain >= 1.57) && (m_inputs_interface.angle_robot_terrain <= 3.14) )
-                 || ((m_inputs_interface.angle_robot_terrain <= -1.57) && (m_inputs_interface.angle_robot_terrain >= -3.14))
-               ) {
-               m_datas_interface.inhibe_detection_AV = true;
-            }
-            if (    ((m_inputs_interface.angle_robot_terrain >= 0) && (m_inputs_interface.angle_robot_terrain <= 1.57) )
-                 || ((m_inputs_interface.angle_robot_terrain >= -1.57) && (m_inputs_interface.angle_robot_terrain <= 0.))
-               ) {
-               m_datas_interface.inhibe_detection_AR = true;
-            }
-        }
-        if (m_datas_interface.proximite_bordure_Xdroite) {
-            if (    ((m_inputs_interface.angle_robot_terrain >= 1.57) && (m_inputs_interface.angle_robot_terrain <= 3.14) )
-                 || ((m_inputs_interface.angle_robot_terrain <= -1.57) && (m_inputs_interface.angle_robot_terrain >= -3.14))
-               ) {
-               m_datas_interface.inhibe_detection_AR = true;
-            }
-            if (    ((m_inputs_interface.angle_robot_terrain >= 0) && (m_inputs_interface.angle_robot_terrain <= 1.57) )
-                 || ((m_inputs_interface.angle_robot_terrain >= -1.57) && (m_inputs_interface.angle_robot_terrain <= 0.))
-               ) {
-               m_datas_interface.inhibe_detection_AV = true;
-            }
-        }
-        Application.m_detection_obstacles.inhibeDetectionAV(m_datas_interface.inhibe_detection_AV);
-        Application.m_detection_obstacles.inhibeDetectionAR(m_datas_interface.inhibe_detection_AR);
-    }
-    else {
-        Application.m_detection_obstacles.inhibeDetection(false);
-    }
+			unsigned short _D=m_inputs_interface.m_lidar_obstacles[i].distance;	// [mm]
+            _teta=m_inputs_interface.angle_robot ;
+			
+			//#	coordonnées en X,Y des points détectés
+			if (m_datas_interface.couleur_equipe == SM_DatasInterface::EQUIPE_COULEUR_1)
+			{
+                X_detected = m_inputs_interface.X_robot_terrain+ _D*cos((_teta+_Phi)*M_PI/180);
+                Y_detected = m_inputs_interface.Y_robot_terrain+ _D*sin((_teta+_Phi)*M_PI/180);
+			}
+			else
+			{
+                X_detected = m_inputs_interface.X_robot_terrain+ _D*cos((_teta+_Phi+M_PI)*M_PI/180);
+                Y_detected = m_inputs_interface.Y_robot_terrain+ _D*sin((_teta+_Phi+M_PI)*M_PI/180);
+			}
 
-    m_inputs_interface.obstacle_AVG        = Application.m_detection_obstacles.isObstacleAVG();
-    m_inputs_interface.obstacle_AVD        = Application.m_detection_obstacles.isObstacleAVD();
-    m_inputs_interface.obstacle_ARG        = Application.m_detection_obstacles.isObstacleARG();
-    m_inputs_interface.obstacle_ARD        = Application.m_detection_obstacles.isObstacleARD();
-    m_inputs_interface.obstacleDetecte     = Application.m_detection_obstacles.isObstacle();
+			
+            //est-ce que le point détecté par le lidar est hors du terrain
+            isOutOfField=((X_detected<=10.) || (X_detected>=290.) || (Y_detected<=10.) || (Y_detected>=190.));
+			
+            //# D et Phi sur la trajectoire du robot en excluant les points détectés hors du terrain (plus besoin d'inhiber la détection)
+			if(!isOutOfField)
+            {
+                if (Application.m_detection_obstacles.isObstacleLIDAR(_D, _Phi))
+                {
+					m_inputs_interface.obstacleDetecte=true;
+                    m_inputs_interface.obstacle_AVG= ((_Phi<=(M_PI/2)) && (_Phi>=0));
+                    m_inputs_interface.obstacle_AVD= ((_Phi>=(-M_PI/2)) && (_Phi<0));
+                    m_inputs_interface.obstacle_ARG= ((_Phi>(M_PI/2))&&(_Phi<=(M_PI)));
+                    m_inputs_interface.obstacle_ARD= ((_Phi<(-M_PI/2))&&(_Phi>(-M_PI)));
 
-    // Permet de reconstituer une valeur entre 0 et 15 représentant toutes les situations de blocage
-    m_datas_interface.evit_detection_obstacle_bitfield =
-            (m_inputs_interface.obstacle_ARG << 3) |
-            (m_inputs_interface.obstacle_ARD << 2) |
-            (m_inputs_interface.obstacle_AVG << 1) |
-            (m_inputs_interface.obstacle_AVD << 0);
+                    //afin de réutiliser l'évitement existant
+                    // Permet de reconstituer une valeur entre 0 et 15 représentant toutes les situations de blocage
+                    m_datas_interface.evit_detection_obstacle_bitfield =
+                            (m_inputs_interface.obstacle_ARG << 3) |
+                            (m_inputs_interface.obstacle_ARD << 2) |
+                            (m_inputs_interface.obstacle_AVG << 1) |
+                            (m_inputs_interface.obstacle_AVD << 0);
+                }
+            }
+				
+			isOutOfField=false;
+		}
+		
+		//must have récupérer la position des balises fixes et vérifier le besoin ou non d'un recalage ;-)
+	}
+	//Traitements capteurs US pour évitement
+	else
+	{
+		//    inhibition forcée de la détection d'obstacle
+		if (m_datas_interface.evit_inhibe_obstacle) {
+			Application.m_detection_obstacles.inhibeDetection(true);
+		}
+		//    Tient compte de la position du robot sur le terrain pour inhiber les obstacles
+		//      -> Trop proche des bordures -> inhibe la détection
+		//      Inhibe soit les capteurs AV soit les capteurs AR en fonction de l'angle robot et de la proximité bordure si l'obstacle est détecté en dehors du terrain
+		else if (m_datas_interface.evit_force_obstacle == false) {
+			m_datas_interface.proximite_bordure_Xdroite = m_inputs_interface.X_robot_terrain > X_MAX_INTERDIT_DETECTION;
+			m_datas_interface.proximite_bordure_Xgauche = m_inputs_interface.X_robot_terrain < X_MIN_INTERDIT_DETECTION;
+			m_datas_interface.proximite_bordure_Ybasse = m_inputs_interface.Y_robot_terrain < Y_MIN_INTERDIT_DETECTION;
+			m_datas_interface.proximite_bordure_Yhaute = m_inputs_interface.Y_robot_terrain > Y_MAX_INTERDIT_DETECTION;
+			m_datas_interface.inhibe_detection_AV = false;
+			m_datas_interface.inhibe_detection_AR = false;
 
+			if (m_datas_interface.proximite_bordure_Ybasse) {
+				if ( (m_inputs_interface.angle_robot_terrain >= -3.14) && (m_inputs_interface.angle_robot_terrain <= 0) ) {
+				   m_datas_interface.inhibe_detection_AV = true;
+				}
+				if ( (m_inputs_interface.angle_robot_terrain >= 0.) && (m_inputs_interface.angle_robot_terrain <= 3.14) ) {
+				   m_datas_interface.inhibe_detection_AR = true;
+				}
+			}
+			if (m_datas_interface.proximite_bordure_Yhaute) {
+				if ( (m_inputs_interface.angle_robot_terrain >= -3.14) && (m_inputs_interface.angle_robot_terrain <= 0) ) {
+				   m_datas_interface.inhibe_detection_AR = true;
+				}
+				if ( (m_inputs_interface.angle_robot_terrain >= 0.) && (m_inputs_interface.angle_robot_terrain <= 3.14) ) {
+				   m_datas_interface.inhibe_detection_AV = true;
+				}
+			}
+			if (m_datas_interface.proximite_bordure_Xgauche) {
+				if (    ((m_inputs_interface.angle_robot_terrain >= 1.57) && (m_inputs_interface.angle_robot_terrain <= 3.14) )
+					 || ((m_inputs_interface.angle_robot_terrain <= -1.57) && (m_inputs_interface.angle_robot_terrain >= -3.14))
+				   ) {
+				   m_datas_interface.inhibe_detection_AV = true;
+				}
+				if (    ((m_inputs_interface.angle_robot_terrain >= 0) && (m_inputs_interface.angle_robot_terrain <= 1.57) )
+					 || ((m_inputs_interface.angle_robot_terrain >= -1.57) && (m_inputs_interface.angle_robot_terrain <= 0.))
+				   ) {
+				   m_datas_interface.inhibe_detection_AR = true;
+				}
+			}
+			if (m_datas_interface.proximite_bordure_Xdroite) {
+				if (    ((m_inputs_interface.angle_robot_terrain >= 1.57) && (m_inputs_interface.angle_robot_terrain <= 3.14) )
+					 || ((m_inputs_interface.angle_robot_terrain <= -1.57) && (m_inputs_interface.angle_robot_terrain >= -3.14))
+				   ) {
+				   m_datas_interface.inhibe_detection_AR = true;
+				}
+				if (    ((m_inputs_interface.angle_robot_terrain >= 0) && (m_inputs_interface.angle_robot_terrain <= 1.57) )
+					 || ((m_inputs_interface.angle_robot_terrain >= -1.57) && (m_inputs_interface.angle_robot_terrain <= 0.))
+				   ) {
+				   m_datas_interface.inhibe_detection_AV = true;
+				}
+			}
+			Application.m_detection_obstacles.inhibeDetectionAV(m_datas_interface.inhibe_detection_AV);
+			Application.m_detection_obstacles.inhibeDetectionAR(m_datas_interface.inhibe_detection_AR);
+		}
+		else {
+			Application.m_detection_obstacles.inhibeDetection(false);
+		}
+
+		m_inputs_interface.obstacle_AVG        = Application.m_detection_obstacles.isObstacleAVG();
+		m_inputs_interface.obstacle_AVD        = Application.m_detection_obstacles.isObstacleAVD();
+		m_inputs_interface.obstacle_ARG        = Application.m_detection_obstacles.isObstacleARG();
+		m_inputs_interface.obstacle_ARD        = Application.m_detection_obstacles.isObstacleARD();
+		m_inputs_interface.obstacleDetecte     = Application.m_detection_obstacles.isObstacle();
+
+		// Permet de reconstituer une valeur entre 0 et 15 représentant toutes les situations de blocage
+		m_datas_interface.evit_detection_obstacle_bitfield =
+				(m_inputs_interface.obstacle_ARG << 3) |
+				(m_inputs_interface.obstacle_ARD << 2) |
+				(m_inputs_interface.obstacle_AVG << 1) |
+				(m_inputs_interface.obstacle_AVD << 0);
+	}//fin Traitements capteurs US pour évitement
+	
     // Mise en forme de données pour le modèle
     m_inputs_interface.FrontM_Convergence = m_inputs_interface.Convergence && !m_inputs_interface.Convergence_old;
     m_inputs_interface.Convergence_old = m_inputs_interface.Convergence;
