@@ -190,15 +190,15 @@ void IA::step()
 	
 	//ajouter un watchdog sur l'état du LIDAR pour assurer le backup sur les capteurs US afin d'avoir toujours
 	//une solution d'évitement, idéalement l'intégrité des données est vérifiée au niveau raspbberry
-	if(Application.m_modelia.m_inputs_interface.m_lidar_status==LidarUtils::LIDAR_OK)
+    if(m_inputs_interface.m_lidar_status==LidarUtils::LIDAR_OK)
 	{
 		//TODO:
 		//vérifier le rafraichissement des données
 		//vérifier l'intégrité des données
-	}
-	
+    }
+
 	//Traitements Lidar pour évitement
-	if(Application.m_modelia.m_inputs_interface.m_lidar_status==LidarUtils::LIDAR_OK)
+    if(m_inputs_interface.m_lidar_status==LidarUtils::LIDAR_OK)
 	{
 		//récupération de données utiles pour l'évitement
 		m_inputs_interface.obstacleDetecte=false;
