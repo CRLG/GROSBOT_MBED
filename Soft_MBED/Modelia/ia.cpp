@@ -187,7 +187,9 @@ void IA::step()
     m_inputs_interface.Telemetre_AVD       = Application.m_telemetres.getDistanceAVD();
     m_inputs_interface.Telemetre_ARG       = Application.m_telemetres.getDistanceARG();
     m_inputs_interface.Telemetre_ARD       = Application.m_telemetres.getDistanceARD();
-	
+    m_inputs_interface.Telemetre_ARGCentre = Application.m_telemetres.getDistanceARGCentre();
+    m_inputs_interface.Telemetre_ARDCentre = Application.m_telemetres.getDistanceARDCentre();
+
 	//ajouter un watchdog sur l'état du LIDAR pour assurer le backup sur les capteurs US afin d'avoir toujours
 	//une solution d'évitement, idéalement l'intégrité des données est vérifiée au niveau raspbberry
     if(m_inputs_interface.m_lidar_status==LidarUtils::LIDAR_OK)
@@ -323,8 +325,8 @@ void IA::step()
 
 		m_inputs_interface.obstacle_AVG        = Application.m_detection_obstacles.isObstacleAVG();
 		m_inputs_interface.obstacle_AVD        = Application.m_detection_obstacles.isObstacleAVD();
-		m_inputs_interface.obstacle_ARG        = Application.m_detection_obstacles.isObstacleARG();
-		m_inputs_interface.obstacle_ARD        = Application.m_detection_obstacles.isObstacleARD();
+        m_inputs_interface.obstacle_ARG        = Application.m_detection_obstacles.isObstacleARG() || Application.m_detection_obstacles.isObstacleARGCentre();
+        m_inputs_interface.obstacle_ARD        = Application.m_detection_obstacles.isObstacleARD() || Application.m_detection_obstacles.isObstacleARDCentre();
 		m_inputs_interface.obstacleDetecte     = Application.m_detection_obstacles.isObstacle();
 
 		// Permet de reconstituer une valeur entre 0 et 15 représentant toutes les situations de blocage

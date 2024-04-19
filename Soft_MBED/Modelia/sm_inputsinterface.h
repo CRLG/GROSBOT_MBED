@@ -28,6 +28,8 @@ public:
     float Telemetre_AVG;
     float Telemetre_ARD;
     float Telemetre_ARG;
+    float Telemetre_ARDCentre;
+    float Telemetre_ARGCentre;
 
     // Lidar
     unsigned char m_lidar_status;
