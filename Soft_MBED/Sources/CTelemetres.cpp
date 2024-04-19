@@ -65,6 +65,16 @@ float CTelemetres::getDistanceARD()
     return m_distance[INDEX_TELEMETRE_ARD];
 }
 
+float CTelemetres::getDistanceARGCentre()
+{
+    return m_distance[INDEX_TELEMETRE_ARGCentre];
+}
+
+float CTelemetres::getDistanceARDCentre()
+{
+    return m_distance[INDEX_TELEMETRE_ARDCentre];
+}
+
 
 //___________________________________________________________________________
  /*!
@@ -77,7 +87,7 @@ void CTelemetres::Config(void)
 {
  unsigned char i=0;
 
- for (i=0; i<NOMBRE_TELEMETRES; i++) {
+ for (i=0; i<NOMBRE_TELEMETRES_I2C; i++) {
   // Suppose que adresses I2C des capteurs sont configurées pour se suivre
   m_adresseI2C[i] = ADRESSE_SRF08_BASE + (i*2); 
   WriteRegister(m_adresseI2C[i], SRF08_reg_RANGE, SRF08_RESOLUTION_MAX); // Résolution max  de 46*0.043m + 0.043m = 2mètres environ  
@@ -87,10 +97,17 @@ void CTelemetres::Config(void)
  m_numSRF08 = 0;
 }
 
+//___________________________________________________________________________
+void CTelemetres::Traitement(void)
+{
+    Traitement_I2C();
+    Traitement_Analog();
+}
+
 
 //___________________________________________________________________________
  /*!
-   \brief Traitement
+   \brief Traitement des capteurs I2C
 
    \param --
    \return --
@@ -101,7 +118,7 @@ void CTelemetres::Config(void)
    précédente mesure soit revenu avant de lancer une mesure sur un nouveau capteur.
    Cette méthode permet d'éviter les perturbations mutuelles d'un capteur sur l'autre.
 */
-void CTelemetres::Traitement(void)
+void CTelemetres::Traitement_I2C(void)
 {
   static unsigned char tempoBootSRF08 = 0;
   unsigned int ui_tmp=0;
@@ -118,7 +135,7 @@ void CTelemetres::Traitement(void)
   
   // Lit les informations du dernier capteur
   if (m_numSRF08 == 0) {
-    index = NOMBRE_TELEMETRES - 1;
+    index = NOMBRE_TELEMETRES_I2C - 1;
   } 
   else {
     index = m_numSRF08-1;
@@ -136,9 +153,27 @@ void CTelemetres::Traitement(void)
 
   // Passe au capteur suivant
   m_numSRF08++;
-  if (m_numSRF08 >= NOMBRE_TELEMETRES) { m_numSRF08 = 0; }
+  if (m_numSRF08 >= NOMBRE_TELEMETRES_I2C) { m_numSRF08 = 0; }
 }
 
+//___________________________________________________________________________
+ /*!
+   \brief Traitement desd capteurs analogiques
+
+   \param --
+   \return --
+   \remark
+*/
+#define COEF_TELEMETRE_ULTRASON (3.3 * 259.183)
+void CTelemetres::Traitement_Analog(void)
+{
+    // Todo : appliquer un filtrage / une calibration automatique / une comparaison entre capteurs
+      // Loi de commande : 9.8mV/inch = 9.8mV/2.54mm
+      // TODO : réactiver les moyennes
+      // resultat en cm
+      m_distance[INDEX_TELEMETRE_ARGCentre] = _Eana1.read() * COEF_TELEMETRE_ULTRASON;
+      m_distance[INDEX_TELEMETRE_ARDCentre] = _Eana2.read() * COEF_TELEMETRE_ULTRASON;
+}
 
 //___________________________________________________________________________
  /*!

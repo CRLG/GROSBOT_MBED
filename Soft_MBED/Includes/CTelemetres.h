@@ -50,7 +50,9 @@
 #define SRF08_RESOLUTION_MAX    46
 #define SRF08_MAX_GAIN          0
 
-#define NOMBRE_TELEMETRES       4
+#define NOMBRE_TELEMETRES_I2C   4
+#define NOMBRE_TELEMETRES_ANA   2
+#define NOMBRE_TELEMETRES (NOMBRE_TELEMETRES_I2C+NOMBRE_TELEMETRES_ANA)
 // Types
 // ---------------------------------
 
@@ -67,12 +69,16 @@ public :
     /*virtual*/ float getDistanceAVD();
     /*virtual*/ float getDistanceARG();
     /*virtual*/ float getDistanceARD();
+    /*virtual*/ float getDistanceARGCentre();
+    /*virtual*/ float getDistanceARDCentre();
 
 	//! Configuration de l'adresse I2C
 	void Config(void);
 	//! Traitements
-	void Traitement(void);
-    //! Ecrit une valeur dans un registre du SRF08 
+    void Traitement(void);
+    void Traitement_I2C(void);
+    void Traitement_Analog(void);
+    //! Ecrit une valeur dans un registre du SRF08
     void WriteRegister(unsigned char add, unsigned char reg, unsigned char val);
     //! Change l'adresse I2C d'un capteur
     void ChangeAdresse(unsigned char oldAdd, unsigned char newAdd);
@@ -84,7 +90,7 @@ public :
 
 
 private :
-	unsigned char m_adresseI2C[NOMBRE_TELEMETRES];
+    unsigned char m_adresseI2C[NOMBRE_TELEMETRES_I2C];
     //! Buffer pour la transmission
     char m_buff[10];
     // Pour la machine d'état    
