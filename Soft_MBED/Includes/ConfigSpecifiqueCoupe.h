@@ -130,6 +130,9 @@ typedef enum {
 #define INDEX_TELEMETRE_ARGCentre 4
 #define INDEX_TELEMETRE_ARDCentre 5
 
+//Seuil de détection des capteurs US et du Lidar
+#define SEUIL_DETECTION_US  20
+#define SEUIL_DETECTION_LIDAR 50
 
 
 //! Période d'appel du modèle

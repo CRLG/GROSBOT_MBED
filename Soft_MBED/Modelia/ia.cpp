@@ -72,7 +72,7 @@ void IA::setStrategie(unsigned char strategie)
         m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
         //m_datas_interface.evit_inhibe_obstacle=true;
         m_datas_interface.evit_choix_strategie= SM_DatasInterface::STRATEGIE_EVITEMENT_ATTENDRE;
-        Application.m_detection_obstacles.setSeuilDetectionObstacle(20);
+        Application.m_detection_obstacles.setSeuilDetectionObstacle(SEUIL_DETECTION_US); //par défaut seuil de détection avec les capteurs US en backup
         m_datas_interface.evit_nombre_max_tentatives=1;
 
         m_sm_prendre_plantes_pres_zone_depart.setEnabled(false);
@@ -89,7 +89,7 @@ void IA::setStrategie(unsigned char strategie)
     case STRATEGIE_HOMOLO2:
         m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
         m_datas_interface.evit_choix_strategie= SM_DatasInterface::STRATEGIE_EVITEMENT_ATTENDRE;
-        Application.m_detection_obstacles.setSeuilDetectionObstacle(20);
+        Application.m_detection_obstacles.setSeuilDetectionObstacle(SEUIL_DETECTION_US); //par défaut seuil de détection avec les capteurs US en backup
         m_datas_interface.evit_nombre_max_tentatives=1;
 
         m_sm_prendre_plantes_pres_zone_depart.setEnabled(false);
@@ -107,7 +107,7 @@ void IA::setStrategie(unsigned char strategie)
     default:
         m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
         m_datas_interface.evit_choix_strategie= SM_DatasInterface::STRATEGIE_EVITEMENT_ATTENDRE;
-        Application.m_detection_obstacles.setSeuilDetectionObstacle(20);
+        Application.m_detection_obstacles.setSeuilDetectionObstacle(SEUIL_DETECTION_US); //par défaut seuil de détection avec les capteurs US en backup
         m_datas_interface.evit_nombre_max_tentatives=1;
 
         m_sm_prendre_plantes_pres_zone_depart.setEnabled(false);
@@ -202,7 +202,9 @@ void IA::step()
 	//Traitements Lidar pour évitement
     if(m_inputs_interface.m_lidar_status==LidarUtils::LIDAR_OK)
 	{
-		//récupération de données utiles pour l'évitement
+        Application.m_detection_obstacles.setSeuilDetectionObstacle(SEUIL_DETECTION_LIDAR);
+
+        //récupération de données utiles pour l'évitement
 		m_inputs_interface.obstacleDetecte=false;
         bool isOutOfField=false;
 		float X_detected=0.;
@@ -257,11 +259,13 @@ void IA::step()
 		}
 		
 		//must have récupérer la position des balises fixes et vérifier le besoin ou non d'un recalage ;-)
-	}
+    }//fin Traitement LIDAR pour évitement
 	//Traitements capteurs US pour évitement
 	else
 	{
-		//    inhibition forcée de la détection d'obstacle
+        Application.m_detection_obstacles.setSeuilDetectionObstacle(SEUIL_DETECTION_US);
+
+        //    inhibition forcée de la détection d'obstacle
 		if (m_datas_interface.evit_inhibe_obstacle) {
 			Application.m_detection_obstacles.inhibeDetection(true);
 		}
@@ -336,7 +340,7 @@ void IA::step()
 				(m_inputs_interface.obstacle_AVG << 1) |
 				(m_inputs_interface.obstacle_AVD << 0);
 	}//fin Traitements capteurs US pour évitement
-	
+
     // Mise en forme de données pour le modèle
     m_inputs_interface.FrontM_Convergence = m_inputs_interface.Convergence && !m_inputs_interface.Convergence_old;
     m_inputs_interface.Convergence_old = m_inputs_interface.Convergence;
