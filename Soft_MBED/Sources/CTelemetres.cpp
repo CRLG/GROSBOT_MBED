@@ -171,8 +171,8 @@ void CTelemetres::Traitement_Analog(void)
       // Loi de commande : 9.8mV/inch = 9.8mV/2.54mm
       // TODO : réactiver les moyennes
       // resultat en cm
-      m_distance[INDEX_TELEMETRE_ARGCentre] = _Eana1.read() * COEF_TELEMETRE_ULTRASON;
-      m_distance[INDEX_TELEMETRE_ARDCentre] = _Eana2.read() * COEF_TELEMETRE_ULTRASON;
+      m_distance[INDEX_TELEMETRE_ARGCentre] = _Eana3.read() * COEF_TELEMETRE_ULTRASON;
+      m_distance[INDEX_TELEMETRE_ARDCentre] = _Eana4.read() * COEF_TELEMETRE_ULTRASON;
 }
 
 //___________________________________________________________________________
