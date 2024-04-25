@@ -10,6 +10,13 @@
 #include "PowerSwitch.h"
 #include "kmar.h"
 
+// Directives pour la compilation conditionnelle
+// Permet d'activer ou desactiver une fonctionnalite d'une annee sur l'autre ou d'un robot a l'autre
+//#define UTILSATION_SERVOS_AX
+//#define UTILISATION_KMAR
+//#define UTILISATION_CHARIOT
+//#define UTILISATION_XBEE
+
 // Couleur de l'équipe
 #define EQUIPE_BLEU     SM_DatasInterface::EQUIPE_COULEUR_2
 #define EQUIPE_JAUNE    SM_DatasInterface::EQUIPE_COULEUR_1
