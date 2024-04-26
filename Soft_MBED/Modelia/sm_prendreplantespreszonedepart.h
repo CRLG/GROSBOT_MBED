@@ -1,16 +1,16 @@
 /**
- * Generated 17_05_2023 at 17_31
+ * Generated 26_04_2024 at 16_31
  */
 
-#ifndef SM_PRENDRE_PLQNTES_PRES_ZONE_DEPART_H_
-#define SM_PRENDRE_PLQNTES_PRES_ZONE_DEPART_H_
+#ifndef SM_PRENDREPLANTESPRESZONEDEPART_H
+#define SM_PRENDREPLANTESPRESZONEDEPART_H
 
 #include "sm_statemachinebase.h"
 
 class SM_PrendrePlantesPresZoneDepart : public SM_StateMachineBase
 {
 public:
-    SM_PrendrePlantesPresZoneDepart();
+	SM_PrendrePlantesPresZoneDepart();
 	void step();
 	const char* getName();
 	const char* stateToName(unsigned short state);
@@ -31,8 +31,14 @@ public:
 	STATE_13,
 	STATE_14,
 	STATE_15,
+	STATE_16,
+	STATE_17,
+	STATE_18,
+	STATE_19,
+	STATE_20,
+	STATE_21,
 	FIN_MISSION
 	}tState;
 };
 
-#endif // SM_PRENDRE_PLQNTES_PRES_ZONE_DEPART_H_
+#endif // SM_PRENDREPLANTESPRESZONEDEPART_H
