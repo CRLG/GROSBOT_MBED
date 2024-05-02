@@ -212,51 +212,74 @@ void IA::step()
 		float X_detected=0.;
 		float Y_detected=0.;
         float _teta=0.;
-		for(int i=0;i<(LidarUtils::NBRE_MAX_OBSTACLES);i++)
+
+        //Reconstitution d'un lidar 360 avec les capteurs US
+        double NeoLidar[2][LidarUtils::NBRE_MAX_OBSTACLES+4];
+        for(int i=0;i<LidarUtils::NBRE_MAX_OBSTACLES;i++)
+        {
+            NeoLidar[0][i]=m_inputs_interface.m_lidar_obstacles[i].distance;
+            NeoLidar[1][i]=m_inputs_interface.m_lidar_obstacles[i].angle;
+        }
+        NeoLidar[0][LidarUtils::NBRE_MAX_OBSTACLES]=m_inputs_interface.Telemetre_ARD*10;
+        NeoLidar[1][LidarUtils::NBRE_MAX_OBSTACLES]=-153;
+        NeoLidar[0][LidarUtils::NBRE_MAX_OBSTACLES+1]=m_inputs_interface.Telemetre_ARDCentre*10;
+        NeoLidar[1][LidarUtils::NBRE_MAX_OBSTACLES+1]=-171;
+        NeoLidar[0][LidarUtils::NBRE_MAX_OBSTACLES+2]=m_inputs_interface.Telemetre_ARGCentre*10;
+        NeoLidar[1][LidarUtils::NBRE_MAX_OBSTACLES+2]=171;
+        NeoLidar[0][LidarUtils::NBRE_MAX_OBSTACLES+3]=m_inputs_interface.Telemetre_ARG*10;
+        NeoLidar[1][LidarUtils::NBRE_MAX_OBSTACLES+3]=153;
+
+        //on parcourt l'ensemble des points du Lidar 360
+        for(int i=0;i<(LidarUtils::NBRE_MAX_OBSTACLES+4);i++)
 		{
-            signed short _Phi=CDetectionObstaclesBase::modulo_pi(M_PI*m_inputs_interface.m_lidar_obstacles[i].angle/180);	// [degres signe / -180;+180]
-
-
-			unsigned short _D=m_inputs_interface.m_lidar_obstacles[i].distance;	// [mm]
-            _teta=m_inputs_interface.angle_robot ;
-			
-			//#	coordonnées en X,Y des points détectés
-			if (m_datas_interface.couleur_equipe == SM_DatasInterface::EQUIPE_COULEUR_1)
-			{
-                X_detected = m_inputs_interface.X_robot_terrain+ _D*cos((_teta+_Phi)*M_PI/180);
-                Y_detected = m_inputs_interface.Y_robot_terrain+ _D*sin((_teta+_Phi)*M_PI/180);
-			}
-			else
-			{
-                X_detected = m_inputs_interface.X_robot_terrain+ _D*cos((_teta+_Phi+M_PI)*M_PI/180);
-                Y_detected = m_inputs_interface.Y_robot_terrain+ _D*sin((_teta+_Phi+M_PI)*M_PI/180);
-			}
-
-			
-            //est-ce que le point détecté par le lidar est hors du terrain
-            isOutOfField=((X_detected<=10.) || (X_detected>=290.) || (Y_detected<=10.) || (Y_detected>=190.));
-			
-            //# D et Phi sur la trajectoire du robot en excluant les points détectés hors du terrain (plus besoin d'inhiber la détection)
-			if(!isOutOfField)
+            //Si le point est trop lointain on ne traite pas
+            if(NeoLidar[0][i]!=LidarUtils::NO_OBSTACLE)
             {
-                if (Application.m_detection_obstacles.isObstacleLIDAR(_D, _Phi))
-                {
-					m_inputs_interface.obstacleDetecte=true;
-                    m_inputs_interface.obstacle_AVG= ((_Phi<=(M_PI/2)) && (_Phi>=0));
-                    m_inputs_interface.obstacle_AVD= ((_Phi>=(-M_PI/2)) && (_Phi<0));
-                    m_inputs_interface.obstacle_ARG= ((_Phi>(M_PI/2))&&(_Phi<=(M_PI)));
-                    m_inputs_interface.obstacle_ARD= ((_Phi<(-M_PI/2))&&(_Phi>(-M_PI)));
+                //angle de l'obstacle par rapport à l'axe du robot (converti en radian)
+                float _Phi=CDetectionObstaclesBase::modulo_pi(M_PI*NeoLidar[1][i]/180);	// [degres signe / -180;+180]
 
-                    //afin de réutiliser l'évitement existant
-                    // Permet de reconstituer une valeur entre 0 et 15 représentant toutes les situations de blocage
-                    m_datas_interface.evit_detection_obstacle_bitfield =
-                            (m_inputs_interface.obstacle_ARG << 3) |
-                            (m_inputs_interface.obstacle_ARD << 2) |
-                            (m_inputs_interface.obstacle_AVG << 1) |
-                            (m_inputs_interface.obstacle_AVD << 0);
+                //distance de l'obstacle
+                int _D=(NeoLidar[0][i])/10;	// [mm] converti en [cm]
+                //angle du robot
+                _teta=m_inputs_interface.angle_robot ;
+
+                //#	coordonnées en X,Y des points détectés
+                if (m_datas_interface.couleur_equipe == SM_DatasInterface::EQUIPE_COULEUR_1)
+                {
+                    X_detected = m_inputs_interface.X_robot_terrain+ _D*cos(_teta+_Phi);
+                    Y_detected = m_inputs_interface.Y_robot_terrain+ _D*sin(_teta+_Phi);
+                }
+                else
+                {
+                    X_detected = m_inputs_interface.X_robot_terrain+ _D*cos(_teta+_Phi+M_PI);
+                    Y_detected = m_inputs_interface.Y_robot_terrain+ _D*sin(_teta+_Phi+M_PI);
+                }
+
+
+                //est-ce que le point détecté par le lidar est hors du terrain
+                isOutOfField=((X_detected<=10.) || (X_detected>=290.) || (Y_detected<=10.) || (Y_detected>=190.));
+
+                //# D et Phi sur la trajectoire du robot en excluant les points détectés hors du terrain (plus besoin d'inhiber la détection)
+                if((!isOutOfField) && (_D>0) && (_D<50))
+                {
+                    if (Application.m_detection_obstacles.isObstacleLIDAR(_D, _Phi,50))
+                    {
+                        m_inputs_interface.obstacleDetecte=true;
+                        m_inputs_interface.obstacle_AVG= ((_Phi<=(M_PI/2)) && (_Phi>=0));
+                        m_inputs_interface.obstacle_AVD= ((_Phi>=(-M_PI/2)) && (_Phi<0));
+                        m_inputs_interface.obstacle_ARG= ((_Phi>(M_PI/2))&&(_Phi<=(M_PI)));
+                        m_inputs_interface.obstacle_ARD= ((_Phi<(-M_PI/2))&&(_Phi>(-M_PI)));
+
+                        //afin de réutiliser l'évitement existant
+                        // Permet de reconstituer une valeur entre 0 et 15 représentant toutes les situations de blocage
+                        m_datas_interface.evit_detection_obstacle_bitfield =
+                                (m_inputs_interface.obstacle_ARG << 3) |
+                                (m_inputs_interface.obstacle_ARD << 2) |
+                                (m_inputs_interface.obstacle_AVG << 1) |
+                                (m_inputs_interface.obstacle_AVD << 0);
+                    }
                 }
             }
-				
 			isOutOfField=false;
 		}
 		
