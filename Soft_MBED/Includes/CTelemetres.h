@@ -88,6 +88,8 @@ public :
 
     //! Compte rendu de l'autodiagnostic
 
+    // Filtrage des capteurs US analogiques
+    float MoyenneGlissante_float(float currentVal, float *buf_oldSamples, unsigned int samplesNumbers);
 
 private :
     unsigned char m_adresseI2C[NOMBRE_TELEMETRES_I2C];
@@ -96,6 +98,9 @@ private :
     // Pour la machine d'état    
     unsigned char m_numSRF08;  
 
+    static const unsigned int TAILLE_MOYENNE_GLISSANTE_CAPTEURS_US_ANA = 5;
+    float m_buff_moy_us_arg_centre[TAILLE_MOYENNE_GLISSANTE_CAPTEURS_US_ANA];
+    float m_buff_moy_us_ard_centre[TAILLE_MOYENNE_GLISSANTE_CAPTEURS_US_ANA];
 };
 
 #endif

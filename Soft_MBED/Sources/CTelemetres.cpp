@@ -171,9 +171,43 @@ void CTelemetres::Traitement_Analog(void)
       // Loi de commande : 9.8mV/inch = 9.8mV/2.54mm
       // TODO : réactiver les moyennes
       // resultat en cm
-      m_distance[INDEX_TELEMETRE_ARGCentre] = _Eana3.read() * COEF_TELEMETRE_ULTRASON;
-      m_distance[INDEX_TELEMETRE_ARDCentre] = _Eana4.read() * COEF_TELEMETRE_ULTRASON;
+      m_distance[INDEX_TELEMETRE_ARGCentre] = MoyenneGlissante_float(_Eana3.read() * COEF_TELEMETRE_ULTRASON,
+                                                                     m_buff_moy_us_arg_centre,
+                                                                     TAILLE_MOYENNE_GLISSANTE_CAPTEURS_US_ANA);
+      m_distance[INDEX_TELEMETRE_ARDCentre] = MoyenneGlissante_float(_Eana4.read() * COEF_TELEMETRE_ULTRASON,
+                                                                     m_buff_moy_us_ard_centre,
+                                                                     TAILLE_MOYENNE_GLISSANTE_CAPTEURS_US_ANA);
 }
+
+//___________________________________________________________________________
+ /*!
+   \brief Filrtage des donnees brutes des capteurs ultrason
+
+   \param currentVal la valeur du dernier échantillon pour le calcul de la moyenne
+   \param buf_oldSamples le buffer contenant les derniers échantillons de mesures
+   \param samplesNumbers le nombre de point pour la moyenne glissante
+   \return la valeur moeyennée
+*/
+float CTelemetres::MoyenneGlissante_float(float currentVal, float *buf_oldSamples, unsigned int samplesNumbers)
+{
+    float moy=currentVal;
+    int i=0;  // Attention : doit être un "int" et non un "unsigned int" à cause du test de fin dans le "for"
+
+    // Traite tous les échantillons sauf le 1er (index 0 du tableau) qui est un cas particulier
+    for (i=(samplesNumbers-2); i>0; i--) {
+        moy = moy + buf_oldSamples[i];
+        buf_oldSamples[i] = buf_oldSamples[i-1];
+    }
+
+    // Cas particulier pour la 1ère case du tableau où la nouvelle valeur ne provient pas de l'index précédent du tableau mais du nouvel échantillon
+    moy = moy + buf_oldSamples[0];
+    buf_oldSamples[0] = currentVal;
+
+    moy = moy / (float)samplesNumbers;
+
+    return(moy);
+}
+
 
 //___________________________________________________________________________
  /*!
