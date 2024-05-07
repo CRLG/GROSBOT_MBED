@@ -218,13 +218,17 @@ void IA::step()
         for(int i=0;i<LidarUtils::NBRE_MAX_OBSTACLES;i++)
         {
             NeoLidar[0][i]=m_inputs_interface.m_lidar_obstacles[i].distance;
-            NeoLidar[1][i]=m_inputs_interface.m_lidar_obstacles[i].angle;
+            NeoLidar[1][i]=m_inputs_interface.m_lidar_obstacles[i].angle-90;
         }
         NeoLidar[0][LidarUtils::NBRE_MAX_OBSTACLES]=m_inputs_interface.Telemetre_ARD*10;
         NeoLidar[1][LidarUtils::NBRE_MAX_OBSTACLES]=-153;
-        NeoLidar[0][LidarUtils::NBRE_MAX_OBSTACLES+1]=m_inputs_interface.Telemetre_ARDCentre*10;
+        /*NeoLidar[0][LidarUtils::NBRE_MAX_OBSTACLES+1]=m_inputs_interface.Telemetre_ARDCentre*10;
         NeoLidar[1][LidarUtils::NBRE_MAX_OBSTACLES+1]=-171;
         NeoLidar[0][LidarUtils::NBRE_MAX_OBSTACLES+2]=m_inputs_interface.Telemetre_ARGCentre*10;
+        NeoLidar[1][LidarUtils::NBRE_MAX_OBSTACLES+2]=171;*/
+        NeoLidar[0][LidarUtils::NBRE_MAX_OBSTACLES+1]=LidarUtils::NO_OBSTACLE;
+        NeoLidar[1][LidarUtils::NBRE_MAX_OBSTACLES+1]=-171;
+        NeoLidar[0][LidarUtils::NBRE_MAX_OBSTACLES+2]=LidarUtils::NO_OBSTACLE;
         NeoLidar[1][LidarUtils::NBRE_MAX_OBSTACLES+2]=171;
         NeoLidar[0][LidarUtils::NBRE_MAX_OBSTACLES+3]=m_inputs_interface.Telemetre_ARG*10;
         NeoLidar[1][LidarUtils::NBRE_MAX_OBSTACLES+3]=153;
@@ -262,7 +266,7 @@ void IA::step()
                 //# D et Phi sur la trajectoire du robot en excluant les points détectés hors du terrain (plus besoin d'inhiber la détection)
                 if((!isOutOfField) && (_D>0) && (_D<50))
                 {
-                    if (Application.m_detection_obstacles.isObstacleLIDAR(_D, _Phi,50))
+                    if (Application.m_detection_obstacles.isObstacleLIDAR(_D, _Phi,35))
                     {
                         m_inputs_interface.obstacleDetecte=true;
                         m_inputs_interface.obstacle_AVG= ((_Phi<=(M_PI/2)) && (_Phi>=0));
