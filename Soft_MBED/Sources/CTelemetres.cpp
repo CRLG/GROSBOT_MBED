@@ -171,7 +171,7 @@ void CTelemetres::Traitement_Analog(void)
       // Loi de commande : 9.8mV/inch = 9.8mV/2.54mm
       // TODO : réactiver les moyennes
       // resultat en cm
-      m_distance[INDEX_TELEMETRE_ARGCentre] = MoyenneGlissante_float(_Eana3.read() * COEF_TELEMETRE_ULTRASON,
+      m_distance[INDEX_TELEMETRE_ARGCentre] = MoyenneGlissante_float(_Eana5.read() * COEF_TELEMETRE_ULTRASON,
                                                                      m_buff_moy_us_arg_centre,
                                                                      TAILLE_MOYENNE_GLISSANTE_CAPTEURS_US_ANA);
       m_distance[INDEX_TELEMETRE_ARDCentre] = MoyenneGlissante_float(_Eana4.read() * COEF_TELEMETRE_ULTRASON,
