@@ -65,19 +65,15 @@ typedef enum {
 
 //! cet enumere contient les numeros d'attribution des servos SD20
 typedef enum {
-    SERVO_ELEVATEUR         = 13,
-    SERVO_PINCE             = 14
+    SERVO_GROSSE_TAPETTE    = 13,
+    SERVO_INCLINE_PLANTE    = 18,
+    SERVO_PINCE_PLANTE      = 19
 } eATTRIBUTION_SERVOS_SD20;
 
-//! cet enumere contient les numeros d'attribution des servos SD20
-typedef enum {
-    SD20_ELEVATEUR_HAUT                 = 95,
-	SD20_ELEVATEUR_ECHANTILLONS_CALES   = 150,
-	SD20_ELEVATEUR_BAS                  = 230,
-	SD20_PINCE_OUVERTE        = 5,
-	SD20_PINCE_FERMEE         = 255
-} eVALUES_SERVOS_SD20;
-
+// Positions interessantes du servo TAPETTE
+#define POSITION_GROSSE_TAPETTE_LEVE    140
+#define POSITION_GROSSE_TAPETTE_BAISSE  220
+#define POSITION_GROSSE_TAPETTE_RANGE   230
 
 //! cet enumere contient les numeros d'attribution des servos AX (ID)
 typedef enum {
