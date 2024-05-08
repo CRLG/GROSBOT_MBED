@@ -70,10 +70,19 @@ typedef enum {
     SERVO_PINCE_PLANTE      = 19
 } eATTRIBUTION_SERVOS_SD20;
 
-// Positions interessantes du servo TAPETTE
+// Positions references du servo TAPETTE
 #define POSITION_GROSSE_TAPETTE_LEVE    140
 #define POSITION_GROSSE_TAPETTE_BAISSE  220
 #define POSITION_GROSSE_TAPETTE_RANGE   230
+
+// Positions de references du servo PINCE_PLANTE
+#define POSITION_PINCE_PLANTE_OUVERT    200
+#define POSITION_PINCE_PLANTE_FERME     80
+
+// Positions de references du servo INCLINE_PLANTE
+#define POSITION_INCLINE_PLANTE_LEVE    180
+#define POSITION_INCLINE_PLANTE_BAISSE  20
+
 
 //! cet enumere contient les numeros d'attribution des servos AX (ID)
 typedef enum {
