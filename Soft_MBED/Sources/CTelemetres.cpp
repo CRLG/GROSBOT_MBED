@@ -67,12 +67,12 @@ float CTelemetres::getDistanceARD()
 
 float CTelemetres::getDistanceARGCentre()
 {
-    return m_distance[INDEX_TELEMETRE_ARGCentre];
+    return 200;//m_distance[INDEX_TELEMETRE_ARGCentre];
 }
 
 float CTelemetres::getDistanceARDCentre()
 {
-    return m_distance[INDEX_TELEMETRE_ARDCentre];
+    return 200;//m_distance[INDEX_TELEMETRE_ARDCentre];
 }
 
 
