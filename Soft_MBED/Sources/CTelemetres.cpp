@@ -147,6 +147,7 @@ void CTelemetres::Traitement_I2C(void)
   if (ui_tmp > 1) {  // Patch pour éliminer les situations où d'un seul coup, la mesure passe à "0" pendant quelques échantillons -> pas de mise à jour de la donnée sur le CAN si valeur erronée
         m_distance[index] = ui_tmp;
   }
+  else m_distance[index] = 250;   // laisse une valeur hors detection d'obstacle
   
   // Lance la mesure pour le télémètre suivant
   WriteRegister(m_adresseI2C[index], SRF08_reg_COMMAND, SRF08_MEASURE_CM);
