@@ -1,5 +1,5 @@
 /**
- * Generated 26_04_2024 at 16_31
+ * Generated 09_05_2024 at 11_36
  */
 
 #include "sm_prendreplantespreszonedepart.h"
@@ -27,6 +27,9 @@ const char* SM_PrendrePlantesPresZoneDepart::stateToName(unsigned short state)
 		case STATE_5 :		return "STATE_5";
 		case STATE_6 :		return "STATE_6";
 		case STATE_7 :		return "STATE_7";
+		case STATE_8 :		return "STATE_8";
+		case STATE_9 :		return "STATE_9";
+		case STATE_10 :		return "STATE_10";
 		case FIN_MISSION :	return "FIN_MISSION";
 	}
 	return "UNKNOWN_STATE";
@@ -50,7 +53,7 @@ void SM_PrendrePlantesPresZoneDepart::step()
 	// ___________________________
 	case STATE_2 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY(60,0);/**/
+			outputs()->CommandeMouvementXY_sym(60,0);/**/
 		}
 
 			gotoStateIfConvergence(STATE_3,5000);
@@ -59,16 +62,16 @@ void SM_PrendrePlantesPresZoneDepart::step()
 	// ___________________________
 	case STATE_3 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY(89,-45);/**/
+			Application.m_servos_sd20.CommandePosition(13,140);/*GROSSE_TAPETTE_LEVE*/
 		}
 
-			gotoStateIfConvergence(STATE_4,5000);
+			gotoStateAfter(STATE_4,500);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_4 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY_TETA(44,5,3.14);/**/
+			outputs()->CommandeMouvementXY_sym(89,-45);/**/
 		}
 
 			gotoStateIfConvergence(STATE_5,5000);
@@ -77,16 +80,16 @@ void SM_PrendrePlantesPresZoneDepart::step()
 	// ___________________________
 	case STATE_5 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(13,127);/*ouvrir*/
+			Application.m_servos_sd20.CommandePosition(13,220);/*GROSSE_TAPETTE_BAISSE*/
 		}
 
-			gotoStateAfter(STATE_6,500);
+			gotoStateAfter(STATE_6,1000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_6 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementXY(12,5);/**/
+			outputs()->CommandeMouvementXY_TETA_sym(44,5,3.14);/**/
 		}
 
 			gotoStateIfConvergence(STATE_7,5000);
@@ -95,10 +98,37 @@ void SM_PrendrePlantesPresZoneDepart::step()
 	// ___________________________
 	case STATE_7 :
 		if (onEntry()) {
-			Application.m_asservissement.CommandeMouvementDistanceAngle(-35,3.14);/**/
+			Application.m_servos_sd20.CommandePosition(13,140);/*GROSSE_TAPETTE_LEVE*/
 		}
 
-			gotoStateIfConvergence(FIN_MISSION,5000);
+			gotoStateAfter(STATE_8,1000);
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_8 :
+		if (onEntry()) {
+			outputs()->CommandeMouvementXY_sym(12,5);/**/
+		}
+
+			gotoStateIfConvergence(STATE_9,5000);
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_9 :
+		if (onEntry()) {
+			outputs()->CommandeMouvementXY_TETA_sym(55,-39,3.14);/**/
+		}
+
+			gotoStateIfConvergence(STATE_10,5000);
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_10 :
+		if (onEntry()) {
+			Application.m_servos_sd20.CommandePosition(13,220);/*GROSSE_TAPETTE_BAISSE*/
+		}
+
+			gotoStateAfter(FIN_MISSION,500);
 		if (onExit()) {  }
 		break;
 

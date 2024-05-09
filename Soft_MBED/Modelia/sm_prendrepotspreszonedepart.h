@@ -1,16 +1,16 @@
 /**
- * Generated 17_05_2023 at 17_31
+ * Generated 09_05_2024 at 11_36
  */
 
-#ifndef SM_PRENDRE_POTS_PRES_ZONE_DEPART_H_
-#define SM_PRENDRE_POTS_PRES_ZONE_DEPART_H_
+#ifndef SM_PRENDREPOTSPRESZONEDEPART_H
+#define SM_PRENDREPOTSPRESZONEDEPART_H
 
 #include "sm_statemachinebase.h"
 
 class SM_PrendrePotsPresZoneDepart : public SM_StateMachineBase
 {
 public:
-    SM_PrendrePotsPresZoneDepart();
+	SM_PrendrePotsPresZoneDepart();
 	void step();
 	const char* getName();
 	const char* stateToName(unsigned short state);
@@ -31,8 +31,24 @@ public:
 	STATE_13,
 	STATE_14,
 	STATE_15,
+	STATE_16,
+	STATE_17,
+	STATE_18,
+	STATE_19,
+	STATE_20,
+	STATE_21,
+	STATE_22,
+	STATE_23,
+	STATE_24,
+	STATE_25,
+	STATE_26,
+	STATE_27,
+	STATE_28,
+	STATE_29,
+	STATE_30,
+	STATE_31,
 	FIN_MISSION
 	}tState;
 };
 
-#endif // SM_PRENDRE_POTS_PRES_ZONE_DEPART_H_
+#endif // SM_PRENDREPOTSPRESZONEDEPART_H

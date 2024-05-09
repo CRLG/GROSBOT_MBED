@@ -70,7 +70,7 @@ void IA::setStrategie(unsigned char strategie)
     // ________________________
     case STRATEGIE_HOMOLO1:
         m_datas_interface.choix_algo_next_mission = ALGO_PERTINENT_MISSION_CHOIX_PRIORITE;
-        //m_datas_interface.evit_inhibe_obstacle=true;
+        m_datas_interface.evit_inhibe_obstacle=false;
         m_datas_interface.evit_choix_strategie= SM_DatasInterface::STRATEGIE_EVITEMENT_ATTENDRE;
         Application.m_detection_obstacles.setSeuilDetectionObstacle(SEUIL_DETECTION_US); //par défaut seuil de détection avec les capteurs US en backup
         m_datas_interface.evit_nombre_max_tentatives=1;
@@ -78,12 +78,13 @@ void IA::setStrategie(unsigned char strategie)
         m_sm_chasse_neige.setEnabled(false);
         m_sm_retour_zone_depart.setEnabled(false);
         m_sm_prendre_plantes_pres_zone_depart.setEnabled(true);
-        m_sm_prendre_pots_pres_zone_depart.setEnabled(false);
+        m_sm_prendre_pots_pres_zone_depart.setEnabled(true);
         m_sm_ramener_pot_zone_pami.setEnabled(false);
         m_sm_tourner_panneaux_solaires.setEnabled(false);
         m_sauvegarde_plantes.setEnabled(false);
 
         m_sm_prendre_plantes_pres_zone_depart.setPrioriteExecution(ordre++);
+        m_sm_prendre_pots_pres_zone_depart.setPrioriteExecution(ordre++);
         //m_sm_retour_zone_depart.setPrioriteExecution(ordre++);
 
         break;

@@ -66,23 +66,25 @@ typedef enum {
 //! cet enumere contient les numeros d'attribution des servos SD20
 typedef enum {
     SERVO_GROSSE_TAPETTE    = 13,
+	SERVO_POTS=15,
     SERVO_INCLINE_PLANTE    = 18,
     SERVO_PINCE_PLANTE      = 19
 } eATTRIBUTION_SERVOS_SD20;
 
 typedef enum {
-    // Positions references du servo TAPETTE
     POSITION_GROSSE_TAPETTE_LEVE    = 140,
     POSITION_GROSSE_TAPETTE_BAISSE  = 220,
     POSITION_GROSSE_TAPETTE_RANGE   = 230,
 
-    // Positions de references du servo PINCE_PLANTE
     POSITION_PINCE_PLANTE_OUVERT    = 200,
     POSITION_PINCE_PLANTE_FERME     = 80,
 
-    // Positions de references du servo INCLINE_PLANTE
     POSITION_INCLINE_PLANTE_LEVE = 180,
-    POSITION_INCLINE_PLANTE_BAISSE = 20
+    POSITION_INCLINE_PLANTE_BAISSE = 20,
+
+POSITION_POTS_SORTIS=201,
+POSITION_POTS_RANGES=1
+
 }eVALUES_SERVOS_SD20;
 
 //! cet enumere contient les numeros d'attribution des servos AX (ID)
@@ -144,7 +146,7 @@ typedef enum {
 #define INDEX_TELEMETRE_ARDCentre 5
 
 //Seuil de détection des capteurs US et du Lidar
-#define SEUIL_DETECTION_US  20
+#define SEUIL_DETECTION_US  30
 #define SEUIL_DETECTION_LIDAR 50
 
 
@@ -163,13 +165,13 @@ typedef enum {
 #define CDE_MAX_TOUT_DOUX (10)
 
 // Position d'init du robot dans le repère absolue terrain
-#define X_ROBOT_TERRAIN_INIT_COULEUR_1        (12)
-#define Y_ROBOT_TERRAIN_INIT_COULEUR_1        (177)
+#define X_ROBOT_TERRAIN_INIT_COULEUR_1        (11)
+#define Y_ROBOT_TERRAIN_INIT_COULEUR_1        (172)
 #define ANGLE_ROBOT_TERRAIN_INIT_COULEUR_1    (0.0f)
 
-#define X_ROBOT_TERRAIN_INIT_COULEUR_2        (12)
-#define Y_ROBOT_TERRAIN_INIT_COULEUR_2        (23)
-#define ANGLE_ROBOT_TERRAIN_INIT_COULEUR_2    (0.0f)
+#define X_ROBOT_TERRAIN_INIT_COULEUR_2        (289)
+#define Y_ROBOT_TERRAIN_INIT_COULEUR_2        (172)
+#define ANGLE_ROBOT_TERRAIN_INIT_COULEUR_2    (3.14f)
 
 // Coordonnées dans le repère absolue terrain
 // à partir desquelles il faut interdire la détection d'obstacle
