@@ -99,8 +99,10 @@ private :
     unsigned char m_numSRF08;  
 
     static const unsigned int TAILLE_MOYENNE_GLISSANTE_CAPTEURS_US_ANA = 5;
+    static const unsigned int TAILLE_MOYENNE_GLISSANTE_CAPTEURS_US_I2C = 5;
     float m_buff_moy_us_arg_centre[TAILLE_MOYENNE_GLISSANTE_CAPTEURS_US_ANA];
     float m_buff_moy_us_ard_centre[TAILLE_MOYENNE_GLISSANTE_CAPTEURS_US_ANA];
+    float m_buff_moy_us_i2c[NOMBRE_TELEMETRES_I2C][TAILLE_MOYENNE_GLISSANTE_CAPTEURS_US_I2C];
 };
 
 #endif

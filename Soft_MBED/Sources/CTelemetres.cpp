@@ -145,7 +145,9 @@ void CTelemetres::Traitement_I2C(void)
   _i2c.read(m_adresseI2C[index], m_buff, 2);
   ui_tmp = (((unsigned int)m_buff[0])<<8) + ((unsigned int)m_buff[1]);
   if (ui_tmp > 1) {  // Patch pour éliminer les situations où d'un seul coup, la mesure passe à "0" pendant quelques échantillons -> pas de mise à jour de la donnée sur le CAN si valeur erronée
-        m_distance[index] = ui_tmp;
+        m_distance[index] = MoyenneGlissante_float(ui_tmp,
+                                                   m_buff_moy_us_i2c[index],
+                                                   TAILLE_MOYENNE_GLISSANTE_CAPTEURS_US_I2C);
   }
   else m_distance[index] = 250;   // laisse une valeur hors detection d'obstacle
   
@@ -155,6 +157,7 @@ void CTelemetres::Traitement_I2C(void)
   // Passe au capteur suivant
   m_numSRF08++;
   if (m_numSRF08 >= NOMBRE_TELEMETRES_I2C) { m_numSRF08 = 0; }
+
 }
 
 //___________________________________________________________________________
