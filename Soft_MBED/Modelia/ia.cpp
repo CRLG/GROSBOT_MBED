@@ -201,6 +201,9 @@ void IA::step()
 		//vérifier le rafraichissement des données
 		//vérifier l'intégrité des données
     }
+    m_datas_interface.nombre_obstacles_presents = 0;
+    m_datas_interface.angle_premier_obstacle_detecte = 0;
+    m_datas_interface.distance_premier_obstacle_detecte = LidarUtils::NO_OBSTACLE;
 
 	//Traitements Lidar pour évitement
     if(m_inputs_interface.m_lidar_status==LidarUtils::LIDAR_OK)
@@ -270,6 +273,7 @@ void IA::step()
                     if (Application.m_detection_obstacles.isObstacleLIDAR(_D, _Phi,35))
                     {
                         m_inputs_interface.obstacleDetecte=true;
+                        m_datas_interface.nombre_obstacles_presents++;
                         m_inputs_interface.obstacle_AVG= ((_Phi<=(M_PI/2)) && (_Phi>=0));
                         m_inputs_interface.obstacle_AVD= ((_Phi>=(-M_PI/2)) && (_Phi<0));
                         m_inputs_interface.obstacle_ARG= ((_Phi>(M_PI/2))&&(_Phi<=(M_PI)));
@@ -287,7 +291,8 @@ void IA::step()
             }
 			isOutOfField=false;
 		}
-		
+        m_datas_interface.angle_premier_obstacle_detecte = NeoLidar[1][0];
+        m_datas_interface.distance_premier_obstacle_detecte = m_inputs_interface.m_lidar_obstacles[0].distance;//NeoLidar[0][0];
 		//must have récupérer la position des balises fixes et vérifier le besoin ou non d'un recalage ;-)
     }//fin Traitement LIDAR pour évitement
 	//Traitements capteurs US pour évitement
