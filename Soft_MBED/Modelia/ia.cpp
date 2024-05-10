@@ -81,10 +81,11 @@ void IA::setStrategie(unsigned char strategie)
         m_sm_prendre_pots_pres_zone_depart.setEnabled(true);
         m_sm_ramener_pot_zone_pami.setEnabled(false);
         m_sm_tourner_panneaux_solaires.setEnabled(false);
-        m_sauvegarde_plantes.setEnabled(false);
+        m_sauvegarde_plantes.setEnabled(true);
 
         m_sm_prendre_plantes_pres_zone_depart.setPrioriteExecution(ordre++);
         m_sm_prendre_pots_pres_zone_depart.setPrioriteExecution(ordre++);
+        m_sauvegarde_plantes.setPrioriteExecution(ordre++);
         //m_sm_retour_zone_depart.setPrioriteExecution(ordre++);
 
         break;

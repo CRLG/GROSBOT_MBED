@@ -1,5 +1,5 @@
 /**
- * Generated 09_05_2024 at 11_36
+ * Generated 10_05_2024 at 10_58
  */
 
 #include "sm_prendrepotspreszonedepart.h"
@@ -60,7 +60,7 @@ void SM_PrendrePotsPresZoneDepart::step()
 	// ___________________________
 	case STATE_2 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(19,200);/*PINCE_OUVERTE*/
+			Application.m_servos_sd20.CommandePosition(19,255);/*PINCE_OUVERTE*/
 		}
 
 			gotoStateAfter(STATE_3,1000);
@@ -114,7 +114,7 @@ void SM_PrendrePotsPresZoneDepart::step()
 	// ___________________________
 	case STATE_8 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(15,1);/*LEVER_TIGE_POUR_POTS*/
+			Application.m_servos_sd20.CommandePosition(15,200);/*LEVER_TIGE_POUR_POTS*/
 		}
 
 			gotoStateAfter(STATE_9,1000);
@@ -168,7 +168,7 @@ void SM_PrendrePotsPresZoneDepart::step()
 	// ___________________________
 	case STATE_14 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(15,200);/*POTS_POUSSES*/
+			Application.m_servos_sd20.CommandePosition(15,1);/*POTS_POUSSES*/
 		}
 
 			gotoStateAfter(STATE_15,1000);
@@ -177,7 +177,7 @@ void SM_PrendrePotsPresZoneDepart::step()
 	// ___________________________
 	case STATE_15 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(19,200);/*PINCE_OUVERTE*/
+			Application.m_servos_sd20.CommandePosition(19,255);/*PINCE_OUVERTE*/
 		}
 
 			gotoStateAfter(STATE_16,2000);

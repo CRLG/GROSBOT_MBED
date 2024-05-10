@@ -1,5 +1,5 @@
 /**
- * Generated 09_05_2024 at 11_36
+ * Generated 09_05_2024 at 14_55
  */
 
 #include "sm_prendreplantespreszonedepart.h"
@@ -30,6 +30,9 @@ const char* SM_PrendrePlantesPresZoneDepart::stateToName(unsigned short state)
 		case STATE_8 :		return "STATE_8";
 		case STATE_9 :		return "STATE_9";
 		case STATE_10 :		return "STATE_10";
+		case STATE_11 :		return "STATE_11";
+		case STATE_12 :		return "STATE_12";
+		case STATE_13 :		return "STATE_13";
 		case FIN_MISSION :	return "FIN_MISSION";
 	}
 	return "UNKNOWN_STATE";
@@ -89,7 +92,7 @@ void SM_PrendrePlantesPresZoneDepart::step()
 	// ___________________________
 	case STATE_6 :
 		if (onEntry()) {
-			outputs()->CommandeMouvementXY_TETA_sym(44,5,3.14);/**/
+			outputs()->CommandeMouvementXY_sym(44,5);/**/
 		}
 
 			gotoStateIfConvergence(STATE_7,5000);
@@ -98,32 +101,63 @@ void SM_PrendrePlantesPresZoneDepart::step()
 	// ___________________________
 	case STATE_7 :
 		if (onEntry()) {
-			Application.m_servos_sd20.CommandePosition(13,140);/*GROSSE_TAPETTE_LEVE*/
+			
+			Application.m_detection_obstacles.inhibeDetection(true);
+
 		}
 
-			gotoStateAfter(STATE_8,1000);
+			gotoStateAfter(STATE_8,100);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_8 :
 		if (onEntry()) {
-			outputs()->CommandeMouvementXY_sym(12,5);/**/
+			Application.m_asservissement.CommandeMouvementDistanceAngle(0,3.14);/**/
 		}
 
-			gotoStateIfConvergence(STATE_9,5000);
+			gotoStateIfConvergence(STATE_9,3000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_9 :
 		if (onEntry()) {
-			outputs()->CommandeMouvementXY_TETA_sym(55,-39,3.14);/**/
+			Application.m_servos_sd20.CommandePosition(13,140);/*GROSSE_TAPETTE_LEVE*/
 		}
 
-			gotoStateIfConvergence(STATE_10,5000);
+			gotoStateAfter(STATE_10,1000);
 		if (onExit()) {  }
 		break;
 	// ___________________________
 	case STATE_10 :
+		if (onEntry()) {
+			outputs()->CommandeMouvementXY_sym(12,5);/**/
+		}
+
+			gotoStateIfConvergence(STATE_11,5000);
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_11 :
+		if (onEntry()) {
+			
+			Application.m_detection_obstacles.inhibeDetection(false);
+
+		}
+
+			gotoStateAfter(STATE_12,100);
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_12 :
+		if (onEntry()) {
+			outputs()->CommandeMouvementXY_TETA_sym(55,-39,3.14);/**/
+		}
+
+			gotoStateIfConvergence(STATE_13,5000);
+		if (onExit()) {  }
+		break;
+	// ___________________________
+	case STATE_13 :
 		if (onEntry()) {
 			Application.m_servos_sd20.CommandePosition(13,220);/*GROSSE_TAPETTE_BAISSE*/
 		}

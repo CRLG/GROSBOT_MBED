@@ -1,5 +1,5 @@
 /**
- * Generated 09_05_2024 at 11_36
+ * Generated 09_05_2024 at 14_55
  */
 
 #ifndef SM_PRENDREPLANTESPRESZONEDEPART_H
@@ -40,6 +40,9 @@ public:
 	STATE_22,
 	STATE_23,
 	STATE_24,
+	STATE_25,
+	STATE_26,
+	STATE_27,
 	FIN_MISSION
 	}tState;
 };
