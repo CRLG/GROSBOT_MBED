@@ -24,6 +24,7 @@ public:
     bool obstacle_ARD;
     bool obstacle_ARG;
     bool obstacleDetecte;
+    bool obstacleDetecte_non_filtre;
     float Telemetre_AVD;
     float Telemetre_AVG;
     float Telemetre_ARD;

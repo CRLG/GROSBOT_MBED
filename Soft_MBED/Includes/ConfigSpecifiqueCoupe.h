@@ -21,6 +21,9 @@
 #define EQUIPE_BLEU     SM_DatasInterface::EQUIPE_COULEUR_2
 #define EQUIPE_JAUNE    SM_DatasInterface::EQUIPE_COULEUR_1
 
+// Filtre de confirmation avant de lever le flag obstacleDetecte (pour rentrer en strategie d'evitement d'obstacle)
+// La valeur du define correspond a un nombre de passage dans la boucle dans laquelle est calculee l'info
+#define FILTRE_CONFIRMATION_OBSTACLE_DETECTE (3)
 // Affectation des numéros de stratégie
 typedef enum {
     STRATEGIE_PAR_DEFAUT= 0,

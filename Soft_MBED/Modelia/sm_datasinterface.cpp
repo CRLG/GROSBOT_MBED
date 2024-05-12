@@ -29,6 +29,7 @@ void SM_DatasInterface::init()
     evit_choix_strategie                = STRATEGIE_EVITEMENT_CONTOURNER;
     evit_seuil_detection_obstacle       = 15; // [cm]
     evit_comportement_retour_evitement  = SM_Sequenceur::RETOUR_EVIT_REPRENDS_MISSION_INTERROMPUE;
+    cpt_filtrage_obstacle_detecte       = 0;
 
     //init de la messagerie générique
     m_tx_value_01=0;

@@ -212,7 +212,7 @@ void IA::step()
         Application.m_detection_obstacles.setSeuilDetectionObstacle(SEUIL_DETECTION_LIDAR);
 
         //récupération de données utiles pour l'évitement
-		m_inputs_interface.obstacleDetecte=false;
+        m_inputs_interface.obstacleDetecte_non_filtre=false;
         bool isOutOfField=false;
 		float X_detected=0.;
 		float Y_detected=0.;
@@ -273,7 +273,7 @@ void IA::step()
                 {
                     if (Application.m_detection_obstacles.isObstacleLIDAR(_D, _Phi,35))
                     {
-                        m_inputs_interface.obstacleDetecte=true;
+                        m_inputs_interface.obstacleDetecte_non_filtre=true;
                         m_datas_interface.nombre_obstacles_presents++;
                         m_inputs_interface.obstacle_AVG= ((_Phi<=(M_PI/2)) && (_Phi>=0));
                         m_inputs_interface.obstacle_AVD= ((_Phi>=(-M_PI/2)) && (_Phi<0));
@@ -367,7 +367,7 @@ void IA::step()
 		m_inputs_interface.obstacle_AVD        = Application.m_detection_obstacles.isObstacleAVD();
         m_inputs_interface.obstacle_ARG        = Application.m_detection_obstacles.isObstacleARG() || Application.m_detection_obstacles.isObstacleARGCentre();
         m_inputs_interface.obstacle_ARD        = Application.m_detection_obstacles.isObstacleARD() || Application.m_detection_obstacles.isObstacleARDCentre();
-		m_inputs_interface.obstacleDetecte     = Application.m_detection_obstacles.isObstacle();
+        m_inputs_interface.obstacleDetecte_non_filtre     = Application.m_detection_obstacles.isObstacle();
 
 		// Permet de reconstituer une valeur entre 0 et 15 représentant toutes les situations de blocage
 		m_datas_interface.evit_detection_obstacle_bitfield =
@@ -386,6 +386,16 @@ void IA::step()
 
     m_inputs_interface.FrontM_ConvergenceRack = m_inputs_interface.ConvergenceRack && !m_inputs_interface.ConvergenceRack_old;
     m_inputs_interface.ConvergenceRack_old = m_inputs_interface.ConvergenceRack;
+
+    // filtrage de l'info obstacleDetecte_non_filtre utilise pour passer en evitement d'obstacle
+    //   -> filtre de confirmation de detection => filtrage a l'apparition de l'obstacle
+    //                                          => pas de filtrage de confirmation pour la disparition
+    if (m_inputs_interface.obstacleDetecte_non_filtre) {
+        if (m_datas_interface.cpt_filtrage_obstacle_detecte < UINT32_MAX) m_datas_interface.cpt_filtrage_obstacle_detecte++;
+    }
+    else m_datas_interface.cpt_filtrage_obstacle_detecte = 0;
+    m_inputs_interface.obstacleDetecte = (m_datas_interface.cpt_filtrage_obstacle_detecte >  FILTRE_CONFIRMATION_OBSTACLE_DETECTE);
+
 
     stepAllStateMachines();
 }

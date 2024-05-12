@@ -29,6 +29,7 @@ public:
     unsigned char nombre_obstacles_presents;
     signed short angle_premier_obstacle_detecte;
     unsigned short distance_premier_obstacle_detecte;
+    unsigned int cpt_filtrage_obstacle_detecte;
 
     // Stratégie d'évitement d'obstacles
     bool evitementEnCours;
